@@ -1,0 +1,14 @@
+//
+//  UIModel_PrefixHeader.pch
+//  UIModel
+//
+//  Created by vhall on 17/2/22.
+//  Copyright © 2017年 www.vhall.com. All rights reserved.
+//
+
+#ifndef UIModel_PrefixHeader_pch
+#define UIModel_PrefixHeader_pch
+
+#import "UIModel.h"
+
+#endif /* UIModel_PrefixHeader_pch */
