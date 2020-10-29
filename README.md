@@ -1,7 +1,7 @@
 # 微吼直播 SDK for iOS
- v5.0.0及以后续版本<br>
+ v5.0.0及后续版本<br>
 
-[历史版本 v4.0.x](https://github.com/vhall/vhallsdk_live_ios4.0)<br>
+[历史版本 v4.x.x](https://github.com/vhall/vhallsdk_live_ios_4.0)<br>
 [历史版本 v4.0.0 以下版本](https://github.com/vhall/vhallsdk_live_ios)<br>
 
 ### 集成和调用方式
@@ -46,6 +46,9 @@ pod 'VHallSDK_Interactive'<br>
 [历史版本 v4.0](https://github.com/vhall/vhallsdk_live_ios4.0)<br>
 [历史版本 v4.0 以下版本](https://github.com/vhall/vhallsdk_live_ios)<br>
 
+## 升级说明
+1、v4.3.x 升级 v5.x 无接口变动直接 pod 替换升级即可 <br>
+2、v4.x 升级 v5.x pod 替换升级后，参考v4.x版本升级说明 <br>
 
 ## Demo
 
