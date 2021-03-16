@@ -1,7 +1,7 @@
-# 微吼直播 SDK for iOS
- v5.0.0及后续版本<br>
+# vhallsdk-live-ios
+微吼直播 SaaS SDK 
 
-[历史版本 v4.x.x](https://github.com/vhall/vhallsdk_live_ios_4.0)<br>
+微吼直播 SaaS SDK v5.0 及以后版本迁移至 [VHLive_SDK_iOS](https://github.com/vhall/VHLive_SDK_iOS) 给您带来不便请谅解
 [历史版本 v4.0.0 以下版本](https://github.com/vhall/vhallsdk_live_ios)<br>
 
 ### 集成和调用方式
@@ -22,17 +22,34 @@
 
 
 ### 使用CocoaPods 引入SDK
-pod 'VHLiveSDK'<br>
-
-使用互动功能SDK<br>
-pod 'VHLiveSDK_Interactive'<br>
-
-特别注意：v5.0.0 以下版本 pod 集成方式<br>
 pod 'VHallSDK_Live'<br>
+
 使用互动功能SDK<br>
 pod 'VHallSDK_Interactive'<br>
 
+注意：v5.x及以上版本 请移步[VHLive_SDK_iOS](https://github.com/vhall/VHLive_SDK_iOS)<br>
+pod集成方式修改为：<br>
+pod 'VHLiveSDK'<br>
+使用互动功能SDK<br>
+pod 'VHLiveSDK_Interactive'<br>
+
 ### 版本更新信息
+#### 版本 v6.0.0 更新时间：2021.03.16
+更新内容：<br>
+1、发直播接口，在新版v3控制台创建的直播活动可不传access_token。<br>
+2、抽奖新增接口，仅适用于新版控制台v3创建的直播所发起的抽奖。<br>
+3、看直播/回放播放器，新增活动信息VHWebinarInfo，可获取当前在线人数与活动热度信息。<br>
+4、发直播，可修改主播昵称。<br>
+5、修复部分机型前后台切换，推流失败问题<br>
+6、修复问答，主持人的回答消息昵称错误问题<br>
+7、修复投屏播放过程中，无法切换视频问题<br>
+8、修复播放回放时，无法切换视频问题<br>
+9、修复iOS14下播放回放进入后台暂停后再进入前台无法播放问题<br>
+
+升级v6.0.0注意：
+1、6.0移除了回放评论功能，建议使用聊天代替，若使用了评论功能，升级6.0请务必进行修改，否则评论功能将失效。
+2、移除了游客进入，新增第三方id登录，使用SDK功能必须先登录。
+
 #### 版本 v5.0.2 更新时间：2021.01.25
 更新内容：<br>
 1、消息优化<br>
@@ -43,6 +60,7 @@ pod 'VHallSDK_Interactive'<br>
 1、日志上报新增字段<br>
 2、上线消息中新增PV字段，解决web端观看量显示为0问题<br>
 
+
 #### 版本 v5.0.0 更新时间：2020.10.28
 更新内容：<br>
 1、底层优化<br>
@@ -52,13 +70,80 @@ pod 'VHallSDK_Interactive'<br>
 5、解决 Seek 精度问题<br>
 6、Demo新增竖屏播放<br>
 
-## 历史版本 
-[历史版本 v4.0](https://github.com/vhall/vhallsdk_live_ios4.0)<br>
-[历史版本 v4.0 以下版本](https://github.com/vhall/vhallsdk_live_ios)<br>
+#### 版本 v4.3.4 更新时间：2020.07.02
+更新内容：<br>
+1、新增是否全体禁言字段<br>
+1、新增签到倒计时取消功能<br>
 
-## 升级说明
-1、v4.3.x 升级 v5.x 无接口变动直接 pod 替换升级即可 <br>
-2、v4.x 升级 v5.x pod 替换升级后，参考v4.x版本升级说明 <br>
+### 版本更新信息
+#### 版本 v4.3.3 更新时间：2020.07.02
+更新内容：<br>
+1、解决文档初始化是否显示的bug<br>
+
+#### 版本 v4.3.2 更新时间：2020.06.22
+更新内容：<br>
+1、回放文档bug修复<br>
+2、预加载房间消息bug修复<br>
+
+#### 版本 v4.3.1 更新时间：2020.06.15
+更新内容：<br>
+1、解决偶尔文档不加载问题<br>
+
+
+#### 版本 v4.3.0 更新时间：2020.06.11
+更新内容：<br>
+1、新增水印功能<br>
+2、扬声器设备占用优化（后台切换等情况）<br>
+3、角色信息bug修复<br>
+4、新增直播前连接消息服务<br>
+5、解决回放显示文档问题<br>
+6、优化demo|<br>
+
+
+#### 版本 v4.2.1 更新时间：2020.05.21
+更新内容：<br>
+1、解决互动偶尔声音小问题<br>
+
+#### 版本 v4.2.0 更新时间：2020.04.27
+更新内容：<br>
+1、支持投屏功能<br>
+2、日志上报优化<br>
+
+#### 版本 v4.1.2 更新时间：2020.04.20
+更新内容：<br>
+1、demo优化<br>
+2、解决GPUimage 冲突bug<br>
+3、解决偶尔web显示角色错误<br>
+4、解决历史聊天信息不全问题<br>
+5、回放静音失效问题<br>
+
+#### 版本 v4.1.1 更新时间：2020.03.18
+更新内容：<br>
+1、解决回放后台播放bug<br>
+2、支持pod集成 SDK<br>
+3、H5 活动历史消息数据兼容<br>
+4、上麦bug修复<br>
+
+#### 版本 v4.1.0 更新时间：2020.02.27
+更新内容：<br>
+1、解决播放器bug<br>
+2、优化Demo<br>
+
+#### 版本 v4.0.1 更新时间：2019.09.16
+更新内容：<br>
+1、优化Demo<br>
+2、修改美颜设置<br>
+
+
+#### 版本 v4.0.0 更新时间：2019.09.02
+更新内容：<br>
+1、优化问卷展现形式<br>
+2、修复已知bug<br>
+
+
+## 历史版本 
+[历史版本](https://github.com/vhall/vhallsdk_live_ios)<br>
+
 
 ## Demo
 
@@ -85,7 +170,7 @@ VHallSDK                微吼 SaaS 直播 SDK<br>
 
 UIModel 依赖的第三方库如下，如版本不同自行调整
 ```
-  pod 'VHLiveSDK_Interactive'
+  pod 'VHallSDK_Interactive'
 
   pod 'BarrageRenderer','2.1.0'
   pod 'Masonry','1.1.0'
