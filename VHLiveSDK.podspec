@@ -1,25 +1,22 @@
-Pod::Spec.new do |s|
-  s.name            = "VHLiveSDK"
-  s.version         = "6.2.2"
-  s.author          = { "vhall" => "xiaoxiang.wang@vhall.com" }
-  s.license         = { :type => "MIT", :file => "LICENSE" }
-  s.homepage        = 'https://www.vhall.com'
-  s.source          = { :git => "https://github.com/vhall/VHLive_SDK_iOS.git", :tag => s.version.to_s}
-  s.summary         = "VHallSDK for IOS"
-  s.platform        = :ios, '9.0'
-  s.requires_arc    = true
-  #s.source_files    = ''
-  s.libraries = 'xml2.2'
-  s.frameworks      = "AVFoundation", "VideoToolbox","OpenAL","CoreMedia","CoreTelephony" ,"OpenGLES" ,"MediaPlayer" ,"AssetsLibrary","QuartzCore" ,"JavaScriptCore","Security"
-  s.module_name     = 'VHLiveSDK'
-  s.resources       = ['README.md']
-  #s.resource_bundles= {}
-  s.vendored_frameworks = 'VHallSDK/VhallLiveBaseApi.framework','VHallSDK/VHLiveSDK.framework'
-  s.pod_target_xcconfig = {
+Pod::Spec.new do |spec|
+  
+  spec.name         = 'VHLiveSDK'
+  spec.version      = '6.2.4'
+
+  spec.summary      = "Vhall iOS SDK #{spec.name.to_s}"
+  spec.homepage     = 'https://www.vhall.com'
+  spec.author       = { "LiGuoliang" => "guoliang.li@vhall.com" }
+  spec.license      = { :type => "MIT", :file => "LICENSE" }
+  spec.module_name  = "#{spec.name.to_s}"
+  spec.requires_arc = true
+  spec.platform     = :ios, '9.0'
+
+  spec.source       = { :http => "https://ipa.e.vhall.com/app/sdk_release/iOS/#{spec.name.to_s}_#{spec.version.to_s}.zip" }
+  spec.vendored_frameworks = 'framework/**/*.framework'
+  spec.frameworks   = "AVFoundation", "VideoToolbox","OpenAL","CoreMedia","CoreTelephony" ,"OpenGLES" ,"MediaPlayer" ,"AssetsLibrary","QuartzCore" ,"JavaScriptCore","Security"
+  
+  spec.pod_target_xcconfig = {
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
     'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
-    'VALID_ARCHS' => 'x86_64 armv7 arm64',
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
   }
-
 end

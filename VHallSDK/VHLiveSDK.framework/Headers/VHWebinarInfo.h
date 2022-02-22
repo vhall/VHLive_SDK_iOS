@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "VHallConst.h"
 @class VHWebinarScrollTextInfo;
-
+@class VHRoleNameData;
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol VHWebinarInfoDelegate <NSObject>
@@ -86,7 +86,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param success 成功
 /// @param fail 失败
 + (void)getWebinarBaseInfoWithWebinarId:(NSString *)webinarId success:(void(^)(VHWebinarBaseInfo *baseInfo))success fail:(void(^)(NSError *error))fail;
+///角色数据
+@property (nonatomic,strong) VHRoleNameData *roleData;
 
+///返回角色数据
++ (void)getRoleNameWebinar_id:(NSString *)webinarId dataCallBack:(void(^)(VHRoleNameData *))roleNameData;
 @end
 
 
@@ -112,7 +116,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL is_kicked; ///<是否被踢出
 @property (nonatomic, assign) NSInteger device_type; ///<设备类型 0未知 1手机端 2PC 3SDK
 @property (nonatomic, assign) NSInteger device_status; ///< 设备检测状态 0:未检测 1:可以上麦 2:不可以上麦
+
 @end
 
 
+@interface VHRoleNameData : NSObject
+///主持人角色名称
+@property (nonatomic,copy) NSString *host_name;
+///嘉宾角色名称
+@property (nonatomic,copy) NSString *guest_name;
+///助理角色名称
+@property (nonatomic,copy) NSString *assist_name;
+@end
 NS_ASSUME_NONNULL_END

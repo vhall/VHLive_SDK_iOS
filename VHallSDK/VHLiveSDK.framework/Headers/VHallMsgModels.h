@@ -18,7 +18,12 @@ typedef NS_ENUM(NSInteger,ChatMsgType) {
     ChatMsgTypeVideo    = 3, // 视频
     ChatMsgTypeVoice    = 4, // 音频
 };
-
+/*
+ 自定义消息通道
+ **/
+typedef NS_ENUM(NSInteger,ChatCustomType) {
+    ChatCustomType_EditRole = 1,//支持修改角色
+};
 
 @interface VHallMsgModels : NSObject
 @property (nonatomic, copy) NSString * join_id;
@@ -35,7 +40,13 @@ typedef NS_ENUM(NSInteger,ChatMsgType) {
 @property (nonatomic,assign)NSInteger bu;               //频道业务单元
 @property (nonatomic, copy) NSString * client;          //消息来源
 @property (nonatomic, copy) NSString * msg_id;     ///<消息id
-@property (nonatomic, strong) id data;  
+@property (nonatomic, strong) id data;
+///编辑的角色修改的角色 1，2，3，4
+@property (nonatomic,copy) NSString *edit_role_type;
+///角色名称
+@property (nonatomic,copy) NSString *edit_role_name;
+///自定义消息通道事件
+@property (nonatomic,assign) ChatCustomType  eventType;
 @end
 
 //上下线消息

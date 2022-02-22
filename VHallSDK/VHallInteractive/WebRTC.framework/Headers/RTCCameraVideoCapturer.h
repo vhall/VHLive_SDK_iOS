@@ -8,18 +8,19 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
 #import <WebRTC/RTCMacros.h>
 #import <WebRTC/RTCVideoCapturer.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-RTC_EXPORT
-// Camera capture that implements RTCVideoCapturer. Delivers frames to a RTCVideoCapturerDelegate
-// (usually RTCVideoSource).
-@interface RTCCameraVideoCapturer : RTCVideoCapturer
+RTC_OBJC_EXPORT
+// Camera capture that implements RTCVideoCapturer. Delivers frames to a
+// RTCVideoCapturerDelegate (usually RTCVideoSource).
+NS_EXTENSION_UNAVAILABLE_IOS("Camera not available in app extensions.")
+@interface RTC_OBJC_TYPE (RTCCameraVideoCapturer) : RTC_OBJC_TYPE(RTCVideoCapturer)
 
 // Capture session that is used for capturing. Valid from initialization to dealloc.
 @property(readonly, nonatomic) AVCaptureSession *captureSession;
@@ -49,9 +50,6 @@ RTC_EXPORT
                            fps:(NSInteger)fps;
 // Stops the capture session asynchronously.
 - (void)stopCapture;
-
-// add by liwenlong on 2018.8.2
-- (void)setDeviceOrientation:(UIDeviceOrientation)deviceOrientation;
 
 @end
 

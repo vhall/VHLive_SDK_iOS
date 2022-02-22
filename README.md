@@ -1,39 +1,64 @@
-# vhallsdk-live-ios
-微吼直播 SaaS SDK 
-
-微吼直播 SaaS SDK v5.0 及以后版本迁移至 [VHLive_SDK_iOS](https://github.com/vhall/VHLive_SDK_iOS) 给您带来不便请谅解
-[历史版本 v4.0.0 以下版本](https://github.com/vhall/vhallsdk_live_ios)<br>
-
-### 集成和调用方式
-
-参见官方文档：http://www.vhall.com/saas/doc/310.html <br>
-
-### APP工程集成SDK基本设置
-1、工程中AppDelegate.m 文件名修改为 AppDelegate.mm<br>
-2、关闭bitcode 设置<br>
-3、plist 中 App Transport Security Settings -> Allow Arbitrary Loads 设置为YES<br>
-4、注册`AppKey`  [VHallApi registerApp:`AppKey` SecretKey:`AppSecretKey`]; <br>
-5、检查工程 `Bundle ID` 是否与`AppKey`对应 <br>
-6、plist中添加相机、麦克风权限 <br>
+# VHallSDK_Live_iOS
+> [历史版本 v4.0.0 以下版本](https://github.com/vhall/vhallsdk_live_ios)<br>
 
 
-### 上传App Store时会报模拟器错误
-1、参见官方文档： https://www.vhall.com/saas/doc/296.html 中 打包上传 App Store 问题
+
+## 快速集成
+
+### CocoaPods 方式
+
+1. 在 `Podfile` 文件中增加如下内容:
+
+   ```ruby
+   pod 'VHallSDK_Live'        # 使用 直播功能
+   pod 'VHallSDK_Interactive' # 使用 互动直播
+   ```
+
+2. 执行如下命令
+
+   ```shell
+   $ pod install
+   ```
+
+3. 设置 `info.plist` 网络权限、相机、麦克风 的使用权限
+
+4. 设置 `BitCode` : `Project -> Build Settings -> Enable Bitcode` 值为 `NO`
+
+5. 修改文件名 :  `AppDelegate.m` 改为 `AppDelegate.mm`，并添加如下内容:
+
+   ```objective-c
+   // AppDelegate.m
+   - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+     
+   	[VHallApi registerApp:<#AppKey#> SecretKey:<#AppSecretKey#>];
+     
+   }
+   ```
+
+6. 检查工程中的 `Bundle ID` 是否与 `AppKey` 对应
 
 
-### 使用CocoaPods 引入SDK
-pod 'VHallSDK_Live'<br>
 
-使用互动功能SDK<br>
-pod 'VHallSDK_Interactive'<br>
+## 快速使用
 
-注意：v5.x及以上版本 请移步[VHLive_SDK_iOS](https://github.com/vhall/VHLive_SDK_iOS)<br>
-pod集成方式修改为：<br>
-pod 'VHLiveSDK'<br>
-使用互动功能SDK<br>
-pod 'VHLiveSDK_Interactive'<br>
+详细请参见[官方文档](http://www.vhall.com/saas/doc/310.html)
 
-### 版本更新信息
+
+
+## FAQ
+
+* 上传App Store时会报模拟器错误 : 参见 https://www.vhall.com/saas/doc/296.html 中` 打包上传 App Store 问题`
+
+
+
+## 版本更新信息
+
+#### 版本 v6.2.4 更新时间：2022.02.22
+
+更新内容：
+
+1. 新功能 - 化蝶多语种支持
+2. 新功能 - 修改主持人、嘉宾、助理的角色名称
 
 #### 版本 v6.2.2 更新时间：2021.12.14
 
@@ -135,7 +160,6 @@ pod 'VHLiveSDK_Interactive'<br>
 1、新增是否全体禁言字段<br>
 1、新增签到倒计时取消功能<br>
 
-### 版本更新信息
 #### 版本 v4.3.3 更新时间：2020.07.02
 更新内容：<br>
 1、解决文档初始化是否显示的bug<br>
@@ -231,7 +255,6 @@ VHallSDK                微吼 SaaS 直播 SDK<br>
 UIModel 依赖的第三方库如下，如版本不同自行调整
 ```
   pod 'VHallSDK_Interactive'
-
   pod 'BarrageRenderer','2.1.0'
   pod 'Masonry','1.1.0'
   pod 'MBProgressHUD','1.2.0'
@@ -242,4 +265,3 @@ UIModel 依赖的第三方库如下，如版本不同自行调整
 ```
 
 Demo 体验 appstore 搜索微吼小直播 应用设置填写 Appkey即可体验<br>
-

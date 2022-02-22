@@ -15,8 +15,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-RTC_EXPORT
-@interface RTCDataBuffer : NSObject
+RTC_OBJC_EXPORT
+@interface RTC_OBJC_TYPE (RTCDataBuffer) : NSObject
 
 /** NSData representation of the underlying buffer. */
 @property(nonatomic, readonly) NSData *data;
@@ -34,25 +34,24 @@ RTC_EXPORT
 
 @end
 
+@class RTC_OBJC_TYPE(RTCDataChannel);
+RTC_OBJC_EXPORT
+@protocol RTC_OBJC_TYPE
+(RTCDataChannelDelegate)<NSObject>
 
-@class RTCDataChannel;
-RTC_EXPORT
-@protocol RTCDataChannelDelegate <NSObject>
-
-/** The data channel state changed. */
-- (void)dataChannelDidChangeState:(RTCDataChannel *)dataChannel;
+    /** The data channel state changed. */
+    - (void)dataChannelDidChangeState : (RTC_OBJC_TYPE(RTCDataChannel) *)dataChannel;
 
 /** The data channel successfully received a data buffer. */
-- (void)dataChannel:(RTCDataChannel *)dataChannel
-    didReceiveMessageWithBuffer:(RTCDataBuffer *)buffer;
+- (void)dataChannel:(RTC_OBJC_TYPE(RTCDataChannel) *)dataChannel
+    didReceiveMessageWithBuffer:(RTC_OBJC_TYPE(RTCDataBuffer) *)buffer;
 
 @optional
 /** The data channel's |bufferedAmount| changed. */
-- (void)dataChannel:(RTCDataChannel *)dataChannel
+- (void)dataChannel:(RTC_OBJC_TYPE(RTCDataChannel) *)dataChannel
     didChangeBufferedAmount:(uint64_t)amount;
 
 @end
-
 
 /** Represents the state of the data channel. */
 typedef NS_ENUM(NSInteger, RTCDataChannelState) {
@@ -62,8 +61,8 @@ typedef NS_ENUM(NSInteger, RTCDataChannelState) {
   RTCDataChannelStateClosed,
 };
 
-RTC_EXPORT
-@interface RTCDataChannel : NSObject
+RTC_OBJC_EXPORT
+@interface RTC_OBJC_TYPE (RTCDataChannel) : NSObject
 
 /**
  * A label that can be used to distinguish this data channel from other data
@@ -78,8 +77,7 @@ RTC_EXPORT
 @property(nonatomic, readonly) BOOL isOrdered;
 
 /** Deprecated. Use maxPacketLifeTime. */
-@property(nonatomic, readonly) NSUInteger maxRetransmitTime
-    DEPRECATED_ATTRIBUTE;
+@property(nonatomic, readonly) NSUInteger maxRetransmitTime DEPRECATED_ATTRIBUTE;
 
 /**
  * The length of the time window (in milliseconds) during which transmissions
@@ -119,7 +117,7 @@ RTC_EXPORT
 @property(nonatomic, readonly) uint64_t bufferedAmount;
 
 /** The delegate for this data channel. */
-@property(nonatomic, weak) id<RTCDataChannelDelegate> delegate;
+@property(nonatomic, weak) id<RTC_OBJC_TYPE(RTCDataChannelDelegate)> delegate;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -127,7 +125,7 @@ RTC_EXPORT
 - (void)close;
 
 /** Attempt to send |data| on this data channel's underlying data transport. */
-- (BOOL)sendData:(RTCDataBuffer *)data;
+- (BOOL)sendData:(RTC_OBJC_TYPE(RTCDataBuffer) *)data;
 
 @end
 
