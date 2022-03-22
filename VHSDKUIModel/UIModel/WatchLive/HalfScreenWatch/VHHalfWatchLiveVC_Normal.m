@@ -135,6 +135,11 @@ static AnnouncementView* announcementView = nil;
     [self.moviePlayer startPlay:[self playParam]];
     //预加载视频，收到"预加载成功回调"后，即可使用聊天等功能，择机调用 startPlay 正式开播，用于开播之前使用聊天、签到等功能
 //    [self.moviePlayer preLoadRoomWithParam:[self playParam]];
+    [VHWebinarBaseInfo getRoleNameWebinar_id:self.roomId dataCallBack:^(VHRoleNameData * roleData) {
+        VH_MB_HOST = roleData.host_name;
+        VH_MB_GUEST = roleData.guest_name;
+        VH_MB_ASSIST = roleData.assist_name;
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -1307,7 +1312,7 @@ static AnnouncementView* announcementView = nil;
 // 主持人邀请你上麦
 - (void)moviePlayer:(VHallMoviePlayer *)player microInvitation:(NSDictionary *)attributes
 {
-    _invitationAlertView = [[VHInvitationAlert alloc]initWithDelegate:self tag:1000 title:@"上麦邀请" content:@"主持人邀请您上麦，是否接受？"];
+    _invitationAlertView = [[VHInvitationAlert alloc]initWithDelegate:self tag:1000 title:@"上麦邀请" content:[NSString stringWithFormat:@"%@邀请您上麦，是否接受？",VH_MB_HOST]];
     [self.view addSubview:_invitationAlertView];
 }
 - (void)moviePlayer:(VHallMoviePlayer*)player isKickout:(BOOL)isKickout
@@ -1490,6 +1495,24 @@ static AnnouncementView* announcementView = nil;
 
 - (void)reciveCustomMsg:(NSArray <VHallCustomMsgModel *> *)msgs
 {
+    VHallCustomMsgModel *msgModel = msgs[0];
+    if (msgModel.eventType == ChatCustomType_EditRole) {
+        switch ([msgModel.edit_role_type intValue]) {
+            case 1:
+                VH_MB_HOST = msgModel.edit_role_name;
+                break;
+            case 4:
+                VH_MB_GUEST = msgModel.edit_role_name;
+                break;
+            case 3:
+                VH_MB_ASSIST = msgModel.edit_role_name;
+                break;
+            default:
+                break;
+        }
+        return;
+    }
+    
     [self reloadDataWithMsg:msgs];
 }
 

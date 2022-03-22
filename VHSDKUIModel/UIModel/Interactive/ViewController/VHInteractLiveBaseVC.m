@@ -37,6 +37,9 @@
 - (instancetype)initWithParams:(NSDictionary *)params {
     self = [super init];
     if (self) {
+        VH_MB_HOST = params[@"host"];
+        VH_MB_GUEST = params[@"guest"];
+        VH_MB_ASSIST = params[@"assistant"];
         self.params = params;
     }
     return self;

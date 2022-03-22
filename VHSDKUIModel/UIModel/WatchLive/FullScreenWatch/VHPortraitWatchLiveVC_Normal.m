@@ -358,7 +358,8 @@
  */
 - (void)moviePlayer:(VHallMoviePlayer *)player microInvitation:(NSDictionary *)attributes {
     NSLog(@"主持人邀请你上麦回调---attributes = %@",attributes);
-    _invitationAlertView = [[VHInvitationAlert alloc]initWithDelegate:self tag:1000 title:@"上麦邀请" content:@"主持人邀请您上麦，是否接受？"];
+    _invitationAlertView = [[VHInvitationAlert alloc]initWithDelegate:self tag:1000 title:@"上麦邀请" content:[NSString stringWithFormat:@"%@邀请您上麦，是否接受？",VH_MB_HOST]];
+    
     [self.view addSubview:_invitationAlertView];
 }
 
@@ -444,6 +445,23 @@
  * 收到自定义消息
  */
 - (void)reciveCustomMsg:(NSArray <VHallCustomMsgModel *> *)msgs {
+    VHallCustomMsgModel *msgModel = msgs[0];
+    if (msgModel.eventType == ChatCustomType_EditRole) {
+        switch ([msgModel.edit_role_type intValue]) {
+            case 1:
+                VH_MB_HOST = msgModel.edit_role_name;
+                break;
+            case 4:
+                VH_MB_GUEST = msgModel.edit_role_name;
+                break;
+            case 3:
+                VH_MB_ASSIST = msgModel.edit_role_name;
+                break;
+            default:
+                break;
+        }
+        return;
+    }
     [self.decorateView receiveMessage:msgs];
 }
 

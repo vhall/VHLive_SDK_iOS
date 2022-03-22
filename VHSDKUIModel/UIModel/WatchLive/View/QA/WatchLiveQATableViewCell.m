@@ -42,11 +42,14 @@
         
         NSString* role = @"";
         if([answer.role_name isEqualToString:@"host"]) {
-            role = @"主持人";
+            //role = @"主持人";
+            role = VH_MB_HOST;
         }else if([answer.role_name isEqualToString:@"guest"]) {
-            role = @"嘉宾";
+            //role = @"嘉宾";
+            role = VH_MB_GUEST;
         }else if([answer.role_name isEqualToString:@"assistant"]) {
-            role = @"助手";
+            //role = @"助手";
+            role = VH_MB_ASSIST;
         }else if([answer.role_name isEqualToString:@"user"]) {
             role = @"观众";
         }

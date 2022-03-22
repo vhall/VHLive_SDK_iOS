@@ -15,7 +15,7 @@
 #import <VHInteractive/VHRoom.h>
 #import "VHLiveChatView.h"
 #import "VHKeyboardToolView.h"
-
+#import "VHBeautyAdjustController.h"
 @interface PubLishLiveVC_Nodelay () <VHallChatDelegate,VHKeyboardToolViewDelegate,VHRoomDelegate>
 {
     UIButton * _lastFilterSelectBtn;
@@ -48,7 +48,10 @@
 /** 互动SDK (用于无延迟直播) */
 @property (nonatomic, strong) VHRoom *inavRoom;
 @property (weak, nonatomic) IBOutlet UILabel *onlyAudioTipLab; //音频直播提示
-
+@property (nonatomic,strong)VHBeautifyKit *beautKit;
+///美颜是否可用
+@property (nonatomic,assign) BOOL  isEnableBeauty;
+@property (nonatomic,strong) VHBeautyAdjustController *adjust;
 @end
 
 @implementation PubLishLiveVC_Nodelay
@@ -88,9 +91,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //self.beautKit = [VHReflect initBeautyEffectKit];
+    self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
     [self initViews];
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self readCacheStatus];
+}
+- (void)readCacheStatus{
+    if ([VHSaveBeautyTool readSaveCacheStatus]) {
+        //有缓存去缓存状态
+        [VHSaveBeautyTool closeBeauty:[VHSaveBeautyTool beautyViewModelArray][0] beautifyKit:self.beautKit closeBeautyEffect:![VHSaveBeautyTool readBeautyEnableStatus]];
+    }else{
+        [VHSaveBeautyTool closeBeauty:[VHSaveBeautyTool beautyViewModelArray][0] beautifyKit:self.beautKit closeBeautyEffect:NO];
+    }
+}
 - (void)initViews {
     [self registerLiveNotification];
     
@@ -146,6 +162,9 @@
 
 - (void)dealloc
 {
+    [self.adjust saveBeautyConfigModel];
+    [VHBeautifyKit destroy];
+//    [VHReflect destoryBeautyEffectKit];
     _chat = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     VHLog(@"%@ dealloc",[[self class] description]);
@@ -227,22 +246,39 @@
     sender.selected = !sender.selected;
 }
 
-
+- (VHBeautyAdjustController *)adjust{
+    if (!_adjust) {
+        _adjust = [[VHBeautyAdjustController alloc] init];
+    }
+    return _adjust;
+}
 #pragma mark - 美颜设置
 - (IBAction)filterBtnClick:(UIButton *)sender {
-    _filterBtn.selected = !_filterBtn.selected;
-    if(_filterBtn.selected) {
-        _hideKeyBtn.hidden = NO;
-        _filterView.alpha = 0.0f;
-        [UIView animateWithDuration:0.3f animations:^{
-            _filterView.alpha = 1.0f;
+    if (self.beautKit) {
+        if (self.isEnableBeauty) {
+            [self.adjust refreshEffect:self.beautKit];
+            [self presentViewController:self.adjust animated:YES completion:nil];
+        }else{
+            //不可用状态
+            [VHAlertView showAlertWithTitle:kServerNotAvaliable content:nil cancelText:nil cancelBlock:nil confirmText:@"确定" confirmBlock:^{
+            
         }];
-    } else {
-        _hideKeyBtn.hidden = YES;
-        _filterView.alpha = 1.0f;
-        [UIView animateWithDuration:0.3f animations:^{
+        }
+    }else{
+        _filterBtn.selected = !_filterBtn.selected;
+        if(_filterBtn.selected) {
+            _hideKeyBtn.hidden = NO;
             _filterView.alpha = 0.0f;
-        }];
+            [UIView animateWithDuration:0.3f animations:^{
+                _filterView.alpha = 1.0f;
+            }];
+        } else {
+            _hideKeyBtn.hidden = YES;
+            _filterView.alpha = 1.0f;
+            [UIView animateWithDuration:0.3f animations:^{
+                _filterView.alpha = 0.0f;
+            }];
+        }
     }
 }
 
@@ -326,11 +362,14 @@
             }
             
             if([m.role isEqualToString:@"host"]) {
-                role = @"主持人";
+//                role = @"主持人";
+                role = VH_MB_HOST;
             }else if([m.role isEqualToString:@"guest"]) {
-                role = @"嘉宾";
+//                role = @"嘉宾";
+                role = VH_MB_GUEST;
             }else if([m.role isEqualToString:@"assistant"]) {
-                role = @"助手";
+//                role = @"助手";
+                role = VH_MB_ASSIST;
             }else if([m.role isEqualToString:@"user"]) {
                 role = @"观众";
             }
@@ -525,7 +564,22 @@
         NSDictionary *options = @{VHVideoWidthKey:@(1280),VHVideoHeightKey:@(720),VHVideoFpsKey:@(30),VHMaxVideoBitrateKey:@(300),VHStreamOptionStreamType:@(streamType)};
         _localRenderView = [[VHLocalRenderView alloc] initCameraViewWithFrame:CGRectZero options:options];
         _localRenderView.scalingMode = self.scaleMode;
-        _localRenderView.beautifyEnable = self.beautifyFilterEnable;
+        _localRenderView.beautifyEnable = YES;
+        if (self.beautKit) {
+            //新美颜
+//            [[VHReflect currentModuleBeautyKit:self.beautKit] setCaptureImageOrientation:(self.interfaceOrientation ==  UIInterfaceOrientationLandscapeRight)?2:3];
+//            [_localRenderView useBeautifyModule:[VHReflect currentModuleBeautyKit:self.beautKit] HandleError:^(NSError * _Nonnull error) {
+//                NSLog(@"error === %@",error.localizedDescription);
+//                self.isEnableBeauty = (error!=nil)?NO:YES;//是否可以使用美颜
+//            }];
+            [[self.beautKit currentModule] setCaptureImageOrientation:(self.interfaceOrientation ==  UIInterfaceOrientationLandscapeRight)?2:3];
+            [_localRenderView useBeautifyModule:[self.beautKit currentModule] HandleError:^(NSError * _Nonnull error) {
+                NSLog(@"error === %@",error.localizedDescription);
+                self.isEnableBeauty = (error!=nil)?NO:YES;//是否可以使用美颜
+                        }];
+        }else{
+            _localRenderView.beautifyEnable = self.beautifyFilterEnable;
+        }
         [_localRenderView setDeviceOrientation:self.interfaceOrientation == UIInterfaceOrientationPortrait ? UIDeviceOrientationPortrait : UIDeviceOrientationLandscapeLeft];
     }
     return _localRenderView;
@@ -538,5 +592,7 @@
     }
     return _inavRoom;
 }
-
+//- (void)beautyKitModule:(VHBeautifyKit *)module{
+//    self.beautKit = module;
+//}
 @end

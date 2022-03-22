@@ -51,5 +51,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>vhall_debug_mode</key>
+	<string>a11ow</string>
 </dict>
 </plist>

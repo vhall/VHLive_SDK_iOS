@@ -25,7 +25,9 @@
 #import "VHNavigationController.h"
 #import "VHInteractLiveVC_New.h"
 #import "UIModel.h"
-
+///新增美颜依赖库
+#import <VHBeautifyKit/VHBeautifyKit.h>
+#import <VHBFURender/VHBFURender.h>
 @interface VHHomeViewController ()<VHallApiDelegate>
 @property (weak, nonatomic) IBOutlet UILabel        *deviceCategory;
 @property (weak, nonatomic) IBOutlet UIButton       *loginBtn;
@@ -38,10 +40,23 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
 @property (weak, nonatomic) IBOutlet UIButton *btn2;
 @property (weak, nonatomic) IBOutlet UIButton *btn3;
+///美颜模块
+@property (nonatomic,strong) VHBeautifyKit *beautKit;
 @end
 
 @implementation VHHomeViewController
-
+///初始化
+- (void)initBeautyKit{
+//    static char g_auth_package[]={-4,-12,72,125,39,5,69,-4,20,100,-95,7,-69,-78,17,121,-45,76,62,-29,65,-120,94,41,-84,104,13,-19,38,-127,-106,-16,-20,106,84,25,-114,27,126,39,101,68,100,-23,-18,58,-4,-128,-75,-121,-51,121,58,-1,122,36,79,59,-56,-22,-48,76,-49,-66,-109,-44,113,-109,-20,16,111,-37,78,-100,-89,65,27,-3,-127,-49,-124,-7,-108,22,-46,82,4,-27,54,-100,16,26,-34,-17,-81,65,26,36,32,-19,41,14,-4,107,16,-42,-104,108,13,-67,73,57,-80,122,-55,52,109,74,-123,-22,-124,-64,1,-103,16,100,64,118,43,-92,-119,110,-122,-105,-44,-90,-104,61,-30,-114,-22,19,52,34,-94,125,117,76,-46,12,49,72,-43,82,-99,-81,-13,-75,61,0,89,111,-60,-77,34,-87,49,70,4,52,118,78,7,-1,55,-29,39,93,126,98,34,27,95,-48,86,-101,-42,-128,71,-43,7,-38,-122,101,-116,72,-61,-99,80,54,-122,89,-83,49,-72,91,71,7,15,-93,109,6,-13,-84,-99,66,-32,-51,3,-111,100,-30,118,-57,-9,-92,-122,-52,-65,122,105,-80,-110,38,44,90,97,-20,-68,-83,127,47,-35,43,-78,58,-3,63,86,55,9,41,-117,-74,47,126,23,102,32,21,45,-19,-121,-59,6,-92,-17,-102,10,-96,-117,97,-78,78,-115,-26,11,11,108,-25,-44,-113,-56,-91,-116,-31,-98,-81,-77,86,85,22,0,108,-29,-38,-9,97,-39,-21,105,101,85,-99,2,-86,29,-78,-124,79,-2,-24,10,-61,76,122,-97,34,11,121,-32,-68,-34,115,75,44,-100,-107,-10,-44,-13,107,-68,-67,-78,34,14,-111,-63,-1,76,88,2,31,26,122,-1,41,-23,-117,127,109,-36,80,90,-62,-2,65,67,48,74,80,-50,109,-104,-114,-37,-69,-48,5,-98,-80,73,118,-54,118,-23,-22,125,45,82,-64,42,-92,123,-58,-89,-74,52,104,32,-100,8,-1,-20,-47,-62,101,82,-49,-15,16,-44,-7,-2,14,84,-52,16,-66,-23,19,-94,53,-9,-43,-117,-34,-110,118,44,10,33,-22,83,25,73,81,110,-6,-23,-15,55,25,-20,-30,41,39,47,118,-100,-8,37,-66,-28,-11,-95,-22,-78,-26,-44,-72,93,50,77,91,-63,-126,28,-53,23,-24,-38,-31,-91,-84,20,59,-95,-101,-25,38,-4,-119,120,73,41,78,-62,-76,81,-75,79,-108,87,-113,30,31,19,-3,-107,-50,-1,71,5,78,-92,-119,68,-109,-87,-92,-89,-82,-24,-8,-34,-31,45,7,64,96,-62,25,-126,43,-19,-64,-120,-80,-21,-23,-9,-47,-59,-109,78,-83,2,-123,72,-83,-34,124,116,22,-39,93,-125,107,-65,-75,-124,-108,-70,-128,-49,60,61,-68,-58,-52,101,-5,56,-44,-93,-15,-2,105,7,19,77,77,88,-85,31,-83,14,-23,-46,-128,97,-39,-114,-25,-82,-81,125,-13,91,-98,39,113,117,27,-30,-93,-31,-91,-43,-84,117,18,-53,-9,-18,50,-42,-80,-27,-43,63,125,-96,122,-39,14,-96,119,94,46,-15,92,-93,-110,-98,111,90,-18,-89,-43,108,103,53,-35,71,-80,101,55,92,-67,-39,-4,-29,72,-4,62,-13,121,56,25,60,-9,-10,120,-88,78,12,26,-15,-33,14,46,68,121,-120,-68,89,78,-65,-99,6,16,76,11,-24,42,5,-55,-50,-21,68,43,-121,-93,105,55,-80,60,-17,40,109,-35,-44,9,-74,125,-77,59,-5,33,-92,74,123,41,84,-122,30,101,-16,-45,39,-118,-120,107,55,-27,39,83,97,-3,6,108,-109,-60,-10,56,116,17,-92,63,82,84,-76,-22,74,-23,86,-115,-88,-49,89,-1,56,-65,-125,-19,-9,-22,-64,97,44,-120,61,123,47,-75,-91,30,-35,89,6,29,116,-94,-126,-50,72,80,44,-102,14,75,45,-43,-102,2,-30,-107,-106,-48,-49,-89,15,-101,-27,25,-20,119,-17,-5,-28,29,107,-3,-105,-108,-123,60,104,22,-14,-14,-117,-107,123,-57,-50,3,-123,-44,99,-43,-87,66,-48,14,-96,117,-36,19,107,-123,75,40,14,40,-38,-1,-15,-14,-98,115,115,25,40,-33,-73,-96,67,-37,123,-92,55,34,-10,55,102,61,45,107,-4,43,-76,11,-74,-78,-92,125,-116,100,-73,-16,44,63,-80,16,-45,-5,-77,-55,-2,-71,41,62,33,76,35,3,60,-72,-99,50,113,40,93,95,5,-21,-29,42,86,-60,-34,114,-30,-14,110,-18,-24,7,-27,-107,-76,-5,38,31,-6,-4,122,69,2,-107,-113,-64,-59,3,-22,-33,-3,-117,-44,-35,-43,101,-75,116,-48,-35,70,65,0,11,-33,109,62,84,33,59,64,77,108,101,-25,115,74,87,-101,42,-26,-5,91,-26,105,-111,109,94,-15,63,-46,80,25,10,73,-35,117,16,11,19,14,-52,-93,-91,41,50,78,-35,-87,-49,-118,105,-105,-76,-18,-95,-69,-97,24,5,109,112,28,-54,75,102,33,18,69,41,50,3,-3,103,79,-97,-62,-80,-117,108,-93,110,71,123,-94,24,-91,122,111,91,-61,-82,-125,-54,-103,41,-128,-102,-104,116,117,-73,72,34,-42,44,101,108,-10,57,102,-65,92,-102,20,-16,28,-105,100,96,62,-71,-54,120,118,84,4,-126,-101,112,-52,-34,1,33,59,16,59,87,-88,84,-40,-114,63,120,-121,-84,-3,-109,52,-63,-84,-28,-36,19,-121,-35,-44,-41,-55,79,60,-124,3,71,95,75,-42,-77,119,-127,-88,54,-106,20,0,-107,14,-15,-49,-16,-126,10,112,99,27,-107,71,-15,-52,52,-49,-124,-49,88,26,-119,-37,-28,93,-107,-70,97,-105,47,-98,33,59,97,-37,-48,-15,-38,-70,49,50,-64,122,12,10,-51,-79,-84,7,33,117,25,118,79,88,57,90,-127,-81,45,82,-84,-59,-52,-92,60,-64,-123,-15,89,4,49,21,-41,-72,11,-110,-13,74,-124,127,40,-113,-118,-41,90,-46,75,-112,118,-43,90,-20,58,39,77,-103,6,62,94,97,-117,64,63,62,-67,-32,-22,9,94,-34,120,-60,11,-5,-33,-56,79,64,-29,8,-59,94,3,-122,-91,114,46,-39,99,49,-80,-16,-31,-3,76,83,-78,-41,80,-39,21,110,123,-79,42,47,64,-73,18,-110,-34,49,70,85,-101,52,-29,-91,11,71,5,102,-79,29,-17,-66,22,-38,7,76,-16,-57,113};
+  //1.0.4
+//    Class fuClass = [VHBFURender licenseWithKey:g_auth_package size:sizeof(g_auth_package)];
+//    self.beautKit = [VHBeautifyKit kitWithRegistLicenseWithRender:fuClass];
+//    [self.beautKit setEffectKey:eff_key_FU_BlurType toValue:@(1.0)];//美颜效果
+    
+    //1.0.5
+    
+//    self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -57,8 +72,8 @@
         btn.titleEdgeInsets =UIEdgeInsetsMake(50, -0.5*image.width, 0, 0.5*image.width);
         btn.imageEdgeInsets =UIEdgeInsetsMake(-38, 0.5*title.width, 0, -0.5*title.width);
     }
-
-    
+    //初始化美颜
+//    [self initBeautyKit];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,6 +114,9 @@
         }
         
         PubLishLiveVC_Normal * liveVC = [[PubLishLiveVC_Normal alloc] init];
+        if (DEMO_Setting.beautifyFilterEnable) {
+//            [liveVC beautyKitModule:[VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]]];
+        }
         liveVC.videoResolution  = [DEMO_Setting.videoResolution intValue];
         liveVC.roomId           = DEMO_Setting.activityID;
         liveVC.token            = DEMO_Setting.liveToken;
@@ -136,7 +154,11 @@
         }else if(baseInfo.webinar_type == 2){ //视频直播
             liveVC.streamType = VHInteractiveStreamTypeAudioAndVideo;
         }
-        liveVC.beautifyFilterEnable  = YES;
+        if (self.beautKit) {
+//            [liveVC beautyKitModule:[VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]]];
+        }else{
+            liveVC.beautifyFilterEnable  = YES;
+        }
         liveVC.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:liveVC animated:YES completion:nil];
     } fail:^(NSError * _Nonnull error) {
@@ -176,7 +198,13 @@
             params[@"password"] = DEMO_Setting.codeWord;
             params[@"avatar"] = DEMO_Setting.inva_avatar;
         }
+        params[@"host"] = baseInfo.roleData.host_name;
+        params[@"guest"] = baseInfo.roleData.guest_name;
+
+        params[@"assistant"] = baseInfo.roleData.assist_name;//增加互动直播助理昵称实时刷新
+
         VHInteractLiveVC_New *vc = [[VHInteractLiveVC_New alloc] initWithParams:params isHost:isHost screenLandscape:baseInfo.webinar_show_type];
+//        [vc beautyKitModule:[VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]]];
         vc.inav_num = baseInfo.inav_num;
         VHNavigationController *nav = [[VHNavigationController alloc] initWithRootViewController:vc];
         nav.modalPresentationStyle = UIModalPresentationFullScreen;
@@ -290,6 +318,8 @@
             [alertController addAction:portraitLive_nodelay];
             [alertController addAction:landscapeLive_nodelay];
             [alertController addAction:cancelAction];
+            alertController.popoverPresentationController.sourceView = sender;
+            alertController.popoverPresentationController.sourceRect = sender.bounds;
             [self presentViewController:alertController animated:YES completion:nil];
         }
             break;
@@ -306,6 +336,8 @@
             [alertController addAction:hostJoin];
             [alertController addAction:guestJoin];
             [alertController addAction:cancelAction];
+            alertController.popoverPresentationController.sourceView = sender;
+            alertController.popoverPresentationController.sourceRect = sender.bounds;
             [self presentViewController:alertController animated:YES completion:nil];
         }
             break;
@@ -345,6 +377,8 @@
             [alertController addAction:portrait_NodelayWatch];
             [alertController addAction:webWatch];
             [alertController addAction:cancelAction];
+            alertController.popoverPresentationController.sourceView = sender;
+            alertController.popoverPresentationController.sourceRect = sender.bounds;
             [self presentViewController:alertController animated:YES completion:nil];
         }
             break;

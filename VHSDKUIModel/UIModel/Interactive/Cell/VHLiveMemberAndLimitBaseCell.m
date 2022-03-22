@@ -93,13 +93,13 @@
     [self.headIcon sd_setImageWithURL:[NSURL URLWithString:[UIModelTools httpPrefixImgUrlStr:model.avatar]] placeholderImage:BundleUIImage(@"head50")];
     if(model.role_name != VHLiveRole_Audience) {
         if(model.role_name == VHLiveRole_Host) {
-            self.roleLab.text = @"主持人";
+            self.roleLab.text = VH_MB_HOST;
             self.roleLab.backgroundColor = MakeColorRGBA(0xFC5659,0.8);
         }else if (model.role_name == VHLiveRole_Assistant) {
-            self.roleLab.text = @"助理";
+            self.roleLab.text = VH_MB_ASSIST;
             self.roleLab.backgroundColor = MakeColorRGBA(0xBBBBBB,0.8);
         }else if (model.role_name == VHLiveRole_Guest) {
-            self.roleLab.text = @"嘉宾";
+            self.roleLab.text = VH_MB_GUEST;
             self.roleLab.backgroundColor = MakeColorRGBA(0x5EA6EC,0.8);
         }
         CGSize size = [self.roleLab sizeThatFits:CGSizeZero];

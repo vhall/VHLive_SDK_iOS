@@ -107,6 +107,7 @@ static VHStystemSetting *_sharedSetting = nil;
         else
             self.isOpenNoiseSuppresion = YES;
         self.beautifyFilterEnable = [standardUserDefaults boolForKey:@"VHbeautifyFilterEnable"];
+        self.fuBeautyEnable = [standardUserDefaults boolForKey:@"VHfuBeautyEnable"];
     }
     return self;
 }
@@ -202,6 +203,11 @@ static VHStystemSetting *_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)setFuBeautyEnable:(BOOL)fuBeautyEnable{
+    _fuBeautyEnable = fuBeautyEnable;
+    [[NSUserDefaults standardUserDefaults] setBool:_fuBeautyEnable forKey:@"VHfuBeautyEnable"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 - (void)setLiveToken:(NSString*)liveToken
 {
     _liveToken = liveToken;

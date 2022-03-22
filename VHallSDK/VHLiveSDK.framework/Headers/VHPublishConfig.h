@@ -170,6 +170,9 @@ typedef NS_ENUM(NSInteger,VHVideoResolution)
  */
 @property (nonatomic,assign)BOOL beautifyFilterEnable;
 
+/// 高级美颜功能[自动开启，无需设置]
+@property (nonatomic, assign) BOOL advancedBeautifyEnable;
+
 /**
  * 是否使用软件编码
  * 默认关闭 NO，使用硬件编码，进入后台推流时，需要设置此值为YES。

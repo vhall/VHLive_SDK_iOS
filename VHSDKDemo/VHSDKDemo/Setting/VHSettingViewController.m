@@ -29,6 +29,7 @@
 
     UISwitch *_noiseSwitch;
     UISwitch *_beautifySwitch;
+    UISwitch *_fuBeautifySwitch;//相芯
     UISwitch *_inavBeautifySwitch;
 }
 @property(nonatomic,strong) NSMutableArray *groups;
@@ -94,6 +95,8 @@
     [_noiseSwitch addTarget:self action:@selector(noiseSwitch) forControlEvents:UIControlEventValueChanged];
     _beautifySwitch = [[UISwitch alloc]init];
     [_beautifySwitch addTarget:self action:@selector(beautifySwitch) forControlEvents:UIControlEventValueChanged];
+    _fuBeautifySwitch = [[UISwitch alloc]init];
+    [_fuBeautifySwitch addTarget:self action:@selector(fuBeautifySwitch) forControlEvents:UIControlEventValueChanged];
     _inavBeautifySwitch = [[UISwitch alloc]init];
     [_inavBeautifySwitch addTarget:self action:@selector(inavBeautifySwitch) forControlEvents:UIControlEventValueChanged];
     
@@ -258,6 +261,19 @@
             _beautifySwitch.left = self.view.width - 60;
             _beautifySwitch.top = 7;
             [beautifySwitchcell.contentView addSubview:_beautifySwitch];
+            
+            return beautifySwitchcell;
+        }else if (indexPath.row == group.items.count + 2) { //美颜
+            static   NSString *Identifier = @"fuBeautifySwitchcell";
+            UITableViewCell *beautifySwitchcell =[tableView dequeueReusableCellWithIdentifier:Identifier];
+            if (beautifySwitchcell == nil)
+                beautifySwitchcell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+            beautifySwitchcell.textLabel.text = @"  相芯美颜";
+            beautifySwitchcell.textLabel.font = [UIFont systemFontOfSize:14];
+            _fuBeautifySwitch.on = DEMO_Setting.fuBeautyEnable;
+            _fuBeautifySwitch.left = self.view.width - 60;
+            _fuBeautifySwitch.top = 7;
+            [beautifySwitchcell.contentView addSubview:_fuBeautifySwitch];
             
             return beautifySwitchcell;
         }
@@ -536,6 +552,9 @@
 - (void)beautifySwitch
 {
     DEMO_Setting.beautifyFilterEnable = _beautifySwitch.on;
+}
+- (void)fuBeautifySwitch{
+    DEMO_Setting.fuBeautyEnable = _fuBeautifySwitch.on;
 }
 - (void)inavBeautifySwitch
 {

@@ -34,6 +34,7 @@
 @property(nonatomic, assign)NSInteger videoCaptureFPS;  //发直播视频帧率 ［1～30］ 默认10
 @property(nonatomic, assign)BOOL      isOpenNoiseSuppresion;//开启降噪 默认YES
 @property(nonatomic, assign)BOOL      beautifyFilterEnable;//美颜开关
+@property(nonatomic, assign)BOOL      fuBeautyEnable;//相芯美颜开关
 @property (nonatomic, copy) NSString *live_nick_name;     ///<发直播昵称
 
 

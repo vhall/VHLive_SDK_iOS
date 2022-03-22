@@ -58,6 +58,20 @@
         replyContext.text = @"";
     } else {  //聊天消息
         [pic sd_setImageWithURL:[NSURL URLWithString:_model.avatar] placeholderImage:BundleUIImage(@"head50")];
+        //1:主持人 2：观众  3：助理 4：嘉宾
+        switch (model.role_name) {
+            case 1:
+                _model.role = VH_MB_HOST;
+                break;
+            case 3:
+                _model.role = VH_MB_ASSIST;
+                break;
+            case 4:
+                _model.role = VH_MB_GUEST;
+                break;
+            default:
+                break;
+        }
         lblNickName.text = [_model.user_name stringByAppendingFormat:@"[%@-%ld]%@",_model.role,(long)_model.role_name,[_model.account_id isEqualToString:[VHallApi currentUserID]]?@"(myself)":@""];
         lblTime.text = _model.time;
         lblNickName.textColor = [UIColor blackColor];

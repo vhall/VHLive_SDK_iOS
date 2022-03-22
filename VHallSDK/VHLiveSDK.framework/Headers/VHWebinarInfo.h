@@ -91,6 +91,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///返回角色数据
 + (void)getRoleNameWebinar_id:(NSString *)webinarId dataCallBack:(void(^)(VHRoleNameData *))roleNameData;
+///获取美颜权限结果
+@property (nonatomic,assign) BOOL  allowAdvanceBeauty;
 @end
 
 

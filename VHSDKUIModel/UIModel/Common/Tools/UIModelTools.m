@@ -590,5 +590,8 @@
     NSData* originData = [str dataUsingEncoding:NSUTF8StringEncoding];
     return [originData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
 }
-
+///角色修改
+NSString * VH_MB_HOST = @"主持人";
+NSString * VH_MB_GUEST = @"嘉宾";
+NSString * VH_MB_ASSIST = @"助理";
 @end

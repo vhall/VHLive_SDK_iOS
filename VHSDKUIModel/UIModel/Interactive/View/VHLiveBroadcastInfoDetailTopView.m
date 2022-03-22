@@ -180,7 +180,7 @@
 ///美颜
 - (void)clickBeautyBtn:(UIButton *)button
 {
-    button.selected = !button.selected;
+    //button.selected = !button.selected;(新美颜只弹窗，不切换状态)
     if ([self.delegate respondsToSelector:@selector(liveTopToolView:clickBeautyBtn:)]) {
         [self.delegate liveTopToolView:self clickBeautyBtn:button];
     }

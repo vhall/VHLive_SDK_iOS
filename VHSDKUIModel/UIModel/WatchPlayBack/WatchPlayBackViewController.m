@@ -53,6 +53,7 @@ static AnnouncementView* announcementView = nil;
 @property (nonatomic,strong) NSMutableArray *chatArray;//聊天数据源
 @property (nonatomic , assign) BOOL isCast_screen; //投屏权限
 @property (nonatomic,strong) VHKeyboardToolView * messageToolView;  //输入view
+@property (nonatomic,assign) BOOL  isPreLoad;//预加载状态
 @end
 
 @implementation WatchPlayBackViewController
@@ -84,6 +85,8 @@ static AnnouncementView* announcementView = nil;
     [self initViews];
     //预加载视频
 //    [self.moviePlayer preLoadRoomWithParam:[self playParam]];
+    self.moviePlayer.initialPlaybackTime = 0;
+    self.isPreLoad = YES;
     [self.moviePlayer startPlayback:[self playParam]];
 }
 
@@ -387,6 +390,23 @@ static AnnouncementView* announcementView = nil;
 
 //收到自定义消息
 - (void)reciveCustomMsg:(NSArray <VHallCustomMsgModel *> *)msgs {
+    VHallCustomMsgModel *msgModel = msgs[0];
+    if (msgModel.eventType == ChatCustomType_EditRole) {
+        switch ([msgModel.edit_role_type intValue]) {
+            case 1:
+                VH_MB_HOST = msgModel.edit_role_name;
+                break;
+            case 4:
+                VH_MB_GUEST = msgModel.edit_role_name;
+                break;
+            case 3:
+                VH_MB_ASSIST = msgModel.edit_role_name;
+                break;
+            default:
+                break;
+        }
+        return;
+    }
     [self reloadDataWithMsg:msgs];
 }
 
@@ -593,6 +613,10 @@ static AnnouncementView* announcementView = nil;
 
 - (void)moviePlayer:(VHallMoviePlayer*)player currentTime:(NSTimeInterval)currentTime
 {
+//    if (self.isPreLoad) {
+//        [player reconnectPlay];
+//        self.isPreLoad = NO;
+//    }
     [self monitorVideoPlayback];
 }
 

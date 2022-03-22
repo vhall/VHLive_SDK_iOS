@@ -189,6 +189,24 @@
  * 收到自定义消息
  */
 - (void)reciveCustomMsg:(NSArray <VHallCustomMsgModel *> *)msgs {
+    
+    VHallCustomMsgModel *msgModel = msgs[0];
+    if (msgModel.eventType == ChatCustomType_EditRole) {
+        switch ([msgModel.edit_role_type intValue]) {
+            case 1:
+                VH_MB_HOST = msgModel.edit_role_name;
+                break;
+            case 4:
+                VH_MB_GUEST = msgModel.edit_role_name;
+                break;
+            case 3:
+                VH_MB_ASSIST = msgModel.edit_role_name;
+                break;
+            default:
+                break;
+        }
+        return;
+    }
     [self.decorateView receiveMessage:msgs];
 }
 
@@ -347,7 +365,7 @@
         }else if (message.messageType == VHRoomMessageType_vrtc_connect_refused) { //主持人拒绝自己上麦
             VH_ShowToast(@"主持人拒绝了您的上麦申请");
         }else if (message.messageType == VHRoomMessageType_vrtc_connect_invite) { //主持人邀请自己上麦
-            _invitationAlertView = [[VHInvitationAlert alloc]initWithDelegate:self tag:1000 title:@"上麦邀请" content:@"主持人邀请您上麦，是否接受？"];
+            _invitationAlertView = [[VHInvitationAlert alloc]initWithDelegate:self tag:1000 title:@"上麦邀请" content:[NSString stringWithFormat:@"%@邀请您上麦，是否接受？",VH_MB_HOST]];
             [self.view addSubview:_invitationAlertView];
         }else if (message.messageType == VHRoomMessageType_room_kickout) { //被踢出
             [self kickOutAction];

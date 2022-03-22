@@ -59,16 +59,19 @@
         NSString *roleNameStr = @"";
         if(model.role_name == 1) { //主持人
             nameColor =  MakeColorRGB(0x01CBCF);
-            roleNameStr = @"[主持人]";
+            //roleNameStr = @"[主持人]";
+            roleNameStr = [NSString stringWithFormat:@"[%@]",VH_MB_HOST];
         }else if(model.role_name == 2){
             nameColor =  MakeColorRGB(0xFFB72E);
             roleNameStr = @"[观众]";
         }else if(model.role_name == 3){
             nameColor =  MakeColorRGB(0xFFB72E);
-            roleNameStr = @"[助理]";
+            //roleNameStr = @"[助理]";
+            roleNameStr = [NSString stringWithFormat:@"[%@]",VH_MB_ASSIST];
         }else if(model.role_name == 4){
             nameColor =  MakeColorRGB(0x45B5FF);
-            roleNameStr = @"[嘉宾]";
+            //roleNameStr = @"[嘉宾]";
+            roleNameStr = [NSString stringWithFormat:@"[%@]",VH_MB_GUEST];
         }
         NSString *nameString;
         if(((VHallChatModel *)model).replyMsg) {//回复消息
@@ -90,13 +93,13 @@
         NSString *chatStr;
         NSString *statuStr = [((VHallOnlineStateModel *)model).event isEqualToString:@"online"] ? @"进入房间" : @"离开房间";
         if(model.role_name == 1) { //主持人
-            chatStr = [NSString stringWithFormat:@"[主持人]%@%@",model.user_name,statuStr];
+            chatStr = [NSString stringWithFormat:@"[%@]%@%@",VH_MB_HOST,model.user_name,statuStr];
         }else if(model.role_name == 2){
             chatStr = [NSString stringWithFormat:@"[观众]%@%@",model.user_name,statuStr];
         }else if(model.role_name == 3){
-            chatStr = [NSString stringWithFormat:@"[助理]%@%@",model.user_name,statuStr];
+            chatStr = [NSString stringWithFormat:@"[%@]%@%@",VH_MB_ASSIST,model.user_name,statuStr];
         }else if(model.role_name == 4){
-            chatStr = [NSString stringWithFormat:@"[嘉宾]%@%@",model.user_name,statuStr];
+            chatStr = [NSString stringWithFormat:@"[%@]%@%@",VH_MB_GUEST,model.user_name,statuStr];
         }
         NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:chatStr attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
         self.txtLab.text = text;

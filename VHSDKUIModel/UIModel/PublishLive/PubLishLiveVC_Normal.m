@@ -15,7 +15,8 @@
 
 #import "VHLiveChatView.h"
 #import "VHKeyboardToolView.h"
-
+#import "VHBeautyAdjustController.h"
+#import "VHBeautyView.h"
 @interface PubLishLiveVC_Normal ()<VHallLivePublishDelegate, VHallChatDelegate,VHKeyboardToolViewDelegate>
 {
     BOOL  _isAudioStart;
@@ -58,6 +59,12 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backbtntopConstraint;
 @property (nonatomic, strong) NSMutableDictionary *publishParam;     ///<发直播参数
+@property (nonatomic,strong) VHBeautifyKit *beautKit;///美颜
+@property (nonatomic,strong) VHBeautyView *beautyView;
+
+@property (nonatomic,strong) VHBeautyAdjustController *adjustVC;
+
+@property (nonatomic,assign) BOOL  isBeauty;//是否可以使用美颜功能
 @end
 
 @implementation PubLishLiveVC_Normal
@@ -76,6 +83,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
+//    self.beautKit = [VHReflect initBeautyEffectKit];
     [self initViews];
     //初始化CameraEngine
     [self initCameraEngine];
@@ -90,8 +99,20 @@
     } else {
         
     }
+    NSLog(@"-----%@",self.filterBtn);
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self readCacheStatus];
+}
+- (void)readCacheStatus{
+    if ([VHSaveBeautyTool readSaveCacheStatus]) {
+        //有缓存去缓存状态
+        [VHSaveBeautyTool closeBeauty:[VHSaveBeautyTool beautyViewModelArray][0] beautifyKit:self.beautKit closeBeautyEffect:![VHSaveBeautyTool readBeautyEnableStatus]];
+    }else{
+        [VHSaveBeautyTool closeBeauty:[VHSaveBeautyTool beautyViewModelArray][0] beautifyKit:self.beautKit closeBeautyEffect:NO];
+    }
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -118,6 +139,9 @@
     if (_engine) {
         _engine = nil;
     }
+    [self.adjustVC saveBeautyConfigModel];
+    //[VHReflect destoryBeautyEffectKit];
+    [VHBeautifyKit destroy];
     //允许iOS设备锁屏
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -261,7 +285,21 @@
         config.captureDevicePosition = AVCaptureDevicePositionFront;
         _isFontVideo = YES;
     }
-    self.engine = [[VHallLivePublish alloc] initWithConfig:config];
+    
+  
+    if (self.beautKit) {
+        config.beautifyFilterEnable = NO;
+        config.advancedBeautifyEnable = YES;
+        self.engine = [[VHallLivePublish alloc] initWithBeautyConfig:config handleError:^(NSError *error) {
+            NSLog(@"error===%@",error.localizedDescription);
+            self.isBeauty = (error!=nil)?NO:YES;//是否可以使用美颜功能
+        }];
+    }else{
+        self.engine = [[VHallLivePublish alloc] initWithConfig:config];
+        if (self.beautifyFilterEnable) {
+            [self filterSettingBtnClick:_defaultFilterSelectBtn];
+        }
+    }
     self.engine.delegate = self;
 
     self.engine.displayView.frame   = _perView.bounds;
@@ -277,9 +315,7 @@
     _chat = [[VHallChat alloc] initWithLivePublish:self.engine];
     _chat.delegate = self;
     
-    if (self.beautifyFilterEnable) {
-        [self filterSettingBtnClick:_defaultFilterSelectBtn];
-    }
+
 }
 
 #pragma mark - 发起/停止直播
@@ -476,27 +512,57 @@
     [UIAlertController showAlertControllerTitle:msg msg:@"" btnTitle:@"确定" callBack:nil];
 }
 
-
+- (VHBeautyView *)beautyView{
+    if (!_beautyView) {
+        _beautyView = [[VHBeautyView alloc] init];
+    }
+    return _beautyView;
+}
+- (VHBeautyAdjustController *)adjustVC{
+    if (!_adjustVC) {
+        _adjustVC = [[VHBeautyAdjustController alloc] init];
+    }
+    return _adjustVC;
+}
 #pragma mark - 美颜设置
 - (IBAction)filterBtnClick:(UIButton *)sender
 {
-//    [_chatMsgInput resignFirstResponder];
-    _filterBtn.selected = !_filterBtn.selected;
-    if(_filterBtn.selected)
-    {
-        _hideKeyBtn.hidden = NO;
-        _filterView.alpha = 0.0f;
-        [UIView animateWithDuration:0.3f animations:^{
-            _filterView.alpha = 1.0f;
+
+    if (self.beautKit) {
+        //有新美颜模块
+        if (self.isBeauty) {
+            //可用状态
+//            VHBeautyAdjustController *just = [[VHBeautyAdjustController alloc] init];
+//            [just refreshEffect:self.beautKit];
+//            [self presentViewController:just animated:YES completion:nil];
+//            return;
+            [self.adjustVC refreshEffect:self.beautKit];
+            [self presentViewController:self.adjustVC animated:YES completion:nil];
+        }else{
+            //不可用状态
+            [VHAlertView showAlertWithTitle:kServerNotAvaliable content:nil cancelText:nil cancelBlock:nil confirmText:@"确定" confirmBlock:^{
+            
         }];
-    }
-    else
-    {
-        _hideKeyBtn.hidden = YES;
-        _filterView.alpha = 1.0f;
-        [UIView animateWithDuration:0.3f animations:^{
+        }
+    }else{
+    //    [_chatMsgInput resignFirstResponder];
+        _filterBtn.selected = !_filterBtn.selected;
+        if(_filterBtn.selected)
+        {
+            _hideKeyBtn.hidden = NO;
             _filterView.alpha = 0.0f;
-        }];
+            [UIView animateWithDuration:0.3f animations:^{
+                _filterView.alpha = 1.0f;
+            }];
+        }
+        else
+        {
+            _hideKeyBtn.hidden = YES;
+            _filterView.alpha = 1.0f;
+            [UIView animateWithDuration:0.3f animations:^{
+                _filterView.alpha = 0.0f;
+            }];
+        }
     }
 }
 
@@ -584,11 +650,14 @@
             }
             
             if([m.role isEqualToString:@"host"]) {
-                role = @"主持人";
+                //role = @"主持人";
+                role = VH_MB_HOST;
             }else if([m.role isEqualToString:@"guest"]) {
-                role = @"嘉宾";
+//                role = @"嘉宾";
+                role = VH_MB_GUEST;
             }else if([m.role isEqualToString:@"assistant"]) {
-                role = @"助手";
+//                role = @"助手";
+                role = VH_MB_ASSIST;
             }else if([m.role isEqualToString:@"user"]) {
                 role = @"观众";
             }
@@ -706,5 +775,7 @@
     }
     return _publishParam;
 }
-
+- (void)beautyKitModule:(VHBeautifyKit *)module{
+    self.beautKit = module;
+}
 @end

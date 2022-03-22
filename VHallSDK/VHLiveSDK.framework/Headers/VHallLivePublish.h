@@ -10,7 +10,7 @@
 #import "VHallConst.h"
 #import "VHPublishConfig.h"
 #import "VHWebinarInfo.h"
-
+@class VHBeautifyKit;
 @protocol VHallLivePublishDelegate;
 @interface VHallLivePublish : NSObject
 
@@ -44,7 +44,10 @@
  *  @param config  config参数
  */
 - (instancetype)initWithConfig:(VHPublishConfig*)config;
-
+/*
+ 高级美颜
+ **/
+- (instancetype)initWithBeautyConfig:(VHPublishConfig*)config  handleError:(void(^)(NSError *error))handle;
 
 //开始视频采集 显示视频预览
 - (BOOL)startVideoCapture;

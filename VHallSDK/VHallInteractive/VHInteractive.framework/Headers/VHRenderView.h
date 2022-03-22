@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "IVHBeautifyModule.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -114,6 +115,11 @@ typedef void(^FinishBlock)(int code, NSString * _Nullable message);//code 200 �
  * @param options  如：@{VHFrameResolutionTypeKey:@(VHFrameResolution192x144),VHStreamOptionStreamType:@(VHInteractiveStreamTypeAudioAndVideo)}
  */
 - (void)updateOptions:(NSDictionary*)options;
+
+/**
+ * 使画面镜像，不会影响推流的视频方向
+ */
+- (void)useMirror __deprecated_msg("当前版本不推荐使用该方法，可能会引发后摄像头的镜像问题");
 
 // 设置预览画面方向
 - (BOOL)setDeviceOrientation:(UIDeviceOrientation)deviceOrientation;
@@ -297,6 +303,12 @@ typedef void(^FinishBlock)(int code, NSString * _Nullable message);//code 200 �
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)new NS_UNAVAILABLE;
 
+@end
+
+@interface VHRenderView (ThirdpartyBeautify)
+/// 使用VHBeautifyTool美颜
+/// @param module 来自于VHBeautifyTool中的Module
+- (void)useBeautifyModule:(id<IVHBeautifyModule>)module HandleError:(void(^)(NSError *error))handle;
 @end
 
 NS_ASSUME_NONNULL_END

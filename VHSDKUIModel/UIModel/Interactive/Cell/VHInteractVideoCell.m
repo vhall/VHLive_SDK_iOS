@@ -109,11 +109,11 @@
     _model = model;
 
     if(model.role_name == VHLiveRole_Host) {
-        self.roleLab.text = @"主持人";
+        self.roleLab.text = VH_MB_HOST;
         self.roleLab.textColor = [UIColor whiteColor];
         self.roleLab.backgroundColor = MakeColorRGBA(0xFC5659,0.8);
     }else if (model.role_name == VHLiveRole_Guest) {
-        self.roleLab.text = @"嘉宾";
+        self.roleLab.text = VH_MB_GUEST;
         self.roleLab.textColor = [UIColor whiteColor];
         self.roleLab.backgroundColor = MakeColorRGBA(0x5EA6EC,0.8);
     }else {

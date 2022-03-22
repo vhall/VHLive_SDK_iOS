@@ -63,15 +63,15 @@
     //插入角色标签
     if(msgModel.role != VHLiveRole_Audience) {
         if(msgModel.role == VHLiveRole_Host) {
-            self.roleLab.text = @"主持人";
+            self.roleLab.text = VH_MB_HOST;
             self.roleLab.textColor = [UIColor whiteColor];
             self.roleLab.backgroundColor = MakeColorRGBA(0xFC5659,0.8);
         }else if (msgModel.role == VHLiveRole_Assistant) {
-            self.roleLab.text = @"助理";
+            self.roleLab.text = VH_MB_ASSIST;
             self.roleLab.textColor = [UIColor whiteColor];
             self.roleLab.backgroundColor = MakeColorRGBA(0xAAAAAA,0.8);
         }else if (msgModel.role == VHLiveRole_Guest) {
-            self.roleLab.text = @"嘉宾";
+            self.roleLab.text = VH_MB_GUEST;
             self.roleLab.textColor = [UIColor whiteColor];
             self.roleLab.backgroundColor = MakeColorRGBA(0x5EA6EC,0.8);
         }

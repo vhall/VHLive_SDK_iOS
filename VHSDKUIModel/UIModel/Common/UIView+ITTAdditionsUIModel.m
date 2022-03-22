@@ -289,4 +289,10 @@ CGRect ITTScreenBoundsUIModel() {
     }
     return nil;
 }
+- (void)radiusTool:(CGFloat)cornerRadius borderWidth:(CGFloat)width borderColor:(UIColor *)borderColor {
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = cornerRadius; //设置那个圆角的有多圆
+    self.layer.borderWidth = width;         //设置边框的宽度，
+    self.layer.borderColor = [borderColor CGColor];
+}
 @end

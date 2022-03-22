@@ -14,4 +14,5 @@
 #import "YYText.h"
 #import "VHEnum.h"
 #import "UIModelTools.h"
+#import "VHBeautyHeader.h"
 #endif /* UIModel_PrefixHeader_pch */

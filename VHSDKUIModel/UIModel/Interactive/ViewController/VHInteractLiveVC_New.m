@@ -20,7 +20,7 @@
 #import "MJExtension.h"
 #import "VHDocListVC.h"
 #import "VHLiveDocContentView.h"
-
+#import "VHBeautyAdjustController.h"
 @interface VHInteractLiveVC_New ()<VHRoomDelegate,VHallChatDelegate,VHDocumentDelegate>
 {
     BOOL _noShowDownMicTip; //是否不显示下麦提示
@@ -43,6 +43,12 @@
 @property (nonatomic, assign) BOOL downMicrophoneBySelf;
 /** 标记是否为自己手动关闭直播 */
 @property (nonatomic, assign) BOOL closeLiveBySelf;
+
+@property (nonatomic,strong) VHBeautifyKit *beautKit;///美颜
+///美颜是否可用
+@property (nonatomic,assign) BOOL  isEnableBeauty;
+
+@property (nonatomic,strong) VHBeautyAdjustController *adjust;
 @end
 
 @implementation VHInteractLiveVC_New
@@ -67,8 +73,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
+    //self.beautKit = [VHReflect initBeautyEffectKit];
+    self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self readCacheStatus];
+}
+- (void)readCacheStatus{
+    if ([VHSaveBeautyTool readSaveCacheStatus]) {
+        //有缓存去缓存状态
+        [VHSaveBeautyTool closeBeauty:[VHSaveBeautyTool beautyViewModelArray][0] beautifyKit:self.beautKit closeBeautyEffect:![VHSaveBeautyTool readBeautyEnableStatus]];
+    }else{
+        [VHSaveBeautyTool closeBeauty:[VHSaveBeautyTool beautyViewModelArray][0] beautifyKit:self.beautKit closeBeautyEffect:NO];
+    }
+}
 - (void)configUI {
     self.infoDetailView.topToolView.liveType = VHLiveType_Interact;
     if(self.role == VHLiveRole_Host) { //主持人
@@ -312,14 +331,32 @@
 - (void)liveDetaiViewClickCameraSwitchBtn:(VHLiveBroadcastInfoDetailView *)detailView {
     [self.localRenderView switchCamera];
 }
-
+- (VHBeautyAdjustController *)adjust{
+    if (!_adjust) {
+        _adjust = [[VHBeautyAdjustController alloc] init];
+    }
+    return _adjust;
+}
 ///美颜开关
 - (void)liveDetaiViewClickBeautyBtn:(VHLiveBroadcastInfoDetailView *)detailView openBeauty:(BOOL)open{
-    self.localRenderView.beautifyEnable = open;
-    if(open) {
-        VH_ShowToast(@"已开启美颜");
-    }else {
-        VH_ShowToast(@"已关闭美颜");
+    if (self.beautKit) {
+        if (self.isEnableBeauty) {
+            [self.adjust refreshEffect:self.beautKit];
+            [self presentViewController:self.adjust animated:YES completion:nil];
+        }else{
+            //不可用状态
+            [VHAlertView showAlertWithTitle:kServerNotAvaliable content:nil cancelText:nil cancelBlock:nil confirmText:@"确定" confirmBlock:^{
+            
+        }];
+        }
+    }else{
+        self.localRenderView.beautifyEnable = open;
+        if(open) {
+            VH_ShowToast(@"已开启美颜");
+            
+        }else {
+            VH_ShowToast(@"已关闭美颜");
+        }
     }
 }
 
@@ -513,7 +550,8 @@
         }break;
         case VHRoomMessageType_vrtc_connect_invite:{//用户被邀请上麦
             if (targetIsMyself) {
-                [VHAlertView showAlertWithTitle:@"主持人邀请您上麦，是否同意？" content:nil cancelText:@"拒绝" cancelBlock:^{
+                
+                [VHAlertView showAlertWithTitle:[NSString stringWithFormat:@"%@邀请您上麦，是否同意？",VH_MB_HOST] content:nil cancelText:@"拒绝" cancelBlock:^{
                     [self.inavRoom rejectInviteSuccess:^{
                         
                     } fail:^(NSError *error) {
@@ -779,9 +817,52 @@
         _localRenderView = [[VHLocalRenderView alloc] initCameraViewWithFrame:CGRectZero options:options];
         _localRenderView.scalingMode = VHRenderViewScalingModeAspectFill;
         _localRenderView.beautifyEnable = YES;
+        if (self.beautKit) {
+//            [[VHReflect currentModuleBeautyKit:self.beautKit] setCaptureImageOrientation:(self.screenLandscape == UIDeviceOrientationLandscapeLeft)?2:3];
+//            [_localRenderView useBeautifyModule:[VHReflect currentModuleBeautyKit:self.beautKit] HandleError:^(NSError * _Nonnull error) {
+//                NSLog(@"error === %@",error.localizedDescription);
+//                self.isEnableBeauty = (error!=nil)?NO:YES;//是否可以使用美颜
+//            }];
+            [[self.beautKit currentModule] setCaptureImageOrientation:(self.screenLandscape == UIDeviceOrientationLandscapeLeft)?2:3];
+            [_localRenderView useBeautifyModule:[self.beautKit currentModule] HandleError:^(NSError * _Nonnull error) {
+            NSLog(@"error === %@",error.localizedDescription);
+            self.isEnableBeauty = (error!=nil)?NO:YES;//是否可以使用美颜
+            }];
+        }
+        
         [_localRenderView setDeviceOrientation:self.screenLandscape ? UIDeviceOrientationLandscapeLeft : UIDeviceOrientationPortrait];
     }
     return _localRenderView;
 }
-
+- (void)reciveCustomMsg:(NSArray <VHallCustomMsgModel *> *)msgs{
+    VHallCustomMsgModel *msgModel = msgs[0];
+    if (msgModel.eventType == ChatCustomType_EditRole) {
+        switch ([msgModel.edit_role_type intValue]) {
+            case 1:
+                VH_MB_HOST = msgModel.edit_role_name;
+                break;
+            case 4:
+                VH_MB_GUEST = msgModel.edit_role_name;
+                break;
+            case 3:
+                VH_MB_ASSIST = msgModel.edit_role_name;
+                break;
+            default:
+                break;
+        }
+        [self updateUserList];
+        [self.interactView reloadAllData];
+        return;
+    }
+    
+}
+//- (void)beautyKitModule:(VHBeautifyKit *)module{
+//    self.beautKit = module;
+//}
+- (void)dealloc{
+    [self.adjust saveBeautyConfigModel];
+    //[VHReflect destoryBeautyEffectKit];
+    [VHBeautifyKit destroy];
+    NSLog(@"%@_释放了",[self class]);
+}
 @end
