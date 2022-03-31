@@ -22,7 +22,8 @@ typedef NS_ENUM(NSInteger, VHRoomErrorStatus) {
     VHRoomErrorUnknown,
     VHRoomErrorClient,// A generic error that comes from an VHClient
     VHRoomErrorClientFailedSDP,
-    VHRoomErrorSignaling// A generic error that comes from VHSignalingChannel
+    VHRoomErrorSignaling,// A generic error that comes from VHSignalingChannel
+    VHRoomErrorKickout//开启sso，kickout
 };
 
 //互动房间消息类型

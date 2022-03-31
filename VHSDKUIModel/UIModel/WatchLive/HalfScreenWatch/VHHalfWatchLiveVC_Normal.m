@@ -1166,11 +1166,13 @@ static AnnouncementView* announcementView = nil;
     [ProgressHud hideLoading];
     NSString *errorStr = info[@"content"];
     NSInteger code = [info[@"code"] integerValue];
-    
+    if (livePlayErrorType == VHSaasPlaySSOKickout) {
+        [_moviePlayer stopPlay];
+        [_moviePlayer destroyMoivePlayer];
+    }
     [UIAlertController showAlertControllerTitle:@"提示" msg:[NSString stringWithFormat:@"%zd-%@",code,errorStr] btnTitle:@"确定" callBack:^{
         if(code == 20023) { //同一账号多端观看
-            [_moviePlayer stopPlay];
-            [_moviePlayer destroyMoivePlayer];
+          
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];

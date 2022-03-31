@@ -206,6 +206,9 @@
 - (void)room:(VHRoom *)room didError:(VHRoomErrorStatus)status reason:(NSString *)reason
 {
     __weak typeof(self) wf = self;
+    if (status == VHRoomErrorKickout) {
+        [self kickOut];
+    }
     [UIAlertController showAlertControllerTitle:@"温馨提示" msg:[NSString stringWithFormat:@"互动房间连接出错：%@",reason] btnTitle:@"确定" callBack:^{
         [wf closeButtonClick:nil];
     }];

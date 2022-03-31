@@ -243,7 +243,16 @@
     NSLog(@"播放时错误的回调livePlayErrorType = %zd---info = %@",livePlayErrorType,info);
     [ProgressHud hideLoading];
     NSString *errorStr = info[@"content"];
-    [UIAlertController showAlertControllerTitle:@"提示" msg:errorStr btnTitle:@"确定" callBack:nil];
+    NSInteger code = [info[@"code"] integerValue];
+    if (livePlayErrorType == VHSaasPlaySSOKickout) {
+        [_moviePlayer stopPlay];
+        [_moviePlayer destroyMoivePlayer];
+    }
+    [UIAlertController showAlertControllerTitle:@"提示" msg:[NSString stringWithFormat:@"%zd-%@",code,errorStr] btnTitle:@"确定" callBack:^{
+        if(code == 20023) { //同一账号多端观看
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
 }
 
 /**

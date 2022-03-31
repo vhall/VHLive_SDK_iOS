@@ -459,6 +459,23 @@ static AnnouncementView* announcementView = nil;
             NSLog( @"播放失败 %@ %@",info[@"code"],info[@"content"]);
         }
             break;
+        case VHSaasPlaySSOKickout:{
+            //开启单点登陆被踢出
+            msg = @"当前已在其他设备观看";
+            VH_ShowToast(msg);
+            NSLog( @"播放失败 %@ %@",info[@"code"],info[@"content"]);
+            NSString *errorStr = info[@"content"];
+            NSInteger code = [info[@"code"] integerValue];
+            [_moviePlayer stopPlay];
+            [_moviePlayer destroyMoivePlayer];
+            [UIAlertController showAlertControllerTitle:@"提示" msg:[NSString stringWithFormat:@"%zd-%@",code,errorStr] btnTitle:@"确定" callBack:^{
+                if(code == 20023) { //同一账号多端观看
+
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+            }];
+        }
+            break;
         default:
             break;
     }

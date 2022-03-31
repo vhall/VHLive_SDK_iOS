@@ -337,7 +337,12 @@
 
 /// 房间发生错误回调
 - (void)room:(VHRoom *)room didError:(VHRoomErrorStatus)status reason:(NSString *)reason {
-    
+    [self.inavRoom leaveRoom];
+    [_videoView removeAllRenderView];
+    [UIAlertController showAlertControllerTitle:@"提示" msg:[NSString stringWithFormat:@"%zd-%@",status,reason] btnTitle:@"确定" callBack:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    NSLog(@"reason===%@",reason);
 }
 
 /// 房间状态改变回调

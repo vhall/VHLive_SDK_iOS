@@ -71,6 +71,8 @@ typedef NS_ENUM(NSInteger,VHSaasLivePlayErrorType)
     VHSaasLivePlayCDNConnectError           = 3,      //CDN链接失败
     VHSaasVodPlayError                      = 98,     //点播播放器错误信息
     VHSaasLivePlayGetUrlError               = 99,     //获取活动信息失败
+    VHSaasPlaySSOKickout                = 100,
+    //观看被踢出
 };
 
 /**
