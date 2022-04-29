@@ -17,7 +17,7 @@
 #import "PubLishLiveVC_Normal.h"
 #import "UIModelTools.h"
 #import "ProgressHud.h"
-
+#import "VHViewProtocolView.h"//新增协议弹框
 #ifdef  UIModel_Lib //独立打 UIModel 静态库 需要在工程设置 Preprocessor Macros选项中添加 UIModel_Lib=1
     #define UIModelBundlePath       [[NSBundle mainBundle] pathForResource:@"UIModel" ofType:@"bundle"]
     #define UIModelBundle           [NSBundle bundleWithPath:UIModelBundlePath]

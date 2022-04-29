@@ -10,6 +10,8 @@
 #import "VHallConst.h"
 @class VHWebinarScrollTextInfo;
 @class VHRoleNameData;
+@class VHViewProtocolModel;
+@class VHStatementModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol VHWebinarInfoDelegate <NSObject>
@@ -93,6 +95,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)getRoleNameWebinar_id:(NSString *)webinarId dataCallBack:(void(^)(VHRoleNameData *))roleNameData;
 ///获取美颜权限结果
 @property (nonatomic,assign) BOOL  allowAdvanceBeauty;
+///开启观看协议需前置获取观看协议
++ (void)fetchViewProtocol:(NSString *)webinarId success:(void(^)(VHViewProtocolModel *protocolModel))success fail:(void(^)(NSError *error))fail;
+///同意观看协议
++ (void)agreeViewProtocol:(NSString *)webinarId success:(void(^)(void))success fail:(void(^)(NSError *error))fail;
 @end
 
 
@@ -129,5 +135,30 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *guest_name;
 ///助理角色名称
 @property (nonatomic,copy) NSString *assist_name;
+@end
+//观看协议模型数据
+@interface VHViewProtocolModel : NSObject
+///用户协议是否同意 0-未同意，1-同意
+@property (nonatomic,assign,readonly) NSInteger is_agree;
+///观看协议开关0-关闭，1-打开
+@property (nonatomic,assign,readonly) NSInteger is_open;
+///观看协议title
+@property (nonatomic,copy,readonly) NSString *title;
+///观看协议content
+@property (nonatomic,copy,readonly) NSString *content;
+///协议规则rule 0-强制，1-非强制
+@property (nonatomic,assign,readonly) NSInteger rule;
+///声明状态 0-关 1-开
+@property (nonatomic,assign,readonly) NSInteger statement_status;
+///协议提示内容
+@property (nonatomic,copy,readonly) NSString *statement_content;
+///协议介绍
+@property (nonatomic,copy,readonly) NSArray<VHStatementModel *> *statement_info;
+@end
+@interface VHStatementModel : NSObject
+///协议
+@property (nonatomic,copy,readonly) NSString *title;
+//协议链接
+@property (nonatomic,copy,readonly) NSString *link;
 @end
 NS_ASSUME_NONNULL_END

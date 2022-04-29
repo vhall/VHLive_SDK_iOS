@@ -5,6 +5,6 @@ use_frameworks!
 target 'VHSDKDemo' do
   pod  'VHLiveSDK' ,'6.3.1'
   pod  'VHLiveSDK_Interactive', '6.3.1'
-  pod  'VHYun_Beautify','1.0.6' 
+  pod  'VHYun_Beautify','1.0.6'
 end
 

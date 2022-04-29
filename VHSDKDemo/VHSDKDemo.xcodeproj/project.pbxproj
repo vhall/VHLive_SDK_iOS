@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C50AB881ACDD0F85D22FFE2 /* Pods_VHSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B08D74301AE76F9266CC39 /* Pods_VHSDKDemo.framework */; };
 		2FA3F1A81F564C9900E2E436 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA3F1A71F564C9900E2E436 /* libxml2.2.tbd */; };
 		3246DC6127E9EC97005B8176 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3246DC4527E9EC93005B8176 /* libSDWebImage.a */; };
 		3246DC6227E9EC97005B8176 /* libBarrageRenderer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3246DC4627E9EC93005B8176 /* libBarrageRenderer.a */; };
@@ -23,6 +22,7 @@
 		3246DC6C27E9EC97005B8176 /* libUIModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3246DC5427E9EC93005B8176 /* libUIModel.a */; };
 		3246DC6D27E9EC97005B8176 /* UIModel.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3246DC5927E9EC93005B8176 /* UIModel.bundle */; };
 		32B19FA627E9726C0066367D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 32B19FA527E9726C0066367D /* README.md */; };
+		A402E2DF242B99C18FD40D34 /* Pods_VHSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B08D74301AE76F9266CC39 /* Pods_VHSDKDemo.framework */; };
 		C000AA431E66E053005DFB7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C000AA421E66E053005DFB7C /* main.m */; };
 		C000AA461E66E053005DFB7C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C000AA451E66E053005DFB7C /* AppDelegate.m */; };
 		C000AA4E1E66E053005DFB7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C000AA4D1E66E053005DFB7C /* Assets.xcassets */; };
@@ -101,6 +101,10 @@
 		3246DC5827E9EC93005B8176 /* VHPortraitWatchLiveVC_Nodelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHPortraitWatchLiveVC_Nodelay.h; sourceTree = "<group>"; };
 		3246DC5927E9EC93005B8176 /* UIModel.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UIModel.bundle; sourceTree = "<group>"; };
 		3246DC5A27E9EC93005B8176 /* VHInteractLiveBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHInteractLiveBaseVC.h; sourceTree = "<group>"; };
+		32510574281BD43600032515 /* VHInteractive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VHInteractive.framework; path = ../VHallSDK/VHallInteractive/VHInteractive.framework; sourceTree = "<group>"; };
+		32510575281BD43600032515 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = ../VHallSDK/VHallInteractive/WebRTC.framework; sourceTree = "<group>"; };
+		32510578281BD44400032515 /* VhallLiveBaseApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VhallLiveBaseApi.framework; path = ../VHallSDK/VhallLiveBaseApi.framework; sourceTree = "<group>"; };
+		32510579281BD44400032515 /* VHLiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VHLiveSDK.framework; path = ../VHallSDK/VHLiveSDK.framework; sourceTree = "<group>"; };
 		32B19FA527E9726C0066367D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A5B08D74301AE76F9266CC39 /* Pods_VHSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VHSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C000AA3E1E66E053005DFB7C /* VHSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VHSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,7 +202,7 @@
 				3246DC6927E9EC97005B8176 /* libMBProgressHUD.a in Frameworks */,
 				3246DC6C27E9EC97005B8176 /* libUIModel.a in Frameworks */,
 				3246DC6527E9EC97005B8176 /* libYYText.a in Frameworks */,
-				0C50AB881ACDD0F85D22FFE2 /* Pods_VHSDKDemo.framework in Frameworks */,
+				A402E2DF242B99C18FD40D34 /* Pods_VHSDKDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +326,10 @@
 		C000AA761E66E186005DFB7C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32510578281BD44400032515 /* VhallLiveBaseApi.framework */,
+				32510579281BD44400032515 /* VHLiveSDK.framework */,
+				32510574281BD43600032515 /* VHInteractive.framework */,
+				32510575281BD43600032515 /* WebRTC.framework */,
 				2FA3F1A71F564C9900E2E436 /* libxml2.2.tbd */,
 				2F6B05B61E94FF800010E0C7 /* libc++.tbd */,
 				C02AD56F1E67E7DA00173A99 /* libUIModel.a */,
@@ -448,8 +456,6 @@
 				C000AA3C1E66E053005DFB7C /* Resources */,
 				C0FABCE620EF1031003947C6 /* Embed Frameworks */,
 				C0710F7723D042E00044883F /* ShellScript */,
-				66FE68080824700EAFACB6BA /* [CP] Embed Pods Frameworks */,
-				A374C464F3D00D13480B0466 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -520,74 +526,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		66FE68080824700EAFACB6BA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-frameworks.sh",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/FURenderKit.framework",
-				"${PODS_ROOT}/VHBeautifyKit/framework/VHBeautifyKit.framework",
-				"${PODS_ROOT}/VHBeautifyKit/framework/VHBFURender.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FURenderKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VHBeautifyKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VHBFURender.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A374C464F3D00D13480B0466 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-resources.sh",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/graphics/body_slim.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/graphics/controller_cpp.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/graphics/face_beautification.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/graphics/face_makeup.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/graphics/fuzzytoonfilter.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/graphics/fxaa.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/graphics/tongue.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/model/ai_bgseg_green.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/model/ai_face_processor.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/model/ai_face_processor_lite.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/model/ai_face_recognizer.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/model/ai_hairseg.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/model/ai_hand_processor.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/model/ai_human_processor.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.1.0/Resources/model/ai_human_processor_mb_fast.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/body_slim.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/controller_cpp.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/face_beautification.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/face_makeup.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fuzzytoonfilter.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fxaa.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/tongue.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ai_bgseg_green.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ai_face_processor.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ai_face_processor_lite.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ai_face_recognizer.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ai_hairseg.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ai_hand_processor.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ai_human_processor.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ai_human_processor_mb_fast.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C0710F7723D042E00044883F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
