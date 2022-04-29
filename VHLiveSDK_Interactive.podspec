@@ -29,8 +29,8 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
   spec.platform     = :ios, '9.0'
 
-  s.source          = { :git => "https://github.com/vhall/VHLive_SDK_iOS.git", :tag => s.version.to_s}
-  s.vendored_frameworks = 'VHallSDK/VHLiveSDK.framework','VHallSDK/VhallLiveBaseApi.framework','VHallSDK/VHallInteractive/WebRTC.framework','VHallSDK/VHallInteractive/VHInteractive.framework'
+  spec.source          = { :git => "https://github.com/vhall/VHLive_SDK_iOS.git", :tag => s.version.to_s}
+  spec.vendored_frameworks = 'VHallSDK/VHLiveSDK.framework','VHallSDK/VhallLiveBaseApi.framework','VHallSDK/VHallInteractive/WebRTC.framework','VHallSDK/VHallInteractive/VHInteractive.framework'
   spec.frameworks   = "AVFoundation", "VideoToolbox","OpenAL","CoreMedia","CoreTelephony" ,"OpenGLES" ,"MediaPlayer" ,"AssetsLibrary","QuartzCore" ,"JavaScriptCore","Security"
   
   spec.pod_target_xcconfig = {
