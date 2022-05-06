@@ -117,6 +117,20 @@
         self.banVoiceIcon.hidden = YES;
     }
 
+    if (([self.delegate curretLiveType] == VHLiveType_Interact && model.role_name == VHRoomRoleNameType_Audience && [[NSUserDefaults standardUserDefaults] boolForKey:kGuestMainSpeaker] && !model.is_banned) || ([self.delegate curretLiveType] == VHLiveType_Interact  && model.role_name == VHRoomRoleNameType_Guest && [[NSUserDefaults standardUserDefaults] boolForKey:kGuestMainSpeaker] && !model.is_banned && ![model.account_id isEqualToString:self.mainSpeakerId])) {
+        self.interactBtn.hidden = NO;
+        self.interactBtn.selected = model.is_speak == 1;
+        self.interactBtn.backgroundColor = model.is_speak == 1 ? MakeColorRGB(0xE5E5E5) : MakeColorRGB(0xFC5659);
+        banVoiceRightView = self.interactBtn;
+        banVoiceRightViewOffset = -8;
+    }
+    if ([self.delegate curretLiveType] == VHLiveType_Interact && [model.account_id isEqualToString:self.mainSpeakerId] && [[NSUserDefaults standardUserDefaults] boolForKey:kGuestMainSpeaker] && model.role_name == VHRoomRoleNameType_Guest) {
+        self.interactBtn.hidden = NO;
+        self.interactBtn.selected = model.is_speak == 1;
+        self.interactBtn.backgroundColor = model.is_speak == 1 ? MakeColorRGB(0xE5E5E5) : MakeColorRGB(0xFC5659);
+        banVoiceRightView = self.interactBtn;
+        banVoiceRightViewOffset = -8;
+    }
     //是否显示主讲人标识
     if([model.account_id isEqualToString:self.mainSpeakerId]) {
         self.speakerImgView.hidden = NO;
@@ -150,6 +164,7 @@
     }else {
         self.speakerImgView.hidden = YES;
     }
+    
 }
 
 //上麦邀请/下麦用户

@@ -42,6 +42,8 @@
 		323DA1F027D4F28300E3E0EC /* originalimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 323DA1EE27D4F28300E3E0EC /* originalimage@2x.png */; };
 		323DA1F127D4F28300E3E0EC /* originalimage_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 323DA1EF27D4F28300E3E0EC /* originalimage_select@2x.png */; };
 		3241726427D216740050D660 /* VHBeautyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3241726327D216740050D660 /* VHBeautyAlertView.m */; };
+		3247D9532805798900726DE3 /* VHViewProtocolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3247D9522805798900726DE3 /* VHViewProtocolView.m */; };
+		3247D9542805811400726DE3 /* VHViewProtocolView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3247D9512805798900726DE3 /* VHViewProtocolView.h */; };
 		32876B0527E179C000D76DBC /* full-brush.png in Resources */ = {isa = PBXBuildFile; fileRef = 32876B0327E179C000D76DBC /* full-brush.png */; };
 		32876B0927E17BEC00D76DBC /* exfoliating_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32876B0727E17BEC00D76DBC /* exfoliating_select@3x.png */; };
 		32876B0A27E17BEC00D76DBC /* exfoliating@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32876B0827E17BEC00D76DBC /* exfoliating@3x.png */; };
@@ -572,6 +574,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				3247D9542805811400726DE3 /* VHViewProtocolView.h in CopyFiles */,
 				03577B2B2730E9D9003296E6 /* VHPortraitWatchLiveVC_Nodelay.h in CopyFiles */,
 				03A03A4C27297125006F4388 /* VHHalfWatchLiveVC_Nodelay.h in CopyFiles */,
 				035AD5DF272028FD002515B7 /* PubLishLiveVC_Nodelay.h in CopyFiles */,
@@ -646,6 +649,8 @@
 		323DA1EF27D4F28300E3E0EC /* originalimage_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "originalimage_select@2x.png"; sourceTree = "<group>"; };
 		3241726227D216740050D660 /* VHBeautyAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHBeautyAlertView.h; sourceTree = "<group>"; };
 		3241726327D216740050D660 /* VHBeautyAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHBeautyAlertView.m; sourceTree = "<group>"; };
+		3247D9512805798900726DE3 /* VHViewProtocolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHViewProtocolView.h; sourceTree = "<group>"; };
+		3247D9522805798900726DE3 /* VHViewProtocolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHViewProtocolView.m; sourceTree = "<group>"; };
 		32876B0327E179C000D76DBC /* full-brush.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full-brush.png"; sourceTree = "<group>"; };
 		32876B0727E17BEC00D76DBC /* exfoliating_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exfoliating_select@3x.png"; sourceTree = "<group>"; };
 		32876B0827E17BEC00D76DBC /* exfoliating@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exfoliating@3x.png"; sourceTree = "<group>"; };
@@ -1393,6 +1398,15 @@
 			path = alert;
 			sourceTree = "<group>";
 		};
+		3247D9502805795600726DE3 /* ViewProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				3247D9512805798900726DE3 /* VHViewProtocolView.h */,
+				3247D9522805798900726DE3 /* VHViewProtocolView.m */,
+			);
+			path = ViewProtocol;
+			sourceTree = "<group>";
+		};
 		328940BB27D08461004FB00F /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -1554,6 +1568,7 @@
 				C0443A24242839530063FB0D /* UIModel_PrefixHeader.pch */,
 				F3A105722626D88F00F73EEA /* VHEnum.h */,
 				C0443AEB242839540063FB0D /* UIModel.h */,
+				3247D9502805795600726DE3 /* ViewProtocol */,
 				32B17B6727BC9FD8000DA6DE /* BeautyView */,
 				C0443B21242839540063FB0D /* WatchLive */,
 				C0443B17242839540063FB0D /* WatchPlayBack */,
@@ -2931,6 +2946,7 @@
 				F32B64E126281C5B0067BD0C /* VHFaceView.m in Sources */,
 				322B7C3427CDE39300F6EA3A /* VHBeautyTopView.m in Sources */,
 				C0443C74242839550063FB0D /* SueveyBackGroundView.m in Sources */,
+				3247D9532805798900726DE3 /* VHViewProtocolView.m in Sources */,
 				F3A1056D2626D78C00F73EEA /* VHActionSheetCell.m in Sources */,
 				F32B64ED262843000067BD0C /* VHLiveInfoDetailChatView.m in Sources */,
 				F3A1057D2626E7EB00F73EEA /* VHRefreshHeader.m in Sources */,

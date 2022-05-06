@@ -23,7 +23,7 @@
     
     NSMutableArray * _inavBtns;//互动设置btns
 
-    VHSettingTextFieldItem *item00,*item01,*item02,*item03,*item04,*item05;
+    VHSettingTextFieldItem *item00,*item01,*item02,*item03,*item04,*item05,*item06;
     VHSettingTextFieldItem *item10,*item11,*item12,*item13,*item14,*item15,*item16;
     VHSettingTextFieldItem *item20,*item21;
 
@@ -154,8 +154,10 @@
     item04.text =  DEMO_Setting.codeWord;
     item05 = [VHSettingTextFieldItem  itemWithTitle:@"嘉宾互动头像"];
     item05.text =  DEMO_Setting.inva_avatar;
-    
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item00,item01,item02,item03,item04,item05]];
+    //web观看链接
+    item06 = [VHSettingTextFieldItem  itemWithTitle:@"webUrl"];
+    item06.text =  DEMO_Setting.webLink;
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item00,item01,item02,item03,item04,item05,item06]];
     group.headerTitle = @"看直播/回放";
     [self.groups addObject:group];
 }
@@ -490,6 +492,12 @@
            {
                DEMO_Setting.inva_avatar = text;
                item05.text =  DEMO_Setting.inva_avatar;
+           }
+               break;
+           case 6: //web地址
+           {
+               DEMO_Setting.webLink = text;
+               item06.text = DEMO_Setting.webLink;
            }
                break;
            default:

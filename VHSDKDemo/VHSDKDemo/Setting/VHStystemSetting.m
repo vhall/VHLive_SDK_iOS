@@ -165,7 +165,17 @@ static VHStystemSetting *_sharedSetting = nil;
     }
     return avatar;
 }
-
+- (void)setWebLink:(NSString *)webLink{
+    [[NSUserDefaults standardUserDefaults] setValue:webLink forKey:@"VHWebLink"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (NSString *)webLink{
+    NSString *webLink = [[NSUserDefaults standardUserDefaults] valueForKey:@"VHWebLink"];
+    if(!webLink) {
+        webLink = @"";
+    }
+    return webLink;
+}
 - (void)setAccount:(NSString *)account
 {
     _account  = account ;

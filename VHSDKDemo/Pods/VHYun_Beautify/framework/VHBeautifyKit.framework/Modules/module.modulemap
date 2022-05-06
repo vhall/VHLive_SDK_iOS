@@ -1,0 +1,6 @@
+framework module VHBeautifyKit {
+  umbrella header "VHBeautifyKit.h"
+
+  export *
+  module * { export * }
+}

@@ -143,6 +143,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
         #endif
     #endif
 #endif
+//当前嘉宾为主讲人的key
+#define kGuestMainSpeaker @"guest_main_speaker"
 
 
 #endif /* UIModel_PrefixHeader_h */

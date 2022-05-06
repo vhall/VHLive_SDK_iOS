@@ -234,12 +234,18 @@
 // 有新的成员加入互动
 - (void)room:(VHRoom *)room didAddAttendView:(VHRenderView *)attendView
 {
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+        return;//过滤视频轮巡流
+    }
     attendView.scalingMode = VHRenderViewScalingModeAspectFill;
     [self addView:attendView];
 }
 //有成员离开互动
 - (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView
 {
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+        return;//过滤视频轮巡流
+    }
     NSString *string = [NSString stringWithFormat:@"%@ 已下麦",attendView.userId];
     VH_ShowToast(string);    
     [self removeView:attendView];

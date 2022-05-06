@@ -1175,12 +1175,18 @@ static AnnouncementView* announcementView = nil;
 
 /// 视频流加入回调（流类型包括音视频、共享屏幕、插播等）
 - (void)room:(VHRoom *)room didAddAttendView:(VHRenderView *)attendView {
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+        return;//过滤视频轮巡流
+    }
     VUI_Log(@"\n某人上麦:%@，流类型：%d，流视频宽高：%@，流id：%@，是否有音频：%d，是否有视频：%d",attendView.userId,attendView.streamType,NSStringFromCGSize(attendView.videoSize),attendView.streamId,attendView.hasAudio,attendView.hasVideo);
     [self.videoView addRenderView:attendView];
 }
 
 /// 视频流离开回调（流类型包括音视频、共享屏幕、插播等）
 - (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView {
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+        return;//过滤视频轮巡流
+    }
     [self.videoView removeRenderView:attendView];
 }
 

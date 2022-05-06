@@ -8,7 +8,7 @@
 //发无延迟直播
 #import "VHBaseViewController.h"
 #import <VHInteractive/VHRenderView.h>
-
+////xxxxxx
 @interface PubLishLiveVC_Nodelay : VHBaseViewController
 @property(nonatomic,copy)   NSString        *roomId; //房间id
 @property(nonatomic,copy)   NSString        *nick_name; //昵称

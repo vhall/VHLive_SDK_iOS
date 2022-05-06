@@ -28,6 +28,14 @@
 ///新增美颜依赖库
 #import <VHBeautifyKit/VHBeautifyKit.h>
 #import <VHBFURender/VHBFURender.h>
+#define kViewProtocol @"很遗憾无法继续为您提供服务"
+typedef enum : NSUInteger {
+    VHWatchLiveType_HalfWatchNormal = 0, //半屏观看
+    VHWatchLiveType_FullWatchNormal = 1,  //全屏观看
+    VHWatchLiveType_HalfWatchNodelay = 2, //半屏无延迟观看
+    VHWatchLiveType_FullWatchNodelay = 3, //全屏无延迟观看
+    VHWatchLiveType_FullWatchVOD = 4,//点播房间
+}VHWatchLiveType;
 @interface VHHomeViewController ()<VHallApiDelegate>
 @property (weak, nonatomic) IBOutlet UILabel        *deviceCategory;
 @property (weak, nonatomic) IBOutlet UIButton       *loginBtn;
@@ -202,7 +210,6 @@
         params[@"guest"] = baseInfo.roleData.guest_name;
 
         params[@"assistant"] = baseInfo.roleData.assist_name;//增加互动直播助理昵称实时刷新
-
         VHInteractLiveVC_New *vc = [[VHInteractLiveVC_New alloc] initWithParams:params isHost:isHost screenLandscape:baseInfo.webinar_show_type];
 //        [vc beautyKitModule:[VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]]];
         vc.inav_num = baseInfo.inav_num;
@@ -268,7 +275,13 @@
 //网页观看
 - (void)webViewWatchLive {
     VHWebWatchLiveViewController *watchVC = [[VHWebWatchLiveViewController alloc] init];
-    watchVC.roomId = DEMO_Setting.watchActivityID;
+    if (DEMO_Setting.webLink.length <= 0) {
+        watchVC.webWathType = VHWebWatchType_Live;
+         watchVC.roomId = DEMO_Setting.watchActivityID;
+    }else{
+        watchVC.webWathType = VHWebWatchType_Protocol;
+        [watchVC webViewProtocol:DEMO_Setting.webLink];
+    }
     watchVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:watchVC animated:YES completion:nil];
 }
@@ -351,19 +364,19 @@
             UIAlertController * alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
             
             UIAlertAction *halfScreenWatch = [UIAlertAction actionWithTitle:@"半屏观看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self halfScreenWatchLive];
+                [self addNewProtocol:VHWatchLiveType_HalfWatchNormal];
             }];
             
             UIAlertAction *portraitWatch = [UIAlertAction actionWithTitle:@"全屏观看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self portraitWatchLive];
+                [self addNewProtocol:VHWatchLiveType_FullWatchNormal];
             }];
             
             UIAlertAction *halfScreen_NodelayWatch = [UIAlertAction actionWithTitle:@"半屏无延迟观看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self nodelayWatchLive:YES];
+                [self addNewProtocol:VHWatchLiveType_HalfWatchNodelay];
             }];
             
             UIAlertAction *portrait_NodelayWatch = [UIAlertAction actionWithTitle:@"全屏无延迟观看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self nodelayWatchLive:NO];
+                [self addNewProtocol:VHWatchLiveType_FullWatchNodelay];
             }];
 
             UIAlertAction *webWatch = [UIAlertAction actionWithTitle:@"web嵌入观看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -384,7 +397,7 @@
             break;
         case 3://观看回放
         {
-            [self watchPlayBack];
+            [self addNewProtocol:VHWatchLiveType_FullWatchVOD];
         }
             break;
         default:
@@ -451,5 +464,65 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+#pragma mark ----新增观看端观看协议
+- (void)addNewProtocol:(VHWatchLiveType)videoIndex{
+    [VHWebinarBaseInfo fetchViewProtocol:DEMO_Setting.watchActivityID success:^(VHViewProtocolModel * _Nonnull protocolModel) {
+        if (protocolModel.is_agree == 1) {
+            [self jump:videoIndex];
+            return;
+        }
+        if (protocolModel.is_open == 1) {
+            //开启观看协议
+            [VHViewProtocolView showViewProtocolView:protocolModel.title content:protocolModel.content statement_status:protocolModel.statement_status rule:protocolModel.rule statement_content:protocolModel.statement_content info:protocolModel.statement_info click:^(NSInteger index) {
+                if (index == 2) {
+                    //关闭或者退出
+                    VH_ShowToast(kViewProtocol);
+                }else if (index == 1){
+                    //进入
+                    [VHWebinarBaseInfo agreeViewProtocol:DEMO_Setting.watchActivityID success:^{
+                        [self jump:videoIndex];
+                    } fail:^(NSError * _Nonnull error) {
+                        VH_ShowToast(kViewProtocol);
+                    }];
+                  
+                }else if (index == 0){
+                    //fix：右上角关闭有去掉提示
+                }
+            }];
+        }else{
+            //未开启观看协议
+            [self jump:videoIndex];
+        }
+    } fail:^(NSError * _Nonnull error) {
+        VH_ShowToast(kViewProtocol);
+    }];
+}
+#pragma mark ---根据直播类型跳原有方法
+- (void)jump:(VHWatchLiveType)videoType{
+    switch (videoType) {
+        case VHWatchLiveType_HalfWatchNormal:{
+            [self halfScreenWatchLive];
+        }
+            break;
+        case VHWatchLiveType_FullWatchNormal:{
+            [self portraitWatchLive];
+        }
+            break;
+        case VHWatchLiveType_HalfWatchNodelay:{
+            [self nodelayWatchLive:YES];
+        }
+            break;
+        case VHWatchLiveType_FullWatchNodelay:{
+            [self nodelayWatchLive:NO];
+        }
+            break;
+        case VHWatchLiveType_FullWatchVOD:{
+            [self watchPlayBack];
+        }
+            break;
+        default:
+            break;
+    }
 }
 @end

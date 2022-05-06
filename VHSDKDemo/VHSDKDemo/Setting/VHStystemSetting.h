@@ -48,4 +48,5 @@
 @property(nonatomic, strong)NSString *third_Id;      //三方登录账号
 @property(nonatomic, strong)NSString *third_nickName;  //三方登录密码
 @property(nonatomic, strong)NSString *third_avatar;  //三方登录头像
+@property (nonatomic) NSString *webLink;
 @end

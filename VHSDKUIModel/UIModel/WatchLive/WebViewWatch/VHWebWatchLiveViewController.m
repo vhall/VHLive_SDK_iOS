@@ -52,13 +52,28 @@
             make.top.equalTo(@(20));
         }
     }];
+    switch (self.webWathType) {
+        case VHWebWatchType_Live:{
+            self.watchUrlStr = [NSString stringWithFormat:@"%@%@",WebWatchHost,self.roomId];
+            [self loadUrl];//观看直播
+        }
+            break;
+        case VHWebWatchType_Protocol:{
+            //观看协议
+        }
+            break;
+        default:
+            break;
+    }
     
+}
+- (void)webViewProtocol:(NSString *)link{
+    self.watchUrlStr = link;
     [self loadUrl];
 }
-
 //加载url
 - (void)loadUrl {
-    self.watchUrlStr = [NSString stringWithFormat:@"%@%@",WebWatchHost,self.roomId];
+    
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.watchUrlStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.f];
     [self.webView loadRequest:request];
@@ -90,5 +105,7 @@
     return _webView;
 }
 
-
+- (void)dealloc{
+    NSLog(@"%@释放了",[self class]);
+}
 @end

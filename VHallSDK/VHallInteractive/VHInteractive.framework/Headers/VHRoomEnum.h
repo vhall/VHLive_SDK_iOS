@@ -55,6 +55,7 @@ typedef NS_ENUM(NSInteger, VHRoomMessageType) {
     VHRoomMessageType_room_banChat_cancel = 24,        //某个用户被取消禁言
     VHRoomMessageType_room_allBanChat = 25,            //全体禁言
     VHRoomMessageType_room_allBanChat_cancel = 26,     //取消全体禁言
+    VHRoomMessageType_room_vrtc_connect_invite_agree = 27,     //邀请id
 };
 
 

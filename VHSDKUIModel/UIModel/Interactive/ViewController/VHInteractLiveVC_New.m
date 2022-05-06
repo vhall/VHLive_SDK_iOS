@@ -75,6 +75,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     //self.beautKit = [VHReflect initBeautyEffectKit];
     self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
+    [self updateGuestMainSpeaker:NO];
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -498,6 +499,9 @@
 
 // 视频流添加回调（收到此回调后需要添加视频view，可能是连麦用户，也可能是共享屏幕/插播）
 - (void)room:(VHRoom *)room didAddAttendView:(VHRenderView *)attendView {
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+        return;//过滤视频轮巡流
+    }
     VUI_Log(@"\n某人上麦:%@，流类型：%d，流视频宽高：%@，流id：%@，是否有音频：%d，是否有视频：%d",attendView.userId,attendView.streamType,NSStringFromCGSize(attendView.videoSize),attendView.streamId,attendView.hasAudio,attendView.hasVideo);
     VHLiveMemberModel *model = [VHLiveMemberModel modelWithVHRenderView:(VHLocalRenderView *)attendView];
     model.haveDocPermission = [self.inavRoom.roomInfo.mainSpeakerId isEqualToString:model.account_id];
@@ -517,6 +521,9 @@
 /// 视频流移除回调（收到此回调后需要移除视频view，可能是连麦用户，也可能是共享屏幕/插播）
 - (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView {
     [self.interactView removeAttendView:(VHLocalRenderView *)attendView];
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+        return;//过滤视频轮巡流
+    }
     //更新视频小窗口显示
     [self updateSmallVideo];
 }
@@ -528,9 +535,13 @@
     NSString *targetId = message.targetId;
     NSString *targetName = message.targetName;
 
+    //加入用户id
+   NSString *joinUser = room.roomInfo.data[@"join_info"][@"third_party_user_id"];
+    //主持人id
+    NSString *host = room.roomInfo.data[@"webinar"][@"userinfo"][@"user_id"];
     switch (message.messageType) {
         case VHRoomMessageType_vrtc_connect_apply:{//用户申请上麦
-            if (self.role == VHLiveRole_Host) {
+            if (self.role == VHLiveRole_Host || (self.role == VHLiveRole_Guest && [self.inavRoom.roomInfo.mainSpeakerId isEqualToString:joinUser] && [self.inavRoom.roomInfo.permission containsObject:@(100037)])) {
                 NSString *name = targetName.length > VH_MaxNickNameCount ? [NSString stringWithFormat:@"%@...",[targetName substringToIndex:VH_MaxNickNameCount]] : targetName;
                 NSString *title = [NSString stringWithFormat:@"%@\n申请上麦，是否同意？",name];
                 [VHAlertView showAlertWithTitle:title content:nil cancelText:@"拒绝" cancelBlock:^{
@@ -579,6 +590,10 @@
                 [self.infoDetailView.bottomToolView endTimeByUpMicSuccess:NO];
             }
         }break;
+        case VHRoomMessageType_room_vrtc_connect_invite_agree:{
+            //更新同意邀请的id
+            NSLog(@"invite_id===%@",message.inviter_Id);
+        }break;
         case VHRoomMessageType_vrtc_mute:{//静音消息
             if(targetIsMyself) {
                 self.infoDetailView.topToolView.voiceBtn.selected = YES;
@@ -613,9 +628,14 @@
         case VHRoomMessageType_vrtc_speaker_switch:{//设置主讲人
             if(targetIsMyself) { //自己被设为主讲人
                 VH_ShowToast(@"您已被设为主讲人");
+                if([self.inavRoom.roomInfo.permission containsObject:@(100037)]) {
+                [self updateGuestMainSpeaker:self.isGuest];
+                }
+                
                 [self setDocEditEnable:YES];
             }else { //其他人被设为主讲人
                 [self setDocEditEnable:NO];
+                [self updateGuestMainSpeaker:NO];
                 if(self.role != VHLiveRole_Host) { //自己不是主持人，其他人被设置为主讲人时给提示
                     NSString *name = targetName.length > VH_MaxNickNameCount ? [NSString stringWithFormat:@"%@...",[targetName substringToIndex:VH_MaxNickNameCount]] : targetName;
                     NSString *title = [NSString stringWithFormat:@"%@已被设为主讲人",name];
@@ -748,10 +768,21 @@
             [self updateUserList];
         }break;
         case VHRoomMessageType_vrtc_connect_invite_refused:{
-            if (!self.isGuest) {
-                NSString *title = [NSString stringWithFormat:@"%@拒绝了上麦申请",targetName];
-                VH_ShowToast(title);
-            }
+                   
+                    if (self.isGuest && [joinUser isEqualToString:message.inviter_Id]) {
+                        //嘉宾发出的邀请
+                        NSLog(@"拒绝嘉宾邀请的要上麦");
+                        NSString *title = [NSString stringWithFormat:@"%@拒绝了上麦申请",targetName];
+                        VH_ShowToast(title);
+                    }else if (self.isSpeaker && [host isEqualToString:message.inviter_Id]){
+                        NSLog(@"拒绝主持人邀请的要上麦");
+                        NSString *title = [NSString stringWithFormat:@"%@拒绝了上麦申请",targetName];
+                        VH_ShowToast(title);
+                    }
+//            if (!self.isGuest) {
+//                NSString *title = [NSString stringWithFormat:@"%@拒绝了上麦申请",targetName];
+//                VH_ShowToast(title);
+//            }
         }break;
         default:
             break;
@@ -855,6 +886,10 @@
         return;
     }
     
+}
+- (void)updateGuestMainSpeaker:(BOOL)isGuestMainSpeaker{
+    [[NSUserDefaults standardUserDefaults] setBool:isGuestMainSpeaker forKey:kGuestMainSpeaker];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 //- (void)beautyKitModule:(VHBeautifyKit *)module{
 //    self.beautKit = module;

@@ -44,7 +44,9 @@
 
 - (void)initViews
 {
-    _versionLabel.text      = [NSString stringWithFormat:@"v%@",[VHallApi sdkVersion]];
+    //获得build号:
+   NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    _versionLabel.text      = [NSString stringWithFormat:@"v%@ build:%@",[VHallApi sdkVersion],build];
     _accountTextField.text  = DEMO_Setting.account;
     _passwordTextField.text = DEMO_Setting.password;
     [self.contentView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapContentViewAction)]];

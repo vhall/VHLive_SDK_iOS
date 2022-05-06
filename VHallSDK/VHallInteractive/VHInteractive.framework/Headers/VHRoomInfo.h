@@ -69,6 +69,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) VHWebinarLiveType webinar_type;   ///<1 音频直播 2 视频直播 3 互动直播
 
 @property (nonatomic, strong) id data;
+//嘉宾，主持人权限值 100037
+@property (nonatomic) NSArray *permission;
+
 @end
 
 
@@ -82,6 +85,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *targetName;
 ///该消息目标用户是否为自己
 @property (nonatomic, assign) BOOL targetForMe;
+///嘉宾称为主讲人邀请上麦的id
+@property (nonatomic) NSString *inviter_Id;
 @end
 
 
