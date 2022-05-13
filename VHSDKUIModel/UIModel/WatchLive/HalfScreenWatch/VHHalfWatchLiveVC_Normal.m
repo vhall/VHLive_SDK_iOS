@@ -1477,7 +1477,10 @@ static AnnouncementView* announcementView = nil;
 
 - (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs
 {
-    [self reloadDataWithMsg:msgs];
+    //过滤私聊 传递target_id,当前用户join_id
+    NSString *currentUserId = self.moviePlayer.webinarInfo.data[@"join_info"][@"third_party_user_id"];
+    NSArray *msgArr = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:YES];
+    [self reloadDataWithMsg:msgArr];
     if (msgs.count > 0) {
         //弹幕
         VHallChatModel* model = [msgs objectAtIndex:0];

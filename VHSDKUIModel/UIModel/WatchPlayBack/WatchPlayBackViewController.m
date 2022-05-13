@@ -385,7 +385,9 @@ static AnnouncementView* announcementView = nil;
 
 //收到聊天消息
 - (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs {
-    [self reloadDataWithMsg:msgs];
+    NSString *currentUserId = self.moviePlayer.webinarInfo.data[@"join_info"][@"third_party_user_id"];;
+    NSArray *msgArr = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:NO];
+    [self reloadDataWithMsg:msgArr];
 }
 
 //收到自定义消息

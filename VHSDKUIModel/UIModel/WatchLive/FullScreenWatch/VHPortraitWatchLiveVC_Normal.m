@@ -448,7 +448,10 @@
  * 收到聊天消息
  */
 - (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs {
-    [self.decorateView receiveMessage:msgs];
+    //过滤私聊 传递target_id,当前用户join_id
+    NSString *currentUserId = self.moviePlayer.webinarInfo.data[@"join_info"][@"third_party_user_id"];
+    NSArray *msgArr = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:NO];
+    [self.decorateView receiveMessage:msgArr];
 }
 /**
  * 收到自定义消息

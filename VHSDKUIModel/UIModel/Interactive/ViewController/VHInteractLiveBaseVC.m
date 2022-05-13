@@ -164,6 +164,9 @@
 
 //收到聊天消息
 - (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs {
+    //过滤私聊
+    NSString *currentUserId = self.roomInfo.data[@"join_info"][@"third_party_user_id"];
+    msgs = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:NO];
     if (msgs.count > 0) {
         VHallChatModel *model = [msgs objectAtIndex:0];
         VHLiveMsgModel *msgModel = [[VHLiveMsgModel alloc] init];

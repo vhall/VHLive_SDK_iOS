@@ -15,4 +15,5 @@
 #import "VHEnum.h"
 #import "UIModelTools.h"
 #import "VHBeautyHeader.h"
+#import "VHHelpTool.h"
 #endif /* UIModel_PrefixHeader_pch */

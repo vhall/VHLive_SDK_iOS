@@ -26,6 +26,10 @@ typedef NS_ENUM(NSInteger,ChatCustomType) {
 };
 
 @interface VHallMsgModels : NSObject
+//YES=私聊(含target_id)，NO=非私聊
+@property (nonatomic,assign) BOOL privateMsg;
+//消息接收方id
+@property (nonatomic, copy) NSString * target_id;
 @property (nonatomic, copy) NSString * join_id;
 @property (nonatomic, copy) NSString * account_id;      //用户ID
 @property (nonatomic, copy) NSString * user_name;       //参会时的昵称

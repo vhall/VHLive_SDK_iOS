@@ -798,7 +798,10 @@ static AnnouncementView* announcementView = nil;
 
 - (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs
 {
-    [self reloadDataWithMsg:msgs];
+    //过滤私聊
+    NSString *currentUserId = self.inavRoom.roomInfo.data[@"join_info"][@"third_party_user_id"];
+    NSArray *msgArr = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:YES];
+    [self reloadDataWithMsg:msgArr];
 }
 
 - (void)reciveCustomMsg:(NSArray <VHallCustomMsgModel *> *)msgs

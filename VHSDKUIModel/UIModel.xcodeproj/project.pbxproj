@@ -37,6 +37,7 @@
 		3215636D27CC981B0000AE2E /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215636C27CC981B0000AE2E /* NSString+Size.m */; };
 		3215637327CC99060000AE2E /* CALayer+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215637227CC99060000AE2E /* CALayer+Convenient.m */; };
 		3215637627CCA24E0000AE2E /* VHChangeSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215637527CCA24E0000AE2E /* VHChangeSegmentView.m */; };
+		321DE5C8282D200C007B0D21 /* VHHelpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 321DE5C7282D200C007B0D21 /* VHHelpTool.m */; };
 		322B7C3127CDE11200F6EA3A /* UILabel+VHConvenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 322B7C3027CDE11200F6EA3A /* UILabel+VHConvenient.m */; };
 		322B7C3427CDE39300F6EA3A /* VHBeautyTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 322B7C3327CDE39300F6EA3A /* VHBeautyTopView.m */; };
 		323DA1F027D4F28300E3E0EC /* originalimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 323DA1EE27D4F28300E3E0EC /* originalimage@2x.png */; };
@@ -640,6 +641,8 @@
 		3215637227CC99060000AE2E /* CALayer+Convenient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Convenient.m"; sourceTree = "<group>"; };
 		3215637427CCA24E0000AE2E /* VHChangeSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChangeSegmentView.h; sourceTree = "<group>"; };
 		3215637527CCA24E0000AE2E /* VHChangeSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHChangeSegmentView.m; sourceTree = "<group>"; };
+		321DE5C6282D200C007B0D21 /* VHHelpTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHHelpTool.h; sourceTree = "<group>"; };
+		321DE5C7282D200C007B0D21 /* VHHelpTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHHelpTool.m; sourceTree = "<group>"; };
 		322B7C2F27CDE11200F6EA3A /* UILabel+VHConvenient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+VHConvenient.h"; sourceTree = "<group>"; };
 		322B7C3027CDE11200F6EA3A /* UILabel+VHConvenient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+VHConvenient.m"; sourceTree = "<group>"; };
 		322B7C3227CDE39300F6EA3A /* VHBeautyTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHBeautyTopView.h; sourceTree = "<group>"; };
@@ -1389,6 +1392,15 @@
 			path = segmentView;
 			sourceTree = "<group>";
 		};
+		321DE5C5282D1FE5007B0D21 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				321DE5C6282D200C007B0D21 /* VHHelpTool.h */,
+				321DE5C7282D200C007B0D21 /* VHHelpTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		3241726127D2147C0050D660 /* alert */ = {
 			isa = PBXGroup;
 			children = (
@@ -1568,6 +1580,7 @@
 				C0443A24242839530063FB0D /* UIModel_PrefixHeader.pch */,
 				F3A105722626D88F00F73EEA /* VHEnum.h */,
 				C0443AEB242839540063FB0D /* UIModel.h */,
+				321DE5C5282D1FE5007B0D21 /* Tool */,
 				3247D9502805795600726DE3 /* ViewProtocol */,
 				32B17B6727BC9FD8000DA6DE /* BeautyView */,
 				C0443B21242839540063FB0D /* WatchLive */,
@@ -2919,6 +2932,7 @@
 			files = (
 				C0443B5E242839550063FB0D /* VHBaseViewController.m in Sources */,
 				F32B661426292EFF0067BD0C /* VHLiveModel.m in Sources */,
+				321DE5C8282D200C007B0D21 /* VHHelpTool.m in Sources */,
 				0341C567261E9E3900EF599B /* VHScrollTextView.m in Sources */,
 				329FDC8927C764920097272D /* VHSaveBeautyTool.m in Sources */,
 				C0443C6D242839550063FB0D /* SZQuestionOptionCell.m in Sources */,
