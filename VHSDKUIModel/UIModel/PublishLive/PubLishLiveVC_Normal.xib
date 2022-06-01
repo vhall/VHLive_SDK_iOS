@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PubLishLiveVC_Normal">
             <connections>
+                <outlet property="audioClose" destination="HAA-iG-sEr" id="1fC-DU-OeB"/>
                 <outlet property="audioStartAndStopBtn" destination="mDN-RT-jVL" id="Vde-Rg-DYa"/>
                 <outlet property="backbtntopConstraint" destination="ry5-h1-j7p" id="xMC-tu-93w"/>
                 <outlet property="bitRateLabel" destination="FYd-BF-obS" id="ZLP-dx-lLC"/>

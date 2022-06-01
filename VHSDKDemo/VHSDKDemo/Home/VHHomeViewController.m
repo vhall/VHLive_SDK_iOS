@@ -28,6 +28,7 @@
 ///新增美颜依赖库
 #import <VHBeautifyKit/VHBeautifyKit.h>
 #import <VHBFURender/VHBFURender.h>
+
 #define kViewProtocol @"很遗憾无法继续为您提供服务"
 typedef enum : NSUInteger {
     VHWatchLiveType_HalfWatchNormal = 0, //半屏观看
@@ -36,7 +37,8 @@ typedef enum : NSUInteger {
     VHWatchLiveType_FullWatchNodelay = 3, //全屏无延迟观看
     VHWatchLiveType_FullWatchVOD = 4,//点播房间
 }VHWatchLiveType;
-@interface VHHomeViewController ()<VHallApiDelegate>
+
+@interface VHHomeViewController ()<VHallApiDelegate,VHSheetActionDelegate>
 @property (weak, nonatomic) IBOutlet UILabel        *deviceCategory;
 @property (weak, nonatomic) IBOutlet UIButton       *loginBtn;
 @property (weak, nonatomic) IBOutlet UIImageView    *headImage;//头像
@@ -50,6 +52,9 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIButton *btn3;
 ///美颜模块
 @property (nonatomic,strong) VHBeautifyKit *beautKit;
+///云导播机位数据
+@property (nonatomic) VHDirectorModel *directorModel;
+@property (nonatomic) NSInteger  seatIndex;
 @end
 
 @implementation VHHomeViewController
@@ -116,11 +121,15 @@ typedef enum : NSUInteger {
     }
     
     [VHWebinarBaseInfo getWebinarBaseInfoWithWebinarId:DEMO_Setting.activityID success:^(VHWebinarBaseInfo * _Nonnull baseInfo) {
+        NSLog(@"当前活动%@云导播权限",baseInfo.is_director == 1?@"有":@"无");
         if(baseInfo.no_delay_webinar == 1) { //无延迟
             VH_ShowToast(@"当前直播类型为无延迟直播");
             return;
         }
-        
+        if (baseInfo.is_director == 1) {
+            VH_ShowToast(@"当前直播是云导播活动请退出");
+            return;
+        }
         PubLishLiveVC_Normal * liveVC = [[PubLishLiveVC_Normal alloc] init];
         if (DEMO_Setting.beautifyFilterEnable) {
 //            [liveVC beautyKitModule:[VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]]];
@@ -151,6 +160,10 @@ typedef enum : NSUInteger {
     [VHWebinarBaseInfo getWebinarBaseInfoWithWebinarId:DEMO_Setting.activityID success:^(VHWebinarBaseInfo * _Nonnull baseInfo) {
         if(baseInfo.no_delay_webinar == 0) { //非无延迟
             VH_ShowToast(@"当前直播类型为常规直播");
+            return;
+        }
+        if (baseInfo.is_director == 1) {
+            VH_ShowToast(@"当前直播是云导播活动请退出");
             return;
         }
         PubLishLiveVC_Nodelay * liveVC = [[PubLishLiveVC_Nodelay alloc] init];
@@ -325,11 +338,15 @@ typedef enum : NSUInteger {
             UIAlertAction *landscapeLive_nodelay = [UIAlertAction actionWithTitle:@"横屏无延迟直播" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self publishNodelayLive:UIInterfaceOrientationLandscapeRight];
             }];
+            UIAlertAction *cloudBrocast = [UIAlertAction actionWithTitle:@"云导播" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self cloudBrocast];
+            }];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
             [alertController addAction:portraitLive_normal];
             [alertController addAction:landscapeLive_normal];
             [alertController addAction:portraitLive_nodelay];
             [alertController addAction:landscapeLive_nodelay];
+            [alertController addAction:cloudBrocast];
             [alertController addAction:cancelAction];
             alertController.popoverPresentationController.sourceView = sender;
             alertController.popoverPresentationController.sourceRect = sender.bounds;
@@ -404,7 +421,103 @@ typedef enum : NSUInteger {
             break;
     }
 }
+#pragma mark ---新增云导播
 
+- (void)cloudBrocast{
+    [VHWebinarBaseInfo getWebinarBaseInfoWithWebinarId:DEMO_Setting.activityID success:^(VHWebinarBaseInfo * _Nonnull baseInfo) {
+        if (baseInfo.is_director == 1) {
+            //webinar_show_type; ///横竖屏 0竖屏 1横屏
+            [self cloudBrocastStatus:(baseInfo.webinar_show_type == 1)?YES:NO];
+        }else{
+            VH_ShowToast(@"当前直播不是云导播活动请退出");
+        }
+    } fail:^(NSError * _Nonnull error) {
+        VH_ShowToast(error.localizedDescription);
+    }];
+   
+}
+#pragma mark ---云导播活动--获取云导播台开启状态
+- (void)cloudBrocastStatus:(BOOL)landscape{
+    [VHWebinarBaseInfo getDirectorStatusWithWebinarId:DEMO_Setting.activityID success:^(BOOL director_status) {
+        if (director_status) {
+            //云导播台已开启
+            [self openCloudBrocast:SheetType_BrocastEnabled lanscape:landscape];
+        }else{
+            [self openCloudBrocast:SheetType_BrocastDisable lanscape:landscape];
+        }
+    } fail:^(NSError * _Nonnull error) {
+        VH_ShowToast(error.localizedDescription);
+    }];
+}
+- (void)openCloudBrocast:(SheetType)sheetType lanscape:(BOOL)landcape{
+    VHSheetActionViewController *sheet = [[VHSheetActionViewController alloc] init];
+    sheet.delegate = self;
+    sheet.sheetType = sheetType;
+    sheet.screenLandscape = landcape;
+    [self presentViewController:sheet animated:true completion:nil];
+}
+#pragma mark ----测试机位仅推流
+- (void)sheetSelectAction:(NSInteger)selectIndex sheetType:(SheetType)sheetType screenLandsCape:(BOOL)landscape{
+    NSLog(@"selectIndex==== %ld",(long)selectIndex);
+    [self dismissViewControllerAnimated:YES completion:nil];
+    switch (sheetType) {
+        case SheetType_BrocastEnabled:{
+            //两种方式可主持人发起+ 推流方式推到云导播 获取机位列表
+            [VHWebinarBaseInfo getSeatList:DEMO_Setting.activityID success:^(VHDirectorModel * _Nonnull directorModel) {
+                self.directorModel = directorModel;
+                if (selectIndex == 1) {
+                    VHSheetActionViewController *sheet = [[VHSheetActionViewController alloc] init];
+                    sheet.sheetType = SheetType_Seat;
+                    sheet.seatArray = directorModel.seatList;
+                    sheet.delegate = self;
+                    sheet.webinar_id = DEMO_Setting.activityID;
+                    sheet.screenLandscape = landscape;
+                    [self presentViewController:sheet animated:true completion:nil];
+                }else{
+                    [self enterCloudBroadcast:VHLiveVideoDirectorHostEnter landscape:landscape director:YES];
+                }
+            } fail:^(NSError * _Nonnull error) {
+                VH_ShowToast(error.localizedDescription);
+            }];
+            
+        }
+            break;
+        case SheetType_BrocastDisable:{
+           ///云导播台未开启  主持人进入
+            [self enterCloudBroadcast:VHLiveVideoDirectorHostEnter landscape:landscape director:NO];
+        }
+            break;
+        case SheetType_Seat:{
+            //选择机位 初始化
+            NSLog(@"选择机位");
+            self.seatIndex = selectIndex;
+            [self enterCloudBroadcast:VHLiveVideoDirectorSeatPushStream landscape:landscape director:YES];
+        }
+            break;
+        default:
+            break;
+    }
+}
+#pragma mark --- 模拟云导播往主房间推流
+- (void)enterCloudBroadcast:(VHLiveVideoType)videoType landscape:(BOOL)landscape director:(BOOL)directorIsOpen{
+    PubLishLiveVC_Normal * liveVC = [[PubLishLiveVC_Normal alloc] init];
+    liveVC.directorOpen = directorIsOpen;//云导播台是否开启
+    liveVC.liveVideoType = videoType;//机位推流进入
+    liveVC.videoResolution  = [DEMO_Setting.videoResolution intValue];
+    liveVC.roomId           = DEMO_Setting.activityID;
+    liveVC.token            = DEMO_Setting.liveToken;
+    liveVC.videoBitRate     = DEMO_Setting.videoBitRate;
+    liveVC.audioBitRate     = DEMO_Setting.audioBitRate;
+    liveVC.videoCaptureFPS  = DEMO_Setting.videoCaptureFPS;
+    liveVC.interfaceOrientation = landscape?UIInterfaceOrientationLandscapeRight:UIInterfaceOrientationPortrait;
+    if (videoType == VHLiveVideoDirectorSeatPushStream) {
+        liveVC.seatModel = self.directorModel.seatList[self.seatIndex];
+    }
+    liveVC.isOpenNoiseSuppresion = DEMO_Setting.isOpenNoiseSuppresion;
+    liveVC.beautifyFilterEnable  = DEMO_Setting.beautifyFilterEnable;
+    liveVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:liveVC animated:YES completion:nil];
+}
 //参数设置
 - (IBAction)systemSettingClick:(id)sender
 {

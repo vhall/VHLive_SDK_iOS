@@ -35,6 +35,7 @@
                 <outlet property="onlineLab" destination="nYG-kQ-TWt" id="Fiu-kY-zHN"/>
                 <outlet property="playModeBtn0" destination="QUw-Cq-ZnB" id="apT-VH-HEd"/>
                 <outlet property="pvLab" destination="2IF-b1-Y8q" id="lYc-fb-MxR"/>
+                <outlet property="questionName" destination="OsH-od-PoX" id="TjA-2r-PjN"/>
                 <outlet property="rendererOpenBtn" destination="tzW-Mu-qbH" id="7Y9-aw-SYN"/>
                 <outlet property="sendCustomMsgBtn" destination="KDd-Et-Kpp" id="FNb-aU-O8e"/>
                 <outlet property="showView" destination="WN1-tv-hfk" id="nfs-1a-kF9"/>

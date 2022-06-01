@@ -10,8 +10,18 @@
 #import "VHallConst.h"
 @class VHWebinarScrollTextInfo;
 @class VHRoleNameData;
+
 @class VHViewProtocolModel;
 @class VHStatementModel;
+
+@class VHDirectorModel;
+@class VHSeatModel;
+
+
+@class VHRoomToolStatus;
+@class VHSurveyListModel;
+@class VHSurveyModel;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol VHWebinarInfoDelegate <NSObject>
@@ -81,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) NSInteger webinar_show_type; ///横竖屏 0竖屏 1横屏
 @property (nonatomic, assign) NSInteger no_delay_webinar;     ///<是否无延迟直播 1:是 0:否
 @property (nonatomic, assign) NSInteger inav_num;     ///<当前活动设置的最大连麦人数， 如：6表示1v5，16表示1v15...
-
+@property (nonatomic, assign,readonly) NSInteger is_director;///能否使用云导播功能 0-否 1-是
 
 /// 查询活动基础信息
 /// @param webinarId 活动id
@@ -95,10 +105,27 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)getRoleNameWebinar_id:(NSString *)webinarId dataCallBack:(void(^)(VHRoleNameData *))roleNameData;
 ///获取美颜权限结果
 @property (nonatomic,assign) BOOL  allowAdvanceBeauty;
+
 ///开启观看协议需前置获取观看协议
 + (void)fetchViewProtocol:(NSString *)webinarId success:(void(^)(VHViewProtocolModel *protocolModel))success fail:(void(^)(NSError *error))fail;
 ///同意观看协议
 + (void)agreeViewProtocol:(NSString *)webinarId success:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+
+
+///云导播活动
+///导播台是否开启 director_status=YES:已开启，NO:未开启
++ (void)getDirectorStatusWithWebinarId:(NSString *)webinarId success:(void(^)(BOOL  director_status))success fail:(void(^)(NSError *error))fail;
+///以视频推流到云导播获取机位列表
++ (void)getSeatList:(NSString *)webinarId success:(void(^)(VHDirectorModel *directorModel))success fail:(void(^)(NSError *error))fail;
+///选择机位
++ (void)selectSeatWithWebinarId:(NSString *)webinarId seatId:(NSString *)seatId success:(void(^)(BOOL))success fail:(void(^)(NSError *error))fail;
+///云导播台的房间流状态
++ (void)getDirectorRoomStreamStatus:(NSString *)webinarId success:(void(^)(BOOL isHaveStream))success fail:(void(^)(NSError *error))fail;
+
+
+///获取问卷历史
++ (void)fetchSurveyList:(NSString *)webinarId success:(void(^)(VHSurveyListModel *))success fail:(void(^)(NSError *error))fail;
+
 @end
 
 
@@ -126,8 +153,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger device_status; ///< 设备检测状态 0:未检测 1:可以上麦 2:不可以上麦
 
 @end
+///互动工具状态
+@interface VHRoomToolStatus : NSObject
+///问答名字
+@property (nonatomic,copy,readonly) NSString *question_name;
+///问答状态 YES 开启了问答 NO: 关闭了问答
+@property (nonatomic,assign,readonly) BOOL  question_status;
 
-
+@end
 @interface VHRoleNameData : NSObject
 ///主持人角色名称
 @property (nonatomic,copy) NSString *host_name;
@@ -136,6 +169,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///助理角色名称
 @property (nonatomic,copy) NSString *assist_name;
 @end
+
 //观看协议模型数据
 @interface VHViewProtocolModel : NSObject
 ///用户协议是否同意 0-未同意，1-同意
@@ -161,4 +195,44 @@ NS_ASSUME_NONNULL_BEGIN
 //协议链接
 @property (nonatomic,copy,readonly) NSString *link;
 @end
+
+
+
+@interface VHDirectorModel : NSObject
+//云导播台开启状态 0-未开启 1-已开启
+@property (nonatomic,readonly) NSInteger  director_status;
+//机位列表(可用状态+机位id+机位名称)
+@property (nonatomic,readonly)NSArray <VHSeatModel *> *seatList;
+@end
+@interface VHSeatModel : NSObject
+//机位名称
+@property (nonatomic,copy,readonly) NSString *name;
+//机位ID
+@property (nonatomic,copy,readonly) NSString *seat_id;
+//机位状态
+@property (nonatomic,readonly) NSInteger  seat_status;
+@end
+
+@interface VHSurveyListModel : NSObject
+@property (nonatomic,strong) NSArray <VHSurveyModel *>*listModel;
+@end
+@interface VHSurveyModel : NSObject
+//问卷标题
+@property (nonatomic,copy) NSString *title;
+//问卷id
+@property (nonatomic,copy) NSString *question_id;
+//问卷编号
+@property (nonatomic,copy) NSString *question_no;
+//问卷别名
+@property (nonatomic,copy) NSString *alias;
+//问卷是否参与
+@property (nonatomic,assign)BOOL is_answered;
+//问卷创建时间
+@property (nonatomic,copy) NSString *created_at;
+//问卷更新时间
+@property (nonatomic,copy) NSString *updated_at;
+//问卷的URL
+@property (nonatomic,strong,readonly) NSURL *openLink;
+@end
+
 NS_ASSUME_NONNULL_END

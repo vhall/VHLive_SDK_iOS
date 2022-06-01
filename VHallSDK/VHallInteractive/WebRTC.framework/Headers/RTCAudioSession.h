@@ -99,6 +99,7 @@ RTC_OBJC_EXPORT
     failedToSetActive:(BOOL)active
                 error:(NSError *)error;
 
+- (void)audioSession:(RTC_OBJC_TYPE(RTCAudioSession) *)audioSession didChangeMicrophoneMute:(BOOL)isMicrophoneMute;
 @end
 
 /** This is a protocol used to inform RTCAudioSession when the audio session
@@ -160,6 +161,8 @@ RTC_OBJC_EXPORT
  *  we are able to prevent the abrupt cutoff.
  */
 @property(nonatomic, assign) BOOL isAudioEnabled;
+
+@property(nonatomic, assign) BOOL isMicrophoneMute;
 
 // Proxy properties.
 @property(readonly) NSString *category;

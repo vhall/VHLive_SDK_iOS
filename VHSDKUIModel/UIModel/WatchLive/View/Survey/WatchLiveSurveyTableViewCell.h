@@ -12,4 +12,5 @@
 @interface WatchLiveSurveyTableViewCell : UITableViewCell
 @property(nonatomic,copy)  clickSurveyItem  clickSurveyItem;
 @property(nonatomic,strong)  VHallSurveyModel    *model;
+@property (weak, nonatomic) IBOutlet UILabel *surveyName;
 @end

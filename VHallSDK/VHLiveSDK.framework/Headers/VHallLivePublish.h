@@ -10,7 +10,6 @@
 #import "VHallConst.h"
 #import "VHPublishConfig.h"
 #import "VHWebinarInfo.h"
-@class VHBeautifyKit;
 @protocol VHallLivePublishDelegate;
 @interface VHallLivePublish : NSObject
 
@@ -129,6 +128,33 @@
 */
 - (void)setBeautify:(CGFloat)beautify Brightness:(CGFloat)brightness Saturation:(CGFloat)saturation Sharpness:(CGFloat)sharpness;
 
+/**
+ *  云导播:机位推流到云导播台
+ *  @param param
+ *  param[@"id"]           = 活动Id，必传
+ *  param[@"access_token"] = 发直播token （新版v3控制台创建的直播活动可不传此值，v6.0修改）
+ *  param[@"nickname"]     = 发起直播更改主播昵称，非必传（v6.0新增）
+ *    param[@"seat"] = 云导播机位id (v6.4新增)必传参数
+ */
+//以视频推流到云导播
+- (void)startSeatPushDirectorLive:(NSDictionary*)param checkHostLine:(BOOL)checkHostLine;
+//以主持人身份发起直播
+/*
+ @param param
+ *  param[@"id"]           = 活动Id，必传
+ *  param[@"access_token"] = 发直播token （新版v3控制台创建的直播活动可不传此值，v6.0修改）
+ *  param[@"nickname"]     = 发起直播更改主播昵称，非必传（v6.0新增）
+ **/
+///主持人进入云导播
+- (instancetype)initDirectorHostEnter:(NSDictionary *)param fail:(void(^)(NSError *))failure;
+///开始云导播
+- (void)startDirectorLive;
+///结束直播
+- (void)stopDirectorLive;
+//销毁云导播
+- (void)destoryDirectorLive;
+// 回显云导播台画面
+@property (nonatomic,strong,readonly)UIView *liveView;
 @end
 
 
@@ -155,5 +181,8 @@
 /// @param publishObject 推流对象
 /// @param webinarInfo 活动相关信息
 - (void)publish:(VHallLivePublish *)publishObject webinarInfo:(VHWebinarInfo *)webinarInfo;
-
+/*
+ 云导播-主持人进入 房间内是否流
+ **/
+- (void)directorStream:(BOOL)haveStream;
 @end

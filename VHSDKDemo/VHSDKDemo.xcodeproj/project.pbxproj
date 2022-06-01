@@ -59,7 +59,7 @@
 		C0443CD1242870BA0063FB0D /* WHDebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C0443CCA242870BA0063FB0D /* WHDebugMonitor.m */; };
 		C0443CD2242870BA0063FB0D /* WHDebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C0443CCB242870BA0063FB0D /* WHDebugCpuMonitor.m */; };
 		C06BCC63211183FB0045EB04 /* VHSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C06BCC62211183FB0045EB04 /* VHSettingTableViewCell.m */; };
-		C6298BBA7CC6743B38B38BA4 /* Pods_VHSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B08D74301AE76F9266CC39 /* Pods_VHSDKDemo.framework */; };
+		D2D1FDFD3D498AFEC83B66FF /* Pods_VHSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B08D74301AE76F9266CC39 /* Pods_VHSDKDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -216,7 +216,7 @@
 				3246DC6927E9EC97005B8176 /* libMBProgressHUD.a in Frameworks */,
 				3246DC6C27E9EC97005B8176 /* libUIModel.a in Frameworks */,
 				3246DC6527E9EC97005B8176 /* libYYText.a in Frameworks */,
-				C6298BBA7CC6743B38B38BA4 /* Pods_VHSDKDemo.framework in Frameworks */,
+				D2D1FDFD3D498AFEC83B66FF /* Pods_VHSDKDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

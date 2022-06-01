@@ -30,7 +30,7 @@
 #import "VHWatchNodelayVideoView.h"
 #import "VHWatchNodelayDocumentView.h"
 #import "AnnouncementView.h"
-
+#import "VHQuestionnaireController.h"
 static AnnouncementView* announcementView = nil;
 
 @interface VHHalfWatchLiveVC_Nodelay ()<VHRoomDelegate, VHallChatDelegate, VHallQAndADelegate, VHallLotteryDelegate,VHallSignDelegate,VHallSurveyDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,MicCountDownViewDelegate,VHInvitationAlertDelegate,VHSurveyViewControllerDelegate,VHKeyboardToolViewDelegate,VHDocumentDelegate>
@@ -89,6 +89,12 @@ static AnnouncementView* announcementView = nil;
 /** 互动SDK (用于无延迟直播) */
 @property (nonatomic, strong) VHRoom *inavRoom;
 @property (nonatomic, strong) VHWatchNodelayVideoView *videoView;  //视频容器
+@property (weak, nonatomic) IBOutlet UIButton *questionName;
+@property (nonatomic,copy) NSString *questionDesc;//问答名称
+@property (nonatomic,copy) NSString *questionnaireDesc;//问卷名称
+@property (nonatomic) UIButton *questionnaireBtn;
+@property (nonatomic) BOOL  questionStatus;
+@property (nonatomic) NSInteger  selectIndex;
 
 @end
 
@@ -110,8 +116,92 @@ static AnnouncementView* announcementView = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initViews];
+    //添加问卷
+    [self addquestionnaireView];
+    [self questionnaireLogic:NO];
+}
+- (void)addquestionnaireView{
+    self.questionnaireBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.questionnaireBtn setImage:BundleUIImage(@"wenjuan_have") forState:UIControlStateNormal];
+    self.questionnaireBtn.contentMode = UIViewContentModeScaleAspectFit;
+    [self.questionnaireBtn addTarget:self action:@selector(questionnaireAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.questionnaireBtn];
+    self.questionnaireBtn.hidden = YES;
+    [self.questionnaireBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(0);
+        make.centerY.offset(0);
+        make.width.height.mas_equalTo(36);
+    }];
 }
 
+- (void)questionnaireAction{
+    [self questionnaireLogic:YES];
+}
+#pragma mark --- 问卷的逻辑 isAction = YES 走action NO 走核验
+- (void)questionnaireLogic:(BOOL)isAction{
+    ///获取问卷列表
+    [VHWebinarBaseInfo fetchSurveyList:self.roomId success:^(VHSurveyListModel * listModel) {
+        if (listModel.listModel.count == 0) {
+            self.questionnaireBtn.hidden = YES;
+        }else{
+            self.questionnaireBtn.hidden = NO;
+            [self isHaveRedRot:listModel.listModel action:isAction];
+        }
+    } fail:^(NSError * _Nonnull error) {
+        VH_ShowToast(error.localizedDescription);
+    }];
+}
+- (void)isHaveRedRot:(NSArray <VHSurveyModel *>*)listArr action:(BOOL)action{
+    BOOL isHaveRedDot = NO;//是否显示红点
+    NSInteger tag = 0;
+    NSInteger index = UINT_MAX;
+    for (int i = 0; i < listArr.count; i++) {
+        VHSurveyModel *model = listArr[i];
+        if (model.is_answered == NO) {
+            isHaveRedDot = YES;
+            tag++;
+            if (tag == 1) {
+                index = i;//标记第一个未填写的
+            }
+        }
+    }
+    [self.questionnaireBtn setImage:isHaveRedDot?BundleUIImage(@"wenjuan_have"):BundleUIImage(@"wenjuan_no") forState:UIControlStateNormal];
+    if (!action) {
+        //NO 走核验 YES 走action操作
+        return;
+    }
+    if (isHaveRedDot == NO) {
+        //吐丝提示
+        VH_ShowToast(@"已提交成功感谢参与");
+        return;
+    }
+    if (index != UINT_MAX && tag == 1) {
+        //有且仅有一个未填写
+        [self openOne:index array:listArr];
+    }else if (index != UINT_MAX && tag > 1){
+        //两个未填写，打开新写的页面
+        [self openSurveyNewController:listArr];
+    }
+}
+- (void)openOne:(NSInteger)index array:(NSArray <VHSurveyModel *>*)modelArr{
+    if (!_surveyController) {
+        _surveyController = [[VHSurveyViewController alloc] init];
+        _surveyController.delegate = self;
+    }
+    _surveyController.view.frame = self.view.bounds;
+    _surveyController.url = [modelArr[index] openLink];
+    [self.view addSubview:_surveyController.view];
+}
+- (void)openSurveyNewController:(NSArray <VHSurveyModel *>*)modelArr{
+    VHQuestionnaireController *questionare = [[VHQuestionnaireController alloc] init];
+    questionare.surveyList = modelArr;
+    [self presentViewController:questionare animated:YES completion:nil];
+}
+- (void)receivedSucceed:(NSString *)surveyid surveyAccountId:(NSString *)accountid{
+    if ([accountid isEqualToString:self.inavRoom.roomInfo.data[@"join_info"][@"third_party_user_id"]]) {
+        [self questionnaireLogic:NO];//不跳转，只核验
+    }
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self enterInvRoom];
@@ -363,13 +453,15 @@ static AnnouncementView* announcementView = nil;
     
     __weak typeof(self) weakSelf = self;
     if (sender.selected) {
-        [self.inavRoom applySuccess:^{
-            VH_ShowToast(@"申请上麦成功");
-            //开启上麦倒计时
-            [weakSelf.countDowwnView countdDown:30];
-        } fail:^(NSError *error) {
-            NSString *msg = [NSString stringWithFormat:@"申请上麦失败：%@",error.description];
-            VH_ShowToast(msg);
+        [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+            [self.inavRoom applySuccess:^{
+                VH_ShowToast(@"申请上麦成功");
+                //开启上麦倒计时
+                [weakSelf.countDowwnView countdDown:30];
+            } fail:^(NSError *error) {
+                NSString *msg = [NSString stringWithFormat:@"申请上麦失败：%@",error.description];
+                VH_ShowToast(msg);
+            }];
         }];
     } else {
         [self.inavRoom cancelApplySuccess:^{
@@ -391,7 +483,7 @@ static AnnouncementView* announcementView = nil;
 
 #pragma mark - 详情
 - (IBAction)detailsButtonClick:(UIButton *)sender {
-
+    self.selectIndex = 4;
     [self.view endEditing:YES];
     self.docConentView.hidden = YES;
     self.chatView.hidden = YES;
@@ -404,7 +496,7 @@ static AnnouncementView* announcementView = nil;
 
 #pragma mark - 文档
 - (IBAction)textButtonClick:(UIButton *)sender {
-
+    self.selectIndex = 1;
     [self.view endEditing:YES];
     self.docConentView.hidden = NO;
     _lotteryVC.view.hidden = YES;
@@ -419,7 +511,7 @@ static AnnouncementView* announcementView = nil;
 
 #pragma mark - 聊天
 - (IBAction)chatButtonClick:(UIButton *)sender {
-    
+    self.selectIndex = 0;
     [self.view endEditing:YES];
     [self configChatViewRefreshWithBtn:sender];
     
@@ -484,6 +576,10 @@ static AnnouncementView* announcementView = nil;
 #pragma mark - 我来说两句
 - (IBAction)sendChatBtnClick:(id)sender
 {
+    if (self.selectIndex == 2) {
+        [self questionAnswer];//问答新逻辑
+        return;
+    }
     if(_chat.isAllSpeakBlocked)
     {
         VH_ShowToast(@"已开启全体禁言");
@@ -498,7 +594,28 @@ static AnnouncementView* announcementView = nil;
     
     [self.messageToolView becomeFirstResponder];
 }
+- (void)questionAnswer{
+    if(_chat.isAllSpeakBlocked)
+    {
+        if (!self.questionStatus) {
+//            NSString *tip = [NSString stringWithFormat:@"已开启全体禁言且关闭%@",self.questionDesc];
+            VH_ShowToast(@"已开启全体禁言");
+            return;
+        }else{
+//            NSString *tip = [NSString stringWithFormat:@"已开启全体禁言且打开%@",self.questionDesc];
+//            VH_ShowToast(tip);
+        }
+    }
 
+    if(_chat.isSpeakBlocked)
+    {
+        if (!self.questionStatus) {
+            VH_ShowToast(@"您已被禁言");
+            return;
+        }
+    }
+    [self.messageToolView becomeFirstResponder];
+}
 - (VHKeyboardToolView *)messageToolView {
     if (!_messageToolView)
     {
@@ -570,6 +687,7 @@ static AnnouncementView* announcementView = nil;
 
 #pragma mark - 问答
 - (IBAction)QAButtonClick:(UIButton *)sender {
+    self.selectIndex = 2;
     if (!_isQuestion_status) {
         VH_ShowToast(@"主播关闭了问答");
         return;
@@ -633,7 +751,7 @@ static AnnouncementView* announcementView = nil;
 #pragma mark - 抽奖
 //抽奖按钮点击
 - (IBAction)lotteryBtnClick:(UIButton *)sender {
-    
+    self.selectIndex = 3;
     self.docConentView.hidden = YES;
     self.chatView.hidden = YES;
     self.bottomView.hidden = YES;
@@ -724,12 +842,14 @@ static AnnouncementView* announcementView = nil;
     [alert removeFromSuperview];
     alert = nil;
     if(index == 1){ //同意主持人的邀请
-        [self.inavRoom agreeInviteSuccess:^{
-            [self presentInteractiveVC];
-        } fail:^(NSError *error) {
-            VH_ShowToast(error.localizedDescription);
+        ///先校验权限再上麦进入互动
+        [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+            [self.inavRoom agreeInviteSuccess:^{
+                [self presentInteractiveVC];
+            } fail:^(NSError *error) {
+                VH_ShowToast(error.localizedDescription);
+            }];
         }];
-        
     } else if(index == 0) { //拒绝主持人的邀请
         [self.inavRoom rejectInviteSuccess:^{
             VH_ShowToast(@"已拒绝");
@@ -835,8 +955,10 @@ static AnnouncementView* announcementView = nil;
 {
     VH_ShowToast(allForbidChat?@"已开启全体禁言":@"已取消全体禁言");
 }
-
-
+- (void)questionStatus:(BOOL)questionStatus{
+    //可提问状态
+    self.questionStatus = questionStatus;
+}
 //-----------聊天私有方法------------
 - (void)reloadDataWithMsg:(NSArray *)msgs {
     if (msgs.count == 0) {
@@ -853,14 +975,18 @@ static AnnouncementView* announcementView = nil;
 //主播开启问答
 - (void)vhallQAndADidOpened:(VHallQAndA *)QA
 {
-    VH_ShowToast(@"主持人开启了问答");
+    self.questionDesc = QA.question_name;
+    [self.questionName setTitle:self.questionDesc forState:UIControlStateNormal];
+    NSString *close = [NSString stringWithFormat:@"主持人开启了%@",self.questionDesc];
+    VH_ShowToast(close);
     _isQuestion_status = YES;
 }
 
 //主播关闭问答
 - (void)vhallQAndADidClosed:(VHallQAndA *)QA
 {
-    VH_ShowToast(@"主持人关闭了问答");
+    NSString *close = [NSString stringWithFormat:@"主持人关闭了%@",self.questionDesc];
+    VH_ShowToast(close);
     [self chatButtonClick:self.chatBtn];
     _isQuestion_status = NO;
 }
@@ -968,7 +1094,21 @@ static AnnouncementView* announcementView = nil;
         [self reloadDataWithDataSource:_chatDataArray animated:YES];
     }
 }
+// 6.4.0 新增
+- (void)receivedSurveyWithURL:(NSURL *)surveyURL surveyName:(NSString *)surveyName{
+    //6.4 新增问卷名称
+    [self questionnaireLogic:NO];
+    self.questionnaireDesc = surveyName;
+    VHallSurveyModel *model = [[VHallSurveyModel alloc] init];
+    model.surveyName = surveyName;//问卷名称
+    model.surveyURL = surveyURL;
+    model.is_answered = NO;
+    [_chatDataArray addObject:model];//添加问卷消息到聊天列表
 
+    if (_chatBtn.selected) {
+        [self reloadDataWithDataSource:_chatDataArray animated:YES];
+    }
+}
 - (void)receiveSurveryMsgs:(NSArray*)msgs {
     
 }
@@ -1135,6 +1275,9 @@ static AnnouncementView* announcementView = nil;
         [self updateShowOnlineNum];
         //问答状态
         _isQuestion_status = self.inavRoom.roomInfo.qaOpenState;
+        //问答名称 self.inavRoom.roomInfo.questionName
+        self.questionDesc = self.inavRoom.roomInfo.questionName;
+        [self.questionName setTitle:self.inavRoom.roomInfo.questionName forState:UIControlStateNormal];
         //点击聊天
         [self chatButtonClick:self.chatBtn];
         //设置文档
@@ -1178,18 +1321,18 @@ static AnnouncementView* announcementView = nil;
 
 /// 视频流加入回调（流类型包括音视频、共享屏幕、插播等）
 - (void)room:(VHRoom *)room didAddAttendView:(VHRenderView *)attendView {
-    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
-        return;//过滤视频轮巡流
-    }
+//    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+//        return;//过滤视频轮巡流
+//    }
     VUI_Log(@"\n某人上麦:%@，流类型：%d，流视频宽高：%@，流id：%@，是否有音频：%d，是否有视频：%d",attendView.userId,attendView.streamType,NSStringFromCGSize(attendView.videoSize),attendView.streamId,attendView.hasAudio,attendView.hasVideo);
     [self.videoView addRenderView:attendView];
 }
 
 /// 视频流离开回调（流类型包括音视频、共享屏幕、插播等）
 - (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView {
-    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
-        return;//过滤视频轮巡流
-    }
+//    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+//        return;//过滤视频轮巡流
+//    }
     [self.videoView removeRenderView:attendView];
 }
 

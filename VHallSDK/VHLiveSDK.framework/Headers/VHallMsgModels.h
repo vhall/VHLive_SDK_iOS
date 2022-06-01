@@ -175,6 +175,8 @@ typedef NS_ENUM(NSInteger,ChatCustomType) {
 @property(nonatomic,copy) NSString * surveyId; ///<问卷ID
 @property(nonatomic,copy) NSString * joinId;
 @property (nonatomic, copy) NSURL *surveyURL; ///<问卷URL地址（v4.0.4新增）
+@property (nonatomic, copy) NSString *surveyName; //问卷名称 v6.4新增
+@property (nonatomic,assign) BOOL  is_answered; //1-参与，0-未参与
 @end
 
 

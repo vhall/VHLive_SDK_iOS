@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   
   spec.name         = 'VHLiveSDK_Interactive'
-  spec.version      = '6.3.4'
+  spec.version      = '6.4.0'
 
   spec.summary      = "VHall iOS SDK #{spec.name.to_s}"
   spec.homepage     = 'https://www.vhall.com'
@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
   spec.platform     = :ios, '9.0'
 
-  spec.source          = { :git => "https://github.com/vhall/VHLive_SDK_iOS.git", :tag => spec.version.to_s}
+  spec.source          = { :git => "https://gitee.com/vhall/VHLive_SDK_iOS.git", :tag => spec.version.to_s}
   spec.vendored_frameworks = 'VHallSDK/VHallInteractive/WebRTC.framework','VHallSDK/VHallInteractive/VHInteractive.framework'
   spec.frameworks   = "AVFoundation", "VideoToolbox","OpenAL","CoreMedia","CoreTelephony" ,"OpenGLES" ,"MediaPlayer" ,"AssetsLibrary","QuartzCore" ,"JavaScriptCore","Security"
   
@@ -37,5 +37,5 @@ Pod::Spec.new do |spec|
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
     'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
   }
-  spec.dependency 'VHLiveSDK', "#{spec.version.to_s}"
+  spec.dependency 'VHLiveSDK', ">=6.4.0"
 end

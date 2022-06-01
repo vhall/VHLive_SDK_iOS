@@ -3,8 +3,8 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'VHSDKDemo' do
-  pod  'VHLiveSDK' ,'6.3.4'
-  pod  'VHLiveSDK_Interactive', '6.3.4'
+  pod  'VHLiveSDK' ,'6.4.0'
+  pod  'VHLiveSDK_Interactive', '6.4.0'
   pod  'VHYun_Beautify','1.0.6'
 end
 

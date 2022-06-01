@@ -25,6 +25,7 @@
                 <outlet property="lotteryBtn" destination="NpV-0j-Vf7" id="9rJ-Xh-IXB"/>
                 <outlet property="onlineLab" destination="nYG-kQ-TWt" id="Fiu-kY-zHN"/>
                 <outlet property="pvLab" destination="2IF-b1-Y8q" id="lYc-fb-MxR"/>
+                <outlet property="questionName" destination="OsH-od-PoX" id="yA4-pN-aDd"/>
                 <outlet property="sendCustomMsgBtn" destination="KDd-Et-Kpp" id="FNb-aU-O8e"/>
                 <outlet property="showView" destination="WN1-tv-hfk" id="nfs-1a-kF9"/>
                 <outlet property="videoViewHeight" destination="7bS-3d-w5x" id="d0B-cT-MHM"/>

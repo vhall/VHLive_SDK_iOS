@@ -94,6 +94,9 @@
     //self.beautKit = [VHReflect initBeautyEffectKit];
     self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
     [self initViews];
+    [VHHelpTool liveGetMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+        
+    }];
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];

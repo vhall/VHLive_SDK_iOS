@@ -39,6 +39,17 @@
  */
 - (void)allForbidChat:(BOOL)allForbidChat;
 
+
+/*
+ 云导播房间流状态
+ **/
+- (void)directorStream:(BOOL)haveStream;
+
+/**
+ *  问答状态 YES:可用,NO:不可用
+ */
+- (void)questionStatus:(BOOL)questionStatus;
+
 @end
 
 @interface VHallChat : VHallBasePlugin

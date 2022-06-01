@@ -28,7 +28,10 @@
  @param surveyURL 问卷地址
  */
 - (void)receivedSurveyWithURL:(NSURL *)surveyURL;
-
+//v6.4 新增
+- (void)receivedSurveyWithURL:(NSURL *)surveyURL surveyName:(NSString *)surveyName;
+//提交问卷成功 surveyid问卷id,accountid,提交人id
+- (void)receivedSucceed:(NSString *)surveyid surveyAccountId:(NSString *)accountid;
 @end
 
 @interface VHallSurvey : VHallBasePlugin

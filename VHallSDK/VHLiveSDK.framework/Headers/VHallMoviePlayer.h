@@ -154,6 +154,10 @@
 
 /// 获取系统声音大小
 + (float)getSysVolumeSize;
+///设置播放器背景色，默认黑色
+- (void)playerBackgroundColor:(UIColor *)playerBgColor;
+//设置播放器背景图片
+- (void)playerBackgroundImage:(UIImage *)playerBgImage;
 @end
 
 
@@ -270,7 +274,8 @@
 /// 当前是否开启问答功能
 /// @param player 播放器实例
 /// @param isQuestion_status 1开启 0关闭
-- (void)moviePlayer:(VHallMoviePlayer *)player isQuestion_status:(BOOL)isQuestion_status;
+/// 6.4 新增问答名称
+- (void)moviePlayer:(VHallMoviePlayer *)player isQuestion_status:(BOOL)isQuestion_status question_name:(NSString *)questionName;
 
 
 /// 视频宽髙回调（支持直播与点播）

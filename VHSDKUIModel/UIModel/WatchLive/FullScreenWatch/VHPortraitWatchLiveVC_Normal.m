@@ -76,8 +76,54 @@
 //    [self.moviePlayer preLoadRoomWithParam:self.playParam];
     //方式二：非预加载方式
     [self startPlayLive];
+    //设置播放器背景图片+背景颜色
+    [self addPlayerBackgroundColorAndImage];
 }
-
+///设置背景色和背景图片
+- (void)addPlayerBackgroundColorAndImage{
+    UIButton *bgColor = [UIButton buttonWithType:UIButtonTypeCustom];
+    [bgColor setTitle:@"调整背景色" forState:UIControlStateNormal];
+    [self.view addSubview:bgColor];
+    [bgColor addTarget:self action:@selector(playerBgColor:) forControlEvents:UIControlEventTouchUpInside];
+    [bgColor mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.offset(100);
+        make.right.offset(-20);
+        make.width.mas_equalTo(120);
+        make.height.mas_equalTo(30);
+    }];
+    UIButton *bgImage = [UIButton buttonWithType:UIButtonTypeCustom];
+    [bgImage setTitle:@"调整背景图片" forState:UIControlStateNormal];
+    [self.view addSubview:bgImage];
+    [bgImage addTarget:self action:@selector(playerBgImage:) forControlEvents:UIControlEventTouchUpInside];
+    [bgImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.offset(150);
+        make.right.offset(-20);
+        make.width.mas_equalTo(120);
+        make.height.mas_equalTo(30);
+    }];
+}
+- (void)playerBgColor:(UIButton *)sender{
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        [sender setTitle:@"默认背景色" forState:UIControlStateNormal];
+        [self.moviePlayer playerBackgroundColor:[UIColor blueColor]];
+    }else{
+        [sender setTitle:@"调整背景色" forState:UIControlStateNormal];
+        [self.moviePlayer playerBackgroundColor:[UIColor blackColor]];
+    }
+   
+}
+- (void)playerBgImage:(UIButton *)sender{
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        [sender setTitle:@"默认背景图片" forState:UIControlStateNormal];
+        [self.moviePlayer playerBackgroundImage:BundleUIImage(@"playerBackground")];
+    }else{
+        [sender setTitle:@"调整背景图片" forState:UIControlStateNormal];
+        [self.moviePlayer playerBackgroundImage:BundleUIImage(@"")];
+    }
+   
+}
 - (void)startPlayLive {
     //开播
     [self.moviePlayer startPlay:self.playParam];
@@ -496,9 +542,12 @@
     [alert removeFromSuperview];
     alert = nil;
     if(index == 1) { //接受
-        [self.moviePlayer replyInvitationWithType:1 finish:nil];
-        //进入互动
-        [self showInteractiveVC];
+        ///先校验权限再上麦进入互动
+        [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+            [self.moviePlayer replyInvitationWithType:1 finish:nil];
+            //进入互动
+            [self showInteractiveVC];
+        }];
     } else if(index == 0) { //拒绝
         [self.moviePlayer replyInvitationWithType:2 finish:nil];
     }
@@ -546,17 +595,19 @@
     __weak typeof(self) weakSelf = self;
     if (button.selected) {
         //申请上麦
-        button.userInteractionEnabled = NO;
-        [_moviePlayer microApplyWithType:1 finish:^(NSError *error) {
-            button.userInteractionEnabled = YES;
-            if(error) {
-                NSString *msg = [NSString stringWithFormat:@"申请上麦失败: %@",error.description];
-                VH_ShowToast(msg);
-            } else {
-                VH_ShowToast(@"申请上麦成功");
-                //开启上麦倒计时
-                [weakSelf.decorateView.upMicBtnView countdDown:30];
-            }
+        [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+            button.userInteractionEnabled = NO;
+            [_moviePlayer microApplyWithType:1 finish:^(NSError *error) {
+                button.userInteractionEnabled = YES;
+                if(error) {
+                    NSString *msg = [NSString stringWithFormat:@"申请上麦失败: %@",error.description];
+                    VH_ShowToast(msg);
+                } else {
+                    VH_ShowToast(@"申请上麦成功");
+                    //开启上麦倒计时
+                    [weakSelf.decorateView.upMicBtnView countdDown:30];
+                }
+            }];
         }];
     } else {
         //取消上麦申请

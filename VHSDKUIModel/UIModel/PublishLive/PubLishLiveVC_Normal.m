@@ -17,6 +17,8 @@
 #import "VHKeyboardToolView.h"
 #import "VHBeautyAdjustController.h"
 #import "VHBeautyView.h"
+#import <VHLiveSDK/VHallApi.h>
+#import "OMTimer.h"
 @interface PubLishLiveVC_Normal ()<VHallLivePublishDelegate, VHallChatDelegate,VHKeyboardToolViewDelegate>
 {
     BOOL  _isAudioStart;
@@ -65,10 +67,99 @@
 @property (nonatomic,strong) VHBeautyAdjustController *adjustVC;
 
 @property (nonatomic,assign) BOOL  isBeauty;//是否可以使用美颜功能
+
+@property (weak, nonatomic) IBOutlet UIButton *audioClose;
+///记录房间流状态
+@property (nonatomic) BOOL  streamStatus;
+///主持人进入房间流异常视图
+@property (nonatomic) UIView *middleView;
+///流异常提示文本
+@property (nonatomic) UILabel *exceptionLabel;
+///异常定时器
+@property (nonatomic) OMTimer *exceptionTimer;
+//左边机位提示
+@property (nonatomic) UILabel *tipLabel;
+///云导播关闭按钮
+@property (nonatomic) UIButton *closeAction;
 @end
 
 @implementation PubLishLiveVC_Normal
-
+#pragma mark ---云导播的新增UI
+- (void)directorUIError:(BOOL)isHave{
+    UIView *middle = [[UIView alloc] init];
+    [self.view addSubview:middle];
+    self.middleView = middle;
+    self.middleView.backgroundColor = [UIColor colorWithHex:@"#222222"];
+    [middle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.offset(0);
+        make.width.height.mas_equalTo(200);
+    }];
+    self.middleView.hidden = isHave;
+    UIImageView *middleImageV = [[UIImageView alloc] init];
+    middleImageV.image = BundleUIImage(@"warning-outline");
+    [middle addSubview:middleImageV];
+    [middleImageV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(@(CGSizeMake(70, 70)));
+        make.centerX.offset(0);
+        make.top.offset(30);
+    }];
+    
+    UILabel *tipLabel = [[UILabel alloc] init];
+    self.exceptionLabel = tipLabel;
+    tipLabel.textColor = [UIColor colorWithHex:@"999999"];
+    tipLabel.text = @"未检测到云导播流";
+    tipLabel.textAlignment = NSTextAlignmentCenter;
+    tipLabel.font = FONT_FZZZ(16);
+    [middle addSubview:tipLabel];
+    [tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(@(CGSizeMake(200, 50)));
+        make.centerX.offset(0);
+        make.top.offset(130);
+    }];
+    UILabel *label = [[UILabel alloc] init];
+    NSString *value = [NSString stringWithFormat:@"视频推流到云导播台-%@",self.seatModel.name];
+    self.tipLabel = label;
+    label.font = FONT_FZZZ(12);
+    label.textColor = [UIColor colorWithHex:@"#FFFFFF"];
+    self.tipLabel.text = value;
+    [self.view addSubview:label];
+    if (self.liveVideoType == VHLiveVideoDirectorSeatPushStream) {
+        self.tipLabel.hidden = NO;
+    }else{
+        self.tipLabel.hidden = YES;
+    }
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(20);
+        make.top.offset(64);
+        make.width.mas_equalTo(200);
+        make.height.mas_equalTo(50);
+    }];
+    
+    self.closeAction = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view insertSubview:self.closeAction atIndex:self.view.subviews.count - 1];
+    [self.closeAction setImage:BundleUIImage(@"DLNA_close") forState:UIControlStateNormal];
+    [self.closeAction addTarget:self action:@selector(clickClose) forControlEvents:UIControlEventTouchUpInside];
+    [self.closeAction mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(-20);
+        make.top.offset(30);
+        make.width.height.mas_equalTo(44);
+    }];
+}
+- (void)clickClose{
+    [self stopLiveAlert];
+}
+- (void)hostEnterClose{
+    if (_publishSuccess) {
+        //开播后
+        [self.engine stopDirectorLive];
+        [self.engine destoryDirectorLive];
+        _engine = nil;
+    }else{
+        //开播前
+        [self.engine destoryDirectorLive];
+        _engine = nil;
+    }
+}
 #pragma mark - Lifecycle
 - (id)init
 {
@@ -82,13 +173,82 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
-//    self.beautKit = [VHReflect initBeautyEffectKit];
-    [self initViews];
-    //初始化CameraEngine
-    [self initCameraEngine];
+    [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+        // Do any additional setup after loading the view from its nib.
+        self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
+    //    self.beautKit = [VHReflect initBeautyEffectKit];
+        [self initViews];
+       
+        switch (self.liveVideoType) {
+            case VHLiveVideoNormal:{
+                [self initLiveHardWare];
+            }
+                break;
+            case VHLiveVideoDirectorSeatPushStream:{
+                [self directorUIError:YES];
+                [self initLiveHardWare];
+                self.videoStartAndStopBtn.hidden = YES;
+                self.infoView.hidden = YES;
+                if(_publishSuccess) { //如果当前已经成功开播，且没有主动停止直播，但由于网络断开等问题导致被动停止，再次开播时，重连流即可
+                    [_engine reconnect];
+                }else { //发起直播
+                    [_engine startSeatPushDirectorLive:self.publishParam checkHostLine:NO];
+                }
+            }
+                break;
+            case VHLiveVideoDirectorHostEnter:{
+                //需展示云导播台的总画面
+                [self initHostEnterDirectorLive];
+            }
+                break;
+            
+            default:
+                break;
+        }
+        NSLog(@"-----%@",self.filterBtn);
+
+    }];
+}
+
+- (void)initHostEnterDirectorLive{
+    self.engine = [[VHallLivePublish alloc] initDirectorHostEnter:self.publishParam fail:^(NSError * error) {
+        [UIAlertController showAlertControllerTitle:error.localizedDescription msg:@"" btnTitle:@"确定" callBack:^{
+            [self dismissViewControllerAnimated:true completion:nil];
+        }];
+    }];
+    self.engine.liveView.frame   = _perView.bounds;
+    self.engine.delegate = self;//监听云导播主房间流状态
+    self.engine.liveView.contentMode = UIViewContentModeScaleToFill;
+    [self.perView insertSubview:_engine.liveView atIndex:0];
+    _chat = [[VHallChat alloc] initWithLivePublish:self.engine];
+    _chat.delegate = self;
     
+    self.noiseView.hidden = YES;
+    self.noiseLabel.hidden = YES;
+    self.cameraSwapBtn.hidden = YES;
+    self.filterBtn.hidden = YES;
+    self.filterView.hidden = YES;
+    self.audioClose.hidden = YES;
+    self.streamStatus = self.directorOpen;
+    if (self.directorOpen) {
+        self.videoStartAndStopBtn.enabled = YES;
+        self.videoStartAndStopBtn.alpha = 1.0f;
+        [self directorUIError:YES];
+    }else{
+        self.videoStartAndStopBtn.enabled = NO;
+        self.videoStartAndStopBtn.alpha = 0.5f;
+        [self directorUIError:NO];
+    }
+}
+#pragma mark ---普通直播与云导播机位推流需使用相机和麦克风
+- (void)initLiveHardWare{
+    //初始化CameraEngine
+
+    [self initCameraEngine];
+    //普通直播或云导播机位推流需要请求相机与麦克风权限
+
+
+
     //获取音频权限
     AVAudioSessionRecordPermission permissionStatus = [[AVAudioSession sharedInstance] recordPermission];
     if (permissionStatus == AVAudioSessionRecordPermissionUndetermined) {
@@ -103,7 +263,9 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self readCacheStatus];
+    //云导播以主持人发起直播，不使用摄像头麦克风，回显云导播的总画面
+    self.liveVideoType == VHLiveVideoDirectorHostEnter?:[self readCacheStatus];
+    
 }
 - (void)readCacheStatus{
     if ([VHSaveBeautyTool readSaveCacheStatus]) {
@@ -147,7 +309,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     VHLog(@"%@ dealloc",[[self class]description]);
 }
-
+#pragma mark --- 云导播以主持人进入前后台需请求接口请求有没有流
+- (void)hostEnterRoomIsHaveStream{
+    [VHWebinarBaseInfo getDirectorRoomStreamStatus:self.roomId success:^(BOOL isHaveStream) {
+        [self haveDirectorStream:isHaveStream];
+    } fail:^(NSError * _Nonnull error) {
+        
+    }];
+}
 -(void)LaunchLiveDidEnterBackground
 {
     if(_publishSuccess) {
@@ -158,26 +327,50 @@
 
 -(void)LaunchLiveWillEnterForeground
 {
-    [_engine startVideoCapture];
-    if(_publishSuccess) {
-        [_engine reconnect];
+    if (self.liveVideoType == VHLiveVideoDirectorHostEnter) {
+        [self hostEnterRoomIsHaveStream];
+    }else{
+        [_engine startVideoCapture];
+        if(_publishSuccess) {
+            [_engine reconnect];
+        }
     }
 }
 
 //返回
 - (IBAction)closeBtnClick:(id)sender
 {
-    if (_engine.isPublishing) {
-         [_engine stopLive];//停止活动
-    }
-    [_engine destoryObject];
-    _engine = nil;
     
+    [self stopLiveAlert];
+}
+- (void)stopLiveAlert{
+    [UIAlertController showAlertControllerTitle:@"提示" msg:@"您是否要结束直播？" leftTitle:@"取消" rightTitle:@"结束" leftCallBack:^{
+
+    } rightCallBack:^{
+        [self stopEngine];
+    }];
+}
+- (void)stopEngine{
+    if (self.liveVideoType == VHLiveVideoDirectorHostEnter) {
+        if (_publishSuccess) {
+            [_engine stopDirectorLive];
+            [_engine destoryDirectorLive];
+        }else{
+            [_engine destoryDirectorLive];
+        }
+        _engine = nil;
+    }else{
+        if (_engine.isPublishing) {
+             [_engine stopLive];//停止活动
+        }
+        [_engine destoryObject];
+        _engine = nil;
+    }
+
     [self dismissViewControllerAnimated:YES completion:^{
     }];
     [self.navigationController popViewControllerAnimated:NO];
 }
-
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     if (self.interfaceOrientation == UIInterfaceOrientationPortrait) {
@@ -253,8 +446,13 @@
     if (self.interfaceOrientation == UIInterfaceOrientationPortrait) {
         _backbtntopConstraint.constant = iPhoneX? 40 :20;
     }
-    
-    self.engine.displayView.frame = self.view.frame;
+    if (self.liveVideoType == VHLiveVideoDirectorHostEnter) {
+        //兼容竖屏
+        self.engine.liveView.frame = self.view.frame;
+       
+    }else{
+        self.engine.displayView.frame = self.view.frame;
+    }
 }
 
 #pragma mark - 初始化推流器
@@ -312,15 +510,32 @@
     _noiseView.hidden = !_isOpenNoiseSuppresion;
 
     // chat 模块
-    _chat = [[VHallChat alloc] initWithLivePublish:self.engine];
-    _chat.delegate = self;
-    
-
+    if (self.liveVideoType != VHLiveVideoDirectorSeatPushStream) {
+        _chat = [[VHallChat alloc] initWithLivePublish:self.engine];
+        _chat.delegate = self;
+    }
 }
 
 #pragma mark - 发起/停止直播
 - (IBAction)startVideoPlayer:(UIButton *)sender
 {
+    switch (self.liveVideoType) {
+        case VHLiveVideoDirectorHostEnter:{
+            [self.engine startDirectorLive];
+            [_chatDataArray removeAllObjects];
+            [_chatView update];
+            [self chatShow:YES];
+            _publishSuccess = YES;
+            self.videoStartAndStopBtn.hidden = YES;
+            self.bitRateLabel.hidden = YES;
+        }
+            break;
+        case VHLiveVideoDirectorSeatPushStream:{
+            //机位推流-进入页面机位就往主播台推流
+        }
+            break;
+        case VHLiveVideoNormal:{
+            //普通直播
 #if (TARGET_IPHONE_SIMULATOR)
     VH_ShowToast(@"无法在模拟器上发起直播！");
     return;
@@ -347,6 +562,12 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
     }
+        }
+            break;
+        default:
+            break;
+    }
+
 }
 
 //发起/停止纯音频直播
@@ -449,11 +670,31 @@
         case VHLiveStatusPushConnectSucceed:
         {
             [ProgressHud hideLoading];
-            [self chatShow:YES];
-            _publishSuccess = YES;
-            _videoStartAndStopBtn.selected = YES;
+            switch (self.liveVideoType) {
+                case VHLiveVideoNormal:{
+                    [self chatShow:YES];
+                    _publishSuccess = YES;
+                    _videoStartAndStopBtn.selected = YES;
+                }
+                    
+                    break;
+                case VHLiveVideoDirectorSeatPushStream:{
+                    //云导播以机位推流进入,
+                    _publishSuccess = YES;
+                    _videoStartAndStopBtn.hidden = YES;
+                    _videoStartAndStopBtn.selected = YES;
+                }
+                    break;
+                
+                default:
+                    break;
+            }
+           
             //设置画面填充模式
             [_engine setContentMode:VHRTMPMovieScalingModeAspectFill];
+            if (self.liveVideoType == VHLiveVideoDirectorSeatPushStream) {
+                VH_ShowToast(@"直播开始");
+            }
         }
             break;
         case VHLiveStatusSendError:
@@ -495,6 +736,14 @@
         {
             [self publishWithErrorMsg:content];
             
+        }
+            break;
+        case VHLiveStatusDirectorError:{
+            [UIAlertController showAlertControllerTitle:content msg:@"" btnTitle:@"确定" callBack:^{
+                [_engine stopVideoCapture];
+                [_engine destoryObject];
+                _engine = nil;
+            }];
         }
             break;
         default:
@@ -617,8 +866,10 @@
             dispatch_source_cancel(_timer);
             _timer = nil;
         }
-        _bitRateLabel.text = @"0 kb/s";
-        _bitRateLabel.textColor = [UIColor greenColor];
+        if (self.liveVideoType != VHLiveVideoDirectorHostEnter) {
+            _bitRateLabel.text = @"0 kb/s";
+            _bitRateLabel.textColor = [UIColor greenColor];
+        }
         _timeLabel.text    = @"00:00:00";
     }
 }
@@ -691,6 +942,69 @@
         }
         [_chatView update];
     }
+}
+#pragma mark ---云导播新增房间流状态
+- (void)directorStream:(BOOL)haveStream{
+    NSLog(@"%@", [NSString stringWithFormat:@"房间%@流",haveStream?@"有":@"没有"]);
+    [self haveDirectorStream:haveStream];
+}
+#pragma mark --- 有没有流与有没有开播
+- (void)haveDirectorStream:(BOOL)haveStream{
+    if (_publishSuccess) {
+        self.videoStartAndStopBtn.hidden = YES;
+        self.closeBtn.hidden = YES;
+        //开播接到流房间流信息 显示倒计时
+        if (haveStream) {
+            //销毁定时器
+            self.engine.liveView.hidden = NO;
+            self.engine.liveView.backgroundColor = [UIColor clearColor];
+            [self.exceptionTimer stop];
+            self.exceptionTimer = nil;
+            self.middleView.hidden = YES;
+        }else{
+            //开启定时器
+            self.engine.liveView.hidden = YES;
+            self.engine.liveView.backgroundColor =  [UIColor colorWithHex:@"222222"];
+            [self.exceptionTimer resume];
+            self.middleView.hidden = NO;
+        }
+    }else{
+        //未开播接到房间流信息
+        if (haveStream) {
+            self.engine.liveView.hidden = NO;
+            self.middleView.hidden = YES;
+            self.videoStartAndStopBtn.enabled = YES;
+            self.videoStartAndStopBtn.alpha = 1.0f;
+        }else{
+            self.engine.liveView.hidden = YES;
+            self.exceptionLabel.text = @"未检测到云导播推流";
+            self.middleView.hidden = NO;
+            self.videoStartAndStopBtn.enabled = NO;
+            self.videoStartAndStopBtn.alpha = 0.5f;
+        }
+    }
+}
+#pragma mark - 懒加载
+- (OMTimer *)exceptionTimer
+{
+    if (!_exceptionTimer)
+    {
+        _exceptionTimer = [[OMTimer alloc] init];
+        _exceptionTimer.timerInterval = 60*60*24*365;
+        _exceptionTimer.precision = 100;
+        _exceptionTimer.isAscend = YES;
+        @weakify(self);
+        _exceptionTimer.progressBlock = ^(OMTime *progress) {
+            @strongify(self);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.exceptionLabel.text = [NSString stringWithFormat:@"云导播推流异常 %@:%@:%@", progress.hour, progress.minute, progress.second];
+            });
+        };
+    }
+    return _exceptionTimer;
+}
+- (void)destoryTimer{
+    [self.exceptionTimer stop];
 }
 
 -(void)showTimeInfo{
@@ -772,6 +1086,7 @@
         _publishParam[@"id"] = _roomId;
         _publishParam[@"access_token"] = _token;
         _publishParam[@"nickname"] = _nick_name;
+        _publishParam[@"seat"] = self.seatModel.seat_id?:@"";//机位推流为必传参数
     }
     return _publishParam;
 }

@@ -31,8 +31,8 @@
 
 //问答是否开启
 @property (nonatomic, assign, readonly) BOOL isOpen;
-
-
+///问答名字
+@property (nonatomic, assign, readonly) NSString *question_name;
 /// 发送提问 （在收到播放器"播放连接成功回调"或"视频信息预加载成功回调"以后使用）
 /// @param msg 提问内容
 /// @param success 成功回调

@@ -232,12 +232,14 @@
     [alert removeFromSuperview];
     alert = nil;
     if(index == 1){ //同意主持人的邀请
-        [self.inavRoom agreeInviteSuccess:^{
-            [self presentInteractiveVC];
-        } fail:^(NSError *error) {
-            VH_ShowToast(error.localizedDescription);
+        ///先校验权限再上麦进入互动
+        [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+            [self.inavRoom agreeInviteSuccess:^{
+                [self presentInteractiveVC];
+            } fail:^(NSError *error) {
+                VH_ShowToast(error.localizedDescription);
+            }];
         }];
-        
     } else if(index == 0) { //拒绝主持人的邀请
         [self.inavRoom rejectInviteSuccess:^{
             VH_ShowToast(@"已拒绝");
@@ -288,13 +290,15 @@
     button.selected = !button.selected;
     __weak typeof(self) weakSelf = self;
     if (button.selected) {
-        [self.inavRoom applySuccess:^{
-            VH_ShowToast(@"申请上麦成功");
-            //开启上麦倒计时
-            [weakSelf.decorateView.upMicBtnView countdDown:30];
-        } fail:^(NSError *error) {
-            NSString *msg = [NSString stringWithFormat:@"申请上麦失败：%@",error.description];
-            VH_ShowToast(msg);
+        [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+            [self.inavRoom applySuccess:^{
+                VH_ShowToast(@"申请上麦成功");
+                //开启上麦倒计时
+                [weakSelf.decorateView.upMicBtnView countdDown:30];
+            } fail:^(NSError *error) {
+                NSString *msg = [NSString stringWithFormat:@"申请上麦失败：%@",error.description];
+                VH_ShowToast(msg);
+            }];
         }];
     } else {
         [self.inavRoom cancelApplySuccess:^{

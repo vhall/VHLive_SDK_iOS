@@ -76,6 +76,12 @@
     //弹出登录界面通知(直播过程中账号被顶，需销毁推流)
   //  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(destoryPublisherByAccountLogin) name:KNSNotificationName_PresentLogin object:nil];
     [self addDetailView];
+    //优化:嘉宾进入互动，不申请音视频权限
+    if (self.isGuest) {
+        //嘉宾
+        [self configUI];
+        return;
+    }
     //获取媒体权限
     [self getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
         if(videoAccess && audioAcess) {

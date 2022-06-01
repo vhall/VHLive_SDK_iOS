@@ -24,7 +24,10 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+- (void)setModel:(VHallSurveyModel *)model{
+    _model = model;
+    self.surveyName.text = model.surveyName;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

@@ -1,6 +1,0 @@
-framework module VHBFURender {
-  umbrella header "VHBFURender.h"
-
-  export *
-  module * { export * }
-}

@@ -44,6 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 进入房间后，此时的问答开关状态  YES：开启  NO：关闭
 @property (nonatomic, assign) BOOL qaOpenState;
+///问答名称
+@property (nonatomic, strong) NSString *questionName;
 /// 进入房间后，此时的文档开启状态  YES：开启  NO：关闭
 @property (nonatomic, assign) BOOL documentOpenState;
 /// 进入房间后，此时的举手开启状态  YES：开启  NO：关闭

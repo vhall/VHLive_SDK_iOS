@@ -274,15 +274,18 @@
             return;
         }
         //上麦请求
-        [self.inavRoom applySuccess:^{
-            button.userInteractionEnabled = YES;
-            VH_ShowToast(@"已发送上麦申请");
-            //开启倒计时
-            [detailView.bottomToolView startUpMicCountDownTime];
-        } fail:^(NSError *error) {
-            button.userInteractionEnabled = YES;
-            VH_ShowToast(error.localizedDescription);
+        [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+            [self.inavRoom applySuccess:^{
+                button.userInteractionEnabled = YES;
+                VH_ShowToast(@"已发送上麦申请");
+                //开启倒计时
+                [detailView.bottomToolView startUpMicCountDownTime];
+            } fail:^(NSError *error) {
+                button.userInteractionEnabled = YES;
+                VH_ShowToast(error.localizedDescription);
+            }];
         }];
+       
     }else {
         //标记自己下麦
         self.downMicrophoneBySelf = YES;
@@ -538,7 +541,7 @@
     //加入用户id
    NSString *joinUser = room.roomInfo.data[@"join_info"][@"third_party_user_id"];
     //主持人id
-    NSString *host = room.roomInfo.data[@"webinar"][@"userinfo"][@"user_id"];
+    NSString *host_id = [NSString stringWithFormat:@"%@",room.roomInfo.data[@"webinar"][@"userinfo"][@"user_id"]];
     switch (message.messageType) {
         case VHRoomMessageType_vrtc_connect_apply:{//用户申请上麦
             if (self.role == VHLiveRole_Host || (self.role == VHLiveRole_Guest && [self.inavRoom.roomInfo.mainSpeakerId isEqualToString:joinUser] && [self.inavRoom.roomInfo.permission containsObject:@(100037)])) {
@@ -569,11 +572,14 @@
                         VH_ShowToast(error.localizedDescription);
                     }];
                 } confirmText:@"同意" confirmBlock:^{
+                    ///权限校验
                     __weak __typeof(self)weakSelf = self;
-                    [self.inavRoom agreeInviteSuccess:^{
-                        [weakSelf.inavRoom publishWithCameraView:weakSelf.localRenderView];
-                    } fail:^(NSError *error) {
-                        VH_ShowToast(error.localizedDescription);
+                    [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+                        [self.inavRoom agreeInviteSuccess:^{
+                            [weakSelf.inavRoom publishWithCameraView:weakSelf.localRenderView];
+                        } fail:^(NSError *error) {
+                            VH_ShowToast(error.localizedDescription);
+                        }];
                     }];
                 }];
             }
@@ -774,7 +780,7 @@
                         NSLog(@"拒绝嘉宾邀请的要上麦");
                         NSString *title = [NSString stringWithFormat:@"%@拒绝了上麦申请",targetName];
                         VH_ShowToast(title);
-                    }else if (self.isSpeaker && [host isEqualToString:message.inviter_Id]){
+                    }else if (self.isSpeaker && [host_id isEqualToString:message.inviter_Id]){
                         NSLog(@"拒绝主持人邀请的要上麦");
                         NSString *title = [NSString stringWithFormat:@"%@拒绝了上麦申请",targetName];
                         VH_ShowToast(title);
