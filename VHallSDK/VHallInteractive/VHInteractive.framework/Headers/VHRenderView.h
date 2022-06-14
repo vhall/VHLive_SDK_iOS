@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "IVHBeautifyModule.h"
+
+@protocol IVHBeautifyModule;
+@class VHRtcPlayer;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -57,7 +59,8 @@ typedef NS_ENUM(int, VHInteractiveStreamType) {
     VHInteractiveStreamTypeAudioAndVideo   = 2,//音视频 默认
     VHInteractiveStreamTypeScreen          = 3,//共享桌面 暂不支持
     VHInteractiveStreamTypeFile            = 4, //插播  暂不支持
-    VHInteractiveStreamTypeVideoPatro  = 5, //视频轮巡，暂不支持
+    VHInteractiveStreamTypeVideoPatro      = 5, //视频轮询
+
 };
 
 typedef NS_ENUM(int, VHFrameResolutionValue) {
@@ -79,6 +82,8 @@ typedef void(^FinishBlock)(int code, NSString * _Nullable message);//code 200 �
 
 ///推流摄像头view类，该类定义了摄像头视图的创建、推流等Api，通过此类进行互动推流。使用此类请先在plist文件中添加对于摄像头和麦克风的权限描述。
 @interface VHRenderView : UIView
+
++ (VHRtcPlayer *)fastLivePlayer;
 
 /*
  * 创建本地摄像头view
@@ -121,6 +126,14 @@ typedef void(^FinishBlock)(int code, NSString * _Nullable message);//code 200 �
  * 使画面镜像，不会影响推流的视频方向
  */
 - (void)useMirror __deprecated_msg("当前版本不推荐使用该方法，可能会引发后摄像头的镜像问题");
+
+/**
+ * 实时改变摄像头分辨率和帧率
+ * @param resolution 分辨率
+ * @param fps 帧率，0 < fps < 31
+ * @link 推流过程中 尽量保持跟之前帧率一致
+ */
+- (BOOL)changeCaptureResolution:(VHFrameResolutionValue)resolution fps:(NSInteger)fps;
 
 // 设置预览画面方向
 - (BOOL)setDeviceOrientation:(UIDeviceOrientation)deviceOrientation;

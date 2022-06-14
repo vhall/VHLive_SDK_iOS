@@ -42,7 +42,8 @@
 {
     self = LoadVCNibName;
     if (self) {
-        
+        self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        self.modalTransitionStyle =UIModalTransitionStyleCrossDissolve;
     }
     return self;
 }
@@ -57,6 +58,10 @@
     }
     //动图
     if(![UIModelTools isEmptyStr:self.startLotteryModel.icon]) {
+        //兼容返回的icon
+        if (![self.startLotteryModel.icon containsString:@"https:"]) {
+            self.startLotteryModel.icon = [NSString stringWithFormat:@"https:%@",self.startLotteryModel.icon];
+        }
         [self.lotteryGif sd_setImageWithURL:[NSURL URLWithString:self.startLotteryModel.icon] placeholderImage:nil];
     }
     //是否口令抽奖
@@ -93,6 +98,16 @@
         self.lotteryResultText.text = [NSString stringWithFormat:@"中奖啦，\n恭喜您获得“%@”",endLotteryModel.prizeInfo.awardName ? endLotteryModel.prizeInfo.awardName : @"默认奖品"];
         self.lotteryResultText.textColor = MakeColorRGB(0xFF5659);
         [self.lotteryResultIcon sd_setImageWithURL:[NSURL URLWithString:endLotteryModel.prizeInfo.awardIcon] placeholderImage:BundleUIImage(@"插图_礼物_已中奖")];
+        if (endLotteryModel.need_take_award == NO) {
+            self.lotteryResultBtn.hidden = YES;
+        }
+        if (endLotteryModel.publish_winner == YES) {
+            self.lotteryResultBtn.hidden = NO;
+            [self.lotteryResultBtn setTitle:@"查看中奖名单" forState:UIControlStateNormal];
+        }
+        if (endLotteryModel.publish_winner == YES && endLotteryModel.need_take_award == YES) {
+            [self.lotteryResultBtn setTitle:@"立即领奖" forState:UIControlStateNormal];
+        }
     }else { //自己没有中奖
         self.lotteryResultBtn.hidden = (self.endLotteryModel.is_new && self.endLotteryModel.publish_winner == NO);
         [self.lotteryResultBtn setTitle:@"查看中奖名单" forState:UIControlStateNormal];
@@ -101,8 +116,12 @@
         [self.lotteryResultIcon sd_setImageWithURL:[NSURL URLWithString:endLotteryModel.prizeInfo.awardIcon] placeholderImage:BundleUIImage(@"插图_礼物_未中奖")];
     }
 }
-
-
+//匹配新抽奖UI
+- (void)new_lottery_UI:(VHallEndLotteryModel *)endLotteryModel{
+    [self setEndLotteryModel:endLotteryModel];
+    [self.lotteryResultBtn setTitle:@"立即领奖" forState:UIControlStateNormal];
+    [self lotteryResultBtnClick:self.lotteryResultBtn];
+}
 //口令立即参与
 - (IBAction)passwordBtnClick:(UIButton *)sender {
     //立即参与
@@ -129,7 +148,7 @@
 //立即领奖/查看中奖名单
 - (void)lotteryResultBtnClick:(UIButton *)button {
     if([button.titleLabel.text isEqualToString:@"立即领奖"]) { //领奖
-        if(self.startLotteryModel.is_new) { //新版抽奖，填写项通过接口获取
+        if(self.startLotteryModel.is_new || self.endLotteryModel.is_new) { //新版抽奖，填写项通过接口获取
             [ProgressHud showLoading];
             //获取输入项配置
             [_lottery getSubmitConfigSuccess:^(NSArray<VHallLotterySubmitConfig *> *submitList) {
@@ -185,7 +204,12 @@
 //提交中奖信息
 - (void)writeWinInfoView:(WatchLiveLotteryWriteWinInfoView *)writeWinInfoView submitWinInfo:(NSDictionary *)param {
     [ProgressHud showLoading];
-    [_lottery submitLotteryInfo:param success:^{
+    //兼容抽奖历史
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:param];
+    if (self.endLotteryModel.lottery_id) {
+        dic[@"lotteryId"] = self.endLotteryModel.lottery_id;
+    }
+    [_lottery submitLotteryInfo:dic success:^{
         //提交成功
         self.writeWinInfoView.hidden = YES;
         self.lotteryResultIcon.image = BundleUIImage(@"插图_中奖_信息提交");
@@ -194,6 +218,8 @@
         self.lotteryResultBtn.hidden = (self.endLotteryModel.is_new && self.endLotteryModel.publish_winner == NO);
         [self.lotteryResultBtn setTitle:@"查看中奖名单" forState:UIControlStateNormal];
         [ProgressHud hideLoading];
+        //领奖通知刷新抽奖icon
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"take_award_succeed" object:nil];
     } failed:^(NSDictionary *failedData) {
         [ProgressHud hideLoading];
         [UIAlertController showAlertControllerTitle:@"信息提交失败" msg:failedData[@"content"] btnTitle:@"确定" callBack:nil];

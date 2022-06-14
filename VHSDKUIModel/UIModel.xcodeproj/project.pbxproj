@@ -62,6 +62,9 @@
 		3247D9532805798900726DE3 /* VHViewProtocolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3247D9522805798900726DE3 /* VHViewProtocolView.m */; };
 		3247D9542805811400726DE3 /* VHViewProtocolView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3247D9512805798900726DE3 /* VHViewProtocolView.h */; };
 		3254FFEF282FB33000A308A9 /* VHQuestionnaireController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3254FFEE282FB33000A308A9 /* VHQuestionnaireController.m */; };
+		326F4A52284DB29B00020129 /* VHLotteryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326F4A51284DB29B00020129 /* VHLotteryViewController.m */; };
+		326F4A56284E23D500020129 /* icon_lottery.png in Resources */ = {isa = PBXBuildFile; fileRef = 326F4A55284E23D500020129 /* icon_lottery.png */; };
+		326F4A59284E290F00020129 /* UIView+RedRot.m in Sources */ = {isa = PBXBuildFile; fileRef = 326F4A58284E290F00020129 /* UIView+RedRot.m */; };
 		32876B0527E179C000D76DBC /* full-brush.png in Resources */ = {isa = PBXBuildFile; fileRef = 32876B0327E179C000D76DBC /* full-brush.png */; };
 		32876B0927E17BEC00D76DBC /* exfoliating_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32876B0727E17BEC00D76DBC /* exfoliating_select@3x.png */; };
 		32876B0A27E17BEC00D76DBC /* exfoliating@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32876B0827E17BEC00D76DBC /* exfoliating@3x.png */; };
@@ -695,6 +698,11 @@
 		3247D9522805798900726DE3 /* VHViewProtocolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHViewProtocolView.m; sourceTree = "<group>"; };
 		3254FFED282FB33000A308A9 /* VHQuestionnaireController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHQuestionnaireController.h; sourceTree = "<group>"; };
 		3254FFEE282FB33000A308A9 /* VHQuestionnaireController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHQuestionnaireController.m; sourceTree = "<group>"; };
+		326F4A50284DB29A00020129 /* VHLotteryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHLotteryViewController.h; sourceTree = "<group>"; };
+		326F4A51284DB29B00020129 /* VHLotteryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHLotteryViewController.m; sourceTree = "<group>"; };
+		326F4A55284E23D500020129 /* icon_lottery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_lottery.png; sourceTree = "<group>"; };
+		326F4A57284E290F00020129 /* UIView+RedRot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+RedRot.h"; sourceTree = "<group>"; };
+		326F4A58284E290F00020129 /* UIView+RedRot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+RedRot.m"; sourceTree = "<group>"; };
 		32876B0327E179C000D76DBC /* full-brush.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full-brush.png"; sourceTree = "<group>"; };
 		32876B0727E17BEC00D76DBC /* exfoliating_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exfoliating_select@3x.png"; sourceTree = "<group>"; };
 		32876B0827E17BEC00D76DBC /* exfoliating@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exfoliating@3x.png"; sourceTree = "<group>"; };
@@ -1386,6 +1394,8 @@
 				0308E2C82726D3FE0047F2A9 /* VHHalfWatchLiveVC_Nodelay.xib */,
 				3254FFED282FB33000A308A9 /* VHQuestionnaireController.h */,
 				3254FFEE282FB33000A308A9 /* VHQuestionnaireController.m */,
+				326F4A50284DB29A00020129 /* VHLotteryViewController.h */,
+				326F4A51284DB29B00020129 /* VHLotteryViewController.m */,
 				322C07E7283146D3002698D1 /* VHQueTableViewCell.h */,
 				322C07E8283146D3002698D1 /* VHQueTableViewCell.m */,
 			);
@@ -1421,6 +1431,8 @@
 				3215635727CC69640000AE2E /* UIColor+VUI.m */,
 				322B7C2F27CDE11200F6EA3A /* UILabel+VHConvenient.h */,
 				322B7C3027CDE11200F6EA3A /* UILabel+VHConvenient.m */,
+				326F4A57284E290F00020129 /* UIView+RedRot.h */,
+				326F4A58284E290F00020129 /* UIView+RedRot.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1512,6 +1524,7 @@
 		3240B99F283F3099008C8C42 /* playerBackground */ = {
 			isa = PBXGroup;
 			children = (
+				326F4A55284E23D500020129 /* icon_lottery.png */,
 				3240B9A1283F30D5008C8C42 /* playerBackground@2x.png */,
 				3240B9A0283F30D5008C8C42 /* playerBackground@3x.png */,
 			);
@@ -2657,6 +2670,7 @@
 				C0443BFB242839550063FB0D /* 结束直播@3x.png in Resources */,
 				F3A10A2026298824003552F8 /* live_topTool_video_off@3x.png in Resources */,
 				F3CA151026329BAE00325F3D /* icon-文档-单线条@2x.png in Resources */,
+				326F4A56284E23D500020129 /* icon_lottery.png in Resources */,
 				C0A26E26242F0DDC000D8708 /* DLNA_sound_max@3x.png in Resources */,
 				F3CA151C26329BAE00325F3D /* icon-文档-正方形@2x.png in Resources */,
 				C0443BFD242839550063FB0D /* 相机翻转@2x.png in Resources */,
@@ -3122,6 +3136,7 @@
 				F3A105572626940300F73EEA /* VHInteractVideoCell.m in Sources */,
 				F3A105712626D78C00F73EEA /* VHActionSheetConfig.m in Sources */,
 				C0529861242A41FD0029B29C /* DeviceTableViewCell.m in Sources */,
+				326F4A59284E290F00020129 /* UIView+RedRot.m in Sources */,
 				F3A10548262692D000F73EEA /* VHLiveMemberCell.m in Sources */,
 				C0443C79242839550063FB0D /* AnnouncementView.m in Sources */,
 				F3C114A2262ED9FA006C7623 /* OMTimer.m in Sources */,
@@ -3170,6 +3185,7 @@
 				03A03A4B27296D58006F4388 /* VHWatchNodelayVideoView.m in Sources */,
 				F3A1093A26297FB4003552F8 /* VHAlertView.m in Sources */,
 				C0443B64242839550063FB0D /* VHLiveChatView.m in Sources */,
+				326F4A52284DB29B00020129 /* VHLotteryViewController.m in Sources */,
 				C0443C7E242839550063FB0D /* MicCountDownView.m in Sources */,
 				328940BA27D05DAD004FB00F /* VHBeautyFilterCell.m in Sources */,
 				C0443C53242839550063FB0D /* WatchPlayBackViewController.m in Sources */,

@@ -31,9 +31,11 @@
 #import "VHWatchNodelayDocumentView.h"
 #import "AnnouncementView.h"
 #import "VHQuestionnaireController.h"
+#import "VHLotteryViewController.h"
+#import "UIView+RedRot.h"
 static AnnouncementView* announcementView = nil;
 
-@interface VHHalfWatchLiveVC_Nodelay ()<VHRoomDelegate, VHallChatDelegate, VHallQAndADelegate, VHallLotteryDelegate,VHallSignDelegate,VHallSurveyDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,MicCountDownViewDelegate,VHInvitationAlertDelegate,VHSurveyViewControllerDelegate,VHKeyboardToolViewDelegate,VHDocumentDelegate>
+@interface VHHalfWatchLiveVC_Nodelay ()<VHRoomDelegate, VHallChatDelegate, VHallQAndADelegate, VHallLotteryDelegate,VHallSignDelegate,VHallSurveyDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,MicCountDownViewDelegate,VHInvitationAlertDelegate,VHSurveyViewControllerDelegate,VHKeyboardToolViewDelegate,VHDocumentDelegate,VHLotteryOpenDelegate>
 {
     VHallChat         *_chat;       //聊天
     VHallQAndA        *_QA;         //问答
@@ -95,7 +97,8 @@ static AnnouncementView* announcementView = nil;
 @property (nonatomic) UIButton *questionnaireBtn;
 @property (nonatomic) BOOL  questionStatus;
 @property (nonatomic) NSInteger  selectIndex;
-
+///抽奖
+@property (nonatomic) UIButton *lotteryIconBtn;
 @end
 
 @implementation VHHalfWatchLiveVC_Nodelay
@@ -119,6 +122,110 @@ static AnnouncementView* announcementView = nil;
     //添加问卷
     [self addquestionnaireView];
     [self questionnaireLogic:NO];
+    
+    [self addLotteryView];
+    [self lotteryLogic:NO];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lotterySuccess) name:@"take_award_succeed" object:nil];
+}
+- (void)lotterySuccess{
+    [self lotteryLogic:NO];
+}
+- (void)addLotteryView{
+    self.lotteryIconBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.lotteryIconBtn setImage:BundleUIImage(@"icon_lottery") forState:UIControlStateNormal];
+    self.lotteryIconBtn.contentMode = UIViewContentModeScaleAspectFit;
+    [self.lotteryIconBtn addTarget:self action:@selector(lotteryAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.lotteryIconBtn];
+    [self.lotteryIconBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(0);
+        make.top.offset(90);
+        make.width.height.mas_equalTo(36);
+    }];
+}
+- (void)lotteryAction{
+    [self lotteryLogic:YES];
+}
+#pragma mark -- 获取抽奖历史
+- (void)lotteryLogic:(BOOL)isAction{
+    //抽奖历史记录
+    [VHWebinarBaseInfo fetchLotteryListShowAll:2 webinarId:self.roomId success:^(VHLotteryListModel * _Nonnull listModel) {
+            if (listModel.listModel.count == 0) {
+                if (isAction) {
+                    VH_ShowToast(@"当前没有中奖");
+                }
+            }else{
+                self.lotteryIconBtn.hidden = NO;
+                [self isHaveLotteryRedRot:listModel.listModel action:isAction];
+            }
+            
+        } fail:^(NSError * _Nonnull error) {
+            VH_ShowToast(error.localizedDescription);
+        }];
+}
+// 渲染UI 判断我自己是否中奖并且是否领奖
+- (void)isHaveLotteryRedRot:(NSArray <VHLotteryModel *>*)listArr action:(BOOL)action{
+    BOOL isHaveRedDot = NO;//是否显示红点
+    for (int i = 0; i < listArr.count; i++) {
+        VHLotteryModel *model = listArr[i];
+        //需要领奖
+        if (model.take_award == NO && model.win == YES) {
+            isHaveRedDot = YES;
+        }
+    }
+    // 显示小红点
+    if (isHaveRedDot) {
+        [self.lotteryIconBtn showBadge];
+    }else{
+        [self.lotteryIconBtn hidenBadge];
+    }
+    
+    // 判断展示填写信息界面,还是展示中奖列表
+    if (action) {
+        if (listArr.count == 1) {
+            VHLotteryModel *model = listArr[0];
+            if (model.win == NO) {
+                VH_ShowToast(@"当前奖品不需要领奖");
+                return;
+            }
+            if (model.take_award == YES) {
+                VH_ShowToast(@"当前奖品已经领过奖");
+                return;
+            }
+            [self lotteryBtnClick:self.lotteryBtn];
+            [self openOneLotteryModel:model];
+        }else{
+            ///显示抽奖历史
+            [self lotteryBtnClick:self.lotteryBtn];
+            [self presentLottery:listArr];
+        }
+    }
+}
+- (void)openOneLotteryModel:(VHLotteryModel *)model{
+    VHallEndLotteryModel *endModel = [[VHallEndLotteryModel alloc] init];
+    endModel.is_new = YES;
+    endModel.lottery_id = model.lottery_id;
+    endModel.need_take_award = model.need_take_award;
+    endModel.isWin = model.win;
+    endModel.publish_winner = model.publish_winner;
+    [self lotteryOpen:endModel];
+}
+- (void)presentLottery:(NSArray<VHLotteryModel *> *)lotteryArr{
+    VHLotteryViewController *lottery = [[VHLotteryViewController alloc] init];
+    lottery.lotteryList = lotteryArr;
+    lottery.delegate = self;
+    [self presentViewController:lottery animated:YES completion:nil];
+}
+- (void)lotteryOpen:(VHallEndLotteryModel *)endLotteryModel{
+    if (_lotteryVC) {
+        [_showView removeAllSubviews];
+        _lotteryVC = nil;
+    }
+    _lotteryVC = [[WatchLiveLotteryViewController alloc] init];
+    _lotteryVC.lottery = _lottery;
+    _lotteryVC.view.frame = _showView.bounds;
+    [_showView addSubview:_lotteryVC.view];
+    [_lotteryVC new_lottery_UI:endLotteryModel];
+    [self lotteryBtnClick:self.lotteryBtn];
 }
 - (void)addquestionnaireView{
     self.questionnaireBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -560,9 +667,9 @@ static AnnouncementView* announcementView = nil;
                 
                 NSRange range = NSMakeRange(0,mutaArr.count);
                 [weakSelf.chatDataArray insertObjects:mutaArr atIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
-                [weakSelf.chatView reloadData];
             }
         }
+        [weakSelf.chatView reloadData];
         [weakSelf.chatView.mj_header endRefreshing];
         [weakSelf.chatView.mj_footer endRefreshing];
     } failed:^(NSDictionary *failedData) {
@@ -907,6 +1014,8 @@ static AnnouncementView* announcementView = nil;
     }
     _lotteryVC.endLotteryModel = msg;
     [self lotteryBtnClick:self.lotteryBtn];
+    //刷新icon小红点
+    [self lotteryLogic:NO];
 }
 
 

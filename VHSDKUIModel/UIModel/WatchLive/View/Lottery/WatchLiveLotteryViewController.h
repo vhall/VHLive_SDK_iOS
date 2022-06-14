@@ -16,5 +16,5 @@
 @property (nonatomic, strong) VHallStartLotteryModel * startLotteryModel;
 @property (nonatomic, strong) VHallEndLotteryModel * endLotteryModel;
 
-
+- (void)new_lottery_UI:(VHallEndLotteryModel *)endLotteryModel;
 @end

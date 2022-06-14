@@ -82,8 +82,8 @@
  * @param reslutFailedCallback  失败回调失败Block 字典结构：{code：错误码，content：错误信息}
  *
  */
-- (void)getHistoryWithType:(BOOL)showAll success:(void(^)(NSArray <VHallChatModel *> * msgs))success failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
 
+- (void)getHistoryWithType:(BOOL)showAll success:(void(^)(NSArray <VHallChatModel *> * msgs))success failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
 
 /**
  * 分页获取聊天历史记录，最新消息在数组最后一位（仅支持H5活动，Flash活动若使用该方法效果同上：getHistoryWithType:YES） (v5.0新增)
@@ -94,8 +94,8 @@
  * @param reslutFailedCallback  失败回调失败Block  字典结构：{code：错误码，content：错误信息}
  *
  */
-
 - (void)getHistoryWithStartTime:(NSString *)startTime pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize success:(void(^)(NSArray <VHallChatModel *> * msgs))success failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
+
 
 /**
  * 发送自定义消息

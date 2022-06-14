@@ -21,7 +21,8 @@
 @class VHRoomToolStatus;
 @class VHSurveyListModel;
 @class VHSurveyModel;
-
+@class VHLotteryListModel;
+@class VHLotteryModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol VHWebinarInfoDelegate <NSObject>
@@ -125,6 +126,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///获取问卷历史
 + (void)fetchSurveyList:(NSString *)webinarId success:(void(^)(VHSurveyListModel *))success fail:(void(^)(NSError *error))fail;
+
+///获取抽奖列表接口
++ (void)fetchLotteryListShowAll:(NSInteger)showAll webinarId:(NSString *)webinarId success:(void (^)(VHLotteryListModel * _Nonnull))success fail:(void (^)(NSError * _Nonnull))fail;
 
 @end
 
@@ -234,5 +238,32 @@ NS_ASSUME_NONNULL_BEGIN
 //问卷的URL
 @property (nonatomic,strong,readonly) NSURL *openLink;
 @end
-
+//抽奖
+@interface VHLotteryListModel : NSObject
+@property (nonatomic,strong) NSArray <VHLotteryModel *>*listModel;
+@end
+@interface VHLotteryModel : NSObject
+///抽奖标题
+@property (nonatomic,copy,readonly) NSString *title;
+//创建时间
+@property (nonatomic,copy,readonly) NSString *created_at;
+///图标地址
+@property (nonatomic,copy,readonly) NSString *icon;
+///抽奖动图下标
+@property (nonatomic,copy,readonly) NSString *img_order;
+///本次抽奖说明
+@property (nonatomic,copy,readonly) NSString *remark;
+///奖品快照
+@property (nonatomic,copy,readonly) id award_snapshoot;
+///已中奖
+@property (nonatomic,assign,readonly)BOOL win;
+///已领奖
+@property (nonatomic,assign,readonly)BOOL take_award;
+///是否需要领奖
+@property (nonatomic,assign,readonly)BOOL need_take_award;
+///是否显示中奖名单
+@property (nonatomic,assign,readonly)BOOL publish_winner;
+//抽奖id
+@property (nonatomic,copy,readonly) NSString *lottery_id;
+@end
 NS_ASSUME_NONNULL_END

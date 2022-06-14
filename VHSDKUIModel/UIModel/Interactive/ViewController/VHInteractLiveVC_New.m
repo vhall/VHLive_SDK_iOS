@@ -825,7 +825,7 @@
         _inavRoom.delegate = self;
     }
     return _inavRoom;
-}
+} 
 
 - (VHLocalRenderView *)localRenderView
 {

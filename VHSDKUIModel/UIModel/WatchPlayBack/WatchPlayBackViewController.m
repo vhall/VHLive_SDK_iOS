@@ -269,9 +269,9 @@ static AnnouncementView* announcementView = nil;
                 }
                 NSRange range = NSMakeRange(0,mutaArr.count);
                 [weakSelf.chatArray insertObjects:mutaArr atIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
-                [weakSelf.tableView reloadData];
             }
         }
+        [weakSelf.tableView reloadData];
         [weakSelf.tableView.mj_header endRefreshing];
         [weakSelf.tableView.mj_footer endRefreshing];
     } failed:^(NSDictionary *failedData) {

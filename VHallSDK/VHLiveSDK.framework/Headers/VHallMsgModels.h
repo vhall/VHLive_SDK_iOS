@@ -165,6 +165,7 @@ typedef NS_ENUM(NSInteger,ChatCustomType) {
 //-----------以下属性为新版抽奖新增----------------
 @property (nonatomic, strong) VHallAwardPrizeInfoModel *prizeInfo;   ///<奖品信息
 @property (nonatomic, assign) BOOL publish_winner;   ///<是否显示中奖名单
+@property (nonatomic, assign) BOOL need_take_award;//是否需要领奖
 @end
 
 
