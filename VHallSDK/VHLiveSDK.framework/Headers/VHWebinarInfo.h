@@ -14,6 +14,7 @@
 @class VHViewProtocolModel;
 @class VHStatementModel;
 
+
 @class VHDirectorModel;
 @class VHSeatModel;
 
@@ -111,7 +112,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)fetchViewProtocol:(NSString *)webinarId success:(void(^)(VHViewProtocolModel *protocolModel))success fail:(void(^)(NSError *error))fail;
 ///同意观看协议
 + (void)agreeViewProtocol:(NSString *)webinarId success:(void(^)(void))success fail:(void(^)(NSError *error))fail;
-
 
 ///云导播活动
 ///导播台是否开启 director_status=YES:已开启，NO:未开启
@@ -216,6 +216,7 @@ NS_ASSUME_NONNULL_BEGIN
 //机位状态
 @property (nonatomic,readonly) NSInteger  seat_status;
 @end
+
 
 @interface VHSurveyListModel : NSObject
 @property (nonatomic,strong) NSArray <VHSurveyModel *>*listModel;

@@ -10,7 +10,7 @@
 
 @interface VHWatchNodelayDocumentView () <VHDocumentDelegate>
 @property (nonatomic, strong) UILabel *noDocTipLab;     ///<无文档提示
-@property (nonatomic, weak) VHDocument *document;  ///<文档对象
+@property (nonatomic) VHDocument *document;  ///<文档对象
 @property (nonatomic, assign) BOOL documentShow;  ///<是否显示文档
 
 @end
@@ -26,6 +26,10 @@
     return self;
 }
 
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    self.document.frame = frame;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -113,6 +117,9 @@
         self.documentShow = switchStatus;
     }
     self.noDocTipLab.hidden = switchStatus;
+    if(self.delegate && [self.delegate respondsToSelector:@selector(nodelayDidChangeDocument)]) {
+        [self.delegate nodelayDidChangeDocument];
+    }
 }
 
 //选择 documentView
@@ -125,6 +132,7 @@
 //添加 documentView
 - (void)document:(VHDocument *)document addDocumentView:(VHDocumentView *)documentView {
     VUI_Log(@"添加文档：%@---cid:%@---该文档是否为选中文档：%d",documentView,documentView.cid,[documentView isEqual:document.selectedView]);
+    documentView.watermark = self.watermark;
     [self addDocumentView:documentView];
     //保证选择的文档始终在顶层（防止其他端演示新文档时，没有销毁老文档，会出现多个文档叠加；或者出现回调先选择文档后添加文档，导致选择文档无法显示）
     [self bringSubviewToFrontWithDocId:document.selectedView.cid];

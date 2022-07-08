@@ -31,7 +31,8 @@
 @property (nonatomic, strong) VHRoomBroadCastConfig *broadCastConfig;
 /// 当前是否在推流中
 @property (nonatomic, assign, readonly) BOOL isPublishing;
-
+/// 是否要参与轮巡
+@property (nonatomic, assign) BOOL  isVideoRound;
 /// 当前推流cameraView，只在推流过程中存在
 @property (nonatomic, weak, readonly) VHRenderView *cameraView;
 
@@ -51,8 +52,8 @@
 + (NSArray<NSString *> *)availableVideoResolutions;
 
 /// 观众进入互动房间
-/// <注意：如果为常规(非无延迟)互动直播，观众需要上麦（申请上麦被同意或被邀请上麦）后再进入互动房间，否则没有上麦直接进入非无延迟互动直播间，会占用房间用户名额，可能会导致其他嘉宾进房间失败>
 /// @param roomId 房间id，同活动id
+/// @discussion  注意：如果为常规(非无延迟)互动直播，观众需要上麦（申请上麦被同意或被邀请上麦）后再进入互动房间，否则没有上麦直接进入非无延迟互动直播间，会占用房间用户名额，可能会导致其他嘉宾进房间失败>
 - (void)enterRoomWithRoomId:(NSString *)roomId;
 
 /// 观众进入互动房间
@@ -72,6 +73,8 @@
 /// 离开房间
 - (void)leaveRoom;
 
+/// 设置是否加入混流
+- (void)setRoomJoinBroadCastMixOption:(BOOL)isJoin cameraView:(VHLocalRenderView *)cameraView finish:(void(^)(int code, NSString * _Nonnull message))handle;
 
 #pragma mark ------------------v6.1新增--------------------
 /// 嘉宾进入互动房间 (嘉宾使用)
@@ -158,6 +161,12 @@
 /// @param success 成功回调
 /// @param fail 失败回调
 - (void)agreeInviteSuccess:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+
+/// 获取轮询用户
+/// @param is_next 是否是下一组， 0：当前组， 1：下一组
+/// @param success 成功
+/// @param fail 失败
+- (void)getRoundUsersWithIs_next:(NSString *)is_next success:(void(^)(NSDictionary *response))success fail:(void(^)(NSError *error))fail;
 
 /// 获取在线成员列表
 /// @param pageNum 页码，第一页从1开始

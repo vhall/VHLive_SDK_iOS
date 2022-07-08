@@ -39,16 +39,31 @@
  */
 - (void)allForbidChat:(BOOL)allForbidChat;
 
-
-/*
- 云导播房间流状态
- **/
+/**
+ * 云导播房间流状态
+ * @param haveStream 是否有流
+ */
 - (void)directorStream:(BOOL)haveStream;
 
 /**
- *  问答状态 YES:可用,NO:不可用
+ * 问答状态
+ * @param questionStatus YES:可用 NO:不可用
  */
 - (void)questionStatus:(BOOL)questionStatus;
+
+/**
+ * 轮巡开始
+ */
+- (void)videoRoundStart;
+/**
+ * 轮巡结束
+ */
+- (void)videoRoundEnd;
+/**
+ * 轮巡列表
+ * @param uids 需要轮巡用的列表
+ */
+- (void)videoRoundUsers:(NSArray *)uids;
 
 @end
 

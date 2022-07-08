@@ -49,6 +49,10 @@
 @property (nonatomic,assign) BOOL  isEnableBeauty;
 
 @property (nonatomic,strong) VHBeautyAdjustController *adjust;
+
+/// 当前互动人数
+@property (nonatomic, assign) NSInteger  current_inav_num;
+
 @end
 
 @implementation VHInteractLiveVC_New
@@ -461,6 +465,9 @@
 
 //推流成功
 - (void)room:(VHRoom *)room didPublish:(VHRenderView *)cameraView {
+    // 更新互动人数
+    self.current_inav_num = self.current_inav_num + 1;
+
     [self.liveStateView setLiveState:VHLiveState_Success btnTitle:@""];
     //移除本地预览视频
     [self.localRenderView removeFromSuperview];
@@ -481,6 +488,11 @@
 // 停止推流成功
 - (void)room:(VHRoom *)room didUnpublish:(VHRenderView *)cameraView {
     VUI_Log(@"停止推流成功");
+    // 更新互动人数
+    if (self.current_inav_num > 0) {
+        self.current_inav_num = self.current_inav_num - 1;
+    }
+
 }
 //错误回调
 - (void)room:(VHRoom *)room didError:(VHRoomErrorStatus)status reason:(NSString *)reason {
@@ -502,10 +514,14 @@
 
 // 视频流添加回调（收到此回调后需要添加视频view，可能是连麦用户，也可能是共享屏幕/插播）
 - (void)room:(VHRoom *)room didAddAttendView:(VHRenderView *)attendView {
-    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
         return;//过滤视频轮巡流
     }
     VUI_Log(@"\n某人上麦:%@，流类型：%d，流视频宽高：%@，流id：%@，是否有音频：%d，是否有视频：%d",attendView.userId,attendView.streamType,NSStringFromCGSize(attendView.videoSize),attendView.streamId,attendView.hasAudio,attendView.hasVideo);
+    
+    // 更新互动人数
+    self.current_inav_num = self.current_inav_num + 1;
+
     VHLiveMemberModel *model = [VHLiveMemberModel modelWithVHRenderView:(VHLocalRenderView *)attendView];
     model.haveDocPermission = [self.inavRoom.roomInfo.mainSpeakerId isEqualToString:model.account_id];
     [self.interactView addAttendWithUser:model];
@@ -524,9 +540,15 @@
 /// 视频流移除回调（收到此回调后需要移除视频view，可能是连麦用户，也可能是共享屏幕/插播）
 - (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView {
     [self.interactView removeAttendView:(VHLocalRenderView *)attendView];
-    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
         return;//过滤视频轮巡流
     }
+    
+    // 更新互动人数
+    if (self.current_inav_num > 0) {
+        self.current_inav_num = self.current_inav_num - 1;
+    }
+
     //更新视频小窗口显示
     [self updateSmallVideo];
 }
@@ -632,14 +654,18 @@
             
         }break;
         case VHRoomMessageType_vrtc_speaker_switch:{//设置主讲人
+            
+            self.roomInfo.mainSpeakerId = targetId;
+            
             if(targetIsMyself) { //自己被设为主讲人
                 VH_ShowToast(@"您已被设为主讲人");
                 if([self.inavRoom.roomInfo.permission containsObject:@(100037)]) {
-                [self updateGuestMainSpeaker:self.isGuest];
+                    [self updateGuestMainSpeaker:self.isGuest];
                 }
-                
                 [self setDocEditEnable:YES];
+
             }else { //其他人被设为主讲人
+                
                 [self setDocEditEnable:NO];
                 [self updateGuestMainSpeaker:NO];
                 if(self.role != VHLiveRole_Host) { //自己不是主持人，其他人被设置为主讲人时给提示
@@ -825,7 +851,7 @@
         _inavRoom.delegate = self;
     }
     return _inavRoom;
-} 
+}
 
 - (VHLocalRenderView *)localRenderView
 {
@@ -833,19 +859,16 @@
 
         VHFrameResolutionValue resolution = VHFrameResolution480x360;
         
-        if (self.role == VHLiveRole_Host) { //主持人
+        if (self.role == VHLiveRole_Host || [self.roomInfo.mainSpeakerId isEqualToString:_localRenderView.userId]) {
             resolution = VHFrameResolution640x480;
-            self.infoDetailView.resolutionLab.text = @"推流分辨率：640x480";
-        }else{ //嘉宾
-            if (self.inav_num > 0 && self.inav_num <= 5) {
+        }else{
+            if (self.current_inav_num > 0 && self.current_inav_num <= 5) {
                 resolution = VHFrameResolution480x360;
                 self.infoDetailView.resolutionLab.text = @"推流分辨率：480x360";
-            } else if (self.inav_num > 5 && self.inav_num < 10) {
+            } else if (self.current_inav_num > 5 && self.current_inav_num < 10) {
                 resolution = VHFrameResolution320x240;
-                self.infoDetailView.resolutionLab.text = @"推流分辨率：320x240";
             }else{
                 resolution = VHFrameResolution240x160;
-                self.infoDetailView.resolutionLab.text = @"推流分辨率：240x160";
             }
         }
         
@@ -855,11 +878,6 @@
         _localRenderView.scalingMode = VHRenderViewScalingModeAspectFill;
         _localRenderView.beautifyEnable = YES;
         if (self.beautKit) {
-//            [[VHReflect currentModuleBeautyKit:self.beautKit] setCaptureImageOrientation:(self.screenLandscape == UIDeviceOrientationLandscapeLeft)?2:3];
-//            [_localRenderView useBeautifyModule:[VHReflect currentModuleBeautyKit:self.beautKit] HandleError:^(NSError * _Nonnull error) {
-//                NSLog(@"error === %@",error.localizedDescription);
-//                self.isEnableBeauty = (error!=nil)?NO:YES;//是否可以使用美颜
-//            }];
             [[self.beautKit currentModule] setCaptureImageOrientation:(self.screenLandscape == UIDeviceOrientationLandscapeLeft)?2:3];
             [_localRenderView useBeautifyModule:[self.beautKit currentModule] HandleError:^(NSError * _Nonnull error) {
             NSLog(@"error === %@",error.localizedDescription);
@@ -868,6 +886,14 @@
         }
         
         [_localRenderView setDeviceOrientation:self.screenLandscape ? UIDeviceOrientationLandscapeLeft : UIDeviceOrientationPortrait];
+        
+//        // 实时回调推流信息
+//        [_localRenderView getSsrcStats:^(NSString * _Nonnull mediaType, long kbps, NSDictionary<NSString *,NSString *> * _Nonnull values) {
+//            self.infoDetailView.resolutionLab.text = [NSString stringWithFormat:@"推流分辨率：%@",values];
+//        }];
+//        [_localRenderView startStatsWithCallback:^(NSString * _Nonnull mediaType, long kbps, NSDictionary<NSString *,NSString *> * _Nonnull values) {
+//            self.infoDetailView.resolutionLab.text = [NSString stringWithFormat:@"推流分辨率：%@",values];
+//        }];
     }
     return _localRenderView;
 }

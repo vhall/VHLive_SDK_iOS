@@ -1,10 +1,19 @@
 # Uncomment the next line to define a global platform for your project
+#
+
 platform :ios, '9.0'
 use_frameworks!
+inhibit_all_warnings!
+
+workspace "./VHSDKDemo.xcworkspace"
 
 target 'VHSDKDemo' do
-  pod  'VHLiveSDK' ,'6.4.0'
-  pod  'VHLiveSDK_Interactive', '6.4.0'
-  pod  'VHYun_Beautify','1.0.6'
+  pod 'GLEnvs'
+  pod 'LookinServer', :configurations => ['Debug']
+  pod 'VHYun_Beautify', '1.0.6'
 end
 
+target 'UIModel' do
+  project "../VHSDKUIModel/UIModel.xcodeproj"
+  pod 'VHYun_Beautify','1.0.6'
+end

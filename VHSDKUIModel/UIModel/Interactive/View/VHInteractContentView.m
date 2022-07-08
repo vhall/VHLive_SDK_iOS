@@ -100,7 +100,7 @@
 - (void)addAttendWithUser:(VHLiveMemberModel *)model {
     NSLog(@"上麦添加视频画面流id:%@",model.videoView.streamId);
     //如果非插播||共享屏幕
-    if(model.videoView.streamType != VHInteractiveStreamTypeScreen && model.videoView.streamType != VHInteractiveStreamTypeFile) {
+    if(model.videoView.streamType != VHInteractiveStreamTypeScreen && model.videoView.streamType != VHInteractiveStreamTypeFile && model.videoView.streamType != VHInteractiveStreamTypeVideoPatrol) {
         //防止同一用户视频多次添加
         for(VHLiveMemberModel *memberModel in self.dadaSource.reverseObjectEnumerator) {
             if([model.account_id isEqualToString:memberModel.account_id]) {
@@ -154,7 +154,7 @@
 //**下麦移除视频画面
 - (void)removeAttendView:(VHLocalRenderView *)renderView {
     [renderView removeFromSuperview];
-    if(renderView.streamType == VHInteractiveStreamTypeScreen || renderView.streamType == VHInteractiveStreamTypeFile) { //共享屏幕 || 插播
+    if(renderView.streamType == VHInteractiveStreamTypeScreen || renderView.streamType == VHInteractiveStreamTypeFile|| renderView.streamType == VHInteractiveStreamTypeVideoPatrol) { //共享屏幕 || 插播
         self.screenOrFileModel = nil;
     }else {
         for(VHLiveMemberModel *model in self.dadaSource.reverseObjectEnumerator) {
@@ -171,7 +171,7 @@
 - (void)targerId:(NSString *)targerId closeCamera:(BOOL)state {
     for(int i = 0 ; i < self.dadaSource.count ; i++) {
         VHLiveMemberModel *model = self.dadaSource[i];
-        if([model.account_id isEqualToString:targerId] && !(model.videoView.streamType == VHInteractiveStreamTypeScreen || model.videoView.streamType == VHInteractiveStreamTypeFile)) {
+        if([model.account_id isEqualToString:targerId] && !(model.videoView.streamType == VHInteractiveStreamTypeScreen || model.videoView.streamType == VHInteractiveStreamTypeFile|| model.videoView.streamType == VHInteractiveStreamTypeVideoPatrol)) {
             model.closeCamera = state;
             VHInteractVideoCell *cell = (VHInteractVideoCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:self.screenOrFileModel ? 1 : 0]];
             cell.model = model;
@@ -184,7 +184,7 @@
 - (void)targerId:(NSString *)targerId closeMicrophone:(BOOL)state {
     for(int i = 0 ; i < self.dadaSource.count ; i++) {
         VHLiveMemberModel *model = self.dadaSource[i];
-        if([model.account_id isEqualToString:targerId] && !(model.videoView.streamType == VHInteractiveStreamTypeScreen || model.videoView.streamType == VHInteractiveStreamTypeFile)) {
+        if([model.account_id isEqualToString:targerId] && !(model.videoView.streamType == VHInteractiveStreamTypeScreen || model.videoView.streamType == VHInteractiveStreamTypeFile || model.videoView.streamType == VHInteractiveStreamTypeVideoPatrol)) {
            // NSLog(@"是否有音频：%zd,是否有视频：%zd,远端流：%@",model.videoView.hasAudio,model.videoView.hasVideo, [model.videoView.remoteMuteStream mj_JSONObject]);
             model.closeMicrophone = state;
             VHInteractVideoCell *cell = (VHInteractVideoCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:self.screenOrFileModel ? 1 : 0]];

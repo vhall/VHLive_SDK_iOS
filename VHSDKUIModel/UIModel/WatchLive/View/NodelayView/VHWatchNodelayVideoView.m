@@ -61,7 +61,7 @@
 //添加视频渲染画面
 - (void)addRenderView:(VHRenderView *)renderView {
     if(self.roomInfo.webinar_type == VHWebinarLiveType_Interactive) {  //互动直播
-        if(renderView.streamType == VHInteractiveStreamTypeScreen || renderView.streamType == VHInteractiveStreamTypeFile) { //共享桌面或插播
+        if(renderView.streamType == VHInteractiveStreamTypeScreen || renderView.streamType == VHInteractiveStreamTypeFile || renderView.streamType == VHInteractiveStreamTypeVideoPatrol) { //共享桌面或插播
             [self.fileVideoContentView addSubview:renderView];
             [renderView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.edges.equalTo(self.fileVideoContentView);
@@ -90,7 +90,7 @@
 //移除视频渲染画面
 - (void)removeRenderView:(VHRenderView *)renderView {
     
-    if(renderView.streamType == VHInteractiveStreamTypeScreen || renderView.streamType == VHInteractiveStreamTypeFile) { //共享桌面或插播
+    if(renderView.streamType == VHInteractiveStreamTypeScreen || renderView.streamType == VHInteractiveStreamTypeFile|| renderView.streamType == VHInteractiveStreamTypeVideoPatrol) { //共享桌面或插播
         [renderView removeFromSuperview];
         return;
     }

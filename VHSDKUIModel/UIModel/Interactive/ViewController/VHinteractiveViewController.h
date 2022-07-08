@@ -17,20 +17,27 @@
 
 @interface VHinteractiveViewController : VHBaseViewController
 
-/** 代理 */
+/// 代理
 @property (nonatomic, weak) id<VHinteractiveViewControllerDelegate> _Nullable delegate;
 
-//加入互动房间参数（id：房间id pass：密码/k值，等）
+/// 加入互动房间参数（id：房间id pass：密码/k值，等）
 @property (nonatomic, strong) NSDictionary * _Nonnull joinRoomPrams;
 
-@property (nonatomic, assign) NSInteger inav_num;     ///<当前活动支持的最大连麦人数，如：6代表1v5，16代表1v15...
+/// 当前活动支持的最大连麦人数，如：6代表1v5，16代表1v15...
+@property (nonatomic, assign) NSInteger inav_num;
 
-/** 互动工具view */
+/// 是否要参与轮巡
+@property (nonatomic, assign) BOOL  isVideoRound;
+
+/// 当前是否在推流中
+@property (nonatomic, assign, readonly) BOOL isPublishing;
+
+/// 互动工具view
 @property (nonatomic, strong , readonly) UIView * _Nullable toolView;
 
+/// 互动美颜开关
+@property(nonatomic, assign) BOOL  inavBeautifyFilterEnable;
 
-@property(nonatomic, assign)BOOL     inavBeautifyFilterEnable;//互动美颜开关
-
-//下麦退出
+/// 下麦退出
 - (void)closeButtonClick:(UIButton *_Nullable)sender;
 @end

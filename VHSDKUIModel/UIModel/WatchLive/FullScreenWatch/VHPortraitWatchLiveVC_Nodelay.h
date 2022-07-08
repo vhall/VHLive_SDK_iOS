@@ -11,12 +11,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface VHPortraitWatchLiveVC_Nodelay : VHBaseViewController
-
-@property(nonatomic,copy)NSString * roomId; //活动id
-@property(nonatomic,copy)NSString * kValue; //活动观看密码
-
-@property (nonatomic, assign) BOOL interactBeautifyEnable; //互动美颜开关
-
+/// 活动id
+@property(nonatomic,copy)NSString * roomId;
+/// 活动观看密码
+@property(nonatomic,copy)NSString * kValue;
+/// 互动美颜开关
+@property (nonatomic, assign) BOOL interactBeautifyEnable;
 @end
 
 NS_ASSUME_NONNULL_END

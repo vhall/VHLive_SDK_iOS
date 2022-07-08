@@ -31,9 +31,12 @@
 #import "VHScrollTextView.h"
 #import "Masonry.h"
 #import "VHQuestionnaireController.h"
+#import "VHVideoRoundModel.h"
+
 #import "VHLotteryViewController.h"
 #import "UIView+RedRot.h"
 # define DebugLog(fmt, ...) NSLog((@"\n[文件名:%s]\n""[函数名:%s]\n""[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#import "VHDocFullScreenViewController.h"
 
 static AnnouncementView* announcementView = nil;
 @interface VHHalfWatchLiveVC_Normal ()<VHallMoviePlayerDelegate, VHallChatDelegate, VHallQAndADelegate, VHallLotteryDelegate,VHallSignDelegate,VHallSurveyDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,MicCountDownViewDelegate,VHInvitationAlertDelegate,VHSurveyViewControllerDelegate,DLNAViewDelegate,VHWebinarInfoDelegate,VHKeyboardToolViewDelegate,VHLotteryOpenDelegate>
@@ -61,7 +64,7 @@ static AnnouncementView* announcementView = nil;
     NSMutableDictionary *announcementContentDic;//公告内容
     NSArray* _definitionList; //支持的分辨率
 }
-
+@property (nonatomic) VHDocFullScreenViewController *docFullScreen;
 @property (weak, nonatomic) IBOutlet UIView *showView;
 @property (weak, nonatomic) IBOutlet UIButton *lotteryBtn; //抽奖按钮
 @property (weak, nonatomic) IBOutlet UILabel *bufferCountLabel;
@@ -76,6 +79,7 @@ static AnnouncementView* announcementView = nil;
 @property(nonatomic,assign) BOOL     connectedNetWork;
 @property (weak, nonatomic) IBOutlet UIButton *detailBtn;
 @property (weak, nonatomic) IBOutlet UIButton *docBtn;
+@property (weak, nonatomic) IBOutlet UIButton *docFullScreenButton; // 文档全屏按钮
 @property (weak, nonatomic) IBOutlet UIButton *chatBtn;
 @property (weak, nonatomic) IBOutlet UIButton *QABtn;
 @property (nonatomic, strong) UIButton *currentSelectedButton;
@@ -109,8 +113,12 @@ static AnnouncementView* announcementView = nil;
 @property (nonatomic, strong) MicCountDownView *countDowwnView;
 @property (nonatomic, strong) VHInvitationAlert *invitationAlertView;
 
-//v4.0.0 新版问卷功能类
+/// 视频轮询
+@property (nonatomic, strong) VHVideoRoundModel * videoRound;
+
+/// v4.0.0 新版问卷功能类
 @property (nonatomic, strong) VHSurveyViewController *surveyController;
+
 /// 投屏权限
 @property (nonatomic , assign) BOOL   isCast_screen;
 @property (nonatomic, assign) NSInteger chatListPage; //聊天记录页码，默认1
@@ -127,218 +135,62 @@ static AnnouncementView* announcementView = nil;
 
 @implementation VHHalfWatchLiveVC_Normal
 
-#pragma mark - Lifecycle Method
+- (void)destroyMP
+{
+    [_renderer stop];
+    [_moviePlayer stopPlay];
+    [_moviePlayer destroyMoivePlayer];
+    [_videoRound closeVideoRound];
+}
+- (void)dealloc
+{
+    [self destroyMP];
+ 
+    if (_chat) {
+        _chat = nil;
+    }
+    
+    if (_QA) {
+        _QA = nil;
+    }
+    
+    if (_lottery) {
+        _lottery = nil;
+    }
+    
+    if (_lotteryVC) {
+        [_lotteryVC.view removeFromSuperview];
+        [_lotteryVC removeFromParentViewController];
+        _lotteryVC = nil;
+    }
+    
+    if (_sign) {
+        _sign.delegate = nil;
+    }
+    if (_survey) {
+        _survey.delegate = nil;
+    }
+    
+    //取消网络监听
+    [_reachAbility stopNotifier];
+
+    //隐藏loading
+    [ProgressHud hideLoading];
+
+    //允许自动锁屏
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    VHLog(@"%@ dealloc",[[self class] description]);
+}
 - (id)init
 {
     self = LoadVCNibName;
     if (self) {
-        [self initDatas];
+        _isMute = NO;
+        _chatDataArray = [NSMutableArray array];
+        _QADataArray = [NSMutableArray array];
     }
     return self;
-}
-
-#pragma mark - viewDidLoad
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self initViews];
-    //非预加载方式，直接播放，在收到"播放连接成功回调"后，才能使用聊天、签到等功能
-    [self.moviePlayer startPlay:[self playParam]];
-    //预加载视频，收到"预加载成功回调"后，即可使用聊天等功能，择机调用 startPlay 正式开播，用于开播之前使用聊天、签到等功能
-//    [self.moviePlayer preLoadRoomWithParam:[self playParam]];
-    [VHWebinarBaseInfo getRoleNameWebinar_id:self.roomId dataCallBack:^(VHRoleNameData * roleData) {
-        VH_MB_HOST = roleData.host_name;
-        VH_MB_GUEST = roleData.guest_name;
-        VH_MB_ASSIST = roleData.assist_name;
-    }];
-    //添加问卷
-    [self addquestionnaireView];
-    [self questionnaireLogic:NO];
-    
-    [self addLotteryView];
-    [self lotteryLogic:NO];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lotterySuccess) name:@"take_award_succeed" object:nil];
-   
-}
-- (void)lotterySuccess{
-    [self lotteryLogic:NO];
-}
-- (void)addLotteryView{
-    self.lotteryIconBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.lotteryIconBtn setImage:BundleUIImage(@"icon_lottery") forState:UIControlStateNormal];
-    self.lotteryIconBtn.contentMode = UIViewContentModeScaleAspectFit;
-    [self.lotteryIconBtn addTarget:self action:@selector(lotteryAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.lotteryIconBtn];
-    [self.lotteryIconBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.offset(0);
-        make.top.offset(90);
-        make.width.height.mas_equalTo(36);
-    }];
-}
-- (void)lotteryAction{
-    [self lotteryLogic:YES];
-}
-#pragma mark -- 获取抽奖历史
-- (void)lotteryLogic:(BOOL)isAction{
-    //抽奖历史记录
-    [VHWebinarBaseInfo fetchLotteryListShowAll:2 webinarId:self.roomId success:^(VHLotteryListModel * _Nonnull listModel) {
-            if (listModel.listModel.count == 0) {
-                if (isAction) {
-                    VH_ShowToast(@"当前没有中奖");
-                }
-            }else{
-                self.lotteryIconBtn.hidden = NO;
-                [self isHaveLotteryRedRot:listModel.listModel action:isAction];
-            }
-        } fail:^(NSError * _Nonnull error) {
-            VH_ShowToast(error.localizedDescription);
-        }];
-}
-// 渲染UI 判断我自己是否中奖并且是否领奖
-- (void)isHaveLotteryRedRot:(NSArray <VHLotteryModel *>*)listArr action:(BOOL)action{
-    BOOL isHaveRedDot = NO;//是否显示红点
-    for (int i = 0; i < listArr.count; i++) {
-        VHLotteryModel *model = listArr[i];
-        //需要领奖
-        if (model.take_award == NO && model.need_take_award == YES) {
-            isHaveRedDot = YES;
-        }
-    }
-    // 显示小红点
-    if (isHaveRedDot) {
-        [self.lotteryIconBtn showBadge];
-    }else{
-        [self.lotteryIconBtn hidenBadge];
-    }
-    
-    // 判断展示填写信息界面,还是展示中奖列表
-    if (action) {
-        if (listArr.count == 1) {
-            VHLotteryModel *model = listArr[0];
-            if (model.need_take_award == NO) {
-                VH_ShowToast(@"当前奖品不需要领奖");
-                return;
-            }
-            if (model.take_award == YES) {
-                VH_ShowToast(@"当前奖品已经领过奖");
-                return;
-            }
-            [self lotteryBtnClick:self.lotteryBtn];
-            [self openOneLotteryModel:model];
-        }else{
-            ///显示抽奖历史
-            [self lotteryBtnClick:self.lotteryBtn];
-            [self presentLottery:listArr];
-        }
-    }
-}
-- (void)openOneLotteryModel:(VHLotteryModel *)model{
-    VHallEndLotteryModel *endModel = [[VHallEndLotteryModel alloc] init];
-    endModel.is_new = YES;
-    endModel.lottery_id = model.lottery_id;
-    endModel.need_take_award = model.need_take_award;
-    endModel.isWin = model.win;
-    endModel.publish_winner = model.publish_winner;
-    [self lotteryOpen:endModel];
-}
-- (void)presentLottery:(NSArray<VHLotteryModel *> *)lotteryArr{
-    VHLotteryViewController *lottery = [[VHLotteryViewController alloc] init];
-    lottery.lotteryList = lotteryArr;
-    lottery.delegate = self;
-    [self presentViewController:lottery animated:YES completion:nil];
-}
-- (void)lotteryOpen:(VHallEndLotteryModel *)endLotteryModel{
-    if (_lotteryVC) {
-        [_showView removeAllSubviews];
-        _lotteryVC = nil;
-    }
-    _lotteryVC = [[WatchLiveLotteryViewController alloc] init];
-    _lotteryVC.lottery = _lottery;
-    _lotteryVC.view.frame = _showView.bounds;
-    [_showView addSubview:_lotteryVC.view];
-    [_lotteryVC new_lottery_UI:endLotteryModel];
-    [self lotteryBtnClick:self.lotteryBtn];
-}
-- (void)addquestionnaireView{
-    self.questionnaireBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.questionnaireBtn setImage:BundleUIImage(@"wenjuan_have") forState:UIControlStateNormal];
-    self.questionnaireBtn.contentMode = UIViewContentModeScaleAspectFit;
-    [self.questionnaireBtn addTarget:self action:@selector(questionnaireAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.questionnaireBtn];
-    self.questionnaireBtn.hidden = YES;
-    [self.questionnaireBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.offset(0);
-        make.centerY.offset(0);
-        make.width.height.mas_equalTo(36);
-    }];
-}
-
-- (void)questionnaireAction{
-    [self questionnaireLogic:YES];
-}
-#pragma mark --- 问卷的逻辑 isAction = YES 走action NO 走核验
-- (void)questionnaireLogic:(BOOL)isAction{
-    ///获取问卷列表
-    [VHWebinarBaseInfo fetchSurveyList:self.roomId success:^(VHSurveyListModel * listModel) {
-        if (listModel.listModel.count == 0) {
-            self.questionnaireBtn.hidden = YES;
-        }else{
-            self.questionnaireBtn.hidden = NO;
-            [self isHaveRedRot:listModel.listModel action:isAction];
-        }
-    } fail:^(NSError * _Nonnull error) {
-        VH_ShowToast(error.localizedDescription);
-    }];
-}
-- (void)isHaveRedRot:(NSArray <VHSurveyModel *>*)listArr action:(BOOL)action{
-    BOOL isHaveRedDot = NO;//是否显示红点
-    NSInteger tag = 0;
-    NSInteger index = UINT_MAX;
-    for (int i = 0; i < listArr.count; i++) {
-        VHSurveyModel *model = listArr[i];
-        if (model.is_answered == NO) {
-            isHaveRedDot = YES;
-            tag++;
-            if (tag == 1) {
-                index = i;//标记第一个未填写的
-            }
-        }
-    }
-    [self.questionnaireBtn setImage:isHaveRedDot?BundleUIImage(@"wenjuan_have"):BundleUIImage(@"wenjuan_no") forState:UIControlStateNormal];
-    if (!action) {
-        //NO 走核验 YES 走action操作
-        return;
-    }
-    if (isHaveRedDot == NO) {
-        //吐丝提示
-        VH_ShowToast(@"已提交成功感谢参与");
-        return;
-    }
-    if (index != UINT_MAX && tag == 1) {
-        //有且仅有一个未填写
-        [self openOne:index array:listArr];
-    }else if (index != UINT_MAX && tag > 1){
-        //两个未填写，打开新写的页面
-        [self openSurveyNewController:listArr];
-    }
-}
-- (void)openOne:(NSInteger)index array:(NSArray <VHSurveyModel *>*)modelArr{
-    if (!_surveyController) {
-        _surveyController = [[VHSurveyViewController alloc] init];
-        _surveyController.delegate = self;
-    }
-    _surveyController.view.frame = self.view.bounds;
-    _surveyController.url = [modelArr[index] openLink];
-    [self.view addSubview:_surveyController.view];
-}
-- (void)openSurveyNewController:(NSArray <VHSurveyModel *>*)modelArr{
-    VHQuestionnaireController *questionare = [[VHQuestionnaireController alloc] init];
-    questionare.surveyList = modelArr;
-    [self presentViewController:questionare animated:YES completion:nil];
-}
-- (void)receivedSucceed:(NSString *)surveyid surveyAccountId:(NSString *)accountid{
-    if ([accountid isEqualToString:self.moviePlayer.webinarInfo.data[@"join_info"][@"third_party_user_id"]]) {
-        [self questionnaireLogic:NO];//不跳转，只核验
-    }
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -379,57 +231,44 @@ static AnnouncementView* announcementView = nil;
     [SignView layoutView:self.view.bounds];
 }
 
-
-- (void)dealloc
-{
-    [_moviePlayer destroyMoivePlayer];
+#pragma mark - viewDidLoad
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self initViews];
+    //非预加载方式，直接播放，在收到"播放连接成功回调"后，才能使用聊天、签到等功能
+    [self.moviePlayer startPlay:[self playParam]];
+    //预加载视频，收到"预加载成功回调"后，即可使用聊天等功能，择机调用 startPlay 正式开播，用于开播之前使用聊天、签到等功能
+//    [self.moviePlayer preLoadRoomWithParam:[self playParam]];
+    [VHWebinarBaseInfo getRoleNameWebinar_id:self.roomId dataCallBack:^(VHRoleNameData * roleData) {
+        VH_MB_HOST = roleData.host_name;
+        VH_MB_GUEST = roleData.guest_name;
+        VH_MB_ASSIST = roleData.assist_name;
+    }];
+    //添加问卷
+    [self addquestionnaireView];
+    [self questionnaireLogic:NO];
     
-    if (_chat) {
-        _chat = nil;
-    }
-    
-    if (_QA) {
-        _QA = nil;
-    }
-    
-    if (_lottery) {
-        _lottery = nil;
-    }
-    
-    if (_lotteryVC) {
-        [_lotteryVC.view removeFromSuperview];
-        [_lotteryVC removeFromParentViewController];
-        _lotteryVC = nil;
-    }
-    
-    if (_sign) {
-        _sign.delegate = nil;
-    }
-    if (_survey) {
-        _survey.delegate = nil;
-    }
-    //允许自动锁屏
-    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    VHLog(@"%@ dealloc",[[self class] description]);
+    [self addLotteryView];
+    [self lotteryLogic:NO];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lotterySuccess) name:@"take_award_succeed" object:nil];
+   
+    //查询视频轮询
+    [self.videoRound getRoundUsers];
+    [self.docFullScreenButton setImage:BundleUIImage(@"fullscreen") forState:UIControlStateNormal];
 }
 
-
-#pragma mark - Private Method
-
--(void)addPanGestureRecognizer
-{
-    UIPanGestureRecognizer * panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
-    panGesture.maximumNumberOfTouches = 1;
-    panGesture.minimumNumberOfTouches = 1;
-    [_moviePlayer.moviePlayerView addGestureRecognizer:panGesture];
-}
-
--(void)initDatas
-{
-    _isMute = NO;
-    _chatDataArray = [NSMutableArray array];
-    _QADataArray = [NSMutableArray array];
+- (IBAction)onClickFullScreen:(UIButton *)sender {
+    self.docFullScreen = [VHDocFullScreenViewController new];
+    self.docFullScreen.docView = _moviePlayer.documentView;
+    __weak typeof(self) wself = self;
+    self.docFullScreen.handleDismiss = ^(UIView * _Nonnull docView) {
+        __strong typeof(wself) self = wself;
+        if(docView!=nil){
+            [docView setFrame:self.docAreaView.bounds];
+            [self.docAreaView addSubview:docView];
+        }
+    };
+    [self presentViewController:self.docFullScreen animated:NO completion:nil];
 }
 
 - (void)initViews
@@ -472,7 +311,7 @@ static AnnouncementView* announcementView = nil;
     _moviePlayer.moviePlayerView.frame = self.backView.bounds;
     [self.backView addSubview:_moviePlayer.moviePlayerView];
     [self.backView sendSubviewToBack:_moviePlayer.moviePlayerView];
-    [_moviePlayer.moviePlayerView addSubview:_logView];    
+    [_moviePlayer.moviePlayerView addSubview:_logView];
     [self.view bringSubviewToFront:self.backView];
     
     _docConentView.hidden = YES;
@@ -495,33 +334,9 @@ static AnnouncementView* announcementView = nil;
     [_reachAbility startNotifier];
     
     self.currentSelectedButton = self.chatBtn;
-}
-
--(void)alertWithMessage:(VHMovieVideoPlayMode)state
-{
-    NSString*message = nil;
-    switch (state) {
-        case VHMovieVideoPlayModeNone:
-            message = @"无内容";
-            break;
-        case VHMovieVideoPlayModeMedia:
-            message = @"纯视频";
-            break;
-        case VHMovieVideoPlayModeTextAndVoice:
-            message = @"文档＋声音";
-            break;
-        case VHMovieVideoPlayModeTextAndMedia:
-            message = @"文档＋视频";
-            break;
-
-        default:
-            break;
-    }
     
-    VH_ShowToast(message);
 }
-
-//tableView刷新设置
+#pragma mark - tableView刷新设置
 - (void)configChatViewRefreshWithBtn:(UIButton *)button {
     
     if(button == self.chatBtn) { //聊天
@@ -553,7 +368,79 @@ static AnnouncementView* announcementView = nil;
     }
 }
 
-//弹幕
+#pragma mark - 上下线消息
+- (void)reciveOnlineMsg:(NSArray <VHallOnlineStateModel *> *)msgs
+{
+    [self reloadDataWithMsg:msgs];
+}
+#pragma mark - 聊天消息
+- (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs
+{
+    //过滤私聊 传递target_id,当前用户join_id
+    NSString *currentUserId = self.moviePlayer.webinarInfo.data[@"join_info"][@"third_party_user_id"];
+    NSArray *msgArr = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:YES];
+    [self reloadDataWithMsg:msgArr];
+    if (msgs.count > 0) {
+        //弹幕
+        VHallChatModel* model = [msgs objectAtIndex:0];
+        BarrageDescriptor * descriptor = [[BarrageDescriptor alloc]init];
+        descriptor.spriteName = NSStringFromClass([BarrageWalkTextSprite class]);
+        descriptor.params[@"text"] = model.text;
+        descriptor.params[@"textColor"] = MakeColorRGB(0xffffff);//MakeColor(random()%255, random()%255, random()%255, 1);
+        //@(100 * (double)random()/RAND_MAX+50) 随机速度
+        descriptor.params[@"speed"] = @(100);// 固定速度
+        descriptor.params[@"direction"] = @(BarrageWalkDirectionR2L);
+        descriptor.params[@"side"] = @(BarrageWalkSideDefault);
+//        descriptor.params[@"clickAction"] = ^{
+//        };
+        [_renderer receive:descriptor];
+    }
+}
+#pragma mark - 自定义消息
+- (void)reciveCustomMsg:(NSArray <VHallCustomMsgModel *> *)msgs
+{
+    VHallCustomMsgModel *msgModel = msgs[0];
+    if (msgModel.eventType == ChatCustomType_EditRole) {
+        switch ([msgModel.edit_role_type intValue]) {
+            case 1:
+                VH_MB_HOST = msgModel.edit_role_name;
+                break;
+            case 4:
+                VH_MB_GUEST = msgModel.edit_role_name;
+                break;
+            case 3:
+                VH_MB_ASSIST = msgModel.edit_role_name;
+                break;
+            default:
+                break;
+        }
+        return;
+    }
+    
+    [self reloadDataWithMsg:msgs];
+}
+#pragma mark - 聊天私有方法
+- (void)reloadDataWithMsg:(NSArray *)msgs {
+    if (msgs.count == 0) {
+        return;
+    }
+    [_chatDataArray addObjectsFromArray:msgs];
+    if (_chatBtn.selected) {
+        [self reloadDataWithDataSource:_chatDataArray animated:YES];
+    }
+}
+#pragma mark - 禁言
+- (void)forbidChat:(BOOL) forbidChat
+{
+    VH_ShowToast(forbidChat?@"您已被禁言":@"您已被取消禁言");
+}
+#pragma mark - 全体禁言
+- (void)allForbidChat:(BOOL) allForbidChat
+{
+    VH_ShowToast(allForbidChat?@"已开启全体禁言":@"已取消全体禁言");
+}
+
+#pragma mark - 弹幕
 - (void)initBarrageRenderer
 {
     _renderer = [[BarrageRenderer alloc]init];
@@ -564,16 +451,13 @@ static AnnouncementView* announcementView = nil;
     [_moviePlayer.moviePlayerView sendSubviewToBack:_renderer.view];
 }
 
-
-//踢出
+#pragma mark - 踢出
 - (void)kickOutAction {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"您已被踢出房间" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        [_renderer stop];
-        [_moviePlayer stopPlay];
-        [_moviePlayer destroyMoivePlayer];
-        
+        [self destroyMP];
+
         UIViewController *vc = self;
         Class homeVcClass = NSClassFromString(@"VHHomeViewController");
         while (![vc isKindOfClass:homeVcClass]) {
@@ -749,9 +633,7 @@ static AnnouncementView* announcementView = nil;
 
 #pragma mark - 返回按钮点击
 - (IBAction)closeBtnClick:(id)sender {
-    [_renderer stop];
-    [_moviePlayer stopPlay];
-    [_moviePlayer destroyMoivePlayer];
+    [self destroyMP];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -908,17 +790,6 @@ static AnnouncementView* announcementView = nil;
     }
     [self.messageToolView becomeFirstResponder];
 }
-- (VHKeyboardToolView *)messageToolView
-{
-    if (!_messageToolView)
-    {
-        _messageToolView = [[VHKeyboardToolView alloc] init];
-        _messageToolView.delegate = self;
-//        _messageToolView.maxLength = 140;
-        [self.view addSubview:_messageToolView];
-    }
-    return _messageToolView;
-}
 
 #pragma mark - VHKeyboardToolViewDelegate
 /*! 发送按钮事件回调*/
@@ -957,7 +828,6 @@ static AnnouncementView* announcementView = nil;
     }
 }
 
-
 #pragma mark - 发送自定义消息
 - (IBAction)customMsgBtnClick:(id)sender
 {
@@ -978,6 +848,192 @@ static AnnouncementView* announcementView = nil;
     
 }
 
+
+
+#pragma mark - 抽奖
+- (void)lotterySuccess{
+    [self lotteryLogic:NO];
+}
+- (void)addLotteryView{
+    self.lotteryIconBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.lotteryIconBtn setImage:BundleUIImage(@"icon_lottery") forState:UIControlStateNormal];
+    self.lotteryIconBtn.contentMode = UIViewContentModeScaleAspectFit;
+    [self.lotteryIconBtn addTarget:self action:@selector(lotteryAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.lotteryIconBtn];
+    [self.lotteryIconBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(0);
+        make.top.offset(90);
+        make.width.height.mas_equalTo(36);
+    }];
+}
+- (void)lotteryAction{
+    [self lotteryLogic:YES];
+}
+#pragma mark -- 获取抽奖历史
+- (void)lotteryLogic:(BOOL)isAction{
+    //抽奖历史记录
+    [VHWebinarBaseInfo fetchLotteryListShowAll:2 webinarId:self.roomId success:^(VHLotteryListModel * _Nonnull listModel) {
+            if (listModel.listModel.count == 0) {
+                if (isAction) {
+                    VH_ShowToast(@"当前没有中奖");
+                }
+            }else{
+                self.lotteryIconBtn.hidden = NO;
+                [self isHaveLotteryRedRot:listModel.listModel action:isAction];
+            }
+        } fail:^(NSError * _Nonnull error) {
+            VH_ShowToast(error.localizedDescription);
+        }];
+}
+// 渲染UI 判断我自己是否中奖并且是否领奖
+- (void)isHaveLotteryRedRot:(NSArray <VHLotteryModel *>*)listArr action:(BOOL)action{
+    BOOL isHaveRedDot = NO;//是否显示红点
+    for (int i = 0; i < listArr.count; i++) {
+        VHLotteryModel *model = listArr[i];
+        //需要领奖
+        if (model.take_award == NO && model.need_take_award == YES) {
+            isHaveRedDot = YES;
+        }
+    }
+    // 显示小红点
+    if (isHaveRedDot) {
+        [self.lotteryIconBtn showBadge];
+    }else{
+        [self.lotteryIconBtn hidenBadge];
+    }
+    
+    // 判断展示填写信息界面,还是展示中奖列表
+    if (action) {
+        if (listArr.count == 1) {
+            VHLotteryModel *model = listArr[0];
+            if (model.need_take_award == NO) {
+                VH_ShowToast(@"当前奖品不需要领奖");
+                return;
+            }
+            if (model.take_award == YES) {
+                VH_ShowToast(@"当前奖品已经领过奖");
+                return;
+            }
+            [self lotteryBtnClick:self.lotteryBtn];
+            [self openOneLotteryModel:model];
+        }else{
+            ///显示抽奖历史
+            [self lotteryBtnClick:self.lotteryBtn];
+            [self presentLottery:listArr];
+        }
+    }
+}
+- (void)openOneLotteryModel:(VHLotteryModel *)model{
+    VHallEndLotteryModel *endModel = [[VHallEndLotteryModel alloc] init];
+    endModel.is_new = YES;
+    endModel.lottery_id = model.lottery_id;
+    endModel.need_take_award = model.need_take_award;
+    endModel.isWin = model.win;
+    endModel.publish_winner = model.publish_winner;
+    [self lotteryOpen:endModel];
+}
+- (void)presentLottery:(NSArray<VHLotteryModel *> *)lotteryArr{
+    VHLotteryViewController *lottery = [[VHLotteryViewController alloc] init];
+    lottery.lotteryList = lotteryArr;
+    lottery.delegate = self;
+    [self presentViewController:lottery animated:YES completion:nil];
+}
+- (void)lotteryOpen:(VHallEndLotteryModel *)endLotteryModel{
+    if (_lotteryVC) {
+        [_showView removeAllSubviews];
+        _lotteryVC = nil;
+    }
+    _lotteryVC = [[WatchLiveLotteryViewController alloc] init];
+    _lotteryVC.lottery = _lottery;
+    _lotteryVC.view.frame = _showView.bounds;
+    [_showView addSubview:_lotteryVC.view];
+    [_lotteryVC new_lottery_UI:endLotteryModel];
+    [self lotteryBtnClick:self.lotteryBtn];
+}
+
+#pragma mark - 添加问卷
+- (void)addquestionnaireView{
+    self.questionnaireBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.questionnaireBtn setImage:BundleUIImage(@"wenjuan_have") forState:UIControlStateNormal];
+    self.questionnaireBtn.contentMode = UIViewContentModeScaleAspectFit;
+    [self.questionnaireBtn addTarget:self action:@selector(questionnaireAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.questionnaireBtn];
+    self.questionnaireBtn.hidden = YES;
+    [self.questionnaireBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(0);
+        make.centerY.offset(0);
+        make.width.height.mas_equalTo(36);
+    }];
+}
+- (void)questionnaireAction{
+    [self questionnaireLogic:YES];
+}
+// --- 问卷的逻辑 isAction = YES 走action NO 走核验
+- (void)questionnaireLogic:(BOOL)isAction{
+    ///获取问卷列表
+    [VHWebinarBaseInfo fetchSurveyList:self.roomId success:^(VHSurveyListModel * listModel) {
+        if (listModel.listModel.count == 0) {
+            self.questionnaireBtn.hidden = YES;
+        }else{
+            self.questionnaireBtn.hidden = NO;
+            [self isHaveRedRot:listModel.listModel action:isAction];
+        }
+    } fail:^(NSError * _Nonnull error) {
+        VH_ShowToast(error.localizedDescription);
+    }];
+}
+#pragma mark - 小红点
+- (void)isHaveRedRot:(NSArray <VHSurveyModel *>*)listArr action:(BOOL)action{
+    BOOL isHaveRedDot = NO;//是否显示红点
+    NSInteger tag = 0;
+    NSInteger index = UINT_MAX;
+    for (int i = 0; i < listArr.count; i++) {
+        VHSurveyModel *model = listArr[i];
+        if (model.is_answered == NO) {
+            isHaveRedDot = YES;
+            tag++;
+            if (tag == 1) {
+                index = i;//标记第一个未填写的
+            }
+        }
+    }
+    [self.questionnaireBtn setImage:isHaveRedDot?BundleUIImage(@"wenjuan_have"):BundleUIImage(@"wenjuan_no") forState:UIControlStateNormal];
+    if (!action) {
+        //NO 走核验 YES 走action操作
+        return;
+    }
+    if (isHaveRedDot == NO) {
+        //吐丝提示
+        VH_ShowToast(@"已提交成功感谢参与");
+        return;
+    }
+    if (index != UINT_MAX && tag == 1) {
+        //有且仅有一个未填写
+        [self openOne:index array:listArr];
+    }else if (index != UINT_MAX && tag > 1){
+        //两个未填写，打开新写的页面
+        [self openSurveyNewController:listArr];
+    }
+}
+- (void)openOne:(NSInteger)index array:(NSArray <VHSurveyModel *>*)modelArr{
+    if (!_surveyController) {
+        _surveyController = [[VHSurveyViewController alloc] init];
+        _surveyController.delegate = self;
+    }
+    _surveyController.view.frame = self.view.bounds;
+    _surveyController.url = [modelArr[index] openLink];
+    [self.view addSubview:_surveyController.view];
+}
+- (void)openSurveyNewController:(NSArray <VHSurveyModel *>*)modelArr{
+    VHQuestionnaireController *questionare = [[VHQuestionnaireController alloc] init];
+    questionare.surveyList = modelArr;
+    [self presentViewController:questionare animated:YES completion:nil];
+}
+- (void)receivedSucceed:(NSString *)surveyid surveyAccountId:(NSString *)accountid{
+    if ([accountid isEqualToString:self.moviePlayer.webinarInfo.data[@"join_info"][@"third_party_user_id"]]) {
+        [self questionnaireLogic:NO];//不跳转，只核验
+    }
+}
 
 #pragma mark - 问答
 - (IBAction)QAButtonClick:(UIButton *)sender {
@@ -1039,7 +1095,7 @@ static AnnouncementView* announcementView = nil;
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         [_chatView reloadData];
-        if(dataSource.count > 0) {
+        if(dataSource.count > 0 && _chatView.contentSize.height > 0) {
             [_chatView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:dataSource.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:animated];
         }
     });
@@ -1157,7 +1213,6 @@ static AnnouncementView* announcementView = nil;
 
 
 #pragma mark  网络变化
-
 - (void)networkChange:(NSNotification *)notification {
     Reachability *currReach = [notification object];
     NSParameterAssert([currReach isKindOfClass:[Reachability class]]);
@@ -1191,7 +1246,6 @@ static AnnouncementView* announcementView = nil;
 }
 
 #pragma mark - 投屏
-
 - (IBAction)DlNAClick:(id)sender
 {
     if (!self.isCast_screen) {
@@ -1212,19 +1266,10 @@ static AnnouncementView* announcementView = nil;
     };
 }
 
-//投屏代理回调 DLNAViewDelegate
+// 投屏代理回调 DLNAViewDelegate
 - (void)dlnaControlState:(DLNAControlStateType)type errormsg:(NSString *)msg
 {
     VH_ShowToast(msg);
-}
-
--(DLNAView *)dlnaView
-{
-    if (!_dlnaView) {
-        _dlnaView = [[DLNAView alloc] initWithFrame:self.view.bounds];
-        _dlnaView.delegate = self;
-    }
-    return _dlnaView;
 }
 
 #pragma mark - tableView 代理方法
@@ -1394,8 +1439,7 @@ static AnnouncementView* announcementView = nil;
     NSString *errorStr = info[@"content"];
     NSInteger code = [info[@"code"] integerValue];
     if (livePlayErrorType == VHSaasPlaySSOKickout) {
-        [_moviePlayer stopPlay];
-        [_moviePlayer destroyMoivePlayer];
+        [self destroyMP];
     }
     [UIAlertController showAlertControllerTitle:@"提示" msg:[NSString stringWithFormat:@"%zd-%@",code,errorStr] btnTitle:@"确定" callBack:^{
         if(code == 20023) { //同一账号多端观看
@@ -1405,8 +1449,8 @@ static AnnouncementView* announcementView = nil;
     }];
 }
 
-//当前视频播放模式回调
--(void)VideoPlayMode:(VHMovieVideoPlayMode)playMode isVrVideo:(BOOL)isVrVideo
+#pragma mark - 当前视频播放模式回调
+- (void)VideoPlayMode:(VHMovieVideoPlayMode)playMode isVrVideo:(BOOL)isVrVideo
 {
     _isVr = isVrVideo;
     if (!_isRender)
@@ -1422,7 +1466,10 @@ static AnnouncementView* announcementView = nil;
             _GyroBtn.selected = NO;
 //            [_moviePlayer setRenderViewModel:VHRenderModelOrigin];
             [_moviePlayer setUsingGyro:NO];
-            [self addPanGestureRecognizer];
+            UIPanGestureRecognizer * panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
+            panGesture.maximumNumberOfTouches = 1;
+            panGesture.minimumNumberOfTouches = 1;
+            [_moviePlayer.moviePlayerView addGestureRecognizer:panGesture];
         }
         _isRender = YES;
     }
@@ -1431,25 +1478,30 @@ static AnnouncementView* announcementView = nil;
     VHLog(@"当前视频播放模式---%ld",(long)playMode);
     self.liveTypeLabel.text = @"";
     _playModelTemp = playMode;
+    NSString * message = nil;
     switch (playMode) {
         case VHMovieVideoPlayModeNone:
+            message = @"无内容";
+            break;
         case VHMovieVideoPlayModeMedia:
         case VHMovieVideoPlayModeTextAndMedia:
+            message = @"纯视频";
             _playModeBtn0.selected = NO;
             _playModeBtn0.enabled = YES;
             break;
         case VHMovieVideoPlayModeTextAndVoice:
-        case VHMovieVideoPlayModeVoice:
-        {
+            message = @"文档＋声音";
+            break;
+        case VHMovieVideoPlayModeVoice:{
+            message = @"文档＋视频";
             self.liveTypeLabel.text = @"语音直播中";
-        }
             _playModeBtn0.enabled = NO;
+        }
             break;
         default:
             break;
     }
-
-    [self alertWithMessage:playMode];
+    VH_ShowToast(message);
 }
 
 - (void)VideoPlayModeList:(NSArray*)playModeList
@@ -1570,7 +1622,11 @@ static AnnouncementView* announcementView = nil;
             VH_ShowToast(isShow ? @"主持人打开文档" : @"主持人关闭文档");
             _docShow = isShow;
         }
-        _moviePlayer.documentView.frame = self.docAreaView.bounds;
+        if(self.docFullScreen && [self.docFullScreen presentingViewController] == self) {
+            _moviePlayer.documentView.frame = self.docFullScreen.docView.bounds;
+        }else{
+            _moviePlayer.documentView.frame = self.docAreaView.bounds;
+        }
         [self.docAreaView addSubview:_moviePlayer.documentView];
     }
     _moviePlayer.documentView.hidden = !isShow;
@@ -1581,6 +1637,10 @@ static AnnouncementView* announcementView = nil;
     [_moviePlayer.documentView addGestureRecognizer:pan];
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(changeDocSize:)];
     [_moviePlayer.documentView addGestureRecognizer:pinch];
+    
+    if(self.docFullScreen && [self.docFullScreen presentingViewController] == self) {
+        self.docFullScreen.docView = _moviePlayer.documentView;
+    }
 }
 
 //返回文档延迟时间
@@ -1605,9 +1665,20 @@ static AnnouncementView* announcementView = nil;
     if(index == 1)
     {
         ///先校验权限再上麦进入互动
-        [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
-            [self.moviePlayer replyInvitationWithType:1 finish:nil];
-            [self presentInteractiveVC];
+        [VHHelpTool getToMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+            if (videoAccess && audioAcess) {
+                [self.moviePlayer replyInvitationWithType:1 finish:^(NSError *error) {
+                    if (!error) {
+                        [self presentInteractiveVC];
+                    }else{
+                        VH_ShowToast(error.localizedDescription);
+                    }
+                }];
+            }else{
+                [self.moviePlayer replyInvitationWithType:2 finish:^(NSError *error) {
+                    
+                }];
+            }
         }];
     }
     else if(index == 0)
@@ -1701,85 +1772,28 @@ static AnnouncementView* announcementView = nil;
     //刷新icon小红点
     [self lotteryLogic:NO];
 }
-
-
-#pragma mark - IM消息相关
-- (void)reciveOnlineMsg:(NSArray <VHallOnlineStateModel *> *)msgs
+#pragma mark - 视频轮巡
+// 轮巡开始
+- (void)videoRoundStart
 {
-    [self reloadDataWithMsg:msgs];
+    VH_ShowToast(@"主办方开启了视频轮巡功能，在主持人端将会看到您的视频画面，请保持视频设备一切正常");
 }
-
-- (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs
+// 轮巡结束
+- (void)videoRoundEnd
 {
-    //过滤私聊 传递target_id,当前用户join_id
-    NSString *currentUserId = self.moviePlayer.webinarInfo.data[@"join_info"][@"third_party_user_id"];
-    NSArray *msgArr = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:YES];
-    [self reloadDataWithMsg:msgArr];
-    if (msgs.count > 0) {
-        //弹幕
-        VHallChatModel* model = [msgs objectAtIndex:0];
-        BarrageDescriptor * descriptor = [[BarrageDescriptor alloc]init];
-        descriptor.spriteName = NSStringFromClass([BarrageWalkTextSprite class]);
-        descriptor.params[@"text"] = model.text;
-        descriptor.params[@"textColor"] = MakeColorRGB(0xffffff);//MakeColor(random()%255, random()%255, random()%255, 1);
-        //@(100 * (double)random()/RAND_MAX+50) 随机速度
-        descriptor.params[@"speed"] = @(100);// 固定速度
-        descriptor.params[@"direction"] = @(BarrageWalkDirectionR2L);
-        descriptor.params[@"side"] = @(BarrageWalkSideDefault);
-//        descriptor.params[@"clickAction"] = ^{
-//        };
-        [_renderer receive:descriptor];
-    }
+    [self.videoRound closeVideoRound];
 }
-
-- (void)reciveCustomMsg:(NSArray <VHallCustomMsgModel *> *)msgs
+// 轮巡列表
+- (void)videoRoundUsers:(NSArray *)uids
 {
-    VHallCustomMsgModel *msgModel = msgs[0];
-    if (msgModel.eventType == ChatCustomType_EditRole) {
-        switch ([msgModel.edit_role_type intValue]) {
-            case 1:
-                VH_MB_HOST = msgModel.edit_role_name;
-                break;
-            case 4:
-                VH_MB_GUEST = msgModel.edit_role_name;
-                break;
-            case 3:
-                VH_MB_ASSIST = msgModel.edit_role_name;
-                break;
-            default:
-                break;
-        }
-        return;
-    }
-    
-    [self reloadDataWithMsg:msgs];
+    // 轮询
+    [self.videoRound videoRoundUsers:uids roomId:self.roomId];
 }
-
-- (void)forbidChat:(BOOL) forbidChat
-{
-    VH_ShowToast(forbidChat?@"您已被禁言":@"您已被取消禁言");
-}
-
-- (void)allForbidChat:(BOOL) allForbidChat
-{
-    VH_ShowToast(allForbidChat?@"已开启全体禁言":@"已取消全体禁言");
-}
+#pragma mark - 问答相关
 //问答可用状态
 - (void)questionStatus:(BOOL)questionStatus{
     self.questionStatus = questionStatus;
 }
-//-----------聊天私有方法------------
-- (void)reloadDataWithMsg:(NSArray *)msgs {
-    if (msgs.count == 0) {
-        return;
-    }
-    [_chatDataArray addObjectsFromArray:msgs];
-    if (_chatBtn.selected) {
-        [self reloadDataWithDataSource:_chatDataArray animated:YES];
-    }
-}
-
-#pragma mark - 问答相关
 //----------------VHallQAndADelegate------------------
 //主播开启问答
 - (void)vhallQAndADidOpened:(VHallQAndA *)QA
@@ -2076,7 +2090,6 @@ static AnnouncementView* announcementView = nil;
 }
 
 #pragma mark - 懒加载
-
 - (NSDictionary *)playParam {
     NSMutableDictionary * param = [[NSMutableDictionary alloc]init];
     param[@"id"] =  _roomId;
@@ -2087,7 +2100,31 @@ static AnnouncementView* announcementView = nil;
 //    param[@"email"] = [NSString stringWithFormat:@"%@@qq.com",[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
     return param;
 }
-
+- (VHKeyboardToolView *)messageToolView
+{
+    if (!_messageToolView)
+    {
+        _messageToolView = [[VHKeyboardToolView alloc] init];
+        _messageToolView.delegate = self;
+//        _messageToolView.maxLength = 140;
+        [self.view addSubview:_messageToolView];
+    }
+    return _messageToolView;
+}
+- (DLNAView *)dlnaView
+{
+    if (!_dlnaView) {
+        _dlnaView = [[DLNAView alloc] initWithFrame:self.view.bounds];
+        _dlnaView.delegate = self;
+    }
+    return _dlnaView;
+}
+- (VHVideoRoundModel *)videoRound
+{
+    if (!_videoRound) {
+        _videoRound = [VHVideoRoundModel new];
+    }return _videoRound;
+}
 #pragma mark - 屏幕旋转相关
 -(BOOL)shouldAutorotate
 {

@@ -33,9 +33,12 @@
 #import "VHQuestionnaireController.h"
 #import "VHLotteryViewController.h"
 #import "UIView+RedRot.h"
+
+#import "VHDocFullScreenViewController.h"
+
 static AnnouncementView* announcementView = nil;
 
-@interface VHHalfWatchLiveVC_Nodelay ()<VHRoomDelegate, VHallChatDelegate, VHallQAndADelegate, VHallLotteryDelegate,VHallSignDelegate,VHallSurveyDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,MicCountDownViewDelegate,VHInvitationAlertDelegate,VHSurveyViewControllerDelegate,VHKeyboardToolViewDelegate,VHDocumentDelegate,VHLotteryOpenDelegate>
+@interface VHHalfWatchLiveVC_Nodelay ()<VHRoomDelegate, VHallChatDelegate, VHallQAndADelegate, VHallLotteryDelegate,VHallSignDelegate,VHallSurveyDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,MicCountDownViewDelegate,VHInvitationAlertDelegate,VHSurveyViewControllerDelegate,VHKeyboardToolViewDelegate,VHDocumentDelegate,VHLotteryOpenDelegate, VHWatchNodelayDocumentViewDelegate>
 {
     VHallChat         *_chat;       //聊天
     VHallQAndA        *_QA;         //问答
@@ -54,14 +57,14 @@ static AnnouncementView* announcementView = nil;
     NSMutableArray    *_QADataArray;  //问答数据源
     NSArray* _definitionList; //支持的分辨率
 }
-
+@property (nonatomic) VHDocFullScreenViewController *docFullScreen;
 @property (weak, nonatomic) IBOutlet UIView *showView;
 @property (weak, nonatomic) IBOutlet UIButton *lotteryBtn; //抽奖按钮
 @property (weak, nonatomic) IBOutlet UIView *backView;
 @property (weak, nonatomic) IBOutlet UIView *docConentView;//文档view容器
 @property (weak, nonatomic) IBOutlet VHWatchNodelayDocumentView *docAreaView; //文档显示区域
 @property (weak, nonatomic) IBOutlet UILabel *liveTypeLabel;
-@property(nonatomic,assign) BOOL     connectedNetWork;
+@property(nonatomic,assign) BOOL connectedNetWork;
 @property (weak, nonatomic) IBOutlet UIButton *detailBtn;
 @property (weak, nonatomic) IBOutlet UIButton *docBtn;
 @property (weak, nonatomic) IBOutlet UIButton *chatBtn;
@@ -616,6 +619,17 @@ static AnnouncementView* announcementView = nil;
     self.currentSelectedButton = sender;
 }
 
+/// 主持人切换了文档(文档全屏需要关注)
+- (void)nodelayDidChangeDocument {
+    if(self.docFullScreen && [self.docFullScreen presentingViewController] == self) {
+        self.docFullScreen.docView = self.docAreaView;
+    } else {
+        [self.docAreaView setFrame:self.docConentView.bounds];
+    }
+    
+}
+
+
 #pragma mark - 聊天
 - (IBAction)chatButtonClick:(UIButton *)sender {
     self.selectIndex = 0;
@@ -770,7 +784,20 @@ static AnnouncementView* announcementView = nil;
     }
 }
 
-
+- (IBAction)onClickFullScreen:(UIButton *)sender {
+    self.docFullScreen = [VHDocFullScreenViewController new];
+    self.docFullScreen.docView = self.docAreaView;
+    __weak typeof(self) wself = self;
+    self.docFullScreen.handleDismiss = ^(UIView * _Nonnull docView) {
+        __strong typeof(wself) self = wself;
+        if(docView!=nil){
+            [docView setFrame:self.docConentView.bounds];
+            [self.docConentView addSubview:docView];
+            [self.docConentView sendSubviewToBack:docView];
+        }
+    };
+    [self presentViewController:self.docFullScreen animated:NO completion:nil];
+}
 #pragma mark - 发送自定义消息
 - (IBAction)customMsgBtnClick:(id)sender
 {
@@ -848,7 +875,7 @@ static AnnouncementView* announcementView = nil;
 - (void)reloadDataWithDataSource:(NSArray *)dataSource animated:(BOOL)animated{
     dispatch_async(dispatch_get_main_queue(), ^{
         [_chatView reloadData];
-        if(dataSource.count > 0) {
+        if(dataSource.count > 0 && _chatView.contentSize.height>0) {
             [_chatView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:dataSource.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:animated];
         }
     });
@@ -1390,7 +1417,9 @@ static AnnouncementView* announcementView = nil;
         //点击聊天
         [self chatButtonClick:self.chatBtn];
         //设置文档
+        self.docAreaView.watermark = self.inavRoom.roomInfo.docWatermarkModel;
         [self.docAreaView setDocument:self.inavRoom.roomInfo.documentManager defaultShow:self.inavRoom.roomInfo.documentOpenState];
+        self.docAreaView.delegate = self;
         //是否显示上麦按钮
         if(self.inavRoom.roomInfo.handsUpOpenState) {
             [_countDowwnView showCountView];
@@ -1430,18 +1459,18 @@ static AnnouncementView* announcementView = nil;
 
 /// 视频流加入回调（流类型包括音视频、共享屏幕、插播等）
 - (void)room:(VHRoom *)room didAddAttendView:(VHRenderView *)attendView {
-//    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
-//        return;//过滤视频轮巡流
-//    }
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
+        return;//过滤视频轮巡流
+    }
     VUI_Log(@"\n某人上麦:%@，流类型：%d，流视频宽高：%@，流id：%@，是否有音频：%d，是否有视频：%d",attendView.userId,attendView.streamType,NSStringFromCGSize(attendView.videoSize),attendView.streamId,attendView.hasAudio,attendView.hasVideo);
     [self.videoView addRenderView:attendView];
 }
 
 /// 视频流离开回调（流类型包括音视频、共享屏幕、插播等）
 - (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView {
-//    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
-//        return;//过滤视频轮巡流
-//    }
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
+        return;//过滤视频轮巡流
+    }
     [self.videoView removeRenderView:attendView];
 }
 
@@ -1477,14 +1506,23 @@ static AnnouncementView* announcementView = nil;
 }
 
 -(BOOL)shouldAutorotate {
+    if(self.presentedViewController) {
+        return [self.presentedViewController shouldAutorotate];
+    }
     return NO;
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    if(self.presentedViewController) {
+        return [self.presentedViewController supportedInterfaceOrientations];
+    }
     return UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskPortrait;
 }
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    if(self.presentedViewController) {
+        return [self.presentedViewController preferredInterfaceOrientationForPresentation];
+    }
     return UIInterfaceOrientationPortrait;
 }
 

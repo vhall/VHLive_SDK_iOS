@@ -16,25 +16,17 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-//    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-//    [application setStatusBarOrientation:UIInterfaceOrientationPortrait];
     CGRect bounds = [[UIScreen mainScreen]bounds];
-    
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [VHallApi registerApp:DEMO_AppKey SecretKey:DEMO_AppSecretKey];
     [VHallApi setLogType:VHLogType_ALL];
     NSLog(@"%@",[VHallApi sdkVersionEX]);
     NSLog(@"%@",[VHRoom sdkVersionEX]);
-    
     self.window = [[UIWindow alloc]initWithFrame:bounds];
-    
     LoginViewController * loginVC = [[LoginViewController alloc]init];
     self.window.rootViewController = loginVC;
-    
     [self.window makeKeyAndVisible];
-
     return YES;
 }
 

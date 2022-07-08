@@ -30,6 +30,9 @@ extern NSString * const VHMaxVideoBitrateKey;   //推流最大码率 默认300
 extern NSString * const VHCurrentBitrateKey;   //当前推流码率
 extern NSString * const VHMinBitrateKbpsKey;   //推流最小码率 默认100
 
+extern NSString * const VHStreamOptionMixVideo; ///< 旁路混流是否加入视频
+extern NSString * const VHStreamOptionMixAudio; ///< 旁路混流是否加入音频
+
 /*
  * 摄像头及推流参数设置
  */
@@ -59,7 +62,8 @@ typedef NS_ENUM(int, VHInteractiveStreamType) {
     VHInteractiveStreamTypeAudioAndVideo   = 2,//音视频 默认
     VHInteractiveStreamTypeScreen          = 3,//共享桌面 暂不支持
     VHInteractiveStreamTypeFile            = 4, //插播  暂不支持
-    VHInteractiveStreamTypeVideoPatro      = 5, //视频轮询
+    VHInteractiveStreamTypeVideoPatrol     = 5,
+    VHInteractiveStreamTypeCustom          = 6
 
 };
 

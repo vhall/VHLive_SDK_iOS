@@ -31,13 +31,16 @@
 		03D099A8254A93CB001F0F36 /* VHWebWatchLiveViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03D099A5254A9301001F0F36 /* VHWebWatchLiveViewController.h */; };
 		03E4A93225087659005BB8D8 /* WatchLiveLotteryWinListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E4A93125087658005BB8D8 /* WatchLiveLotteryWinListView.m */; };
 		03E4A9352508A6E2005BB8D8 /* WatchLiveLotteryWriteWinInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E4A9342508A6E2005BB8D8 /* WatchLiveLotteryWriteWinInfoView.m */; };
+		2178943928634047000D773F /* VHQueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2178943828634047000D773F /* VHQueTableViewCell.m */; };
+		2178943A2863409C000D773F /* VHQuestionnaireController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3254FFED282FB33000A308A9 /* VHQuestionnaireController.h */; };
+		2178943B286340A2000D773F /* VHQuestionnaireController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3254FFEE282FB33000A308A9 /* VHQuestionnaireController.m */; };
+		21BBDEB728572BD100E76233 /* VHDocFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BBDEB628572BD100E76233 /* VHDocFullScreenViewController.m */; };
 		2F2D488F8C53120006B0DC51 /* Pods_UIModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5B26E5360715D0811654CC /* Pods_UIModel.framework */; };
 		3215635527CC667A0000AE2E /* UIButton+VHConvenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215635427CC667A0000AE2E /* UIButton+VHConvenient.m */; };
 		3215635927CC69650000AE2E /* UIColor+VUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215635727CC69640000AE2E /* UIColor+VUI.m */; };
 		3215636D27CC981B0000AE2E /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215636C27CC981B0000AE2E /* NSString+Size.m */; };
 		3215637327CC99060000AE2E /* CALayer+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215637227CC99060000AE2E /* CALayer+Convenient.m */; };
 		3215637627CCA24E0000AE2E /* VHChangeSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215637527CCA24E0000AE2E /* VHChangeSegmentView.m */; };
-		321DE5C8282D200C007B0D21 /* VHHelpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 321DE5C7282D200C007B0D21 /* VHHelpTool.m */; };
 		32257335280847660082BEEA /* VHSheetActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32257334280847660082BEEA /* VHSheetActionViewController.m */; };
 		32257338280847830082BEEA /* VHSheetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32257336280847830082BEEA /* VHSheetTableViewCell.m */; };
 		3225733B280847980082BEEA /* VHSheetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3225733A280847970082BEEA /* VHSheetModel.m */; };
@@ -47,21 +50,16 @@
 		3225734428084A0C0082BEEA /* VHSheetActionViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 32257333280847660082BEEA /* VHSheetActionViewController.h */; };
 		322B7C3127CDE11200F6EA3A /* UILabel+VHConvenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 322B7C3027CDE11200F6EA3A /* UILabel+VHConvenient.m */; };
 		322B7C3427CDE39300F6EA3A /* VHBeautyTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 322B7C3327CDE39300F6EA3A /* VHBeautyTopView.m */; };
-		322C07E028312E8E002698D1 /* wenjuan_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 322C07DB28312E8E002698D1 /* wenjuan_left.png */; };
-		322C07E128312E8F002698D1 /* wenjuan_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 322C07DC28312E8E002698D1 /* wenjuan_line.png */; };
-		322C07E228312E8F002698D1 /* wenjuan_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 322C07DD28312E8E002698D1 /* wenjuan_no.png */; };
 		322C07E328312E8F002698D1 /* wenjuan_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 322C07DE28312E8E002698D1 /* wenjuan_top.png */; };
-		322C07E428312E8F002698D1 /* wenjuan_have.png in Resources */ = {isa = PBXBuildFile; fileRef = 322C07DF28312E8E002698D1 /* wenjuan_have.png */; };
-		322C07E9283146D3002698D1 /* VHQueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 322C07E8283146D3002698D1 /* VHQueTableViewCell.m */; };
 		323DA1F027D4F28300E3E0EC /* originalimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 323DA1EE27D4F28300E3E0EC /* originalimage@2x.png */; };
 		323DA1F127D4F28300E3E0EC /* originalimage_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 323DA1EF27D4F28300E3E0EC /* originalimage_select@2x.png */; };
 		3240B99D283F2F7F008C8C42 /* warning-outline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3240B99C283F2F7F008C8C42 /* warning-outline@2x.png */; };
 		3240B9A2283F30D5008C8C42 /* playerBackground@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3240B9A0283F30D5008C8C42 /* playerBackground@3x.png */; };
 		3240B9A3283F30D5008C8C42 /* playerBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3240B9A1283F30D5008C8C42 /* playerBackground@2x.png */; };
 		3241726427D216740050D660 /* VHBeautyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3241726327D216740050D660 /* VHBeautyAlertView.m */; };
+		3246223B2842108D006EA263 /* VHHelpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3246223A2842108D006EA263 /* VHHelpTool.m */; };
 		3247D9532805798900726DE3 /* VHViewProtocolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3247D9522805798900726DE3 /* VHViewProtocolView.m */; };
 		3247D9542805811400726DE3 /* VHViewProtocolView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3247D9512805798900726DE3 /* VHViewProtocolView.h */; };
-		3254FFEF282FB33000A308A9 /* VHQuestionnaireController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3254FFEE282FB33000A308A9 /* VHQuestionnaireController.m */; };
 		326F4A52284DB29B00020129 /* VHLotteryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326F4A51284DB29B00020129 /* VHLotteryViewController.m */; };
 		326F4A56284E23D500020129 /* icon_lottery.png in Resources */ = {isa = PBXBuildFile; fileRef = 326F4A55284E23D500020129 /* icon_lottery.png */; };
 		326F4A59284E290F00020129 /* UIView+RedRot.m in Sources */ = {isa = PBXBuildFile; fileRef = 326F4A58284E290F00020129 /* UIView+RedRot.m */; };
@@ -133,6 +131,7 @@
 		32E172EF27BE4027008FB99B /* VHBeautyEffectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E172EE27BE4027008FB99B /* VHBeautyEffectCell.m */; };
 		32E172F227BE410D008FB99B /* VHBeautyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E172F127BE410D008FB99B /* VHBeautyModel.m */; };
 		32E3D6EE27D7040300C54147 /* clockwiserotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 32E3D6ED27D7040300C54147 /* clockwiserotation.png */; };
+		4EEA19EE2861A0D1000C9D7A /* VHVideoRoundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA19ED2861A0D1000C9D7A /* VHVideoRoundModel.m */; };
 		C0443B5E242839550063FB0D /* VHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0443A18242839530063FB0D /* VHBaseViewController.m */; };
 		C0443B5F242839550063FB0D /* PubLishLiveVC_Normal.m in Sources */ = {isa = PBXBuildFile; fileRef = C0443A1A242839530063FB0D /* PubLishLiveVC_Normal.m */; };
 		C0443B61242839550063FB0D /* VHChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0443A1D242839530063FB0D /* VHChatTableViewCell.m */; };
@@ -605,6 +604,7 @@
 				F3A360E2263AC77700306870 /* VHNavigationController.h in CopyFiles */,
 				F32B66192629441A0067BD0C /* VHInteractLiveBaseVC.h in CopyFiles */,
 				F32B6618262944120067BD0C /* VHLiveBaseVC.h in CopyFiles */,
+				2178943A2863409C000D773F /* VHQuestionnaireController.h in CopyFiles */,
 				F32B66162629435C0067BD0C /* VHInteractLiveVC_New.h in CopyFiles */,
 				03D099A8254A93CB001F0F36 /* VHWebWatchLiveViewController.h in CopyFiles */,
 				0375079C251B553300DBDF24 /* UIModelTools.h in CopyFiles */,
@@ -653,6 +653,10 @@
 		03E4A93125087658005BB8D8 /* WatchLiveLotteryWinListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchLiveLotteryWinListView.m; sourceTree = "<group>"; };
 		03E4A9332508A6E2005BB8D8 /* WatchLiveLotteryWriteWinInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchLiveLotteryWriteWinInfoView.h; sourceTree = "<group>"; };
 		03E4A9342508A6E2005BB8D8 /* WatchLiveLotteryWriteWinInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchLiveLotteryWriteWinInfoView.m; sourceTree = "<group>"; };
+		2178943728634047000D773F /* VHQueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHQueTableViewCell.h; sourceTree = "<group>"; };
+		2178943828634047000D773F /* VHQueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHQueTableViewCell.m; sourceTree = "<group>"; };
+		21BBDEB528572BD100E76233 /* VHDocFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHDocFullScreenViewController.h; sourceTree = "<group>"; };
+		21BBDEB628572BD100E76233 /* VHDocFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHDocFullScreenViewController.m; sourceTree = "<group>"; };
 		3215635327CC667A0000AE2E /* UIButton+VHConvenient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+VHConvenient.h"; sourceTree = "<group>"; };
 		3215635427CC667A0000AE2E /* UIButton+VHConvenient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+VHConvenient.m"; sourceTree = "<group>"; };
 		3215635727CC69640000AE2E /* UIColor+VUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+VUI.m"; sourceTree = "<group>"; };
@@ -663,8 +667,6 @@
 		3215637227CC99060000AE2E /* CALayer+Convenient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Convenient.m"; sourceTree = "<group>"; };
 		3215637427CCA24E0000AE2E /* VHChangeSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChangeSegmentView.h; sourceTree = "<group>"; };
 		3215637527CCA24E0000AE2E /* VHChangeSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHChangeSegmentView.m; sourceTree = "<group>"; };
-		321DE5C6282D200C007B0D21 /* VHHelpTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHHelpTool.h; sourceTree = "<group>"; };
-		321DE5C7282D200C007B0D21 /* VHHelpTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHHelpTool.m; sourceTree = "<group>"; };
 		32257333280847660082BEEA /* VHSheetActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHSheetActionViewController.h; sourceTree = "<group>"; };
 		32257334280847660082BEEA /* VHSheetActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHSheetActionViewController.m; sourceTree = "<group>"; };
 		32257336280847830082BEEA /* VHSheetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHSheetTableViewCell.m; sourceTree = "<group>"; };
@@ -685,8 +687,6 @@
 		322C07DD28312E8E002698D1 /* wenjuan_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wenjuan_no.png; sourceTree = "<group>"; };
 		322C07DE28312E8E002698D1 /* wenjuan_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wenjuan_top.png; sourceTree = "<group>"; };
 		322C07DF28312E8E002698D1 /* wenjuan_have.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wenjuan_have.png; sourceTree = "<group>"; };
-		322C07E7283146D3002698D1 /* VHQueTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHQueTableViewCell.h; sourceTree = "<group>"; };
-		322C07E8283146D3002698D1 /* VHQueTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHQueTableViewCell.m; sourceTree = "<group>"; };
 		323DA1EE27D4F28300E3E0EC /* originalimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "originalimage@2x.png"; sourceTree = "<group>"; };
 		323DA1EF27D4F28300E3E0EC /* originalimage_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "originalimage_select@2x.png"; sourceTree = "<group>"; };
 		3240B99C283F2F7F008C8C42 /* warning-outline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warning-outline@2x.png"; sourceTree = "<group>"; };
@@ -694,6 +694,8 @@
 		3240B9A1283F30D5008C8C42 /* playerBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playerBackground@2x.png"; sourceTree = "<group>"; };
 		3241726227D216740050D660 /* VHBeautyAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHBeautyAlertView.h; sourceTree = "<group>"; };
 		3241726327D216740050D660 /* VHBeautyAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHBeautyAlertView.m; sourceTree = "<group>"; };
+		324622392842108D006EA263 /* VHHelpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHHelpTool.h; sourceTree = "<group>"; };
+		3246223A2842108D006EA263 /* VHHelpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHHelpTool.m; sourceTree = "<group>"; };
 		3247D9512805798900726DE3 /* VHViewProtocolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHViewProtocolView.h; sourceTree = "<group>"; };
 		3247D9522805798900726DE3 /* VHViewProtocolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHViewProtocolView.m; sourceTree = "<group>"; };
 		3254FFED282FB33000A308A9 /* VHQuestionnaireController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHQuestionnaireController.h; sourceTree = "<group>"; };
@@ -781,6 +783,8 @@
 		32E172F127BE410D008FB99B /* VHBeautyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHBeautyModel.m; sourceTree = "<group>"; };
 		32E3D6ED27D7040300C54147 /* clockwiserotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockwiserotation.png; sourceTree = "<group>"; };
 		3C5B26E5360715D0811654CC /* Pods_UIModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EEA19EC2861A0D1000C9D7A /* VHVideoRoundModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHVideoRoundModel.h; sourceTree = "<group>"; };
+		4EEA19ED2861A0D1000C9D7A /* VHVideoRoundModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHVideoRoundModel.m; sourceTree = "<group>"; };
 		806B7A9AC97F6A175B177C50 /* Pods-UIModel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIModel.debug.xcconfig"; path = "Target Support Files/Pods-UIModel/Pods-UIModel.debug.xcconfig"; sourceTree = "<group>"; };
 		C0443A18242839530063FB0D /* VHBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHBaseViewController.m; sourceTree = "<group>"; };
 		C0443A1A242839530063FB0D /* PubLishLiveVC_Normal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubLishLiveVC_Normal.m; sourceTree = "<group>"; };
@@ -1386,6 +1390,8 @@
 		0361360525DF644300C5C029 /* HalfScreenWatch */ = {
 			isa = PBXGroup;
 			children = (
+				2178943728634047000D773F /* VHQueTableViewCell.h */,
+				2178943828634047000D773F /* VHQueTableViewCell.m */,
 				C0443B22242839540063FB0D /* VHHalfWatchLiveVC_Normal.h */,
 				C0443B5D242839550063FB0D /* VHHalfWatchLiveVC_Normal.m */,
 				C0443B29242839540063FB0D /* VHHalfWatchLiveVC_Normal.xib */,
@@ -1396,8 +1402,6 @@
 				3254FFEE282FB33000A308A9 /* VHQuestionnaireController.m */,
 				326F4A50284DB29A00020129 /* VHLotteryViewController.h */,
 				326F4A51284DB29B00020129 /* VHLotteryViewController.m */,
-				322C07E7283146D3002698D1 /* VHQueTableViewCell.h */,
-				322C07E8283146D3002698D1 /* VHQueTableViewCell.m */,
 			);
 			path = HalfScreenWatch;
 			sourceTree = "<group>";
@@ -1420,6 +1424,13 @@
 				03B5F59F272BFE6800A98E7B /* VHWatchNodelayDocumentView.m */,
 			);
 			path = NodelayView;
+			sourceTree = "<group>";
+		};
+		2178943628633F3E000D773F /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		3215635227CC660F0000AE2E /* Category */ = {
@@ -1448,15 +1459,6 @@
 				3215637527CCA24E0000AE2E /* VHChangeSegmentView.m */,
 			);
 			path = segmentView;
-			sourceTree = "<group>";
-		};
-		321DE5C5282D1FE5007B0D21 /* Tool */ = {
-			isa = PBXGroup;
-			children = (
-				321DE5C6282D200C007B0D21 /* VHHelpTool.h */,
-				321DE5C7282D200C007B0D21 /* VHHelpTool.m */,
-			);
-			path = Tool;
 			sourceTree = "<group>";
 		};
 		3225732F280844D10082BEEA /* CloudBrocast */ = {
@@ -1538,6 +1540,15 @@
 				3241726327D216740050D660 /* VHBeautyAlertView.m */,
 			);
 			path = alert;
+			sourceTree = "<group>";
+		};
+		324622382842108D006EA263 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				324622392842108D006EA263 /* VHHelpTool.h */,
+				3246223A2842108D006EA263 /* VHHelpTool.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		3247D9502805795600726DE3 /* ViewProtocol */ = {
@@ -1693,6 +1704,15 @@
 			path = beautyView;
 			sourceTree = "<group>";
 		};
+		4EEA19EB2861A0AC000C9D7A /* VideoRound */ = {
+			isa = PBXGroup;
+			children = (
+				4EEA19EC2861A0D1000C9D7A /* VHVideoRoundModel.h */,
+				4EEA19ED2861A0D1000C9D7A /* VHVideoRoundModel.m */,
+			);
+			path = VideoRound;
+			sourceTree = "<group>";
+		};
 		9BA979B8FECCED83594CE521 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1710,7 +1730,7 @@
 				C0443A24242839530063FB0D /* UIModel_PrefixHeader.pch */,
 				F3A105722626D88F00F73EEA /* VHEnum.h */,
 				C0443AEB242839540063FB0D /* UIModel.h */,
-				321DE5C5282D1FE5007B0D21 /* Tool */,
+				324622382842108D006EA263 /* Tool */,
 				3247D9502805795600726DE3 /* ViewProtocol */,
 				3225732F280844D10082BEEA /* CloudBrocast */,
 				32B17B6727BC9FD8000DA6DE /* BeautyView */,
@@ -2000,6 +2020,8 @@
 		C0443B21242839540063FB0D /* WatchLive */ = {
 			isa = PBXGroup;
 			children = (
+				21BBDEB528572BD100E76233 /* VHDocFullScreenViewController.h */,
+				21BBDEB628572BD100E76233 /* VHDocFullScreenViewController.m */,
 				0361360525DF644300C5C029 /* HalfScreenWatch */,
 				033CE48125199678001BBA7F /* FullScreenWatch */,
 				0361360A25DF648E00C5C029 /* WebViewWatch */,
@@ -2011,6 +2033,7 @@
 		C0443B2A242839540063FB0D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4EEA19EB2861A0AC000C9D7A /* VideoRound */,
 				03A03A4827296CFC006F4388 /* NodelayView */,
 				0341C564261E9DEF00EF599B /* ScrollText */,
 				C0443B2B242839540063FB0D /* Chat */,
@@ -2199,6 +2222,7 @@
 				C0FC255F1E51A45D00B3D834 /* Products */,
 				C0DFA37622E85DA800449977 /* Frameworks */,
 				9BA979B8FECCED83594CE521 /* Pods */,
+				2178943628633F3E000D773F /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2680,9 +2704,7 @@
 				32C475F127CF8C5A00D2B490 /* ruddy_select@2x.png in Resources */,
 				C0443C8A24283ACF0063FB0D /* checked.png in Resources */,
 				C0443B7B242839550063FB0D /* Expression_19@2x.png in Resources */,
-				322C07E028312E8E002698D1 /* wenjuan_left.png in Resources */,
 				F3CA151626329BAE00325F3D /* icon-文档-颜色绿@2x.png in Resources */,
-				322C07E228312E8F002698D1 /* wenjuan_no.png in Resources */,
 				C0443C84242839550063FB0D /* WatchLiveLotteryViewController.xib in Resources */,
 				C0443C1A242839550063FB0D /* 单音频@3x.png in Resources */,
 				C0443C15242839550063FB0D /* 开音@3x.png in Resources */,
@@ -2780,7 +2802,6 @@
 				F3A10A3026298824003552F8 /* questionMessage@2x.png in Resources */,
 				F3CA150626329BAE00325F3D /* icon-文档-线3@3x.png in Resources */,
 				32876B0E27E17DCB00D76DBC /* whitening@3x.png in Resources */,
-				322C07E428312E8F002698D1 /* wenjuan_have.png in Resources */,
 				F3A10A4126298824003552F8 /* head50.png in Resources */,
 				F3A109F626298824003552F8 /* live_topTool_video_off@2x.png in Resources */,
 				F3CA150B26329BAE00325F3D /* icon-文档-线3@2x.png in Resources */,
@@ -2997,7 +3018,6 @@
 				C0443BFA242839550063FB0D /* 适应屏幕@2x.png in Resources */,
 				C0443C08242839550063FB0D /* 弹幕@2x.png in Resources */,
 				F3A10A3426298824003552F8 /* chat_other@3x.png in Resources */,
-				322C07E128312E8F002698D1 /* wenjuan_line.png in Resources */,
 				F3CA150926329BAE00325F3D /* icon-文档-图形@3x.png in Resources */,
 				F3A109ED26298824003552F8 /* icon-警示@3x.png in Resources */,
 				C0443B88242839550063FB0D /* Expression_56@2x.png in Resources */,
@@ -3078,7 +3098,6 @@
 			files = (
 				C0443B5E242839550063FB0D /* VHBaseViewController.m in Sources */,
 				F32B661426292EFF0067BD0C /* VHLiveModel.m in Sources */,
-				321DE5C8282D200C007B0D21 /* VHHelpTool.m in Sources */,
 				0341C567261E9E3900EF599B /* VHScrollTextView.m in Sources */,
 				329FDC8927C764920097272D /* VHSaveBeautyTool.m in Sources */,
 				C0443C6D242839550063FB0D /* SZQuestionOptionCell.m in Sources */,
@@ -3104,6 +3123,7 @@
 				3225733E280848060082BEEA /* VHSeatTableViewCell.m in Sources */,
 				F3A5B9B4263BC9A000CE7142 /* VHEndPublisherVC.m in Sources */,
 				3215636D27CC981B0000AE2E /* NSString+Size.m in Sources */,
+				4EEA19EE2861A0D1000C9D7A /* VHVideoRoundModel.m in Sources */,
 				C0529860242A41FD0029B29C /* DLNAView.m in Sources */,
 				32BEA1AA27D89B3F00DDD3FA /* VHReflect.m in Sources */,
 				F32B64E126281C5B0067BD0C /* VHFaceView.m in Sources */,
@@ -3124,11 +3144,11 @@
 				C0443C85242839550063FB0D /* WatchLiveLotteryTableViewCell.m in Sources */,
 				F3A105352626906900F73EEA /* VHLiveBaseVC.m in Sources */,
 				C0443C7B242839550063FB0D /* VHInvitationAlert.m in Sources */,
+				2178943B286340A2000D773F /* VHQuestionnaireController.m in Sources */,
 				322B7C3127CDE11200F6EA3A /* UILabel+VHConvenient.m in Sources */,
 				32E172E927BE367F008FB99B /* VHBeautyAdjustController.m in Sources */,
 				3225733B280847980082BEEA /* VHSheetModel.m in Sources */,
 				C0443C64242839550063FB0D /* WatchLiveOnlineTableViewCell.m in Sources */,
-				322C07E9283146D3002698D1 /* VHQueTableViewCell.m in Sources */,
 				32E172F227BE410D008FB99B /* VHBeautyModel.m in Sources */,
 				F3DCF2B4262815790014D3F0 /* VHLiveMsgModel.m in Sources */,
 				C0443C32242839550063FB0D /* UIAlertController+ITTAdditionsUIModel.m in Sources */,
@@ -3157,10 +3177,12 @@
 				035AD5DE272027D5002515B7 /* PubLishLiveVC_Nodelay.m in Sources */,
 				C0443B61242839550063FB0D /* VHChatTableViewCell.m in Sources */,
 				329FDC8427C72FBD0097272D /* VHSwitchCell.m in Sources */,
+				21BBDEB728572BD100E76233 /* VHDocFullScreenViewController.m in Sources */,
 				F3A1053B2626914E00F73EEA /* VHLiveMemberListView.m in Sources */,
 				F3DCF2A22627ED970014D3F0 /* VHInteractLiveBaseVC.m in Sources */,
 				0375079B251B526500DBDF24 /* UIModelTools.m in Sources */,
 				3215637327CC99060000AE2E /* CALayer+Convenient.m in Sources */,
+				3246223B2842108D006EA263 /* VHHelpTool.m in Sources */,
 				03D099A7254A9301001F0F36 /* VHWebWatchLiveViewController.m in Sources */,
 				F3DCF2B1262815490014D3F0 /* VHLiveInfoDetailChatCell.m in Sources */,
 				32AD03DE27C6333700CF2545 /* VHSlider.m in Sources */,
@@ -3177,7 +3199,6 @@
 				F3A5B9BD263BCBD600CE7142 /* VHEndPublisherCell.m in Sources */,
 				F32B64F026284B440067BD0C /* VHLiveDocListCell.m in Sources */,
 				C0443C6B242839550063FB0D /* SZQuestionItem.m in Sources */,
-				3254FFEF282FB33000A308A9 /* VHQuestionnaireController.m in Sources */,
 				F3DCF2A8262806030014D3F0 /* VHLiveBroadcastInfoDetailTopView.m in Sources */,
 				F3A1053E2626917E00F73EEA /* VHLiveMemberAndLimitView.m in Sources */,
 				3215635927CC69650000AE2E /* UIColor+VUI.m in Sources */,
@@ -3185,6 +3206,7 @@
 				03A03A4B27296D58006F4388 /* VHWatchNodelayVideoView.m in Sources */,
 				F3A1093A26297FB4003552F8 /* VHAlertView.m in Sources */,
 				C0443B64242839550063FB0D /* VHLiveChatView.m in Sources */,
+				2178943928634047000D773F /* VHQueTableViewCell.m in Sources */,
 				326F4A52284DB29B00020129 /* VHLotteryViewController.m in Sources */,
 				C0443C7E242839550063FB0D /* MicCountDownView.m in Sources */,
 				328940BA27D05DAD004FB00F /* VHBeautyFilterCell.m in Sources */,
@@ -3294,7 +3316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
@@ -3335,7 +3357,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
@@ -3375,7 +3397,7 @@
 					"$(PROJECT_DIR)/libs_third/MJExtension",
 					"$(PROJECT_DIR)/libs_third/YYText",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIModel/libs/DLNA",
@@ -3419,7 +3441,7 @@
 					"$(PROJECT_DIR)/libs_third/MJExtension",
 					"$(PROJECT_DIR)/libs_third/YYText",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIModel/libs/DLNA",

@@ -14,37 +14,43 @@
 #import "VHInvitationAlert.h"
 #import "VHWatchNodelayVideoView.h"
 #import <VHInteractive/VHRoom.h>
-#import "VHWatchNodelayDocumentView.h"
-
+#import "Reachability.h"
 
 @interface VHPortraitWatchLiveVC_Nodelay () <VHPortraitWatchLiveDecorateViewDelegate,VHallChatDelegate,VHinteractiveViewControllerDelegate,VHInvitationAlertDelegate,VHRoomDelegate> {
     BOOL _haveLoadHistoryChat; //是否已加载历史聊天记录
-    BOOL _docShow; //文档是否显示
 }
-/** 承载文档view的父视图 */
-//@property (nonatomic, strong) VHWatchNodelayDocumentView *docContentView;
 /** 视频view上层子控件的父视图 */
 @property (nonatomic, strong) VHPortraitWatchLiveDecorateView *decorateView;
+/** 互动控制器 */
+@property (nonatomic, strong) VHinteractiveViewController *interactiveVC;
 /** 返回按钮 */
 @property (nonatomic, strong) UIButton *backBtn;
 /** 聊天对象 */
 @property (nonatomic, strong) VHallChat *vhallChat;
 /** 互动控制器 */
-@property (nonatomic, strong) VHinteractiveViewController *interactiveVC;
-/** 开播参数 */
 @property (nonatomic, strong) NSMutableDictionary *playParam;
 /** 主持人邀请上麦弹窗 */
 @property (nonatomic, strong) VHInvitationAlert *invitationAlertView;
 
 @property (nonatomic, strong) VHWatchNodelayVideoView *videoView;  //视频容器
-/** 互动SDK (用于无延迟直播) */
+
+/// 互动SDK (用于无延迟直播)
 @property (nonatomic, strong) VHRoom *inavRoom;
+/// 视频轮巡RenderView
+@property (nonatomic, strong) VHLocalRenderView * videoRoundRenderView;
+/// 是否参加旁路
+@property (nonatomic, strong) UIButton * isInavBypass;
+
 @property (nonatomic, strong) MASConstraint *videoViewHeight;     ///<视频容器高
+/// 网络监听
+@property(nonatomic, strong) Reachability * reachAbility;
+
 @end
 
 @implementation VHPortraitWatchLiveVC_Nodelay
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"%s释放",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String]);
 }
 
@@ -59,7 +65,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //程序进入前后台监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    //监听网络变化
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkChange:) name:kReachabilityChangedNotification object:nil];
+    _reachAbility = [Reachability reachabilityForInternetConnection];
+    [_reachAbility startNotifier];
+
     [self configUI];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,8 +88,7 @@
     [super viewWillDisappear:animated];
     //开启设备自动锁屏
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
-    [self.inavRoom leaveRoom];
-    [_videoView removeAllRenderView];
+    [self inavLeaveRoom];
 }
 
 
@@ -100,9 +114,15 @@
             make.top.equalTo(@(20));
         }
     }];
+    
+//    [self.isInavBypass mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.mas_equalTo(0);
+//        make.top.mas_equalTo(50);
+//        make.size.mas_equalTo(CGSizeMake(200, 40));
+//    }];
 }
 
-//进入互动房间
+#pragma mark - 进入互动房间
 - (void)enterInvRoom {
     [self.inavRoom enterRoomWithParams:[self playParam]];
 }
@@ -142,15 +162,12 @@
 
 
 //弹出互动页面
-- (void)presentInteractiveVC {
+- (void)presentInteractiveVC:(BOOL)isVideoRound {
     [self.decorateView.upMicBtnView stopCountDown];
     //进入互动
-    VHinteractiveViewController *controller = [[VHinteractiveViewController alloc] init];
-    controller.joinRoomPrams = [self playParam];
-    controller.inav_num = self.inavRoom.roomInfo.inav_num;
-    controller.inavBeautifyFilterEnable = self.interactBeautifyEnable;
-    controller.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:controller animated:YES completion:nil];
+    self.interactiveVC.isVideoRound = isVideoRound;
+    self.interactiveVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:self.interactiveVC animated:YES completion:nil];
 }
 
 //被踢出
@@ -227,6 +244,106 @@
     VH_ShowToast(allForbidChat?@"全体已被禁言":@"全体已被取消禁言");
 }
 
+#pragma mark - 视频轮巡
+// 轮巡开始
+- (void)videoRoundStart
+{
+    VH_ShowToast(@"主办方开启了视频轮巡功能，在主持人端将会看到您的视频画面，请保持视频设备一切正常");
+}
+// 轮巡结束
+- (void)videoRoundEnd
+{
+    [_inavRoom unpublish];
+    
+    if (_videoRoundRenderView) {
+        _videoRoundRenderView = nil;
+    }
+}
+// 轮巡列表
+- (void)videoRoundUsers:(NSArray *)uids
+{
+    BOOL isHave = NO;
+    for (NSString * userId in uids) {
+        if ([userId isEqualToString:[VHallApi currentUserID]]) {
+            isHave = YES;
+            break;
+        }
+    }
+    if (isHave) {
+        // 判断互动房间断了 则连接互动房间
+        if (self.inavRoom.status != VHRoomStatusConnected) {
+            [self enterInvRoom];
+            return;
+        }
+        // 如果在推流 则不需要推流了
+        if (self.inavRoom.isPublishing) {
+            return;
+        }
+        [self.inavRoom publishWithCameraView:self.videoRoundRenderView];
+    }else{
+        [self.inavRoom unpublish];
+    }
+}
+// 视频轮询的list请求
+- (void)getRoundUsers
+{
+    __weak __typeof(self)weakSelf = self;
+    [self.inavRoom getRoundUsersWithIs_next:@"0" success:^(NSDictionary *response) {
+        NSDictionary * data = response[@"data"];
+        NSMutableArray * users = [NSMutableArray array];
+        for (NSDictionary * dic in data[@"list"]) {
+            [users addObject:dic[@"account_id"]];
+        }
+        [weakSelf videoRoundUsers:users];
+    } fail:^(NSError *error) {
+        
+    }];
+}
+#pragma mark - 是否参与旁路
+- (void)clickIsInavBypass:(UIButton *)sender
+{
+    [self.inavRoom setRoomJoinBroadCastMixOption:sender.selected cameraView:self.videoRoundRenderView finish:^(int code, NSString * _Nonnull message) {
+        
+    }];
+    sender.selected = !sender.selected;
+}
+#pragma mark  网络变化
+- (void)networkChange:(NSNotification *)notification
+{
+    Reachability *currReach = [notification object];
+    
+    NSParameterAssert([currReach isKindOfClass:[Reachability class]]);
+    
+    //对连接改变做出响应处理动作
+    NetworkStatus status = [currReach currentReachabilityStatus];
+    
+    switch (status) {
+        case NotReachable:
+        {
+            //如果没有连接到网络就弹出提醒实况
+            VH_ShowToast(@"网络断开");
+            [self inavLeaveRoom];
+        }
+            break;
+        case ReachableViaWiFi:
+        {
+            //wifi
+            //请求最新数据
+            [self enterInvRoom];
+        }
+            break;
+        case ReachableViaWWAN:
+        {
+            //数据网络
+            //请求最新数据
+            [self enterInvRoom];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - VHInvitationAlertDelegate
 - (void)alert:(VHInvitationAlert *)alert clickAtIndex:(NSInteger)index {
     [alert removeFromSuperview];
@@ -235,7 +352,7 @@
         ///先校验权限再上麦进入互动
         [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
             [self.inavRoom agreeInviteSuccess:^{
-                [self presentInteractiveVC];
+                [self presentInteractiveVC:NO];
             } fail:^(NSError *error) {
                 VH_ShowToast(error.localizedDescription);
             }];
@@ -317,11 +434,10 @@
 - (void)room:(VHRoom *)room enterRoomWithError:(NSError *)error {
     VUI_Log(@"加入房间回调");
     [self interactiveRoomError:error];
+    
     if(error == nil) { //加入房间成功
         //加载历史聊天记录
         [self loadHistoryChatData];
-//        //设置文档
-//        [self.docContentView setDocument:self.inavRoom.roomInfo.documentManager defaultShow:self.inavRoom.roomInfo.documentOpenState];
         //是否显示上麦按钮
         if(self.inavRoom.roomInfo.handsUpOpenState) {
             self.decorateView.upMicBtnView.hidden = NO;
@@ -334,6 +450,9 @@
                 self.videoViewHeight = make.height.equalTo(self.view);
             }];
         }
+        
+        // 查询视频轮询
+        [self getRoundUsers];
     }
 }
 
@@ -344,8 +463,7 @@
 
 /// 房间发生错误回调
 - (void)room:(VHRoom *)room didError:(VHRoomErrorStatus)status reason:(NSString *)reason {
-    [self.inavRoom leaveRoom];
-    [_videoView removeAllRenderView];
+    [self inavLeaveRoom];
     [UIAlertController showAlertControllerTitle:@"提示" msg:[NSString stringWithFormat:@"%zd-%@",status,reason] btnTitle:@"确定" callBack:^{
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
@@ -354,12 +472,12 @@
 
 /// 房间状态改变回调
 - (void)room:(VHRoom *)room didChangeStatus:(VHRoomStatus)status {
-    
+    VUI_Log(@"房间状态变化：%zd",status);
 }
 
 /// 视频流加入回调（流类型包括音视频、共享屏幕、插播等）
 - (void)room:(VHRoom *)room didAddAttendView:(VHRenderView *)attendView {
-    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
         return;//过滤视频轮巡流
     }
     VUI_Log(@"\n某人上麦:%@，流类型：%d，流视频宽高：%@，流id：%@，是否有音频：%d，是否有视频：%d",attendView.userId,attendView.streamType,NSStringFromCGSize(attendView.videoSize),attendView.streamId,attendView.hasAudio,attendView.hasVideo);
@@ -368,7 +486,7 @@
 
 /// 视频流离开回调（流类型包括音视频、共享屏幕、插播等）
 - (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView {
-    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
         return;//过滤视频轮巡流
     }
     [self.videoView removeRenderView:attendView];
@@ -379,7 +497,7 @@
 - (void)room:(VHRoom *)room receiveRoomMessage:(VHRoomMessage *)message {
     if(message.targetForMe) { //针对自己的消息
         if (message.messageType == VHRoomMessageType_vrtc_connect_agree) { //主持人同意自己上麦
-            [self presentInteractiveVC];
+            [self presentInteractiveVC:NO];
         }else if (message.messageType == VHRoomMessageType_vrtc_connect_refused) { //主持人拒绝自己上麦
             VH_ShowToast(@"主持人拒绝了您的上麦申请");
         }else if (message.messageType == VHRoomMessageType_vrtc_connect_invite) { //主持人邀请自己上麦
@@ -404,8 +522,35 @@
     }
 }
 
-#pragma mark - 懒加载
+#pragma mark - 切换前后台
+//前台
+- (void)appWillEnterForeground {
+    [self getRoundUsers];
+}
+//后台
+- (void)appEnterBackground {
+    //停止推流
+    [self videoRoundEnd];
+}
 
+#pragma mark - 离开房间
+- (void)inavLeaveRoom
+{
+    if (_inavRoom) {
+        [_inavRoom leaveRoom];
+        _inavRoom = nil;
+    }
+    if (_vhallChat) {
+        _vhallChat = nil;
+    }
+    if (_videoView) {
+        [_videoView removeAllRenderView];
+    }
+    if (_videoRoundRenderView) {
+        _videoRoundRenderView = nil;
+    }
+}
+#pragma mark - 懒加载
 - (NSMutableDictionary *)playParam
 {
     if (!_playParam)
@@ -441,34 +586,6 @@
     return _backBtn;
 }
 
-//- (VHWatchNodelayDocumentView *)docContentView
-//{
-//    if (!_docContentView)
-//    {
-//        _docContentView = [[VHWatchNodelayDocumentView alloc] init];
-//        [self.view insertSubview:_docContentView aboveSubview:self.videoView];
-//        [_docContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.right.equalTo(self.view);
-//            make.bottom.equalTo(self.videoView.mas_top).offset(-10);
-//            make.height.equalTo(_docContentView.mas_width).multipliedBy(9/16.0);
-//        }];
-//    }
-//    return _docContentView;
-//}
-
-- (VHinteractiveViewController *)interactiveVC
-{
-    if (!_interactiveVC)
-    {
-        VHinteractiveViewController *interactiveVC = [[VHinteractiveViewController alloc] init];
-        interactiveVC.joinRoomPrams = self.playParam;
-        interactiveVC.inavBeautifyFilterEnable = self.interactBeautifyEnable;
-        interactiveVC.inav_num = self.inavRoom.roomInfo.inav_num;
-        _interactiveVC = interactiveVC;
-    }
-    return _interactiveVC;
-}
-
 - (VHRoom *)inavRoom {
     if (!_inavRoom) {
         _inavRoom = [[VHRoom alloc] init];
@@ -480,7 +597,15 @@
     }
     return _inavRoom;
 }
-
+- (VHLocalRenderView *)videoRoundRenderView {
+    if (!_videoRoundRenderView) {
+        NSDictionary *options = @{VHStreamOptionMixVideo:@NO,VHStreamOptionMixAudio:@NO,VHStreamOptionStreamType:@(VHInteractiveStreamTypeVideoPatrol)};
+        _videoRoundRenderView = [[VHLocalRenderView alloc] initCameraViewWithFrame:CGRectMake(0, 0, VHScreenWidth, VHScreenHeight) options:options];
+        _videoRoundRenderView.scalingMode = VHRenderViewScalingModeAspectFit;
+        [_videoRoundRenderView muteAudio];
+    }
+    return _videoRoundRenderView;
+}
 - (VHWatchNodelayVideoView *)videoView
 {
     if (!_videoView)
@@ -488,5 +613,25 @@
         _videoView = [[VHWatchNodelayVideoView alloc] init];
     }
     return _videoView;
+}
+- (VHinteractiveViewController *)interactiveVC
+{
+    if (!_interactiveVC) {
+        //进入互动
+        _interactiveVC = [[VHinteractiveViewController alloc] init];
+        _interactiveVC.joinRoomPrams = [self playParam];
+        _interactiveVC.inav_num = self.inavRoom.roomInfo.inav_num;
+        _interactiveVC.inavBeautifyFilterEnable = self.interactBeautifyEnable;
+    }return _interactiveVC;
+}
+- (UIButton *)isInavBypass
+{
+    if (!_isInavBypass) {
+        _isInavBypass = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_isInavBypass setTitle:@"参与旁路" forState:UIControlStateNormal];
+        [_isInavBypass setTitle:@"退出旁路" forState:UIControlStateSelected];
+        [_isInavBypass addTarget:self action:@selector(clickIsInavBypass:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_isInavBypass];
+    }return _isInavBypass;
 }
 @end

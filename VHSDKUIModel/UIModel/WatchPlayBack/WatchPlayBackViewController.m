@@ -17,6 +17,7 @@
 #import "DLNAView.h"
 #import "VHPlayerView.h"
 #import "UIAlertController+ITTAdditionsUIModel.h"
+#import "VHDocFullScreenViewController.h"
 
 #define RATEARR @[@1.0,@1.25,@1.5,@2.0,@0.5,@0.67,@0.8]//倍速播放循环顺序
 
@@ -27,10 +28,12 @@ static AnnouncementView* announcementView = nil;
     NSArray* _definitionList;
     BOOL _loadedChatHistoryList; //是否请求过历史聊天记录
 }
+@property (nonatomic) VHDocFullScreenViewController *docFullScreen;
 @property (nonatomic,strong) VHallMoviePlayer  *moviePlayer;//播放器
 @property (weak, nonatomic) IBOutlet UIView *backView;
 @property (weak, nonatomic) IBOutlet UIView *docConentView;//文档容器
 @property (weak, nonatomic) IBOutlet UIView *docAreaView;
+@property (weak, nonatomic) IBOutlet UIButton *docFullScreenButton; // 文档全屏按钮
 @property (nonatomic,assign) VHMovieVideoPlayMode playModelTemp;
 @property (nonatomic,strong) VHPlayerView *playMaskView;
 @property (nonatomic,assign) CGRect originFrame;
@@ -88,6 +91,7 @@ static AnnouncementView* announcementView = nil;
     self.moviePlayer.initialPlaybackTime = 0;
     self.isPreLoad = YES;
     [self.moviePlayer startPlayback:[self playParam]];
+    [self.docFullScreenButton setImage:BundleUIImage(@"live_bottomTool_clear") forState:UIControlStateNormal];
 }
 
 - (void)updataFrame {
@@ -289,6 +293,19 @@ static AnnouncementView* announcementView = nil;
     _detalBtn.selected = NO;
     _tableViewContentView.hidden = YES;
     _docConentView.hidden = NO;
+}
+- (IBAction)onClickDocFullScreenButton:(UIButton *)sender {
+    self.docFullScreen = [VHDocFullScreenViewController new];
+    self.docFullScreen.docView = _moviePlayer.documentView;
+    __weak typeof(self) wself = self;
+    self.docFullScreen.handleDismiss = ^(UIView * _Nonnull docView) {
+        __strong typeof(wself) self = wself;
+        if(docView!=nil){
+            [docView setFrame:self.docAreaView.bounds];
+            [self.docAreaView addSubview:docView];
+        }
+    };
+    [self presentViewController:self.docFullScreen animated:NO completion:nil];
 }
 
 #pragma mark - 详情

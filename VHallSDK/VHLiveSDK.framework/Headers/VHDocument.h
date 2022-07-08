@@ -9,12 +9,55 @@
 #import <Foundation/Foundation.h>
 #import "VHDocumentView.h"
 
-
-
-@protocol VHDocumentDelegate;
-
-
 NS_ASSUME_NONNULL_BEGIN
+
+@class VHDocument;
+@protocol VHDocumentDelegate <NSObject>
+
+@optional
+/**
+ *  错误回调
+ *  @param document 文档实例
+ *  @param error    错误
+ */
+- (void)document:(VHDocument *)document error:(NSError *)error;
+
+/**
+ *  直播文档同步
+ *  @param document 文档实例
+ *  @param channelID   文档channelID
+ *  @return float   延迟执行时间单位秒 即直播延迟时间 re     alityBufferTime/1000.0
+ */
+- (float)document:(VHDocument *)document delayChannelID:(NSString*)channelID;
+
+/**
+ *  翻页消息
+ *  @param document 文档实例
+ *  @param documentView   文档id 为空时没有 文档
+ */
+- (void)document:(VHDocument *)document changePage:(VHDocumentView*)documentView;
+
+/**
+ * 是否显示文档
+ */
+- (void)document:(VHDocument *)document switchStatus:(BOOL)switchStatus;
+
+/**
+ *  选择 documentView
+ */
+- (void)document:(VHDocument *)document selectDocumentView:(VHDocumentView*)documentView;
+
+/**
+ *  添加 documentView
+ */
+- (void)document:(VHDocument *)document addDocumentView:(VHDocumentView *)documentView;
+
+/**
+ *  删除 documentView
+ */
+- (void)document:(VHDocument *)document removeDocumentView:(VHDocumentView *)documentView;
+
+@end
 
 @interface VHDocument : NSObject
 /**
@@ -38,7 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
 /*
  * 是否可以编辑 作为发起端 默认NO 不可编辑
  */
-@property (nonatomic,assign)BOOL    editEnable;
+@property (nonatomic,assign)BOOL editEnable;
 
 /*
  * 是否开启观看端演示
@@ -113,52 +156,13 @@ NS_ASSUME_NONNULL_BEGIN
                        failed:(void(^)(NSError *error))failedBlock;
 @end
 
-@protocol VHDocumentDelegate <NSObject>
+ @interface VHDocument(Watermark)
 
-@optional
-/**
- *  错误回调
- *  @param document 文档实例
- *  @param error    错误
- */
-- (void)document:(VHDocument *)document error:(NSError *)error;
-
-/**
- *  直播文档同步
- *  @param document 文档实例
- *  @param channelID   文档channelID
- *  @return float   延迟执行时间单位秒 即直播延迟时间 re     alityBufferTime/1000.0
- */
-- (float)document:(VHDocument *)document delayChannelID:(NSString*)channelID;
-
-/**
- *  翻页消息
- *  @param document 文档实例
- *  @param documentView   文档id 为空时没有 文档
- */
-- (void)document:(VHDocument *)document changePage:(VHDocumentView*)documentView;
-
-/**
- * 是否显示文档
- */
-- (void)document:(VHDocument *)document switchStatus:(BOOL)switchStatus;
-
-/**
- *  选择 documentView
- */
-- (void)document:(VHDocument *)document selectDocumentView:(VHDocumentView*)documentView;
-
-/**
- *  添加 documentView
- */
-- (void)document:(VHDocument *)document addDocumentView:(VHDocumentView *)documentView;
-
-/**
- *  删除 documentView
- */
-- (void)document:(VHDocument *)document removeDocumentView:(VHDocumentView *)documentView;
-
+/// 添加水印
+/// @param watermarkModel 水印Model
+- (void)addWatermark:(VHDocWatermarkModel *)watermarkModel;
 @end
+
 NS_ASSUME_NONNULL_END
 
 

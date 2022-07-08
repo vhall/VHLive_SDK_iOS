@@ -57,6 +57,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 文档实例对象 ，获取该对象后，设置VHDocument的代理，监听文档相关回调
 @property (nonatomic, weak, readonly) VHDocument *documentManager;
+/// 文档水印项
+@property (nonatomic, readonly) VHDocWatermarkModel *docWatermarkModel;
+
 /// 当前活动支持的最大连麦人数，如：6表示1v5，16表示1v15
 @property (nonatomic, assign) NSInteger inav_num;
 

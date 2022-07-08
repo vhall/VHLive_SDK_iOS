@@ -21,7 +21,7 @@
     //设置视频显示模式，放大填充
     view.scalingMode = VHRenderViewScalingModeAspectFill;
     //如果是插播或共享桌面，留黑边的样式显示
-    if(view.streamType == VHInteractiveStreamTypeScreen || view.streamType == VHInteractiveStreamTypeFile) {
+    if(view.streamType == VHInteractiveStreamTypeScreen || view.streamType == VHInteractiveStreamTypeFile || view.streamType == VHInteractiveStreamTypeVideoPatrol) {
          view.scalingMode = VHRenderViewScalingModeAspectFit;
     }
     VHLiveMemberModel *model = [[VHLiveMemberModel alloc] init];

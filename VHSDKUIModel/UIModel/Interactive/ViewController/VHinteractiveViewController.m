@@ -234,7 +234,7 @@
 // 有新的成员加入互动
 - (void)room:(VHRoom *)room didAddAttendView:(VHRenderView *)attendView
 {
-    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
         return;//过滤视频轮巡流
     }
     attendView.scalingMode = VHRenderViewScalingModeAspectFill;
@@ -243,7 +243,7 @@
 //有成员离开互动
 - (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView
 {
-    if (attendView.streamType == VHInteractiveStreamTypeVideoPatro) {
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
         return;//过滤视频轮巡流
     }
     NSString *string = [NSString stringWithFormat:@"%@ 已下麦",attendView.userId];
@@ -485,7 +485,8 @@
             resolution = VHFrameResolution240x160;
             self.resolutionLab.text = @"推流分辨率：240x160";
         }
-        NSDictionary* options = @{VHFrameResolutionTypeKey:@(resolution),VHStreamOptionStreamType:@(VHInteractiveStreamTypeAudioAndVideo)};
+        
+        NSDictionary* options = @{VHFrameResolutionTypeKey:@(resolution),VHStreamOptionStreamType:@(self.isVideoRound ? VHInteractiveStreamTypeVideoPatrol : VHInteractiveStreamTypeAudioAndVideo)};
         
         _cameraView = [[VHLocalRenderView alloc] initCameraViewWithFrame:CGRectZero options:options];
         _cameraView.scalingMode = VHRenderViewScalingModeAspectFill;
@@ -493,6 +494,10 @@
         [_cameraView setDeviceOrientation:UIDeviceOrientationPortrait];
         _cameraView.transform = CGAffineTransformMakeScale(-1,1);//镜像
         _cameraView.beautifyEnable = _inavBeautifyFilterEnable;
+        // 如果是轮巡,则静音
+        if (self.isVideoRound) {
+            [_cameraView muteAudio];
+        }
     }
     return _cameraView;
 }

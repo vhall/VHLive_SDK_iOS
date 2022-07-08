@@ -93,6 +93,7 @@
 		328D8FC5283D01370058711D /* VHSheetActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHSheetActionViewController.h; sourceTree = "<group>"; };
 		32B19FA527E9726C0066367D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A5B08D74301AE76F9266CC39 /* Pods_VHSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VHSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B911AADA92EDD4E842194B8D /* Pods-VHSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VHSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C000AA3E1E66E053005DFB7C /* VHSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VHSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C000AA421E66E053005DFB7C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C000AA441E66E053005DFB7C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -171,8 +172,7 @@
 		C0DFA37D22E85E9700449977 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
 		C0DFA37E22E85E9700449977 /* VHInteractive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VHInteractive.framework; sourceTree = "<group>"; };
 		C0DFA37F22E85E9700449977 /* VhallLiveBaseApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VhallLiveBaseApi.framework; sourceTree = "<group>"; };
-		CDAA5D0BE6D5C6A73AD4C001 /* Pods-VHSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VHSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		ECB26D145B3706BA7DECD1B6 /* Pods-VHSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VHSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		E78C9A04F7DD12680B79F9B2 /* Pods-VHSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VHSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F30429E026302C88009A3D2F /* libMJExtension.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMJExtension.a; sourceTree = "<group>"; };
 		F32B66B5262977510067BD0C /* VHWebWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHWebWatchLiveViewController.h; sourceTree = "<group>"; };
 		F32B66B6262977510067BD0C /* WatchPlayBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchPlayBackViewController.h; sourceTree = "<group>"; };
@@ -226,12 +226,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		35F594364A9FC0FC1AA23483 /* Pods */ = {
+		308BD863D47BED561EC84848 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CDAA5D0BE6D5C6A73AD4C001 /* Pods-VHSDKDemo.debug.xcconfig */,
-				ECB26D145B3706BA7DECD1B6 /* Pods-VHSDKDemo.release.xcconfig */,
+				B911AADA92EDD4E842194B8D /* Pods-VHSDKDemo.debug.xcconfig */,
+				E78C9A04F7DD12680B79F9B2 /* Pods-VHSDKDemo.release.xcconfig */,
 			);
+			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -241,7 +242,7 @@
 				C000AA401E66E053005DFB7C /* VHSDKDemo */,
 				C000AA3F1E66E053005DFB7C /* Products */,
 				C000AA761E66E186005DFB7C /* Frameworks */,
-				35F594364A9FC0FC1AA23483 /* Pods */,
+				308BD863D47BED561EC84848 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -486,14 +487,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C000AA551E66E053005DFB7C /* Build configuration list for PBXNativeTarget "VHSDKDemo" */;
 			buildPhases = (
-				E3AE84D86148DFA4E88C69A9 /* [CP] Check Pods Manifest.lock */,
+				0286A8DA42BFE44C64880E16 /* [CP] Check Pods Manifest.lock */,
 				C000AA3A1E66E053005DFB7C /* Sources */,
 				C000AA3B1E66E053005DFB7C /* Frameworks */,
 				C000AA3C1E66E053005DFB7C /* Resources */,
 				C0FABCE620EF1031003947C6 /* Embed Frameworks */,
-				C0710F7723D042E00044883F /* ShellScript */,
-				66FE68080824700EAFACB6BA /* [CP] Embed Pods Frameworks */,
-				A374C464F3D00D13480B0466 /* [CP] Copy Pods Resources */,
+				D38D7FA4DF3837817B1B1ACE /* [CP] Embed Pods Frameworks */,
+				B6F28B432810E60149CA5EA2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -564,50 +564,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		66FE68080824700EAFACB6BA /* [CP] Embed Pods Frameworks */ = {
+		0286A8DA42BFE44C64880E16 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-frameworks.sh",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/FURenderKit.framework",
-				"${PODS_ROOT}/VHYun_Beautify/framework/VHBeautifyKit.framework",
-				"${PODS_ROOT}/VHYun_Beautify/framework/VHBFURender.framework",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FURenderKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VHBeautifyKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VHBFURender.framework",
+				"$(DERIVED_FILE_DIR)/Pods-VHSDKDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A374C464F3D00D13480B0466 /* [CP] Copy Pods Resources */ = {
+		B6F28B432810E60149CA5EA2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-resources.sh",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/graphics/body_slim.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/graphics/controller_cpp.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/graphics/face_beautification.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/graphics/face_makeup.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/graphics/fuzzytoonfilter.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/graphics/fxaa.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/graphics/tongue.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/model/ai_bgseg_green.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/model/ai_face_processor.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/model/ai_face_processor_lite.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/model/ai_face_recognizer.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/model/ai_hairseg.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/model/ai_hand_processor.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/model/ai_human_processor.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.0/Resources/model/ai_human_processor_mb_fast.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/graphics/body_slim.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/graphics/controller_cpp.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/graphics/face_beautification.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/graphics/face_makeup.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/graphics/fuzzytoonfilter.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/graphics/fxaa.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/graphics/tongue.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/model/ai_bgseg_green.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/model/ai_face_processor.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/model/ai_face_processor_lite.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/model/ai_face_recognizer.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/model/ai_hairseg.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/model/ai_hand_processor.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/model/ai_human_processor.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/Resources/model/ai_human_processor_mb_fast.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -632,43 +632,30 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C0710F7723D042E00044883F /* ShellScript */ = {
+		D38D7FA4DF3837817B1B1ACE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-frameworks.sh",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/FURenderKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GLEnvs/GLEnvs.framework",
+				"${BUILT_PRODUCTS_DIR}/LookinServer/LookinServer.framework",
+				"${PODS_ROOT}/VHYun_Beautify/framework/VHBeautifyKit.framework",
+				"${PODS_ROOT}/VHYun_Beautify/framework/VHBFURender.framework",
 			);
-			outputFileListPaths = (
-			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FURenderKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GLEnvs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LookinServer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VHBeautifyKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VHBFURender.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nAPP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
-		};
-		E3AE84D86148DFA4E88C69A9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VHSDKDemo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -769,7 +756,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
@@ -822,7 +809,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
@@ -833,11 +820,11 @@
 		};
 		C000AA561E66E053005DFB7C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDAA5D0BE6D5C6A73AD4C001 /* Pods-VHSDKDemo.debug.xcconfig */;
+			baseConfigurationReference = B911AADA92EDD4E842194B8D /* Pods-VHSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = H49DK955B9;
 				ENABLE_BITCODE = NO;
@@ -856,14 +843,14 @@
 					"$(PROJECT_DIR)/VHSDKDemo/Lib/MBProgressHUD",
 				);
 				INFOPLIST_FILE = VHSDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../UIModel",
 					"$(PROJECT_DIR)/../UIModel/libs_third",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 6.4.1;
+				MARKETING_VERSION = 6.5.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -877,11 +864,11 @@
 		};
 		C000AA571E66E053005DFB7C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECB26D145B3706BA7DECD1B6 /* Pods-VHSDKDemo.release.xcconfig */;
+			baseConfigurationReference = E78C9A04F7DD12680B79F9B2 /* Pods-VHSDKDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = H49DK955B9;
 				ENABLE_BITCODE = NO;
@@ -901,14 +888,14 @@
 					"$(PROJECT_DIR)/VHSDKDemo/Lib/MBProgressHUD",
 				);
 				INFOPLIST_FILE = VHSDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../UIModel",
 					"$(PROJECT_DIR)/../UIModel/libs_third",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 6.4.1;
+				MARKETING_VERSION = 6.5.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

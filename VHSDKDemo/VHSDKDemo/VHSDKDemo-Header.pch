@@ -22,7 +22,6 @@
 #import <VHLiveSDK/VHallApi.h>
 #import "VHStystemSetting.h"
 #import "UIView+ITTAdditions.h"
-
 #import "UIModel.h"
 #endif
 

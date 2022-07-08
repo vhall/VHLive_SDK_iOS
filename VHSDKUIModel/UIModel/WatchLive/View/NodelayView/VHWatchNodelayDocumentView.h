@@ -10,9 +10,12 @@
 #import <VHLiveSDK/VHDocument.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+@protocol VHWatchNodelayDocumentViewDelegate <NSObject>
+- (void)nodelayDidChangeDocument;
+@end
 @interface VHWatchNodelayDocumentView : UIView
-
+@property (nonatomic, weak) id<VHWatchNodelayDocumentViewDelegate> delegate;
+@property (nonatomic) VHDocWatermarkModel *watermark;
 //设置文档对象和初始显示
 - (void)setDocument:(VHDocument *)document defaultShow:(BOOL)show;
 

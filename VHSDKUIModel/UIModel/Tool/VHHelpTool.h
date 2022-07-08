@@ -17,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)getMediaAccess:(void(^_Nullable)(BOOL videoAccess,BOOL audioAcess))completionBlock;
 ///直播麦克风和相机权限
 + (void)liveGetMediaAccess:(void(^_Nullable)(BOOL videoAccess,BOOL audioAcess))completionBlock;
+
+///不允许也返回
++ (void)getToMediaAccess:(void(^_Nullable)(BOOL videoAccess,BOOL audioAcess))completionBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
