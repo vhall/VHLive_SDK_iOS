@@ -10,8 +10,8 @@
 1. 在 `Podfile` 文件中增加如下内容:
 
    ```ruby
-   pod 'VHallSDK_Live'        # 使用 直播功能
-   pod 'VHallSDK_Interactive' # 使用 互动直播
+   pod 'VHLiveSDK'        # 使用 直播功能
+   pod 'VHLiveSDK_Interactive' # 使用 互动直播
    ```
 
 2. 执行如下命令
