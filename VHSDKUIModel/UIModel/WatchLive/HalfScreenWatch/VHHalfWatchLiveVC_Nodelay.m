@@ -121,13 +121,13 @@ static AnnouncementView* announcementView = nil;
 #pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 初始化views
     [self initViews];
-    //添加问卷
+    // 添加问卷
     [self addquestionnaireView];
-    [self questionnaireLogic:NO];
-    
+    // 添加抽奖
     [self addLotteryView];
-    [self lotteryLogic:NO];
+    // 抽奖成功通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lotterySuccess) name:@"take_award_succeed" object:nil];
 }
 - (void)lotterySuccess{
@@ -152,18 +152,18 @@ static AnnouncementView* announcementView = nil;
 - (void)lotteryLogic:(BOOL)isAction{
     //抽奖历史记录
     [VHWebinarBaseInfo fetchLotteryListShowAll:2 webinarId:self.roomId success:^(VHLotteryListModel * _Nonnull listModel) {
-            if (listModel.listModel.count == 0) {
-                if (isAction) {
-                    VH_ShowToast(@"当前没有中奖");
-                }
-            }else{
-                self.lotteryIconBtn.hidden = NO;
-                [self isHaveLotteryRedRot:listModel.listModel action:isAction];
+        if (listModel.listModel.count == 0) {
+            if (isAction) {
+                VH_ShowToast(@"当前没有中奖");
             }
-            
-        } fail:^(NSError * _Nonnull error) {
-            VH_ShowToast(error.localizedDescription);
-        }];
+        }else{
+            self.lotteryIconBtn.hidden = NO;
+            [self isHaveLotteryRedRot:listModel.listModel action:isAction];
+        }
+        
+    } fail:^(NSError * _Nonnull error) {
+        VH_ShowToast(error.localizedDescription);
+    }];
 }
 // 渲染UI 判断我自己是否中奖并且是否领奖
 - (void)isHaveLotteryRedRot:(NSArray <VHLotteryModel *>*)listArr action:(BOOL)action{
@@ -250,7 +250,7 @@ static AnnouncementView* announcementView = nil;
 #pragma mark --- 问卷的逻辑 isAction = YES 走action NO 走核验
 - (void)questionnaireLogic:(BOOL)isAction{
     ///获取问卷列表
-    [VHWebinarBaseInfo fetchSurveyList:self.roomId success:^(VHSurveyListModel * listModel) {
+    [VHWebinarBaseInfo fetchSurveyListWebinarId:self.roomId roomId:self.inavRoom.roomInfo.data[@"interact"][@"room_id"] switchId:self.inavRoom.roomInfo.data[@"switch"][@"switch_id"] success:^(VHSurveyListModel * listModel) {
         if (listModel.listModel.count == 0) {
             self.questionnaireBtn.hidden = YES;
         }else{
@@ -657,7 +657,14 @@ static AnnouncementView* announcementView = nil;
 //获取历史聊天记录
 - (void)loadHistoryChatWithPage:(NSInteger)page {
     __weak typeof(self) weakSelf = self;
-    [_chat getHistoryWithStartTime:nil pageNum:page pageSize:20 success:^(NSArray <VHallChatModel *> *msgs) {
+    NSString * msg_id = @"";
+    if (page > 1 && self.chatDataArray.count > 0) {
+        VHallChatModel * msgFirstModel = [self.chatDataArray firstObject];
+        msg_id = msgFirstModel.msg_id;
+    }else{
+        msg_id = @"";
+    }
+    [_chat getInteractsChatGetListWithMsg_id:msg_id page_num:page page_size:10 start_time:nil is_role:0 anchor_path:nil success:^(NSArray<VHallChatModel *> *msgs) {
         if(page == 1) {
             weakSelf.chatDataArray = [NSMutableArray arrayWithArray:msgs];
             weakSelf.chatListPage = 1;
@@ -1434,6 +1441,12 @@ static AnnouncementView* announcementView = nil;
 /// 房间连接成功回调
 - (void)room:(VHRoom *)room didConnect:(NSDictionary *)roomMetadata {
     VUI_Log(@"房间连接成功");
+    
+    // 获取问卷列表
+    [self questionnaireLogic:NO];
+    
+    // 获取抽奖历史
+    [self lotteryLogic:NO];
 }
 
 /// 房间发生错误回调
@@ -1540,6 +1553,9 @@ static AnnouncementView* announcementView = nil;
     param[@"id"] =  _roomId;
     if (_kValue &&_kValue.length>0) {
         param[@"pass"] = _kValue;
+    }
+    if (_k_id &&_k_id.length>0) {
+        param[@"k_id"] = _k_id;
     }
     return param;
 }

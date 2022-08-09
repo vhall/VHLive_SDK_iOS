@@ -11,6 +11,7 @@
 @interface VHHalfWatchLiveVC_Normal : VHBaseViewController
 @property(nonatomic,copy)NSString * roomId; //房间id
 @property(nonatomic,copy)NSString * kValue; //观看密码
+@property(nonatomic,copy)NSString * k_id;   //活动维度下k值的唯一ID
 @property(nonatomic,assign)NSInteger bufferTimes; //观看的缓冲时间 默认 6秒 单位为秒 必须>0 值越小延时越小,卡顿增加
 
 @property (nonatomic, assign) BOOL interactBeautifyEnable; //互动美颜开关

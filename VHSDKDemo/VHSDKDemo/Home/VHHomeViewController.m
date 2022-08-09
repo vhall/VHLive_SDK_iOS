@@ -240,6 +240,7 @@ typedef enum : NSUInteger {
     VHHalfWatchLiveVC_Normal * watchVC  = [[VHHalfWatchLiveVC_Normal alloc]init];
     watchVC.roomId      = DEMO_Setting.watchActivityID;
     watchVC.kValue      = DEMO_Setting.kValue;
+    watchVC.k_id        = DEMO_Setting.k_id;
     watchVC.bufferTimes = DEMO_Setting.bufferTimes;
     watchVC.interactBeautifyEnable = DEMO_Setting.inavBeautifyFilterEnable;
     watchVC.modalPresentationStyle = UIModalPresentationFullScreen;
@@ -251,6 +252,7 @@ typedef enum : NSUInteger {
     VHPortraitWatchLiveVC_Normal * watchVC = [[VHPortraitWatchLiveVC_Normal alloc]init];
     watchVC.roomId      = DEMO_Setting.watchActivityID;
     watchVC.kValue      = DEMO_Setting.kValue;
+    watchVC.k_id        = DEMO_Setting.k_id;
     watchVC.interactBeautifyEnable = DEMO_Setting.inavBeautifyFilterEnable;
     watchVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:watchVC animated:YES completion:nil];
@@ -269,6 +271,7 @@ typedef enum : NSUInteger {
             VHHalfWatchLiveVC_Nodelay *watchVC  = [[VHHalfWatchLiveVC_Nodelay alloc]init];
             watchVC.roomId      = webinarId;
             watchVC.kValue      = DEMO_Setting.kValue;
+            watchVC.k_id        = DEMO_Setting.k_id;
             watchVC.interactBeautifyEnable = DEMO_Setting.inavBeautifyFilterEnable;
             watchVC.modalPresentationStyle = UIModalPresentationFullScreen;
             [self presentViewController:watchVC animated:YES completion:nil];
@@ -276,6 +279,7 @@ typedef enum : NSUInteger {
             VHPortraitWatchLiveVC_Nodelay * watchVC = [[VHPortraitWatchLiveVC_Nodelay alloc]init];
             watchVC.roomId      = DEMO_Setting.watchActivityID;
             watchVC.kValue      = DEMO_Setting.kValue;
+            watchVC.k_id        = DEMO_Setting.k_id;
             watchVC.interactBeautifyEnable = DEMO_Setting.inavBeautifyFilterEnable;
             watchVC.modalPresentationStyle = UIModalPresentationFullScreen;
             [self presentViewController:watchVC animated:YES completion:nil];
@@ -307,8 +311,9 @@ typedef enum : NSUInteger {
         return;
     }
     WatchPlayBackViewController * watchVC  =[[WatchPlayBackViewController alloc]init];
-    watchVC.roomId = DEMO_Setting.watchActivityID;
-    watchVC.kValue = DEMO_Setting.kValue;
+    watchVC.roomId  = DEMO_Setting.watchActivityID;
+    watchVC.kValue  = DEMO_Setting.kValue;
+    watchVC.k_id    = DEMO_Setting.k_id;
     watchVC.timeOut = DEMO_Setting.timeOut*1000;
     watchVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:watchVC animated:YES completion:nil];
@@ -608,7 +613,7 @@ typedef enum : NSUInteger {
             [self jump:videoIndex];
         }
     } fail:^(NSError * _Nonnull error) {
-        VH_ShowToast(kViewProtocol);
+        VH_ShowToast(error.localizedDescription);
     }];
 }
 #pragma mark ---根据直播类型跳原有方法

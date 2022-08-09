@@ -23,6 +23,7 @@
 @property(nonatomic, strong)NSString* codeWord;     //嘉宾互动口令
 @property(nonatomic, strong)NSString* inva_avatar;     //嘉宾互动头像
 @property(nonatomic, strong)NSString* kValue;     //K值或直播间密码，可以为空
+@property(nonatomic, strong)NSString* k_id;     //活动维度下k值的唯一ID
 @property(nonatomic, assign)NSInteger timeOut;      //超时时间 默认10s
 
 //直播设置

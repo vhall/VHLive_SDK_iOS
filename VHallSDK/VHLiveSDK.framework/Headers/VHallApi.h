@@ -24,6 +24,7 @@
 #import "VHallComment.h"
 #import "VHallSign.h"
 #import "VHallSurvey.h"
+#import "VHallAnnouncement.h"
 
 @protocol VHallApiDelegate <NSObject>
 

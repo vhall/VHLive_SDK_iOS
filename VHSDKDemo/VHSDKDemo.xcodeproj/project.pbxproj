@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C50AB881ACDD0F85D22FFE2 /* Pods_VHSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B08D74301AE76F9266CC39 /* Pods_VHSDKDemo.framework */; };
+		210C61BC2863FE5A00B728DE /* AppDelegate+DebugUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 210C61BA2863FE5A00B728DE /* AppDelegate+DebugUpdate.m */; };
+		216B81622873F12000717F0F /* AppDelegate+Envs.m in Sources */ = {isa = PBXBuildFile; fileRef = 216B81602873F12000717F0F /* AppDelegate+Envs.m */; };
 		2FA3F1A81F564C9900E2E436 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA3F1A71F564C9900E2E436 /* libxml2.2.tbd */; };
 		32B19FA627E9726C0066367D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 32B19FA527E9726C0066367D /* README.md */; };
 		C000AA431E66E053005DFB7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C000AA421E66E053005DFB7C /* main.m */; };
@@ -87,13 +89,16 @@
 		03577B2C27310D9A003296E6 /* VHPortraitWatchLiveVC_Nodelay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHPortraitWatchLiveVC_Nodelay.h; sourceTree = "<group>"; };
 		035AD5E027202AA1002515B7 /* PubLishLiveVC_Normal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubLishLiveVC_Normal.h; sourceTree = "<group>"; };
 		035AD5E127202AA1002515B7 /* PubLishLiveVC_Nodelay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubLishLiveVC_Nodelay.h; sourceTree = "<group>"; };
+		210C61BA2863FE5A00B728DE /* AppDelegate+DebugUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+DebugUpdate.m"; sourceTree = "<group>"; };
+		210C61BB2863FE5A00B728DE /* AppDelegate+DebugUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+DebugUpdate.h"; sourceTree = "<group>"; };
+		216B81602873F12000717F0F /* AppDelegate+Envs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Envs.m"; sourceTree = "<group>"; };
+		216B81612873F12000717F0F /* AppDelegate+Envs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Envs.h"; sourceTree = "<group>"; };
 		2F6B05B61E94FF800010E0C7 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		2FA3F1A71F564C9900E2E436 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		3247D9552805837B00726DE3 /* VHViewProtocolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHViewProtocolView.h; sourceTree = "<group>"; };
 		328D8FC5283D01370058711D /* VHSheetActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHSheetActionViewController.h; sourceTree = "<group>"; };
 		32B19FA527E9726C0066367D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A5B08D74301AE76F9266CC39 /* Pods_VHSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VHSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B911AADA92EDD4E842194B8D /* Pods-VHSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VHSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C000AA3E1E66E053005DFB7C /* VHSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VHSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C000AA421E66E053005DFB7C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C000AA441E66E053005DFB7C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -172,7 +177,8 @@
 		C0DFA37D22E85E9700449977 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
 		C0DFA37E22E85E9700449977 /* VHInteractive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VHInteractive.framework; sourceTree = "<group>"; };
 		C0DFA37F22E85E9700449977 /* VhallLiveBaseApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VhallLiveBaseApi.framework; sourceTree = "<group>"; };
-		E78C9A04F7DD12680B79F9B2 /* Pods-VHSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VHSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		CDAA5D0BE6D5C6A73AD4C001 /* Pods-VHSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VHSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		ECB26D145B3706BA7DECD1B6 /* Pods-VHSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VHSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F30429E026302C88009A3D2F /* libMJExtension.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMJExtension.a; sourceTree = "<group>"; };
 		F32B66B5262977510067BD0C /* VHWebWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHWebWatchLiveViewController.h; sourceTree = "<group>"; };
 		F32B66B6262977510067BD0C /* WatchPlayBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchPlayBackViewController.h; sourceTree = "<group>"; };
@@ -226,13 +232,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		308BD863D47BED561EC84848 /* Pods */ = {
+		35F594364A9FC0FC1AA23483 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B911AADA92EDD4E842194B8D /* Pods-VHSDKDemo.debug.xcconfig */,
-				E78C9A04F7DD12680B79F9B2 /* Pods-VHSDKDemo.release.xcconfig */,
+				CDAA5D0BE6D5C6A73AD4C001 /* Pods-VHSDKDemo.debug.xcconfig */,
+				ECB26D145B3706BA7DECD1B6 /* Pods-VHSDKDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -242,7 +247,7 @@
 				C000AA401E66E053005DFB7C /* VHSDKDemo */,
 				C000AA3F1E66E053005DFB7C /* Products */,
 				C000AA761E66E186005DFB7C /* Frameworks */,
-				308BD863D47BED561EC84848 /* Pods */,
+				35F594364A9FC0FC1AA23483 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -257,6 +262,10 @@
 		C000AA401E66E053005DFB7C /* VHSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				210C61BB2863FE5A00B728DE /* AppDelegate+DebugUpdate.h */,
+				210C61BA2863FE5A00B728DE /* AppDelegate+DebugUpdate.m */,
+				216B81612873F12000717F0F /* AppDelegate+Envs.h */,
+				216B81602873F12000717F0F /* AppDelegate+Envs.m */,
 				C000AA581E66E0FD005DFB7C /* CONSTS.h */,
 				C000AA441E66E053005DFB7C /* AppDelegate.h */,
 				C000AA451E66E053005DFB7C /* AppDelegate.m */,
@@ -487,13 +496,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C000AA551E66E053005DFB7C /* Build configuration list for PBXNativeTarget "VHSDKDemo" */;
 			buildPhases = (
-				0286A8DA42BFE44C64880E16 /* [CP] Check Pods Manifest.lock */,
+				E3AE84D86148DFA4E88C69A9 /* [CP] Check Pods Manifest.lock */,
 				C000AA3A1E66E053005DFB7C /* Sources */,
 				C000AA3B1E66E053005DFB7C /* Frameworks */,
 				C000AA3C1E66E053005DFB7C /* Resources */,
 				C0FABCE620EF1031003947C6 /* Embed Frameworks */,
-				D38D7FA4DF3837817B1B1ACE /* [CP] Embed Pods Frameworks */,
-				B6F28B432810E60149CA5EA2 /* [CP] Copy Pods Resources */,
+				3A97C557C4F273366B3F5D46 /* [CP] Embed Pods Frameworks */,
+				5AC397E53D635C404D1C2983 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -564,29 +573,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0286A8DA42BFE44C64880E16 /* [CP] Check Pods Manifest.lock */ = {
+		3A97C557C4F273366B3F5D46 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-frameworks.sh",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/FURenderKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GLEnvs/GLEnvs.framework",
+				"${BUILT_PRODUCTS_DIR}/LookinServer/LookinServer.framework",
+				"${PODS_ROOT}/VHYun_Beautify/framework/VHBeautifyKit.framework",
+				"${PODS_ROOT}/VHYun_Beautify/framework/VHBFURender.framework",
 			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VHSDKDemo-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FURenderKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GLEnvs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LookinServer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VHBeautifyKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VHBFURender.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B6F28B432810E60149CA5EA2 /* [CP] Copy Pods Resources */ = {
+		5AC397E53D635C404D1C2983 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -632,30 +645,26 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D38D7FA4DF3837817B1B1ACE /* [CP] Embed Pods Frameworks */ = {
+		E3AE84D86148DFA4E88C69A9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-frameworks.sh",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.2.1/FURenderKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GLEnvs/GLEnvs.framework",
-				"${BUILT_PRODUCTS_DIR}/LookinServer/LookinServer.framework",
-				"${PODS_ROOT}/VHYun_Beautify/framework/VHBeautifyKit.framework",
-				"${PODS_ROOT}/VHYun_Beautify/framework/VHBFURender.framework",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FURenderKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GLEnvs.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LookinServer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VHBeautifyKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VHBFURender.framework",
+				"$(DERIVED_FILE_DIR)/Pods-VHSDKDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -667,8 +676,10 @@
 			files = (
 				C0443CCF242870BA0063FB0D /* WHDebugMemoryMonitor.m in Sources */,
 				C0443CD1242870BA0063FB0D /* WHDebugMonitor.m in Sources */,
+				216B81622873F12000717F0F /* AppDelegate+Envs.m in Sources */,
 				C000AAAD1E66E546005DFB7C /* VHStystemSetting.m in Sources */,
 				C000AAA81E66E546005DFB7C /* VHSettingItem.m in Sources */,
+				210C61BC2863FE5A00B728DE /* AppDelegate+DebugUpdate.m in Sources */,
 				C000AAA91E66E546005DFB7C /* VHSettingTextFieldItem.m in Sources */,
 				C000AA881E66E41C005DFB7C /* BaseViewController.m in Sources */,
 				C0443CCE242870BA0063FB0D /* WHDebugFPSMonitor.m in Sources */,
@@ -820,7 +831,7 @@
 		};
 		C000AA561E66E053005DFB7C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B911AADA92EDD4E842194B8D /* Pods-VHSDKDemo.debug.xcconfig */;
+			baseConfigurationReference = CDAA5D0BE6D5C6A73AD4C001 /* Pods-VHSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COPY_PHASE_STRIP = NO;
@@ -850,7 +861,7 @@
 					"$(PROJECT_DIR)/../UIModel/libs_third",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 6.5.0;
+				MARKETING_VERSION = 6.6.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -864,7 +875,7 @@
 		};
 		C000AA571E66E053005DFB7C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E78C9A04F7DD12680B79F9B2 /* Pods-VHSDKDemo.release.xcconfig */;
+			baseConfigurationReference = ECB26D145B3706BA7DECD1B6 /* Pods-VHSDKDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COPY_PHASE_STRIP = NO;
@@ -895,7 +906,7 @@
 					"$(PROJECT_DIR)/../UIModel/libs_third",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 6.5.0;
+				MARKETING_VERSION = 6.6.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

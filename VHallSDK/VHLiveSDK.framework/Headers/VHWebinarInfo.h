@@ -124,11 +124,27 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)getDirectorRoomStreamStatus:(NSString *)webinarId success:(void(^)(BOOL isHaveStream))success fail:(void(^)(NSError *error))fail;
 
 
-///获取问卷历史
-+ (void)fetchSurveyList:(NSString *)webinarId success:(void(^)(VHSurveyListModel *))success fail:(void(^)(NSError *error))fail;
+/// 获取问卷历史
+/// @param webinarId 活动id
+/// @param roomId 房间id
+/// @param switchId 场次id
+/// @param success 成功
+/// @param fail 失败
++ (void)fetchSurveyListWebinarId:(NSString *)webinarId
+                          roomId:(NSString *)roomId
+                        switchId:(NSString *)switchId
+                         success:(void(^)(VHSurveyListModel * listModel))success
+                            fail:(void(^)(NSError *error))fail;
 
-///获取抽奖列表接口
-+ (void)fetchLotteryListShowAll:(NSInteger)showAll webinarId:(NSString *)webinarId success:(void (^)(VHLotteryListModel * _Nonnull))success fail:(void (^)(NSError * _Nonnull))fail;
+/// 获取抽奖列表接口
+/// @param showAll 是否需要展示所有抽奖 0-否(默认：仅展示进行中、已中奖抽奖) 1-全部抽奖 2 已中奖抽奖（sdk专用）
+/// @param webinarId 活动id
+/// @param success 成功
+/// @param fail 失败
++ (void)fetchLotteryListShowAll:(NSInteger)showAll
+                      webinarId:(NSString *)webinarId
+                        success:(void (^)(VHLotteryListModel * listModel))success
+                           fail:(void (^)(NSError *error))fail;
 
 @end
 

@@ -13,6 +13,7 @@
 
 @property(nonatomic,copy)NSString       *roomId;
 @property(nonatomic,copy)NSString       *kValue;
+@property(nonatomic,copy)NSString * k_id;   //活动维度下k值的唯一ID
 @property(nonatomic,assign)NSInteger    timeOut;
 
 @end

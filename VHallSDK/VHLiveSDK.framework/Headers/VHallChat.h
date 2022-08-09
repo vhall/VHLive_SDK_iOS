@@ -89,29 +89,6 @@
  */
 - (void)sendMsg:(NSString *)msg success:(void(^)(void))success failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
 
-
-/**
- * 获取20条聊天历史记录，返回至多20条数据，最新消息在数组最后一位
- * @param showAll               NO 只获取本次直播产生的聊天记录，YES 获取包含以前开播产生的聊天记录 （H5活动该参数无效，默认YES）
- * @param success               成功回调成功Block 返回聊天历史记录
- * @param reslutFailedCallback  失败回调失败Block 字典结构：{code：错误码，content：错误信息}
- *
- */
-
-- (void)getHistoryWithType:(BOOL)showAll success:(void(^)(NSArray <VHallChatModel *> * msgs))success failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
-
-/**
- * 分页获取聊天历史记录，最新消息在数组最后一位（仅支持H5活动，Flash活动若使用该方法效果同上：getHistoryWithType:YES） (v5.0新增)
- * @param startTime             查询该时间至今的所有聊天记录，若不指定时间可传nil。格式如：@"2020-01-01 12:00:00"
- * @param pageNum               当前页码数，第一页从1开始
- * @param pageSize              每页的数据个数
- * @param success               成功回调成功Block msgs：聊天历史记录 endPage：是否为最后一页
- * @param reslutFailedCallback  失败回调失败Block  字典结构：{code：错误码，content：错误信息}
- *
- */
-- (void)getHistoryWithStartTime:(NSString *)startTime pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize success:(void(^)(NSArray <VHallChatModel *> * msgs))success failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
-
-
 /**
  * 发送自定义消息
  * 成功回调成功Block
@@ -119,4 +96,54 @@
  *
  */
 - (void)sendCustomMsg:(NSString *)jsonStr success:(void(^)(void))success failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
+
+/**
+ * 获取100条聊天历史记录，返回至多100条数据，最新消息在数组最后一位
+ * @param showAll               NO 只获取本次直播产生的聊天记录，YES 获取包含以前开播产生的聊天记录 （H5活动该参数无效，默认YES）
+ * @param success               成功回调成功Block 返回聊天历史记录
+ * @param reslutFailedCallback  失败回调失败Block 字典结构：{code：错误码，content：错误信息}
+ *
+ */
+- (void)getHistoryWithType:(BOOL)showAll
+                   success:(void(^)(NSArray <VHallChatModel *> * msgs))success
+                    failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
+
+/**
+ * 分页获取聊天历史记录，最新消息在数组最后一位（仅支持H5活动，Flash活动若使用该方法效果同上：getHistoryWithType:YES） (v5.0新增)
+ * @param page_num               当前页码数，第一页从1开始
+ * @param page_size              每页的数据个数
+ * @param start_time             查询该时间至今的所有聊天记录，若不指定时间可传nil。格式如：@"2020-01-01 12:00:00"
+ * @param success               成功回调成功Block msgs：聊天历史记录 endPage：是否为最后一页
+ * @param reslutFailedCallback  失败回调失败Block  字典结构：{code：错误码，content：错误信息}
+ *
+ */
+- (void)getHistoryWithPage_num:(NSInteger)page_num
+                     page_size:(NSInteger)page_size
+                    start_time:(NSString *)start_time
+                       success:(void(^)(NSArray <VHallChatModel *> * msgs))success
+                        failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
+
+
+/**
+ * 获取当前房间聊天列表（仅支持化蝶） (v6.4.1新增)
+ * @param msg_id                聊天记录 锚点消息id,此参数存在时anchor_path 参数必须存在
+ * @param page_num              当前页码数，第一页从1开始
+ * @param page_size             获取条目数量
+ * @param start_time            查询该时间至今的所有聊天记录，若不指定时间可传nil。格式如：@"2020-01-01 12:00:00"
+ * @param is_role               0：不筛选主办方 1：筛选主办方 默认是0
+ * @param anchor_path           锚点方向，up 向上查找，down 向下查找,此参数存在时 msg_id 参数必须存在,默认down
+ * @param success               成功回调成功Block msgs：聊天历史记录 endPage：是否为最后一页
+ * @param reslutFailedCallback  失败回调失败Block  字典结构：{code：错误码，content：错误信息}
+ *
+ */
+
+- (void)getInteractsChatGetListWithMsg_id:(NSString *)msg_id
+                                  page_num:(NSInteger)page_num
+                                 page_size:(NSInteger)page_size
+                               start_time:(NSString *)start_time
+                                  is_role:(NSInteger)is_role
+                              anchor_path:(NSString *)anchor_path
+                                  success:(void(^)(NSArray <VHallChatModel *> * msgs))success
+                                   failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
+
 @end

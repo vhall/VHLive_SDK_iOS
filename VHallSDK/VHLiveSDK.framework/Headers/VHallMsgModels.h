@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger,ChatCustomType) {
 @property (nonatomic, copy) NSString * join_id;
 @property (nonatomic, copy) NSString * account_id;      //用户ID
 @property (nonatomic, copy) NSString * user_name;       //参会时的昵称
+@property (nonatomic, copy) NSString * nick_name;       //参会时的昵称
 @property (nonatomic, copy) NSString * avatar;          //头像url，如果没有则为空字符串
 @property (nonatomic, copy) NSString * room;            //房间号，即活动id
 @property (nonatomic, copy) NSString * time;            //发送时间，根据服务器时间确定

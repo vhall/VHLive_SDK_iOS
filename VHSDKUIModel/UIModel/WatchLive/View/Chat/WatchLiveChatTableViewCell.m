@@ -45,6 +45,10 @@
 
 - (void)setModel:(VHallChatModel *)model {
     _model = model;
+    NSDictionary * reply_msg = model.context[@"reply_msg"];
+    if (reply_msg) {
+        model.replyMsg.user_name = reply_msg[@"nick_name"];
+    }
     if([_model isKindOfClass:[VHallCustomMsgModel class]]) { //自定义消息
         VHallCustomMsgModel *model = (VHallCustomMsgModel *)_model;
         pic.image = nil;

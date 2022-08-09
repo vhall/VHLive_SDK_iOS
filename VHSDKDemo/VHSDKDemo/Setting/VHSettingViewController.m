@@ -23,7 +23,7 @@
     
     NSMutableArray * _inavBtns;//互动设置btns
 
-    VHSettingTextFieldItem *item00,*item01,*item02,*item03,*item04,*item05,*item06;
+    VHSettingTextFieldItem *item00,*item01,*item02,*item03,*item04,*item05,*item06,*item07;
     VHSettingTextFieldItem *item10,*item11,*item12,*item13,*item14,*item15,*item16;
     VHSettingTextFieldItem *item20,*item21;
 
@@ -157,7 +157,9 @@
     //web观看链接
     item06 = [VHSettingTextFieldItem  itemWithTitle:@"webUrl"];
     item06.text =  DEMO_Setting.webLink;
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item00,item01,item02,item03,item04,item05,item06]];
+    item07 = [VHSettingTextFieldItem  itemWithTitle:@"k_id值"];
+    item07.text =  DEMO_Setting.k_id;
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item00,item01,item02,item03,item04,item05,item06,item07]];
     group.headerTitle = @"看直播/回放";
     [self.groups addObject:group];
 }
@@ -498,6 +500,12 @@
            {
                DEMO_Setting.webLink = text;
                item06.text = DEMO_Setting.webLink;
+           }
+               break;
+           case 7: //密码或k值
+           {
+               DEMO_Setting.k_id = text;
+               item07.text =  DEMO_Setting.k_id;
            }
                break;
            default:

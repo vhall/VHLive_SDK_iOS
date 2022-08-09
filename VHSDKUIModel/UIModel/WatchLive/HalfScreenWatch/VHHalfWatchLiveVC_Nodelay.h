@@ -11,6 +11,7 @@
 @interface VHHalfWatchLiveVC_Nodelay : VHBaseViewController
 @property(nonatomic,copy)NSString * roomId; //房间id
 @property(nonatomic,copy)NSString * kValue; //观看密码
+@property(nonatomic,copy)NSString * k_id;   //活动维度下k值的唯一ID
 
 @property (nonatomic, assign) BOOL interactBeautifyEnable; //互动美颜开关
 

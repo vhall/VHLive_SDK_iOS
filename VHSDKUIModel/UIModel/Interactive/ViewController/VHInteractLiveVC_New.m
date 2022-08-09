@@ -826,6 +826,8 @@
 - (void)setDocEditEnable:(BOOL)enable {
     //更新文档容器view空文档时的占位提示文字
     self.docContentView.emptyLab.text = enable ? @"还没有文档哦，点击右下角添加~" : @"还没有文档哦";
+//    //开启文档编辑,主持人永远保留文档操作权限
+//    self.roomInfo.documentManager.editEnable = self.role == VHLiveRole_Host ? YES : enable;
     //开启文档编辑
     self.roomInfo.documentManager.editEnable = enable;
     //显示主讲人操作按钮

@@ -130,7 +130,7 @@
 //加载历史聊天记录
 - (void)loadHistoryChatData {
     if(_haveLoadHistoryChat == NO) {
-        [_vhallChat getHistoryWithStartTime:nil pageNum:1 pageSize:20 success:^(NSArray <VHallChatModel *> *msgs) {
+        [_vhallChat getHistoryWithPage_num:1 page_size:10 start_time:nil success:^(NSArray<VHallChatModel *> *msgs) {
             [self.decorateView receiveMessage:msgs];
         } failed:^(NSDictionary *failedData) {
             NSString* errorInfo = [NSString stringWithFormat:@"%@---%@", failedData[@"content"], failedData[@"code"]];
@@ -560,7 +560,9 @@
         if (_kValue && _kValue.length>0) {
             _playParam[@"pass"] = _kValue;
         }
-
+        if (_k_id &&_k_id.length>0) {
+            _playParam[@"k_id"] = _k_id;
+        }
     }
     return _playParam;
 }

@@ -15,6 +15,7 @@
 #import "VHKeyboardToolView.h"
 #import <VHLiveSDK/VHallApi.h>
 #import "AnnouncementView.h"
+#import "VHAnnouncementList.h"
 #import "SignView.h"
 #import "BarrageRenderer.h"
 #import "SZQuestionItem.h"
@@ -129,8 +130,12 @@ static AnnouncementView* announcementView = nil;
 @property (nonatomic) UIButton *questionnaireBtn;
 @property (nonatomic) BOOL  questionStatus;
 @property (nonatomic) NSInteger  selectIndex;
-///抽奖
-@property (nonatomic) UIButton *lotteryIconBtn;
+/// 抽奖
+@property (nonatomic, strong) UIButton *lotteryIconBtn;
+/// 公告列表按钮
+@property (nonatomic, strong) UIButton * announcementListBtn;
+/// 公告
+@property (nonatomic, strong) VHAnnouncementList * announcementList;
 @end
 
 @implementation VHHalfWatchLiveVC_Normal
@@ -235,21 +240,27 @@ static AnnouncementView* announcementView = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initViews];
+    
     //非预加载方式，直接播放，在收到"播放连接成功回调"后，才能使用聊天、签到等功能
     [self.moviePlayer startPlay:[self playParam]];
-    //预加载视频，收到"预加载成功回调"后，即可使用聊天等功能，择机调用 startPlay 正式开播，用于开播之前使用聊天、签到等功能
+    
+//    预加载视频，收到"预加载成功回调"后，即可使用聊天等功能，择机调用 startPlay 正式开播，用于开播之前使用聊天、签到等功能
 //    [self.moviePlayer preLoadRoomWithParam:[self playParam]];
+    
+    // 返回角色数据
     [VHWebinarBaseInfo getRoleNameWebinar_id:self.roomId dataCallBack:^(VHRoleNameData * roleData) {
         VH_MB_HOST = roleData.host_name;
         VH_MB_GUEST = roleData.guest_name;
         VH_MB_ASSIST = roleData.assist_name;
     }];
-    //添加问卷
-    [self addquestionnaireView];
-    [self questionnaireLogic:NO];
     
+    // 添加问卷
+    [self addquestionnaireView];
+    
+    // 添加抽奖
     [self addLotteryView];
-    [self lotteryLogic:NO];
+    
+    // 抽奖成功通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lotterySuccess) name:@"take_award_succeed" object:nil];
    
     //查询视频轮询
@@ -714,7 +725,14 @@ static AnnouncementView* announcementView = nil;
 //获取历史聊天记录
 - (void)loadHistoryChatWithPage:(NSInteger)page {
     __weak typeof(self) weakSelf = self;
-    [_chat getHistoryWithStartTime:nil pageNum:page pageSize:20 success:^(NSArray <VHallChatModel *> *msgs) {
+    NSString * msg_id = @"";
+    if (page > 1 && self.chatDataArray.count > 0) {
+        VHallChatModel * msgFirstModel = [self.chatDataArray firstObject];
+        msg_id = msgFirstModel.msg_id;
+    }else{
+        msg_id = @"";
+    }
+    [_chat getInteractsChatGetListWithMsg_id:msg_id page_num:page page_size:10 start_time:nil is_role:0 anchor_path:nil success:^(NSArray<VHallChatModel *> *msgs) {
         if(page == 1) {
             weakSelf.chatDataArray = [NSMutableArray arrayWithArray:msgs];
             weakSelf.chatListPage = 1;
@@ -970,8 +988,8 @@ static AnnouncementView* announcementView = nil;
 }
 // --- 问卷的逻辑 isAction = YES 走action NO 走核验
 - (void)questionnaireLogic:(BOOL)isAction{
-    ///获取问卷列表
-    [VHWebinarBaseInfo fetchSurveyList:self.roomId success:^(VHSurveyListModel * listModel) {
+    // 获取问卷列表
+    [VHWebinarBaseInfo fetchSurveyListWebinarId:self.roomId roomId:self.moviePlayer.webinarInfo.data[@"interact"][@"room_id"] switchId:self.moviePlayer.webinarInfo.data[@"switch"][@"switch_id"] success:^(VHSurveyListModel * listModel) {
         if (listModel.listModel.count == 0) {
             self.questionnaireBtn.hidden = YES;
         }else{
@@ -1376,6 +1394,14 @@ static AnnouncementView* announcementView = nil;
 - (void)connectSucceed:(VHallMoviePlayer *)moviePlayer info:(NSDictionary *)info
 {
     VHLog(@"播放连接成功：%@",info);
+    
+    // 获取问卷列表
+    [self questionnaireLogic:NO];
+    
+    // 获取抽奖历史
+    [self lotteryLogic:NO];
+
+    // 房间数据
     VHWebinarInfo *webinarInfo = self.moviePlayer.webinarInfo;
     webinarInfo.delegate = self;
     if(webinarInfo) {
@@ -1572,7 +1598,7 @@ static AnnouncementView* announcementView = nil;
     });
 }
 
-// 主持人是否允许举手
+// 主持人是否允许观众上麦
 - (void)moviePlayer:(VHallMoviePlayer *)player isInteractiveActivity:(BOOL)isInteractive interactivePermission:(VHInteractiveState)state
 {
     //显示举手按钮
@@ -1714,9 +1740,31 @@ static AnnouncementView* announcementView = nil;
 }
 
 #pragma mark - 公告
+- (void)addAnnouncementBtn
+{
+    [self.announcementListBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.lotteryIconBtn.mas_bottom);
+        make.left.mas_equalTo(0);
+        make.width.height.mas_equalTo(36);
+    }];
+}
 - (void)Announcement:(NSString*)content publishTime:(NSString*)time
 {
     VHLog(@"公告:%@",content);
+    
+    // 添加公告控件
+    [self addAnnouncementBtn];
+    // 如果有公告列表并且展示中
+    if (_announcementList && _announcementList.isShow) {
+        // 隐藏小红点
+        [self.announcementListBtn hidenBadge];
+        // 刷新接口
+        [_announcementList loadDataRoomId:self.moviePlayer.webinarInfo.data[@"interact"][@"room_id"]];
+    }else{
+        // 显示小红点
+        [self.announcementListBtn showBadge];
+    }
+
     if (!announcementContentDic)
     {
         announcementContentDic = [[NSMutableDictionary alloc] init];
@@ -1736,7 +1784,18 @@ static AnnouncementView* announcementView = nil;
     announcementView.content = [content stringByAppendingString:time];
     [_showView addSubview:announcementView];
 }
+- (void)clickAnnouncementListToBtn
+{
+    VHLog(@"点击公告列表");
+    // 隐藏小红点
+    [self.announcementListBtn hidenBadge];
 
+    [self.view addSubview:self.announcementList];
+    [self.announcementList mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
+    [self.announcementList loadDataRoomId:self.moviePlayer.webinarInfo.data[@"interact"][@"room_id"]];
+}
 
 #pragma mark - 抽奖相关
 //-----------VHallLotteryDelegate-------------
@@ -2096,6 +2155,9 @@ static AnnouncementView* announcementView = nil;
     if (_kValue &&_kValue.length>0) {
         param[@"pass"] = _kValue;
     }
+    if (_k_id &&_k_id.length>0) {
+        param[@"k_id"] = _k_id;
+    }
 //    param[@"name"] = [UIDevice currentDevice].name;
 //    param[@"email"] = [NSString stringWithFormat:@"%@@qq.com",[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
     return param;
@@ -2124,6 +2186,22 @@ static AnnouncementView* announcementView = nil;
     if (!_videoRound) {
         _videoRound = [VHVideoRoundModel new];
     }return _videoRound;
+}
+- (UIButton *)announcementListBtn
+{
+    if (!_announcementListBtn) {
+        _announcementListBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_announcementListBtn setImage:BundleUIImage(@"vh_an_btnIcon") forState:UIControlStateNormal];
+        _announcementListBtn.contentMode = UIViewContentModeScaleAspectFit;
+        [_announcementListBtn addTarget:self action:@selector(clickAnnouncementListToBtn) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_announcementListBtn];
+    }return _announcementListBtn;
+}
+- (VHAnnouncementList *)announcementList
+{
+    if (!_announcementList) {
+        _announcementList = [[VHAnnouncementList alloc] initWithFrame:self.view.frame];
+    }return _announcementList;
 }
 #pragma mark - 屏幕旋转相关
 -(BOOL)shouldAutorotate

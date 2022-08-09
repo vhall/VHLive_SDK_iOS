@@ -156,6 +156,9 @@ static AnnouncementView* announcementView = nil;
     if (_kValue&&_kValue.length>0) {
         param[@"pass"] = _kValue;
     }
+    if (_k_id &&_k_id.length>0) {
+        param[@"k_id"] = _k_id;
+    }
 //    param[@"name"] = [UIDevice currentDevice].name;
 //    param[@"email"] = [NSString stringWithFormat:@"%@@qq.com",[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
     return param;
@@ -250,7 +253,14 @@ static AnnouncementView* announcementView = nil;
 - (void)loadChatListData:(NSInteger)page
 {
     __weak typeof(self) weakSelf = self;
-    [_chat getHistoryWithStartTime:nil pageNum:page pageSize:20 success:^(NSArray <VHallChatModel *> *msgs) {
+    NSString * msg_id = @"";
+    if (page > 1 && self.chatArray.count > 0) {
+        VHallChatModel * msgFirstModel = [self.chatArray firstObject];
+        msg_id = msgFirstModel.msg_id;
+    }else{
+        msg_id = @"";
+    }
+    [_chat getInteractsChatGetListWithMsg_id:msg_id page_num:page page_size:10 start_time:nil is_role:0 anchor_path:nil success:^(NSArray<VHallChatModel *> *msgs) {
         if(page == 1) {
             weakSelf.chatArray = [NSMutableArray arrayWithArray:msgs];
             weakSelf.pageNum = 1;
