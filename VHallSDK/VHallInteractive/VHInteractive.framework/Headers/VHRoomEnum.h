@@ -56,6 +56,8 @@ typedef NS_ENUM(NSInteger, VHRoomMessageType) {
     VHRoomMessageType_room_allBanChat = 25,            //全体禁言
     VHRoomMessageType_room_allBanChat_cancel = 26,     //取消全体禁言
     VHRoomMessageType_room_vrtc_connect_invite_agree = 27,     //邀请id
+    VHRoomMessageType_live_start_rehearsal = 28,               //开始彩排
+    VHRoomMessageType_live_over_rehearsal = 29,                //结束彩排
 };
 
 
@@ -96,6 +98,7 @@ typedef NS_ENUM(NSInteger, VHBroadcastLayout) {
     VHBroadcastLayout_ADAPTIVE_GRID_MODE        = 101,    //均分模式，自动布局
     VHBroadcastLayout_ADAPTIVE_TILED_MODE       = 102,    //主次平铺模式，自动布局
     VHBroadcastLayout_ADAPTIVE_FLOAT_MODE       = 103,    //主次悬浮模式，自动布局
+    VHBroadcastLayout_ADAPTIVE_TILED_EXT1_MODE  = 104,    // 窗格位于主屏上方，最多16窗格
 }; //注：主次悬浮，小画面会覆盖在大画面上，可能遮挡一部分主画面
 
 

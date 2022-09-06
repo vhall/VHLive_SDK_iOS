@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PubLishLiveVC_Normal">
             <connections>
                 <outlet property="audioClose" destination="HAA-iG-sEr" id="1fC-DU-OeB"/>
-                <outlet property="audioStartAndStopBtn" destination="mDN-RT-jVL" id="Vde-Rg-DYa"/>
                 <outlet property="backbtntopConstraint" destination="ry5-h1-j7p" id="xMC-tu-93w"/>
                 <outlet property="bitRateLabel" destination="FYd-BF-obS" id="ZLP-dx-lLC"/>
                 <outlet property="cameraSwapBtn" destination="9dh-OI-54m" id="nub-jd-X3s"/>
@@ -29,7 +28,6 @@
                 <outlet property="perView" destination="2b8-7E-grG" id="6ez-GJ-Gnr"/>
                 <outlet property="timeLabel" destination="WAk-3r-kd5" id="egJ-U7-uTp"/>
                 <outlet property="torchBtn" destination="21q-gG-MX0" id="1dw-go-nZt"/>
-                <outlet property="videoStartAndStopBtn" destination="gUq-Kw-mgv" id="OKq-Sx-dDC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -142,21 +140,6 @@
                                 <action selector="torchBtnClick:" destination="-1" eventType="touchUpInside" id="Mnv-mq-kdP"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUq-Kw-mgv">
-                            <rect key="frame" x="305" y="597" width="60" height="60"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="60" id="8RI-T8-YZZ"/>
-                                <constraint firstAttribute="width" constant="60" id="EMb-1A-rNs"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <state key="normal" image="开始直播.png">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <state key="selected" image="结束直播"/>
-                            <connections>
-                                <action selector="startVideoPlayer:" destination="-1" eventType="touchUpInside" id="Un3-gS-nQn"/>
-                            </connections>
-                        </button>
                         <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOi-XC-KsP">
                             <rect key="frame" x="0.0" y="100" width="295" height="547"/>
                             <subviews>
@@ -195,16 +178,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <connections>
                                 <action selector="hideKey:" destination="-1" eventType="touchUpInside" id="m9h-VQ-I27"/>
-                            </connections>
-                        </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDN-RT-jVL">
-                            <rect key="frame" x="232" y="556" width="69" height="103"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <state key="normal" image="bcStartLive.png">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="startAudioPlayer" destination="-1" eventType="touchUpInside" id="vdC-9f-ty7"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HfY-VC-dA9">
@@ -314,22 +287,18 @@
                     <constraints>
                         <constraint firstItem="1nD-5A-zuQ" firstAttribute="leading" secondItem="2b8-7E-grG" secondAttribute="leading" id="5Mf-Pt-R1R"/>
                         <constraint firstItem="Upf-UN-Kou" firstAttribute="centerX" secondItem="IlL-nv-WK2" secondAttribute="centerX" id="ASA-XZ-D28"/>
+                        <constraint firstAttribute="trailing" secondItem="MOi-XC-KsP" secondAttribute="trailing" constant="80" id="As3-bK-yFd"/>
                         <constraint firstAttribute="bottom" secondItem="MOi-XC-KsP" secondAttribute="bottom" constant="20" id="CEE-hT-NYu"/>
-                        <constraint firstAttribute="trailing" secondItem="mDN-RT-jVL" secondAttribute="trailing" constant="74" id="CTe-ZU-AHd"/>
-                        <constraint firstAttribute="bottom" secondItem="mDN-RT-jVL" secondAttribute="bottom" constant="8" id="FyT-ME-x2P"/>
                         <constraint firstAttribute="trailing" secondItem="PuD-Ul-jg4" secondAttribute="trailing" id="IP4-JQ-tft"/>
                         <constraint firstAttribute="bottom" secondItem="PuD-Ul-jg4" secondAttribute="bottom" id="IYC-2g-Xvf"/>
                         <constraint firstItem="PuD-Ul-jg4" firstAttribute="top" secondItem="2b8-7E-grG" secondAttribute="top" id="JeW-Ti-8Hd"/>
-                        <constraint firstItem="gUq-Kw-mgv" firstAttribute="leading" secondItem="MOi-XC-KsP" secondAttribute="trailing" constant="10" id="LEq-r6-vW4"/>
                         <constraint firstItem="9dh-OI-54m" firstAttribute="leading" secondItem="IlL-nv-WK2" secondAttribute="trailing" constant="10" id="SLl-IG-LGX"/>
                         <constraint firstItem="1nD-5A-zuQ" firstAttribute="top" secondItem="2b8-7E-grG" secondAttribute="top" id="TjG-bZ-SXq"/>
                         <constraint firstItem="HfY-VC-dA9" firstAttribute="top" secondItem="21q-gG-MX0" secondAttribute="bottom" constant="4" id="WbI-Tp-esh"/>
-                        <constraint firstAttribute="bottom" secondItem="gUq-Kw-mgv" secondAttribute="bottom" constant="10" id="Wek-n1-aqx"/>
                         <constraint firstAttribute="bottom" secondItem="1nD-5A-zuQ" secondAttribute="bottom" id="X40-2j-eiT"/>
                         <constraint firstItem="PuD-Ul-jg4" firstAttribute="leading" secondItem="2b8-7E-grG" secondAttribute="leading" id="Z5j-8w-PBh"/>
                         <constraint firstItem="Upf-UN-Kou" firstAttribute="top" secondItem="IlL-nv-WK2" secondAttribute="bottom" constant="4" id="ZPU-8h-339"/>
                         <constraint firstItem="kCO-VK-gMy" firstAttribute="leading" secondItem="2b8-7E-grG" secondAttribute="leading" constant="10" id="c5V-5K-nVe"/>
-                        <constraint firstAttribute="trailing" secondItem="gUq-Kw-mgv" secondAttribute="trailing" constant="10" id="ccw-vX-UF5"/>
                         <constraint firstAttribute="trailing" secondItem="1nD-5A-zuQ" secondAttribute="trailing" id="kW1-Qy-b6j"/>
                         <constraint firstItem="21q-gG-MX0" firstAttribute="top" secondItem="IlL-nv-WK2" secondAttribute="top" id="lMn-zR-Ww7"/>
                         <constraint firstItem="MOi-XC-KsP" firstAttribute="top" secondItem="2b8-7E-grG" secondAttribute="top" constant="100" id="qPv-tz-lpy"/>
@@ -360,11 +329,8 @@
         <swipeGestureRecognizer direction="right" id="IoC-8W-dt2" userLabel="Swipe View Right"/>
     </objects>
     <resources>
-        <image name="bcStartLive.png" width="69" height="103"/>
         <image name="vhallLogo.png" width="120" height="120"/>
-        <image name="开始直播.png" width="60" height="60"/>
         <image name="相机翻转.png" width="30" height="30"/>
-        <image name="结束直播" width="60" height="60"/>
         <image name="美颜.png" width="30" height="30"/>
         <image name="语音关闭" width="30" height="30"/>
         <image name="语音开启.png" width="30" height="30"/>

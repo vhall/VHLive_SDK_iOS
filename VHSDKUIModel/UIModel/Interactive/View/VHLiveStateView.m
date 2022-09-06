@@ -9,6 +9,8 @@
 #import "VHLiveStateView.h"
 
 @interface VHLiveStateView ()
+/** 彩排按钮*/
+@property (nonatomic, strong) UIButton * rehearsalBtn;
 /** 底部开始按钮 */
 @property (nonatomic, strong) UIButton *stratBtn;
 /** 中间操作按钮 */
@@ -39,6 +41,7 @@
 - (void)configUI {
     self.backgroundColor = MakeColorRGB(0x222222);
     [self addSubview:self.centerView];
+    [self addSubview:self.rehearsalBtn];
     [self addSubview:self.stratBtn];
     [self.centerView addSubview:self.stateActionBtn];
     [self.centerView addSubview:self.stateLab];
@@ -47,13 +50,21 @@
 }
 
 - (void)configFrame {
-    [_stratBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+    [_rehearsalBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.mas_bottom).offset(-50);
-        make.centerX.equalTo(self);
+        make.centerX.equalTo(self.mas_centerX).offset(-77.5);
         make.height.equalTo(@45);
-        make.width.equalTo(@(280));
+        make.width.equalTo(@(140));
     }];
     
+    [_stratBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.mas_bottom).offset(-50);
+        make.centerX.equalTo(self.mas_centerX).offset(77.5);
+        make.height.equalTo(@45);
+        make.width.equalTo(@(140));
+    }];
+
     [_centerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(20);
         make.right.equalTo(self).offset(-20);
@@ -79,44 +90,100 @@
     }];
 }
 
-- (void)setLiveState:(VHLiveState)liveState btnTitle:(NSString *)btnTitle {
+#pragma mark - ---渲染元素
+- (void)upDateLiveState:(VHLiveState)liveState btnTitle:(NSString *)btnTitle
+{
     _liveState = liveState;
-    if(liveState == VHLiveState_Success) {//直播开始
+    if(liveState == VHLiveState_Success || liveState == VHLiveState_RehearsalSuccess) {//直播开始
         self.hidden = YES;
     }else {
         self.hidden = NO;
+        
+        self.backgroundColor = [UIColor colorWithHex:@"222222"];
+        
+        self.centerView.hidden = NO;
+
+        self.stratBtn.hidden = YES;
+        self.rehearsalBtn.hidden = YES;
+
         if(liveState == VHLiveState_Prepare) { //开始直播
             self.backgroundColor = [UIColor clearColor];
-            self.hidden = NO;
-            self.stratBtn.hidden = NO;
-            self.backgroundColor = [UIColor clearColor];
-            [self.stratBtn setTitle:@"开始直播" forState:UIControlStateNormal];
             self.centerView.hidden = YES;
+            self.stratBtn.hidden = NO;
+            self.rehearsalBtn.hidden = NO;
+            [self.stratBtn setTitle:@"开始直播" forState:UIControlStateNormal];
         }else if (liveState == VHLiveState_Stop) { //直播停止
-            self.backgroundColor = MakeColorRGB(0x222222);
-            self.hidden = NO;
-            self.stratBtn.hidden = YES;
-            [self.stateActionBtn setTitle:btnTitle forState:UIControlStateNormal];
-            self.stateLab.text = @"发生错误，直播已停止";
-            self.stateImgView.image = [UIImage imageNamed:@"icon-网络异常"];
-            self.centerView.hidden = NO;
+            [self updataToStateActionTitle:btnTitle stateLabText:@"发生错误，直播已停止" stateImgStr:@"icon-网络异常"];
         }else if (liveState == VHLiveState_Forbid) { //直播被封禁
-            self.backgroundColor = MakeColorRGB(0x222222);
-            self.hidden = NO;
-            self.stratBtn.hidden = YES;
-            [self.stateActionBtn setTitle:btnTitle forState:UIControlStateNormal];
-            self.stateLab.text = @"当前直播涉及违规，已关闭直播间";
-            self.stateImgView.image = [UIImage imageNamed:@"icon-警示"];
-            self.centerView.hidden = NO;
+            [self updataToStateActionTitle:btnTitle stateLabText:@"当前直播涉及违规，已关闭直播间" stateImgStr:@"icon-警示"];
         }else if (liveState == VHLiveState_NetError) { //网络错误
-            self.backgroundColor = MakeColorRGB(0x222222);
-            self.hidden = NO;
-            self.stratBtn.hidden = YES;
-            [self.stateActionBtn setTitle:btnTitle forState:UIControlStateNormal];
-            self.stateLab.text = @"网络被外星人切走了～";
-            self.stateImgView.image = [UIImage imageNamed:@"icon-网络异常"];
+            [self updataToStateActionTitle:btnTitle stateLabText:@"网络被外星人切走了～" stateImgStr:@"icon-网络异常"];
+        }
+    }
+    
+    // 视频直播才显示彩排按钮
+    if (self.liveVideoType != VHLiveVideoNormal) {
+        self.rehearsalBtn.hidden = YES;
+    }
+}
+- (void)updataToStateActionTitle:(NSString *)stateActionTitle stateLabText:(NSString *)stateLabText stateImgStr:(NSString *)stateImgStr
+{
+    [self.stateActionBtn setTitle:stateActionTitle forState:UIControlStateNormal];
+    [self.stateLab setText:stateLabText];
+    [self.stateImgView setImage:[UIImage imageNamed:stateImgStr]];
+}
+#pragma mark - ---云导播新增UI
+- (void)cloudBoardCastStatus:(VideoBoardCastType)boardType btnTitle:(NSString *)btnTitle{
+    
+    self.backgroundColor = [UIColor clearColor];
+    self.hidden = NO;
+    self.centerView.hidden = YES;
+    self.stateActionBtn.hidden = YES;
+    self.stratBtn.hidden = YES;
+    self.stratBtn.enabled = YES;
+    self.stratBtn.alpha = 1.0;
+    [self.stratBtn setTitle:@"开始直播" forState:UIControlStateNormal];
+    [self.stateImgView setImage:[UIImage imageNamed:@"warning-outline"]];
+
+    switch (boardType) {
+        case VideoBoardCastType_Normal:{
+            // 普通视频直播
+            self.stratBtn.hidden = NO;
+        }
+            break;
+        case VideoBoardCastType_CloudBrocastPush:{
+            // 云导播纯推流
+            
+        }
+            break;
+        case VideoBoardCastType_LiveBeforePullFailed:{
+            // 云导播主持人进入直播前拉流失败
+            self.backgroundColor = [UIColor colorWithHex:@"222222"];
+            self.centerView.hidden = NO;
+            self.stratBtn.alpha = 0.3;
+            self.stratBtn.hidden = NO;
+            self.stratBtn.enabled = NO;
+            self.stateLab.text = @"未检测到云导播推流";
+        }
+            break;
+        case VideoBoardCastType_LivingPullFailed:{
+            
+            // 云导播主持人进入直播中拉流异常
+            self.backgroundColor = [UIColor colorWithHex:@"222222"];
             self.centerView.hidden = NO;
         }
+            break;
+        case VideoBoardCastType_LivingPullSucceed:{
+            self.backgroundColor = [UIColor clearColor];
+            self.hidden = YES;
+        }
+            break;
+        case VideoBoardCastType_start:{
+            
+        }
+            break;
+        default:
+            break;
     }
 }
 
@@ -125,6 +192,12 @@
     if(self.hidden == YES) {
        return [super hitTest:point withEvent:event];
     }
+    
+    CGPoint rehearsalBtnPoint = [self convertPoint:point toView:self.rehearsalBtn];
+    if (self.rehearsalBtn.hidden == NO && [self.rehearsalBtn pointInside:rehearsalBtnPoint withEvent:event]) {
+        return [self.rehearsalBtn hitTest:rehearsalBtnPoint withEvent:event];
+    }
+
     CGPoint startBtnPoint = [self convertPoint:point toView:self.stratBtn];
     if (self.stratBtn.hidden == NO && [self.stratBtn pointInside:startBtnPoint withEvent:event]) {
         return [self.stratBtn hitTest:startBtnPoint withEvent:event];
@@ -137,6 +210,12 @@
     return [super hitTest:point withEvent:event];
 }
  
+- (void)clickRehersalBtn
+{
+    if ([self.delegate respondsToSelector:@selector(clickRehersalToBlock)]) {
+        [self.delegate clickRehersalToBlock];
+    }
+}
 
 - (void)startBtnClick:(UIButton *)sender {
     if([self.delegate respondsToSelector:@selector(liveStateView:actionType:)]) {
@@ -150,6 +229,23 @@
     }
 }
 
+#pragma mark - 懒加载
+- (UIButton *)rehearsalBtn
+{
+    if (!_rehearsalBtn)
+    {
+        _rehearsalBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        _rehearsalBtn.hidden = YES;
+        _rehearsalBtn.backgroundColor = [UIColor whiteColor];
+        _rehearsalBtn.titleLabel.font = FONT_FZZZ(17);
+        _rehearsalBtn.layer.cornerRadius = 45/2.0;
+        _rehearsalBtn.layer.masksToBounds = YES;
+        [_rehearsalBtn setTitle:@"开始彩排" forState:UIControlStateNormal];
+        [_rehearsalBtn setTitleColor:[UIColor colorWithHex:@"#333333"] forState:UIControlStateNormal];
+        [_rehearsalBtn addTarget:self action:@selector(clickRehersalBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _rehearsalBtn;
+}
 
 - (UIButton *)stratBtn
 {

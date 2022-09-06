@@ -16,4 +16,8 @@
 #import "UIModelTools.h"
 #import "VHBeautyHeader.h"
 #import "VHHelpTool.h"
+#import "UIImageView+WebCache.h"
+#import <VHLiveSDK/VHallApi.h>
+#import <VHInteractive/VHRoom.h>
+
 #endif /* UIModel_PrefixHeader_pch */

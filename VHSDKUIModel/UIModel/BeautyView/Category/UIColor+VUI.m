@@ -12,6 +12,50 @@ const NSInteger MAX_RGB_COLOR_VALUE = 0xff;
 const NSInteger MAX_RGB_COLOR_VALUE_FLOAT = 255.0f;
 
 @implementation UIColor (VUI)
++ (instancetype)bm_colorGradientChangeWithSize:(CGSize)size
+                                     direction:(IHGradientChangeDirection)direction
+                                    startColor:(UIColor *)startcolor
+                                      endColor:(UIColor *)endColor {
+    
+    if (CGSizeEqualToSize(size, CGSizeZero) || !startcolor || !endColor) {
+        return nil;
+    }
+    
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(0, 0, size.width, size.height);
+    
+    CGPoint startPoint = CGPointZero;
+    if (direction == IHGradientChangeDirectionDownDiagonalLine) {
+        startPoint = CGPointMake(0.0, 1.0);
+    }
+    gradientLayer.startPoint = startPoint;
+    
+    CGPoint endPoint = CGPointZero;
+    switch (direction) {
+        case IHGradientChangeDirectionLevel:
+            endPoint = CGPointMake(1.0, 0.0);
+            break;
+        case IHGradientChangeDirectionVertical:
+            endPoint = CGPointMake(0.0, 1.0);
+            break;
+        case IHGradientChangeDirectionUpwardDiagonalLine:
+            endPoint = CGPointMake(1.0, 1.0);
+            break;
+        case IHGradientChangeDirectionDownDiagonalLine:
+            endPoint = CGPointMake(1.0, 0.0);
+            break;
+        default:
+            break;
+    }
+    gradientLayer.endPoint = endPoint;
+    
+    gradientLayer.colors = @[(__bridge id)startcolor.CGColor, (__bridge id)endColor.CGColor];
+    UIGraphicsBeginImageContext(size);
+    [gradientLayer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage*image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return [UIColor colorWithPatternImage:image];
+}
 
 /**
  * @brief 字符串中得到颜色值

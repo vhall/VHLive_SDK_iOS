@@ -11,9 +11,9 @@
 
 //日志类型
 typedef NS_ENUM(NSInteger,VHLogType) {
-    VHLogType_OFF   = 0,   //关闭日志 默认设置
-    VHLogType_ON    = 1,   //开启日志
-    VHLogType_ALL   = 2,   //开启全部日志
+    VHLogType_OFF   = 0,   ///<关闭日志 默认设置
+    VHLogType_ON    = 1,   ///<开启日志
+    VHLogType_ALL   = 2,   ///<开启全部日志
 };
 
 #pragma mark - 发起端常量定义
@@ -25,16 +25,16 @@ typedef NS_ENUM(NSInteger,VHLogType) {
 typedef NS_ENUM(NSInteger,VHLiveStatus)
 {
     VHLiveStatusNone                    = -1,
-    VHLiveStatusPushConnectSucceed      = 0,        //直播连接成功
-    VHLiveStatusPushConnectError        = 1,        //直播连接失败
-    VHLiveStatusParamError              = 6,        //参数错误
-    VHLiveStatusSendError               = 8,        //直播发送数据错误
-    VHLiveStatusUploadSpeed             = 9,        //直播上传速率
-    VHLiveStatusAudioRecoderError       = 24,     //音频采集失败，提示用户查看权限或者重新推流，切记此事件会回调多次，直到音频采集正常为止
-    VHLiveStatusUploadNetworkException  = 14,       //发起端网络环境差
-    VHLiveStatusUploadNetworkOK         = 15,       //发起端网络环境恢复正常
-    VHLiveStatusGetUrlError             = 99,       //获取推流地址失败
-    VHLiveStatusDirectorError            = 100,       //云导播机位推流失败
+    VHLiveStatusPushConnectSucceed      = 0,        ///<直播连接成功
+    VHLiveStatusPushConnectError        = 1,        ///<直播连接失败
+    VHLiveStatusParamError              = 6,        ///<参数错误
+    VHLiveStatusSendError               = 8,        ///<直播发送数据错误
+    VHLiveStatusUploadSpeed             = 9,        ///<直播上传速率
+    VHLiveStatusAudioRecoderError       = 24,       ///<音频采集失败，提示用户查看权限或者重新推流，切记此事件会回调多次，直到音频采集正常为止
+    VHLiveStatusUploadNetworkException  = 14,       ///<发起端网络环境差
+    VHLiveStatusUploadNetworkOK         = 15,       ///<发起端网络环境恢复正常
+    VHLiveStatusGetUrlError             = 99,       ///<获取推流地址失败
+    VHLiveStatusDirectorError            = 100,     ///<云导播机位推流失败
 };
 
 /**
@@ -67,11 +67,11 @@ typedef NS_ENUM(NSInteger,VHVideoResolution)
 typedef NS_ENUM(NSInteger,VHSaasLivePlayErrorType)
 {
     VHSaasLivePlayErrorNone                 = -1,
-    VHSaasLivePlayParamError                = 6,      //参数错误
-    VHSaasLivePlayRecvError                 = 7,       //接受数据错误
-    VHSaasLivePlayCDNConnectError           = 3,      //CDN链接失败
-    VHSaasVodPlayError                      = 98,     //点播播放器错误信息
-    VHSaasLivePlayGetUrlError               = 99,     //获取活动信息失败
+    VHSaasLivePlayParamError                = 6,      ///<参数错误
+    VHSaasLivePlayRecvError                 = 7,      ///<接受数据错误
+    VHSaasLivePlayCDNConnectError           = 3,      ///<CDN链接失败
+    VHSaasVodPlayError                      = 98,     ///<点播播放器错误信息
+    VHSaasLivePlayGetUrlError               = 99,     ///<获取活动信息失败
     VHSaasPlaySSOKickout                = 100,
     //观看被踢出
 };
@@ -81,9 +81,9 @@ typedef NS_ENUM(NSInteger,VHSaasLivePlayErrorType)
  */
 typedef NS_ENUM(NSInteger,VHRTMPMovieScalingMode)
 {
-    VHRTMPMovieScalingModeNone          = 0,    //填充满video显示view，可能变形
-    VHRTMPMovieScalingModeAspectFit     = 1,    //在保持长宽比的前提下，缩放图片，使得图片在容器内完整显示出来 可能留有黑边
-    VHRTMPMovieScalingModeAspectFill    = 2,    //在保持长宽比的前提下，缩放图片，使图片充满容器
+    VHRTMPMovieScalingModeNone          = 0,    ///<填充满video显示view，可能变形
+    VHRTMPMovieScalingModeAspectFit     = 1,    ///<在保持长宽比的前提下，缩放图片，使得图片在容器内完整显示出来 可能留有黑边
+    VHRTMPMovieScalingModeAspectFill    = 2,    ///<在保持长宽比的前提下，缩放图片，使图片充满容器
 };
 
 /**
@@ -103,42 +103,42 @@ typedef NS_ENUM(NSInteger,VHStreamType)
  */
 typedef NS_ENUM(NSInteger,VHRenderModel){
     VHRenderModelNone                   = 0,
-    VHRenderModelOrigin                 = 1,    //普通视图的渲染
-    VHRenderModelDewarpVR               = 2,    //VR视图的渲染
+    VHRenderModelOrigin                 = 1,    ///<普通视图的渲染
+    VHRenderModelDewarpVR               = 2,    ///<VR视图的渲染
 };
 
 /**
  *  播放器状态 直播状态 回放状态由于用户创建的 MPMoviePlayerController 实例获取
  */
 typedef NS_ENUM(NSInteger,VHPlayerState) {
-    VHPlayerStateStoped                 = 0,    //停止   可调用startPlay: startPlayback: 状态转为VHallPlayerStateStarting
-    VHPlayerStateStarting               = 1,    //启动中
-    VHPlayerStatePlaying                = 2,    //播放中 可调用stopPlay pausePlay 状态转为VHallPlayerStateStoped/VHallPlayerStatePaused
-    VHPlayerStateStreamStoped           = 3,    //直播流停止 暂停pausePlay/流连接错误触发 可调用stopPlay reconnectPlay状态转为VHallPlayerStateStoped/VHallPlayerStatePlaying
-    VHPlayerStatePause                  = 4,    //回放暂停状态
-    VHPlayerStateComplete               = 5,    //回放播放完成
+    VHPlayerStateStoped                 = 0,    ///<停止   可调用startPlay: startPlayback: 状态转为VHallPlayerStateStarting
+    VHPlayerStateStarting               = 1,    ///<启动中
+    VHPlayerStatePlaying                = 2,    ///<播放中 可调用stopPlay pausePlay 状态转为VHallPlayerStateStoped/VHallPlayerStatePaused
+    VHPlayerStateStreamStoped           = 3,    ///<直播流停止 暂停pausePlay/流连接错误触发 可调用stopPlay reconnectPlay状态转为VHallPlayerStateStoped/VHallPlayerStatePlaying
+    VHPlayerStatePause                  = 4,    ///<回放暂停状态
+    VHPlayerStateComplete               = 5,    ///<回放播放完成
 };
 
 /**
  *  活动布局模式
  */
 typedef NS_ENUM(NSInteger,VHMovieVideoPlayMode) {
-    VHMovieVideoPlayModeNone            = 0,    //不存在
-    VHMovieVideoPlayModeMedia           = 1,    //单视频
-    VHMovieVideoPlayModeTextAndVoice    = 2,    //文档＋声音
-    VHMovieVideoPlayModeTextAndMedia    = 3,    //文档＋视频
-    VHMovieVideoPlayModeVoice           = 4,    //单音频
+    VHMovieVideoPlayModeNone            = 0,    ///<不存在
+    VHMovieVideoPlayModeMedia           = 1,    ///<单视频
+    VHMovieVideoPlayModeTextAndVoice    = 2,    ///<文档＋声音
+    VHMovieVideoPlayModeTextAndMedia    = 3,    ///<文档＋视频
+    VHMovieVideoPlayModeVoice           = 4,    ///<单音频
 };
 
 /**
  *  直播视频清晰度
  */
 typedef NS_ENUM(NSInteger,VHMovieDefinition) {
-    VHMovieDefinitionOrigin             = 0,    //原画
-    VHMovieDefinitionUHD                = 1,    //超高清
-    VHMovieDefinitionHD                 = 2,    //高清
-    VHMovieDefinitionSD                 = 3,    //标清
-    VHMovieDefinitionAudio              = 4,    //纯音频
+    VHMovieDefinitionOrigin             = 0,    ///<原画
+    VHMovieDefinitionUHD                = 1,    ///<超高清
+    VHMovieDefinitionHD                 = 2,    ///<高清
+    VHMovieDefinitionSD                 = 3,    ///<标清
+    VHMovieDefinitionAudio              = 4,    ///<纯音频
 };
 
 /**
@@ -146,18 +146,18 @@ typedef NS_ENUM(NSInteger,VHMovieDefinition) {
  */
 typedef NS_ENUM(NSInteger,VHMovieActiveState) {
     VHMovieActiveStateNone              = 0,
-    VHMovieActiveStateLive              = 1,    //直播
-    VHMovieActiveStateReservation       = 2,    //预约
-    VHMovieActiveStateEnd               = 3,    //结束
-    VHMovieActiveStateReplay            = 4,    //回放or点播
+    VHMovieActiveStateLive              = 1,    ///<直播
+    VHMovieActiveStateReservation       = 2,    ///<预约
+    VHMovieActiveStateEnd               = 3,    ///<结束
+    VHMovieActiveStateReplay            = 4,    ///<回放or点播
 };
 
 /**
  *  活动互动状态
  */
 typedef NS_ENUM(NSInteger,VHInteractiveState) {
-    VHInteractiveStateWithOut           = 0,   //当前不允许互动
-    VHInteractiveStateHave              = 1,   //当前允许互动
+    VHInteractiveStateWithOut           = 0,   ///<当前不允许互动
+    VHInteractiveStateHave              = 1,   ///<当前允许互动
 };
 
 /**
@@ -172,9 +172,9 @@ typedef NS_ENUM(NSInteger,VHInteractiveEvent) {
  *  当前活动直播类型
  */
 typedef NS_ENUM(NSInteger,VHWebinarLiveType) {
-    VHWebinarLiveType_Audio = 1,        //音频直播
-    VHWebinarLiveType_Video = 2,        //视频直播
-    VHWebinarLiveType_Interactive = 3   //互动直播
+    VHWebinarLiveType_Audio = 1,        ///<音频直播
+    VHWebinarLiveType_Video = 2,        ///<视频直播
+    VHWebinarLiveType_Interactive = 3   ///<互动直播
 };
 
 

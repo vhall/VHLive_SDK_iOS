@@ -18,6 +18,7 @@
 #import "VHPortraitWatchLiveVC_Normal.h"
 #import "VHPortraitWatchLiveVC_Nodelay.h"
 #import "WatchPlayBackViewController.h"
+#import "VHFashionStyleWatchLiveVC.h"
 
 #import "VHStystemSetting.h"
 #import "VHSettingViewController.h"
@@ -143,6 +144,7 @@ typedef enum : NSUInteger {
         liveVC.interfaceOrientation = orientation;
         liveVC.isOpenNoiseSuppresion = DEMO_Setting.isOpenNoiseSuppresion;
         liveVC.beautifyFilterEnable  = DEMO_Setting.beautifyFilterEnable;
+        liveVC.isRehearsal = baseInfo.rehearsal_type;
         liveVC.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:liveVC animated:YES completion:nil];
     } fail:^(NSError * _Nonnull error) {
@@ -224,6 +226,7 @@ typedef enum : NSUInteger {
 
         params[@"assistant"] = baseInfo.roleData.assist_name;//增加互动直播助理昵称实时刷新
         VHInteractLiveVC_New *vc = [[VHInteractLiveVC_New alloc] initWithParams:params isHost:isHost screenLandscape:baseInfo.webinar_show_type];
+        vc.isRehearsal = baseInfo.rehearsal_type;
 //        [vc beautyKitModule:[VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]]];
         vc.inav_num = baseInfo.inav_num;
         VHNavigationController *nav = [[VHNavigationController alloc] initWithRootViewController:vc];
@@ -288,7 +291,17 @@ typedef enum : NSUInteger {
         VH_ShowToast(error.localizedDescription);
     }];
 }
-
+//极简风格
+- (void)fashionWatchLive
+{
+    VHFashionStyleWatchLiveVC * watchVC  = [[VHFashionStyleWatchLiveVC alloc]init];
+    watchVC.roomId      = DEMO_Setting.watchActivityID;
+    watchVC.kValue      = DEMO_Setting.kValue;
+    watchVC.interactBeautifyEnable = DEMO_Setting.inavBeautifyFilterEnable;
+    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:watchVC];
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:nav animated:YES completion:nil];
+}
 //网页观看
 - (void)webViewWatchLive {
     VHWebWatchLiveViewController *watchVC = [[VHWebWatchLiveViewController alloc] init];
@@ -401,6 +414,10 @@ typedef enum : NSUInteger {
                 [self addNewProtocol:VHWatchLiveType_FullWatchNodelay];
             }];
 
+            UIAlertAction *fashionVC = [UIAlertAction actionWithTitle:@"极简风格" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self fashionWatchLive];
+            }];
+
             UIAlertAction *webWatch = [UIAlertAction actionWithTitle:@"web嵌入观看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self webViewWatchLive];
             }];
@@ -410,6 +427,7 @@ typedef enum : NSUInteger {
             [alertController addAction:portraitWatch];
             [alertController addAction:halfScreen_NodelayWatch];
             [alertController addAction:portrait_NodelayWatch];
+            [alertController addAction:fashionVC];
             [alertController addAction:webWatch];
             [alertController addAction:cancelAction];
             alertController.popoverPresentationController.sourceView = sender;

@@ -14,42 +14,28 @@
 #import <VHInteractive/VHRoomEnum.h>
 #import <VHInteractive/VHRoomBroadCastConfig.h>
 
+#import <VHInteractive/VHRoomMember.h>
+#import <VHInteractive/VHRoomToolStatus.h>
+#import <VHInteractive/VHRoomDocumentModel.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol   VHRoomDelegate;
 @class      VHRenderView;
-@class      VHRoomMember;
 
 @interface VHRoom : NSObject
 
-/// 获取互动SDK版本号
-+(NSString *)sdkVersionEX;
-
-/// 代理
-@property (nonatomic, weak) id <VHRoomDelegate> delegate;
-/// 当前房间状态
-@property (nonatomic, assign, readonly) VHRoomStatus status;
-/// 旁路布局配置
-@property (nonatomic, strong) VHRoomBroadCastConfig *broadCastConfig;
-/// 当前是否在推流中
-@property (nonatomic, assign, readonly) BOOL isPublishing;
-/// 是否要参与轮巡
-@property (nonatomic, assign) BOOL  isVideoRound;
-/// 当前推流cameraView，只在推流过程中存在
-@property (nonatomic, weak, readonly) VHRenderView *cameraView;
-
-/// 除自己以外房间内其他流id与视频view信息  (key:streamId value:视频VHRenderView)
-@property (nonatomic, strong, readonly) NSDictionary *renderViewsById;
-
-/// 除自己以外房间内其他流id列表
-@property (nonatomic, strong, readonly) NSArray *streams;
-
-/// 房间id
-@property (nonatomic, copy, readonly) NSString *roomId;
-
-/// 房间相关信息（进入房间成功后才有值）
-@property (nonatomic, strong, readonly) VHRoomInfo *roomInfo;
-
-/// 获取支持的推流视频分辨率列表，如：[480x360,640x480,960x540...]
-+ (NSArray<NSString *> *)availableVideoResolutions;
+@property (nonatomic, weak)             id <VHRoomDelegate>         delegate;           ///<代理
+@property (nonatomic, assign)           BOOL                        isVideoRound;       ///<是否要参与轮巡
+@property (nonatomic, assign)           BOOL                        isRehearsal;        ///<是否彩排 YES：彩排模式开播 NO：正常直播 (默认NO,开播前设置有效)
+@property (nonatomic, strong)           VHRoomBroadCastConfig *     broadCastConfig;    ///<旁路布局配置
+@property (nonatomic, weak, readonly)   VHRenderView *              cameraView;         ///<当前推流cameraView，只在推流过程中存在
+@property (nonatomic, copy, readonly)   NSString *                  roomId;             ///<房间id
+@property (nonatomic, assign, readonly) BOOL                        isPublishing;       ///<当前是否在推流中
+@property (nonatomic, assign, readonly) VHRoomStatus                status;             ///<当前房间状态
+@property (nonatomic, strong, readonly) VHRoomInfo *                roomInfo;           ///<房间相关信息（进入房间成功后才有值）
+@property (nonatomic, strong, readonly) NSDictionary *              renderViewsById;    ///<除自己以外房间内其他流id与视频view信息  (key:streamId value:视频VHRenderView)
+@property (nonatomic, strong, readonly) NSArray *                   streams;            ///<除自己以外房间内其他流id列表
 
 /// 观众进入互动房间
 /// @param roomId 房间id，同活动id
@@ -61,6 +47,7 @@
 /// @param params 参数
 /// params[@"id"]    = 房间id，同活动id
 /// params[@"pass"]  = 活动如果有K值或密码，则必传
+/// params[@"k_id"]  = 观看初始化接口活动维度下k值的唯一ID
 - (void)enterRoomWithParams:(NSDictionary *)params;
 
 /// 开始推流 (加入房间成功以后方可调用)
@@ -74,7 +61,12 @@
 - (void)leaveRoom;
 
 /// 设置是否加入混流
-- (void)setRoomJoinBroadCastMixOption:(BOOL)isJoin cameraView:(VHLocalRenderView *)cameraView finish:(void(^)(int code, NSString * _Nonnull message))handle;
+/// @param isJoin 是否加入
+/// @param cameraView 加入混流的renderView
+/// @param handle 结果回调
+- (void)setRoomJoinBroadCastMixOption:(BOOL)isJoin
+                           cameraView:(VHLocalRenderView *)cameraView
+                               finish:(void(^)(int code, NSString * _Nonnull message))handle;
 
 #pragma mark ------------------v6.1新增--------------------
 /// 嘉宾进入互动房间 (嘉宾使用)
@@ -83,90 +75,118 @@
 /// params[@"nickname"]  = 昵称（必传）
 /// params[@"password"]  = 口令（必传）
 /// params[@"avatar"]  = 头像url（可选）
-- (void)guestEnterRoomWithParams:(NSDictionary *)params success:(void(^)(VHRoomInfo *info))success fail:(void(^)(NSError *error))fail;
+- (void)guestEnterRoomWithParams:(NSDictionary *)params
+                         success:(void(^)(VHRoomInfo *info))success
+                            fail:(void(^)(NSError *error))fail;
 
 /// 主持人进入互动房间发起直播，收到"房间连接成功回调"后可开始推流（主持人使用）
 /// @param params 参数
 /// params[@"id"]    = 房间id，同活动id
 /// params[@"nickname"]    = 昵称 (可选)
 /// params[@"email"]    = 邮箱（可选）
-- (void)hostEnterRoomStartWithParams:(NSDictionary *)params success:(void(^)(VHRoomInfo *info))success fail:(void(^)(NSError *error))fail;
+- (void)hostEnterRoomStartWithParams:(NSDictionary *)params
+                             success:(void(^)(VHRoomInfo *info))success
+                                fail:(void(^)(NSError *error))fail;
 
-/// 设置是否开启观众举手申请上麦功能（主持人使用。若开启，则观众可举手申请上麦。）
+/// 设置是否开启观众举手申请上麦功能（主持人使用，若开启，则观众可举手申请上麦。）
 /// @param status 1：开启 0：关闭
 /// @param success 成功
 /// @param fail 失败
-- (void)setHandsUpStatus:(NSInteger)status success:(void(^)(NSDictionary *response))success fail:(void(^)(NSError *error))fail;
+- (void)setHandsUpStatus:(NSInteger)status
+                 success:(void(^)(NSDictionary *response))success
+                    fail:(void(^)(NSError *error))fail;
 
 /// 邀请某个用户上麦 (主持人使用)
 /// @param userId 目标用户id
 /// @param success 成功
 /// @param fail 失败
-- (void)inviteWithTargetUserId:(NSString *)userId success:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+- (void)inviteWithTargetUserId:(NSString *)userId
+                       success:(void(^)(void))success
+                          fail:(void(^)(NSError *error))fail;
 
 /// 同意某个用户的上麦申请 (主持人使用)
 /// @param userId 目标用户id
 /// @param success 成功
 /// @param fail 失败
-- (void)agreeApplyWithTargetUserId:(NSString *)userId success:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+- (void)agreeApplyWithTargetUserId:(NSString *)userId
+                           success:(void(^)(void))success
+                              fail:(void(^)(NSError *error))fail;
 
 /// 拒绝某个用户的上麦申请 (主持人使用)
 /// @param userId 目标用户id
 /// @param success 成功
 /// @param fail 失败
-- (void)rejectApplyWithTargetUserId:(NSString *)userId success:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+- (void)rejectApplyWithTargetUserId:(NSString *)userId
+                            success:(void(^)(void))success
+                               fail:(void(^)(NSError *error))fail;
 
 /// 设置某个用户为主讲人 (主持人使用)
 /// @param userId 目标用户id
 /// @param success 成功
 /// @param fail 失败
-- (void)setMainSpeakerWithTargetUserId:(NSString *)userId success:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+- (void)setMainSpeakerWithTargetUserId:(NSString *)userId
+                               success:(void(^)(void))success
+                                  fail:(void(^)(NSError *error))fail;
 
 /// 下麦某个用户 (主持人使用)
 /// @param userId 目标用户id
 /// @param success 成功
 /// @param fail 失败
-- (void)downMicWithTargetUserId:(NSString *)userId success:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+- (void)downMicWithTargetUserId:(NSString *)userId
+                        success:(void(^)(void))success
+                           fail:(void(^)(NSError *error))fail;
 
 /// 禁言/取消禁言某个用户
 /// @param status YES：禁言 NO：取消禁言
 /// @param userId 目标用户id
 /// @param success 成功
 /// @param fail 失败
-- (void)setBanned:(BOOL)status targetUserId:(NSString *)userId success:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+- (void)setBanned:(BOOL)status
+     targetUserId:(NSString *)userId
+          success:(void(^)(void))success
+             fail:(void(^)(NSError *error))fail;
 
 /// 踢出/取消踢出某个用户
 /// @param status YES：踢出 NO：取消踢出
 /// @param userId 目标用户id
 /// @param success 成功
 /// @param fail 失败
-- (void)setKickOut:(BOOL)status targetUserId:(NSString *)userId success:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+- (void)setKickOut:(BOOL)status
+      targetUserId:(NSString *)userId
+           success:(void(^)(void))success
+              fail:(void(^)(NSError *error))fail;
 
 /// 申请上麦
 /// @param success 成功
 /// @param fail 失败
-- (void)applySuccess:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+- (void)applySuccess:(void(^)(void))success
+                fail:(void(^)(NSError *error))fail;
 
 /// 取消申请上麦
 /// @param success 成功
 /// @param fail 失败
-- (void)cancelApplySuccess:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+- (void)cancelApplySuccess:(void(^)(void))success
+                      fail:(void(^)(NSError *error))fail;
 
 /// 拒绝主持人发来的上麦邀请
 /// @param success 成功回调
 /// @param fail 失败回调
-- (void)rejectInviteSuccess:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+- (void)rejectInviteSuccess:(void(^)(void))success
+                       fail:(void(^)(NSError *error))fail;
 
 /// 同意主持人发来的上麦邀请，成功回调中开启推流
 /// @param success 成功回调
 /// @param fail 失败回调
-- (void)agreeInviteSuccess:(void(^)(void))success fail:(void(^)(NSError *error))fail;
+- (void)agreeInviteSuccess:(void(^)(void))success
+                      fail:(void(^)(NSError *error))fail;
 
 /// 获取轮询用户
 /// @param is_next 是否是下一组， 0：当前组， 1：下一组
 /// @param success 成功
 /// @param fail 失败
-- (void)getRoundUsersWithIs_next:(NSString *)is_next success:(void(^)(NSDictionary *response))success fail:(void(^)(NSError *error))fail;
+- (void)getRoundUsersWithIs_next:(NSString *)is_next
+                         success:(void(^)(NSDictionary *response))success
+                            fail:(void(^)(NSError *error))fail;
 
 /// 获取在线成员列表
 /// @param pageNum 页码，第一页从1开始
@@ -174,21 +194,38 @@
 /// @param nickName 指定昵称（非必传参数，可传nil）
 /// @param success 成功 haveNextPage：是否还有下一页
 /// @param fail 失败
-- (void)getOnlineUserListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize nickName:(NSString *)nickName success:(void(^)(NSArray <VHRoomMember *> *list,BOOL haveNextPage))success fail:(void(^)(NSError *error))fail;
+- (void)getOnlineUserListWithPageNum:(NSInteger)pageNum
+                            pageSize:(NSInteger)pageSize
+                            nickName:(NSString *)nickName
+                             success:(void(^)(NSArray <VHRoomMember *> *list,BOOL haveNextPage))success
+                                fail:(void(^)(NSError *error))fail;
 
 /// 获取受限成员列表 (包括：被踢出、被禁言的用户)
 /// @param pageNum 页码，第一页从1开始
 /// @param pageSize 每页条数
 /// @param success 成功 haveNextPage：是否还有下一页
 /// @param fail 失败
-- (void)getLimitUserListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize success:(void(^)(NSArray <VHRoomMember *> *list,BOOL haveNextPage))success fail:(void(^)(NSError *error))fail;
+- (void)getLimitUserListWithPageNum:(NSInteger)pageNum
+                           pageSize:(NSInteger)pageSize
+                            success:(void(^)(NSArray <VHRoomMember *> *list,BOOL haveNextPage))success
+                               fail:(void(^)(NSError *error))fail;
 
 /// 获取房间文档列表
 /// @param pageNum 页码，第一页从1开始
 /// @param pageSize 每页条数
 /// @param success 成功
 /// @param fail 失败
-- (void)getDocListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize success:(void(^)(NSArray <VHRoomDocumentModel *> *list,BOOL haveNextPage))success fail:(void(^)(NSError *error))fail;
+- (void)getDocListWithPageNum:(NSInteger)pageNum
+                     pageSize:(NSInteger)pageSize
+                      success:(void(^)(NSArray <VHRoomDocumentModel *> *list,BOOL haveNextPage))success
+                         fail:(void(^)(NSError *error))fail;
+
+/// 获取互动SDK版本号
++ (NSString *)sdkVersionEX;
+
+/// 获取支持的推流视频分辨率列表，如：[480x360,640x480,960x540...]
++ (NSArray<NSString *> *)availableVideoResolutions;
+
 @end
 
 
@@ -258,7 +295,7 @@
 
 /// 自己被踢出房间回调
 /// @param room room实例
-/// @param iskickout YES
+/// @param iskickout 是否被踢出
 - (void)room:(VHRoom *)room iskickout:(BOOL)iskickout;
 
 /// 自己被禁言/取消禁言回调
@@ -273,7 +310,7 @@
 
 /// 直播结束回调
 /// @param room room实例
-/// @param liveOver YES
+/// @param liveOver 是否结束
 - (void)room:(VHRoom *)room liveOver:(BOOL)liveOver;
 
 
@@ -296,3 +333,6 @@
 - (void)room:(VHRoom *)room announcement:(NSString *)content publishTime:(NSString *)time;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

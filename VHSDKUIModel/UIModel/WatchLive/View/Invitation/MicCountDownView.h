@@ -21,11 +21,14 @@
 
 @property (nonatomic, weak) id <MicCountDownViewDelegate> delegate;
 
+@property (nonatomic, assign) BOOL  isPublish;
+
 @property (nonatomic, strong) UIButton *button;
 
 - (void)countdDown:(NSUInteger)count;
 
 - (void)hiddenCountView;
+
 - (void)showCountView;
 
 - (void)stopCountDown;

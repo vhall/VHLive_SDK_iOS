@@ -16,6 +16,7 @@ typedef enum : NSUInteger {
     VHLiveState_Prepare = 0, //准备开播，显示开始直播按钮
     VHLiveState_Stop,        //已停止推流
     VHLiveState_Success,     //点击开始直播按钮后，或直播成功，view隐藏
+    VHLiveState_RehearsalSuccess,     //点击彩排按钮后，view隐藏
     VHLiveState_Forbid,      //直播被封禁
     VHLiveState_NetError     //网络错误
 } VHLiveState;

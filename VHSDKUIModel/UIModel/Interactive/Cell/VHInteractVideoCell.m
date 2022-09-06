@@ -170,10 +170,8 @@
     VHRenderView *videoView = [self.contentView viewWithTag:1000];
     if(videoView && videoView != model.videoView) {
         [videoView removeFromSuperview];
-        [self addVideoView];
-    }else {
-        [self addVideoView];
     }
+    [self addVideoView];
 
     if(model.videoView.streamType == VHInteractiveStreamTypeScreen || model.videoView.streamType == VHInteractiveStreamTypeFile || model.videoView.streamType == VHInteractiveStreamTypeVideoPatrol) { //桌面共享或插播不显示主讲人标识，昵称等控件
         self.speakerIcon.hidden = YES;

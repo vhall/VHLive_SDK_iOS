@@ -127,11 +127,6 @@ typedef void(^FinishBlock)(int code, NSString * _Nullable message);//code 200 �
 - (void)updateOptions:(NSDictionary*)options;
 
 /**
- * 使画面镜像，不会影响推流的视频方向
- */
-- (void)useMirror __deprecated_msg("当前版本不推荐使用该方法，可能会引发后摄像头的镜像问题");
-
-/**
  * 实时改变摄像头分辨率和帧率
  * @param resolution 分辨率
  * @param fps 帧率，0 < fps < 31
@@ -269,6 +264,9 @@ typedef void(^FinishBlock)(int code, NSString * _Nullable message);//code 200 �
  * 切换前后摄像头
  */
 - (AVCaptureDevicePosition) switchCamera;
+
+/// 镜像前置摄像头
+- (void)camVidMirror:(BOOL)mirror;
 
 /*
  * 获取流状态

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define ChatViewHeight 200 //聊天视图高度
+#define ChatViewHeight 170 //聊天视图高度
 
 @class VHLiveMsgModel;
 NS_ASSUME_NONNULL_BEGIN

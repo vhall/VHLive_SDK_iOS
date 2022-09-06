@@ -247,7 +247,7 @@
         return;//过滤视频轮巡流
     }
     NSString *string = [NSString stringWithFormat:@"%@ 已下麦",attendView.userId];
-    VH_ShowToast(string);    
+    VH_ShowToast(string);
     [self removeView:attendView];
 }
 
@@ -494,6 +494,14 @@
         [_cameraView setDeviceOrientation:UIDeviceOrientationPortrait];
         _cameraView.transform = CGAffineTransformMakeScale(-1,1);//镜像
         _cameraView.beautifyEnable = _inavBeautifyFilterEnable;
+        
+//        //设置自己的视频流用户信息，使其他端可从视频流中荻取该信息
+//        NSMutableDictionary * attributes = [NSMutableDictionary dictionary];
+//        attributes[@"nickName"] = @"";//昵称
+//        attributes[@"avatar"] = @"";//头像
+//        attributes[@"role"] = @(2); //1主持人 2观众 了助理 4嘉宾
+//        [_cameraView setAttributes:[UIModelTools jsonStringWithObject:attributes]];
+         
         // 如果是轮巡,则静音
         if (self.isVideoRound) {
             [_cameraView muteAudio];

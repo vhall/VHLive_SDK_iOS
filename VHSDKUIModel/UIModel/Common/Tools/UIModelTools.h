@@ -17,9 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)showMsg:(NSString*)msg afterDelay:(NSTimeInterval)delay;
 
-// 字典转json字符串方法
+/// 字典转json字符串方法
 + (NSString *)jsonStringWithObject:(id)dict;
 
+/// JSON字符串转化为字典
++ (id)objectWithJsonString:(NSString *)jsonString;
 
 //从十六进制字符串获取颜色，
 //color:支持@“#123456”、 @“0X123456”、 @“123456”三种格式
@@ -100,8 +102,11 @@ NS_ASSUME_NONNULL_BEGIN
 //当前时间 yyyy-MM-dd HH:mm:ss
 + (NSString *)currentTimeStr;
 
-
 + (NSString *)base64:(NSString *)str;
+
+//指定某个/多个角圆角
++ (void)clipView:(UIView *)view corner:(UIRectCorner)corners anSize:(CGSize)size;
+
 ///角色修改
 extern NSString * VH_MB_HOST;
 extern NSString * VH_MB_GUEST;

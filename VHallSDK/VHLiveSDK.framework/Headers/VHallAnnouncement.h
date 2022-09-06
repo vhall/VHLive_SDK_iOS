@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VHallBasePlugin.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +19,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface VHallAnnouncement : NSObject
+@protocol VHallAnnouncementDelegate <NSObject>
+
+/// 收到公告
+/// @param content 公告内容
+/// @param time 发布时间
+- (void)announcementContentDidChange:(NSString*)content
+                         publishTime:(NSString*)time;
+
+@end
+
+@interface VHallAnnouncement : VHallBasePlugin
+
+@property (nonatomic, weak) id <VHallAnnouncementDelegate> delegate; ///<代理
 
 /// 公告列表接口
 /// @param room_id 房间id lss_xxxxxx

@@ -36,6 +36,7 @@
         self.screenLandscape = landScapeShow;
         self.backgroundColor = [UIColor clearColor];
         [self addSubview:self.topToolView];
+        [self.topToolView addSubview:self.rehearsalLogoView];
         [self addSubview:self.chatView];
         [self addSubview:self.bottomToolView];
         [self addSubview:self.countDownLab];
@@ -66,6 +67,12 @@
         make.top.mas_equalTo(self.screenLandscape ? 20 : (VH_KStatusBarHeight + 20));
     }];
     
+    [self.rehearsalLogoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.topToolView.introBgView.mas_left);
+        make.top.mas_equalTo(self.topToolView.mas_bottom).offset(12);
+        make.size.mas_equalTo(CGSizeMake(61, 24));
+    }];
+
     [self.chatView mas_makeConstraints:^(MASConstraintMaker *make) {
         if(VH_KiPhoneXSeries && self.screenLandscape) {
             make.left.mas_equalTo(VH_KSystemNavBarHeight);
@@ -283,6 +290,13 @@
     }return _bottomToolView;
 }
 
+- (VHLiveRehearsalLogoView *)rehearsalLogoView
+{
+    if (!_rehearsalLogoView) {
+        _rehearsalLogoView = [[VHLiveRehearsalLogoView alloc] initWithFrame:CGRectMake(0, 0, 61, 24)];
+        _rehearsalLogoView.hidden = YES;
+    }return _rehearsalLogoView;
+}
 
 - (VHKeyboardToolView *)keyboardView {
     if (!_keyboardView) {

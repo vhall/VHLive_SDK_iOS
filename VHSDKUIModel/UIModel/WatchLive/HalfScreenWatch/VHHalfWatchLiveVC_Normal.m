@@ -127,7 +127,7 @@ static AnnouncementView* announcementView = nil;
 @property (weak, nonatomic) IBOutlet UIButton *questionName;//显示问答名称
 @property (nonatomic,copy) NSString *questionDesc;//问答名称
 @property (nonatomic,copy) NSString *questionnaireDesc;//问卷名称
-@property (nonatomic) UIButton *questionnaireBtn;
+@property (nonatomic, strong) UIButton * qetBtn;
 @property (nonatomic) BOOL  questionStatus;
 @property (nonatomic) NSInteger  selectIndex;
 /// 抽奖
@@ -247,7 +247,7 @@ static AnnouncementView* announcementView = nil;
 //    预加载视频，收到"预加载成功回调"后，即可使用聊天等功能，择机调用 startPlay 正式开播，用于开播之前使用聊天、签到等功能
 //    [self.moviePlayer preLoadRoomWithParam:[self playParam]];
     
-    // 返回角色数据
+    // 返回角色名称
     [VHWebinarBaseInfo getRoleNameWebinar_id:self.roomId dataCallBack:^(VHRoleNameData * roleData) {
         VH_MB_HOST = roleData.host_name;
         VH_MB_GUEST = roleData.guest_name;
@@ -410,16 +410,19 @@ static AnnouncementView* announcementView = nil;
 #pragma mark - 自定义消息
 - (void)reciveCustomMsg:(NSArray <VHallCustomMsgModel *> *)msgs
 {
-    VHallCustomMsgModel *msgModel = msgs[0];
+    VHallCustomMsgModel *msgModel = [msgs firstObject];
     if (msgModel.eventType == ChatCustomType_EditRole) {
         switch ([msgModel.edit_role_type intValue]) {
             case 1:
+                // 主持人角色名称
                 VH_MB_HOST = msgModel.edit_role_name;
                 break;
             case 4:
+                // 嘉宾角色名称
                 VH_MB_GUEST = msgModel.edit_role_name;
                 break;
             case 3:
+                // 助理角色名称
                 VH_MB_ASSIST = msgModel.edit_role_name;
                 break;
             default:
@@ -970,14 +973,19 @@ static AnnouncementView* announcementView = nil;
 }
 
 #pragma mark - 添加问卷
+- (UIButton *)qetBtn
+{
+    if (!_qetBtn) {
+        _qetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_qetBtn setHidden:YES];
+        [_qetBtn setContentMode:UIViewContentModeScaleAspectFit];
+        [_qetBtn setImage:BundleUIImage(@"wenjuan_top") forState:UIControlStateNormal];
+        [_qetBtn addTarget:self action:@selector(questionnaireAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_qetBtn];
+    }return _qetBtn;
+}
 - (void)addquestionnaireView{
-    self.questionnaireBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.questionnaireBtn setImage:BundleUIImage(@"wenjuan_have") forState:UIControlStateNormal];
-    self.questionnaireBtn.contentMode = UIViewContentModeScaleAspectFit;
-    [self.questionnaireBtn addTarget:self action:@selector(questionnaireAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.questionnaireBtn];
-    self.questionnaireBtn.hidden = YES;
-    [self.questionnaireBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.qetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(0);
         make.centerY.offset(0);
         make.width.height.mas_equalTo(36);
@@ -989,11 +997,11 @@ static AnnouncementView* announcementView = nil;
 // --- 问卷的逻辑 isAction = YES 走action NO 走核验
 - (void)questionnaireLogic:(BOOL)isAction{
     // 获取问卷列表
-    [VHWebinarBaseInfo fetchSurveyListWebinarId:self.roomId roomId:self.moviePlayer.webinarInfo.data[@"interact"][@"room_id"] switchId:self.moviePlayer.webinarInfo.data[@"switch"][@"switch_id"] success:^(VHSurveyListModel * listModel) {
+    [VHWebinarBaseInfo fetchSurveyListWebinarId:self.roomId roomId:self.moviePlayer.webinarInfo.webinarInfoData.interact.room_id switchId:self.moviePlayer.webinarInfo.webinarInfoData.data_switch.switch_id success:^(VHSurveyListModel * listModel) {
         if (listModel.listModel.count == 0) {
-            self.questionnaireBtn.hidden = YES;
+            self.qetBtn.hidden = YES;
         }else{
-            self.questionnaireBtn.hidden = NO;
+            self.qetBtn.hidden = NO;
             [self isHaveRedRot:listModel.listModel action:isAction];
         }
     } fail:^(NSError * _Nonnull error) {
@@ -1015,7 +1023,6 @@ static AnnouncementView* announcementView = nil;
             }
         }
     }
-    [self.questionnaireBtn setImage:isHaveRedDot?BundleUIImage(@"wenjuan_have"):BundleUIImage(@"wenjuan_no") forState:UIControlStateNormal];
     if (!action) {
         //NO 走核验 YES 走action操作
         return;
@@ -1108,9 +1115,6 @@ static AnnouncementView* announcementView = nil;
 }
 
 - (void)reloadDataWithDataSource:(NSArray *)dataSource animated:(BOOL)animated{
-    if (_chatView.contentSize.height <= 0) {
-        return;
-    }
     dispatch_async(dispatch_get_main_queue(), ^{
         [_chatView reloadData];
         if(dataSource.count > 0 && _chatView.contentSize.height > 0) {
@@ -1636,7 +1640,7 @@ static AnnouncementView* announcementView = nil;
 - (void)moviePlayer:(VHallMoviePlayer *)player isQuestion_status:(BOOL)isQuestion_status question_name:(NSString *)questionName
 {
     _isQuestion_status = isQuestion_status;
-    self.questionDesc = questionName;
+    self.questionDesc = questionName.length>0 ? questionName : @"问答" ;
     [self.questionName setTitle:self.questionDesc forState:UIControlStateNormal];
 }
 
@@ -1956,7 +1960,7 @@ static AnnouncementView* announcementView = nil;
 // 6.4.0 新增
 - (void)receivedSurveyWithURL:(NSURL *)surveyURL surveyName:(NSString *)surveyName{
     //6.4 新增问卷名称
-    [self questionnaireLogic:NO];
+    [self questionnaireLogic:YES];
     self.questionnaireDesc = surveyName;
     VHallSurveyModel *model = [[VHallSurveyModel alloc] init];
     model.surveyName = surveyName;//问卷名称
@@ -1972,8 +1976,8 @@ static AnnouncementView* announcementView = nil;
     
 }
 
+#pragma mark - 问卷
 //----------------VHSurveyViewControllerDelegate--------------
-
 - (void)surveyviewControllerDidCloseed:(UIButton *)sender {
     [_surveyController.view removeFromSuperview];
     _surveyController = nil;
@@ -2092,7 +2096,7 @@ static AnnouncementView* announcementView = nil;
     }];
 }
 
-
+#pragma mark - 耳机插拔
 - (void)outputDeviceChanged:(NSNotification*)notification
 {
     NSInteger routeChangeReason = [[[notification userInfo]objectForKey:AVAudioSessionRouteChangeReasonKey] integerValue];
@@ -2124,7 +2128,7 @@ static AnnouncementView* announcementView = nil;
     }
 }
 
-
+#pragma mark - 已经进入活跃状态的通知
 - (void)didBecomeActive
 {
     if (announcementContentDic != nil)

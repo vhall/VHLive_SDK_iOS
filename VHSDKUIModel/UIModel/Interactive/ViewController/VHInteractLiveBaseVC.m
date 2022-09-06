@@ -29,7 +29,6 @@
 @property (nonatomic, assign) NSInteger countDownSecond;
 /** 结束直播界面 */
 @property (nonatomic, strong) VHEndPublisherVC *endPulishVC;
-
 @end
 
 @implementation VHInteractLiveBaseVC
@@ -66,6 +65,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.countDownSecond = CountDownSecond;
+    // 判断显示彩排标识
+    self.infoDetailView.rehearsalLogoView.hidden = !self.isRehearsal;
     self.view.backgroundColor = MakeColorRGB(0x222222);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleStatusBarOrientationChange:)
     name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
@@ -398,21 +399,50 @@
     }
 }
 
+#pragma mark - 标识彩排直播还是视频直播
+- (void)setIsRehearsal:(BOOL)isRehearsal
+{
+    _isRehearsal = isRehearsal;
+    
+}
+
 #pragma mark - VHLiveStateViewDelegate
-///直播状态页按钮事件
+#pragma mark - 开始彩排
+- (void)clickRehersalToBlock
+{
+    // 彩排
+    self.isRehearsal = YES;
+    
+    // 判断显示彩排标识
+    self.infoDetailView.rehearsalLogoView.hidden = NO;
+
+    // 更新彩排还是直播状态
+    [self.liveStateView upDateLiveState:VHLiveState_RehearsalSuccess btnTitle:@""];
+    
+    // 开启倒计时
+    self.countDownTimer = [VHLiveWeakTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDownAction) userInfo:nil repeats:YES];
+}
+
+#pragma mark - 直播状态页按钮事件
 - (void)liveStateView:(VHLiveStateView *)liveStateView actionType:(VHLiveState)type {
     if(type == VHLiveState_Prepare) { //开始直播
+        // 直播
+        self.isRehearsal = NO;
+        
+        // 判断显示彩排标识
+        self.infoDetailView.rehearsalLogoView.hidden = YES;
+
+        // 更新彩排还是直播状态
+        [self.liveStateView upDateLiveState:VHLiveState_Success btnTitle:@""];
+        
+        // 开启倒计时
         self.countDownTimer = [VHLiveWeakTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDownAction) userInfo:nil repeats:YES];
-        //隐藏开播按钮
-        [self.liveStateView setLiveState:VHLiveState_Success btnTitle:@""];
     }else if(type == VHLiveState_Forbid) { //被封禁，返回
         [self popRootViewController];
     }else if(type == VHLiveState_NetError) {
-        [self.liveStateView setLiveState:VHLiveState_Success btnTitle:@""];
         [self restartPushForNetError];
     }
 }
-
 
 //显示直播结束view
 - (void)showLiveEndView {
@@ -571,5 +601,6 @@
     }
     return _docContentView;
 }
+
 
 @end

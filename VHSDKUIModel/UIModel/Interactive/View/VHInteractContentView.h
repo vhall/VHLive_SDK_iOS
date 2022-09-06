@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <VHInteractive/VHRoom.h>
-
-@class VHLiveMemberModel;
+#import "VHLiveMemberModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

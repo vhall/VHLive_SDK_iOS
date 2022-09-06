@@ -38,8 +38,6 @@ typedef NS_ENUM(NSUInteger, OMDecimalOprationType) {
 @property (nonatomic, assign) NSTimeInterval endTime;
 /** 调度时间, 即计时器每秒减少/增加该数值*/
 @property (nonatomic, assign) NSTimeInterval onceTime;
-/** 当前时间*/
-@property (nonatomic, assign) NSTimeInterval currentTime;
 /** app进入后台时间 */
 @property (nonatomic, assign) NSTimeInterval appDidEnterBackgroundTime;
 /** app进入前台时间 */
@@ -197,7 +195,7 @@ typedef NS_ENUM(NSUInteger, OMDecimalOprationType) {
 /** 配置数据*/
 - (void)configure{
     self.endTime = self.timerInterval;
-    self.currentTime = self.isAscend ? (0.00):(self.endTime);
+    self.currentTime = self.isAscend ? self.currentTime : (self.endTime);
     [self initTimerCompletion:^{
         if ((self.precision < 10) || (self.precision > 1000)) {
             @throw [NSException exceptionWithName: @"OMTimer-精度异常" reason: @"precision参数配置异常，大于1000毫秒的计时回调将无意义，以及小于10毫秒无实际意义" userInfo: nil];
@@ -225,7 +223,7 @@ typedef NS_ENUM(NSUInteger, OMDecimalOprationType) {
             }
         } else {
             self.currentTime = [self value: self.currentTime byOpration: OMDecimalOprationTypeSubtract percision: 6 withValue: self.onceTime].doubleValue;
-            if (self.currentTime <= 0) {
+            if (self.currentTime < 0) {
                 /// 纠正数据
                 if (self.progressBlock) {
                     self.progressBlock([self timeProgress: 0]);
@@ -326,8 +324,11 @@ typedef NS_ENUM(NSUInteger, OMDecimalOprationType) {
 - (void)stop{
     _complete = YES;
     if (self.timer) {
+        if (_suspend) {
+            dispatch_resume(self.timer);
+        }
         dispatch_source_cancel(self.timer);
-        self.timer = nil;
+        _timer = nil;
     }
 }
 

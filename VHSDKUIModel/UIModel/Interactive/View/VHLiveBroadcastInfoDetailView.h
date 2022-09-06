@@ -10,6 +10,8 @@
 #import "VHLiveBroadcastInfoDetailBootomView.h"
 #import "VHLiveBroadcastInfoDetailTopView.h"
 #import "VHLiveInfoDetailChatView.h"
+#import "VHLiveRehearsalLogoView.h"
+
 NS_ASSUME_NONNULL_BEGIN
 @class VHLiveBroadcastInfoDetailView;
 @protocol VHDocBrushPopViewDelegate;
@@ -66,6 +68,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) VHLiveBroadcastInfoDetailTopView *topToolView;
 /// 底部工具栏
 @property (nonatomic , strong) VHLiveBroadcastInfoDetailBootomView *bottomToolView;
+/// 彩排控件
+@property (nonatomic , strong) VHLiveRehearsalLogoView * rehearsalLogoView;
 /// 聊天视图
 @property (nonatomic , strong) VHLiveInfoDetailChatView * chatView;
 /** 当前是否已打开文档view */

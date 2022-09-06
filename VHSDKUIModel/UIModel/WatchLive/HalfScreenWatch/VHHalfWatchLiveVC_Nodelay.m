@@ -35,10 +35,11 @@
 #import "UIView+RedRot.h"
 
 #import "VHDocFullScreenViewController.h"
+#import "VHWatchLiveTimerView.h"
 
 static AnnouncementView* announcementView = nil;
 
-@interface VHHalfWatchLiveVC_Nodelay ()<VHRoomDelegate, VHallChatDelegate, VHallQAndADelegate, VHallLotteryDelegate,VHallSignDelegate,VHallSurveyDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,MicCountDownViewDelegate,VHInvitationAlertDelegate,VHSurveyViewControllerDelegate,VHKeyboardToolViewDelegate,VHDocumentDelegate,VHLotteryOpenDelegate, VHWatchNodelayDocumentViewDelegate>
+@interface VHHalfWatchLiveVC_Nodelay ()<VHRoomDelegate, VHallChatDelegate, VHallQAndADelegate, VHallLotteryDelegate,VHallSignDelegate,VHallSurveyDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,MicCountDownViewDelegate,VHInvitationAlertDelegate,VHSurveyViewControllerDelegate,VHKeyboardToolViewDelegate,VHDocumentDelegate,VHLotteryOpenDelegate, VHWatchNodelayDocumentViewDelegate,VHallTimerObjectDelegate>
 {
     VHallChat         *_chat;       //聊天
     VHallQAndA        *_QA;         //问答
@@ -97,11 +98,19 @@ static AnnouncementView* announcementView = nil;
 @property (weak, nonatomic) IBOutlet UIButton *questionName;
 @property (nonatomic,copy) NSString *questionDesc;//问答名称
 @property (nonatomic,copy) NSString *questionnaireDesc;//问卷名称
-@property (nonatomic) UIButton *questionnaireBtn;
+@property (nonatomic, strong) UIButton * qetBtn;
 @property (nonatomic) BOOL  questionStatus;
 @property (nonatomic) NSInteger  selectIndex;
-///抽奖
-@property (nonatomic) UIButton *lotteryIconBtn;
+/// 抽奖
+@property (nonatomic) UIButton * lotteryIconBtn;
+
+/// 计时器类
+@property (nonatomic, strong) VHallTimerObject * timerObject;
+/// 计时器按钮
+@property (nonatomic, strong) UIButton * timerIconBtn;
+/// 计时器
+@property (nonatomic, strong) VHWatchLiveTimerView * timerView;
+
 @end
 
 @implementation VHHalfWatchLiveVC_Nodelay
@@ -112,8 +121,6 @@ static AnnouncementView* announcementView = nil;
     self = LoadVCNibName;
     if (self) {
         [self initDatas];
-        //已经进入活跃状态的通知
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive)name:UIApplicationDidBecomeActiveNotification object:nil];
     }
     return self;
 }
@@ -127,6 +134,8 @@ static AnnouncementView* announcementView = nil;
     [self addquestionnaireView];
     // 添加抽奖
     [self addLotteryView];
+    // 添加计时器按钮
+    [self addTimerBtn];
     // 抽奖成功通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lotterySuccess) name:@"take_award_succeed" object:nil];
 }
@@ -140,13 +149,21 @@ static AnnouncementView* announcementView = nil;
     [self.lotteryIconBtn addTarget:self action:@selector(lotteryAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.lotteryIconBtn];
     [self.lotteryIconBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.offset(0);
-        make.top.offset(90);
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(90);
         make.width.height.mas_equalTo(36);
     }];
 }
 - (void)lotteryAction{
     [self lotteryLogic:YES];
+}
+- (void)addTimerBtn
+{
+    [self.timerIconBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(_lotteryIconBtn.mas_bottom).offset(5);
+        make.width.height.mas_equalTo(36);
+    }];
 }
 #pragma mark -- 获取抽奖历史
 - (void)lotteryLogic:(BOOL)isAction{
@@ -230,37 +247,43 @@ static AnnouncementView* announcementView = nil;
     [_lotteryVC new_lottery_UI:endLotteryModel];
     [self lotteryBtnClick:self.lotteryBtn];
 }
+#pragma mark - 添加问卷
+- (UIButton *)qetBtn
+{
+    if (!_qetBtn) {
+        _qetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_qetBtn setHidden:YES];
+        [_qetBtn setContentMode:UIViewContentModeScaleAspectFit];
+        [_qetBtn setImage:BundleUIImage(@"wenjuan_top") forState:UIControlStateNormal];
+        [_qetBtn addTarget:self action:@selector(questionnaireAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_qetBtn];
+    }return _qetBtn;
+}
 - (void)addquestionnaireView{
-    self.questionnaireBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.questionnaireBtn setImage:BundleUIImage(@"wenjuan_have") forState:UIControlStateNormal];
-    self.questionnaireBtn.contentMode = UIViewContentModeScaleAspectFit;
-    [self.questionnaireBtn addTarget:self action:@selector(questionnaireAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.questionnaireBtn];
-    self.questionnaireBtn.hidden = YES;
-    [self.questionnaireBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.qetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(0);
         make.centerY.offset(0);
         make.width.height.mas_equalTo(36);
     }];
 }
-
 - (void)questionnaireAction{
     [self questionnaireLogic:YES];
 }
 #pragma mark --- 问卷的逻辑 isAction = YES 走action NO 走核验
 - (void)questionnaireLogic:(BOOL)isAction{
     ///获取问卷列表
-    [VHWebinarBaseInfo fetchSurveyListWebinarId:self.roomId roomId:self.inavRoom.roomInfo.data[@"interact"][@"room_id"] switchId:self.inavRoom.roomInfo.data[@"switch"][@"switch_id"] success:^(VHSurveyListModel * listModel) {
+    [VHWebinarBaseInfo fetchSurveyListWebinarId:self.roomId roomId:self.inavRoom.roomInfo.webinarInfoData.interact.room_id switchId:self.inavRoom.roomInfo.webinarInfoData.data_switch.switch_id success:^(VHSurveyListModel * listModel) {
         if (listModel.listModel.count == 0) {
-            self.questionnaireBtn.hidden = YES;
+            self.qetBtn.hidden = YES;
         }else{
-            self.questionnaireBtn.hidden = NO;
+            self.qetBtn.hidden = NO;
             [self isHaveRedRot:listModel.listModel action:isAction];
         }
     } fail:^(NSError * _Nonnull error) {
         VH_ShowToast(error.localizedDescription);
     }];
 }
+
 - (void)isHaveRedRot:(NSArray <VHSurveyModel *>*)listArr action:(BOOL)action{
     BOOL isHaveRedDot = NO;//是否显示红点
     NSInteger tag = 0;
@@ -275,7 +298,6 @@ static AnnouncementView* announcementView = nil;
             }
         }
     }
-    [self.questionnaireBtn setImage:isHaveRedDot?BundleUIImage(@"wenjuan_have"):BundleUIImage(@"wenjuan_no") forState:UIControlStateNormal];
     if (!action) {
         //NO 走核验 YES 走action操作
         return;
@@ -338,6 +360,8 @@ static AnnouncementView* announcementView = nil;
     [SignView layoutView:self.view.bounds];
 }
 
+#pragma mark - 切换前后台
+//前台
 - (void)didBecomeActive
 {
     if (announcementContentDic != nil)
@@ -348,6 +372,14 @@ static AnnouncementView* announcementView = nil;
             [announcementView setContent:[content stringByAppendingString:time]];
         }
     }
+    
+    // 获取计时器
+    [self requestInteractsTimerInfo];
+}
+//后台
+- (void)appEnterBackground {
+    // 计时器
+    [_timerView dismiss];
 }
 
 - (void)dealloc
@@ -540,6 +572,7 @@ static AnnouncementView* announcementView = nil;
 {
     //已经进入活跃状态的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive)name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     //监听耳机的插拔
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(outputDeviceChanged:)name:AVAudioSessionRouteChangeNotification object:[AVAudioSession sharedInstance]];
 }
@@ -1240,7 +1273,7 @@ static AnnouncementView* announcementView = nil;
 // 6.4.0 新增
 - (void)receivedSurveyWithURL:(NSURL *)surveyURL surveyName:(NSString *)surveyName{
     //6.4 新增问卷名称
-    [self questionnaireLogic:NO];
+    [self questionnaireLogic:YES];
     self.questionnaireDesc = surveyName;
     VHallSurveyModel *model = [[VHallSurveyModel alloc] init];
     model.surveyName = surveyName;//问卷名称
@@ -1349,40 +1382,6 @@ static AnnouncementView* announcementView = nil;
         
     }];
 }
-
-
-- (void)outputDeviceChanged:(NSNotification*)notification
-{
-    NSInteger routeChangeReason = [[[notification userInfo]objectForKey:AVAudioSessionRouteChangeReasonKey] integerValue];
-    switch (routeChangeReason)
-    {
-        case AVAudioSessionRouteChangeReasonNewDeviceAvailable:
-        {
-            VHLog(@"AVAudioSessionRouteChangeReasonNewDeviceAvailable");
-            VHLog(@"Headphone/Line plugged in");
-        }
-            break;
-        case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
-        {
-            VHLog(@"AVAudioSessionRouteChangeReasonOldDeviceUnavailable");
-            VHLog(@"Headphone/Line was pulled. Stopping player....");
-            dispatch_async(dispatch_get_main_queue(), ^{
-
-            });
-        }
-            break;
-        case AVAudioSessionRouteChangeReasonCategoryChange:
-        {
-            // called at start - also when other audio wants to play
-            VHLog(@"AVAudioSessionRouteChangeReasonCategoryChange");
-        }
-            break;
-        default:
-            break;
-    }
-}
-
-
 #pragma waring 版本低于4.0.0 问卷Web URL拼接方式
 - (NSURL *)surveyURLWithRoomId:(NSString *)roomId model:(VHallSurveyModel *)model
 {
@@ -1393,20 +1392,82 @@ static AnnouncementView* announcementView = nil;
     return [NSURL URLWithString:string1];
 }
 
-//互动出错
-- (void)interactiveRoomError:(NSError *)error {
-    if (!error) {
-        return;
+#pragma mark - 计时器
+// 打开计时器
+- (void)clickTimerIconBtn
+{
+    [_timerView isShowView];
+}
+// 获取当前计时器
+- (void)requestInteractsTimerInfo
+{
+    @weakify(self);
+    [VHallTimerObject requestInteractsTimerInfoSuccess:^(VHallTimerObjectModel *timerModel) {
+        @strongify(self);
+        
+        VHLog(@"当前计时器 时长:%ld === 剩余时间:%ld === 是否全部显示:%@ === 是否超时:%@",timerModel.duration,timerModel.remain_time,timerModel.is_all_show ? @"是" : @"否",timerModel.is_timeout ? @"是" : @"否");
+
+        if (timerModel.is_all_show) {
+            if (!_timerView) {
+                [self.timerView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.edges.mas_equalTo(self.view);
+                }];
+            }
+            [_timerView timerResume:timerModel.remain_time is_timeout:timerModel.is_timeout];
+            [_timerIconBtn setHidden:NO];
+        }
+    } fail:^(NSError *error) {
+        VH_ShowToast(error.localizedDescription);
+    }];
+}
+
+// 开始计时器
+- (void)vhTimerStartToDuration:(NSInteger)duration is_all_show:(BOOL)is_all_show is_timeout:(BOOL)is_timeout
+{
+    VHLog(@"计时器时长:%ld === 是否全部显示:%@ === 是否超时:%@",duration,is_all_show ? @"是" : @"否",is_timeout ? @"是" : @"否");
+    if (!_timerView) {
+        [self.timerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(self.view);
+        }];
     }
-    [ProgressHud hideLoading];
-    VUI_Log(@"互动房间出错：%@",error);
-    if(error.code == 284003){ //socket.io fail（一般是网络错误）
-        VH_ShowToast(@"当前网络异常");
-    }else {
-        VH_ShowToast(error.domain);
+    if (is_all_show) {
+        [_timerView showTimerView:duration is_timeout:is_timeout];
+        [_timerIconBtn setHidden:NO];
     }
 }
 
+// 结束计时器
+- (void)vhTimerEnd
+{
+    VHLog(@"计时器结束");
+    [_timerView dismiss];
+    [_timerIconBtn setHidden:YES];
+}
+
+// 暂停计时器
+- (void)vhTimerPause
+{
+    VHLog(@"计时器暂停");
+    [_timerView timerPause];
+}
+
+// 恢复计时器
+- (void)vhTimerResumeToDuration:(NSInteger)duration remain_time:(NSInteger)remain_time is_all_show:(BOOL)is_all_show is_timeout:(BOOL)is_timeout
+{
+    VHLog(@"计时器重置 时长:%ld === 剩余时间:%ld === 是否全部显示:%@ === 是否超时:%@",duration,remain_time,is_all_show ? @"是" : @"否",is_timeout ? @"是" : @"否");
+    if (is_all_show) {
+        [_timerView timerResume:remain_time is_timeout:is_timeout];
+        [_timerIconBtn setHidden:NO];
+    }
+}
+
+// 重置计时器
+- (void)vhTimerResetToDuration:(NSInteger)duration is_all_show:(BOOL)is_all_show is_timeout:(BOOL)is_timeout
+{
+    VHLog(@"计时器重置 时长:%ld === 是否全部显示:%@ === 是否超时:%@",duration,is_all_show ? @"是" : @"否",is_timeout ? @"是" : @"否");
+    [_timerView dismiss];
+    [_timerIconBtn setHidden:YES];
+}
 
 #pragma mark - VHRoomDelegate
 /// 进入房间回调
@@ -1416,6 +1477,8 @@ static AnnouncementView* announcementView = nil;
     if(error == nil) { //加入房间成功
         //更新在线人数
         [self updateShowOnlineNum];
+        // 设置计时器代理
+        self.timerObject.delegate = self;
         //问答状态
         _isQuestion_status = self.inavRoom.roomInfo.qaOpenState;
         //问答名称 self.inavRoom.roomInfo.questionName
@@ -1447,6 +1510,9 @@ static AnnouncementView* announcementView = nil;
     
     // 获取抽奖历史
     [self lotteryLogic:NO];
+    
+    // 获取计时器
+    [self requestInteractsTimerInfo];
 }
 
 /// 房间发生错误回调
@@ -1517,7 +1583,53 @@ static AnnouncementView* announcementView = nil;
         [self.videoView updateMainSpeakerView];
     }
 }
+//互动出错
+- (void)interactiveRoomError:(NSError *)error {
+    if (!error) {
+        return;
+    }
+    [ProgressHud hideLoading];
+    VUI_Log(@"互动房间出错：%@",error);
+    if(error.code == 284003){ //socket.io fail（一般是网络错误）
+        VH_ShowToast(@"当前网络异常");
+    }else {
+        VH_ShowToast(error.domain);
+    }
+}
 
+#pragma mark - 插拔耳机
+- (void)outputDeviceChanged:(NSNotification*)notification
+{
+    NSInteger routeChangeReason = [[[notification userInfo]objectForKey:AVAudioSessionRouteChangeReasonKey] integerValue];
+    switch (routeChangeReason)
+    {
+        case AVAudioSessionRouteChangeReasonNewDeviceAvailable:
+        {
+            VHLog(@"AVAudioSessionRouteChangeReasonNewDeviceAvailable");
+            VHLog(@"Headphone/Line plugged in");
+        }
+            break;
+        case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
+        {
+            VHLog(@"AVAudioSessionRouteChangeReasonOldDeviceUnavailable");
+            VHLog(@"Headphone/Line was pulled. Stopping player....");
+            dispatch_async(dispatch_get_main_queue(), ^{
+
+            });
+        }
+            break;
+        case AVAudioSessionRouteChangeReasonCategoryChange:
+        {
+            // called at start - also when other audio wants to play
+            VHLog(@"AVAudioSessionRouteChangeReasonCategoryChange");
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - 旋转屏幕
 -(BOOL)shouldAutorotate {
     if(self.presentedViewController) {
         return [self.presentedViewController shouldAutorotate];
@@ -1568,5 +1680,28 @@ static AnnouncementView* announcementView = nil;
     }
     return _videoView;
 }
-
+- (VHallTimerObject *)timerObject
+{
+    if (!_timerObject) {
+        _timerObject = [[VHallTimerObject alloc] initWithObject:self.inavRoom];
+    }return _timerObject;
+}
+- (VHWatchLiveTimerView *)timerView
+{
+    if (!_timerView) {
+        _timerView = [[VHWatchLiveTimerView alloc] init];
+        [self.view addSubview:_timerView];
+    }return _timerView;
+}
+- (UIButton *)timerIconBtn
+{
+    if (!_timerIconBtn) {
+        _timerIconBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _timerIconBtn.hidden = YES;
+        _timerIconBtn.contentMode = UIViewContentModeScaleAspectFit;
+        [_timerIconBtn setImage:BundleUIImage(@"vh_timer_btn") forState:UIControlStateNormal];
+        [_timerIconBtn addTarget:self action:@selector(clickTimerIconBtn) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_timerIconBtn];
+    }return _timerIconBtn;
+}
 @end

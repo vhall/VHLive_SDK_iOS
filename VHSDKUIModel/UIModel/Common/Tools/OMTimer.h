@@ -31,6 +31,8 @@ typedef void(^OMTimerCompletion)(void);
 @property (nonatomic, assign) BOOL isAscend;
 /** 计时器的计时时间*/
 @property (nonatomic, assign) NSTimeInterval timerInterval;
+/** 当前时间*/
+@property (nonatomic, assign) NSTimeInterval currentTime;
 /** 计时器触发的精度，默认为100ms触发一次回调，取值区间为100-1000 */
 @property (nonatomic, assign) NSInteger precision;
 /** 计时器的回调*/

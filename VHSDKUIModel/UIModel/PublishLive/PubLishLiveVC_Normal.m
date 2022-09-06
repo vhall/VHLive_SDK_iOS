@@ -19,7 +19,10 @@
 #import "VHBeautyView.h"
 #import <VHLiveSDK/VHallApi.h>
 #import "OMTimer.h"
-@interface PubLishLiveVC_Normal ()<VHallLivePublishDelegate, VHallChatDelegate,VHKeyboardToolViewDelegate>
+#import "VHLiveStateView.h"
+#import "VHLiveRehearsalLogoView.h"
+
+@interface PubLishLiveVC_Normal ()<VHallLivePublishDelegate, VHallChatDelegate,VHKeyboardToolViewDelegate,VHLiveStateViewDelegate>
 {
     BOOL  _isAudioStart;
     BOOL  _torchType;
@@ -35,11 +38,11 @@
 
 
 @property (strong, nonatomic)VHallLivePublish *engine;
+/** 直播状态view */
+@property (nonatomic, strong) VHLiveStateView *liveStateView;
 @property (weak, nonatomic) IBOutlet UIView *perView;
 @property (weak, nonatomic) IBOutlet UIImageView *logView;
 @property (weak, nonatomic) IBOutlet UILabel *bitRateLabel;
-@property (weak, nonatomic) IBOutlet UIButton *videoStartAndStopBtn;
-@property (weak, nonatomic) IBOutlet UIButton *audioStartAndStopBtn;
 @property (weak, nonatomic) IBOutlet UIButton *torchBtn; //闪光灯
 @property (weak, nonatomic) IBOutlet UIView *chatContainerView;
 @property (weak, nonatomic) IBOutlet UITextField *msgTextField;
@@ -81,6 +84,9 @@
 @property (nonatomic) UILabel *tipLabel;
 ///云导播关闭按钮
 @property (nonatomic) UIButton *closeAction;
+/// 彩排控件
+@property (nonatomic , strong) VHLiveRehearsalLogoView * rehearsalLogoView;
+
 @end
 
 @implementation PubLishLiveVC_Normal
@@ -145,8 +151,9 @@
         make.width.height.mas_equalTo(44);
     }];
 }
-- (void)clickClose{
-    [self stopLiveAlert];
+- (void)clickClose
+{
+    [self startVideoPlayer:NO];
 }
 - (void)hostEnterClose{
     if (_publishSuccess) {
@@ -173,6 +180,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // 判断显示彩排标识
+    self.rehearsalLogoView.hidden = !self.isRehearsal;
+
     [VHHelpTool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
         // Do any additional setup after loading the view from its nib.
         self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
@@ -187,7 +198,6 @@
             case VHLiveVideoDirectorSeatPushStream:{
                 [self directorUIError:YES];
                 [self initLiveHardWare];
-                self.videoStartAndStopBtn.hidden = YES;
                 self.infoView.hidden = YES;
                 if(_publishSuccess) { //如果当前已经成功开播，且没有主动停止直播，但由于网络断开等问题导致被动停止，再次开播时，重连流即可
                     [_engine reconnect];
@@ -231,12 +241,8 @@
     self.audioClose.hidden = YES;
     self.streamStatus = self.directorOpen;
     if (self.directorOpen) {
-        self.videoStartAndStopBtn.enabled = YES;
-        self.videoStartAndStopBtn.alpha = 1.0f;
         [self directorUIError:YES];
     }else{
-        self.videoStartAndStopBtn.enabled = NO;
-        self.videoStartAndStopBtn.alpha = 0.5f;
         [self directorUIError:NO];
     }
 }
@@ -340,15 +346,7 @@
 //返回
 - (IBAction)closeBtnClick:(id)sender
 {
-    
-    [self stopLiveAlert];
-}
-- (void)stopLiveAlert{
-    [UIAlertController showAlertControllerTitle:@"提示" msg:@"您是否要结束直播？" leftTitle:@"取消" rightTitle:@"结束" leftCallBack:^{
-
-    } rightCallBack:^{
-        [self stopEngine];
-    }];
+    [self startVideoPlayer:NO];
 }
 - (void)stopEngine{
     if (self.liveVideoType == VHLiveVideoDirectorHostEnter) {
@@ -409,6 +407,13 @@
     [self registerLiveNotification];
     [self.perView addSubview:_closeBtn];
     
+    [self.view addSubview:self.rehearsalLogoView];
+    [self.rehearsalLogoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(15);
+        make.top.mas_equalTo(80);
+        make.size.mas_equalTo(CGSizeMake(61, 24));
+    }];
+
     _chatMsgSend.layer.masksToBounds = YES;
     _chatMsgSend.layer.cornerRadius = 15;
     _chatMsgSend.layer.borderWidth  = 1;
@@ -422,10 +427,11 @@
            NSFontAttributeName:_msgTextField.font}
          ];
     _msgTextField.attributedPlaceholder = attrString;
-    
-    _audioStartAndStopBtn.hidden = YES;
-    
+        
     _filterBtn.hidden = !self.beautifyFilterEnable;
+    
+    //添加开始按钮
+    [self.liveStateView upDateLiveState:VHLiveState_Prepare btnTitle:@""];
 }
 
 - (void)viewDidLayoutSubviews
@@ -515,88 +521,93 @@
         _chat.delegate = self;
     }
 }
-
-#pragma mark - 发起/停止直播
-- (IBAction)startVideoPlayer:(UIButton *)sender
+#pragma mark - 标识彩排直播还是视频直播
+- (void)setIsRehearsal:(BOOL)isRehearsal
 {
-    switch (self.liveVideoType) {
-        case VHLiveVideoDirectorHostEnter:{
-            [self.engine startDirectorLive];
-            [_chatDataArray removeAllObjects];
-            [_chatView update];
-            [self chatShow:YES];
-            _publishSuccess = YES;
-            self.videoStartAndStopBtn.hidden = YES;
-            self.bitRateLabel.hidden = YES;
-        }
-            break;
-        case VHLiveVideoDirectorSeatPushStream:{
-            //机位推流-进入页面机位就往主播台推流
-        }
-            break;
-        case VHLiveVideoNormal:{
-            //普通直播
-#if (TARGET_IPHONE_SIMULATOR)
-    VH_ShowToast(@"无法在模拟器上发起直播！");
-    return;
-#endif
+    _isRehearsal = isRehearsal;
     
-    if(sender.selected == NO) {  //开始直播
-        [ProgressHud showLoading];
-        
-        if(_publishSuccess) { //如果当前已经成功开播，且没有主动停止直播，但由于网络断开等问题导致被动停止，再次开播时，重连流即可
-            [_engine reconnect];
-        }else { //发起直播
-            [_engine startLive:self.publishParam];
-            [_chatDataArray removeAllObjects];
-            [_chatView update];
-        }
-    }else { //停止直播
-       
-        
-        [UIAlertController showAlertControllerTitle:@"提示" msg:@"您是否要结束直播？" leftTitle:@"取消" rightTitle:@"结束" leftCallBack:^{
+    self.engine.isRehearsal = isRehearsal;
+}
+#pragma mark - VHLiveStateViewDelegate
+#pragma mark - 开始彩排
+- (void)clickRehersalToBlock
+{
+    // 彩排
+    self.isRehearsal = YES;
+    
+    // 判断显示彩排标识
+    self.rehearsalLogoView.hidden = NO;
+    
+    // 更新彩排还是直播状态
+    [self.liveStateView upDateLiveState:VHLiveState_RehearsalSuccess btnTitle:@""];
 
-        } rightCallBack:^{
-            [_engine stopLive];//停止直播
-            [_engine destoryObject];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-    }
-        }
-            break;
-        default:
-            break;
-    }
-
+    // 开启直播
+    [self startVideoPlayer:YES];
 }
 
-//发起/停止纯音频直播
-- (IBAction)startAudioPlayer
-{
-//    TODO:暂时不支持此功能，但保留。
-//    if (!_isAudioStart)
-//    {
-//        _isVideoStart = YES;
-//        [self startVideoPlayer];
-//
-//        _logView.hidden = NO;
-//        _chatBtn.hidden = NO;
-//        [_hud show:YES];
+#pragma mark - 直播状态页按钮事件
+- (void)liveStateView:(VHLiveStateView *)liveStateView actionType:(VHLiveState)type {
+    if(type == VHLiveState_Prepare) { //开始直播
+        // 直播
+        self.isRehearsal = NO;
+        
+        // 判断显示彩排标识
+        self.rehearsalLogoView.hidden = YES;
 
-//        NSMutableDictionary * param = [[NSMutableDictionary alloc]init];
-//        param[@"id"] =  _roomId;
-//        param[@"access_token"] = _token;
-//        param[@"is_single_audio"] = @"1";   // 0 ：视频， 1：音频
-//        [_engine startLive:param];
-//    }else{
-//        _logView.hidden = YES;
-//        _bitRateLabel.text = @"";
-//        _chatBtn.hidden = YES;
-//        [_hud hide:YES];
-//        [_audioStartAndStopBtn setTitle:@"音频直播" forState:UIControlStateNormal];
-//        [_engine disconnect];//停止向服务器推流
-//    }
-//    _isAudioStart = !_isAudioStart;
+        // 更新彩排还是直播状态
+        [self.liveStateView upDateLiveState:VHLiveState_Success btnTitle:@""];
+
+        // 开启直播
+        [self startVideoPlayer:YES];
+    }
+}
+
+#pragma mark - 发起/停止直播
+- (void)startVideoPlayer:(BOOL)isStart
+{
+    if (isStart) {
+        switch (self.liveVideoType) {
+            case VHLiveVideoDirectorHostEnter:{
+                [self.engine startDirectorLive];
+                [_chatDataArray removeAllObjects];
+                [_chatView update];
+                [self chatShow:YES];
+                _publishSuccess = YES;
+                self.bitRateLabel.hidden = YES;
+            }
+                break;
+            case VHLiveVideoDirectorSeatPushStream:{
+                //机位推流-进入页面机位就往主播台推流
+            }
+                break;
+            case VHLiveVideoNormal:{
+                //普通直播
+                #if (TARGET_IPHONE_SIMULATOR)
+                    VH_ShowToast(@"无法在模拟器上发起直播！");
+                    return;
+                #endif
+                [ProgressHud showLoading];
+                
+                if(_publishSuccess) { //如果当前已经成功开播，且没有主动停止直播，但由于网络断开等问题导致被动停止，再次开播时，重连流即可
+                    [_engine reconnect];
+                }else { //发起直播
+                    [_engine startLive:self.publishParam];
+                    [_chatDataArray removeAllObjects];
+                    [_chatView update];
+                }
+            }
+                break;
+            default:
+                break;
+        }
+    }else{
+        NSString * msg = self.isRehearsal ? @"您是否要结束彩排？" : @"您是否要结束直播？";
+        [UIAlertController showAlertControllerTitle:@"提示" msg:msg leftTitle:@"取消" rightTitle:@"结束" leftCallBack:^{
+
+        } rightCallBack:^{
+            [self stopEngine];
+        }];
+    }
 }
 
 #pragma mark - 基础操作
@@ -674,15 +685,12 @@
                 case VHLiveVideoNormal:{
                     [self chatShow:YES];
                     _publishSuccess = YES;
-                    _videoStartAndStopBtn.selected = YES;
                 }
                     
                     break;
                 case VHLiveVideoDirectorSeatPushStream:{
                     //云导播以机位推流进入,
                     _publishSuccess = YES;
-                    _videoStartAndStopBtn.hidden = YES;
-                    _videoStartAndStopBtn.selected = YES;
                 }
                     break;
                 
@@ -756,7 +764,6 @@
     [ProgressHud hideLoading];
     
     _bitRateLabel.text = @"";
-    _videoStartAndStopBtn.selected = NO;
     [self chatShow:NO];
     [UIAlertController showAlertControllerTitle:msg msg:@"" btnTitle:@"确定" callBack:nil];
 }
@@ -849,7 +856,6 @@
         [UIView animateWithDuration:0.3f animations:^{
             _chatContainerView.alpha = 1.0f;
         }];
-        _closeBtn.hidden = YES;
         _infoView.hidden = NO;
         [self showTimeInfo];
     }
@@ -859,7 +865,6 @@
         [UIView animateWithDuration:0.3f animations:^{
             _chatContainerView.alpha = 0.0f;
         }];
-        _closeBtn.hidden = NO;
         _infoView.hidden = YES;
         if(_timer)
         {
@@ -951,10 +956,10 @@
 #pragma mark --- 有没有流与有没有开播
 - (void)haveDirectorStream:(BOOL)haveStream{
     if (_publishSuccess) {
-        self.videoStartAndStopBtn.hidden = YES;
-        self.closeBtn.hidden = YES;
         //开播接到流房间流信息 显示倒计时
         if (haveStream) {
+            // 有流
+            [self.liveStateView cloudBoardCastStatus:VideoBoardCastType_LivingPullSucceed btnTitle:@""];
             //销毁定时器
             self.engine.liveView.hidden = NO;
             self.engine.liveView.backgroundColor = [UIColor clearColor];
@@ -962,6 +967,8 @@
             self.exceptionTimer = nil;
             self.middleView.hidden = YES;
         }else{
+            // 无流
+            [self.liveStateView cloudBoardCastStatus:VideoBoardCastType_LivingPullFailed btnTitle:@""];
             //开启定时器
             self.engine.liveView.hidden = YES;
             self.engine.liveView.backgroundColor =  [UIColor colorWithHex:@"222222"];
@@ -971,16 +978,18 @@
     }else{
         //未开播接到房间流信息
         if (haveStream) {
+            //有流
+            [self.liveStateView cloudBoardCastStatus:VideoBoardCastType_Normal btnTitle:@""];//进入前的正常
+
             self.engine.liveView.hidden = NO;
             self.middleView.hidden = YES;
-            self.videoStartAndStopBtn.enabled = YES;
-            self.videoStartAndStopBtn.alpha = 1.0f;
         }else{
+            //无流
+            [self.liveStateView cloudBoardCastStatus:VideoBoardCastType_LiveBeforePullFailed btnTitle:@""];
+
             self.engine.liveView.hidden = YES;
             self.exceptionLabel.text = @"未检测到云导播推流";
             self.middleView.hidden = NO;
-            self.videoStartAndStopBtn.enabled = NO;
-            self.videoStartAndStopBtn.alpha = 0.5f;
         }
     }
 }
@@ -1077,7 +1086,25 @@
     }
     return _messageToolView;
 }
-
+- (VHLiveStateView *)liveStateView {
+    if (!_liveStateView) {
+        _liveStateView = [[VHLiveStateView alloc] init];
+        _liveStateView.delegate = self;
+        _liveStateView.liveVideoType = self.liveVideoType;
+        [self.view addSubview:_liveStateView];
+        [self.liveStateView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
+    }
+    return _liveStateView;
+}
+- (VHLiveRehearsalLogoView *)rehearsalLogoView
+{
+    if (!_rehearsalLogoView) {
+        _rehearsalLogoView = [[VHLiveRehearsalLogoView alloc] initWithFrame:CGRectMake(0, 0, 61, 24)];
+        _rehearsalLogoView.hidden = YES;
+    }return _rehearsalLogoView;
+}
 - (NSMutableDictionary *)publishParam
 {
     if (!_publishParam)

@@ -27,6 +27,8 @@ typedef NS_ENUM(NSInteger,VHLiveVideoType)
 @property(nonatomic,assign) BOOL            isOpenNoiseSuppresion; //噪声消除
 @property(nonatomic,assign) BOOL            beautifyFilterEnable; //美颜开关
 @property(nonatomic,assign) NSInteger            videoResolution; //推流分辨率 0：352*288 1：640*480 2：960*540 3：1280*720
+@property (nonatomic , assign) BOOL isRehearsal;///<直播类型是否是彩排 YES：是 NO：不是
+
 /*
  新增云导播直播类型，以主持人发起进入云导播+机位推流进入
  默认为普通视频直播

@@ -35,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) VHLiveDocContentView *docContentView;
 /** 直播状态view */
 @property (nonatomic, strong) VHLiveStateView *liveStateView;
+/// 直播类型是否是彩排 YES：是 NO：不是
+@property (nonatomic , assign) BOOL isRehearsal;
 
 /** 直播信息 */
 @property (nonatomic, strong) VHRoomInfo *roomInfo;

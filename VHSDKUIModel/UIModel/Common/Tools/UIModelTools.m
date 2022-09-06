@@ -60,6 +60,31 @@
     return (jsonString.length>0)?jsonString:@"";
 }
 
+//JSON字符串转化为字典
++ (id)objectWithJsonString:(NSString *)jsonString
+{
+    if([jsonString isKindOfClass:[NSDictionary class]])
+        return jsonString;
+    
+    if([jsonString isKindOfClass:[NSArray class]])
+        return jsonString;
+    
+    if (jsonString.length <= 0) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    id dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                             options:NSJSONReadingMutableContainers
+                                               error:&err];
+    if(err)
+    {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
 
 + (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha
 {
@@ -590,6 +615,20 @@
     NSData* originData = [str dataUsingEncoding:NSUTF8StringEncoding];
     return [originData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
 }
+
+//指定某个/多个角圆角
++(void)clipView:(UIView *)view corner:(UIRectCorner)corners anSize:(CGSize)size
+{
+    //指定角
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds byRoundingCorners:corners cornerRadii:size];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
+    //设置大小
+    maskLayer.frame = view.bounds;
+    //设置图形样子
+    maskLayer.path = maskPath.CGPath;
+    view.layer.mask = maskLayer;
+}
+
 ///角色修改
 NSString * VH_MB_HOST = @"主持人";
 NSString * VH_MB_GUEST = @"嘉宾";

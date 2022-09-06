@@ -21,7 +21,7 @@
 #import "VHDocListVC.h"
 #import "VHLiveDocContentView.h"
 #import "VHBeautyAdjustController.h"
-@interface VHInteractLiveVC_New ()<VHRoomDelegate,VHallChatDelegate,VHDocumentDelegate>
+@interface VHInteractLiveVC_New ()<VHRoomDelegate,VHallChatDelegate,VHDocumentDelegate,VHallRehearsalObjectDelegate>
 {
     BOOL _noShowDownMicTip; //是否不显示下麦提示
 }
@@ -53,6 +53,9 @@
 /// 当前互动人数
 @property (nonatomic, assign) NSInteger  current_inav_num;
 
+/** 彩排 */
+@property (nonatomic, strong) VHallRehearsalObject * rehearsalObject;
+
 @end
 
 @implementation VHInteractLiveVC_New
@@ -77,6 +80,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
+    // 判断显示彩排标识
+    self.infoDetailView.rehearsalLogoView.hidden = !self.isRehearsal;
     //self.beautKit = [VHReflect initBeautyEffectKit];
     self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
     [self updateGuestMainSpeaker:NO];
@@ -97,7 +102,7 @@
     self.infoDetailView.topToolView.liveType = VHLiveType_Interact;
     if(self.role == VHLiveRole_Host) { //主持人
         //添加开始按钮
-        [self.liveStateView setLiveState:VHLiveState_Prepare btnTitle:@""];
+        [self.liveStateView upDateLiveState:VHLiveState_Prepare btnTitle:@""];
         //显示开播前本地视频预览
         [self showHostLocalVideo];
         //没上麦时，隐藏视频/语音按钮
@@ -116,7 +121,7 @@
             make.top.bottom.equalTo(self.infoDetailView);
             make.width.height.equalTo(self.infoDetailView.mas_height);
         }else {
-            make.top.equalTo(self.infoDetailView.topToolView.mas_bottom).offset(14);
+            make.top.equalTo(self.infoDetailView.rehearsalLogoView.mas_bottom).offset(4);
             make.width.height.equalTo(self.infoDetailView.mas_width);
         }
         make.centerX.equalTo(self.infoDetailView);
@@ -127,12 +132,37 @@
     }
 }
 
+#pragma mark -开始彩排
+- (void)didToStartRehearsal
+{
+    // 判断显示彩排标识
+    self.infoDetailView.rehearsalLogoView.hidden = NO;
+}
+
+#pragma mark -结束彩排
+- (void)didToStopRehearsal
+{
+    // 判断显示彩排标识
+    self.infoDetailView.rehearsalLogoView.hidden = YES;
+}
+
+#pragma mark - 标识彩排直播还是视频直播
+- (void)setIsRehearsal:(BOOL)isRehearsal
+{
+    [super setIsRehearsal:isRehearsal];
+    
+    // 设置为彩排
+    self.inavRoom.isRehearsal = isRehearsal;
+}
+
 //嘉宾加入
 - (void)guestJoin {
     @weakify(self);
     [self.inavRoom guestEnterRoomWithParams:self.params success:^(VHRoomInfo *roomInfo) {
         @strongify(self);
         self.roomInfo = roomInfo;
+        // 判断显示彩排标识
+        self.infoDetailView.rehearsalLogoView.hidden = roomInfo.live_type == 0 ? YES : NO;;
         self.roomInfo.documentManager.delegate = self;
         //嘉宾端，没有直播计时，显示直播名称
         self.infoDetailView.topToolView.liveTitleStr = self.roomInfo.webinar_title;
@@ -315,10 +345,16 @@
 
 ///退出直播
 - (void)liveDetaiViewClickCloseBtn:(VHLiveBroadcastInfoDetailView *)detailView {
-    NSString *tipText = self.role == VHLiveRole_Host ? @"确定结束当前直播？" : @"确定退出直播？";
-    NSString *cancelText = self.role == VHLiveRole_Host ? @"继续直播" : @"取消";
-    NSString *confirmText = self.role == VHLiveRole_Host ? @"结束直播" : @"确定";
-    [VHAlertView showAlertWithTitle:tipText content:nil cancelText:cancelText cancelBlock:nil confirmText:confirmText confirmBlock:^{
+    
+    NSString * stateTitle = self.isRehearsal ? @"确定结束当前彩排？" : @"确定结束当前直播？";
+    NSString * stateCancelText = self.isRehearsal ? @"继续彩排" : @"继续直播";
+    NSString * stateConfirmText = self.isRehearsal ?  @"结束彩排" : @"结束直播";
+    
+    NSString * title = self.role == VHLiveRole_Host ? stateTitle : @"确定退出直播？";
+    NSString * cancelText = self.role == VHLiveRole_Host ? stateCancelText : @"取消";
+    NSString * confirmText = self.role == VHLiveRole_Host ? stateConfirmText : @"确定";
+
+    [VHAlertView showAlertWithTitle:title content:nil cancelText:cancelText cancelBlock:nil confirmText:confirmText confirmBlock:^{
         if (self.role == VHLiveRole_Host) {
             self.closeLiveBySelf = YES;
             if([self.inavRoom isPublishing]) { //如果当前已经在推流
@@ -455,6 +491,10 @@
 
 // 房间连接成功回调
 - (void)room:(VHRoom *)room didConnect:(NSDictionary *)roomMetadata {
+    
+    // 注册彩排代理
+    self.rehearsalObject.delegate = self;
+    
     if (self.role == VHLiveRole_Host) {
         //开始推流
         [self.inavRoom publishWithCameraView:self.localRenderView];
@@ -465,10 +505,10 @@
 
 //推流成功
 - (void)room:(VHRoom *)room didPublish:(VHRenderView *)cameraView {
+    // 标识彩排还是视频直播
+    [self.liveStateView upDateLiveState:self.isRehearsal ? VHLiveState_RehearsalSuccess  : VHLiveState_Success btnTitle:@""];
     // 更新互动人数
     self.current_inav_num = self.current_inav_num + 1;
-
-    [self.liveStateView setLiveState:VHLiveState_Success btnTitle:@""];
     //移除本地预览视频
     [self.localRenderView removeFromSuperview];
     //显示视频、语音、美颜等按钮
@@ -705,6 +745,14 @@
                 }
             }
         }break;
+        case VHRoomMessageType_live_start_rehearsal:{
+            // 判断显示彩排标识
+            self.infoDetailView.rehearsalLogoView.hidden = NO;
+        }break;
+        case VHRoomMessageType_live_over_rehearsal:{
+            // 判断显示彩排标识
+            self.infoDetailView.rehearsalLogoView.hidden = YES;
+        }break;
         case VHRoomMessageType_vrtc_disconnect_success:{//用户下麦成功
             if(targetIsMyself) { //自己
                 if(_noShowDownMicTip == NO) {
@@ -854,7 +902,12 @@
     }
     return _inavRoom;
 }
-
+- (VHallRehearsalObject *)rehearsalObject
+{
+    if (!_rehearsalObject) {
+        _rehearsalObject = [[VHallRehearsalObject alloc] initWithObject:self.inavRoom];
+    }return _rehearsalObject;
+}
 - (VHLocalRenderView *)localRenderView
 {
     if (!_localRenderView) {

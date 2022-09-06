@@ -13,6 +13,7 @@
     NSUInteger timeCount;
 }
 @property (nonatomic, weak) NSTimer *timer;
+@property (nonatomic, assign) BOOL  isInteractive;
 
 @end
 
@@ -26,7 +27,8 @@
         self.button.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.button];
         [self.button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [self.button setBackgroundImage:BundleUIImage(@"icon_video_upper wheat") forState:UIControlStateNormal];
+        [self.button setBackgroundImage:BundleUIImage(self.isPublish ? @"fs_icon_mic_up" : @"fs_icon_mic_down") forState:UIControlStateNormal];
+        
     }
     return self;
 }
@@ -40,7 +42,21 @@
     self.button.backgroundColor = [UIColor lightGrayColor];
 }
 
+- (void)setIsPublish:(BOOL)isPublish
+{
+    _isPublish = isPublish;
+    
+    self.hidden = isPublish ? NO : _isInteractive;
 
+    [self.button setBackgroundImage:BundleUIImage(self.isPublish ? @"fs_icon_mic_up" : @"fs_icon_mic_down") forState:UIControlStateNormal];
+}
+
+- (void)setIsInteractive:(BOOL)isInteractive
+{
+    _isInteractive = isInteractive;
+    
+    self.hidden = _isPublish ? NO : isInteractive;
+}
 
 - (void)countdDown:(NSUInteger)count {
     //重置倒计时
@@ -85,7 +101,7 @@
         }
         
         [self.button setTitle:@" " forState:UIControlStateNormal];
-        [self.button setBackgroundImage:BundleUIImage(@"icon_video_upper wheat") forState:UIControlStateNormal];
+        [self.button setBackgroundImage:BundleUIImage(self.isPublish ? @"fs_icon_mic_up" : @"fs_icon_mic_down") forState:UIControlStateNormal];
 
         self.button.selected = NO;
     }
@@ -100,16 +116,16 @@
 }
 - (void)hiddenCountView {
     [self stopCountDown];
-    self.hidden = YES;
+    self.isInteractive = YES;
 }
 
 - (void)showCountView {
-    self.hidden = NO;
+    self.isInteractive = NO;
 }
 
 - (void)stopCountDown {
     [self.button setTitle:@" " forState:UIControlStateNormal];
-    [self.button setBackgroundImage:BundleUIImage(@"icon_video_upper wheat") forState:UIControlStateNormal];
+    [self.button setBackgroundImage:BundleUIImage(self.isPublish ? @"fs_icon_mic_up" : @"fs_icon_mic_down") forState:UIControlStateNormal];
     self.button.selected = NO;
     [self removeTimer];
 }
