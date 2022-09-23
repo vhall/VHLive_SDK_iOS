@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger                 no_delay_webinar;       ///<是否无延迟直播 1:是 0:否
 @property (nonatomic, assign) NSInteger                 live_type;              ///<0-直播；2-彩排
 @property (nonatomic, assign) NSInteger                 inav_num;               ///<当前活动支持的最大连麦人数，如：6表示1v5，16表示1v15
+@property (nonatomic, assign) BOOL                      live_rehearsal;         ///<是否有彩排权限
 @property (nonatomic, assign) BOOL                      membersManageAuthority; ///<自己是否有成员管理权限
 @property (nonatomic, assign) BOOL                      selfBanChat;            ///<自己是否被禁言  YES：禁言 NO：未禁言
 @property (nonatomic, assign) BOOL                      allBanChat;             ///<全员是否被禁言  YES：禁言 NO：未禁言

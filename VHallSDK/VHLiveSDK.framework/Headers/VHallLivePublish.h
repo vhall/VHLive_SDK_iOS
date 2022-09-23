@@ -25,6 +25,8 @@
 - (instancetype)initWithConfig:(VHPublishConfig*)config;
 
 /// 高级美颜
+/// @param config config参数
+/// @param handle 设置结果
 - (instancetype)initWithBeautyConfig:(VHPublishConfig*)config
                          handleError:(void(^)(NSError *error))handle;
 
@@ -75,10 +77,10 @@
 - (void)setContentMode:(VHRTMPMovieScalingMode)contentMode;
 
 /// 美颜参数设置
-/// @param beautify 磨皮   默认 4.0f  取值范围[1.0, 10.0]  10.0 正常图片没有磨皮
-/// @param brightness 亮度   默认 1.150f 取值范围[0.0, 2.0]  1.0 正常亮度
-/// @param saturation 饱和度 默认 1.0f  取值范围[0.0, 2.0]  1.0 正常饱和度
-/// @param sharpness 锐化   默认 0.1f  取值范围[-4.0，4.0] 0.0 正常锐化
+/// @param beautify     磨皮 --- 默认 4.0f  取值范围[1.0, 10.0]  10.0 正常图片没有磨皮
+/// @param brightness   亮度 --- 默认 1.150f 取值范围[0.0, 2.0]  1.0 正常亮度
+/// @param saturation   饱和度 --- 默认 1.0f  取值范围[0.0, 2.0]  1.0 正常饱和度
+/// @param sharpness    锐化 --- 默认 0.1f  取值范围[-4.0，4.0] 0.0 正常锐化
 - (void)setBeautify:(CGFloat)beautify
          Brightness:(CGFloat)brightness
          Saturation:(CGFloat)saturation
@@ -88,15 +90,8 @@
 - (void)destoryObject;
 
 #pragma mark - --------------------云导播-------------------------
-/// 云导播:机位推流到云导播台
-/// @param param param
-/// param[@"id"]           = 活动Id，必传
-/// param[@"access_token"] = 发直播token （新版v3控制台创建的直播活动可不传此值，v6.0修改）
-/// param[@"nickname"]     = 发起直播更改主播昵称，非必传（v6.0新增）
-/// param[@"seat"] = 云导播机位id (v6.4新增)必传参数
-/// @param checkHostLine 检查主机线路
-- (void)startSeatPushDirectorLive:(NSDictionary*)param
-                    checkHostLine:(BOOL)checkHostLine;
+
+@property (nonatomic, strong, readonly) UIView *                liveView;           ///<回显云导播台画面
 
 /// 以主持人身份发起直播
 /// @param param
@@ -106,14 +101,22 @@
 - (instancetype)initDirectorHostEnter:(NSDictionary *)param
                                  fail:(void(^)(NSError *))failure;
 
+/// 云导播:机位推流到云导播台
+/// @param param param
+/// param[@"id"]           = 活动Id，必传
+/// param[@"seat"] = 云导播机位id (v6.4新增)必传参数
+/// param[@"access_token"] = 发直播token （新版v3控制台创建的直播活动可不传此值，v6.0修改）
+/// param[@"nickname"]     = 发起直播更改主播昵称，非必传（v6.0新增）
+/// @param checkHostLine 是否检查主机线路
+- (void)startSeatPushDirectorLive:(NSDictionary*)param
+                    checkHostLine:(BOOL)checkHostLine;
+
 /// 开始云导播
 - (void)startDirectorLive;
 /// 结束云导播
 - (void)stopDirectorLive;
 /// 销毁云导播
 - (void)destoryDirectorLive;
-/// 回显云导播台画面
-@property (nonatomic,strong,readonly)UIView *liveView;
 
 @end
 

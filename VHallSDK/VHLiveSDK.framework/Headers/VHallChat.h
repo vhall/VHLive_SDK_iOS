@@ -129,4 +129,3 @@
                                    failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
 
 @end
-

@@ -102,7 +102,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param webinarId 活动id
 /// @param success 成功
 /// @param fail 失败
-+ (void)getWebinarBaseInfoWithWebinarId:(NSString *)webinarId success:(void(^)(VHWebinarBaseInfo *baseInfo))success fail:(void(^)(NSError *error))fail;
++ (void)getWebinarBaseInfoWithWebinarId:(NSString *)webinarId
+                                success:(void(^)(VHWebinarBaseInfo *baseInfo))success
+                                   fail:(void(^)(NSError *error))fail;
 
 /// 获取活动权限检测
 /// @param webinarId 活动id 1、传活动id时，返回活动id+活动创建者相关的配置项信息 2、不传活动id时，获取登录用户的配置项信息

@@ -113,7 +113,8 @@
 
     __weak typeof(self) weekself = self;
     [ProgressHud showLoading];
-    [VHallApi loaginWithThirdUserId:DEMO_Setting.third_Id nickName:DEMO_Setting.third_nickName avatar:DEMO_Setting.third_avatar success:^{
+
+    [VHallApi loginWithThirdUserId:DEMO_Setting.third_Id nickName:DEMO_Setting.third_nickName avatar:DEMO_Setting.third_avatar success:^{
 
         [ProgressHud hideLoading];
         VHLog(@"Account: %@ userID:%@",[VHallApi currentAccount],[VHallApi currentUserID]);

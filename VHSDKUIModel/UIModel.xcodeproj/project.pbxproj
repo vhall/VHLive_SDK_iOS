@@ -2804,6 +2804,7 @@
 				TargetAttributes = {
 					C04D57511E5D83B600F75A64 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = H49DK955B9;
 						ProvisioningStyle = Automatic;
 					};
 					C0FC255D1E51A45D00B3D834 = {
@@ -3492,7 +3493,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H49DK955B9;
 				INFOPLIST_FILE = UIModel/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -3516,7 +3517,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H49DK955B9;
 				INFOPLIST_FILE = UIModel/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
