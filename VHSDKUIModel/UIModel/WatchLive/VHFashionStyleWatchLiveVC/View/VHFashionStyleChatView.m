@@ -247,7 +247,7 @@
     __weak typeof(self) weakSelf = self;
     [chat getInteractsChatGetListWithMsg_id:msg_id page_num:page page_size:10 start_time:nil is_role:0 anchor_path:@"down" success:^(NSArray<VHallChatModel *> *msgs) {
         //过滤私聊 传递target_id,当前用户join_id
-        NSString *currentUserId = self.webinarInfo.data[@"join_info"][@"third_party_user_id"];
+        NSString *currentUserId = self.webinarInfo.webinarInfoData.join_info.third_party_user_id;
         NSArray * msgArr = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:YES];
         [weakSelf reloadDataWithMsgs:msgArr];
     } failed:^(NSDictionary *failedData) {

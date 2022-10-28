@@ -9,7 +9,7 @@
 #import "ProgressHud.h"
 
 #define HUD_TAG                     0x1122
-#define DEFAULT_DURATION            1.5  //吐司时长
+#define DEFAULT_DURATION            3  //吐司时长
 
 
 @interface VHHudCustomView : UIView

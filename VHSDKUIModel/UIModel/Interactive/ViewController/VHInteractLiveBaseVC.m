@@ -172,7 +172,7 @@
 //收到聊天消息
 - (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs {
     //过滤私聊
-    NSString *currentUserId = self.roomInfo.data[@"join_info"][@"third_party_user_id"];
+    NSString *currentUserId = self.roomInfo.webinarInfoData.join_info.third_party_user_id;
     msgs = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:NO];
     if (msgs.count > 0) {
         VHallChatModel *model = [msgs objectAtIndex:0];
@@ -236,6 +236,9 @@
 
 ///打开文档展示容器
 - (void)liveDetailViewOpenDocumentView:(VHLiveBroadcastInfoDetailView *)detailView {}
+
+// 是否显示文档 是否有文档
+- (void)isShowDoc:(BOOL)isShowDoc isHaveDoc:(BOOL)isHaveDoc{}
 
 ///显示/隐藏文档无关内容
 - (void)liveDetailView:(VHLiveBroadcastInfoDetailView *)detailView hiddenDocUnRelationView:(BOOL)hidden {
@@ -341,7 +344,7 @@
 - (void)document:(VHDocument *)document switchStatus:(BOOL)switchStatus {
     VUI_Log(@"文档显示：%d 是否可编辑：%d 选中的文档：%@",switchStatus,document.editEnable,document.selectedView);
     //文档隐藏只对观众生效，这里嘉宾和主持人统一设置显示
-    [self.docContentView setDocViewHidden:NO];
+    [self.docContentView setDocViewHidden:!switchStatus];
 }
 
 /**

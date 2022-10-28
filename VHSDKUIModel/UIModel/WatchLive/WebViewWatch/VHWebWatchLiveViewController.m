@@ -19,7 +19,7 @@
 #define WebWatchHost @"https://live.vhall.com/v3/lives/watch/"  //正式环境
 
 
-@interface VHWebWatchLiveViewController () <WKUIDelegate>
+@interface VHWebWatchLiveViewController () <WKUIDelegate,UIScrollViewDelegate>
 /** 观看地址 */
 @property (nonatomic, strong) NSString *watchUrlStr;
 /** webView */
@@ -101,10 +101,15 @@
         _webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:wkConfig];
         _webView.UIDelegate = self;
         _webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+        _webView.scrollView.scrollEnabled = NO;
+        _webView.scrollView.delegate = self;
     }
     return _webView;
 }
-
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return nil;
+}
 - (void)dealloc{
     NSLog(@"%@释放了",[self class]);
 }

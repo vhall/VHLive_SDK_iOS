@@ -124,6 +124,40 @@
     if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
         return;//过滤视频轮巡流
     }
+    
+    // 添加视频流
+    [self addToRenderView:attendView];
+}
+
+/// 视频流离开回调（流类型包括音视频、共享屏幕、插播等）
+- (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView
+{
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
+        return;// 过滤视频轮巡流
+    }
+    
+    // 移除视频流
+    [self rmToRenderView:attendView];
+
+}
+
+// 文档融屏流上线(订阅)
+- (void)room:(VHRoom *)room didAddDocmentAttendView:(VHRenderView *)attendView
+{
+    // 添加视频流
+    [self addToRenderView:attendView];
+}
+
+// 文档融屏流下线(订阅)
+- (void)room:(VHRoom *)room didRemovedDocmentAttendView:(VHRenderView *)attendView
+{
+    // 移除视频流
+    [self rmToRenderView:attendView];
+}
+
+// 添加视频流
+- (void)addToRenderView:(VHRenderView *)attendView
+{
     VUI_Log(@"\n某人上麦:%@，流类型：%d，流视频宽高：%@，流id：%@，是否有音频：%d，是否有视频：%d",attendView.userId,attendView.streamType,NSStringFromCGSize(attendView.videoSize),attendView.streamId,attendView.hasAudio,attendView.hasVideo);
     
     // 更新互动人数
@@ -136,16 +170,12 @@
     [self.interactView addAttendWithUser:model];
 }
 
-/// 视频流离开回调（流类型包括音视频、共享屏幕、插播等）
-- (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView
+// 移除视频流
+- (void)rmToRenderView:(VHRenderView *)attendView
 {
     // 移除
     [self.interactView removeAttendView:(VHLocalRenderView *)attendView];
 
-    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
-        return;// 过滤视频轮巡流
-    }
-    
     // 更新互动人数
     if (self.current_inav_num > 0) {
         self.current_inav_num = self.current_inav_num - 1;
@@ -163,9 +193,9 @@
     NSString * targetName = message.targetName;
 
     // 加入用户id
-   NSString * joinUser = room.roomInfo.data[@"join_info"][@"third_party_user_id"];
+   NSString * joinUser = room.roomInfo.webinarInfoData.join_info.third_party_user_id;
     // 主持人id
-    NSString * host_id = [NSString stringWithFormat:@"%@",room.roomInfo.data[@"webinar"][@"userinfo"][@"user_id"]];
+    NSString * host_id = [NSString stringWithFormat:@"%@",room.roomInfo.webinarInfoData.webinar.userinfo.user_id];
     
     switch (message.messageType) {
         case VHRoomMessageType_vrtc_speaker_switch:

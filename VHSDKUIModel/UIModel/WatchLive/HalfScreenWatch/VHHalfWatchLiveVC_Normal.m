@@ -388,7 +388,7 @@ static AnnouncementView* announcementView = nil;
 - (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs
 {
     //过滤私聊 传递target_id,当前用户join_id
-    NSString *currentUserId = self.moviePlayer.webinarInfo.data[@"join_info"][@"third_party_user_id"];
+    NSString *currentUserId = self.moviePlayer.webinarInfo.webinarInfoData.join_info.third_party_user_id;
     NSArray *msgArr = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:YES];
     [self reloadDataWithMsg:msgArr];
     if (msgs.count > 0) {
@@ -1055,7 +1055,7 @@ static AnnouncementView* announcementView = nil;
     [self presentViewController:questionare animated:YES completion:nil];
 }
 - (void)receivedSucceed:(NSString *)surveyid surveyAccountId:(NSString *)accountid{
-    if ([accountid isEqualToString:self.moviePlayer.webinarInfo.data[@"join_info"][@"third_party_user_id"]]) {
+    if ([accountid isEqualToString:self.moviePlayer.webinarInfo.webinarInfoData.join_info.third_party_user_id]) {
         [self questionnaireLogic:NO];//不跳转，只核验
     }
 }
@@ -1763,7 +1763,7 @@ static AnnouncementView* announcementView = nil;
         // 隐藏小红点
         [self.announcementListBtn hidenBadge];
         // 刷新接口
-        [_announcementList loadDataRoomId:self.moviePlayer.webinarInfo.data[@"interact"][@"room_id"]];
+        [_announcementList loadDataRoomId:self.moviePlayer.webinarInfo.webinarInfoData.interact.room_id];
     }else{
         // 显示小红点
         [self.announcementListBtn showBadge];
@@ -1798,7 +1798,7 @@ static AnnouncementView* announcementView = nil;
     [self.announcementList mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
-    [self.announcementList loadDataRoomId:self.moviePlayer.webinarInfo.data[@"interact"][@"room_id"]];
+    [self.announcementList loadDataRoomId:self.moviePlayer.webinarInfo.webinarInfoData.interact.room_id];
 }
 
 #pragma mark - 抽奖相关

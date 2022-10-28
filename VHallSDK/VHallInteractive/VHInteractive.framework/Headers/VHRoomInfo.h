@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger                 no_delay_webinar;       ///<是否无延迟直播 1:是 0:否
 @property (nonatomic, assign) NSInteger                 live_type;              ///<0-直播；2-彩排
 @property (nonatomic, assign) NSInteger                 inav_num;               ///<当前活动支持的最大连麦人数，如：6表示1v5，16表示1v15
+@property (nonatomic, assign) NSInteger                 speakerAndShowLayout;   ///<0 -- 分离模式；1 -- 合并模式；
 @property (nonatomic, assign) BOOL                      live_rehearsal;         ///<是否有彩排权限
 @property (nonatomic, assign) BOOL                      membersManageAuthority; ///<自己是否有成员管理权限
 @property (nonatomic, assign) BOOL                      selfBanChat;            ///<自己是否被禁言  YES：禁言 NO：未禁言
@@ -40,6 +41,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString        *           join_id;                ///<自己的参会id
 @property (nonatomic, copy) NSString        *           mainSpeakerId;          ///<当前主讲人（具有文档操作权限）的用户id (会随主讲人改变，实时更新)
 @property (nonatomic, copy) NSString        *           layout;                 ///<获取观看端布局, 未设置返回空
+@property (nonatomic, copy) NSString        *           videoBackGround;        /// 背景图片
+@property (nonatomic, copy) NSString        *           finalVideoBackground;   /// 背景图片(带透明度等属性的地址链接)
+@property (nonatomic, copy) NSString        *           videoBackGroundColor;   /// 背景颜色
+@property (nonatomic, copy) NSDictionary    *           videoBackGroundSize;    /// 背景尺寸
 
 #pragma mark - 在线人数
 @property (nonatomic, assign) BOOL                      online_show;            ///<是否显示在线人数

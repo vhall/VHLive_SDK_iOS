@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , copy) NSString      *                    nickname;               ///<昵称
 @property (nonatomic , copy) NSString      *                    company;                ///<公司
 @property (nonatomic , copy) NSString      *                    avatar;                 ///<头像地址
-@property (nonatomic , assign) NSInteger                        user_id;                ///<用户id
+@property (nonatomic , copy) NSString      *                    user_id;                ///<用户id
 @end
 
 
@@ -134,6 +134,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) VHWebinarInfoData_Switch      *  data_switch;            ///<场次信息
 @property (nonatomic , strong) VHWebinarInfoData_Subscribe   *  subscribe;              ///<预约人数
 @property (nonatomic , strong) VHWebinarInfoData_Online      *  online;                 ///<在线信息
+
+
+/// 初始化整理数据
+/// - Parameter data: 数据详情
+- (instancetype)initWithData:(NSDictionary *)data;
+
 @end
 
 NS_ASSUME_NONNULL_END

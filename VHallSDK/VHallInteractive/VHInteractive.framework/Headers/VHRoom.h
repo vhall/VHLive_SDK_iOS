@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak)             id <VHRoomDelegate>         delegate;           ///<代理
 @property (nonatomic, assign)           BOOL                        isVideoRound;       ///<是否要参与轮巡
 @property (nonatomic, assign)           BOOL                        isRehearsal;        ///<是否彩排 YES：彩排模式开播 NO：正常直播 (默认NO,开播前设置有效)
+@property (nonatomic, assign)           BOOL                        isPublishAnother;   ///<是否开启自动旁路 YES：开启 NO：不开启 (默认NO,开播前设置有效)
+@property (nonatomic, assign)           BOOL                        isMainScreen;       ///<是否开启自动主屏配置 YES：开启 NO：不开启 (默认NO,开播前设置有效)
 @property (nonatomic, strong)           VHRoomBroadCastConfig *     broadCastConfig;    ///<旁路布局配置
 @property (nonatomic, weak, readonly)   VHRenderView *              cameraView;         ///<当前推流cameraView，只在推流过程中存在
 @property (nonatomic, copy, readonly)   NSString *                  roomId;             ///<房间id
@@ -67,6 +69,23 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setRoomJoinBroadCastMixOption:(BOOL)isJoin
                            cameraView:(VHLocalRenderView *)cameraView
                                finish:(void(^)(int code, NSString * _Nonnull message))handle;
+
+/// 开启/关闭旁路直播 (使用该方法前提:加入房间初始化方法使用enterRoomWithRoomId:broadCastId:accessToken:userData:)
+/// @param isOpen Yes开启旁路直播   NO关闭旁路直播
+/// @param param [self baseConfigRoomBroadCast:4 layout:4]; 调用此函数配置视频质量参数和旁路布局
+/// @discussion 设置成功后会自动推旁路
+- (BOOL)publishAnotherLive:(BOOL)isOpen param:(NSDictionary*)param completeBlock:(void(^)(NSError *error))block;
+
+/// 基础配置旁路混流参数
+/// @param definition 视频质量参数，推荐使用。即（分辨率+帧率+码率）
+/// @param layout 旁路布局模板（非自定义布局）
+- (NSDictionary*)baseConfigRoomBroadCast:(VHBroadcastProfileMode)definition layout:(VHBroadcastLayout)layout;
+
+/// 设置旁路背景图
+/// @param url 背景图URL,如果为空，则为取消背景图
+/// @param cropType 填充类型:VHRoomBGCropType
+/// @param handle 设置后的回调,成功:200
+- (void)settingRoomBroadCastBackgroundImageURL:(NSURL *_Nullable)url cropType:(VHRoomBGCropType)cropType finish:(void(^)(int code, NSString * _Nonnull message))handle;
 
 #pragma mark ------------------v6.1新增--------------------
 /// 嘉宾进入互动房间 (嘉宾使用)
@@ -188,6 +207,12 @@ NS_ASSUME_NONNULL_BEGIN
                          success:(void(^)(NSDictionary *response))success
                             fail:(void(^)(NSError *error))fail;
 
+/// 是否开启文档融屏旁路
+/// @param enable 开启/关闭
+/// @param handle 设置后的回调
+- (void)settingRoomBroadCastDocMixEnable:(BOOL)enable
+                                  finish:(void(^)(int code, NSString * _Nonnull message))handle;
+
 /// 获取在线成员列表
 /// @param pageNum 页码，第一页从1开始
 /// @param pageSize 每页条数
@@ -272,6 +297,21 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param room room实例
 /// @param attendView 该成员对应视频画面
 - (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView;
+
+/// 文档融屏流上线(订阅)
+/// @param room room实例
+/// @param attendView 该成员对应视频画面
+- (void)room:(VHRoom *)room didAddDocmentAttendView:(VHRenderView *)attendView;
+
+/// 文档融屏流下线(订阅)
+/// @param room room实例
+/// @param attendView 该成员对应视频画面
+- (void)room:(VHRoom *)room didRemovedDocmentAttendView:(VHRenderView *)attendView;
+
+/// 流准备好了
+/// @param room room实例
+/// @param msg 详情
+- (void)room:(VHRoom *)room onStreamMixed:(NSDictionary *)msg;
 
 /// 互动房间互动消息回调
 /// @param room room实例

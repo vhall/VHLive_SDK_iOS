@@ -141,8 +141,8 @@
 
 #pragma mark - 上麦添加视频画面
 - (void)addAttendWithUser:(VHLiveMemberModel *)model {
-    VUI_Log(@"上麦添加视频画面流id:%@",model.videoView.streamId);
     
+    VUI_Log(@"上麦添加视频画面流id:%@",model.videoView.streamId);
     // 所有上麦用户
     [self.allDataSource addObject:model];
     

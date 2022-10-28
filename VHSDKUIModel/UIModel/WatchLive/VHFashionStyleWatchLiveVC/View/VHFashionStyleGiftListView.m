@@ -219,7 +219,7 @@
 - (void)requestWebinarUsingGiftListWithRoomId
 {
     @weakify(self);
-    [VHallGiftObject webinarUsingGiftListWithRoomId:self.webinarInfo.data[@"interact"][@"room_id"] complete:^(NSArray<VHallGiftListItem *> * _Nonnull giftList, NSError * _Nonnull error) {
+    [VHallGiftObject webinarUsingGiftListWithRoomId:self.webinarInfo.webinarInfoData.interact.room_id complete:^(NSArray<VHallGiftListItem *> * _Nonnull giftList, NSError * _Nonnull error) {
         @strongify(self);
         if (giftList) {
             self.dataSource = [NSMutableArray arrayWithArray:giftList];
@@ -281,7 +281,7 @@
         [collectionView reloadData];
         
         VHallGiftListItem * giftItem = self.dataSource[indexPath.row];
-        [VHallGiftObject sendGiftWithRoomId:self.webinarInfo.data[@"interact"][@"room_id"] channel:@"WEIXIN" service_code:@"QR_PAY" giftItem:giftItem complete:^(VHallSendGiftModel * _Nonnull sendGiftModel, NSError * _Nonnull error) {
+        [VHallGiftObject sendGiftWithRoomId:self.webinarInfo.webinarInfoData.interact.room_id channel:@"WEIXIN" service_code:@"QR_PAY" giftItem:giftItem complete:^(VHallSendGiftModel * _Nonnull sendGiftModel, NSError * _Nonnull error) {
             if (sendGiftModel) {
                 NSString * giftname = [NSString stringWithFormat:@"赠送成功%@",sendGiftModel.name];
                 VH_ShowToast(giftname);

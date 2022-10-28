@@ -265,7 +265,7 @@
 - (void)requestGetRoomLikeWithRoomId
 {
     @weakify(self);
-    [VHallLikeObject getRoomLikeWithRoomId:self.moviePlayer.webinarInfo.data[@"interact"][@"room_id"] complete:^(NSInteger total, NSError *error) {
+    [VHallLikeObject getRoomLikeWithRoomId:self.moviePlayer.webinarInfo.webinarInfoData.interact.room_id complete:^(NSInteger total, NSError *error) {
         @strongify(self);
         VHLog(@"当前房间点赞总数 === %ld",total);
         if (total) {
@@ -369,7 +369,7 @@
 - (void)requestRoomlikeToNum
 {
     @weakify(self);
-    [VHallLikeObject createUserLikeWithRoomId:self.moviePlayer.webinarInfo.data[@"interact"][@"room_id"] num:self.likeTapCount complete:^(NSDictionary *responseObject, NSError *error) {
+    [VHallLikeObject createUserLikeWithRoomId:self.moviePlayer.webinarInfo.webinarInfoData.interact.room_id num:self.likeTapCount complete:^(NSDictionary *responseObject, NSError *error) {
         @strongify(self);
         VHLog(@"点赞成功");
         self.likeTapCount = 0;

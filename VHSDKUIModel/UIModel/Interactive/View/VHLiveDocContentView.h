@@ -18,11 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 //是否能滑动
 - (BOOL)canSwipe;
 
-//文档移除完成
+// 文档移除完成
 - (void)docContentViewDisMissComplete:(VHLiveDocContentView *)docContentView;
 
-///文档左滑/右滑翻页
+// 文档左滑/右滑翻页
 - (void)docContentView:(VHLiveDocContentView *)docContentView swipeDirection:(UISwipeGestureRecognizerDirection)direction;
+
+// 是否显示文档 是否有文档
+- (void)isShowDoc:(BOOL)isShowDoc isHaveDoc:(BOOL)isHaveDoc;
 
 @end
 
@@ -34,8 +37,11 @@ NS_ASSUME_NONNULL_BEGIN
 /** 无文档空视图提示文案 */
 @property (nonatomic, strong) UILabel *emptyLab;
 
+/** 文档是否显示 */
+@property (nonatomic, assign) BOOL docShow;
+
 /** 代理 */
-@property (nonatomic, weak) id<VHLiveDocContentViewDelegate> delegate;
+@property (nonatomic, weak) id <VHLiveDocContentViewDelegate> delegate;
 
 //添加文档
 - (void)addDocumentView:(VHDocumentView *)view;

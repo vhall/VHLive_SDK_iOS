@@ -33,6 +33,8 @@
 
 /** 本地视频view */
 @property (nonatomic, strong) VHLocalRenderView *localRenderView;
+/** 文档互动流*/
+@property (nonatomic, strong) VHRenderView * docRenderView;
 
 /** 主讲人视频小窗口 */
 @property (nonatomic, strong) VHLocalRenderView *smallVideo;
@@ -217,15 +219,26 @@
 
 //离开房间
 - (void)leaveInteracRoom {
-    if(self.screenLandscape) { //如果横屏，强制转竖屏
+    // 如果横屏
+    if(self.screenLandscape) {
+        // 强制转竖屏
         [self forceRotateUIInterfaceOrientation:UIInterfaceOrientationPortrait];
+        // 标识竖屏
         self.screenLandscape = NO;
     }
-    if([self.inavRoom isPublishing]) {
-        [self.inavRoom unpublish]; //停止推流
+
+    // 合并模式才融屏文档
+    if (self.roomInfo.speakerAndShowLayout == 1) {
+        // 取消融屏
+        [self.inavRoom settingRoomBroadCastDocMixEnable:NO finish:^(int code, NSString * _Nonnull message) {}];
     }
-    self.chatService = nil; //移除消息监听
-    [self.inavRoom leaveRoom]; //退出互动房间
+
+    // 停止推流
+    [self.inavRoom unpublish];
+    // 退出互动房间
+    [self.inavRoom leaveRoom];
+    // 移除消息监听
+    self.chatService = nil;
 }
 
 //更新主讲人视频小窗口显示
@@ -283,10 +296,8 @@
 
 //后台
 - (void)appDidEnterBackground {
-    if([self.inavRoom isPublishing]) {
-        //下麦并停止推流
-        [self.inavRoom unpublish];
-    }
+    //下麦并停止推流
+    [self.inavRoom unpublish];
 }
 
 //强杀
@@ -478,6 +489,27 @@
     [self.interactView reloadAllData];
 }
 
+#pragma mark - 是否显示文档
+- (void)isShowDoc:(BOOL)isShowDoc isHaveDoc:(BOOL)isHaveDoc
+{
+    [super isShowDoc:isShowDoc isHaveDoc:isHaveDoc];
+    
+    // 合并模式才融屏文档
+//    NSString * hint = [NSString stringWithFormat:@"当前是%@模式,文档%@,文档%@",self.roomInfo.speakerAndShowLayout == 1 ? @"合并" : @"分离",isShowDoc ? @"显示" : @"不显示",isHaveDoc ? @"有" : @"没有"];
+//    VH_ShowToast(hint);
+//    VHLog(hint);
+    if (self.roomInfo.speakerAndShowLayout == 1) {
+        //配置融屏
+        [self.inavRoom settingRoomBroadCastDocMixEnable: isShowDoc && isHaveDoc  finish:^(int code, NSString * _Nonnull message) {
+
+        }];
+    }
+    
+    // 设置主画面
+    [self maxScreenVideoView:self.docRenderView isAdd:NO];
+}
+
+#pragma mark - 显示/隐藏文档无关内容
 - (void)liveDetailView:(VHLiveBroadcastInfoDetailView *)detailView hiddenDocUnRelationView:(BOOL)hidden {
     [super liveDetailView:detailView hiddenDocUnRelationView:hidden];
     self.smallVideo.hidden = hidden;
@@ -501,6 +533,10 @@
         //设置允许观众举手上麦
         [self.inavRoom setHandsUpStatus:1 success:nil fail:nil];
     }
+    //判断当前是否为主讲人，如果不是主讲人，底部操作按钮需要变更
+    if(![self.roomInfo.mainSpeakerId isEqualToString:self.roomInfo.selfUserId]) {
+        [self setDocEditEnable:NO];
+    }
 }
 
 //推流成功
@@ -523,6 +559,8 @@
     [self.interactView addAttendWithUser:model];
     //更新视频小窗口显示
     [self updateSmallVideo];
+    // 设置主画面
+    [self maxScreenVideoView:cameraView isAdd:YES];
 }
 
 // 停止推流成功
@@ -557,42 +595,198 @@
     if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
         return;//过滤视频轮巡流
     }
+    
+    // 添加视频流
+    [self addToRenderView:attendView];
+}
+
+// 视频流移除回调（收到此回调后需要移除视频view，可能是连麦用户，也可能是共享屏幕/插播）
+- (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView {
+    
+    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
+        return;//过滤视频轮巡流
+    }
+    
+    // 移除视频流
+    [self rmToRenderView:attendView];
+}
+
+// 文档融屏流上线(订阅)
+- (void)room:(VHRoom *)room didAddDocmentAttendView:(VHRenderView *)attendView
+{
+    // 添加文档流
+    self.docRenderView = attendView;
+
+    // 设置主画面
+    [self maxScreenVideoView:attendView isAdd:NO];
+}
+
+// 文档融屏流下线(订阅)
+- (void)room:(VHRoom *)room didRemovedDocmentAttendView:(VHRenderView *)attendView
+{
+    // 移除文档流
+    self.docRenderView = nil;
+    
+    // 设置主画面
+    [self maxScreenVideoView:attendView isAdd:NO];
+}
+
+// 添加视频流
+- (void)addToRenderView:(VHRenderView *)attendView
+{
     VUI_Log(@"\n某人上麦:%@，流类型：%d，流视频宽高：%@，流id：%@，是否有音频：%d，是否有视频：%d",attendView.userId,attendView.streamType,NSStringFromCGSize(attendView.videoSize),attendView.streamId,attendView.hasAudio,attendView.hasVideo);
     
     // 更新互动人数
     self.current_inav_num = self.current_inav_num + 1;
 
+    // 添加此人画面
     VHLiveMemberModel *model = [VHLiveMemberModel modelWithVHRenderView:(VHLocalRenderView *)attendView];
     model.haveDocPermission = [self.inavRoom.roomInfo.mainSpeakerId isEqualToString:model.account_id];
     [self.interactView addAttendWithUser:model];
+    
     //更新视频小窗口显示
     [self updateSmallVideo];
     
+    //如果收到插播，则关闭自己麦克风，解决插播时文件与人声混音问题。
+    NSDictionary *streamAttributes = attendView.streamAttributes.mj_JSONObject;
+    NSInteger stream_type = [streamAttributes[@"stream_type"] integerValue];
+
     //如果自己上麦中收到插播流，则关闭自己麦克风，解决插播时文件与人声混音问题。
-    if(attendView.streamType == VHInteractiveStreamTypeFile) { //插播
-        if([_localRenderView isPublish] && !self.infoDetailView.topToolView.voiceBtn.selected) { //自己已上麦 && 麦克风打开中
-            //关闭麦克风
+    if(attendView.streamType == VHInteractiveStreamTypeFile || stream_type == 4) {
+        //自己已上麦 && 麦克风处于开启状态下
+        if([_localRenderView isPublish] && !self.infoDetailView.topToolView.voiceBtn.selected) {
+            // 如果是为打开状态需要处理为打开
             [self liveDetaiViewClickMicrophoneBtn:self.infoDetailView voiceBtn:self.infoDetailView.topToolView.voiceBtn];
         }
     }
+    
+    // 设置主画面
+    [self maxScreenVideoView:attendView isAdd:YES];
+
 }
 
-/// 视频流移除回调（收到此回调后需要移除视频view，可能是连麦用户，也可能是共享屏幕/插播）
-- (void)room:(VHRoom *)room didRemovedAttendView:(VHRenderView *)attendView {
-    [self.interactView removeAttendView:(VHLocalRenderView *)attendView];
-    if (attendView.streamType == VHInteractiveStreamTypeVideoPatrol) {
-        return;//过滤视频轮巡流
-    }
+// 移除视频流
+- (void)rmToRenderView:(VHRenderView *)attendView
+{
+    VUI_Log(@"某人下麦:%@",attendView.userId);
     
     // 更新互动人数
     if (self.current_inav_num > 0) {
         self.current_inav_num = self.current_inav_num - 1;
     }
 
+    //移除此人视频画面
+    [self.interactView removeAttendView:(VHLocalRenderView *)attendView];
+
     //更新视频小窗口显示
     [self updateSmallVideo];
+    
+    //如果收到插播，则关闭自己麦克风，解决插播时文件与人声混音问题。
+    NSDictionary *streamAttributes = attendView.streamAttributes.mj_JSONObject;
+    NSInteger stream_type = [streamAttributes[@"stream_type"] integerValue];
+    
+    if (attendView.streamType == VHInteractiveStreamTypeScreen || attendView.streamType == VHInteractiveStreamTypeFile || stream_type == 4) {
+        
+        //自己已上麦 && 麦克风处于开启状态下
+        if([self.interactView haveRenderViewWithTargerId:self.roomInfo.webinarInfoData.join_info.third_party_user_id] ) {
+            // 如果是为打开状态需要处理为打开
+            if (self.infoDetailView.topToolView.voiceBtn.selected) {
+                [self liveDetaiViewClickMicrophoneBtn:self.infoDetailView voiceBtn:self.infoDetailView.topToolView.voiceBtn];
+            }
+        }
+    }
+    // 设置旁路直播
+    [self openBypassLiveWithStreamType:[self.interactView docPermissionVideoView].streamType];
+
+    // 设置主画面
+    [self maxScreenVideoView:attendView isAdd:NO];
+}
+#pragma mark - 服务器已准备好混流可以调用混流接口
+- (void)room:(VHRoom *)room onStreamMixed:(NSDictionary *)msg
+{
+    // 设置旁路直播
+    [self openBypassLiveWithStreamType:(VHInteractiveStreamType)[msg[@"streamType"] integerValue]];
 }
 
+#pragma mark - 设置旁路直播
+- (void)openBypassLiveWithStreamType:(VHInteractiveStreamType)type {
+
+    if (self.role == VHLiveRole_Host) {
+        
+        NSMutableDictionary *param = [NSMutableDictionary dictionary];
+        param[@"precast_pic_exist"] = @(NO); //是展示小人占位图
+        param[@"backgroundColor"] = [self.roomInfo.videoBackGroundColor stringByReplacingOccurrencesOfString:@"#" withString:@"0x"];
+
+        NSMutableDictionary * borderDic = [NSMutableDictionary dictionary];
+        borderDic[@"exist"] = @(YES);
+        borderDic[@"width"] = @(1);
+        borderDic[@"color"] = [self.roomInfo.videoBackGroundColor stringByReplacingOccurrencesOfString:@"#" withString:@"0x"];
+        param[@"border"] = borderDic; //配置背景颜色
+
+        [self.inavRoom publishAnotherLive:YES param:[param copy] completeBlock:^(NSError *error) {
+            if(!error) { //设置旁路直播状态成功
+                VUI_Log(@"设置旁路成功");
+            }else if(error.code == 40008) {//旁路推流正在进行中
+                VUI_Log(@"设置旁路错误：当前推流正在进行中");
+            }else {
+                VUI_Log(@"设置旁路错误：%@",error.domain);
+            }
+        }];
+
+        // 设置背景图片
+        [self.inavRoom settingRoomBroadCastBackgroundImageURL:[NSURL URLWithString:self.roomInfo.finalVideoBackground] cropType:1 finish:^(int code, NSString * _Nonnull message) {
+
+        }];
+    }
+}
+
+#pragma mark - 设置主画面
+/// 设置主画面
+/// - Parameters:
+///   - videoView: 回调的renderView
+///   - isRem: 是否为移除流
+- (void)maxScreenVideoView:(VHRenderView *)renderView isAdd:(BOOL)isAdd
+{
+    if(self.role == VHLiveRole_Host || [self.roomInfo.mainSpeakerId isEqualToString:_localRenderView.userId]) {
+        
+//        获取当前正在进行中的屏幕共享或插播
+//        VHRenderView * view = [self haveStreamTypeScreenOrStreamTypeScreenFile];
+
+        // 大画面
+        VHRenderView * mixRenderView;
+
+        // 获取是否有视频
+        NSDictionary *streamAttributes = renderView.streamAttributes.mj_JSONObject;
+        BOOL has_video = [streamAttributes[@"has_video"] boolValue];
+
+        if((renderView.streamType == VHInteractiveStreamTypeScreen || (renderView.streamType == VHInteractiveStreamTypeFile && has_video)) && isAdd) {
+            //流是否为(插播且有视频)或者桌面共享 && 是添加流操作
+            mixRenderView = renderView;
+        }else if (self.docRenderView && self.docContentView.docShow && [self.docContentView haveShowDocView]) {
+            //文档流
+            mixRenderView = self.docRenderView;
+        }else {
+            //主讲人视频
+            mixRenderView = [self.interactView docPermissionVideoView];
+        }
+
+        //设置旁路大画面
+        [mixRenderView setMixLayoutMainScreen:nil finish:nil];
+    }
+}
+#pragma mark - 当前是否有进行中的 屏幕共享 或 插播
+- (VHRenderView *)haveStreamTypeScreenOrStreamTypeScreenFile {
+    __block VHRenderView *view = nil;
+    [self.inavRoom.renderViewsById enumerateKeysAndObjectsUsingBlock:^(NSString *  _Nonnull key, VHRenderView * _Nonnull renderView, BOOL * _Nonnull stop) {
+        if(renderView.streamType == VHInteractiveStreamTypeScreen || renderView.streamType == VHInteractiveStreamTypeFile|| renderView.streamType == VHInteractiveStreamTypeVideoPatrol) {
+            *stop = YES;
+            view = renderView;
+        }
+    }];
+    return view;
+}
+
+#pragma mark - 互动消息
 - (void)room:(VHRoom *)room receiveRoomMessage:(VHRoomMessage *)message {
     VUI_Log(@"messageType====%ld",(long)message.messageType);
 
@@ -601,9 +795,9 @@
     NSString *targetName = message.targetName;
 
     //加入用户id
-   NSString *joinUser = room.roomInfo.data[@"join_info"][@"third_party_user_id"];
+   NSString *joinUser = room.roomInfo.webinarInfoData.join_info.third_party_user_id;
     //主持人id
-    NSString *host_id = [NSString stringWithFormat:@"%@",room.roomInfo.data[@"webinar"][@"userinfo"][@"user_id"]];
+    NSString *host_id = [NSString stringWithFormat:@"%@",room.roomInfo.webinarInfoData.webinar.userinfo.user_id];
     switch (message.messageType) {
         case VHRoomMessageType_vrtc_connect_apply:{//用户申请上麦
             if (self.role == VHLiveRole_Host || (self.role == VHLiveRole_Guest && [self.inavRoom.roomInfo.mainSpeakerId isEqualToString:joinUser] && [self.inavRoom.roomInfo.permission containsObject:@(100037)])) {
@@ -691,7 +885,8 @@
             [self updateSmallVideo];
         }break;
         case VHRoomMessageType_vrtc_big_screen_set:{//用户互动流画面被设置为旁路大画面
-            
+            // 设置主画面
+            [self maxScreenVideoView:[self.interactView docPermissionVideoView] isAdd:NO];
         }break;
         case VHRoomMessageType_vrtc_speaker_switch:{//设置主讲人
             
@@ -763,10 +958,8 @@
                     }
                 }
                 self.downMicrophoneBySelf = NO;
-                //停止推流
-                if (self.inavRoom.isPublishing) {
-                    [self.inavRoom unpublish];
-                }
+                // 停止推流
+                [self.inavRoom unpublish];
                 //重置上麦按钮状态
                 [self.infoDetailView.bottomToolView endTimeByUpMicSuccess:NO];
                 //移除自己的视频view
@@ -820,9 +1013,8 @@
         case VHRoomMessageType_room_banChat:{
             if (targetIsMyself) {
                 VH_ShowToast(@"您已被禁言");
-                if (self.inavRoom.isPublishing) {
-                    [self.inavRoom unpublish];
-                }
+                // 停止推流
+                [self.inavRoom unpublish];
             }
             [self updateUserList];
         }break;
@@ -835,9 +1027,8 @@
         case VHRoomMessageType_room_allBanChat:{
             if (self.isGuest) {
                 VH_ShowToast(@"全员已被禁言");
-                if (self.inavRoom.isPublishing) {
-                    [self.inavRoom unpublish];
-                }
+                // 停止推流
+                [self.inavRoom unpublish];
             }
             [self updateUserList];
         }break;
@@ -898,6 +1089,8 @@
 - (VHRoom *)inavRoom {
     if (!_inavRoom) {
         _inavRoom = [[VHRoom alloc] init];
+//        _inavRoom.isPublishAnother = YES;
+//        _inavRoom.isMainScreen = YES;
         _inavRoom.delegate = self;
     }
     return _inavRoom;

@@ -495,7 +495,7 @@
  */
 - (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs {
     //过滤私聊 传递target_id,当前用户join_id
-    NSString *currentUserId = self.moviePlayer.webinarInfo.data[@"join_info"][@"third_party_user_id"];
+    NSString *currentUserId = self.moviePlayer.webinarInfo.webinarInfoData.join_info.third_party_user_id;
     NSArray *msgArr = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:NO];
     [self.decorateView receiveMessage:msgArr];
 }

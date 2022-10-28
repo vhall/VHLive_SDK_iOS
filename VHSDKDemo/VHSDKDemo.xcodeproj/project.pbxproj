@@ -580,7 +580,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-frameworks.sh",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/FURenderKit.framework",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/FURenderKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GLEnvs/GLEnvs.framework",
 				"${BUILT_PRODUCTS_DIR}/LookinServer/LookinServer.framework",
 				"${PODS_ROOT}/VHYun_Beautify/framework/VHBeautifyKit.framework",
@@ -606,20 +606,20 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VHSDKDemo/Pods-VHSDKDemo-resources.sh",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/graphics/body_slim.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/graphics/controller_cpp.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/graphics/face_beautification.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/graphics/face_makeup.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/graphics/fuzzytoonfilter.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/graphics/fxaa.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/graphics/tongue.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/model/ai_bgseg_green.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/model/ai_face_processor.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/model/ai_face_processor_lite.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/model/ai_face_recognizer.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/model/ai_hand_processor.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/model/ai_human_processor.bundle",
-				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.0/Resources/model/ai_human_processor_gpu.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/graphics/body_slim.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/graphics/controller_cpp.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/graphics/face_beautification.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/graphics/face_makeup.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/graphics/fuzzytoonfilter.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/graphics/fxaa.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/graphics/tongue.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/model/ai_bgseg_green.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/model/ai_face_processor.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/model/ai_face_processor_lite.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/model/ai_face_recognizer.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/model/ai_hand_processor.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/model/ai_human_processor.bundle",
+				"${PODS_ROOT}/FURenderKit/FURenderKit-v8.3.1/Resources/model/ai_human_processor_gpu.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -833,7 +833,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 4;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = H49DK955B9;
 				ENABLE_BITCODE = NO;
@@ -859,7 +859,7 @@
 					"$(PROJECT_DIR)/../UIModel/libs_third",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 6.8.0;
+				MARKETING_VERSION = 6.9.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -877,7 +877,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 4;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = H49DK955B9;
 				ENABLE_BITCODE = NO;
@@ -904,7 +904,7 @@
 					"$(PROJECT_DIR)/../UIModel/libs_third",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 6.8.0;
+				MARKETING_VERSION = 6.9.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

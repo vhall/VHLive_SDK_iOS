@@ -80,6 +80,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)liveDetailViewOpenDocumentView:(VHLiveBroadcastInfoDetailView *)detailView;
 ///关闭文档容器
 - (void)docContentViewDisMissComplete:(VHLiveDocContentView *)docContentView NS_REQUIRES_SUPER;
+// 是否显示文档 是否有文档
+- (void)isShowDoc:(BOOL)isShowDoc isHaveDoc:(BOOL)isHaveDoc NS_REQUIRES_SUPER;
 ///显示/隐藏文档无关内容
 - (void)liveDetailView:(VHLiveBroadcastInfoDetailView *)detailView hiddenDocUnRelationView:(BOOL)hidden;
 //演示文档

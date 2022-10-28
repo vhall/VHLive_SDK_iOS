@@ -22,6 +22,13 @@
 
 @implementation VHSurveyViewController
 
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (navigationAction.targetFrame == nil) {
+        [webView loadRequest:navigationAction.request];
+    }
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -69,6 +76,7 @@
     self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(8, CGRectGetMaxY(titleView.frame), CGRectGetWidth(self.contentView.frame)-16, CGRectGetHeight(self.contentView.frame)-16-66) configuration:config];
     self.webView.navigationDelegate = self;
     self.webView.UIDelegate = self;
+    self.webView.navigationDelegate = self;
     self.webView.layer.masksToBounds = YES;
     [self.contentView insertSubview:self.webView atIndex:0];
     

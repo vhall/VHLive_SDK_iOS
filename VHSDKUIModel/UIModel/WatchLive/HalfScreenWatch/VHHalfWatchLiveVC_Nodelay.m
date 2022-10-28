@@ -330,7 +330,7 @@ static AnnouncementView* announcementView = nil;
     [self presentViewController:questionare animated:YES completion:nil];
 }
 - (void)receivedSucceed:(NSString *)surveyid surveyAccountId:(NSString *)accountid{
-    if ([accountid isEqualToString:self.inavRoom.roomInfo.data[@"join_info"][@"third_party_user_id"]]) {
+    if ([accountid isEqualToString:self.inavRoom.roomInfo.webinarInfoData.join_info.third_party_user_id]) {
         [self questionnaireLogic:NO];//不跳转，只核验
     }
 }
@@ -1095,7 +1095,7 @@ static AnnouncementView* announcementView = nil;
 - (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs
 {
     //过滤私聊
-    NSString *currentUserId = self.inavRoom.roomInfo.data[@"join_info"][@"third_party_user_id"];
+    NSString *currentUserId = self.inavRoom.roomInfo.webinarInfoData.join_info.third_party_user_id;
     NSArray *msgArr = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:YES];
     [self reloadDataWithMsg:msgArr];
 }

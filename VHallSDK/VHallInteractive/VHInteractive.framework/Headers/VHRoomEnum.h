@@ -129,5 +129,10 @@ typedef NS_ENUM(NSUInteger, VHBroadcastProfileMode) {
 };
 
 
+typedef enum : NSUInteger {
+    VHRoomBGCropTypeAspectFit  = 0,       // 等比缩放至画布
+    VHRoomBGCropTypeAspectFill = 1,       // 裁剪图片和画布宽高比一致，再缩放至画布
+    VHRoomBGCropTypeTypeFill       = 2,       // 直接拉伸填满画布 [默认]
+} VHRoomBGCropType;
 
 #endif /* VHRoomEnum_h */

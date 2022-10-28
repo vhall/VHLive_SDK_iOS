@@ -16,8 +16,6 @@
 @property (nonatomic, strong) UIView *emptyView;
 /** 无文档空视图icon */
 @property (nonatomic, strong) UIImageView *emptyImgView;
-/** 文档是否显示 */
-@property (nonatomic, assign) BOOL docShow;
 @end
 
 @implementation VHLiveDocContentView
@@ -32,7 +30,7 @@
     return self;
 }
 
-
+#pragma mark - UI
 - (void)configUI {
     self.backgroundColor = MakeColorRGB(0x222222);
     [self addSubview:self.emptyView];
@@ -61,7 +59,77 @@
     }];
 }
 
-//添加手势：左右滑动翻页
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    for(UIView *view in self.contentView.subviews) {
+        if([view isKindOfClass:[VHDocumentView class]]) {
+            view.frame = self.contentView.bounds;
+        }
+    }
+}
+
+#pragma mark - 当前是否有文档
+- (BOOL)haveShowDocView {
+    for(UIView *view in self.contentView.subviews) {
+        if([view isKindOfClass:[VHDocumentView class]]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+#pragma mark - 添加文档
+- (void)addDocumentView:(VHDocumentView *)view {
+    
+    [self layoutIfNeeded];
+
+    view.backgroundColor = MakeColorRGB(0x222222);
+    view.frame = self.contentView.bounds;
+    [self.contentView addSubview:view];
+    
+    // 是否显示文档 是否有文档
+    if (self.delegate && [self.delegate respondsToSelector:@selector(isShowDoc:isHaveDoc:)])
+    {
+        [self.delegate isShowDoc:_docShow isHaveDoc:YES];
+    }
+}
+
+#pragma mark - 删除文档
+- (void)removeDocumentView:(VHDocumentView *)view {
+    [view removeFromSuperview];
+}
+
+#pragma mark - 选择文档
+- (void)bringSubviewToFrontWithDocId:(NSString *)cid {
+    
+    for(VHDocumentView *view in self.contentView.subviews) {
+        if([view isKindOfClass:[VHDocumentView class]] && [view.cid isEqualToString:cid]) {
+            [self.contentView bringSubviewToFront:view];
+            view.hidden = !_docShow;
+            break;
+        }
+    }
+}
+
+#pragma mark - 设置文档隐藏/显示
+- (void)setDocViewHidden:(BOOL)hidden {
+    
+    _docShow = !hidden;
+    
+    for(UIView *view in self.contentView.subviews) {
+        if([view isKindOfClass:[VHDocumentView class]]) {
+            view.hidden = hidden;
+        }
+    }
+    
+    // 是否显示文档 是否有文档
+    if (self.delegate && [self.delegate respondsToSelector:@selector(isShowDoc:isHaveDoc:)])
+    {
+        [self.delegate isShowDoc:_docShow isHaveDoc:YES];
+    }
+}
+
+#pragma mark - 添加手势：左右滑动翻页
 - (void)addGestureRecognizer {
     //右滑手势
     UISwipeGestureRecognizer *rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
@@ -73,6 +141,7 @@
     [self addGestureRecognizer:leftRecognizer];
 }
 
+#pragma mark - 添加手势：左右滑动翻页
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
     if(![self.delegate canSwipe]) {
         return;
@@ -85,89 +154,35 @@
     }
 }
 
-
-//当前是否有文档
-- (BOOL)haveShowDocView {
-    for(UIView *view in self.contentView.subviews) {
-        if([view isKindOfClass:[VHDocumentView class]]) {
-            return YES;
-        }
-    }
-    return NO;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    for(UIView *view in self.contentView.subviews) {
-        if([view isKindOfClass:[VHDocumentView class]]) {
-            view.frame = self.contentView.bounds;
-        }
-    }
-    
-}
-
-//设置文档隐藏/显示
-- (void)setDocViewHidden:(BOOL)hidden {
-    _docShow = !hidden;
-    for(UIView *view in self.contentView.subviews) {
-        if([view isKindOfClass:[VHDocumentView class]]) {
-            view.hidden = hidden;
-        }
-    }
-}
-
-//添加文档
-- (void)addDocumentView:(VHDocumentView *)view {
-    view.backgroundColor = MakeColorRGB(0x222222);
-    [self layoutIfNeeded];
-    view.frame = self.contentView.bounds;
-    [self.contentView addSubview:view];
-}
-
-//将指定的文档挪到最顶层显示
-- (void)bringSubviewToFrontWithDocId:(NSString *)cid {
-    for(VHDocumentView *view in self.contentView.subviews) {
-        if([view isKindOfClass:[VHDocumentView class]] && [view.cid isEqualToString:cid]) {
-            [self.contentView bringSubviewToFront:view];
-            view.hidden = !_docShow;
-            break;
-        }
-    }
-}
-
-//删除文档
-- (void)removeDocumentView:(VHDocumentView *)view {
-    [view removeFromSuperview];
-}
-
-//返回
+#pragma mark - 返回
 - (void)backBtnClick {
+    
+    if([self.delegate respondsToSelector:@selector(docContentViewDisMissComplete:)]) {
+        [self.delegate docContentViewDisMissComplete:self];
+    }
+
     [UIView animateWithDuration:0.3 animations:^{
         self.transform = CGAffineTransformMakeTranslation(VHScreenWidth, 0);
     } completion:^(BOOL finished) {
-        if([self.delegate respondsToSelector:@selector(docContentViewDisMissComplete:)]) {
-            [self.delegate docContentViewDisMissComplete:self];
-        }
     }];
 }
 
 #pragma mark - 懒加载
 - (UIButton *)backBtn
 {
-    if (!_backBtn) {
+    if (!_backBtn){
         _backBtn = [[UIButton alloc] init];
         [_backBtn setImage:BundleUIImage(@"icon-backwhite") forState:UIControlStateNormal];
         [_backBtn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
         _backBtn.backgroundColor = [UIColor blueColor];
         _backBtn.layer.cornerRadius = 18;
         _backBtn.backgroundColor = MakeColorRGBA(0x000000, 0.3);
-    }
-    return _backBtn;
+    }return _backBtn;
 }
 
 - (UIView *)emptyView
 {
-    if (!_emptyView) {
+    if (!_emptyView){
         _emptyView = [[UIView alloc] init];
         _emptyImgView = [[UIImageView alloc] init];
         _emptyImgView.image = BundleUIImage(@"icon-文档为空");
@@ -189,10 +204,8 @@
             make.top.equalTo(_emptyImgView.mas_bottom).offset(8);
             make.bottom.equalTo(_emptyView);
         }];
-    }
-    return _emptyView;
+    }return _emptyView;
 }
-
 
 - (UIView *)contentView
 {

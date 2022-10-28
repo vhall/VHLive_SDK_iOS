@@ -412,7 +412,7 @@ static AnnouncementView* announcementView = nil;
 
 //收到聊天消息
 - (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs {
-    NSString *currentUserId = self.moviePlayer.webinarInfo.data[@"join_info"][@"third_party_user_id"];;
+    NSString *currentUserId = self.moviePlayer.webinarInfo.webinarInfoData.join_info.third_party_user_id;
     NSArray *msgArr = [VHHelpTool filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:NO];
     [self reloadDataWithMsg:msgArr];
 }
@@ -448,6 +448,20 @@ static AnnouncementView* announcementView = nil;
         [_tableView reloadData];
         [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_chatArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
+}
+
+/// 收到自己被禁言/取消禁言
+/// @param forbidChat YES:禁言 NO:取消禁言
+- (void)forbidChat:(BOOL)forbidChat
+{
+    
+}
+
+/// 收到全体禁言/取消全体禁言
+/// @param allForbidChat YES:禁言 NO:取消禁言
+- (void)allForbidChat:(BOOL)allForbidChat
+{
+    
 }
 
 #pragma mark - VHMoviePlayerDelegate

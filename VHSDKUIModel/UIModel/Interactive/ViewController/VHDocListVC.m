@@ -39,21 +39,39 @@
 
 - (void)setUpUI {
     
-    UINavigationBar *bar = [UINavigationBar appearance];
-    bar.translucent = NO; //设置导航栏不透明
-    bar.titleTextAttributes = @{NSForegroundColorAttributeName:MakeColorRGB(0x333333),NSFontAttributeName:FONT_Medium(17)};
-    
-    //设置导航栏背景并去除底部黑线
-    [bar setBackgroundImage:[UIModelTools imageWithColor:[UIColor whiteColor] size:CGSizeMake(1, 1)] forBarMetrics:UIBarMetricsDefault];
-    [bar setShadowImage:[UIModelTools imageWithColor:MakeColorRGB(0xE2E2E2) size:CGSizeMake(VHScreenWidth, 1/VHScreenScale)]];
+    self.title = @"文档管理";
+    self.view.backgroundColor = [UIColor whiteColor];
     
     //设置UINavigationBar tintColor （UIBarButtonItem图片/文字颜色）
     [UINavigationBar appearance].tintColor = MakeColorRGB(0x222222);
+
+    UINavigationBar *bar = [UINavigationBar appearance];
+    bar.translucent = NO; //设置导航栏不透明
+    
+    //设置导航栏背景并去除底部黑线
+    NSDictionary *titleTextAttributes = @{NSForegroundColorAttributeName:MakeColorRGB(0x333333),NSFontAttributeName:FONT_Medium(17)};
+    
+    ///控制导航栏的背景颜色和底部线的隐藏
+    if (@available(iOS 13.0, *)) {
+        UINavigationBarAppearance *appearance = [UINavigationBarAppearance new];
+        [appearance configureWithOpaqueBackground];//重置导航栏背景颜色和阴影
+        appearance.backgroundColor = [UIColor whiteColor];
+        appearance.shadowImage = [UIImage new];
+        appearance.shadowColor = nil;
+        appearance.titleTextAttributes = titleTextAttributes;
+        bar.standardAppearance = appearance;
+        bar.scrollEdgeAppearance = appearance;
+    } else {
+        // Fallback on earlier versions
+        bar.barTintColor = [UIColor whiteColor];
+        [bar setTitleTextAttributes:titleTextAttributes];
+        [bar setShadowImage:[UIImage new]];
+        [bar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    }
     
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:BundleUIImage(@"icon-backblack") style:UIBarButtonItemStyleDone target:self action:@selector(backItemClick)];
     self.navigationItem.leftBarButtonItem = backItem;
     
-    self.title = @"文档管理";
     self.emptyLab.text = @"您还没有文档，快去网页控制台资料管理上传吧";
     self.emptyIcon.image = BundleUIImage(@"icon-文档管理为空");
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(confirmBtnClick:)];
