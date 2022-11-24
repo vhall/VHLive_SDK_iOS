@@ -209,23 +209,42 @@
     if (self.endLotteryModel.lottery_id) {
         dic[@"lotteryId"] = self.endLotteryModel.lottery_id;
     }
+    __weak __typeof(self)weakSelf = self;
     [_lottery submitLotteryInfo:dic success:^{
         //提交成功
-        self.writeWinInfoView.hidden = YES;
-        self.lotteryResultIcon.image = BundleUIImage(@"插图_中奖_信息提交");
-        self.lotteryResultText.text = @"信息提交成功";
-        self.lotteryResultText.textColor = MakeColorRGB(0xFC5659);
-        self.lotteryResultBtn.hidden = (self.endLotteryModel.is_new && self.endLotteryModel.publish_winner == NO);
-        [self.lotteryResultBtn setTitle:@"查看中奖名单" forState:UIControlStateNormal];
+        weakSelf.writeWinInfoView.hidden = YES;
+        weakSelf.lotteryResultIcon.image = BundleUIImage(@"插图_中奖_信息提交");
+        weakSelf.lotteryResultText.text = @"信息提交成功";
+        weakSelf.lotteryResultText.textColor = MakeColorRGB(0xFC5659);
+        weakSelf.lotteryResultBtn.hidden = (weakSelf.endLotteryModel.is_new && weakSelf.endLotteryModel.publish_winner == NO);
+        [weakSelf.lotteryResultBtn setTitle:@"查看中奖名单" forState:UIControlStateNormal];
         [ProgressHud hideLoading];
         //领奖通知刷新抽奖icon
         [[NSNotificationCenter defaultCenter] postNotificationName:@"take_award_succeed" object:nil];
+        // 检测接口
+        [weakSelf lotteryWinningUserInfo];
+        [weakSelf lotteryWinningUserDetail];
     } failed:^(NSDictionary *failedData) {
         [ProgressHud hideLoading];
         [UIAlertController showAlertControllerTitle:@"信息提交失败" msg:failedData[@"content"] btnTitle:@"确定" callBack:nil];
     }];
 }
 
+// 观看端-抽奖-获取中奖人信息
+- (void)lotteryWinningUserInfo
+{
+    [_lottery lotteryWinningUserInfo:self.webinarInfo.webinarInfoData.interact.room_id complete:^(VHallLotteryUserInfo *userInfo, NSError *error) {
+        
+    }];
+}
+
+// 观看端-抽奖-查看中奖详情
+- (void)lotteryWinningUserDetail
+{
+    [_lottery lotteryWinningUserDetail:self.webinarInfo.webinarInfoData.interact.room_id lottery_id:self.endLotteryModel.lottery_id complete:^(VHallLotteryUserInfo *userInfo, NSError *error) {
+        
+    }];
+}
 
 //抽奖结果
 - (UIView *)lotteryResultView

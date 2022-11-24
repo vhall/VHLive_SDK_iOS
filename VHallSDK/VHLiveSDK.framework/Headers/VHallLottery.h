@@ -12,6 +12,17 @@
 #import "VHallMsgModels.h"
 #import "VHallBasePlugin.h"
 #import "VHLotteryListModel.h"
+#import "VHallRawBaseModel.h"
+
+/// 中奖人信息
+@interface VHallLotteryUserInfo : VHallRawBaseModel
+@property (nonatomic, copy) NSString *          lottery_id;             ///<抽奖id
+@property (nonatomic, copy) NSString *          lottery_user_name;      ///<姓名
+@property (nonatomic, copy) NSString *          lottery_user_phone;     ///<手机
+@property (nonatomic, copy) NSString *          lottery_user_nickname;  ///<昵称
+@property (nonatomic, copy) NSString *          lottery_user_address;   ///<地址
+@property (nonatomic, copy) NSString *          lottery_user_remark;    ///<备注
+@end
 
 /// 领奖页提交中奖用户信息填写选项的配置
 @interface VHallLotterySubmitConfig : NSObject
@@ -124,5 +135,20 @@
                       webinarId:(NSString *)webinarId
                         success:(void (^)(VHLotteryListModel * listModel))success
                            fail:(void (^)(NSError * error))fail;
+
+/// 观看端-抽奖-获取中奖人信息
+/// @param room_id 房间id
+/// @param complete userInfo:中奖人信息 error:错误提示
+- (void)lotteryWinningUserInfo:(NSString *)room_id
+                      complete:(void(^)(VHallLotteryUserInfo * userInfo, NSError *error))complete;
+
+/// 观看端-抽奖-查看中奖详情
+/// @param room_id 房间id
+/// @param lottery_id 抽奖id
+/// @param complete userInfo:中奖人信息 error:错误提示
+- (void)lotteryWinningUserDetail:(NSString *)room_id
+                      lottery_id:(NSString *)lottery_id
+                        complete:(void(^)(VHallLotteryUserInfo * userInfo, NSError *error))complete;
+
 @end
 

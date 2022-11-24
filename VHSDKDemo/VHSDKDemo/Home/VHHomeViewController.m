@@ -25,6 +25,8 @@
 #import "VHWebWatchLiveViewController.h"
 #import "VHNavigationController.h"
 #import "VHInteractLiveVC_New.h"
+#import "WarmUpViewController.h"
+#import "VHCommonViewController.h"
 #import "UIModel.h"
 ///新增美颜依赖库
 #import <VHBeautifyKit/VHBeautifyKit.h>
@@ -315,7 +317,23 @@ typedef enum : NSUInteger {
     watchVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:watchVC animated:YES completion:nil];
 }
+//预告页
+- (void)warmUpToVC
+{
+    WarmUpViewController * warmupVC = [[WarmUpViewController alloc] init];
+    warmupVC.webinar_id = DEMO_Setting.watchActivityID;
+    warmupVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:warmupVC animated:YES completion:nil];
+}
 
+//其它
+- (void)commonToVC
+{
+    VHCommonViewController * commonVC = [[VHCommonViewController alloc] init];
+    commonVC.webinar_id = DEMO_Setting.watchActivityID;
+    commonVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:commonVC animated:YES completion:nil];
+}
 #pragma mark - 看回放
 //看回放
 - (void)watchPlayBack {
@@ -417,18 +435,28 @@ typedef enum : NSUInteger {
             UIAlertAction *fashionVC = [UIAlertAction actionWithTitle:@"极简风格" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self fashionWatchLive];
             }];
+            
+            UIAlertAction * warmUp = [UIAlertAction actionWithTitle:@"预告页" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self warmUpToVC];
+            }];
 
             UIAlertAction *webWatch = [UIAlertAction actionWithTitle:@"web嵌入观看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self webViewWatchLive];
             }];
             
+            UIAlertAction * common = [UIAlertAction actionWithTitle:@"其它" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self commonToVC];
+            }];
+
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
             [alertController addAction:halfScreenWatch];
             [alertController addAction:portraitWatch];
             [alertController addAction:halfScreen_NodelayWatch];
             [alertController addAction:portrait_NodelayWatch];
             [alertController addAction:fashionVC];
+            [alertController addAction:warmUp];
             [alertController addAction:webWatch];
+            [alertController addAction:common];
             [alertController addAction:cancelAction];
             alertController.popoverPresentationController.sourceView = sender;
             alertController.popoverPresentationController.sourceRect = sender.bounds;

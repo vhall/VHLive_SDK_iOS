@@ -15,10 +15,12 @@
 @property (nonatomic, strong) VHRoom * videoRoundRoom;
 /// 视频轮巡RenderView
 @property (nonatomic, strong) VHLocalRenderView * videoRoundRenderView;
-/// roomID
-@property (nonatomic, copy) NSString * roomId;
 /// 网络监听
 @property(nonatomic, strong) Reachability * reachAbility;
+/// 活动id
+@property (nonatomic, copy) NSString * webinar_id;
+/// 房间id
+@property (nonatomic, copy) NSString * pass_room_id;
 
 @end
 
@@ -64,14 +66,14 @@
         {
             //wifi
             //请求最新数据
-            [self getRoundUsers];
+            [self getRoundUsers:self.webinar_id pass_room_id:self.pass_room_id];
         }
             break;
         case ReachableViaWWAN:
         {
             //数据网络
             //请求最新数据
-            [self getRoundUsers];
+            [self getRoundUsers:self.webinar_id pass_room_id:self.pass_room_id];
         }
             break;
         default:
@@ -80,9 +82,10 @@
 }
 
 #pragma mark - 开启轮询
-- (void)videoRoundUsers:(NSArray *)uids roomId:(NSString *)roomId
+- (void)videoRoundUsers:(NSArray *)uids webinar_id:(NSString *)webinar_id pass_room_id:(NSString *)pass_room_id
 {
-    self.roomId = roomId;
+    self.webinar_id = webinar_id;
+    self.pass_room_id = pass_room_id;
     
     BOOL isHave = NO;
     for (NSString * userId in uids) {
@@ -93,7 +96,7 @@
     }
     if (isHave) {
         // 开始轮询
-        [self startVideoRoundRoomId:self.roomId];
+        [self startVideoRound:webinar_id pass_room_id:pass_room_id];
     }else{
         // 关闭轮询
         [self closeVideoRound];
@@ -101,13 +104,16 @@
 }
 
 #pragma mark - 开始轮询
-- (void)startVideoRoundRoomId:(NSString *)roomId
+- (void)startVideoRound:(NSString *)webinar_id pass_room_id:(NSString *)pass_room_id
 {
+    self.webinar_id = webinar_id;
+    self.pass_room_id = pass_room_id;
+
     // 如果在推流 则不去调用加入房间等操作
     if (self.videoRoundRoom.isPublishing && self.videoRoundRoom.status == VHRoomStatusConnected) {
         return;
     }
-    [self.videoRoundRoom enterRoomWithRoomId:roomId];
+    [self.videoRoundRoom enterRoomWithRoomId:webinar_id];
 }
 
 #pragma mark - 关闭轮询
@@ -157,16 +163,20 @@
 }
 
 #pragma mark - 轮询列表
-- (void)getRoundUsers
+- (void)getRoundUsers:(NSString *)webinar_id pass_room_id:(NSString *)pass_room_id
 {
+    self.webinar_id = webinar_id;
+    self.pass_room_id = pass_room_id;
+    
     __weak __typeof(self)weakSelf = self;
-    [self.videoRoundRoom getRoundUsersWithIs_next:@"0" success:^(NSDictionary *response) {
+    
+    [VHVideoRoundObject getRoundUsers:pass_room_id is_next:@"0" success:^(NSDictionary *response) {
         NSDictionary * data = response[@"data"];
         NSMutableArray * users = [NSMutableArray array];
         for (NSDictionary * dic in data[@"list"]) {
             [users addObject:dic[@"account_id"]];
         }
-        [weakSelf videoRoundUsers:users roomId:weakSelf.roomId];
+        [weakSelf videoRoundUsers:users webinar_id:weakSelf.webinar_id pass_room_id:weakSelf.pass_room_id];
     } fail:^(NSError *error) {
         
     }];
@@ -174,7 +184,7 @@
 #pragma mark - 切换前后台
 //前台
 - (void)appWillEnterForeground {
-    [self getRoundUsers];
+    [self getRoundUsers:self.webinar_id pass_room_id:self.pass_room_id];
 }
 
 //后台

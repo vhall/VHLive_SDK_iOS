@@ -11,6 +11,7 @@
 #import "VHWebinarInfoData.h"
 #import "VHLotteryListModel.h"
 #import "VHSurveyListModel.h"
+#import "VHallRawBaseModel.h"
 
 @class VHWebinarScrollTextInfo;
 @class VHRoleNameData;
@@ -22,6 +23,16 @@
 @class VHSeatModel;
 
 NS_ASSUME_NONNULL_BEGIN
+
+// 检测配置项权限
+@interface VHPermissionConfigItem : VHallRawBaseModel
+
+@property (nonatomic, assign) BOOL                                  watch_hide_like;            ///<是否开启点赞
+@property (nonatomic, assign) BOOL                                  hide_gifts;                 ///<是否开启礼物
+@property (nonatomic, assign) BOOL                                  watch_record_no_chatting;   ///<是否开启回放禁言
+@property (nonatomic, assign) BOOL                                  watch_record_chapter;       ///<是否开启回放章节打点
+
+@end
 
 // 角色信息
 @interface VHRoleNameData : NSObject
@@ -115,7 +126,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)permissionsCheckWithWebinarId:(NSString *)webinarId
                       webinar_user_id:(NSString *)webinar_user_id
                              scene_id:(NSString *)scene_id
-                              success:(void(^)(NSDictionary *data))success
+                              success:(void(^)(VHPermissionConfigItem * item))success
                               failure:(void(^)(NSError *error))failure;
 
 /// 返回角色数据

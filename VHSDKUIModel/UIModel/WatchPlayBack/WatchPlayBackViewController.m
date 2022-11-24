@@ -18,6 +18,7 @@
 #import "VHPlayerView.h"
 #import "UIAlertController+ITTAdditionsUIModel.h"
 #import "VHDocFullScreenViewController.h"
+#import "VHActionSheet.h"
 
 #define RATEARR @[@1.0,@1.25,@1.5,@2.0,@0.5,@0.67,@0.8]//倍速播放循环顺序
 
@@ -52,11 +53,15 @@ static AnnouncementView* announcementView = nil;
 @property (weak, nonatomic) IBOutlet UIButton *rateBtn;
 @property (nonatomic,strong) UITableView * tableView;
 @property (nonatomic, strong) VHallChat *chat;     //聊天
+@property (nonatomic, assign) BOOL watch_record_no_chatting;///<是否开启回放禁言
+@property (nonatomic, assign) BOOL watch_record_chapter;///<是否开启回放章节打点
 @property (nonatomic,assign) int  pageNum; //聊天记录页码
 @property (nonatomic,strong) NSMutableArray *chatArray;//聊天数据源
 @property (nonatomic , assign) BOOL isCast_screen; //投屏权限
 @property (nonatomic,strong) VHKeyboardToolView * messageToolView;  //输入view
 @property (nonatomic,assign) BOOL  isPreLoad;//预加载状态
+@property (nonatomic, strong) UIButton * chaptersBtn;///<章节按钮
+@property (nonatomic, copy) NSArray <VHChaptersItem *> * chaptersList;///<章节打点列表
 @end
 
 @implementation WatchPlayBackViewController
@@ -132,6 +137,8 @@ static AnnouncementView* announcementView = nil;
         self.liveTypeLabel.text = @"";
     }
 
+    // 章节按钮
+    [self addChaptersView];
 }
 
 
@@ -327,6 +334,68 @@ static AnnouncementView* announcementView = nil;
     _docConentView.hidden = YES;
 }
 
+#pragma mark - 获取房间配置项权限
+- (void)getPermissionsCheck
+{
+    __weak __typeof(self)weakSelf = self;
+    [VHWebinarBaseInfo permissionsCheckWithWebinarId:self.moviePlayer.webinarInfo.webinarId webinar_user_id:self.moviePlayer.webinarInfo.author_userId scene_id:@"1" success:^(VHPermissionConfigItem * _Nonnull item) {
+        
+        // 是否开启回放禁言
+        weakSelf.watch_record_no_chatting = item.watch_record_no_chatting;
+        // 是否开启回放章节打点
+        weakSelf.watch_record_chapter = item.watch_record_chapter;
+        
+        // 获取章节打点
+        if (weakSelf.watch_record_chapter) {
+            [weakSelf requestRecordChaptersList:self.moviePlayer.webinarInfo.webinarInfoData.record.record_id];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+#pragma mark - 章节打点功能↓↓↓↓↓↓
+//获取章节打点
+- (void)requestRecordChaptersList:(NSString *)record_id
+{
+    __weak __typeof(self)weakSelf = self;
+    [VHChaptersObject getRecordChaptersList:record_id complete:^(NSArray<VHChaptersItem *> *chaptersList, NSError *error) {
+        weakSelf.chaptersBtn.hidden = YES;
+        if (chaptersList.count > 0){
+            weakSelf.chaptersBtn.hidden = NO;
+            weakSelf.chaptersList = chaptersList;
+        }
+        if (error){
+            VH_ShowToast(error.localizedDescription);
+        }
+    }];
+}
+//添加章节打点控件
+- (void)addChaptersView{
+    [self.chaptersBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(0);
+        make.top.mas_equalTo(self.moviePlayer.moviePlayerView.mas_bottom).offset(50);
+    }];
+}
+//点击章节打点按钮 展开章节打点列表
+- (void)clickChaptersBtnAction
+{
+    VHActionSheet *actionSheet = [VHActionSheet sheetWithTitle:@"章节" cancelButtonTitle:@"取消" clicked:^(VHActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
+        if (buttonIndex == 0){return;}
+        VHChaptersItem * item = self.chaptersList[buttonIndex-1];
+        [self.moviePlayer setCurrentPlaybackTime:floor(item.created_at)];
+    } otherButtonTitles:nil];
+    
+    actionSheet.scrolling = YES;
+    actionSheet.visibleButtonCount = 5;
+    
+    for (int i = 0; i<self.chaptersList.count; i++) {
+        VHChaptersItem * item = self.chaptersList[i];
+        [actionSheet appendButtonWithTitle:[NSString stringWithFormat:@"标题%@          时间%@",item.title,[self timeFormat:item.created_at]] atIndex:i+1];
+    }
+    [actionSheet show];
+}
 #pragma mark - 视频控制
 - (void)Vh_playerButtonAction:(UIButton *)button {
     button.selected = !button.selected;
@@ -482,6 +551,12 @@ static AnnouncementView* announcementView = nil;
     }
 }
 
+- (void)connectSucceed:(VHallMoviePlayer *)moviePlayer
+                  info:(NSDictionary *)info
+{
+    // 获取房间配置项权限
+    [self getPermissionsCheck];
+}
 
 - (void)playError:(VHSaasLivePlayErrorType)livePlayErrorType info:(NSDictionary *)info;
 {
@@ -730,12 +805,23 @@ static AnnouncementView* announcementView = nil;
 #pragma mark - 我来说两句
 - (IBAction)sendMsgBtnClick:(id)sender
 {
+    if (self.watch_record_no_chatting)
+    {
+        VH_ShowToast(@"已开启回放禁言");
+        return;
+    }
+    
     [self.messageToolView becomeFirstResponder];
 }
 
 #pragma mark - VHKeyboardToolViewDelegate
 /* 发送按钮事件回调*/
 - (void)keyboardToolView:(VHKeyboardToolView *)view sendText:(NSString *)text {
+    if (self.watch_record_no_chatting)
+    {
+        VH_ShowToast(@"已开启回放禁言");
+        return;
+    }
     if ([text isEqualToString:@""]) {
         VH_ShowToast(@"发送的消息不能为空");
         return;
@@ -917,6 +1003,21 @@ static AnnouncementView* announcementView = nil;
     return _messageToolView;
 }
 
+- (UIButton *)chaptersBtn {
+    if (!_chaptersBtn) {
+        _chaptersBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _chaptersBtn.hidden = YES;
+        _chaptersBtn.titleLabel.font = FONT_FZZZ(12);
+        _chaptersBtn.backgroundColor = [UIColor blackColor];
+        _chaptersBtn.layer.masksToBounds = YES;
+        _chaptersBtn.layer.cornerRadius = 5;
+        [_chaptersBtn setTitle:@"回放章节" forState:UIControlStateNormal];
+        [_chaptersBtn addTarget:self action:@selector(clickChaptersBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.chaptersBtn];
+    }
+    return _chaptersBtn;
+}
+
 #pragma mark - 屏幕旋转
 
 -(BOOL)shouldAutorotate
@@ -927,17 +1028,6 @@ static AnnouncementView* announcementView = nil;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     return YES;
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    UIInterfaceOrientation orientation = toInterfaceOrientation;
-    if(orientation == UIInterfaceOrientationLandscapeRight || orientation == UIInterfaceOrientationLandscapeLeft) { //横屏
-        self.playMaskView.fullButton.selected = YES;
-        NSLog(@"将要旋转为横屏");
-    }else { //竖屏
-        self.playMaskView.fullButton.selected = NO;
-        NSLog(@"将要旋转为竖屏");
-    }
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -952,6 +1042,19 @@ static AnnouncementView* announcementView = nil;
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
     return UIInterfaceOrientationPortrait;
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    if(orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) { //横屏
+        self.playMaskView.fullButton.selected = YES;
+        NSLog(@"将要旋转为横屏");
+    }else { //竖屏
+        self.playMaskView.fullButton.selected = NO;
+        NSLog(@"将要旋转为竖屏");
+    }
 }
 
 @end

@@ -27,6 +27,10 @@
 #import "VHallLikeObject.h"
 #import "VHallGiftObject.h"
 #import "VHallRehearsalObject.h"
+#import "VHWarmInfoObject.h"
+#import "VHChaptersObject.h"
+#import "VHVideoRoundObject.h"
+#import "VHCommonObject.h"
 
 
 @protocol VHallApiDelegate <NSObject>

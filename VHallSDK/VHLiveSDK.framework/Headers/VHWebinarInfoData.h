@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface VHWebinarInfoData_Record :NSObject
+@property (nonatomic , copy) NSString      *                    record_id;              ///<默认回放ID
 @property (nonatomic , copy) NSString      *                    preview_paas_record_id; ///<试看paas_record_id
 @property (nonatomic , copy) NSString      *                    paas_record_id;         ///<回放paas_record_id
 @property (nonatomic , assign) NSInteger                        encrypt_status;         ///<0:未加密 1:加密中 2:加密成功
@@ -67,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface VHWebinarInfoData_Webinar :NSObject
-@property (nonatomic , strong) VHWebinarInfoData_Webinar_Userinfo * userinfo;               ///<活动创建人
+@property (nonatomic , strong) VHWebinarInfoData_Webinar_Userinfo * userinfo;           ///<活动创建人
 @property (nonatomic , assign) NSInteger                        data_id;                ///<活动id
 @property (nonatomic , copy) NSString      *                    verify_tip;             ///<观看限制提示语
 @property (nonatomic , copy) NSString      *                    img_url;                ///<封面
@@ -135,11 +136,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) VHWebinarInfoData_Subscribe   *  subscribe;              ///<预约人数
 @property (nonatomic , strong) VHWebinarInfoData_Online      *  online;                 ///<在线信息
 
-
 /// 初始化整理数据
 /// - Parameter data: 数据详情
 - (instancetype)initWithData:(NSDictionary *)data;
 
+/// 获取观看端房间详情
+/// - Parameters:
+///   - webinar_id: 活动id
+///   - complete: 请求完成
++ (void)requestWatchInit:(NSString *)webinar_id
+                complete:(void(^)(VHWebinarInfoData * webinarInfoData, NSError *error))complete;
 @end
 
 NS_ASSUME_NONNULL_END

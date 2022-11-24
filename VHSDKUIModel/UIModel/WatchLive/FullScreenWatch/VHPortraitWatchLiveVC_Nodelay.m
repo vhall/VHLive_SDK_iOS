@@ -288,7 +288,7 @@
 - (void)getRoundUsers
 {
     __weak __typeof(self)weakSelf = self;
-    [self.inavRoom getRoundUsersWithIs_next:@"0" success:^(NSDictionary *response) {
+    [VHVideoRoundObject getRoundUsers:self.inavRoom.roomInfo.webinarInfoData.interact.room_id is_next:@"0" success:^(NSDictionary *response) {
         NSDictionary * data = response[@"data"];
         NSMutableArray * users = [NSMutableArray array];
         for (NSDictionary * dic in data[@"list"]) {

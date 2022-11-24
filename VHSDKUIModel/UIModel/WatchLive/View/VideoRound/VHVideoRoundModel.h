@@ -10,16 +10,25 @@
 
 @interface VHVideoRoundModel : NSObject
 
+
 /// 校验用户id轮询
-- (void)videoRoundUsers:(NSArray *)uids roomId:(NSString *)roomId;
+/// - Parameters:
+///   - uids: 用户id列表
+///   - webinar_id: 活动id
+///   - pass_room_id: 房间id
+- (void)videoRoundUsers:(NSArray *)uids webinar_id:(NSString *)webinar_id pass_room_id:(NSString *)pass_room_id;
 
 /// 开始轮询
-- (void)startVideoRoundRoomId:(NSString *)roomId;
+/// - Parameter webinar_id: 活动id
+- (void)startVideoRound:(NSString *)webinar_id pass_room_id:(NSString *)pass_room_id;
 
 /// 关闭轮询
 - (void)closeVideoRound;
 
 /// 轮询列表
-- (void)getRoundUsers;
+/// - Parameters:
+///   - webinar_id: 活动id
+///   - pass_room_id: 房间id
+- (void)getRoundUsers:(NSString *)webinar_id pass_room_id:(NSString *)pass_room_id;
 
 @end

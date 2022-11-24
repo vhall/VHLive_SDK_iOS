@@ -50,7 +50,6 @@ static AnnouncementView* announcementView = nil;
     BarrageRenderer   *_renderer;   //弹幕
     
     UIImageView       *_logView;    //当播放音频时显示的图片
-    WatchLiveLotteryViewController *_lotteryVC; //抽奖VC
     BOOL _isMute;          //是否静音
     BOOL _loadedChatHistoryList;  //是否请求过历史聊天记录
     int  _bufferCount;  //卡顿次数
@@ -131,11 +130,13 @@ static AnnouncementView* announcementView = nil;
 @property (nonatomic) BOOL  questionStatus;
 @property (nonatomic) NSInteger  selectIndex;
 /// 抽奖
+@property (nonatomic, strong) WatchLiveLotteryViewController * lotteryVC; //抽奖VC
 @property (nonatomic, strong) UIButton *lotteryIconBtn;
 /// 公告列表按钮
 @property (nonatomic, strong) UIButton * announcementListBtn;
 /// 公告
 @property (nonatomic, strong) VHAnnouncementList * announcementList;
+
 @end
 
 @implementation VHHalfWatchLiveVC_Normal
@@ -263,8 +264,6 @@ static AnnouncementView* announcementView = nil;
     // 抽奖成功通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lotterySuccess) name:@"take_award_succeed" object:nil];
    
-    //查询视频轮询
-    [self.videoRound getRoundUsers];
     [self.docFullScreenButton setImage:BundleUIImage(@"fullscreen") forState:UIControlStateNormal];
 }
 
@@ -869,7 +868,15 @@ static AnnouncementView* announcementView = nil;
     
 }
 
-
+#pragma mark - 获取房间配置项权限
+- (void)getPermissionsCheck
+{
+    [VHWebinarBaseInfo permissionsCheckWithWebinarId:self.moviePlayer.webinarInfo.webinarId webinar_user_id:self.moviePlayer.webinarInfo.author_userId scene_id:@"1" success:^(VHPermissionConfigItem * _Nonnull item) {
+                
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
 
 #pragma mark - 抽奖
 - (void)lotterySuccess{
@@ -964,11 +971,10 @@ static AnnouncementView* announcementView = nil;
         [_showView removeAllSubviews];
         _lotteryVC = nil;
     }
-    _lotteryVC = [[WatchLiveLotteryViewController alloc] init];
-    _lotteryVC.lottery = _lottery;
-    _lotteryVC.view.frame = _showView.bounds;
-    [_showView addSubview:_lotteryVC.view];
-    [_lotteryVC new_lottery_UI:endLotteryModel];
+    self.lotteryVC.view.frame = _showView.bounds;
+    [_showView addSubview:self.lotteryVC.view];
+    [self.lotteryVC new_lottery_UI:endLotteryModel];
+    
     [self lotteryBtnClick:self.lotteryBtn];
 }
 
@@ -1405,6 +1411,12 @@ static AnnouncementView* announcementView = nil;
     // 获取抽奖历史
     [self lotteryLogic:NO];
 
+    // 获取房间配置项权限
+    [self getPermissionsCheck];
+    
+    // 查询视频轮询
+    [self.videoRound getRoundUsers:self.moviePlayer.webinarInfo.webinarId pass_room_id:self.moviePlayer.webinarInfo.webinarInfoData.interact.room_id];
+
     // 房间数据
     VHWebinarInfo *webinarInfo = self.moviePlayer.webinarInfo;
     webinarInfo.delegate = self;
@@ -1812,11 +1824,9 @@ static AnnouncementView* announcementView = nil;
         _lotteryVC = nil;
     }
     
-    _lotteryVC = [[WatchLiveLotteryViewController alloc] init];
-    _lotteryVC.lottery = _lottery;
-    _lotteryVC.startLotteryModel = msg;
-    _lotteryVC.view.frame = _showView.bounds;
-    [_showView addSubview:_lotteryVC.view];
+    self.lotteryVC.startLotteryModel = msg;
+    self.lotteryVC.view.frame = _showView.bounds;
+    [_showView addSubview:self.lotteryVC.view];
     
     [self lotteryBtnClick:self.lotteryBtn];
 }
@@ -1824,13 +1834,10 @@ static AnnouncementView* announcementView = nil;
 //结束抽奖
 - (void)endLottery:(VHallEndLotteryModel *)msg
 {
-    if (!_lotteryVC) {
-        _lotteryVC = [[WatchLiveLotteryViewController alloc] init];
-        _lotteryVC.lottery = _lottery;
-        _lotteryVC.view.frame = _showView.bounds;
-        [_showView addSubview:_lotteryVC.view];
-    }
-    _lotteryVC.endLotteryModel = msg;
+    self.lotteryVC.endLotteryModel = msg;
+    self.lotteryVC.view.frame = _showView.bounds;
+    [_showView addSubview:self.lotteryVC.view];
+
     [self lotteryBtnClick:self.lotteryBtn];
     //刷新icon小红点
     [self lotteryLogic:NO];
@@ -1850,7 +1857,7 @@ static AnnouncementView* announcementView = nil;
 - (void)videoRoundUsers:(NSArray *)uids
 {
     // 轮询
-    [self.videoRound videoRoundUsers:uids roomId:self.roomId];
+    [self.videoRound videoRoundUsers:uids webinar_id:self.moviePlayer.webinarInfo.webinarId pass_room_id:self.moviePlayer.webinarInfo.webinarInfoData.interact.room_id];
 }
 #pragma mark - 问答相关
 //问答可用状态
@@ -2207,6 +2214,14 @@ static AnnouncementView* announcementView = nil;
         _announcementList = [[VHAnnouncementList alloc] initWithFrame:self.view.frame];
     }return _announcementList;
 }
+- (WatchLiveLotteryViewController *)lotteryVC
+{
+    if (!_lotteryVC) {
+        _lotteryVC = [[WatchLiveLotteryViewController alloc] init];
+        _lotteryVC.lottery = _lottery;
+        _lotteryVC.webinarInfo = self.moviePlayer.webinarInfo;
+    }return _lotteryVC;
+}
 #pragma mark - 屏幕旋转相关
 -(BOOL)shouldAutorotate
 {
@@ -2224,25 +2239,6 @@ static AnnouncementView* announcementView = nil;
     return YES;
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    UIInterfaceOrientation orientation = toInterfaceOrientation;
-    if(orientation == UIInterfaceOrientationLandscapeRight || orientation == UIInterfaceOrientationLandscapeLeft) { //横屏
-        _fullscreenBtn.selected = YES;
-        if(_surveyController) { //横屏隐藏问卷
-            _surveyController.view.hidden = YES;
-        }
-        NSLog(@"将要旋转为横屏");
-        self.videoViewHeight.constant = VHScreenWidth;
-    }else { //竖屏
-        _fullscreenBtn.selected = NO;
-        if(_surveyController) { //横屏显示问卷
-            _surveyController.view.hidden = NO;
-        }
-        NSLog(@"将要旋转为竖屏");
-        self.videoViewHeight.constant = VHScreenHeight * 9 / 16.0;
-    }
-}
-
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskPortrait;
@@ -2253,4 +2249,24 @@ static AnnouncementView* announcementView = nil;
     return UIInterfaceOrientationPortrait;
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    if(orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) { //横屏
+        _fullscreenBtn.selected = YES;
+        if(_surveyController) { //横屏隐藏问卷
+            _surveyController.view.hidden = YES;
+        }
+        NSLog(@"将要旋转为横屏");
+        self.videoViewHeight.constant = size.height;
+    }else { //竖屏
+        _fullscreenBtn.selected = NO;
+        if(_surveyController) { //横屏显示问卷
+            _surveyController.view.hidden = NO;
+        }
+        NSLog(@"将要旋转为竖屏");
+        self.videoViewHeight.constant = size.width * 9 / 16.0;
+    }
+}
 @end

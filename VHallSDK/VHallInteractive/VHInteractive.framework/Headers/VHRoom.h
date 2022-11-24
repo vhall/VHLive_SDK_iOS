@@ -62,14 +62,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 离开房间
 - (void)leaveRoom;
 
-/// 设置是否加入混流
-/// @param isJoin 是否加入
-/// @param cameraView 加入混流的renderView
-/// @param handle 结果回调
-- (void)setRoomJoinBroadCastMixOption:(BOOL)isJoin
-                           cameraView:(VHLocalRenderView *)cameraView
-                               finish:(void(^)(int code, NSString * _Nonnull message))handle;
-
 /// 开启/关闭旁路直播 (使用该方法前提:加入房间初始化方法使用enterRoomWithRoomId:broadCastId:accessToken:userData:)
 /// @param isOpen Yes开启旁路直播   NO关闭旁路直播
 /// @param param [self baseConfigRoomBroadCast:4 layout:4]; 调用此函数配置视频质量参数和旁路布局
@@ -86,6 +78,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param cropType 填充类型:VHRoomBGCropType
 /// @param handle 设置后的回调,成功:200
 - (void)settingRoomBroadCastBackgroundImageURL:(NSURL *_Nullable)url cropType:(VHRoomBGCropType)cropType finish:(void(^)(int code, NSString * _Nonnull message))handle;
+
+/// 设置音视频是否加入混流
+/// @param isJoin 是否加入
+/// @param cameraView 加入混流的renderView
+/// @param handle 结果回调
+- (void)setRoomJoinBroadCastMixOption:(BOOL)isJoin
+                           cameraView:(VHLocalRenderView *)cameraView
+                               finish:(void(^)(int code, NSString * _Nonnull message))handle;
 
 #pragma mark ------------------v6.1新增--------------------
 /// 嘉宾进入互动房间 (嘉宾使用)
@@ -198,14 +198,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param fail 失败回调
 - (void)agreeInviteSuccess:(void(^)(void))success
                       fail:(void(^)(NSError *error))fail;
-
-/// 获取轮询用户
-/// @param is_next 是否是下一组， 0：当前组， 1：下一组
-/// @param success 成功
-/// @param fail 失败
-- (void)getRoundUsersWithIs_next:(NSString *)is_next
-                         success:(void(^)(NSDictionary *response))success
-                            fail:(void(^)(NSError *error))fail;
 
 /// 是否开启文档融屏旁路
 /// @param enable 开启/关闭

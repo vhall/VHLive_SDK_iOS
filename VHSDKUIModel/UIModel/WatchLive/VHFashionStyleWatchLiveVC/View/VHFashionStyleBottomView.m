@@ -105,16 +105,17 @@
     }];
 }
 
-#pragma mark - 获取房间详情
-- (void)getWebinarBaseInfo
+#pragma mark - 获取房间配置项权限
+- (void)permissionsCheckWithWebinarId
 {
-    [VHWebinarBaseInfo permissionsCheckWithWebinarId:self.moviePlayer.webinarInfo.webinarId webinar_user_id:self.moviePlayer.webinarInfo.author_userId scene_id:@"1" success:^(NSDictionary * _Nonnull data) {
-        NSString * permissions = data[@"permissions"];
-        NSDictionary * permissionsDic = [UIModelTools objectWithJsonString:permissions];
+    __weak __typeof(self)weakSelf = self;
+    [VHWebinarBaseInfo permissionsCheckWithWebinarId:self.moviePlayer.webinarInfo.webinarId webinar_user_id:self.moviePlayer.webinarInfo.author_userId scene_id:@"1" success:^(VHPermissionConfigItem * _Nonnull item) {
+        
         // 点赞
-        self.likeBtn.hidden = ![permissionsDic[@"ui.watch_hide_like"] boolValue];
+        weakSelf.likeBtn.hidden = !item.watch_hide_like;
         // 礼物
-        self.giftBtn.hidden = ![permissionsDic[@"ui.hide_gifts"] boolValue];
+        weakSelf.giftBtn.hidden = !item.hide_gifts;
+
     } failure:^(NSError * _Nonnull error) {
         
     }];
