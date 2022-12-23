@@ -203,8 +203,8 @@
     // 底部信息赋值
     _bottomView.moviePlayer = moviePlayer;
     _bottomView.chat = _chat;
-    // 获取房间详情
-    [_bottomView getWebinarBaseInfo];
+    // 获取房间配置项权限
+    [_bottomView permissionsCheckWithWebinarId];
     // 获取点赞数
     [_bottomView requestGetRoomLikeWithRoomId];
     // 获取自己的头像

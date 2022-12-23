@@ -42,8 +42,8 @@ typedef void(^ClickGiftBtnBlock)(void);
 /// 获取当前房间点赞总数
 - (void)requestGetRoomLikeWithRoomId;
 
-/// 获取房间详情
-- (void)getWebinarBaseInfo;
+/// 获取房间配置项权限
+- (void)permissionsCheckWithWebinarId;
 
 #pragma mark - --------------------上麦业务---------------------------
 /// 是否允许举手

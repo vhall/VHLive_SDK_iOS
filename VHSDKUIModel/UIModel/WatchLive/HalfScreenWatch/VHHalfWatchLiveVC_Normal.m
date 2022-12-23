@@ -33,14 +33,17 @@
 #import "Masonry.h"
 #import "VHQuestionnaireController.h"
 #import "VHVideoRoundModel.h"
-
+#import "VHExamList.h"
+#import "VHExamWebView.h"
 #import "VHLotteryViewController.h"
 #import "UIView+RedRot.h"
+#import "VHExamChatCell.h"
+
 # define DebugLog(fmt, ...) NSLog((@"\n[文件名:%s]\n""[函数名:%s]\n""[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #import "VHDocFullScreenViewController.h"
 
 static AnnouncementView* announcementView = nil;
-@interface VHHalfWatchLiveVC_Normal ()<VHallMoviePlayerDelegate, VHallChatDelegate, VHallQAndADelegate, VHallLotteryDelegate,VHallSignDelegate,VHallSurveyDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,MicCountDownViewDelegate,VHInvitationAlertDelegate,VHSurveyViewControllerDelegate,DLNAViewDelegate,VHWebinarInfoDelegate,VHKeyboardToolViewDelegate,VHLotteryOpenDelegate>
+@interface VHHalfWatchLiveVC_Normal ()<VHallMoviePlayerDelegate, VHallChatDelegate, VHallQAndADelegate, VHallLotteryDelegate,VHallSignDelegate,VHallSurveyDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,MicCountDownViewDelegate,VHInvitationAlertDelegate,VHSurveyViewControllerDelegate,DLNAViewDelegate,VHWebinarInfoDelegate,VHKeyboardToolViewDelegate,VHLotteryOpenDelegate,VHExamObjectDelegate>
 {
     VHallChat         *_chat;       //聊天
     VHallQAndA        *_QA;         //问答
@@ -129,13 +132,25 @@ static AnnouncementView* announcementView = nil;
 @property (nonatomic, strong) UIButton * qetBtn;
 @property (nonatomic) BOOL  questionStatus;
 @property (nonatomic) NSInteger  selectIndex;
-/// 抽奖
-@property (nonatomic, strong) WatchLiveLotteryViewController * lotteryVC; //抽奖VC
+
+/// 抽奖VC
+@property (nonatomic, strong) WatchLiveLotteryViewController * lotteryVC;
+/// 抽奖按钮
 @property (nonatomic, strong) UIButton *lotteryIconBtn;
-/// 公告列表按钮
-@property (nonatomic, strong) UIButton * announcementListBtn;
+
 /// 公告
 @property (nonatomic, strong) VHAnnouncementList * announcementList;
+/// 公告列表按钮
+@property (nonatomic, strong) UIButton * announcementListBtn;
+
+/// 快问快答类
+@property (nonatomic, strong) VHExamObject * examObject;
+/// 快问快答
+@property (nonatomic, strong) VHExamList * examList;
+/// 快问快答嵌入页
+@property (nonatomic, strong) VHExamWebView * examWebView;
+/// 快问快答按钮
+@property (nonatomic, strong) UIButton * examBtn;
 
 @end
 
@@ -261,12 +276,15 @@ static AnnouncementView* announcementView = nil;
     // 添加抽奖
     [self addLotteryView];
     
+    // 添加快问快答
+    [self addExamBtn];
+    
+    
     // 抽奖成功通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lotterySuccess) name:@"take_award_succeed" object:nil];
    
     [self.docFullScreenButton setImage:BundleUIImage(@"fullscreen") forState:UIControlStateNormal];
 }
-
 - (IBAction)onClickFullScreen:(UIButton *)sender {
     self.docFullScreen = [VHDocFullScreenViewController new];
     self.docFullScreen.docView = _moviePlayer.documentView;
@@ -878,106 +896,6 @@ static AnnouncementView* announcementView = nil;
     }];
 }
 
-#pragma mark - 抽奖
-- (void)lotterySuccess{
-    [self lotteryLogic:NO];
-}
-- (void)addLotteryView{
-    self.lotteryIconBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.lotteryIconBtn setImage:BundleUIImage(@"icon_lottery") forState:UIControlStateNormal];
-    self.lotteryIconBtn.contentMode = UIViewContentModeScaleAspectFit;
-    [self.lotteryIconBtn addTarget:self action:@selector(lotteryAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.lotteryIconBtn];
-    [self.lotteryIconBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.offset(0);
-        make.top.offset(90);
-        make.width.height.mas_equalTo(36);
-    }];
-}
-- (void)lotteryAction{
-    [self lotteryLogic:YES];
-}
-#pragma mark -- 获取抽奖历史
-- (void)lotteryLogic:(BOOL)isAction{
-    //抽奖历史记录
-    [VHWebinarBaseInfo fetchLotteryListShowAll:2 webinarId:self.roomId success:^(VHLotteryListModel * _Nonnull listModel) {
-            if (listModel.listModel.count == 0) {
-                if (isAction) {
-                    VH_ShowToast(@"当前没有中奖");
-                }
-            }else{
-                self.lotteryIconBtn.hidden = NO;
-                [self isHaveLotteryRedRot:listModel.listModel action:isAction];
-            }
-        } fail:^(NSError * _Nonnull error) {
-            VH_ShowToast(error.localizedDescription);
-        }];
-}
-// 渲染UI 判断我自己是否中奖并且是否领奖
-- (void)isHaveLotteryRedRot:(NSArray <VHLotteryModel *>*)listArr action:(BOOL)action{
-    BOOL isHaveRedDot = NO;//是否显示红点
-    for (int i = 0; i < listArr.count; i++) {
-        VHLotteryModel *model = listArr[i];
-        //需要领奖
-        if (model.take_award == NO && model.need_take_award == YES) {
-            isHaveRedDot = YES;
-        }
-    }
-    // 显示小红点
-    if (isHaveRedDot) {
-        [self.lotteryIconBtn showBadge];
-    }else{
-        [self.lotteryIconBtn hidenBadge];
-    }
-    
-    // 判断展示填写信息界面,还是展示中奖列表
-    if (action) {
-        if (listArr.count == 1) {
-            VHLotteryModel *model = listArr[0];
-            if (model.need_take_award == NO) {
-                VH_ShowToast(@"当前奖品不需要领奖");
-                return;
-            }
-            if (model.take_award == YES) {
-                VH_ShowToast(@"当前奖品已经领过奖");
-                return;
-            }
-            [self lotteryBtnClick:self.lotteryBtn];
-            [self openOneLotteryModel:model];
-        }else{
-            ///显示抽奖历史
-            [self lotteryBtnClick:self.lotteryBtn];
-            [self presentLottery:listArr];
-        }
-    }
-}
-- (void)openOneLotteryModel:(VHLotteryModel *)model{
-    VHallEndLotteryModel *endModel = [[VHallEndLotteryModel alloc] init];
-    endModel.is_new = YES;
-    endModel.lottery_id = model.lottery_id;
-    endModel.need_take_award = model.need_take_award;
-    endModel.isWin = model.win;
-    endModel.publish_winner = model.publish_winner;
-    [self lotteryOpen:endModel];
-}
-- (void)presentLottery:(NSArray<VHLotteryModel *> *)lotteryArr{
-    VHLotteryViewController *lottery = [[VHLotteryViewController alloc] init];
-    lottery.lotteryList = lotteryArr;
-    lottery.delegate = self;
-    [self presentViewController:lottery animated:YES completion:nil];
-}
-- (void)lotteryOpen:(VHallEndLotteryModel *)endLotteryModel{
-    if (_lotteryVC) {
-        [_showView removeAllSubviews];
-        _lotteryVC = nil;
-    }
-    self.lotteryVC.view.frame = _showView.bounds;
-    [_showView addSubview:self.lotteryVC.view];
-    [self.lotteryVC new_lottery_UI:endLotteryModel];
-    
-    [self lotteryBtnClick:self.lotteryBtn];
-}
-
 #pragma mark - 添加问卷
 - (UIButton *)qetBtn
 {
@@ -1127,21 +1045,6 @@ static AnnouncementView* announcementView = nil;
             [_chatView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:dataSource.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:animated];
         }
     });
-}
-
-
-#pragma mark - 抽奖
-//抽奖按钮点击
-- (IBAction)lotteryBtnClick:(UIButton *)sender {
-    self.selectIndex = 3;
-    self.docConentView.hidden = YES;
-    self.chatView.hidden = YES;
-    self.bottomView.hidden = YES;
-    _lotteryVC.view.hidden = NO;
-    
-    self.detailBtn.selected = self.docBtn.selected = self.QABtn.selected = self.chatBtn.selected = NO;
-    self.lotteryBtn.selected = YES;
-    self.currentSelectedButton = sender;
 }
 
 #pragma mark - 分辨率切换
@@ -1328,6 +1231,15 @@ static AnnouncementView* announcementView = nil;
                 [weakSelf performSelector:@selector(clickSurvey:) withObject:model];
             };
         }
+        else if([model isKindOfClass:[VHExamChatModel class]]) //快问快答消息
+        {
+            VHExamChatCell *cell = [VHExamChatCell createCellWithTableView:tableView];
+            cell.model = model;
+            cell.clickLookBtnWithExamDetailWebView = ^(NSURL *examWebUrl) {
+                [weakSelf.examWebView showWatchUrl:examWebUrl];
+            };
+            return cell;
+        }
         else //聊天消息
         {
             static NSString * indetify = @"WatchLiveChatCell";
@@ -1410,10 +1322,16 @@ static AnnouncementView* announcementView = nil;
     
     // 获取抽奖历史
     [self lotteryLogic:NO];
+    
+    // 注册快问快答
+    self.examObject.delegate = self;
 
     // 获取房间配置项权限
     [self getPermissionsCheck];
     
+    // 查询视频轮询
+    [self.videoRound getRoundUsers:self.moviePlayer.webinarInfo.webinarId pass_room_id:self.moviePlayer.webinarInfo.webinarInfoData.interact.room_id];
+
     // 查询视频轮询
     [self.videoRound getRoundUsers:self.moviePlayer.webinarInfo.webinarId pass_room_id:self.moviePlayer.webinarInfo.webinarInfoData.interact.room_id];
 
@@ -1755,11 +1673,153 @@ static AnnouncementView* announcementView = nil;
     }];
 }
 
+#pragma mark - 抽奖
+//抽奖按钮点击
+- (IBAction)lotteryBtnClick:(UIButton *)sender {
+    self.selectIndex = 3;
+    self.docConentView.hidden = YES;
+    self.chatView.hidden = YES;
+    self.bottomView.hidden = YES;
+    _lotteryVC.view.hidden = NO;
+    
+    self.detailBtn.selected = self.docBtn.selected = self.QABtn.selected = self.chatBtn.selected = NO;
+    self.lotteryBtn.selected = YES;
+    self.currentSelectedButton = sender;
+}
+
+- (void)lotterySuccess{
+    [self lotteryLogic:NO];
+}
+- (void)addLotteryView{
+    self.lotteryIconBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.lotteryIconBtn setImage:BundleUIImage(@"icon_lottery") forState:UIControlStateNormal];
+    self.lotteryIconBtn.contentMode = UIViewContentModeScaleAspectFit;
+    [self.lotteryIconBtn addTarget:self action:@selector(lotteryAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.lotteryIconBtn];
+    [self.lotteryIconBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(0);
+        make.top.offset(90);
+        make.width.height.mas_equalTo(36);
+    }];
+}
+- (void)lotteryAction{
+    [self lotteryLogic:YES];
+}
+#pragma mark -- 获取抽奖历史
+- (void)lotteryLogic:(BOOL)isAction{
+    //抽奖历史记录
+    [VHWebinarBaseInfo fetchLotteryListShowAll:2 webinarId:self.roomId success:^(VHLotteryListModel * _Nonnull listModel) {
+            if (listModel.listModel.count == 0) {
+                if (isAction) {
+                    VH_ShowToast(@"当前没有中奖");
+                }
+            }else{
+                self.lotteryIconBtn.hidden = NO;
+                [self isHaveLotteryRedRot:listModel.listModel action:isAction];
+            }
+        } fail:^(NSError * _Nonnull error) {
+            VH_ShowToast(error.localizedDescription);
+        }];
+}
+// 渲染UI 判断我自己是否中奖并且是否领奖
+- (void)isHaveLotteryRedRot:(NSArray <VHLotteryModel *>*)listArr action:(BOOL)action{
+    BOOL isHaveRedDot = NO;//是否显示红点
+    for (int i = 0; i < listArr.count; i++) {
+        VHLotteryModel *model = listArr[i];
+        //需要领奖
+        if (model.take_award == NO && model.need_take_award == YES) {
+            isHaveRedDot = YES;
+        }
+    }
+    // 显示小红点
+    if (isHaveRedDot) {
+        [self.lotteryIconBtn showBadge];
+    }else{
+        [self.lotteryIconBtn hidenBadge];
+    }
+    
+    // 判断展示填写信息界面,还是展示中奖列表
+    if (action) {
+        if (listArr.count == 1) {
+            VHLotteryModel *model = listArr[0];
+            if (model.need_take_award == NO) {
+                VH_ShowToast(@"当前奖品不需要领奖");
+                return;
+            }
+            if (model.take_award == YES) {
+                VH_ShowToast(@"当前奖品已经领过奖");
+                return;
+            }
+            [self lotteryBtnClick:self.lotteryBtn];
+            [self openOneLotteryModel:model];
+        }else{
+            ///显示抽奖历史
+            [self lotteryBtnClick:self.lotteryBtn];
+            [self presentLottery:listArr];
+        }
+    }
+}
+- (void)openOneLotteryModel:(VHLotteryModel *)model{
+    VHallEndLotteryModel *endModel = [[VHallEndLotteryModel alloc] init];
+    endModel.is_new = YES;
+    endModel.lottery_id = model.lottery_id;
+    endModel.need_take_award = model.need_take_award;
+    endModel.isWin = model.win;
+    endModel.publish_winner = model.publish_winner;
+    [self lotteryOpen:endModel];
+}
+- (void)presentLottery:(NSArray<VHLotteryModel *> *)lotteryArr{
+    VHLotteryViewController *lottery = [[VHLotteryViewController alloc] init];
+    lottery.lotteryList = lotteryArr;
+    lottery.delegate = self;
+    [self presentViewController:lottery animated:YES completion:nil];
+}
+- (void)lotteryOpen:(VHallEndLotteryModel *)endLotteryModel{
+    if (_lotteryVC) {
+        [_showView removeAllSubviews];
+        _lotteryVC = nil;
+    }
+    self.lotteryVC.view.frame = _showView.bounds;
+    [_showView addSubview:self.lotteryVC.view];
+    [self.lotteryVC new_lottery_UI:endLotteryModel];
+    
+    [self lotteryBtnClick:self.lotteryBtn];
+}
+
+//-----------VHallLotteryDelegate-------------
+//开始抽奖
+- (void)startLottery:(VHallStartLotteryModel *)msg
+{
+    if (_lotteryVC) {
+        [_lotteryVC.view removeFromSuperview];
+        [_lotteryVC removeFromParentViewController];
+        _lotteryVC = nil;
+    }
+    
+    self.lotteryVC.startLotteryModel = msg;
+    self.lotteryVC.view.frame = _showView.bounds;
+    [_showView addSubview:self.lotteryVC.view];
+    
+    [self lotteryBtnClick:self.lotteryBtn];
+}
+
+//结束抽奖
+- (void)endLottery:(VHallEndLotteryModel *)msg
+{
+    self.lotteryVC.endLotteryModel = msg;
+    self.lotteryVC.view.frame = _showView.bounds;
+    [_showView addSubview:self.lotteryVC.view];
+
+    [self lotteryBtnClick:self.lotteryBtn];
+    //刷新icon小红点
+    [self lotteryLogic:NO];
+}
+
 #pragma mark - 公告
 - (void)addAnnouncementBtn
 {
-    [self.announcementListBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.lotteryIconBtn.mas_bottom);
+    [self.announcementListBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.lotteryIconBtn.mas_bottom).offset(4);
         make.left.mas_equalTo(0);
         make.width.height.mas_equalTo(36);
     }];
@@ -1813,34 +1873,69 @@ static AnnouncementView* announcementView = nil;
     [self.announcementList loadDataRoomId:self.moviePlayer.webinarInfo.webinarInfoData.interact.room_id];
 }
 
-#pragma mark - 抽奖相关
-//-----------VHallLotteryDelegate-------------
-//开始抽奖
-- (void)startLottery:(VHallStartLotteryModel *)msg
+#pragma mark - 快问快答
+// 添加
+- (void)addExamBtn
 {
-    if (_lotteryVC) {
-        [_lotteryVC.view removeFromSuperview];
-        [_lotteryVC removeFromParentViewController];
-        _lotteryVC = nil;
-    }
-    
-    self.lotteryVC.startLotteryModel = msg;
-    self.lotteryVC.view.frame = _showView.bounds;
-    [_showView addSubview:self.lotteryVC.view];
-    
-    [self lotteryBtnClick:self.lotteryBtn];
+    [self.examBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.announcementListBtn.mas_bottom).offset(4);
+        make.left.mas_equalTo(0);
+        make.width.height.mas_equalTo(36);
+    }];
 }
-
-//结束抽奖
-- (void)endLottery:(VHallEndLotteryModel *)msg
+// 点击快问快答按钮,唤起列表
+- (void)clickExamListToBtn
 {
-    self.lotteryVC.endLotteryModel = msg;
-    self.lotteryVC.view.frame = _showView.bounds;
-    [_showView addSubview:self.lotteryVC.view];
+    VHLog(@"点击快问快答列表");
+    [self.examList examGetPushedPaperListWithWebinarInfoData:self.moviePlayer.webinarInfo.webinarInfoData];
+}
+#pragma mark - VHExamObjectDelegate
+/// 推送-快问快答
+- (void)paperSendMessage:(VHMessage *)message examWebUrl:(NSURL *)examWebUrl
+{
+    VH_ShowToast(@"推送-快问快答");
+    [self chatWithExamStatus:@"推送-快问快答"  examWebUrl:examWebUrl];
+    [self.examList requestExamList];
+}
+///快问快答-收卷
+- (void)paperEndMessage:(VHMessage *)message examWebUrl:(NSURL *)examWebUrl
+{
+    VH_ShowToast(@"快问快答-收卷");
+    [self chatWithExamStatus:@"快问快答-收卷" examWebUrl:examWebUrl];
+    [self.examList requestExamList];
+}
+///公布-快问快答-成绩
+- (void)paperSendRankMessage:(VHMessage *)message examWebUrl:(NSURL *)examWebUrl
+{
+    VH_ShowToast(@"公布-快问快答-成绩");
+    [self chatWithExamStatus:@"公布-快问快答-成绩" examWebUrl:examWebUrl];
+    [self.examList requestExamList];
+}
+///快问快答-自动收卷
+- (void)paperAutoEndMessage:(VHMessage *)message examWebUrl:(NSURL *)examWebUrl
+{
+    VH_ShowToast(@"快问快答-自动收卷");
+    [self chatWithExamStatus:@"快问快答-自动收卷" examWebUrl:examWebUrl];
+    [self.examList requestExamList];
+}
+///快问快答-自动公布成绩
+- (void)paperAutoEendRankMessage:(VHMessage *)message examWebUrl:(NSURL *)examWebUrl
+{
+    VH_ShowToast(@"快问快答-自动公布成绩");
+    [self chatWithExamStatus:@"快问快答-自动公布成绩" examWebUrl:examWebUrl];
+    [self.examList requestExamList];
+}
+///显示在聊天区域
+- (void)chatWithExamStatus:(NSString *)status examWebUrl:(NSURL *)examWebUrl
+{
+    VHExamChatModel * chatModel = [VHExamChatModel new];
+    chatModel.stuatus = status;
+    chatModel.examWebUrl = examWebUrl;
+    [_chatDataArray addObject:chatModel];//添加快问快答消息到聊天列表
 
-    [self lotteryBtnClick:self.lotteryBtn];
-    //刷新icon小红点
-    [self lotteryLogic:NO];
+    if (_chatBtn.selected) {
+        [self reloadDataWithDataSource:_chatDataArray animated:YES];
+    }
 }
 #pragma mark - 视频轮巡
 // 轮巡开始
@@ -2206,6 +2301,11 @@ static AnnouncementView* announcementView = nil;
         _announcementListBtn.contentMode = UIViewContentModeScaleAspectFit;
         [_announcementListBtn addTarget:self action:@selector(clickAnnouncementListToBtn) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_announcementListBtn];
+        [self.announcementListBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.lotteryIconBtn.mas_bottom).offset(2);
+            make.left.mas_equalTo(0);
+            make.width.height.mas_equalTo(0);
+        }];
     }return _announcementListBtn;
 }
 - (VHAnnouncementList *)announcementList
@@ -2221,6 +2321,53 @@ static AnnouncementView* announcementView = nil;
         _lotteryVC.lottery = _lottery;
         _lotteryVC.webinarInfo = self.moviePlayer.webinarInfo;
     }return _lotteryVC;
+}
+- (VHExamObject *)examObject
+{
+    if (!_examObject) {
+        _examObject = [[VHExamObject alloc] initWithObject:_moviePlayer];
+    }return _examObject;
+}
+- (UIButton *)examBtn
+{
+    if (!_examBtn) {
+        _examBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_examBtn setImage:BundleUIImage(@"vh_exam_btnIcon") forState:UIControlStateNormal];
+        _examBtn.contentMode = UIViewContentModeScaleAspectFit;
+        [_examBtn addTarget:self action:@selector(clickExamListToBtn) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_examBtn];
+        [self.examBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.announcementListBtn.mas_bottom).offset(2);
+            make.left.mas_equalTo(0);
+            make.width.height.mas_equalTo(0);
+        }];
+    }return _examBtn;
+}
+- (VHExamList *)examList
+{
+    if (!_examList) {
+        _examList = [[VHExamList alloc] initWithFrame:self.view.frame];
+        _examList.examObject = self.examObject;
+        __weak __typeof(self)weakSelf = self;
+        _examList.clickExamDetailWebView = ^(NSURL * _Nonnull watchUrl) {
+            [weakSelf.examWebView showWatchUrl:watchUrl];
+        };
+        [self.view addSubview:_examList];
+        [_examList mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(self.view);
+        }];
+    }return _examList;
+}
+- (VHExamWebView *)examWebView
+{
+    if (!_examWebView) {
+        _examWebView = [[VHExamWebView alloc] initWithFrame:self.view.frame];
+        [self.view addSubview:_examWebView];
+        [_examWebView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(VH_KNavBarHeight);
+            make.left.right.bottom.mas_equalTo(0);
+        }];
+    }return _examWebView;
 }
 #pragma mark - 屏幕旋转相关
 -(BOOL)shouldAutorotate

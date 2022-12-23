@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface VHWebinarInfoData_Join_info :NSObject
 @property (nonatomic , copy) NSString     *                     third_party_user_id;    ///<用户id
 @property (nonatomic , copy) NSString     *                     avatar;                 ///<头像
@@ -69,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface VHWebinarInfoData_Webinar :NSObject
 @property (nonatomic , strong) VHWebinarInfoData_Webinar_Userinfo * userinfo;           ///<活动创建人
-@property (nonatomic , assign) NSInteger                        data_id;                ///<活动id
+@property (nonatomic , copy) NSString      *                    data_id;                ///<活动id
 @property (nonatomic , copy) NSString      *                    verify_tip;             ///<观看限制提示语
 @property (nonatomic , copy) NSString      *                    img_url;                ///<封面
 @property (nonatomic , copy) NSString      *                    verify_source;          ///<
@@ -144,11 +142,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// - Parameters:
 ///   - webinar_id: 活动id
 ///   - complete: 请求完成
-+ (void)requestWatchInit:(NSString *)webinar_id
-                complete:(void(^)(VHWebinarInfoData * webinarInfoData, NSError *error))complete;
-@end
++ (void)requestWatchInitWebinarId:(NSString *)webinarId recordId:(NSString * )recordId email:(NSString *)email nick_name:(NSString *)nick_name pass:(NSString *)pass k_id:(NSString *)k_id complete:(void(^)(VHWebinarInfoData * webinarInfoData, NSError *error))complete;
 
-NS_ASSUME_NONNULL_END
+@end
 
 
 

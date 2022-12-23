@@ -7,6 +7,7 @@
 //
 
 #import "WarmUpViewController.h"
+#import "VHNAVTopView.h"
 #import "OMTimer.h"
 
 #import <VHLiveSDK/VHallApi.h>
@@ -16,9 +17,7 @@
 
 @property (nonatomic, strong) VHWarmInfoObject  *   warmInfo;           ///<暖场视频类
 
-@property (nonatomic, strong) UIView            *   topView;
-@property (nonatomic, strong) UIButton          *   backBtn;            ///<返回按钮
-@property (nonatomic, strong) UILabel           *   titleLab;           ///<标题
+@property (nonatomic, strong) VHNAVTopView      *   topView;            ///<topView
 
 @property (nonatomic, strong) UIImageView       *   headImg;            ///<头像
 @property (nonatomic, strong) UILabel           *   nicknameLab;        ///<昵称
@@ -82,21 +81,9 @@
         make.height.mas_equalTo(44);
     }];
     
-    [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(20, 20));
-        make.left.mas_equalTo(22);
-        make.centerY.mas_equalTo(self.topView.mas_centerY);
-    }];
-    
-    [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view.mas_centerX);
-        make.centerY.mas_equalTo(self.backBtn.mas_centerY);
-        make.width.mas_lessThanOrEqualTo(150);
-    }];
-
     [self.headImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(12);
-        make.top.mas_equalTo(self.backBtn.mas_bottom).offset(18);
+        make.top.mas_equalTo(self.topView.mas_bottom).offset(6);
         make.size.mas_equalTo(CGSizeMake(24, 24));
     }];
     
@@ -274,7 +261,7 @@
         // 获取活动信息
         self.infoLab.text = @"简介";
         
-        self.titleLab.text = webinarInfo.webinar.subject;
+        self.topView.titleLab.text = webinarInfo.webinar.subject;
         
         self.webinarTitleLab.text = webinarInfo.webinar.subject;
         
@@ -453,39 +440,20 @@
     [_startTimer stop];
 }
 
-#pragma mark - 退出房间
-- (void)backBtnClick {[self dismissViewControllerAnimated:YES completion:nil];}
-
 #pragma mark - 懒加载
 
-- (UIView *)topView {
+- (VHNAVTopView *)topView
+{
     if (!_topView) {
-        _topView = [[UIView alloc] init];
+        _topView = [[VHNAVTopView alloc] init];
         _topView.backgroundColor = [UIColor colorWithHex:@"#EDEDED"];
+        __weak __typeof(self)weakSelf = self;
+        _topView.clickBackBlock = ^{
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        };
         [self.view addSubview:_topView];
     }
     return _topView;
-}
-
-- (UIButton *)backBtn {
-    if (!_backBtn) {
-        _backBtn = [[UIButton alloc] init];
-        [_backBtn setImage:BundleUIImage(@"关闭") forState:UIControlStateNormal];
-        [_backBtn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [self.topView addSubview:_backBtn];
-    }
-    return _backBtn;
-}
-
-- (UILabel *)titleLab {
-    if (!_titleLab) {
-        _titleLab = [[UILabel alloc] init];
-        _titleLab.textColor = [UIColor colorWithHex:@"#222222"];
-        _titleLab.font = FONT_Medium(16);
-        _titleLab.textAlignment = NSTextAlignmentCenter;
-        [self.topView addSubview:_titleLab];
-    }
-    return _titleLab;
 }
 
 - (UIImageView *)headImg {

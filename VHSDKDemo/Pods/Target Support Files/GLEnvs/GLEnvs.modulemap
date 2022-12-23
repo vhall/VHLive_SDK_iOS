@@ -1,0 +1,6 @@
+framework module GLEnvs {
+  umbrella header "GLEnvs-umbrella.h"
+
+  export *
+  module * { export * }
+}

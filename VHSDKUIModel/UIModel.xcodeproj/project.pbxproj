@@ -157,6 +157,8 @@
 		4E0E0011287FEEF6005FE565 /* vh_an_noclick@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E0E0009287FEEF5005FE565 /* vh_an_noclick@3x.png */; };
 		4E0E0012287FEEF6005FE565 /* vh_an_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E0E000A287FEEF5005FE565 /* vh_an_close@3x.png */; };
 		4E0E00142880005B005FE565 /* vh_an_btnIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E0E00132880005B005FE565 /* vh_an_btnIcon.png */; };
+		4E23FC9C2946D67000341EA4 /* vh_exam_btnIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E23FC9B2946D67000341EA4 /* vh_exam_btnIcon.png */; };
+		4E23FC9F29472B3400341EA4 /* VHExamChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FC9E29472B3400341EA4 /* VHExamChatCell.m */; };
 		4E254B48290920F600EB4EE3 /* WarmUpViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4EEADD462908034600B70D70 /* WarmUpViewController.h */; };
 		4E266AE028A11119002DA481 /* fs_icon_mic_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E266ADE28A11118002DA481 /* fs_icon_mic_down.png */; };
 		4E266AE128A11119002DA481 /* fs_icon_mic_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E266ADF28A11119002DA481 /* fs_icon_mic_up.png */; };
@@ -179,8 +181,13 @@
 		4ECE9B9E288A7A66004399A9 /* VHWatchLiveTimerImg.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE9B9D288A7A66004399A9 /* VHWatchLiveTimerImg.m */; };
 		4ECF9976290A7B330074FDCA /* vh_icon_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECF9975290A7B2A0074FDCA /* vh_icon_play@3x.png */; };
 		4ECF9977290A7B350074FDCA /* vh_icon_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECF9974290A7B2A0074FDCA /* vh_icon_play@2x.png */; };
+		4ED6B201292C691F00E10DCF /* VHExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED6B200292C691F00E10DCF /* VHExamViewController.m */; };
+		4ED6B202292C69F100E10DCF /* VHExamViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4ED6B1FF292C691F00E10DCF /* VHExamViewController.h */; };
+		4ED6B207292CB49500E10DCF /* VHNAVTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED6B206292CB49500E10DCF /* VHNAVTopView.m */; };
 		4EEA19EE2861A0D1000C9D7A /* VHVideoRoundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA19ED2861A0D1000C9D7A /* VHVideoRoundModel.m */; };
 		4EEADD482908034600B70D70 /* WarmUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEADD472908034600B70D70 /* WarmUpViewController.m */; };
+		4EF7A87F2930A9560032F504 /* VHExamList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7A87E2930A9560032F504 /* VHExamList.m */; };
+		4EF7A8822930BDA10032F504 /* VHExamWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7A8812930BDA10032F504 /* VHExamWebView.m */; };
 		C0443B5E242839550063FB0D /* VHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0443A18242839530063FB0D /* VHBaseViewController.m */; };
 		C0443B5F242839550063FB0D /* PubLishLiveVC_Normal.m in Sources */ = {isa = PBXBuildFile; fileRef = C0443A1A242839530063FB0D /* PubLishLiveVC_Normal.m */; };
 		C0443B61242839550063FB0D /* VHChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0443A1D242839530063FB0D /* VHChatTableViewCell.m */; };
@@ -644,6 +651,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				4ED6B202292C69F100E10DCF /* VHExamViewController.h in CopyFiles */,
 				4E254B48290920F600EB4EE3 /* WarmUpViewController.h in CopyFiles */,
 				4E0A868928C7558000C8AADD /* VHFashionStyleWatchLiveVC.h in CopyFiles */,
 				3247D9542805811400726DE3 /* VHViewProtocolView.h in CopyFiles */,
@@ -872,6 +880,9 @@
 		4E0E0009287FEEF5005FE565 /* vh_an_noclick@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vh_an_noclick@3x.png"; sourceTree = "<group>"; };
 		4E0E000A287FEEF5005FE565 /* vh_an_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vh_an_close@3x.png"; sourceTree = "<group>"; };
 		4E0E00132880005B005FE565 /* vh_an_btnIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vh_an_btnIcon.png; sourceTree = "<group>"; };
+		4E23FC9B2946D67000341EA4 /* vh_exam_btnIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vh_exam_btnIcon.png; sourceTree = "<group>"; };
+		4E23FC9D29472B3400341EA4 /* VHExamChatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHExamChatCell.h; sourceTree = "<group>"; };
+		4E23FC9E29472B3400341EA4 /* VHExamChatCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHExamChatCell.m; sourceTree = "<group>"; };
 		4E266ADE28A11118002DA481 /* fs_icon_mic_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fs_icon_mic_down.png; sourceTree = "<group>"; };
 		4E266ADF28A11119002DA481 /* fs_icon_mic_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fs_icon_mic_up.png; sourceTree = "<group>"; };
 		4E7ED88A29127059001E8AD5 /* VHCommonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHCommonViewController.h; sourceTree = "<group>"; };
@@ -896,10 +907,18 @@
 		4ECE9B9D288A7A66004399A9 /* VHWatchLiveTimerImg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHWatchLiveTimerImg.m; sourceTree = "<group>"; };
 		4ECF9974290A7B2A0074FDCA /* vh_icon_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vh_icon_play@2x.png"; sourceTree = "<group>"; };
 		4ECF9975290A7B2A0074FDCA /* vh_icon_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vh_icon_play@3x.png"; sourceTree = "<group>"; };
+		4ED6B1FF292C691F00E10DCF /* VHExamViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHExamViewController.h; sourceTree = "<group>"; };
+		4ED6B200292C691F00E10DCF /* VHExamViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHExamViewController.m; sourceTree = "<group>"; };
+		4ED6B205292CB49500E10DCF /* VHNAVTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHNAVTopView.h; sourceTree = "<group>"; };
+		4ED6B206292CB49500E10DCF /* VHNAVTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHNAVTopView.m; sourceTree = "<group>"; };
 		4EEA19EC2861A0D1000C9D7A /* VHVideoRoundModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHVideoRoundModel.h; sourceTree = "<group>"; };
 		4EEA19ED2861A0D1000C9D7A /* VHVideoRoundModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHVideoRoundModel.m; sourceTree = "<group>"; };
 		4EEADD462908034600B70D70 /* WarmUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WarmUpViewController.h; sourceTree = "<group>"; };
 		4EEADD472908034600B70D70 /* WarmUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WarmUpViewController.m; sourceTree = "<group>"; };
+		4EF7A87D2930A9560032F504 /* VHExamList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHExamList.h; sourceTree = "<group>"; };
+		4EF7A87E2930A9560032F504 /* VHExamList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHExamList.m; sourceTree = "<group>"; };
+		4EF7A8802930BDA10032F504 /* VHExamWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHExamWebView.h; sourceTree = "<group>"; };
+		4EF7A8812930BDA10032F504 /* VHExamWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHExamWebView.m; sourceTree = "<group>"; };
 		806B7A9AC97F6A175B177C50 /* Pods-UIModel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIModel.debug.xcconfig"; path = "Target Support Files/Pods-UIModel/Pods-UIModel.debug.xcconfig"; sourceTree = "<group>"; };
 		C0443A18242839530063FB0D /* VHBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHBaseViewController.m; sourceTree = "<group>"; };
 		C0443A1A242839530063FB0D /* PubLishLiveVC_Normal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubLishLiveVC_Normal.m; sourceTree = "<group>"; };
@@ -1447,6 +1466,7 @@
 		031A39C326F5CD1C00E7EDBE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				4ED6B204292CB47A00E10DCF /* TopView */,
 				03750799251B526500DBDF24 /* UIModelTools.h */,
 				0375079A251B526500DBDF24 /* UIModelTools.m */,
 				324622382842108D006EA263 /* Tool */,
@@ -1828,24 +1848,24 @@
 		4E0A866928C7549E00C8AADD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4E0A866A28C7549E00C8AADD /* VHFashionStyleInteractCollectionView.h */,
-				4E0A866B28C7549E00C8AADD /* VHFashionStyleGiftPushView.h */,
-				4E0A866C28C7549E00C8AADD /* VHFashionStyleBottomView.m */,
-				4E0A866D28C7549E00C8AADD /* VHFashionStyleGiftListView.m */,
-				4E0A866E28C7549E00C8AADD /* VHFashionStyleTopView.m */,
-				4E0A866F28C7549E00C8AADD /* VHFashionStyleInteractView.m */,
-				4E0A867028C7549E00C8AADD /* VHFashionStyleWatchLiveView.h */,
-				4E0A867128C7549E00C8AADD /* VHLiveSaleAnimationTool.h */,
-				4E0A867228C7549E00C8AADD /* VHFashionStyleChatView.h */,
-				4E0A867328C7549E00C8AADD /* VHFashionStyleInteractCollectionView.m */,
-				4E0A867428C7549E00C8AADD /* VHFashionStyleGiftPushView.m */,
-				4E0A867528C7549E00C8AADD /* VHFashionStyleTopView.h */,
-				4E0A867628C7549E00C8AADD /* VHFashionStyleGiftListView.h */,
 				4E0A867728C7549E00C8AADD /* VHFashionStyleBottomView.h */,
+				4E0A866C28C7549E00C8AADD /* VHFashionStyleBottomView.m */,
+				4E0A867228C7549E00C8AADD /* VHFashionStyleChatView.h */,
 				4E0A867828C7549E00C8AADD /* VHFashionStyleChatView.m */,
-				4E0A867928C7549E00C8AADD /* VHLiveSaleAnimationTool.m */,
-				4E0A867A28C7549E00C8AADD /* VHFashionStyleWatchLiveView.m */,
+				4E0A867628C7549E00C8AADD /* VHFashionStyleGiftListView.h */,
+				4E0A866D28C7549E00C8AADD /* VHFashionStyleGiftListView.m */,
+				4E0A866B28C7549E00C8AADD /* VHFashionStyleGiftPushView.h */,
+				4E0A867428C7549E00C8AADD /* VHFashionStyleGiftPushView.m */,
+				4E0A866A28C7549E00C8AADD /* VHFashionStyleInteractCollectionView.h */,
+				4E0A867328C7549E00C8AADD /* VHFashionStyleInteractCollectionView.m */,
 				4E0A867B28C7549E00C8AADD /* VHFashionStyleInteractView.h */,
+				4E0A866F28C7549E00C8AADD /* VHFashionStyleInteractView.m */,
+				4E0A867528C7549E00C8AADD /* VHFashionStyleTopView.h */,
+				4E0A866E28C7549E00C8AADD /* VHFashionStyleTopView.m */,
+				4E0A867028C7549E00C8AADD /* VHFashionStyleWatchLiveView.h */,
+				4E0A867A28C7549E00C8AADD /* VHFashionStyleWatchLiveView.m */,
+				4E0A867128C7549E00C8AADD /* VHLiveSaleAnimationTool.h */,
+				4E0A867928C7549E00C8AADD /* VHLiveSaleAnimationTool.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1862,6 +1882,7 @@
 		4E0E0002287FEEE3005FE565 /* Announcement */ = {
 			isa = PBXGroup;
 			children = (
+				4E23FC9B2946D67000341EA4 /* vh_exam_btnIcon.png */,
 				4E0E00132880005B005FE565 /* vh_an_btnIcon.png */,
 				4E0E0003287FEEF4005FE565 /* vh_an_click@2x.png */,
 				4E0E0007287FEEF5005FE565 /* vh_an_click@3x.png */,
@@ -1987,6 +2008,24 @@
 			path = Timer;
 			sourceTree = "<group>";
 		};
+		4ED6B1FE292C68FB00E10DCF /*  VHExam */ = {
+			isa = PBXGroup;
+			children = (
+				4ED6B1FF292C691F00E10DCF /* VHExamViewController.h */,
+				4ED6B200292C691F00E10DCF /* VHExamViewController.m */,
+			);
+			path = " VHExam";
+			sourceTree = "<group>";
+		};
+		4ED6B204292CB47A00E10DCF /* TopView */ = {
+			isa = PBXGroup;
+			children = (
+				4ED6B205292CB49500E10DCF /* VHNAVTopView.h */,
+				4ED6B206292CB49500E10DCF /* VHNAVTopView.m */,
+			);
+			path = TopView;
+			sourceTree = "<group>";
+		};
 		4EEA19EB2861A0AC000C9D7A /* VideoRound */ = {
 			isa = PBXGroup;
 			children = (
@@ -2005,6 +2044,19 @@
 			path = WarmUp;
 			sourceTree = "<group>";
 		};
+		4EF7A87C2930A8B70032F504 /* Exam */ = {
+			isa = PBXGroup;
+			children = (
+				4EF7A87D2930A9560032F504 /* VHExamList.h */,
+				4EF7A87E2930A9560032F504 /* VHExamList.m */,
+				4EF7A8802930BDA10032F504 /* VHExamWebView.h */,
+				4EF7A8812930BDA10032F504 /* VHExamWebView.m */,
+				4E23FC9D29472B3400341EA4 /* VHExamChatCell.h */,
+				4E23FC9E29472B3400341EA4 /* VHExamChatCell.m */,
+			);
+			path = Exam;
+			sourceTree = "<group>";
+		};
 		9BA979B8FECCED83594CE521 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2018,6 +2070,7 @@
 		C0443A17242839530063FB0D /* UIModel */ = {
 			isa = PBXGroup;
 			children = (
+				4ED6B1FE292C68FB00E10DCF /*  VHExam */,
 				C0443AEB242839540063FB0D /* UIModel.h */,
 				F3A105722626D88F00F73EEA /* VHEnum.h */,
 				C0443A24242839530063FB0D /* UIModel_PrefixHeader.pch */,
@@ -2325,6 +2378,7 @@
 		C0443B2A242839540063FB0D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4EF7A87C2930A8B70032F504 /* Exam */,
 				4ECE9B98288A798B004399A9 /* Timer */,
 				4EEA19EB2861A0AC000C9D7A /* VideoRound */,
 				03A03A4827296CFC006F4388 /* NodelayView */,
@@ -3307,6 +3361,7 @@
 				4ECF9976290A7B330074FDCA /* vh_icon_play@3x.png in Resources */,
 				C0443BFF242839550063FB0D /* unfullscreen@3x.png in Resources */,
 				F3A10A1226298824003552F8 /* icon-文档管理为空@3x.png in Resources */,
+				4E23FC9C2946D67000341EA4 /* vh_exam_btnIcon.png in Resources */,
 				4EC87E67288E834900005AD7 /* vh_fs_like_btn_6.png in Resources */,
 				C0443B69242839550063FB0D /* faceDelete@2x.png in Resources */,
 				4E266AE028A11119002DA481 /* fs_icon_mic_down.png in Resources */,
@@ -3440,12 +3495,14 @@
 				F3A1057C2626E7EB00F73EEA /* VHRefreshFooter.m in Sources */,
 				F3A105452626929E00F73EEA /* VHLiveMemberAndLimitBaseCell.m in Sources */,
 				F3A105832626F23000F73EEA /* VHDocListModel.m in Sources */,
+				4ED6B207292CB49500E10DCF /* VHNAVTopView.m in Sources */,
 				03577B2A2730E9C6003296E6 /* VHPortraitWatchLiveVC_Nodelay.m in Sources */,
 				031A39C226F5C77F00E7EDBE /* VHTextView.m in Sources */,
 				033CE4802519961B001BBA7F /* VHPortraitWatchLiveVC_Normal.m in Sources */,
 				32257338280847830082BEEA /* VHSheetTableViewCell.m in Sources */,
 				C0443C6A242839550063FB0D /* SZQuestionCell.m in Sources */,
 				C0443C69242839550063FB0D /* SZConfigure.m in Sources */,
+				4EF7A87F2930A9560032F504 /* VHExamList.m in Sources */,
 				4E0A868328C7549F00C8AADD /* VHFashionStyleInteractCollectionView.m in Sources */,
 				32257335280847660082BEEA /* VHSheetActionViewController.m in Sources */,
 				32B17B6A27BCA034000DA6DE /* VHBeautyView.m in Sources */,
@@ -3470,6 +3527,7 @@
 				F3A105762626DA6A00F73EEA /* ProgressHud.m in Sources */,
 				03B5F5A0272BFE6800A98E7B /* VHWatchNodelayDocumentView.m in Sources */,
 				C0443C63242839550063FB0D /* WatchLiveQATableViewCell.m in Sources */,
+				4EF7A8822930BDA10032F504 /* VHExamWebView.m in Sources */,
 				F3DCF2AB262806170014D3F0 /* VHLiveBroadcastInfoDetailBootomView.m in Sources */,
 				C0443C85242839550063FB0D /* WatchLiveLotteryTableViewCell.m in Sources */,
 				F3A105352626906900F73EEA /* VHLiveBaseVC.m in Sources */,
@@ -3478,6 +3536,8 @@
 				322B7C3127CDE11200F6EA3A /* UILabel+VHConvenient.m in Sources */,
 				32E172E927BE367F008FB99B /* VHBeautyAdjustController.m in Sources */,
 				3225733B280847980082BEEA /* VHSheetModel.m in Sources */,
+				4ED6B201292C691F00E10DCF /* VHExamViewController.m in Sources */,
+				4E23FC9F29472B3400341EA4 /* VHExamChatCell.m in Sources */,
 				C0443C64242839550063FB0D /* WatchLiveOnlineTableViewCell.m in Sources */,
 				32E172F227BE410D008FB99B /* VHBeautyModel.m in Sources */,
 				F3DCF2B4262815790014D3F0 /* VHLiveMsgModel.m in Sources */,

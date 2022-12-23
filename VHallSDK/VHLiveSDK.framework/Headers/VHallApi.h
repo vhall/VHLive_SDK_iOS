@@ -31,6 +31,7 @@
 #import "VHChaptersObject.h"
 #import "VHVideoRoundObject.h"
 #import "VHCommonObject.h"
+#import "VHExamObject.h"
 
 
 @protocol VHallApiDelegate <NSObject>

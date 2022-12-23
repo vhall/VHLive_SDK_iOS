@@ -86,7 +86,6 @@
 {
     self.webinar_id = webinar_id;
     self.pass_room_id = pass_room_id;
-    
     BOOL isHave = NO;
     for (NSString * userId in uids) {
         if ([userId isEqualToString:[VHallApi currentUserID]]) {
@@ -169,7 +168,6 @@
     self.pass_room_id = pass_room_id;
     
     __weak __typeof(self)weakSelf = self;
-    
     [VHVideoRoundObject getRoundUsers:pass_room_id is_next:@"0" success:^(NSDictionary *response) {
         NSDictionary * data = response[@"data"];
         NSMutableArray * users = [NSMutableArray array];

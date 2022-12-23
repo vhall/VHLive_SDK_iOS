@@ -26,6 +26,7 @@
 #import "VHNavigationController.h"
 #import "VHInteractLiveVC_New.h"
 #import "WarmUpViewController.h"
+#import "VHExamViewController.h"
 #import "VHCommonViewController.h"
 #import "UIModel.h"
 ///新增美颜依赖库
@@ -326,6 +327,15 @@ typedef enum : NSUInteger {
     [self presentViewController:warmupVC animated:YES completion:nil];
 }
 
+//直播答题
+- (void)examToVC
+{
+    VHExamViewController * examVC = [[VHExamViewController alloc] init];
+    examVC.webinar_id = DEMO_Setting.watchActivityID;
+    examVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:examVC animated:YES completion:nil];
+}
+
 //其它
 - (void)commonToVC
 {
@@ -440,6 +450,10 @@ typedef enum : NSUInteger {
                 [self warmUpToVC];
             }];
 
+            UIAlertAction * examWatch = [UIAlertAction actionWithTitle:@"直播答题" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self examToVC];
+            }];
+
             UIAlertAction *webWatch = [UIAlertAction actionWithTitle:@"web嵌入观看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self webViewWatchLive];
             }];
@@ -455,6 +469,7 @@ typedef enum : NSUInteger {
             [alertController addAction:portrait_NodelayWatch];
             [alertController addAction:fashionVC];
             [alertController addAction:warmUp];
+            [alertController addAction:examWatch];
             [alertController addAction:webWatch];
             [alertController addAction:common];
             [alertController addAction:cancelAction];

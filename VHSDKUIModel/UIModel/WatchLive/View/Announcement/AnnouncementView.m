@@ -17,23 +17,13 @@
 
 @implementation AnnouncementView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 - (id)initWithFrame:(CGRect)frame content:(NSString*)content time:(NSString*)time
 {
     self = [super initWithFrame:frame];
     if(self)
     {
         self.backgroundColor = MakeColorRGB(0xf5f5f5);
-        
-       
-        
+                
         _content = content;
         _contentLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
         _contentLabel.text = [NSString stringWithFormat:@"公告: %@",content];
@@ -50,11 +40,6 @@
         btn.layer.cornerRadius = (self.height-8)/2;
         btn.layer.masksToBounds= YES;
         [btn addTarget:self action:@selector(hideView) forControlEvents:UIControlEventTouchUpInside];
-//        UIView *containerView=[[UIView alloc] initWithFrame:CGRectMake(10+imageView.width, 0, VH_SW-10-imageView.width-10-18, self.height)];
-//        containerView.backgroundColor=[UIColor yellowColor];
-//        _containView=containerView;
-//        [self addSubview:containerView];
-       
         
         
         UIView *left=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 10+imageView.width, self.height)];

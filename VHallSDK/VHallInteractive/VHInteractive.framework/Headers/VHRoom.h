@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VHRoom : NSObject
 
 @property (nonatomic, weak)             id <VHRoomDelegate>         delegate;           ///<代理
-@property (nonatomic, assign)           BOOL                        isVideoRound;       ///<是否要参与轮巡
+@property (nonatomic, assign)           int                         reconnectTimes;     ///<房间重连时长 (默认 15秒)
 @property (nonatomic, assign)           BOOL                        isRehearsal;        ///<是否彩排 YES：彩排模式开播 NO：正常直播 (默认NO,开播前设置有效)
 @property (nonatomic, assign)           BOOL                        isPublishAnother;   ///<是否开启自动旁路 YES：开启 NO：不开启 (默认NO,开播前设置有效)
 @property (nonatomic, assign)           BOOL                        isMainScreen;       ///<是否开启自动主屏配置 YES：开启 NO：不开启 (默认NO,开播前设置有效)
@@ -236,6 +236,14 @@ NS_ASSUME_NONNULL_BEGIN
                      pageSize:(NSInteger)pageSize
                       success:(void(^)(NSArray <VHRoomDocumentModel *> *list,BOOL haveNextPage))success
                          fail:(void(^)(NSError *error))fail;
+
+/// 获取互动房间状态(包含上麦用户列表)
+/// @param roomId 房间id lss_xxx
+/// @param success 成功
+/// @param fail 失败
+- (void)getInvaToolStatusWithRoomId:(NSString *)roomId
+                            success:(void(^)(VHSSRoomToolsStatus *roomToolsStatus))success
+                               fail:(void(^)(NSError *error))fail;
 
 /// 获取互动SDK版本号
 + (NSString *)sdkVersionEX;

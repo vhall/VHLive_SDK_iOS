@@ -101,6 +101,7 @@
 		4E254B4929092CC400EB4EE3 /* WarmUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarmUpViewController.h; sourceTree = "<group>"; };
 		4E7ED88E2912769A001E8AD5 /* VHCommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHCommonViewController.h; sourceTree = "<group>"; };
 		4EC87E56288E819100005AD7 /* VHFashionStyleWatchLiveVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHFashionStyleWatchLiveVC.h; sourceTree = "<group>"; };
+		4ED6B203292C6BE600E10DCF /* VHExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHExamViewController.h; sourceTree = "<group>"; };
 		A5B08D74301AE76F9266CC39 /* Pods_VHSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VHSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C000AA3E1E66E053005DFB7C /* VHSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VHSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C000AA421E66E053005DFB7C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -447,6 +448,7 @@
 		F32B66B4262977510067BD0C /* UIModel */ = {
 			isa = PBXGroup;
 			children = (
+				4ED6B203292C6BE600E10DCF /* VHExamViewController.h */,
 				F32B66CA262977510067BD0C /* libUIModel.a */,
 				F32B66D0262977510067BD0C /* UIModel.bundle */,
 				035AD5E127202AA1002515B7 /* PubLishLiveVC_Nodelay.h */,
@@ -837,7 +839,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 0;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = H49DK955B9;
 				ENABLE_BITCODE = NO;
@@ -863,7 +865,7 @@
 					"$(PROJECT_DIR)/../UIModel/libs_third",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 6.10.0;
+				MARKETING_VERSION = 6.11.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -881,7 +883,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 0;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = H49DK955B9;
 				ENABLE_BITCODE = NO;
@@ -908,7 +910,7 @@
 					"$(PROJECT_DIR)/../UIModel/libs_third",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 6.10.0;
+				MARKETING_VERSION = 6.11.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

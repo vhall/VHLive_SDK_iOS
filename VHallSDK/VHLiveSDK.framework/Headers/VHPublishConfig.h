@@ -91,16 +91,29 @@ typedef NS_ENUM(NSInteger,VHPublishConfigType)
  */
 typedef NS_ENUM(NSInteger,VHVideoResolution)
 {
+    /// VHVideoResolution 低分边率  352*288
     VHLowVideoResolution                = 0,    //低分边率  352*288
+    /// VHVideoResolution 普通分辨率 640*480
     VHGeneralVideoResolution            = 1,    //普通分辨率 640*480
+    /// VHVideoResolution 高分辨率  960*540
     VHHVideoResolution                  = 2,    //高分辨率  960*540
+    /// VHVideoResolution 超高分辨率 1280*720
     VHHDVideoResolution                 = 3,    //超高分辨率 1280*720
+    /// VHVideoResolution 1080p 1920*1080
     VH1080pVideoResolution              = 4,    //1080p    1920*1080
 };
 
+// 美颜设置 (未来有效)
+typedef enum : NSUInteger {
+    VHBeautifyTypeNone      = 0 ,
+    VHBeautifyTypeSimple    = 1<<0 ,
+    VHBeautifyTypeAdvanced  = 1<<1 ,
+} VHBeautifyType;
 
 @interface VHPublishConfig : NSObject
 
+/// 创建Config
+/// @param type 清晰度
 + (VHPublishConfig*)configWithType:(VHPublishConfigType)type;
 
 /**
@@ -163,12 +176,15 @@ typedef NS_ENUM(NSInteger,VHVideoResolution)
  */
 @property (nonatomic,assign)AVCaptureDevicePosition captureDevicePosition;
 
+/// 美颜类型 [默认:VHBeautfiyNone][beta(未来有效)]
+@property (nonatomic) VHBeautifyType beautifyType;
+
 /**
  * 美颜滤镜开关
  * 默认关闭 NO
  * 开启器美颜 帧率最好调整为15帧
  */
-@property (nonatomic,assign)BOOL beautifyFilterEnable;
+@property (nonatomic, assign)BOOL beautifyFilterEnable;
 
 /// 高级美颜功能[自动开启，无需设置]
 @property (nonatomic, assign) BOOL advancedBeautifyEnable;

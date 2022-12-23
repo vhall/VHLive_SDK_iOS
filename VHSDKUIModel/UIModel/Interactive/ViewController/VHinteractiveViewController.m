@@ -188,11 +188,18 @@
 //进入互动房间回调
 - (void)room:(VHRoom *)room enterRoomWithError:(NSError *)error {
     if (error) {
-        __weak typeof(self) wf = self;
-        [UIAlertController showAlertControllerTitle:@"温馨提示" msg:[NSString stringWithFormat:@"错误:%@",error.description] btnTitle:@"确定" callBack:^{
-            [wf closeButtonClick:nil];
-        }];
         VHLog(@"错误:%@",error.description);
+    }else{
+//        // 初始化获取-获取当前连麦列表
+//        self.interactiveRoom.roomInfo.toolsStatus.speaker_list;
+//        // 查询获取-获取当前连麦列表
+//        [self.interactiveRoom getInvaToolStatusWithRoomId:self.interactiveRoom.roomInfo.webinarInfoData.interact.room_id success:^(VHSSRoomToolsStatus * _Nonnull roomToolsStatus) {
+//            roomToolsStatus.speaker_list;
+//        } fail:^(NSError * _Nonnull error) {
+//
+//        }];
+        // 设置超时时间为6000秒 10分钟
+        self.interactiveRoom.reconnectTimes = 6000;
     }
 }
 // 房间连接成功

@@ -10,6 +10,7 @@
 #import <VHLiveSDK/VHDocument.h>
 #import <VHLiveSDK/VHallConst.h>
 #import <VHLiveSDK/VHWebinarInfoData.h>
+#import <VHLiveSDK/VHSSInteractModel.h>
 #import <VHInteractive/VHRoomEnum.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VHRoomInfo : NSObject
 
 @property (nonatomic, strong) id                        data;                   ///<活动详情原数据
+@property (nonatomic, strong) VHSSRoomToolsStatus *     toolsStatus;            ///<进入房间时，房间工具状态
 @property (nonatomic, strong) VHWebinarInfoData *       webinarInfoData;        ///<活动详情数据模型
 @property (nonatomic, assign) VHWebinarLiveType         webinar_type;           ///<1 音频直播 2 视频直播 3 互动直播
 @property (nonatomic, assign) VHRoomRoleNameType        selfRoleName;           ///<自己的角色  1主持人 2观众 3助理 4嘉宾
