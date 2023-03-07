@@ -1,0 +1,1477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 53;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4E068D5A29A5FE4500887E1E /* VHAuthAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E068D5929A5FE4500887E1E /* VHAuthAlertView.m */; };
+		4E08428129877875002EEB25 /* VHWarmUpStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08428029877875002EEB25 /* VHWarmUpStartView.m */; };
+		4E1382ED29B70CEC00AEBF67 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1382E529B70B4A00AEBF67 /* WebRTC.framework */; };
+		4E1382EE29B70CEC00AEBF67 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1382E529B70B4A00AEBF67 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4E1382EF29B70CEE00AEBF67 /* VHLiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1382E729B70B4A00AEBF67 /* VHLiveSDK.framework */; };
+		4E1382F029B70CEE00AEBF67 /* VHLiveSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1382E729B70B4A00AEBF67 /* VHLiveSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4E1382F129B70CF000AEBF67 /* VHInteractive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1382E629B70B4A00AEBF67 /* VHInteractive.framework */; };
+		4E1382F229B70CF000AEBF67 /* VHInteractive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1382E629B70B4A00AEBF67 /* VHInteractive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4E1382F329B70CF200AEBF67 /* VhallLiveBaseApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1382E829B70B4A00AEBF67 /* VhallLiveBaseApi.framework */; };
+		4E1382F429B70CF200AEBF67 /* VhallLiveBaseApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1382E829B70B4A00AEBF67 /* VhallLiveBaseApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4E1382F829B70EBF00AEBF67 /* VHStystemSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1382F729B70EBF00AEBF67 /* VHStystemSetting.m */; };
+		4E20671F299226DD00438B00 /* VHBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E20671E299226DD00438B00 /* VHBrowserVC.m */; };
+		4E23FC522940358A00341EA4 /* Pods_VhallSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5401D4E75AF6641CAE310871 /* Pods_VhallSDKDemo.framework */; };
+		4E23FC66294046B500341EA4 /* VUITool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FC65294046B500341EA4 /* VUITool.m */; };
+		4E23FC6A29404A9E00341EA4 /* UIColor+VUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FC6829404A9E00341EA4 /* UIColor+VUI.m */; };
+		4E23FC6E29404C7500341EA4 /* VHProgressHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FC6C29404C7500341EA4 /* VHProgressHud.m */; };
+		4E23FC722940676500341EA4 /* VHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FC702940676500341EA4 /* VHLoginViewController.m */; };
+		4E23FC732940676500341EA4 /* VHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E23FC712940676500341EA4 /* VHLoginViewController.xib */; };
+		4E23FC832940831800341EA4 /* VHSignSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FC812940831800341EA4 /* VHSignSetVC.m */; };
+		4E23FC842940831800341EA4 /* VHSignSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E23FC822940831800341EA4 /* VHSignSetVC.xib */; };
+		4E23FC882941E90D00341EA4 /* VHHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E23FC852941E90D00341EA4 /* VHHomeViewController.xib */; };
+		4E23FC892941E90D00341EA4 /* VHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FC872941E90D00341EA4 /* VHHomeViewController.m */; };
+		4E23FC8D2946C58F00341EA4 /* VHWarmUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FC8C2946C58F00341EA4 /* VHWarmUpViewController.m */; };
+		4E23FC9A2946C7F500341EA4 /* UIView+ITTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FC982946C7F500341EA4 /* UIView+ITTAdditions.m */; };
+		4E23FCA32948209D00341EA4 /* VHWatchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCA22948209D00341EA4 /* VHWatchVC.m */; };
+		4E23FCA8294820E600341EA4 /* VHChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCA7294820E600341EA4 /* VHChatView.m */; };
+		4E23FCAB2948421C00341EA4 /* VHChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCAA2948421C00341EA4 /* VHChatCell.m */; };
+		4E23FCAF2948589E00341EA4 /* VHWatchVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCAE2948589E00341EA4 /* VHWatchVideoView.m */; };
+		4E23FCB52948875700341EA4 /* VHWatchLiveBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCB42948875700341EA4 /* VHWatchLiveBottomView.m */; };
+		4E23FCD62948A28900341EA4 /* VHTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCCA2948A28900341EA4 /* VHTextView.m */; };
+		4E23FCD82948A28900341EA4 /* VHKeyboardToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCCD2948A28900341EA4 /* VHKeyboardToolView.m */; };
+		4E23FCE52949C81F00341EA4 /* VHDocView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCE42949C81F00341EA4 /* VHDocView.m */; };
+		4E23FCEB294AC34200341EA4 /* VHWatchBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCEA294AC34200341EA4 /* VHWatchBackView.m */; };
+		4E23FCF1294B269800341EA4 /* VHSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCF0294B269800341EA4 /* VHSliderView.m */; };
+		4E23FCF7294C11AC00341EA4 /* VHFashionStyleGiftPushView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCF3294C11AB00341EA4 /* VHFashionStyleGiftPushView.m */; };
+		4E23FCF8294C11AC00341EA4 /* VHFashionStyleGiftListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCF6294C11AB00341EA4 /* VHFashionStyleGiftListView.m */; };
+		4E23FCFC294C15AE00341EA4 /* VHLikeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCFB294C15AE00341EA4 /* VHLikeObject.m */; };
+		4E23FCFF294C18DD00341EA4 /* UIButton+VHBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FCFE294C18DD00341EA4 /* UIButton+VHBadge.m */; };
+		4E23FD03294C1D6400341EA4 /* VHLiveSaleAnimationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD01294C1D6400341EA4 /* VHLiveSaleAnimationTool.m */; };
+		4E23FD0C294C480700341EA4 /* VHIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD0A294C480700341EA4 /* VHIntroView.m */; };
+		4E23FD10294C4F5D00341EA4 /* VHSurveyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD0F294C4F5D00341EA4 /* VHSurveyListView.m */; };
+		4E23FD13294C4F6800341EA4 /* VHSurveyWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD12294C4F6800341EA4 /* VHSurveyWebView.m */; };
+		4E23FD19294C5B7A00341EA4 /* VHFoldButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD18294C5B7A00341EA4 /* VHFoldButton.m */; };
+		4E23FD1F294C5B8900341EA4 /* VHTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD1D294C5B8900341EA4 /* VHTimer.m */; };
+		4E23FD20294C5B8900341EA4 /* VHLiveWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD1E294C5B8900341EA4 /* VHLiveWeakTimer.m */; };
+		4E23FD272950408E00341EA4 /* VHAnnouncementList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD252950408E00341EA4 /* VHAnnouncementList.m */; };
+		4E23FD2A29504D6100341EA4 /* VHAnnouncementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD2929504D6100341EA4 /* VHAnnouncementView.m */; };
+		4E32F49D2951AA4100B5388F /* VHInavApplyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F49C2951AA4100B5388F /* VHInavApplyAlertView.m */; };
+		4E32F4A02951BB9800B5388F /* VHInavRenderAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F49F2951BB9800B5388F /* VHInavRenderAlertView.m */; };
+		4E32F4A32951BBD000B5388F /* VHInavBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F4A22951BBD000B5388F /* VHInavBtn.m */; };
+		4E4F1B47299110A000979BC7 /* VHPrivacyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F1B46299110A000979BC7 /* VHPrivacyManager.m */; };
+		4ED2C42E2953F21D00E29DED /* VHSignInAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2C42D2953F21D00E29DED /* VHSignInAlertView.m */; };
+		4ED2C432295401BF00E29DED /* VHQAView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2C431295401BF00E29DED /* VHQAView.m */; };
+		4EDE10E429594B3E00B10DB9 /* VHEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE10E329594B3E00B10DB9 /* VHEmptyView.m */; };
+		4EDE10EA2959759000B10DB9 /* UIImage+VHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE10E92959759000B10DB9 /* UIImage+VHUtil.m */; };
+		4EDE10EE2959901200B10DB9 /* VHDefiniteionsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE10ED2959901200B10DB9 /* VHDefiniteionsViewModel.m */; };
+		4EDE10F12959BD1700B10DB9 /* VHChatGiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE10F02959BD1700B10DB9 /* VHChatGiftCell.m */; };
+		4EE848992952EF4B00F1BA1D /* VHNavBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE848982952EF4B00F1BA1D /* VHNavBaseViewController.m */; };
+		4EED8D3F2955BDC7002913AC /* VHChatCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EED8D3E2955BDC7002913AC /* VHChatCustomCell.m */; };
+		4EEEEB74293EE96600538BC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEB73293EE96600538BC2 /* AppDelegate.m */; };
+		4EEEEB7D293EE96600538BC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EEEEB7B293EE96600538BC2 /* Main.storyboard */; };
+		4EEEEB7F293EE96800538BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EEEEB7E293EE96800538BC2 /* Assets.xcassets */; };
+		4EEEEB82293EE96800538BC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EEEEB80293EE96800538BC2 /* LaunchScreen.storyboard */; };
+		4EEEEB85293EE96800538BC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEB84293EE96800538BC2 /* main.m */; };
+		4EEEEB8F293EE96900538BC2 /* VhallSDKDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEB8E293EE96900538BC2 /* VhallSDKDemoTests.m */; };
+		4EEEEB99293EE96900538BC2 /* VhallSDKDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEB98293EE96900538BC2 /* VhallSDKDemoUITests.m */; };
+		4EEEEB9B293EE96900538BC2 /* VhallSDKDemoUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEB9A293EE96900538BC2 /* VhallSDKDemoUITestsLaunchTests.m */; };
+		4EEEEBB5293F213D00538BC2 /* VHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEBB4293F213D00538BC2 /* VHBaseViewController.m */; };
+		4EF8258B2995EC67007874DA /* LBLelinkKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF825892995EC67007874DA /* LBLelinkKitManager.m */; };
+		4EF8258C2995EC67007874DA /* LBDeviceListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8258A2995EC67007874DA /* LBDeviceListModel.m */; };
+		4EF84E7229519221001299E4 /* VHInavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF84E7129519221001299E4 /* VHInavView.m */; };
+		4EF84E752951A072001299E4 /* VHInavAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF84E742951A072001299E4 /* VHInavAlertView.m */; };
+		7C75F54EDF39F2D3773FBE22 /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E26F687E80B8B2BB47A859E /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework */; };
+		EDE93B43E701F247BFC39F38 /* Pods_VhallSDKDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494BE4CE29A050223829ADDE /* Pods_VhallSDKDemoTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4EEEEB8B293EE96900538BC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4EEEEB67293EE96600538BC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4EEEEB6E293EE96600538BC2;
+			remoteInfo = VhallSDKDemo;
+		};
+		4EEEEB95293EE96900538BC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4EEEEB67293EE96600538BC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4EEEEB6E293EE96600538BC2;
+			remoteInfo = VhallSDKDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4EEBCDF929A4A74300704C7D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4E1382EE29B70CEC00AEBF67 /* WebRTC.framework in Embed Frameworks */,
+				4E1382F229B70CF000AEBF67 /* VHInteractive.framework in Embed Frameworks */,
+				4E1382F429B70CF200AEBF67 /* VhallLiveBaseApi.framework in Embed Frameworks */,
+				4E1382F029B70CEE00AEBF67 /* VHLiveSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		17104494D6712BCAFC486993 /* Pods-VhallSDKDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemoTests/Pods-VhallSDKDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1E26F687E80B8B2BB47A859E /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VhallSDKDemo_VhallSDKDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		243488603BF75770EE8D355B /* Pods-VhallSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		494BE4CE29A050223829ADDE /* Pods_VhallSDKDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VhallSDKDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E068D5829A5FE4500887E1E /* VHAuthAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHAuthAlertView.h; sourceTree = "<group>"; };
+		4E068D5929A5FE4500887E1E /* VHAuthAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHAuthAlertView.m; sourceTree = "<group>"; };
+		4E08427F29877875002EEB25 /* VHWarmUpStartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHWarmUpStartView.h; sourceTree = "<group>"; };
+		4E08428029877875002EEB25 /* VHWarmUpStartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHWarmUpStartView.m; sourceTree = "<group>"; };
+		4E1382E529B70B4A00AEBF67 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
+		4E1382E629B70B4A00AEBF67 /* VHInteractive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VHInteractive.framework; sourceTree = "<group>"; };
+		4E1382E729B70B4A00AEBF67 /* VHLiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VHLiveSDK.framework; sourceTree = "<group>"; };
+		4E1382E829B70B4A00AEBF67 /* VhallLiveBaseApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VhallLiveBaseApi.framework; sourceTree = "<group>"; };
+		4E1382F629B70EBF00AEBF67 /* VHStystemSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHStystemSetting.h; sourceTree = "<group>"; };
+		4E1382F729B70EBF00AEBF67 /* VHStystemSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHStystemSetting.m; sourceTree = "<group>"; };
+		4E20671D299226DC00438B00 /* VHBrowserVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHBrowserVC.h; sourceTree = "<group>"; };
+		4E20671E299226DD00438B00 /* VHBrowserVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHBrowserVC.m; sourceTree = "<group>"; };
+		4E23FC4A2940353E00341EA4 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
+		4E23FC4B2940353E00341EA4 /* VHInteractive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VHInteractive.framework; sourceTree = "<group>"; };
+		4E23FC4C2940353E00341EA4 /* VHLiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VHLiveSDK.framework; sourceTree = "<group>"; };
+		4E23FC4D2940353E00341EA4 /* VhallLiveBaseApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VhallLiveBaseApi.framework; sourceTree = "<group>"; };
+		4E23FC64294046B500341EA4 /* VUITool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VUITool.h; sourceTree = "<group>"; };
+		4E23FC65294046B500341EA4 /* VUITool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VUITool.m; sourceTree = "<group>"; };
+		4E23FC6829404A9E00341EA4 /* UIColor+VUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+VUI.m"; sourceTree = "<group>"; };
+		4E23FC6929404A9E00341EA4 /* UIColor+VUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+VUI.h"; sourceTree = "<group>"; };
+		4E23FC6C29404C7500341EA4 /* VHProgressHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHProgressHud.m; sourceTree = "<group>"; };
+		4E23FC6D29404C7500341EA4 /* VHProgressHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHProgressHud.h; sourceTree = "<group>"; };
+		4E23FC6F2940676500341EA4 /* VHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHLoginViewController.h; sourceTree = "<group>"; };
+		4E23FC702940676500341EA4 /* VHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHLoginViewController.m; sourceTree = "<group>"; };
+		4E23FC712940676500341EA4 /* VHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VHLoginViewController.xib; sourceTree = "<group>"; };
+		4E23FC802940831800341EA4 /* VHSignSetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHSignSetVC.h; sourceTree = "<group>"; };
+		4E23FC812940831800341EA4 /* VHSignSetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHSignSetVC.m; sourceTree = "<group>"; };
+		4E23FC822940831800341EA4 /* VHSignSetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VHSignSetVC.xib; sourceTree = "<group>"; };
+		4E23FC852941E90D00341EA4 /* VHHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VHHomeViewController.xib; sourceTree = "<group>"; };
+		4E23FC862941E90D00341EA4 /* VHHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHHomeViewController.h; sourceTree = "<group>"; };
+		4E23FC872941E90D00341EA4 /* VHHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHHomeViewController.m; sourceTree = "<group>"; };
+		4E23FC8B2946C58F00341EA4 /* VHWarmUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHWarmUpViewController.h; sourceTree = "<group>"; };
+		4E23FC8C2946C58F00341EA4 /* VHWarmUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHWarmUpViewController.m; sourceTree = "<group>"; };
+		4E23FC982946C7F500341EA4 /* UIView+ITTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ITTAdditions.m"; sourceTree = "<group>"; };
+		4E23FC992946C7F500341EA4 /* UIView+ITTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ITTAdditions.h"; sourceTree = "<group>"; };
+		4E23FCA12948209D00341EA4 /* VHWatchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHWatchVC.h; sourceTree = "<group>"; };
+		4E23FCA22948209D00341EA4 /* VHWatchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHWatchVC.m; sourceTree = "<group>"; };
+		4E23FCA6294820E600341EA4 /* VHChatView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChatView.h; sourceTree = "<group>"; };
+		4E23FCA7294820E600341EA4 /* VHChatView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHChatView.m; sourceTree = "<group>"; };
+		4E23FCA92948421C00341EA4 /* VHChatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChatCell.h; sourceTree = "<group>"; };
+		4E23FCAA2948421C00341EA4 /* VHChatCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHChatCell.m; sourceTree = "<group>"; };
+		4E23FCAD2948589E00341EA4 /* VHWatchVideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHWatchVideoView.h; sourceTree = "<group>"; };
+		4E23FCAE2948589E00341EA4 /* VHWatchVideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHWatchVideoView.m; sourceTree = "<group>"; };
+		4E23FCB32948875700341EA4 /* VHWatchLiveBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHWatchLiveBottomView.h; sourceTree = "<group>"; };
+		4E23FCB42948875700341EA4 /* VHWatchLiveBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHWatchLiveBottomView.m; sourceTree = "<group>"; };
+		4E23FCC92948A28900341EA4 /* VHTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHTextView.h; sourceTree = "<group>"; };
+		4E23FCCA2948A28900341EA4 /* VHTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHTextView.m; sourceTree = "<group>"; };
+		4E23FCCD2948A28900341EA4 /* VHKeyboardToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHKeyboardToolView.m; sourceTree = "<group>"; };
+		4E23FCD52948A28900341EA4 /* VHKeyboardToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHKeyboardToolView.h; sourceTree = "<group>"; };
+		4E23FCE32949C81F00341EA4 /* VHDocView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHDocView.h; sourceTree = "<group>"; };
+		4E23FCE42949C81F00341EA4 /* VHDocView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHDocView.m; sourceTree = "<group>"; };
+		4E23FCE9294AC34200341EA4 /* VHWatchBackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHWatchBackView.h; sourceTree = "<group>"; };
+		4E23FCEA294AC34200341EA4 /* VHWatchBackView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHWatchBackView.m; sourceTree = "<group>"; };
+		4E23FCEF294B269800341EA4 /* VHSliderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHSliderView.h; sourceTree = "<group>"; };
+		4E23FCF0294B269800341EA4 /* VHSliderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHSliderView.m; sourceTree = "<group>"; };
+		4E23FCF3294C11AB00341EA4 /* VHFashionStyleGiftPushView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHFashionStyleGiftPushView.m; sourceTree = "<group>"; };
+		4E23FCF4294C11AB00341EA4 /* VHFashionStyleGiftPushView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHFashionStyleGiftPushView.h; sourceTree = "<group>"; };
+		4E23FCF5294C11AB00341EA4 /* VHFashionStyleGiftListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHFashionStyleGiftListView.h; sourceTree = "<group>"; };
+		4E23FCF6294C11AB00341EA4 /* VHFashionStyleGiftListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHFashionStyleGiftListView.m; sourceTree = "<group>"; };
+		4E23FCFA294C15AE00341EA4 /* VHLikeObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHLikeObject.h; sourceTree = "<group>"; };
+		4E23FCFB294C15AE00341EA4 /* VHLikeObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHLikeObject.m; sourceTree = "<group>"; };
+		4E23FCFD294C18DD00341EA4 /* UIButton+VHBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+VHBadge.h"; sourceTree = "<group>"; };
+		4E23FCFE294C18DD00341EA4 /* UIButton+VHBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+VHBadge.m"; sourceTree = "<group>"; };
+		4E23FD01294C1D6400341EA4 /* VHLiveSaleAnimationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHLiveSaleAnimationTool.m; sourceTree = "<group>"; };
+		4E23FD02294C1D6400341EA4 /* VHLiveSaleAnimationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHLiveSaleAnimationTool.h; sourceTree = "<group>"; };
+		4E23FD0A294C480700341EA4 /* VHIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHIntroView.m; sourceTree = "<group>"; };
+		4E23FD0B294C480700341EA4 /* VHIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHIntroView.h; sourceTree = "<group>"; };
+		4E23FD0E294C4F5D00341EA4 /* VHSurveyListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHSurveyListView.h; sourceTree = "<group>"; };
+		4E23FD0F294C4F5D00341EA4 /* VHSurveyListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHSurveyListView.m; sourceTree = "<group>"; };
+		4E23FD11294C4F6800341EA4 /* VHSurveyWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHSurveyWebView.h; sourceTree = "<group>"; };
+		4E23FD12294C4F6800341EA4 /* VHSurveyWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHSurveyWebView.m; sourceTree = "<group>"; };
+		4E23FD17294C5B7A00341EA4 /* VHFoldButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHFoldButton.h; sourceTree = "<group>"; };
+		4E23FD18294C5B7A00341EA4 /* VHFoldButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHFoldButton.m; sourceTree = "<group>"; };
+		4E23FD1B294C5B8900341EA4 /* VHTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHTimer.h; sourceTree = "<group>"; };
+		4E23FD1C294C5B8900341EA4 /* VHLiveWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHLiveWeakTimer.h; sourceTree = "<group>"; };
+		4E23FD1D294C5B8900341EA4 /* VHTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHTimer.m; sourceTree = "<group>"; };
+		4E23FD1E294C5B8900341EA4 /* VHLiveWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHLiveWeakTimer.m; sourceTree = "<group>"; };
+		4E23FD252950408E00341EA4 /* VHAnnouncementList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHAnnouncementList.m; sourceTree = "<group>"; };
+		4E23FD262950408E00341EA4 /* VHAnnouncementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHAnnouncementList.h; sourceTree = "<group>"; };
+		4E23FD2829504D6100341EA4 /* VHAnnouncementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHAnnouncementView.h; sourceTree = "<group>"; };
+		4E23FD2929504D6100341EA4 /* VHAnnouncementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHAnnouncementView.m; sourceTree = "<group>"; };
+		4E32F49B2951AA4100B5388F /* VHInavApplyAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHInavApplyAlertView.h; sourceTree = "<group>"; };
+		4E32F49C2951AA4100B5388F /* VHInavApplyAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHInavApplyAlertView.m; sourceTree = "<group>"; };
+		4E32F49E2951BB9800B5388F /* VHInavRenderAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHInavRenderAlertView.h; sourceTree = "<group>"; };
+		4E32F49F2951BB9800B5388F /* VHInavRenderAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHInavRenderAlertView.m; sourceTree = "<group>"; };
+		4E32F4A12951BBD000B5388F /* VHInavBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHInavBtn.h; sourceTree = "<group>"; };
+		4E32F4A22951BBD000B5388F /* VHInavBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHInavBtn.m; sourceTree = "<group>"; };
+		4E4F1B45299110A000979BC7 /* VHPrivacyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHPrivacyManager.h; sourceTree = "<group>"; };
+		4E4F1B46299110A000979BC7 /* VHPrivacyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHPrivacyManager.m; sourceTree = "<group>"; };
+		4ED2C42C2953F21D00E29DED /* VHSignInAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHSignInAlertView.h; sourceTree = "<group>"; };
+		4ED2C42D2953F21D00E29DED /* VHSignInAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHSignInAlertView.m; sourceTree = "<group>"; };
+		4ED2C430295401BF00E29DED /* VHQAView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHQAView.h; sourceTree = "<group>"; };
+		4ED2C431295401BF00E29DED /* VHQAView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHQAView.m; sourceTree = "<group>"; };
+		4EDE10E229594B3E00B10DB9 /* VHEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHEmptyView.h; sourceTree = "<group>"; };
+		4EDE10E329594B3E00B10DB9 /* VHEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHEmptyView.m; sourceTree = "<group>"; };
+		4EDE10E82959759000B10DB9 /* UIImage+VHUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+VHUtil.h"; sourceTree = "<group>"; };
+		4EDE10E92959759000B10DB9 /* UIImage+VHUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+VHUtil.m"; sourceTree = "<group>"; };
+		4EDE10EC2959901200B10DB9 /* VHDefiniteionsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHDefiniteionsViewModel.h; sourceTree = "<group>"; };
+		4EDE10ED2959901200B10DB9 /* VHDefiniteionsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHDefiniteionsViewModel.m; sourceTree = "<group>"; };
+		4EDE10EF2959BD1700B10DB9 /* VHChatGiftCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChatGiftCell.h; sourceTree = "<group>"; };
+		4EDE10F02959BD1700B10DB9 /* VHChatGiftCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHChatGiftCell.m; sourceTree = "<group>"; };
+		4EE848972952EF4B00F1BA1D /* VHNavBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHNavBaseViewController.h; sourceTree = "<group>"; };
+		4EE848982952EF4B00F1BA1D /* VHNavBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHNavBaseViewController.m; sourceTree = "<group>"; };
+		4EEBCDEB29A4A67200704C7D /* VHallSDKDemoInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = VHallSDKDemoInfo.plist; sourceTree = "<group>"; };
+		4EED8D3D2955BDC7002913AC /* VHChatCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChatCustomCell.h; sourceTree = "<group>"; };
+		4EED8D3E2955BDC7002913AC /* VHChatCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHChatCustomCell.m; sourceTree = "<group>"; };
+		4EEEEB6F293EE96600538BC2 /* VhallSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VhallSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EEEEB72293EE96600538BC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4EEEEB73293EE96600538BC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4EEEEB7C293EE96600538BC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4EEEEB7E293EE96800538BC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4EEEEB81293EE96800538BC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4EEEEB84293EE96800538BC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4EEEEB8A293EE96900538BC2 /* VhallSDKDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VhallSDKDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EEEEB8E293EE96900538BC2 /* VhallSDKDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VhallSDKDemoTests.m; sourceTree = "<group>"; };
+		4EEEEB94293EE96900538BC2 /* VhallSDKDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VhallSDKDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EEEEB98293EE96900538BC2 /* VhallSDKDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VhallSDKDemoUITests.m; sourceTree = "<group>"; };
+		4EEEEB9A293EE96900538BC2 /* VhallSDKDemoUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VhallSDKDemoUITestsLaunchTests.m; sourceTree = "<group>"; };
+		4EEEEBA9293F201100538BC2 /* CONSTS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CONSTS.h; sourceTree = "<group>"; };
+		4EEEEBAA293F201100538BC2 /* VhallSDKDemoPCH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VhallSDKDemoPCH.h; sourceTree = "<group>"; };
+		4EEEEBB3293F213D00538BC2 /* VHBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHBaseViewController.h; sourceTree = "<group>"; };
+		4EEEEBB4293F213D00538BC2 /* VHBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHBaseViewController.m; sourceTree = "<group>"; };
+		4EF825872995EC67007874DA /* LBLelinkKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLelinkKitManager.h; sourceTree = "<group>"; };
+		4EF825882995EC67007874DA /* LBDeviceListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDeviceListModel.h; sourceTree = "<group>"; };
+		4EF825892995EC67007874DA /* LBLelinkKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLelinkKitManager.m; sourceTree = "<group>"; };
+		4EF8258A2995EC67007874DA /* LBDeviceListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDeviceListModel.m; sourceTree = "<group>"; };
+		4EF84E7029519221001299E4 /* VHInavView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHInavView.h; sourceTree = "<group>"; };
+		4EF84E7129519221001299E4 /* VHInavView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHInavView.m; sourceTree = "<group>"; };
+		4EF84E732951A072001299E4 /* VHInavAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHInavAlertView.h; sourceTree = "<group>"; };
+		4EF84E742951A072001299E4 /* VHInavAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHInavAlertView.m; sourceTree = "<group>"; };
+		5401D4E75AF6641CAE310871 /* Pods_VhallSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VhallSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1B319186E8BC448956B868 /* Pods-VhallSDKDemo-VhallSDKDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemo-VhallSDKDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7E3B1D39559C1B7E02091616 /* Pods-VhallSDKDemo-VhallSDKDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemo-VhallSDKDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D28BA50D1D20871908164F4B /* Pods-VhallSDKDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemoTests.release.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemoTests/Pods-VhallSDKDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		F144C26B8E47A7FED450FF44 /* Pods-VhallSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4EEEEB6C293EE96600538BC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E1382F329B70CF200AEBF67 /* VhallLiveBaseApi.framework in Frameworks */,
+				4E1382F129B70CF000AEBF67 /* VHInteractive.framework in Frameworks */,
+				4E1382EF29B70CEE00AEBF67 /* VHLiveSDK.framework in Frameworks */,
+				4E23FC522940358A00341EA4 /* Pods_VhallSDKDemo.framework in Frameworks */,
+				4E1382ED29B70CEC00AEBF67 /* WebRTC.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EEEEB87293EE96900538BC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDE93B43E701F247BFC39F38 /* Pods_VhallSDKDemoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EEEEB91293EE96900538BC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C75F54EDF39F2D3773FBE22 /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4E068D5629A5FE0300887E1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E068D5829A5FE4500887E1E /* VHAuthAlertView.h */,
+				4E068D5929A5FE4500887E1E /* VHAuthAlertView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4E068D5729A5FE0900887E1E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FC862941E90D00341EA4 /* VHHomeViewController.h */,
+				4E23FC872941E90D00341EA4 /* VHHomeViewController.m */,
+				4E23FC852941E90D00341EA4 /* VHHomeViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4E08427E29877857002EEB25 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E08427F29877875002EEB25 /* VHWarmUpStartView.h */,
+				4E08428029877875002EEB25 /* VHWarmUpStartView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4E1382E329B70B4A00AEBF67 /* VHallSDK */ = {
+			isa = PBXGroup;
+			children = (
+				4E1382E429B70B4A00AEBF67 /* VHallInteractive */,
+				4E1382E729B70B4A00AEBF67 /* VHLiveSDK.framework */,
+				4E1382E829B70B4A00AEBF67 /* VhallLiveBaseApi.framework */,
+			);
+			name = VHallSDK;
+			path = ../../VHallSDK;
+			sourceTree = "<group>";
+		};
+		4E1382E429B70B4A00AEBF67 /* VHallInteractive */ = {
+			isa = PBXGroup;
+			children = (
+				4E1382E529B70B4A00AEBF67 /* WebRTC.framework */,
+				4E1382E629B70B4A00AEBF67 /* VHInteractive.framework */,
+			);
+			path = VHallInteractive;
+			sourceTree = "<group>";
+		};
+		4E1382F529B70EBF00AEBF67 /* VHStystemSetting */ = {
+			isa = PBXGroup;
+			children = (
+				4E1382F629B70EBF00AEBF67 /* VHStystemSetting.h */,
+				4E1382F729B70EBF00AEBF67 /* VHStystemSetting.m */,
+			);
+			path = VHStystemSetting;
+			sourceTree = "<group>";
+		};
+		4E20671C299226B100438B00 /* VHBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				4EF825862995EC67007874DA /* LBLelinkKitManager */,
+				4E20671D299226DC00438B00 /* VHBrowserVC.h */,
+				4E20671E299226DD00438B00 /* VHBrowserVC.m */,
+			);
+			path = VHBrowser;
+			sourceTree = "<group>";
+		};
+		4E23FC63294046A300341EA4 /* VHTool */ = {
+			isa = PBXGroup;
+			children = (
+				4E4F1B44299110A000979BC7 /* VHPrivacyManager */,
+				4E23FD00294C1D4E00341EA4 /* VHLiveSaleAnimationTool */,
+				4E23FCCB2948A28900341EA4 /* VHKeyboardView */,
+				4E23FCC82948A28900341EA4 /* VHTextView */,
+				4E23FC64294046B500341EA4 /* VUITool.h */,
+				4E23FC65294046B500341EA4 /* VUITool.m */,
+			);
+			path = VHTool;
+			sourceTree = "<group>";
+		};
+		4E23FC6729404A5600341EA4 /* VHCatogroy */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FCFD294C18DD00341EA4 /* UIButton+VHBadge.h */,
+				4E23FCFE294C18DD00341EA4 /* UIButton+VHBadge.m */,
+				4E23FC6929404A9E00341EA4 /* UIColor+VUI.h */,
+				4E23FC6829404A9E00341EA4 /* UIColor+VUI.m */,
+				4E23FC992946C7F500341EA4 /* UIView+ITTAdditions.h */,
+				4E23FC982946C7F500341EA4 /* UIView+ITTAdditions.m */,
+				4EDE10E82959759000B10DB9 /* UIImage+VHUtil.h */,
+				4EDE10E92959759000B10DB9 /* UIImage+VHUtil.m */,
+			);
+			path = VHCatogroy;
+			sourceTree = "<group>";
+		};
+		4E23FC6B29404C7500341EA4 /* VHProgressHud */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FC6C29404C7500341EA4 /* VHProgressHud.m */,
+				4E23FC6D29404C7500341EA4 /* VHProgressHud.h */,
+			);
+			path = VHProgressHud;
+			sourceTree = "<group>";
+		};
+		4E23FC78294074F900341EA4 /* VHSignSetVC */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FC802940831800341EA4 /* VHSignSetVC.h */,
+				4E23FC812940831800341EA4 /* VHSignSetVC.m */,
+				4E23FC822940831800341EA4 /* VHSignSetVC.xib */,
+			);
+			path = VHSignSetVC;
+			sourceTree = "<group>";
+		};
+		4E23FC7C294076DE00341EA4 /* VHHomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				4E068D5729A5FE0900887E1E /* ViewController */,
+				4E068D5629A5FE0300887E1E /* View */,
+			);
+			path = VHHomeVC;
+			sourceTree = "<group>";
+		};
+		4E23FC8A2946C58F00341EA4 /* VHWarmUp */ = {
+			isa = PBXGroup;
+			children = (
+				4E08427E29877857002EEB25 /* View */,
+				4E23FC8B2946C58F00341EA4 /* VHWarmUpViewController.h */,
+				4E23FC8C2946C58F00341EA4 /* VHWarmUpViewController.m */,
+			);
+			path = VHWarmUp;
+			sourceTree = "<group>";
+		};
+		4E23FC8E2946C69700341EA4 /* VHCommon */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FD1A294C5B8900341EA4 /* Timer */,
+				4E23FD17294C5B7A00341EA4 /* VHFoldButton.h */,
+				4E23FD18294C5B7A00341EA4 /* VHFoldButton.m */,
+				4EDE10E229594B3E00B10DB9 /* VHEmptyView.h */,
+				4EDE10E329594B3E00B10DB9 /* VHEmptyView.m */,
+			);
+			path = VHCommon;
+			sourceTree = "<group>";
+		};
+		4E23FCA02948207B00341EA4 /* VHWatchLive */ = {
+			isa = PBXGroup;
+			children = (
+				4EDE10EB29598FF100B10DB9 /* model */,
+				4E23FCAC2948587C00341EA4 /* View */,
+				4E23FCA4294820B300341EA4 /* ViewController */,
+			);
+			path = VHWatchLive;
+			sourceTree = "<group>";
+		};
+		4E23FCA4294820B300341EA4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FCA12948209D00341EA4 /* VHWatchVC.h */,
+				4E23FCA22948209D00341EA4 /* VHWatchVC.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4E23FCA5294820C900341EA4 /* VHChat */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FCA6294820E600341EA4 /* VHChatView.h */,
+				4E23FCA7294820E600341EA4 /* VHChatView.m */,
+				4E23FCA92948421C00341EA4 /* VHChatCell.h */,
+				4E23FCAA2948421C00341EA4 /* VHChatCell.m */,
+				4EED8D3D2955BDC7002913AC /* VHChatCustomCell.h */,
+				4EED8D3E2955BDC7002913AC /* VHChatCustomCell.m */,
+				4EDE10EF2959BD1700B10DB9 /* VHChatGiftCell.h */,
+				4EDE10F02959BD1700B10DB9 /* VHChatGiftCell.m */,
+			);
+			path = VHChat;
+			sourceTree = "<group>";
+		};
+		4E23FCAC2948587C00341EA4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FCAD2948589E00341EA4 /* VHWatchVideoView.h */,
+				4E23FCAE2948589E00341EA4 /* VHWatchVideoView.m */,
+				4E23FCB32948875700341EA4 /* VHWatchLiveBottomView.h */,
+				4E23FCB42948875700341EA4 /* VHWatchLiveBottomView.m */,
+				4E23FCEF294B269800341EA4 /* VHSliderView.h */,
+				4E23FCF0294B269800341EA4 /* VHSliderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4E23FCC82948A28900341EA4 /* VHTextView */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FCC92948A28900341EA4 /* VHTextView.h */,
+				4E23FCCA2948A28900341EA4 /* VHTextView.m */,
+			);
+			path = VHTextView;
+			sourceTree = "<group>";
+		};
+		4E23FCCB2948A28900341EA4 /* VHKeyboardView */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FCD52948A28900341EA4 /* VHKeyboardToolView.h */,
+				4E23FCCD2948A28900341EA4 /* VHKeyboardToolView.m */,
+			);
+			path = VHKeyboardView;
+			sourceTree = "<group>";
+		};
+		4E23FCE22949C80C00341EA4 /* VHDoc */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FCE32949C81F00341EA4 /* VHDocView.h */,
+				4E23FCE42949C81F00341EA4 /* VHDocView.m */,
+			);
+			path = VHDoc;
+			sourceTree = "<group>";
+		};
+		4E23FCE6294AC2E300341EA4 /* VHWatchBack */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FCE8294AC32000341EA4 /* View */,
+				4E23FCE7294AC30C00341EA4 /* ViewController */,
+			);
+			path = VHWatchBack;
+			sourceTree = "<group>";
+		};
+		4E23FCE7294AC30C00341EA4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4E23FCE8294AC32000341EA4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FCE9294AC34200341EA4 /* VHWatchBackView.h */,
+				4E23FCEA294AC34200341EA4 /* VHWatchBackView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4E23FCF2294C118900341EA4 /* VHGift */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FCF5294C11AB00341EA4 /* VHFashionStyleGiftListView.h */,
+				4E23FCF6294C11AB00341EA4 /* VHFashionStyleGiftListView.m */,
+				4E23FCF4294C11AB00341EA4 /* VHFashionStyleGiftPushView.h */,
+				4E23FCF3294C11AB00341EA4 /* VHFashionStyleGiftPushView.m */,
+			);
+			path = VHGift;
+			sourceTree = "<group>";
+		};
+		4E23FCF9294C158800341EA4 /* VHLike */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FCFA294C15AE00341EA4 /* VHLikeObject.h */,
+				4E23FCFB294C15AE00341EA4 /* VHLikeObject.m */,
+			);
+			path = VHLike;
+			sourceTree = "<group>";
+		};
+		4E23FD00294C1D4E00341EA4 /* VHLiveSaleAnimationTool */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FD02294C1D6400341EA4 /* VHLiveSaleAnimationTool.h */,
+				4E23FD01294C1D6400341EA4 /* VHLiveSaleAnimationTool.m */,
+			);
+			path = VHLiveSaleAnimationTool;
+			sourceTree = "<group>";
+		};
+		4E23FD09294C480700341EA4 /* VHIntro */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FD0B294C480700341EA4 /* VHIntroView.h */,
+				4E23FD0A294C480700341EA4 /* VHIntroView.m */,
+			);
+			path = VHIntro;
+			sourceTree = "<group>";
+		};
+		4E23FD0D294C4F4500341EA4 /* VHSurvey */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FD0E294C4F5D00341EA4 /* VHSurveyListView.h */,
+				4E23FD0F294C4F5D00341EA4 /* VHSurveyListView.m */,
+				4E23FD11294C4F6800341EA4 /* VHSurveyWebView.h */,
+				4E23FD12294C4F6800341EA4 /* VHSurveyWebView.m */,
+			);
+			path = VHSurvey;
+			sourceTree = "<group>";
+		};
+		4E23FD1A294C5B8900341EA4 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FD1C294C5B8900341EA4 /* VHLiveWeakTimer.h */,
+				4E23FD1E294C5B8900341EA4 /* VHLiveWeakTimer.m */,
+				4E23FD1B294C5B8900341EA4 /* VHTimer.h */,
+				4E23FD1D294C5B8900341EA4 /* VHTimer.m */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		4E23FD2429503FE600341EA4 /* VHAnnouncement */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FD262950408E00341EA4 /* VHAnnouncementList.h */,
+				4E23FD252950408E00341EA4 /* VHAnnouncementList.m */,
+				4E23FD2829504D6100341EA4 /* VHAnnouncementView.h */,
+				4E23FD2929504D6100341EA4 /* VHAnnouncementView.m */,
+			);
+			path = VHAnnouncement;
+			sourceTree = "<group>";
+		};
+		4E4F1B44299110A000979BC7 /* VHPrivacyManager */ = {
+			isa = PBXGroup;
+			children = (
+				4E4F1B45299110A000979BC7 /* VHPrivacyManager.h */,
+				4E4F1B46299110A000979BC7 /* VHPrivacyManager.m */,
+			);
+			path = VHPrivacyManager;
+			sourceTree = "<group>";
+		};
+		4ED2C42B2953F1A700E29DED /* VHSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				4ED2C42C2953F21D00E29DED /* VHSignInAlertView.h */,
+				4ED2C42D2953F21D00E29DED /* VHSignInAlertView.m */,
+			);
+			path = VHSignIn;
+			sourceTree = "<group>";
+		};
+		4ED2C42F2954018400E29DED /* VHQA */ = {
+			isa = PBXGroup;
+			children = (
+				4ED2C430295401BF00E29DED /* VHQAView.h */,
+				4ED2C431295401BF00E29DED /* VHQAView.m */,
+			);
+			path = VHQA;
+			sourceTree = "<group>";
+		};
+		4EDE10EB29598FF100B10DB9 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4EDE10EC2959901200B10DB9 /* VHDefiniteionsViewModel.h */,
+				4EDE10ED2959901200B10DB9 /* VHDefiniteionsViewModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		4EEBCDE829A4A1BB00704C7D /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FC4D2940353E00341EA4 /* VhallLiveBaseApi.framework */,
+				4E23FC4C2940353E00341EA4 /* VHLiveSDK.framework */,
+				4E23FC4B2940353E00341EA4 /* VHInteractive.framework */,
+				4E23FC4A2940353E00341EA4 /* WebRTC.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		4EEEEB66293EE96600538BC2 = {
+			isa = PBXGroup;
+			children = (
+				4EEEEB71293EE96600538BC2 /* VhallSDKDemo */,
+				4EEEEB8D293EE96900538BC2 /* VhallSDKDemoTests */,
+				4EEEEB97293EE96900538BC2 /* VhallSDKDemoUITests */,
+				4EEEEB70293EE96600538BC2 /* Products */,
+				5EADBE64C7F4B31A430FAAD8 /* Pods */,
+				C85A46C11EAD3493F15BBF3A /* Frameworks */,
+				4EEBCDE829A4A1BB00704C7D /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		4EEEEB70293EE96600538BC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4EEEEB6F293EE96600538BC2 /* VhallSDKDemo.app */,
+				4EEEEB8A293EE96900538BC2 /* VhallSDKDemoTests.xctest */,
+				4EEEEB94293EE96900538BC2 /* VhallSDKDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4EEEEB71293EE96600538BC2 /* VhallSDKDemo */ = {
+			isa = PBXGroup;
+			children = (
+				4E1382F529B70EBF00AEBF67 /* VHStystemSetting */,
+				4E20671C299226B100438B00 /* VHBrowser */,
+				4ED2C42F2954018400E29DED /* VHQA */,
+				4ED2C42B2953F1A700E29DED /* VHSignIn */,
+				4EF84E6D295191F1001299E4 /* VHInav */,
+				4E23FD2429503FE600341EA4 /* VHAnnouncement */,
+				4E23FD0D294C4F4500341EA4 /* VHSurvey */,
+				4E23FD09294C480700341EA4 /* VHIntro */,
+				4E23FCF9294C158800341EA4 /* VHLike */,
+				4E23FCF2294C118900341EA4 /* VHGift */,
+				4E23FCE6294AC2E300341EA4 /* VHWatchBack */,
+				4E23FCE22949C80C00341EA4 /* VHDoc */,
+				4E23FCA5294820C900341EA4 /* VHChat */,
+				4E23FCA02948207B00341EA4 /* VHWatchLive */,
+				4E23FC8E2946C69700341EA4 /* VHCommon */,
+				4E23FC8A2946C58F00341EA4 /* VHWarmUp */,
+				4E23FC7C294076DE00341EA4 /* VHHomeVC */,
+				4E23FC78294074F900341EA4 /* VHSignSetVC */,
+				4E23FC6B29404C7500341EA4 /* VHProgressHud */,
+				4E23FC6729404A5600341EA4 /* VHCatogroy */,
+				4E23FC63294046A300341EA4 /* VHTool */,
+				4EEEEBB6293F216B00538BC2 /* VHBaseViewController */,
+				4EEEEBB2293F208300538BC2 /* VHLoginVC */,
+				4E1382E329B70B4A00AEBF67 /* VHallSDK */,
+				4EEEEBB1293F201A00538BC2 /* Header */,
+				4EEEEB72293EE96600538BC2 /* AppDelegate.h */,
+				4EEEEB73293EE96600538BC2 /* AppDelegate.m */,
+				4EEEEB7B293EE96600538BC2 /* Main.storyboard */,
+				4EEEEB7E293EE96800538BC2 /* Assets.xcassets */,
+				4EEEEB80293EE96800538BC2 /* LaunchScreen.storyboard */,
+				4EEEEB84293EE96800538BC2 /* main.m */,
+				4EEBCDEB29A4A67200704C7D /* VHallSDKDemoInfo.plist */,
+			);
+			path = VhallSDKDemo;
+			sourceTree = "<group>";
+		};
+		4EEEEB8D293EE96900538BC2 /* VhallSDKDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				4EEEEB8E293EE96900538BC2 /* VhallSDKDemoTests.m */,
+			);
+			path = VhallSDKDemoTests;
+			sourceTree = "<group>";
+		};
+		4EEEEB97293EE96900538BC2 /* VhallSDKDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4EEEEB98293EE96900538BC2 /* VhallSDKDemoUITests.m */,
+				4EEEEB9A293EE96900538BC2 /* VhallSDKDemoUITestsLaunchTests.m */,
+			);
+			path = VhallSDKDemoUITests;
+			sourceTree = "<group>";
+		};
+		4EEEEBB1293F201A00538BC2 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				4EEEEBA9293F201100538BC2 /* CONSTS.h */,
+				4EEEEBAA293F201100538BC2 /* VhallSDKDemoPCH.h */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		4EEEEBB2293F208300538BC2 /* VHLoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				4E23FC6F2940676500341EA4 /* VHLoginViewController.h */,
+				4E23FC702940676500341EA4 /* VHLoginViewController.m */,
+				4E23FC712940676500341EA4 /* VHLoginViewController.xib */,
+			);
+			path = VHLoginVC;
+			sourceTree = "<group>";
+		};
+		4EEEEBB6293F216B00538BC2 /* VHBaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4EEEEBB3293F213D00538BC2 /* VHBaseViewController.h */,
+				4EEEEBB4293F213D00538BC2 /* VHBaseViewController.m */,
+				4EE848972952EF4B00F1BA1D /* VHNavBaseViewController.h */,
+				4EE848982952EF4B00F1BA1D /* VHNavBaseViewController.m */,
+			);
+			path = VHBaseViewController;
+			sourceTree = "<group>";
+		};
+		4EF825862995EC67007874DA /* LBLelinkKitManager */ = {
+			isa = PBXGroup;
+			children = (
+				4EF825882995EC67007874DA /* LBDeviceListModel.h */,
+				4EF8258A2995EC67007874DA /* LBDeviceListModel.m */,
+				4EF825872995EC67007874DA /* LBLelinkKitManager.h */,
+				4EF825892995EC67007874DA /* LBLelinkKitManager.m */,
+			);
+			path = LBLelinkKitManager;
+			sourceTree = "<group>";
+		};
+		4EF84E6D295191F1001299E4 /* VHInav */ = {
+			isa = PBXGroup;
+			children = (
+				4EF84E6F29519210001299E4 /* View */,
+			);
+			path = VHInav;
+			sourceTree = "<group>";
+		};
+		4EF84E6F29519210001299E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4EF84E7029519221001299E4 /* VHInavView.h */,
+				4EF84E7129519221001299E4 /* VHInavView.m */,
+				4EF84E732951A072001299E4 /* VHInavAlertView.h */,
+				4EF84E742951A072001299E4 /* VHInavAlertView.m */,
+				4E32F4A12951BBD000B5388F /* VHInavBtn.h */,
+				4E32F4A22951BBD000B5388F /* VHInavBtn.m */,
+				4E32F49B2951AA4100B5388F /* VHInavApplyAlertView.h */,
+				4E32F49C2951AA4100B5388F /* VHInavApplyAlertView.m */,
+				4E32F49E2951BB9800B5388F /* VHInavRenderAlertView.h */,
+				4E32F49F2951BB9800B5388F /* VHInavRenderAlertView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5EADBE64C7F4B31A430FAAD8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				243488603BF75770EE8D355B /* Pods-VhallSDKDemo.debug.xcconfig */,
+				F144C26B8E47A7FED450FF44 /* Pods-VhallSDKDemo.release.xcconfig */,
+				7E3B1D39559C1B7E02091616 /* Pods-VhallSDKDemo-VhallSDKDemoUITests.debug.xcconfig */,
+				5C1B319186E8BC448956B868 /* Pods-VhallSDKDemo-VhallSDKDemoUITests.release.xcconfig */,
+				17104494D6712BCAFC486993 /* Pods-VhallSDKDemoTests.debug.xcconfig */,
+				D28BA50D1D20871908164F4B /* Pods-VhallSDKDemoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C85A46C11EAD3493F15BBF3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5401D4E75AF6641CAE310871 /* Pods_VhallSDKDemo.framework */,
+				1E26F687E80B8B2BB47A859E /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework */,
+				494BE4CE29A050223829ADDE /* Pods_VhallSDKDemoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4EEEEB6E293EE96600538BC2 /* VhallSDKDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EEEEB9E293EE96900538BC2 /* Build configuration list for PBXNativeTarget "VhallSDKDemo" */;
+			buildPhases = (
+				8B1BB4AF31BC9EDAEEE60161 /* [CP] Check Pods Manifest.lock */,
+				4EEEEB6B293EE96600538BC2 /* Sources */,
+				4EEEEB6C293EE96600538BC2 /* Frameworks */,
+				4EEEEB6D293EE96600538BC2 /* Resources */,
+				F3B2B6F699080DBD49E4D3B5 /* [CP] Embed Pods Frameworks */,
+				4EEBCDF929A4A74300704C7D /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VhallSDKDemo;
+			productName = VhallSDKDemo;
+			productReference = 4EEEEB6F293EE96600538BC2 /* VhallSDKDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4EEEEB89293EE96900538BC2 /* VhallSDKDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EEEEBA1293EE96900538BC2 /* Build configuration list for PBXNativeTarget "VhallSDKDemoTests" */;
+			buildPhases = (
+				5D12FDF94B1DC722A1B697AB /* [CP] Check Pods Manifest.lock */,
+				4EEEEB86293EE96900538BC2 /* Sources */,
+				4EEEEB87293EE96900538BC2 /* Frameworks */,
+				4EEEEB88293EE96900538BC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4EEEEB8C293EE96900538BC2 /* PBXTargetDependency */,
+			);
+			name = VhallSDKDemoTests;
+			productName = VhallSDKDemoTests;
+			productReference = 4EEEEB8A293EE96900538BC2 /* VhallSDKDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4EEEEB93293EE96900538BC2 /* VhallSDKDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EEEEBA4293EE96900538BC2 /* Build configuration list for PBXNativeTarget "VhallSDKDemoUITests" */;
+			buildPhases = (
+				E3E483F58A54E52885AF36C4 /* [CP] Check Pods Manifest.lock */,
+				4EEEEB90293EE96900538BC2 /* Sources */,
+				4EEEEB91293EE96900538BC2 /* Frameworks */,
+				4EEEEB92293EE96900538BC2 /* Resources */,
+				84BCF134FF29CCAD78583011 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4EEEEB96293EE96900538BC2 /* PBXTargetDependency */,
+			);
+			name = VhallSDKDemoUITests;
+			productName = VhallSDKDemoUITests;
+			productReference = 4EEEEB94293EE96900538BC2 /* VhallSDKDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4EEEEB67293EE96600538BC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					4EEEEB6E293EE96600538BC2 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					4EEEEB89293EE96900538BC2 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 4EEEEB6E293EE96600538BC2;
+					};
+					4EEEEB93293EE96900538BC2 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 4EEEEB6E293EE96600538BC2;
+					};
+				};
+			};
+			buildConfigurationList = 4EEEEB6A293EE96600538BC2 /* Build configuration list for PBXProject "VhallSDKDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4EEEEB66293EE96600538BC2;
+			productRefGroup = 4EEEEB70293EE96600538BC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4EEEEB6E293EE96600538BC2 /* VhallSDKDemo */,
+				4EEEEB89293EE96900538BC2 /* VhallSDKDemoTests */,
+				4EEEEB93293EE96900538BC2 /* VhallSDKDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4EEEEB6D293EE96600538BC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E23FC732940676500341EA4 /* VHLoginViewController.xib in Resources */,
+				4EEEEB82293EE96800538BC2 /* LaunchScreen.storyboard in Resources */,
+				4EEEEB7F293EE96800538BC2 /* Assets.xcassets in Resources */,
+				4E23FC842940831800341EA4 /* VHSignSetVC.xib in Resources */,
+				4EEEEB7D293EE96600538BC2 /* Main.storyboard in Resources */,
+				4E23FC882941E90D00341EA4 /* VHHomeViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EEEEB88293EE96900538BC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EEEEB92293EE96900538BC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5D12FDF94B1DC722A1B697AB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VhallSDKDemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84BCF134FF29CCAD78583011 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B1BB4AF31BC9EDAEEE60161 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VhallSDKDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3E483F58A54E52885AF36C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VhallSDKDemo-VhallSDKDemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3B2B6F699080DBD49E4D3B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4EEEEB6B293EE96600538BC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E23FD272950408E00341EA4 /* VHAnnouncementList.m in Sources */,
+				4E23FD20294C5B8900341EA4 /* VHLiveWeakTimer.m in Sources */,
+				4E1382F829B70EBF00AEBF67 /* VHStystemSetting.m in Sources */,
+				4E23FCA8294820E600341EA4 /* VHChatView.m in Sources */,
+				4E23FD2A29504D6100341EA4 /* VHAnnouncementView.m in Sources */,
+				4EEEEB74293EE96600538BC2 /* AppDelegate.m in Sources */,
+				4E23FC66294046B500341EA4 /* VUITool.m in Sources */,
+				4E23FD13294C4F6800341EA4 /* VHSurveyWebView.m in Sources */,
+				4E23FCE52949C81F00341EA4 /* VHDocView.m in Sources */,
+				4ED2C432295401BF00E29DED /* VHQAView.m in Sources */,
+				4E23FCAF2948589E00341EA4 /* VHWatchVideoView.m in Sources */,
+				4E23FCAB2948421C00341EA4 /* VHChatCell.m in Sources */,
+				4E23FD0C294C480700341EA4 /* VHIntroView.m in Sources */,
+				4E23FD19294C5B7A00341EA4 /* VHFoldButton.m in Sources */,
+				4E23FCFC294C15AE00341EA4 /* VHLikeObject.m in Sources */,
+				4E23FCF7294C11AC00341EA4 /* VHFashionStyleGiftPushView.m in Sources */,
+				4EDE10EE2959901200B10DB9 /* VHDefiniteionsViewModel.m in Sources */,
+				4E23FCF8294C11AC00341EA4 /* VHFashionStyleGiftListView.m in Sources */,
+				4EF8258C2995EC67007874DA /* LBDeviceListModel.m in Sources */,
+				4EDE10E429594B3E00B10DB9 /* VHEmptyView.m in Sources */,
+				4EF84E752951A072001299E4 /* VHInavAlertView.m in Sources */,
+				4EDE10EA2959759000B10DB9 /* UIImage+VHUtil.m in Sources */,
+				4EE848992952EF4B00F1BA1D /* VHNavBaseViewController.m in Sources */,
+				4E23FC722940676500341EA4 /* VHLoginViewController.m in Sources */,
+				4EED8D3F2955BDC7002913AC /* VHChatCustomCell.m in Sources */,
+				4E4F1B47299110A000979BC7 /* VHPrivacyManager.m in Sources */,
+				4ED2C42E2953F21D00E29DED /* VHSignInAlertView.m in Sources */,
+				4E23FCA32948209D00341EA4 /* VHWatchVC.m in Sources */,
+				4E23FC6A29404A9E00341EA4 /* UIColor+VUI.m in Sources */,
+				4E32F4A02951BB9800B5388F /* VHInavRenderAlertView.m in Sources */,
+				4E23FC8D2946C58F00341EA4 /* VHWarmUpViewController.m in Sources */,
+				4EDE10F12959BD1700B10DB9 /* VHChatGiftCell.m in Sources */,
+				4E20671F299226DD00438B00 /* VHBrowserVC.m in Sources */,
+				4E32F49D2951AA4100B5388F /* VHInavApplyAlertView.m in Sources */,
+				4E23FD10294C4F5D00341EA4 /* VHSurveyListView.m in Sources */,
+				4E23FC892941E90D00341EA4 /* VHHomeViewController.m in Sources */,
+				4EF8258B2995EC67007874DA /* LBLelinkKitManager.m in Sources */,
+				4E23FCEB294AC34200341EA4 /* VHWatchBackView.m in Sources */,
+				4E23FCF1294B269800341EA4 /* VHSliderView.m in Sources */,
+				4E23FD03294C1D6400341EA4 /* VHLiveSaleAnimationTool.m in Sources */,
+				4E08428129877875002EEB25 /* VHWarmUpStartView.m in Sources */,
+				4E23FCB52948875700341EA4 /* VHWatchLiveBottomView.m in Sources */,
+				4E23FC6E29404C7500341EA4 /* VHProgressHud.m in Sources */,
+				4E23FD1F294C5B8900341EA4 /* VHTimer.m in Sources */,
+				4E23FC832940831800341EA4 /* VHSignSetVC.m in Sources */,
+				4EEEEBB5293F213D00538BC2 /* VHBaseViewController.m in Sources */,
+				4E068D5A29A5FE4500887E1E /* VHAuthAlertView.m in Sources */,
+				4E23FCFF294C18DD00341EA4 /* UIButton+VHBadge.m in Sources */,
+				4EF84E7229519221001299E4 /* VHInavView.m in Sources */,
+				4E23FCD62948A28900341EA4 /* VHTextView.m in Sources */,
+				4E23FC9A2946C7F500341EA4 /* UIView+ITTAdditions.m in Sources */,
+				4EEEEB85293EE96800538BC2 /* main.m in Sources */,
+				4E32F4A32951BBD000B5388F /* VHInavBtn.m in Sources */,
+				4E23FCD82948A28900341EA4 /* VHKeyboardToolView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EEEEB86293EE96900538BC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EEEEB8F293EE96900538BC2 /* VhallSDKDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EEEEB90293EE96900538BC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EEEEB9B293EE96900538BC2 /* VhallSDKDemoUITestsLaunchTests.m in Sources */,
+				4EEEEB99293EE96900538BC2 /* VhallSDKDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4EEEEB8C293EE96900538BC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4EEEEB6E293EE96600538BC2 /* VhallSDKDemo */;
+			targetProxy = 4EEEEB8B293EE96900538BC2 /* PBXContainerItemProxy */;
+		};
+		4EEEEB96293EE96900538BC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4EEEEB6E293EE96600538BC2 /* VhallSDKDemo */;
+			targetProxy = 4EEEEB95293EE96900538BC2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4EEEEB7B293EE96600538BC2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EEEEB7C293EE96600538BC2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4EEEEB80293EE96800538BC2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EEEEB81293EE96800538BC2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4EEEEB9C293EE96900538BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4EEEEB9D293EE96900538BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4EEEEB9F293EE96900538BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 243488603BF75770EE8D355B /* Pods-VhallSDKDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = H49DK955B9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../VHallSDK/VHallInteractive",
+					"$(PROJECT_DIR)/../VHallSDK",
+				);
+				GCC_PREFIX_HEADER = VhallSDKDemo/Header/VhallSDKDemoPCH.h;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VhallSDKDemo/VHallSDKDemoInfo.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 6.12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.VHallSDKDemo.en;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4EEEEBA0293EE96900538BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F144C26B8E47A7FED450FF44 /* Pods-VhallSDKDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = H49DK955B9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../VHallSDK/VHallInteractive",
+					"$(PROJECT_DIR)/../VHallSDK",
+				);
+				GCC_PREFIX_HEADER = VhallSDKDemo/Header/VhallSDKDemoPCH.h;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VhallSDKDemo/VHallSDKDemoInfo.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 6.12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.VHallSDKDemo.en;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		4EEEEBA2293EE96900538BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17104494D6712BCAFC486993 /* Pods-VhallSDKDemoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H49DK955B9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.VhallSDKDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VhallSDKDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VhallSDKDemo";
+			};
+			name = Debug;
+		};
+		4EEEEBA3293EE96900538BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D28BA50D1D20871908164F4B /* Pods-VhallSDKDemoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H49DK955B9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.VhallSDKDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VhallSDKDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VhallSDKDemo";
+			};
+			name = Release;
+		};
+		4EEEEBA5293EE96900538BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E3B1D39559C1B7E02091616 /* Pods-VhallSDKDemo-VhallSDKDemoUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H49DK955B9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.VhallSDKDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VhallSDKDemo;
+			};
+			name = Debug;
+		};
+		4EEEEBA6293EE96900538BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C1B319186E8BC448956B868 /* Pods-VhallSDKDemo-VhallSDKDemoUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H49DK955B9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.VhallSDKDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VhallSDKDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4EEEEB6A293EE96600538BC2 /* Build configuration list for PBXProject "VhallSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EEEEB9C293EE96900538BC2 /* Debug */,
+				4EEEEB9D293EE96900538BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EEEEB9E293EE96900538BC2 /* Build configuration list for PBXNativeTarget "VhallSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EEEEB9F293EE96900538BC2 /* Debug */,
+				4EEEEBA0293EE96900538BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EEEEBA1293EE96900538BC2 /* Build configuration list for PBXNativeTarget "VhallSDKDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EEEEBA2293EE96900538BC2 /* Debug */,
+				4EEEEBA3293EE96900538BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EEEEBA4293EE96900538BC2 /* Build configuration list for PBXNativeTarget "VhallSDKDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EEEEBA5293EE96900538BC2 /* Debug */,
+				4EEEEBA6293EE96900538BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4EEEEB67293EE96600538BC2 /* Project object */;
+}

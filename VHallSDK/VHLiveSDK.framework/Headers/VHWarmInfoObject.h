@@ -27,22 +27,21 @@
 @interface VHWarmInfoModel : VHallRawBaseModel
 
 @property (nonatomic , assign) NSInteger                    player_type;        ///<1:单次播放 2:循环播放
+@property (nonatomic , assign) NSInteger                    is_open_warm_video; ///<暖场视频是否开启：0关闭  1开启
 @property (nonatomic , copy) NSString              *        img_url;            ///<暖场视频图片
 @property (nonatomic , copy) NSString              *        warm_id;            ///<暖场视频id
 @property (nonatomic , copy) NSString              *        webinar_id;         ///<活动id
-@property (nonatomic , copy) NSString              *        is_open_warm_video; ///<来源类型：0 web 1 app
 @property (nonatomic , copy) NSArray <VHWarmInfoRecordListItem *> * record_list;        ///<视频详情
 
 @end
 
 @protocol VHWarmInfoObjectDelegate <NSObject>
 
-/// 初始化完成 (webinarInfo 和 warmInfomodel 都有值代表初始化成功,error 有值代表初始化失败)
+/// 初始化完成 (warmInfomodel 都有值代表初始化成功,error 有值代表初始化失败)
 /// - Parameters:
-///   - webinarInfo: 房间详情
 ///   - warmInfomodel: 暖场视频详情
 ///   - error: 错误提示
-- (void)initializationCompletion:(VHWebinarInfoData *)webinarInfo warmInfoModel:(VHWarmInfoModel *)warmInfoModel error:(NSError *)error;
+- (void)initializationCompletionWithWarmInfoModel:(VHWarmInfoModel *)warmInfoModel error:(NSError *)error;
 
 /// 播放器状态
 /// - Parameter state: 播放器状态
@@ -71,9 +70,9 @@
 @property (nonatomic, strong) UIView *                      moviePlayerView;    ///<播放器
 
 /// 初始化
-/// - Parameter webinar_id: 活动id
+/// - Parameter webinarInfoData: 活动详情
 /// - Parameter delegate: 代理
-- (instancetype)initWithWebinar_id:(NSString *)webinar_id delegate:(id <VHWarmInfoObjectDelegate>)delegate;
+- (instancetype)initWithWebinarInfoData:(VHWebinarInfoData *)webinarInfoData delegate:(id <VHWarmInfoObjectDelegate>)delegate;
 
 /// 开始播放
 /// - Parameter item: 视频详情 取自获取暖场视频详情接口回调数据 VHWarmInfoRecordListItem

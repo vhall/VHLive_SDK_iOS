@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VHallAnnouncementModel : NSObject
 
 @property (nonatomic, copy) NSString *content;  ///<公告内容
-
 @property (nonatomic, copy) NSString *created_at;  ///<创建时间
+@property (nonatomic, assign) NSInteger duration;  ///<显示时长 单位：秒  最小传入10   0:默认一直显示
 
 @end
 
@@ -23,9 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 收到公告
 /// @param content 公告内容
-/// @param time 发布时间
+/// @param pushTime 发布时间
+/// @param duration 公告显示时长 0代表永久显示
 - (void)announcementContentDidChange:(NSString*)content
-                         publishTime:(NSString*)time;
+                            pushTime:(NSString*)pushTime
+                            duration:(NSInteger)duration;
 
 @end
 

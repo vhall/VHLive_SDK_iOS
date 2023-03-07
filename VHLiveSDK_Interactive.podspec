@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   
   spec.name         = 'VHLiveSDK_Interactive'
-  spec.version      = '6.11.0'
+  spec.version      = '6.12.0'
 
   spec.summary      = "VHall iOS SDK #{spec.name.to_s}"
   spec.homepage     = 'https://www.vhall.com'
@@ -27,7 +27,7 @@ Pod::Spec.new do |spec|
   }
   spec.module_name  = "#{spec.name.to_s}"
   spec.requires_arc = true
-  spec.platform     = :ios, '9.0'
+  spec.platform     = :ios, '10.0'
 
   spec.source          = { :git => "https://github.com/vhall/VHLive_SDK_iOS.git", :tag => spec.version.to_s}
   spec.vendored_frameworks = 'VHallSDK/VHallInteractive/WebRTC.framework','VHallSDK/VHallInteractive/VHInteractive.framework'

@@ -1,0 +1,35 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'VhallSDKDemo' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for VhallSDKDemo
+
+  pod 'MJRefresh', '~> 3.7.5'
+  pod 'MJExtension', '~> 3.4.1'
+  pod 'SDWebImage', '~> 5.14.3'
+  pod 'YYText', '~> 1.0.7'
+  pod 'Masonry', '~> 1.1.0'
+  pod 'MBProgressHUD', '~> 1.2.0'
+  pod 'IQKeyboardManager', '~> 6.5.11'
+  pod 'JXCategoryView', '~> 1.6.1'
+  pod 'TXScrollLabelView', '~> 1.3.2'
+  pod 'GKPhotoBrowser/SD', '~> 2.4.4'
+  
+#  pod 'VHYun_Beautify', '1.0.6'
+
+  target 'VhallSDKDemoTests' do
+    inherit! :search_paths
+    # Pods for testing
+
+  end
+
+  target 'VhallSDKDemoUITests' do
+    # Pods for testing
+    # UI测试
+    
+  end
+
+end

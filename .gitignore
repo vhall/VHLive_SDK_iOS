@@ -67,4 +67,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-/UIModel
+Pods/
+Podfile.lock
+

@@ -10,13 +10,13 @@
 
 @interface VHWebinarInfoData_Join_info :NSObject
 @property (nonatomic , copy) NSString     *                     third_party_user_id;    ///<用户id
+@property (nonatomic , copy) NSString     *                     join_id;                ///<sass参会id
 @property (nonatomic , copy) NSString     *                     avatar;                 ///<头像
 @property (nonatomic , copy) NSString     *                     privacies;              ///<私密信息
 @property (nonatomic , copy) NSString     *                     nickname;               ///<昵称
 @property (nonatomic , assign) BOOL                             is_kick;                ///<是否踢出：0-否（默认），1-是
 @property (nonatomic , assign) BOOL                             is_gag;                 ///<是否禁言：0-不禁言（默认），1-禁言
 @property (nonatomic , assign) BOOL                             is_subscribe;           ///<是否预约：0-否，1-是
-@property (nonatomic , assign) NSInteger                        join_id;                ///<sass参会id
 @property (nonatomic , assign) NSInteger                        verified;               ///<是否已通过观看限制（不含报名表单）
 @property (nonatomic , assign) NSInteger                        role_name;              ///<角色：1-主持人；2-观众；3-助理；4-嘉宾
 @property (nonatomic , assign) NSInteger                        user_id;                ///<
@@ -140,9 +140,41 @@
 
 /// 获取观看端房间详情
 /// - Parameters:
+///   - webinarId:  活动Id，必传
+///   - pass:       活动如果有k值或密码，则需要传
+///   - k_id:       观看活动维度下k值的唯一ID
+///   - nick_name:  昵称
+///   - email:      邮箱
+///   - record_id:  活动Id，必传
+///   - auth_model:  0 : 校验观看权限(默认)  1 : 不校验观看权限
+///   - complete:   请求完成,包含数据详情和错误信息
++ (void)requestWatchInitWebinarId:(NSString *)webinarId
+                             pass:(NSString *)pass
+                             k_id:(NSString *)k_id
+                        nick_name:(NSString *)nick_name
+                            email:(NSString *)email
+                        record_id:(NSString *)record_id
+                        auth_model:(NSInteger)auth_model
+                         complete:(void(^)(VHWebinarInfoData * webinarInfoData, NSError *error))complete;
+
+
+/// 检查活动设置的观看权限
+/// - Parameters:
+///   - webinar_id: 互动id
+///   - complete: type : 1 需要密码 2 白名单校验 , authStatus : 校验权限 , error : 错误提示
++ (void)queryWatchAuthWithWebinarId:(NSString *)webinar_id
+                           complete:(void(^)(NSString * type, BOOL authStatus, NSError *error))complete;
+
+/// 校验活动观看权限
+/// - Parameters:
 ///   - webinar_id: 活动id
-///   - complete: 请求完成
-+ (void)requestWatchInitWebinarId:(NSString *)webinarId recordId:(NSString * )recordId email:(NSString *)email nick_name:(NSString *)nick_name pass:(NSString *)pass k_id:(NSString *)k_id complete:(void(^)(VHWebinarInfoData * webinarInfoData, NSError *error))complete;
+///   - type: 0:免费（默认），1:密码，2：白名单
+///   - verify_value: 密码、白名单参数
+///   - complete: 请求完成,包含数据详情和错误信息
++ (void)checkWatchAuthWithWebinarId:(NSString *)webinar_id
+                               type:(NSString *)type
+                       verify_value:(NSString *)verify_value
+                           complete:(void(^)(NSDictionary *responseObject, NSError *error))complete;
 
 @end
 

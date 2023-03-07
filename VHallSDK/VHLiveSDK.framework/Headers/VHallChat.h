@@ -71,8 +71,14 @@
 /// 是否被禁言（YES：自己被禁言或全体被禁言，NO：自己未被禁言且全体未被禁言）
 @property (nonatomic, assign ,readonly) BOOL isSpeakBlocked;
 
+/// 是否被禁言
+@property (nonatomic, assign ,readonly) BOOL isMeSpeakBlocked;
+
 /// 是否全体被禁言
 @property (nonatomic, assign ,readonly) BOOL isAllSpeakBlocked;
+
+/// 是否开启了问答禁言 YES 开启 NO 未开启
+@property (nonatomic, assign ,readonly) BOOL isQaStatus;
 
 /// 发送聊天内容
 /// @param msg 消息内容

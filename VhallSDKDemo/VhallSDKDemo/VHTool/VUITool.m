@@ -1,0 +1,326 @@
+//
+//  VUITool.m
+//  VhallModuleUI_demo
+//
+//  Created by vhall on 2019/11/19.
+//  Copyright © 2019 vhall. All rights reserved.
+//
+
+#import "VUITool.h"
+#import <mach/mach.h>
+#import <CommonCrypto/CommonDigest.h>
+#import "VHPrivacyManager.h"
+
+@implementation VUITool
+
+#pragma mark - 角色修改
+NSString * VH_MB_HOST = @"主持人";
+NSString * VH_MB_GUEST = @"嘉宾";
+NSString * VH_MB_ASSIST = @"助理";
+
+#pragma mark - UITextField/UItextView输入计数 countLab：字数lab
++ (void)caculateInputBox:(id)inputBox desplayCountLab:(UILabel *)countLab maxTextLength:(NSInteger)maxTextLength
+{
+    if([inputBox isKindOfClass:[UITextField class]])
+    {
+        UITextField *box = inputBox;
+        NSString *lang = [[UIApplication sharedApplication]textInputMode].primaryLanguage; // 键盘输入模式
+        if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+            UITextRange *selectedRange = [box markedTextRange];
+            //获取高亮部分
+            UITextPosition *position = [box positionFromPosition:selectedRange.start offset:0];
+            // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+            if (!position) {
+                if (box.text.length > maxTextLength) {
+                    box.text = [box.text substringToIndex:maxTextLength];
+                }
+                else
+                {
+                    
+                }
+                //显示字数
+                countLab.text = [NSString stringWithFormat:@"%zd/%zd",box.text.length,maxTextLength];
+            }
+            // 有高亮选择的字符串，则暂不对文字进行统计和限制
+            else{
+                
+            }
+        }
+        // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+        else{
+            if (box.text.length > maxTextLength) {
+                box.text = [box.text substringToIndex:maxTextLength];
+                countLab.text = [NSString stringWithFormat:@"%zd/%zd",maxTextLength,maxTextLength];
+            }
+            //显示字数
+            countLab.text = [NSString stringWithFormat:@"%zd/%zd",box.text.length,maxTextLength];
+        }
+        
+    }
+    else if ([inputBox isKindOfClass:[UITextView class]])
+    {
+        UITextView *box = inputBox;
+        NSString *lang = [[UIApplication sharedApplication]textInputMode].primaryLanguage; // 键盘输入模式
+        if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+            UITextRange *selectedRange = [box markedTextRange];
+            //获取高亮部分
+            UITextPosition *position = [box positionFromPosition:selectedRange.start offset:0];
+            // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+            if (!position) {
+                if (box.text.length > maxTextLength) {
+                    box.text = [box.text substringToIndex:maxTextLength];
+                }
+                else
+                {
+                    
+                }
+                //显示字数
+                countLab.text = [NSString stringWithFormat:@"%zd/%zd",box.text.length,maxTextLength];
+            }
+            // 有高亮选择的字符串，则暂不对文字进行统计和限制
+            else{
+                
+            }
+        }
+        // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+        else{
+            if (box.text.length > maxTextLength) {
+                box.text = [box.text substringToIndex:maxTextLength];
+                countLab.text = [NSString stringWithFormat:@"%zd/%zd",maxTextLength,maxTextLength];
+            }
+            //显示字数
+            countLab.text = [NSString stringWithFormat:@"%zd/%zd",box.text.length,maxTextLength];
+        }
+        
+    }
+}
+
+#pragma mark - 字符串空的话赋值@""
++ (NSString *)safeString:(NSString *)string {
+    if ([string isKindOfClass:[NSNumber class]]) {
+        return [NSString stringWithFormat:@"%@",string];
+    }
+    if (!string || ![string isKindOfClass:[NSString class]] || [string isKindOfClass:[NSNull class]] || [string isEqualToString:@"null"] || [string isEqualToString:@"<null>"]) {
+        return @"";
+    }
+    return string;
+}
+
+#pragma mark - 获取当前view的控制器
++ (UIViewController *)viewControllerWithView:(UIView *)view
+{
+    for (UIView * next = [view superview]; next; next = next.superview) {
+        UIResponder * nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]){
+            return (UIViewController *)nextResponder;
+        }
+    }return nil;
+}
+
+#pragma mark - 秒转时分秒
++ (NSString *)timeFormatted:(NSInteger)totalSeconds isAuto:(BOOL)isAuto
+{
+    if (isAuto && totalSeconds/3600 < 1) {
+        return [NSString stringWithFormat:@"%02ld:%02ld",(totalSeconds%3600)/60,totalSeconds%60];
+    }else{
+        return [NSString stringWithFormat:@"%02ld:%02ld:%02ld",totalSeconds/3600,(totalSeconds%3600)/60,totalSeconds%60];
+    }
+}
+
+#pragma mark - 指定某个/多个角圆角
++(void)clipView:(UIView *)view corner:(UIRectCorner)corners anSize:(CGSize)size
+{
+    //指定角
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds byRoundingCorners:corners cornerRadii:size];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
+    //设置大小
+    maskLayer.frame = view.bounds;
+    //设置图形样子
+    maskLayer.path = maskPath.CGPath;
+    view.layer.mask = maskLayer;
+}
+
+#pragma mark - 获取当前屏幕控制器
++ (UIViewController *)getCurrentScreenViewController
+{
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
+    UIViewController *topViewController = [window rootViewController];
+    
+    while (true) {
+        
+        if (topViewController.presentedViewController) {
+            
+            topViewController = topViewController.presentedViewController;
+            
+        } else if ([topViewController isKindOfClass:[UINavigationController class]] && [(UINavigationController*)topViewController topViewController]) {
+            
+            topViewController = [(UINavigationController *)topViewController topViewController];
+            
+        } else if ([topViewController isKindOfClass:[UITabBarController class]]) {
+            
+            UITabBarController *tab = (UITabBarController *)topViewController;
+            topViewController = tab.selectedViewController;
+            
+        } else {
+            break;
+        }
+    }
+    return topViewController;
+}
+
++ (BOOL)isBlankString:(NSString *)aStr {
+    if (!aStr) return YES;
+    if ([aStr isKindOfClass:[NSNull class]]) return YES;
+    if (![aStr isKindOfClass:[NSString class]]){
+        NSString *tempStr = [NSString stringWithFormat:@"%@",aStr];
+        aStr = tempStr;
+    }
+    if (!aStr.length) return YES;
+    return NO;
+}
+
++ (NSString *)getString:(NSString *)aStr {
+    if ([self isBlankString:aStr]) {
+        return @"";
+    }
+    return [NSString stringWithFormat:@"%@",aStr];
+}
+
++ (CGFloat)getWidthWithText:(NSString *)text width:(CGFloat)width height:(CGFloat)height font:(UIFont *)font
+{
+    //内容宽度自适应
+    CGSize size = CGSizeMake(width, height);
+    NSDictionary *dic = @{NSFontAttributeName:font};
+    CGRect rect = [text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:dic context:nil];
+    if (height == 0) {
+        return rect.size.height;
+    }else {
+        return rect.size.width;
+    }
+}
+
++ (NSString *)substringToIndex:(NSInteger)index text:(NSString *)text isReplenish:(BOOL)isReplenish
+{
+    NSString * changeText = text;
+    
+    if (changeText.length > index) {
+        
+        changeText = [changeText substringToIndex:index];
+        
+        if (isReplenish) {
+            changeText = [NSString stringWithFormat:@"%@...",changeText];
+        }
+    }
+    return changeText;
+}
+
++ (NSString *)substringFromIndex:(NSInteger)index text:(NSString *)text isReplenish:(BOOL)isReplenish
+{
+    NSString * changeText = text;
+    
+    if (changeText.length >= index) {
+        
+        changeText = [changeText substringFromIndex:index];
+        
+        if (isReplenish) {
+            changeText = [NSString stringWithFormat:@"%@...",changeText];
+        }
+    }
+    return changeText;
+}
+
++ (UIWindow *)mainWindow
+{
+    id appDelegate = [UIApplication sharedApplication].delegate;
+    if (appDelegate && [appDelegate respondsToSelector:@selector(window)]) {
+        return [appDelegate window];
+    }
+    
+    NSArray *windows = [UIApplication sharedApplication].windows;
+    if ([windows count] == 1) {
+        return [windows firstObject];
+    }
+    else {
+        for (UIWindow *window in windows) {
+            if (window.windowLevel == UIWindowLevelNormal) {
+                return window;
+            }
+        }
+    }
+    return nil;
+}
+
++ (NSInteger)getTimeDifferenceWithTime:(NSString * )time
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
+    NSDate * startTimeData = [dateFormatter dateFromString:time];
+
+    NSTimeInterval startTimeSp = [startTimeData timeIntervalSince1970];
+
+    NSTimeInterval endTimeSp = [[NSDate date] timeIntervalSince1970];
+
+    NSInteger difference = (startTimeSp - endTimeSp);
+
+    return difference;
+}
+
+BOOL videoAccess = NO;
+BOOL audioAccess = NO;
++ (void)getMediaAccess:(void(^_Nullable)(BOOL videoAccess,BOOL audioAcess))completionBlock
+{
+    videoAccess = NO;
+    audioAccess = NO;
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    dispatch_group_async(group, queue, ^{
+        dispatch_group_enter(group);
+        //相机权限
+        [VHPrivacyManager openCaptureDeviceServiceWithBlock:^(BOOL isOpen) {
+            VHLog(@"相机权限：%d",isOpen);
+            videoAccess = isOpen;
+            dispatch_group_leave(group);
+        }];
+    });
+    
+    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
+        dispatch_group_enter(group);
+        //麦克风权限
+        [VHPrivacyManager openRecordServiceWithBlock:^(BOOL isOpen) {
+            VHLog(@"麦克风权限：%d",isOpen);
+            audioAccess = isOpen;
+            dispatch_group_leave(group);
+        }];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        completionBlock ? completionBlock(videoAccess,audioAccess) : nil;
+    });
+
+}
+
++ (UIView *)getSubViewWithClassName:(NSString *)className inView:(UIView *)inView
+{
+    //判空处理
+    if(!inView || !inView.subviews.count || !className || !className.length || [className isKindOfClass:NSNull.class]) return nil;
+    //最终找到的view，找不到的话，就直接返回一个nil
+    UIView *foundView = nil;
+    //循环递归进行查找
+    for(UIView *view in inView.subviews) {
+        //如果view是当前要查找的view，就直接赋值并终止循环递归，最终返回
+        if([view isKindOfClass:NSClassFromString(className)]) {
+            foundView = view;
+            break;
+        }
+        //如果当前view不是要查找的view的话，就在递归查找当前view的subviews
+        foundView = [self getSubViewWithClassName:className inView:view];
+        //如果找到了，则终止循环递归，最终返回
+        if (foundView) break;
+    }
+    return foundView;
+}
+
+
+@end

@@ -24,13 +24,14 @@
 @property (nonatomic, copy) NSString * nick_name;       ///<昵称
 @property (nonatomic, copy) NSString * avatar;          ///<头像
 @property (nonatomic, copy) NSString * created_time;    ///<提问/回答时间 (yyyy-MM-dd HH:mm:ss)，新版v3控制台创建的活动才有此值
+@property (nonatomic, assign) BOOL isHaveAnswer;        ///<是否有答案
 @end
 
 /// 回答消息
 @interface VHallAnswerModel : VHallQuestionModel
 @property (nonatomic, copy) NSString * answer_id;       ///<回答ID
-@property (nonatomic, copy) NSString * role_name;       ///<回答人角色 host：主持人 guest：嘉宾 assistant：助手 user：观众
-@property (nonatomic, assign)BOOL      is_open;         ///<是否公开回答
+@property (nonatomic, copy) NSString * role_name;       ///<回答人角色 host：主持人 guest：嘉宾 assistant：助手 user：观众答
+@property (nonatomic, assign) BOOL      is_open;         ///<是否公开回答
 @end
 
 /// 问答消息

@@ -313,6 +313,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param msg 详情
 - (void)room:(VHRoom *)room onStreamMixed:(NSDictionary *)msg;
 
+/// 流音视频开启情况
+/// @param room room实例
+/// @param streamId 流id
+/// @param muteStream 音视频详情
+- (void)room:(VHRoom *)room didUpdateOfStream:(NSString *)streamId muteStream:(NSDictionary *)muteStream;
+
 /// 互动房间互动消息回调
 /// @param room room实例
 /// @param eventName 互动消息name，可为空
@@ -369,8 +375,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 房间公告发布
 /// @param room room实例
 /// @param content 公告内容
-/// @param time 公告时间
-- (void)room:(VHRoom *)room announcement:(NSString *)content publishTime:(NSString *)time;
+/// @param pushTime 发布时间
+/// @param duration 公告显示时长 0代表永久显示
+- (void)room:(VHRoom *)room announcement:(NSString *)content pushTime:(NSString*)pushTime duration:(NSInteger)duration;
 
 @end
 

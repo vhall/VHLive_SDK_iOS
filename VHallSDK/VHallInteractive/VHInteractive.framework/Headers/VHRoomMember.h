@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <VHLiveSDK/VHallConst.h>
 @interface VHRoomMember : NSObject
 
 @property (nonatomic, assign) VHRoomRoleNameType    role_name;      ///<角色  1主持人 2观众 3助理 4嘉宾

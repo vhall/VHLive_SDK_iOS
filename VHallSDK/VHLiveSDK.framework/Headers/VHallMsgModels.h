@@ -35,8 +35,8 @@ typedef NS_ENUM(NSInteger,ChatCustomType) {
 @property (nonatomic, assign) NSInteger         pv;                 ///<频道在线连接数
 @property (nonatomic, assign) NSInteger         uv;                 ///<频道在线用户数
 @property (nonatomic, assign) NSInteger         bu;                 ///<频道业务单元
-@property (nonatomic, copy) NSString *          target_id;          ///<消息接收方id
-@property (nonatomic, copy) NSString *          join_id;            ///<加入用户的id
+@property (nonatomic, copy) NSString *          target_id;          ///<消息接收方id (私聊的时候才有值)
+@property (nonatomic, copy) NSString *          join_id;            ///<加入用户的id (消息中的 third_party_user_id用户唯一id)
 @property (nonatomic, copy) NSString *          account_id;         ///<用户ID
 @property (nonatomic, copy) NSString *          user_name;          ///<参会时的昵称
 @property (nonatomic, copy) NSString *          nick_name;          ///<参会时的昵称

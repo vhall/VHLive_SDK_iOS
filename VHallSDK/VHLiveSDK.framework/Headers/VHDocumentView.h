@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class VHDocWatermarkModel;
+#import "VHDocWatermarkModel.h"
 
 typedef NS_ENUM(NSInteger,VHDocumentViewType) {
     VHDocumentViewType_Document     = 1 ,   //文档演示
@@ -143,6 +143,14 @@ typedef NS_ENUM(NSInteger,VHDrawType) {
  */
 - (void)nextStep;
 
+/// 白板上一步
+- (void)boardUndo;
+
+/// 白板下一步
+- (void)boardRedo;
+
+/// 清除历史（切换文档的时候）
+- (void)boardCleanUndoHistory;
 
 #pragma mark - Graffit
 /*

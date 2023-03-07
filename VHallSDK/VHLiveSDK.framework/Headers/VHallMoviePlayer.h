@@ -44,23 +44,23 @@
 
 /// 预加载视频信息，在收到"视频信息预加载完成回调"后，即可使用聊天、签到、问答、抽奖等功能，然后择机调用startPlay/startPlayback进行播放，注意使用此方法后，startPlay和startPlayback传参将不再生效（此方法主要用于播放之前需要使用聊天等功能）
 /// @param param 传参信息
-/// param[@"id"]    = 活动Id，必传
-/// param[@"pass"]  = 活动如果有K值或密码，则需要传
-/// param[@"k_id"]  = 观看初始化接口活动维度下k值的唯一ID
+/// param[@"id"]            = 活动Id，必传
+/// param[@"name"]          = 昵称
+/// param[@"auth_model"]    = 0 : 校验观看权限(默认)  1 : 不校验观看权限
 - (void)preLoadRoomWithParam:(NSDictionary *)param;
 
 /// 观看直播视频，在收到"播放连接成功回调"后，才可使用聊天、签到、问答、抽奖等功能
-/// @param param
-/// param[@"id"]    = 活动Id
-/// param[@"pass"]  = 活动如果有K值或密码，则需要传
-/// param[@"k_id"]  = 观看初始化接口活动维度下k值的唯一ID
+/// @param param 传参信息
+/// param[@"id"]            = 活动Id，必传
+/// param[@"name"]          = 昵称
+/// param[@"auth_model"]    = 0 : 校验观看权限(默认)  1 : 不校验观看权限
 - (BOOL)startPlay:(NSDictionary *)param;
 
 /// 观看回放/点播视频，在收到"播放连接成功回调"后，才可使用聊天、签到、问答、抽奖等功能
-/// @param param
-/// param[@"id"]    = 活动Id，必传
-/// param[@"pass"]  = 活动如果有K值或密码，则需要传
-/// param[@"k_id"]  = 观看初始化接口活动维度下k值的唯一ID
+/// @param param 传参信息
+/// param[@"id"]            = 活动Id，必传
+/// param[@"name"]          = 昵称
+/// param[@"auth_model"]    = 0 : 校验观看权限(默认)  1 : 不校验观看权限
 - (BOOL)startPlayback:(NSDictionary *)param;
 
 /// 暂停播放 （如果是直播，等同于stopPlay）
@@ -289,10 +289,12 @@
 
 /// 发布公告的回调
 /// @param content 公告内容
-/// @param time 发布时间
+/// @param pushTime 发布时间
+/// @param duration 公告显示时长 0代表永久显示
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer
             announcementContentDidChange:(NSString*)content
-                             publishTime:(NSString*)time;
+                                pushTime:(NSString*)pushTime
+                                duration:(NSInteger)duration;
 
 /// 当前是否开启问答功能
 /// @param moviePlayer 播放器实例
@@ -340,12 +342,12 @@
 - (void)LiveStart __deprecated_msg("此api名称不规范,推荐使用liveDidStart:)");
 
 /// 直播结束消息
-- (void)LiveStoped __deprecated_msg("此api名称不规范,推荐使用liveDidStart:)");
+- (void)LiveStoped __deprecated_msg("此api名称不规范,推荐使用liveDidStoped:)");
 
 /// 发布公告的回调
 /// @param content 公告内容
 /// @param time 发布时间
 - (void)Announcement:(NSString*)content
-        publishTime:(NSString*)time __deprecated_msg("此api名称不规范,推荐使用announcementContentDidChange:publishTime:)");
+        publishTime:(NSString*)time __deprecated_msg("此api名称不规范,推荐使用announcementContentDidChange:pushTime:)");
 
 @end

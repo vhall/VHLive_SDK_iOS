@@ -42,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString        *           selfAvatar;             ///<自己的头像
 @property (nonatomic, copy) NSString        *           join_id;                ///<自己的参会id
 @property (nonatomic, copy) NSString        *           mainSpeakerId;          ///<当前主讲人（具有文档操作权限）的用户id (会随主讲人改变，实时更新)
+@property (nonatomic, copy) NSString        *           main_screen;            ///<主画面
 @property (nonatomic, copy) NSString        *           layout;                 ///<获取观看端布局, 未设置返回空
 @property (nonatomic, copy) NSString        *           videoBackGround;        /// 背景图片
 @property (nonatomic, copy) NSString        *           finalVideoBackground;   /// 背景图片(带透明度等属性的地址链接)

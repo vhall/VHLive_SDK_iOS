@@ -98,6 +98,9 @@
 
 @protocol VHExamObjectDelegate <NSObject>
 /// 推送-快问快答
+/// - Parameters:
+///   - message: 消息详情
+///   - examWebUrl: 快问快答的嵌入页地址
 - (void)paperSendMessage:(VHMessage *)message examWebUrl:(NSURL *)examWebUrl;
 ///快问快答-收卷
 - (void)paperEndMessage:(VHMessage *)message examWebUrl:(NSURL *)examWebUrl;

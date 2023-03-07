@@ -50,16 +50,13 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 公告列表
 //公告列表
 @interface VHSSInteractAnnouncementModel : NSObject
-//@property (nonatomic, copy) NSString *role_name;  ///<角色 (1:主持人2:观众3:助理4:嘉宾)
-//@property (nonatomic, copy) NSString *account_id;  ///<用户id
-//@property (nonatomic, copy) NSString *user_id;  ///<参会id
-//@property (nonatomic, copy) NSString *nickname;     ///<昵称
 
 @property (nonatomic, copy) NSString *content;  ///<公告内容
 @property (nonatomic, copy) NSString *created_at;  ///<创建时间
 @property (nonatomic, copy) NSString *event;  ///<事件
 @property (nonatomic, copy) NSString *room;  ///<活动id
 @property (nonatomic, copy) NSString *Id;  ///<公告id
+@property (nonatomic, assign) NSInteger duration; //公告显示时长 0代表永久显示
 
 - (instancetype)initWithDict:(NSDictionary *)dict;
 @end
@@ -124,6 +121,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL is_banned;           //当前用户是否被禁言
 @property (nonatomic, assign) BOOL is_kicked;           //当前用户是否被踢出
 @property (nonatomic, assign) BOOL question_status;     //问答是否处于开启状态 1 开启 0 关闭
+@property (nonatomic, assign) BOOL qa_status;            //是否开启了问答禁言 YES 开启 NO 未开启 
 //问答名称
 @property (nonatomic,copy) NSString *question_name;
 @property (nonatomic, assign) BOOL is_desktop;          //开关桌面演示，1开0关
