@@ -274,6 +274,8 @@
 @property (nonatomic, strong) NSMutableArray * dataSource;
 /// 活动详情
 @property (nonatomic, strong) VHWebinarInfoData * webinarInfoData;
+/// 注册对象
+@property (nonatomic, weak) NSObject * obj;
 
 @end
 
@@ -286,6 +288,7 @@
         
         self.backgroundColor = [UIColor whiteColor];
 
+        self.obj = obj;
         self.webinarInfoData = webinarInfoData;
 
         self.vhQA = [[VHallQAndA alloc] initWithObject:obj];
@@ -335,8 +338,8 @@
         // 收起刷新控件
         [weakSelf.tableView.mj_header endRefreshing];
     } failed:^(NSDictionary *failedData) {
-        NSString* msg = [NSString stringWithFormat:@"%@",failedData[@"content"]];
-        [VHProgressHud showToast:msg];
+//        NSString* msg = [NSString stringWithFormat:@"%@",failedData[@"content"]];
+//        [VHProgressHud showToast:msg];
         // 收起刷新控件
         [weakSelf.tableView.mj_header endRefreshing];
     }];
@@ -350,14 +353,14 @@
             for (VHallAnswerModel * answerModels in qaModel.answerModels) {
                 isOpen = answerModels.is_open;
                 // 是公开 或者 我的提问
-                if (isOpen || [qaModel.questionModel.join_id isEqualToString:self.webinarInfoData.join_info.join_id]) {
+                if (isOpen || [qaModel.questionModel.join_id isEqualToString:((VHallMoviePlayer *)self.obj).webinarInfo.join_id]) {
                     [self.dataSource addObject:answerModels];
                 }
             }
         }
 
         // 是公开 或者 我的提问
-        if (isOpen || [qaModel.questionModel.join_id isEqualToString:self.webinarInfoData.join_info.join_id]) {
+        if (isOpen || [qaModel.questionModel.join_id isEqualToString:((VHallMoviePlayer *)self.obj).webinarInfo.join_id]) {
             [self.dataSource addObject:qaModel.questionModel];
         }
     }

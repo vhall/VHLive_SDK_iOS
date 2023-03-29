@@ -28,7 +28,7 @@
 /// 记录是否全体禁言
 @property (nonatomic, assign) BOOL allForbidChat;
 /// 问答禁言状态
-@property (nonatomic, assign) BOOL questionStatus;
+@property (nonatomic, assign) BOOL isQaStatus;
 /// 回放禁言
 @property (nonatomic, assign) BOOL watch_record_no_chatting;
 /// 互动连麦按钮
@@ -42,6 +42,17 @@
 @end
 
 @implementation VHWatchLiveBottomView
+
+#pragma mark - 释放
+- (void)dealloc
+{
+    // 置空
+    if (_messageToolView) {
+        [_messageToolView removeFromSuperview];
+        _messageToolView = nil;
+    }
+    VHLog(@"%s释放",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String]);
+}
 
 #pragma mark - 初始化
 - (instancetype)initWithObject:(NSObject *)obj webinarInfoData:(VHWebinarInfoData *)webinarInfoData
@@ -58,9 +69,6 @@
         
         // 初始化布局
         [self masonryUI];
-
-        // 显隐控件
-        [self controlsWithIsHidden:webinarInfoData.webinar.type == 1 ? YES : NO];
 
         // 初始化聊天
         [self participateInIsChat:YES];
@@ -125,16 +133,10 @@
 
 }
 
-#pragma mark - 显隐控件 直播为true
-- (void)controlsWithIsHidden:(BOOL)isHidden
-{
-    
-}
-
 #pragma mark - 初始化数据
 - (void)initWithData
 {
-    [self.headImg sd_setImageWithURL:[NSURL URLWithString:self.webinarInfoData.join_info.avatar]];
+    [self.headImg sd_setImageWithURL:[NSURL URLWithString:[VHallApi currentUserHeadUrl]]];
     
     // 获取权限配置项
     [self permissionsCheckWithWebinarId];
@@ -149,7 +151,10 @@
         // 是否开启回放禁言
         if (weakSelf.webinarInfoData.webinar.type == 4 || weakSelf.webinarInfoData.webinar.type == 5) {
             weakSelf.watch_record_no_chatting = item.watch_record_no_chatting;
-            [weakSelf isForbidChat:item.watch_record_no_chatting questionStatus:weakSelf.questionStatus];
+            [weakSelf isForbidChat:item.watch_record_no_chatting isQaStatus:weakSelf.isQaStatus];
+            if ([weakSelf.delegate respondsToSelector:@selector(watchRecordChapterIsOpen:)]){
+                [weakSelf.delegate watchRecordChapterIsOpen:item.watch_record_chapter];
+            }
         }
         // 礼物
         weakSelf.giftBtn.hidden = !item.hide_gifts;
@@ -256,10 +261,10 @@
     [self isForBidChatToLiveType];
 }
 
-#pragma mark - 问答状态
-- (void)questionStatus:(BOOL)questionStatus
+#pragma mark - isQaStatus 是否开启了问答禁言 YES 开启 NO 未开启
+- (void)isQaStatus:(BOOL)isQaStatus
 {
-    self.questionStatus = questionStatus;
+    self.isQaStatus = isQaStatus;
     
     [self isForBidChatToLiveType];
 }
@@ -268,21 +273,23 @@
 - (void)isForBidChatToLiveType
 {
     if (self.webinarInfoData.webinar.type == 4 || self.webinarInfoData.webinar.type == 5) {
-        [self isForbidChat:self.watch_record_no_chatting || self.allForbidChat questionStatus:self.questionStatus];
+        [self isForbidChat:self.watch_record_no_chatting || self.allForbidChat isQaStatus:self.isQaStatus];
     } else {
-        [self isForbidChat:self.forbidChat || self.allForbidChat questionStatus:self.questionStatus];
+//        [self isForbidChat:self.forbidChat || self.allForbidChat isQaStatus:self.isQaStatus];
+//        //现在的逻辑必须是 全体禁言并且问答禁言,才算问答禁言,跟后端确认过了,因为pc发起端的配置项导致必须如此使用
+        [self isForbidChat:self.forbidChat || self.allForbidChat isQaStatus:self.isQaStatus && self.allForbidChat];
     }
 }
 
 #pragma mark - 更新禁言状态
-- (void)isForbidChat:(BOOL)isForbidChat questionStatus:(BOOL)questionStatus
+- (void)isForbidChat:(BOOL)isForbidChat isQaStatus:(BOOL)isQaStatus
 {
     self.messageToolView.maxLength = self.isChat ? 140 : 0;
     self.messageToolView.placeholder = self.isChat ? @"参与聊天" : @"快来提问吧";
 
     [self.chatBtn setTitle:isForbidChat ? @"禁止发言" : @"参与聊天" forState:UIControlStateNormal];
 
-    [self.questionBtn setTitle:questionStatus ? @"快来提问吧" : @"禁止发言" forState:UIControlStateNormal];
+    [self.questionBtn setTitle:isQaStatus ? @"禁止发言" : @"快来提问吧" forState:UIControlStateNormal];
 }
 
 #pragma mark - 参与聊天 或者 参与问答
@@ -302,7 +309,7 @@
             }
         }
     } else {
-        if (!self.questionStatus) {
+        if (self.isQaStatus) {
             [VHProgressHud showToast:@"您已被禁言"];
             return;
         }
@@ -419,17 +426,6 @@
         [_messageToolView setDelegate:self];
         [[VUITool mainWindow] addSubview:_messageToolView];
     }return _messageToolView;
-}
-
-#pragma mark - 释放
-- (void)dealloc
-{
-    // 置空
-    if (_messageToolView) {
-        [_messageToolView removeFromSuperview];
-        _messageToolView = nil;
-    }
-    VHLog(@"%s释放",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String]);
 }
 
 @end

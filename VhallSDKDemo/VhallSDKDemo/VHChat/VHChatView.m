@@ -8,6 +8,7 @@
 #import "VHChatView.h"
 #import "VHChatCell.h"
 #import "VHChatGiftCell.h"
+#import "VHChatLotteryCell.h"
 
 @interface VHChatView ()<VHallChatDelegate,UITableViewDataSource,UITableViewDelegate>
 /// 聊天
@@ -64,8 +65,8 @@
     self.chat.delegate = self;
     
     // 获取最新禁言状态
-    if (self.delegate && [self.delegate respondsToSelector:@selector(questionStatus:)]) {
-        [self.delegate questionStatus:self.chat.isQaStatus];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(isQaStatus:)]) {
+        [self.delegate isQaStatus:self.chat.isQaStatus];
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(forbidChat:)]) {
         [self.delegate forbidChat:self.chat.isMeSpeakBlocked];
@@ -117,7 +118,7 @@
         // 收起刷新控件
         [weakSelf.chatTableView.mj_header endRefreshing];
     } failed:^(NSDictionary *failedData) {
-        [VHProgressHud showToast:failedData[@"content"]];
+//        [VHProgressHud showToast:failedData[@"content"]];
         // 收起刷新控件
         [weakSelf.chatTableView.mj_header endRefreshing];
     }];
@@ -170,13 +171,11 @@
     }
 }
 
-#pragma mark - 问答状态
-- (void)questionStatus:(BOOL)questionStatus
+#pragma mark - 问答禁言状态状态
+- (void)isQaStatus:(BOOL)isQaStatus
 {
-//    [VHProgressHud showToast:questionStatus ? @"取消问答禁言" : @"开启问答禁言"];
-
-    if (self.delegate && [self.delegate respondsToSelector:@selector(questionStatus:)]) {
-        [self.delegate questionStatus:questionStatus];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(isQaStatus:)]) {
+        [self.delegate isQaStatus:isQaStatus];
     }
 }
 
@@ -297,15 +296,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id model = [self.chatDataSource objectAtIndex:indexPath.row];
     VHChatCell * cell = [VHChatCell createCellWithTableView:tableView];
-    VHChatCustomCell * customCell = [VHChatCustomCell createCellWithTableView:tableView];
     
+    VHChatCustomCell * customCell = [VHChatCustomCell createCellWithTableView:tableView];
     __weak __typeof(self)weakSelf = self;
     customCell.clickSurveyToModel = ^(VHChatCustomModel *chatCustomModel) {
-        if ([weakSelf.delegate respondsToSelector:@selector(clickSurveyToId:)]){
-            [weakSelf.delegate clickSurveyToId:chatCustomModel.info[@"surveyId"]];
+        if ([weakSelf.delegate respondsToSelector:@selector(clickSurveyToId:surveyURL:)]){
+            [weakSelf.delegate clickSurveyToId:chatCustomModel.info[@"surveyId"] surveyURL:chatCustomModel.info[@"surveyURL"]];
         }
     };
+    
     VHChatGiftCell * giftCell = [VHChatGiftCell createCellWithTableView:tableView];
+    
+    VHChatLotteryCell * lotteryCell = [VHChatLotteryCell createCellWithTableView:tableView];
+    lotteryCell.clickChekWinList = ^(VHallEndLotteryModel *endLotteryModel) {
+        if ([weakSelf.delegate respondsToSelector:@selector(clickCheckWinListWithEndLotteryModel:)]){
+            [weakSelf.delegate clickCheckWinListWithEndLotteryModel:endLotteryModel];
+        }
+    };
     
     if ([model isKindOfClass:[VHallChatModel class]]){
         [cell setModel:model];
@@ -315,6 +322,12 @@
     }else if ([model isKindOfClass:[VHallGiftModel class]]){
         [giftCell setGiftModel:model];
         return giftCell;
+    }else if ([model isKindOfClass:[VHallStartLotteryModel class]]){
+        [lotteryCell setStartModel:model];
+        return lotteryCell;
+    }else if ([model isKindOfClass:[VHallEndLotteryModel class]]){
+        [lotteryCell setEndModel:model];
+        return lotteryCell;
     }
     return cell;
 }
@@ -339,7 +352,7 @@
     [_chat sendMsg:text success:^{
         
     } failed:^(NSDictionary *failedData) {
-        NSString* str = [NSString stringWithFormat:@"%@ %@", failedData[@"code"],failedData[@"content"]];
+        NSString* str = [NSString stringWithFormat:@"%@",failedData[@"content"]];
         [VHProgressHud showToast:str];
     }];
 }
@@ -359,6 +372,13 @@
     customModel.content = content;
     customModel.info = info;
     [self.chatDataSource addObject:customModel];
+    
+    [self reloadChatToBottom:YES beforeChange:0];
+}
+#pragma mark - 收到抽奖消息
+- (void)chatLotteryWithStartModel:(VHallStartLotteryModel * )startModel endModel:(VHallEndLotteryModel *)endModel
+{
+    [self.chatDataSource addObject:startModel ? startModel : endModel];
     
     [self reloadChatToBottom:YES beforeChange:0];
 }

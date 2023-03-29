@@ -48,9 +48,9 @@
 /// @param haveStream 是否有流
 - (void)directorStream:(BOOL)haveStream;
 
-/// 问答状态
-/// @param questionStatus YES:可用 NO:不可用
-- (void)questionStatus:(BOOL)questionStatus;
+/// 是否开启了问答禁言
+/// @param isQaStatus YES:开启 NO:未开启
+- (void)isQaStatus:(BOOL)isQaStatus;
 
 /// 轮巡开始
 - (void)videoRoundStart;

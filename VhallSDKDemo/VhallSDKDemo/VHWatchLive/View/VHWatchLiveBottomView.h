@@ -18,6 +18,10 @@
 
 /// 点击申请互动连麦
 - (void)clickInav;
+
+/// 是否开启了回放章节
+- (void)watchRecordChapterIsOpen:(BOOL)isOpen;
+
 @end
 
 @interface VHWatchLiveBottomView : UIView
@@ -44,8 +48,8 @@
 - (void)allForbidChat:(BOOL)allForbidChat;
 
 /// 问答状态
-/// @param questionStatus YES:可用 NO:不可用
-- (void)questionStatus:(BOOL)questionStatus;
+/// @param isQaStatus 是否开启了问答禁言 YES 开启 NO 未开启
+- (void)isQaStatus:(BOOL)isQaStatus;
 
 /// 参与聊天还是参与问答
 /// - Parameter IsChat: YES 参与聊天 NO 参与问答

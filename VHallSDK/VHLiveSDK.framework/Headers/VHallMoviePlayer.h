@@ -8,6 +8,7 @@
 #import <MediaPlayer/MPMoviePlayerController.h>
 #import "VHallConst.h"
 #import "VHWebinarInfo.h"
+#import "VHPlayerCommonModel.h"
 
 @class VHDLNAControl;
 @protocol VHallMoviePlayerDelegate;
@@ -140,7 +141,6 @@
 @protocol VHallMoviePlayerDelegate <NSObject, VHallMoviePlayerDeprocatedDelegate>
 
 @optional
-
 /// 视频信息预加载完成回调，前提需使用方法"preLoadRoomWithParam"，收到此回调后，可以使用聊天、签到、问答、抽奖等功能，择机调用startPlay/startPlayback进行播放（可以实现在调用播放之前使用聊天等功能）
 /// @param moviePlayer 播放器实例
 /// @param activeState 活动状态
@@ -236,6 +236,12 @@
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer
         currentTime:(NSTimeInterval)currentTime;
 
+/// 返回视频打点数据（若存在打点信息）
+/// @param moviePlayer 播放器实例
+/// @param pointArr 已打点的数据
+- (void)moviePlayer:(VHallMoviePlayer *)moviePlayer
+      videoPointArr:(NSArray <VHVidoePointModel *> *)pointArr;
+
 #pragma mark - 互动
 
 /// 当前活动是否允许举手申请上麦回调
@@ -308,6 +314,7 @@
 
 @protocol VHallMoviePlayerDeprocatedDelegate <NSObject>
 
+@optional
 /// 视频流类型回调
 /// @param moviePlayer 播放器实例
 /// @param info 字典结构：{content：流类型(VHStreamType)}

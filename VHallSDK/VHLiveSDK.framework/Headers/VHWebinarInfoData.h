@@ -145,8 +145,8 @@
 ///   - k_id:       观看活动维度下k值的唯一ID
 ///   - nick_name:  昵称
 ///   - email:      邮箱
-///   - record_id:  活动Id，必传
-///   - auth_model:  0 : 校验观看权限(默认)  1 : 不校验观看权限
+///   - record_id:  回放id非必传
+///   - auth_model: 0 : 校验观看权限(默认)  1 : 不校验观看权限
 ///   - complete:   请求完成,包含数据详情和错误信息
 + (void)requestWatchInitWebinarId:(NSString *)webinarId
                              pass:(NSString *)pass
@@ -160,7 +160,7 @@
 
 /// 检查活动设置的观看权限
 /// - Parameters:
-///   - webinar_id: 互动id
+///   - webinar_id: 活动id
 ///   - complete: type : 1 需要密码 2 白名单校验 , authStatus : 校验权限 , error : 错误提示
 + (void)queryWatchAuthWithWebinarId:(NSString *)webinar_id
                            complete:(void(^)(NSString * type, BOOL authStatus, NSError *error))complete;
@@ -177,6 +177,7 @@
                            complete:(void(^)(NSDictionary *responseObject, NSError *error))complete;
 
 @end
+
 
 
 

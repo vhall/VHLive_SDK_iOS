@@ -31,7 +31,7 @@ extern NSString * VH_MB_ASSIST;
 
 /// 秒转时分秒
 /// - Parameter totalSeconds: 秒
-/// - Parameter isAuto: 是否自动计算宽度
+/// - Parameter isAuto: 不够一小时是否省略
 + (NSString *)timeFormatted:(NSInteger)totalSeconds isAuto:(BOOL)isAuto;
 
 /// 指定某个/多个角圆角
@@ -82,6 +82,23 @@ extern NSString * VH_MB_ASSIST;
 /// 给一个时间,计算距离当前时间差多少秒
 /// - Parameter time: 时间格式为 yyyy-MM-dd HH:mm:ss
 + (NSInteger)getTimeDifferenceWithTime:(NSString *)time;
+
+/// 字母、数字、中文正则判断（不包括空格）
+/// - Parameter str: 字符串
++ (BOOL)isInputRuleNotBlank:(NSString *)str;
+
+/// 字母、数字、中文正则判断（包括空格）（在系统输入法中文输入时会出现拼音之间有空格，需要忽略，当按return键时会自动用字母替换，按空格输入响应汉字）
+/// - Parameter str: 字符串
++ (BOOL)isInputRuleAndBlank:(NSString *)str;
+
+/// 获得 kMaxLength长度的字符
+/// - Parameter str: 字符串
+/// - Parameter strLenth: 字符串长度
++ (NSString *)getSubStr:(NSString *)str strLenth:(int)strLenth;
+
+/// 处理表情为空串
+/// - Parameter text: 字符串
++ (NSString *)disable_emoji:(NSString *)str;
 
 /// 获取设备权限
 /// - Parameter completionBlock: 权限状态回调

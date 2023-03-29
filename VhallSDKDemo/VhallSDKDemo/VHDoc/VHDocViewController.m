@@ -1,50 +1,46 @@
 //
-//  VHDocView.m
+//  VHDocViewController.m
 //  VhallSDKDemo
 //
-//  Created by 郭超 on 2022/12/14.
+//  Created by 郭超 on 2023/3/29.
 //
 
-#import "VHDocView.h"
-#include <objc/runtime.h>
+#import "VHDocViewController.h"
 
-@interface VHDocView ()
+@interface VHDocViewController ()
 @property (nonatomic, strong) UIView * documentView;
 @property (nonatomic, strong) UIButton * fullBtn;
 @property (nonatomic, strong) UIView * uiwebPPTView;
 @end
 
-@implementation VHDocView
+@implementation VHDocViewController
 
-
-#pragma mark - 初始化
-- (instancetype)init
-{
-    if ([super init]) {
-        
-        self.backgroundColor = [UIColor colorWithHex:@"#E5E5E5"];
-
-    }return self;
-}
-- (void)layoutSubviews
-{
-    [self.documentView setFrame:self.bounds];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
     
+    self.view.backgroundColor = [UIColor colorWithHex:@"#E5E5E5"];
+}
+
+- (void)viewDidLayoutSubviews {
+    
+    self.documentView.frame = self.view.bounds;
+
     if (!self.uiwebPPTView) {
         UIView * VHDocumentViewWK = [VUITool getSubViewWithClassName:@"VHDocumentViewWK" inView:self.documentView];
         self.uiwebPPTView = [VUITool getSubViewWithClassName:@"WKWebView" inView:VHDocumentViewWK];
         self.uiwebPPTView.backgroundColor = [UIColor whiteColor];
     }
 }
+
 #pragma mark - 添加文档
 - (void)addToDocumentView:(UIView *)documentView
 {
     self.documentView = documentView;
     
-    [self addSubview:documentView];
-    [self.documentView setFrame:self.bounds];
+    [self.view addSubview:documentView];
 
-    [self addSubview:self.fullBtn];
+    [self.view addSubview:self.fullBtn];
     [self.fullBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(50);
         make.right.mas_equalTo(-20);
@@ -80,6 +76,6 @@
 
 #pragma mark - 分页
 - (UIView *)listView {
-    return self;
+    return self.view;
 }
 @end

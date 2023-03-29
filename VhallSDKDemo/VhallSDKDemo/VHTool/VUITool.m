@@ -267,6 +267,69 @@ NSString * VH_MB_ASSIST = @"助理";
     return difference;
 }
 
+
++ (UIView *)getSubViewWithClassName:(NSString *)className inView:(UIView *)inView
+{
+    //判空处理
+    if(!inView || !inView.subviews.count || !className || !className.length || [className isKindOfClass:NSNull.class]) return nil;
+    //最终找到的view，找不到的话，就直接返回一个nil
+    UIView *foundView = nil;
+    //循环递归进行查找
+    for(UIView *view in inView.subviews) {
+        //如果view是当前要查找的view，就直接赋值并终止循环递归，最终返回
+        if([view isKindOfClass:NSClassFromString(className)]) {
+            foundView = view;
+            break;
+        }
+        //如果当前view不是要查找的view的话，就在递归查找当前view的subviews
+        foundView = [self getSubViewWithClassName:className inView:view];
+        //如果找到了，则终止循环递归，最终返回
+        if (foundView) break;
+    }
+    return foundView;
+}
+
++ (BOOL)isInputRuleNotBlank:(NSString *)str {
+    NSString *pattern = @"^[a-zA-Z\u4E00-\u9FA5\\d]*$";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
+    BOOL isMatch = [pred evaluateWithObject:str];
+    return isMatch;
+}
+
++ (BOOL)isInputRuleAndBlank:(NSString *)str {
+    NSString *pattern = @"^[a-zA-Z\u4E00-\u9FA5\\d\\s]*$";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
+    BOOL isMatch = [pred evaluateWithObject:str];
+    return isMatch;
+}
+
++ (NSString *)getSubStr:(NSString *)str strLenth:(int)strLenth
+{
+    NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSData* data = [str dataUsingEncoding:encoding];
+    NSInteger length = [data length];
+    if (length > strLenth) {
+        NSData *data1 = [data subdataWithRange:NSMakeRange(0, strLenth)];
+        NSString *content = [[NSString alloc] initWithData:data1 encoding:encoding];//注意：当截取kMaxLength长度字符时把中文字符截断返回的content会是nil
+        if (!content || content.length == 0) {
+            data1 = [data subdataWithRange:NSMakeRange(0, strLenth - 1)];
+            content =  [[NSString alloc] initWithData:data1 encoding:encoding];
+        }
+        return content;
+    }
+    return nil;
+}
+
++ (NSString *)disable_emoji:(NSString *)str
+{
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[^\\u0020-\\u007E\\u00A0-\\u00BE\\u2E80-\\uA4CF\\uF900-\\uFAFF\\uFE30-\\uFE4F\\uFF00-\\uFFEF\\u0080-\\u009F\\u2000-\\u201f\r\n]"options:NSRegularExpressionCaseInsensitive error:nil];
+    NSString *modifiedString = [regex stringByReplacingMatchesInString:str
+                                                               options:0
+                                                                 range:NSMakeRange(0, [str length])
+                                                          withTemplate:@""];
+    return modifiedString;
+}
+
 BOOL videoAccess = NO;
 BOOL audioAccess = NO;
 + (void)getMediaAccess:(void(^_Nullable)(BOOL videoAccess,BOOL audioAcess))completionBlock
@@ -300,27 +363,5 @@ BOOL audioAccess = NO;
     });
 
 }
-
-+ (UIView *)getSubViewWithClassName:(NSString *)className inView:(UIView *)inView
-{
-    //判空处理
-    if(!inView || !inView.subviews.count || !className || !className.length || [className isKindOfClass:NSNull.class]) return nil;
-    //最终找到的view，找不到的话，就直接返回一个nil
-    UIView *foundView = nil;
-    //循环递归进行查找
-    for(UIView *view in inView.subviews) {
-        //如果view是当前要查找的view，就直接赋值并终止循环递归，最终返回
-        if([view isKindOfClass:NSClassFromString(className)]) {
-            foundView = view;
-            break;
-        }
-        //如果当前view不是要查找的view的话，就在递归查找当前view的subviews
-        foundView = [self getSubViewWithClassName:className inView:view];
-        //如果找到了，则终止循环递归，最终返回
-        if (foundView) break;
-    }
-    return foundView;
-}
-
 
 @end

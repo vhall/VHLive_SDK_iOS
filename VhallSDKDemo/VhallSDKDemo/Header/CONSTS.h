@@ -9,10 +9,6 @@
 #ifndef CONSTS_h
 #define CONSTS_h
 
-#define DEMO_AppKey         @"替换成您自己的AppKey"        //详见：http://e.vhall.com/home/vhallapi/authlist
-#define DEMO_AppSecretKey   @"替换成您自己的AppSecretKey"  //AppSecretKey
- 
-
 // Log
 #define VHLog(...) NSLog(__VA_ARGS__)
 

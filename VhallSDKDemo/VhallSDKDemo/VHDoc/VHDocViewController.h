@@ -1,11 +1,11 @@
 //
-//  VHDocView.h
+//  VHDocViewController.h
 //  VhallSDKDemo
 //
-//  Created by 郭超 on 2022/12/14.
+//  Created by 郭超 on 2023/3/29.
 //
 
-#import <UIKit/UIKit.h>
+#import "VHBaseViewController.h"
 
 @protocol VHDocViewDelegate <NSObject>
 
@@ -14,7 +14,7 @@
 
 @end
 
-@interface VHDocView : UIView<JXCategoryListContentViewDelegate>
+@interface VHDocViewController : VHBaseViewController<JXCategoryListContentViewDelegate>
 
 @property (nonatomic, weak) id <VHDocViewDelegate> delegate;
 
@@ -25,3 +25,4 @@
 - (void)quitFull;
 
 @end
+

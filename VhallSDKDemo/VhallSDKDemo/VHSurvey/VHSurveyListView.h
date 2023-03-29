@@ -22,7 +22,7 @@
 
 @protocol VHSurveyListViewDelegate <NSObject>
 
-/// 收到问卷 v4.0.0新增
+/// 收到问卷
 - (void)receivedSurveyWithURL:(NSURL *)surveyURL surveyId:(NSString *)surveyId;
 
 @end
@@ -41,7 +41,7 @@
 
 /// 显示问卷
 /// - Parameter surveyId: 问卷id
-- (void)clickSurveyToId:(NSString *)surveyId;
+- (void)clickSurveyToId:(NSString *)surveyId surveyURL:(NSURL *)surveyURL;
 
 @end
 

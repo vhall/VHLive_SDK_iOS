@@ -158,7 +158,7 @@
         // 解开限制
         sender.userInteractionEnabled = YES;
         // 提示文案
-        NSString * msg = [NSString stringWithFormat:@"%@,错误码%@",failedData[@"content"],failedData[@"code"]];
+        NSString * msg = [NSString stringWithFormat:@"%@",failedData[@"content"]];
         [VHProgressHud showToast:msg];
     }];
 

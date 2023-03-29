@@ -22,9 +22,9 @@
 /// @param allForbidChat YES:禁言 NO:取消禁言
 - (void)allForbidChat:(BOOL)allForbidChat;
 
-/// 问答状态
-/// @param questionStatus YES:可用 NO:不可用
-- (void)questionStatus:(BOOL)questionStatus;
+/// 是否开启了问答禁言
+/// @param isQaStatus YES 开启 NO 未开启
+- (void)isQaStatus:(BOOL)isQaStatus;
 
 /// 收到虚拟人数消息
 /// @param update_online_num 增加的虚拟在线人数
@@ -34,7 +34,12 @@
 
 /// 点击问卷
 /// @param surveyId 收到的问卷
-- (void)clickSurveyToId:(NSString *)surveyId;
+/// @param surveyURL 问卷地址
+- (void)clickSurveyToId:(NSString *)surveyId surveyURL:(NSURL *)surveyURL;
+
+/// 点击查看中奖名单
+/// - Parameter endLotteryModel: 结束抽奖数据源
+- (void)clickCheckWinListWithEndLotteryModel:(VHallEndLotteryModel *)endLotteryModel;
 
 @end
 
@@ -64,5 +69,10 @@
 ///   - content: 详情
 ///   - info: 附加信息
 - (void)chatCustomWithNickName:(NSString *)nickName roleName:(NSInteger)roleName content:(NSString *)content info:(NSMutableDictionary *)info;
+
+/// 收到抽奖消息
+/// - Parameter startModel: 开始抽奖模型
+/// - Parameter endModel: 结束抽奖模型
+- (void)chatLotteryWithStartModel:(VHallStartLotteryModel * )startModel endModel:(VHallEndLotteryModel *)endModel;
 
 @end

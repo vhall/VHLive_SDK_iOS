@@ -283,7 +283,7 @@
 }
 
 #pragma mark - 显示问卷
-- (void)clickSurveyToId:(NSString *)surveyId
+- (void)clickSurveyToId:(NSString *)surveyId surveyURL:(NSURL *)surveyURL
 {
     [self.dataSource removeAllObjects];
     __weak __typeof(self)weakSelf = self;
@@ -291,15 +291,20 @@
         if (listModel.listModel.count > 0){
             [weakSelf.dataSource addObjectsFromArray:listModel.listModel];
         }
-        for (VHSurveyModel * model in self.dataSource) {
+        for (VHSurveyModel * model in weakSelf.dataSource) {
             if ([surveyId isEqualToString:[VUITool safeString:model.question_id]]) {
                 if (model.is_answered) { [VHProgressHud showToast:@"此问卷已填写"]; return; }
-                [self.surveyWebView showSurveyUrl:model.openLink];
-                [self disMissContentView];
+                [weakSelf.surveyWebView showSurveyUrl:model.openLink];
+                [weakSelf disMissContentView];
                 return;
             }
         }
     } fail:^(NSError *error) {
+        if (error.code == 516003) {
+            [weakSelf.surveyWebView showSurveyUrl:surveyURL];
+        } else {
+            [VHProgressHud showToast:error.domain];
+        }
     }];
 }
 

@@ -47,6 +47,9 @@
 /// 被踢出
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isKickout:(BOOL)isKickout;
 
+/// 返回视频打点数据（若存在打点信息）
+- (void)moviePlayer:(VHallMoviePlayer *)moviePlayer videoPointArr:(NSArray <VHVidoePointModel *> *)pointArr;
+
 @end
 
 @interface VHWatchVideoView : UIView
@@ -79,9 +82,6 @@
                                  update_pv:(NSInteger)update_pv;
 /// 收到上下线消息
 - (void)reciveOnlineMsg:(NSArray <VHallOnlineStateModel *> *)msgs;
-
-/// 强制屏幕旋转
-- (void)setDeviceInterfaceOrientation:(UIDeviceOrientation)orientation;
 
 /// 退出全屏
 - (void)quitFull;

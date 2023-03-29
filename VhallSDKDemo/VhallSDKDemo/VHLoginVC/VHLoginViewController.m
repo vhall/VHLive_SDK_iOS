@@ -56,7 +56,7 @@
     [VHallApi registerApp:DEMO_Setting.appKey SecretKey:DEMO_Setting.appSecretKey];
 
     // 打印日志
-    [VHallApi setLogType:VHLogType_ON];
+    [VHallApi setLogType:VHLogType_OFF];
     VHLog(@"SDK版本 === %@ === %@",[VHallApi sdkVersionEX],[VHRoom sdkVersionEX]);
 }
 
@@ -86,6 +86,10 @@
     self.versionLabel.text      = [NSString stringWithFormat:@"v%@ build:%@",[VHallApi sdkVersion],build];
     self.accountTextField.text  = DEMO_Setting.account;
     self.passwordTextField.text = DEMO_Setting.password;
+    
+    self.thirdIdTextField.text = DEMO_Setting.third_Id;
+    self.thirdNameTextField.text = DEMO_Setting.third_nickName;
+    self.thirdAvatarTextField.text = DEMO_Setting.third_avatar;
 }
 
 

@@ -12,11 +12,11 @@
  *  推流状态
  */
 typedef NS_ENUM(NSInteger, VHallPublishStatus) {
-    VHallPublishStatusNone,//
-    VHallPublishStatusPushConnectSucceed,//直播连接成功
-    VHallPublishStatusUploadSpeed,//直播上传速率
-    VHallPublishStatusUploadNetworkException,//发起端网络环境差
-    VHallPublishStatusUploadNetworkOK //发起端网络环境恢复正常
+    VHallPublishStatusNone = 0,					//
+    VHallPublishStatusPushConnectSucceed = 1,	//直播连接成功
+    VHallPublishStatusUploadSpeed = 2,			//直播上传速率
+    VHallPublishStatusUploadNetworkException = 3, //发起端网络环境差
+    VHallPublishStatusUploadNetworkOK = 4		//发起端网络环境恢复正常
 };
 
 /**
@@ -213,6 +213,9 @@ typedef enum : NSUInteger {
  */
 @property(nonatomic,assign)int customVideoWidth;
 @property(nonatomic,assign)int customVideoHeight;
+
+/// 返回当前尺寸，如果 customVideoWidth/Height 未设置则使用 Resolution 换算Size，所以必然不为 0
+@property (nonatomic, readonly) CGSize customVideoSize;
 
 /**
  * 高级功能 用于自定义采集模块

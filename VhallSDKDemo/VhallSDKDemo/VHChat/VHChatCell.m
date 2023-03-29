@@ -301,7 +301,7 @@
 - (void)isChatMsg:(VHallChatModel *)model
 {
     // 聊天内容
-    NSString * content = [NSString stringWithFormat:@"%@%@",model.replyMsg ? @"回复 " : @"",model.text];
+    NSString * content = [NSString stringWithFormat:@"%@%@",model.replyMsg ? @"回复 " : @"",[VUITool isBlankString:model.text] ? @"" : model.text];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:content];
     attributedString.yy_font = FONT(14);
     attributedString.yy_color = [UIColor colorWithHex:@"#262626"];

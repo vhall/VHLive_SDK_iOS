@@ -10,19 +10,22 @@
 #import "VHInavView.h"
 #import "VHChatView.h"
 #import "VHWatchLiveBottomView.h"
-#import "VHDocView.h"
+#import "VHDocViewController.h"
 #import "VHQAView.h"
-#import "VHFashionStyleGiftListView.h"
 #import "VHIntroView.h"
+#import "VHRecordChapter.h"
+#import "VHVideoPointView.h"
+#import "VHFashionStyleGiftListView.h"
 #import "VHFoldButton.h"
 #import "VHAnnouncementView.h"
 #import "VHAnnouncementList.h"
 #import "VHSurveyListView.h"
 #import "VHInavApplyAlertView.h"
 #import "VHSignInAlertView.h"
+#import "VHLottery.h"
 #import "AppDelegate.h"
 
-@interface VHWatchVC ()<VHWatchVideoViewDelegate,VHInavViewDelegate,VHWatchLiveBottomViewDelegate,VHChatViewDelegate,JXCategoryViewDelegate,JXCategoryListContainerViewDelegate,VHallGiftObjectDelegate,VHQAViewDelegate,VHSignInAlertViewDelegate,VHSurveyListViewDelegate,VHDocViewDelegate>
+@interface VHWatchVC ()<VHWatchVideoViewDelegate,VHInavViewDelegate,VHWatchLiveBottomViewDelegate,VHChatViewDelegate,JXCategoryViewDelegate,JXCategoryListContainerViewDelegate,VHallGiftObjectDelegate,VHQAViewDelegate,VHSignInAlertViewDelegate,VHSurveyListViewDelegate,VHDocViewDelegate,VHRecordChapterDelegate,VHVideoPointViewDelegate,VHLotteryDelegate>
 
 // 控件
 /// 分页控件
@@ -40,11 +43,15 @@
 /// 聊天View
 @property (nonatomic, strong) VHChatView * chatView;
 /// 文档
-@property (nonatomic, strong) VHDocView * docView;
-/// 简介
-@property (nonatomic, strong) VHIntroView * introView;
+@property (nonatomic, strong) VHDocViewController * docViewController;
 /// 问答
 @property (nonatomic, strong) VHQAView * vhQAView;
+/// 简介
+@property (nonatomic, strong) VHIntroView * introView;
+/// 章节打点
+@property (nonatomic, strong) VHRecordChapter * recordChapterView;
+/// 视频打点
+@property (nonatomic, strong) VHVideoPointView * videoPointView;
 /// 底部工具
 @property (nonatomic, strong) VHWatchLiveBottomView * bottomView;
 /// 礼物类
@@ -61,9 +68,11 @@
 @property (nonatomic, strong) VHInavApplyAlertView * inavApplyAlertView;
 /// 签到
 @property (nonatomic, strong) VHSignInAlertView * signInAlertView;
+/// 抽奖
+@property (nonatomic, strong) VHLottery * vhLottery;
 
 // 赋值
-/// 问答name
+/// 问答名称
 @property (nonatomic, copy) NSString * questionName;
 
 // 标识
@@ -71,6 +80,8 @@
 @property (nonatomic, assign) BOOL isLive;
 @property (nonatomic, assign) BOOL isOpenDoc;
 @property (nonatomic, assign) BOOL isOpenQA;
+@property (nonatomic, assign) BOOL isOpenRecordChapter;
+@property (nonatomic, assign) BOOL isOpenVideoPoint;
 @property (nonatomic, assign) BOOL isFull;
 @property (nonatomic, assign) BOOL isDocFull;
 @property (nonatomic, assign) BOOL isVideoFull;
@@ -83,11 +94,15 @@
     [super viewWillAppear:animated];
     // 强制竖屏
     [self clickFullIsSelect:NO];
+    // 设为YES则保持常亮，不自动锁屏，默认为NO会自动锁屏
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    // 设为YES则保持常亮，不自动锁屏，默认为NO会自动锁屏
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
 - (void)viewDidLoad {
@@ -170,7 +185,7 @@
 }
 
 #pragma mark - JXCategoryViewDelegate
-#pragma mark - 选中
+#pragma mark 选中
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index
 {
     NSString * title = self.listContainerArray[index];
@@ -183,70 +198,72 @@
 }
 
 #pragma mark - JXCategoryListContainerViewDelegate
-#pragma mark - 返回列表的数量
+#pragma mark 返回列表的数量
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
     return self.listContainerArray.count;
 }
-#pragma mark - 根据下标 index 返回对应遵守并实现 `JXCategoryListContentViewDelegate` 协议的列表实例
+#pragma mark 根据下标 index 返回对应遵守并实现 `JXCategoryListContentViewDelegate` 协议的列表实例
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     NSString * title = self.listContainerArray[index];
     if ([title isEqualToString:@"聊天"]){
         return self.chatView;
     }else if ([title isEqualToString:@"文档"]){
-        return self.docView;
+        return self.docViewController;
     }else if ([title isEqualToString:@"简介"]){
         return self.introView;
     }else if ([title isEqualToString:self.questionName]){
         return self.vhQAView;
+    }else if ([title isEqualToString:@"章节"]){
+        return self.recordChapterView;
+    }else if ([title isEqualToString:@"视频打点"]){
+        return self.videoPointView;
     }
+
     return nil;
 }
-
-#pragma mark - 是否显示文档 和 问答
-- (void)roomWithIsOpenDoc:(BOOL)isOpenDoc isOpenQA:(BOOL)isOpenQA
+#pragma mark 刷新标签页显示 文档/问答/章节
+- (void)roomWithIsOpenDoc:(BOOL)isOpenDoc isOpenQA:(BOOL)isOpenQA isOpenRecordChapter:(BOOL)isOpenRecordChapter isOpenVideoPoint:(BOOL)isOpenVideoPoint
 {
     self.isOpenDoc = isOpenDoc;
     self.isOpenQA = isOpenQA;
+    self.isOpenRecordChapter = isOpenRecordChapter;
+    self.isOpenVideoPoint = isOpenVideoPoint;
     
-    // 更多工具显示状态
-    [self foldBtnIsHidden];
-
+    // 获取当前显示的标签页名称
     NSString * selectTitle = self.listContainerArray[self.categoryView.selectedIndex];
-    // 判断是否显示文档
-    if ([selectTitle isEqualToString:@"文档"] && !isOpenDoc) {
-        [self.categoryView selectItemAtIndex:0];
-    }
-    
-    // 判断是否显示问卷
-    if ([selectTitle isEqualToString:self.questionName] && !isOpenQA) {
-        [self.categoryView selectItemAtIndex:0];
-    }
 
     // 清空所有
     [self.listContainerArray removeAllObjects];
     
     // 添加剩余的
     [self.listContainerArray addObject:@"聊天"];
-    if (isOpenDoc) {
-        [self.listContainerArray addObject:@"文档"];
-    }
-    if (isOpenQA) {
-        [self.listContainerArray addObject:self.questionName];
-    }
+    if (isOpenDoc) { [self.listContainerArray addObject:@"文档"]; }
+    if (isOpenQA) { [self.listContainerArray addObject:self.questionName]; }
+    if (isOpenRecordChapter) { [self.listContainerArray addObject:@"章节"]; }
+    if (isOpenVideoPoint) { [self.listContainerArray addObject:@"视频打点"]; }
     [self.listContainerArray addObject:@"简介"];
 
+    // 添加
     self.categoryView.titles = self.listContainerArray;
-    
+
     // 刷新
     [self.categoryView reloadData];
+
+    // 切换选中的标签页
+    BOOL isHave = [self.categoryView.titles containsObject:selectTitle] ;
+    if (isHave) {
+        [self.categoryView selectItemAtIndex:(int)[self.categoryView.titles indexOfObject:selectTitle]];
+    } else {
+        [self.categoryView selectItemAtIndex:0];
+    }
     
+    // 更多工具显示状态
+    [self foldBtnIsHidden];
 }
 #pragma mark - VHWatchVideoViewDelegate
-#pragma mark - 播放连接成功
+#pragma mark 播放连接成功
 - (void)connectSucceed:(VHallMoviePlayer *)moviePlayer info:(NSDictionary *)info
 {
-    self.webinarInfoData = moviePlayer.webinarInfo.webinarInfoData;
-    
     // 设置标题
     self.title = [VUITool substringToIndex:8 text:moviePlayer.webinarInfo.webinarInfoData.webinar.subject isReplenish:YES];
 
@@ -257,13 +274,19 @@
     [self initWithInteractiveTool];
 }
 
-#pragma mark - 初始化互动工具
+#pragma mark 初始化互动工具
 - (void)initWithInteractiveTool
 {
     // 初始化问答
     self.vhQAView = [[VHQAView alloc] initQAWithFrame:self.view.frame obj:self.watchVideoView.moviePlayer webinarInfoData:self.webinarInfoData];
     self.vhQAView.delegate = self;
     
+    // 初始化章节
+    if (self.webinarInfoData.webinar.type == 4 || self.webinarInfoData.webinar.type == 5) {
+        self.recordChapterView = [[VHRecordChapter alloc] initRCWithFrame:self.view.frame webinarInfoData:self.webinarInfoData];
+        self.recordChapterView.delegate = self;
+    }
+
     // 初始化问卷
     self.surveyListView = [[VHSurveyListView alloc] initSurveyWithObject:self.watchVideoView.moviePlayer webinarInfoData:self.webinarInfoData];
     self.surveyListView.delegate = self;
@@ -275,34 +298,38 @@
     // 初始化签到
     self.signInAlertView = [[VHSignInAlertView alloc] initSignWithFrame:self.view.frame obj:self.watchVideoView.moviePlayer webinarInfoData:self.webinarInfoData];
     self.signInAlertView.delegate = self;
+    
+    // 初始化抽奖
+    self.vhLottery = [[VHLottery alloc] initLotteryWithObj:self.watchVideoView.moviePlayer webinarInfoData:self.webinarInfoData];
+    self.vhLottery.delegate = self;
 }
 
-#pragma mark - 主持人显示/隐藏文档
+#pragma mark 主持人显示/隐藏文档
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isHaveDocument:(BOOL)isHave isShowDocument:(BOOL)isShow
 {
     BOOL isOpen = isHave && isShow ? YES : NO;
     // 判断是否显示
-    [self roomWithIsOpenDoc:isOpen isOpenQA:self.isOpenQA];
+    [self roomWithIsOpenDoc:isOpen isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint];
     // 文档显示隐藏
     moviePlayer.documentView.hidden = !isOpen;
     // 赋值文档
-    [self.docView addToDocumentView:moviePlayer.documentView];
+    [self.docViewController addToDocumentView:moviePlayer.documentView];
     // 横屏取消文档 并且是全屏的话 需要切换为竖屏
     if (self.isFull && !isOpen) {
         [self docWithIsFull:NO];
     }
 }
-#pragma mark - 直播文档同步，直播文档有延迟，指定需要延迟的秒数 （默认为直播缓冲时间，即：realityBufferTime/1000.0）
+#pragma mark 直播文档同步，直播文档有延迟，指定需要延迟的秒数 （默认为直播缓冲时间，即：realityBufferTime/1000.0）
 - (NSTimeInterval)documentDelayTime:(VHallMoviePlayer *)moviePlayer
 {
     return self.isLive ? moviePlayer.realityBufferTime / 1000.0 : 0;
 }
-#pragma mark - 是否文档全屏
+#pragma mark 是否文档全屏
 - (void)fullWithSelect:(BOOL)isSelect
 {
     [self docWithIsFull:isSelect];
 }
-#pragma mark - 发布公告的回调
+#pragma mark 发布公告的回调
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer announcementContentDidChange:(NSString*)content pushTime:(NSString*)pushTime duration:(NSInteger)duration
 {
     // 刷新接口
@@ -311,8 +338,16 @@
     // 显示公告
     [self.announcementView startAnimationWithContent:content pushTime:pushTime duration:duration view:self.listContainerView isFull:self.isFull];
 }
+#pragma mark 返回视频打点数据（若存在打点信息）
+- (void)moviePlayer:(VHallMoviePlayer *)moviePlayer videoPointArr:(NSArray <VHVidoePointModel *> *)pointArr
+{
+    self.videoPointView = [[VHVideoPointView alloc] initVPWithFrame:self.view.frame videoPointArr:pointArr];
+    self.videoPointView.delegate = self;
+    // 判断是否显示
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:pointArr.count > 0 ? YES : NO];
+}
 #pragma mark - 互动
-#pragma mark - 当前活动是否允许举手申请上麦回调
+#pragma mark 当前活动是否允许举手申请上麦回调
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isInteractiveActivity:(BOOL)isInteractive interactivePermission:(VHInteractiveState)state
 {
     // 收起弹窗
@@ -321,7 +356,7 @@
     [self.bottomView isInteractiveActivity:isInteractive interactivePermission:state];
 }
 
-#pragma mark - 主持人是否同意上麦申请回调
+#pragma mark 主持人是否同意上麦申请回调
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer microInvitationWithAttributes:(NSDictionary *)attributes error:(NSError *)error
 {
     if (!error) {
@@ -334,14 +369,14 @@
     }
 }
 
-#pragma mark - 被主持人邀请上麦
+#pragma mark 被主持人邀请上麦
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer microInvitation:(NSDictionary *)attributes
 {
     int afterTime = (self.isDocFull || self.isVideoFull) ? 0.5 : 0;
     
     // 判断如果当前文档是横屏则需要旋转
     if (self.isDocFull) {
-        [self.docView quitFull];
+        [self.docViewController quitFull];
     }
     
     // 判断如果当前播放器是横屏则需要旋转
@@ -377,7 +412,7 @@
     });
 }
 
-#pragma mark - 收到邀请后是否同意上麦
+#pragma mark 收到邀请后是否同意上麦
 - (void)replyInvitationWithType:(BOOL)isAgree
 {
     if (isAgree) {
@@ -388,7 +423,7 @@
     [self.watchVideoView.moviePlayer replyInvitationWithType:isAgree ? 1 : 2 finish:^(NSError *error) {if (error) {[VHProgressHud showToast:error.localizedDescription];}}];
 
 }
-#pragma mark - 屏幕旋转
+#pragma mark 屏幕旋转
 - (void)clickFullIsSelect:(BOOL)isSelect
 {
     // 互动不可以横屏
@@ -398,75 +433,81 @@
     // 切换全屏 横竖屏刷新布局
     [self screenChangeWithIsFull:isSelect];
 }
-#pragma mark - 直播已结束回调
+#pragma mark 直播已结束回调
 - (void)liveDidStoped:(VHallMoviePlayer *)moviePlayer
 {
     [self clickLeftBarItem];
 }
-#pragma mark - 被踢出
+#pragma mark 被踢出
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isKickout:(BOOL)isKickout
 {
     [self clickLeftBarItem];
 }
 
 #pragma mark - VHInavViewDelegate
-#pragma mark - 下麦
+#pragma mark 下麦
 - (void)unApplyAction
 {
     // 播放直播或回放
     [self changePlayerIsLive:YES];
 }
-#pragma mark - 退出互动
+#pragma mark 退出互动
 - (void)errorLeaveInav
 {
     // 播放直播或回放
     [self changePlayerIsLive:YES];
 }
-#pragma mark - 被踢出
+#pragma mark 被踢出
 - (void)isKickout:(BOOL)isKickout
 {
     [self clickLeftBarItem];
 }
-#pragma mark - 退出房间
+#pragma mark 退出房间
 - (void)leaveRoom
 {
     [self clickLeftBarItem];
 }
 
 #pragma mark - VHChatViewDelegate
-#pragma mark - 收到上下线消息
+#pragma mark 收到上下线消息
 - (void)reciveOnlineMsg:(NSArray <VHallOnlineStateModel *> *)msgs
 {
     [self.watchVideoView reciveOnlineMsg:msgs];
 }
 
-#pragma mark - 收到自己被禁言/取消禁言
+#pragma mark 收到自己被禁言/取消禁言
 - (void)forbidChat:(BOOL)forbidChat
 {
     [self.bottomView forbidChat:forbidChat];
 }
 
-#pragma mark - 收到全体禁言/取消全体禁言
+#pragma mark 收到全体禁言/取消全体禁言
 - (void)allForbidChat:(BOOL)allForbidChat
 {
     [self.bottomView allForbidChat:allForbidChat];
 }
 
-#pragma mark - 问答状态
-- (void)questionStatus:(BOOL)questionStatus
+#pragma mark 问答状态
+- (void)isQaStatus:(BOOL)isQaStatus
 {
-    [self.bottomView questionStatus:questionStatus];
+    [self.bottomView isQaStatus:isQaStatus];
 }
 
-#pragma mark - 收到虚拟人数消息
+#pragma mark 收到虚拟人数消息
 - (void)vhBaseNumUpdateToUpdate_online_num:(NSInteger)update_online_num
                                  update_pv:(NSInteger)update_pv
 {
     [self.watchVideoView vhBaseNumUpdateToUpdate_online_num:update_online_num update_pv:update_pv];
 }
 
+#pragma mark 点击查看中奖名单
+- (void)clickCheckWinListWithEndLotteryModel:(VHallEndLotteryModel *)endLotteryModel
+{
+    [self.vhLottery clickCheckWinListWithEndLotteryModel:endLotteryModel];
+}
+
 #pragma mark - VHWatchLiveBottomViewDelegate
-#pragma mark - 发送消息
+#pragma mark 发送消息
 - (void)sendText:(NSString *)text
 {
     NSString * title = self.listContainerArray[self.categoryView.selectedIndex];
@@ -476,7 +517,7 @@
         [self.chatView sendText:text];
     }
 }
-#pragma mark - 点击礼物回调
+#pragma mark 点击礼物回调
 - (void)clickGift
 {
     [self.view addSubview:self.giftListView];
@@ -485,7 +526,7 @@
     }];
     [self.giftListView showGiftToWebinarInfoData:self.webinarInfoData];
 }
-#pragma mark - 点击参与互动连麦
+#pragma mark 点击参与互动连麦
 - (void)clickInav
 {
     if (self.isLive) {
@@ -494,56 +535,88 @@
         [self.inavView clickInavRenderAlertViewIsShow:YES];
     }
 }
+#pragma mark 是否开启了回放章节
+- (void)watchRecordChapterIsOpen:(BOOL)isOpen
+{
+    // 判断是否显示
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:isOpen isOpenVideoPoint:self.isOpenVideoPoint];
+}
 #pragma mark - VHQAViewDelegate
-#pragma mark - 问答是否打开
+#pragma mark 问答是否打开
 - (void)vhQAIsOpen:(BOOL)isOpen
 {
-    self.questionName = self.vhQAView.vhQA.question_name;
+    self.questionName = [VUITool isBlankString:self.vhQAView.vhQA.question_name] ? @"问答" : self.vhQAView.vhQA.question_name;
     
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isOpen];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isOpen isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint];
     
     // 自定义消息
-    [self.chatView chatCustomWithNickName:self.webinarInfoData.webinar.userinfo.nickname roleName:1 content:[NSString stringWithFormat:@"%@了问答",isOpen ? @"开启" : @"关闭"] info:nil];
+    [self.chatView chatCustomWithNickName:[VUITool isBlankString:self.watchVideoView.moviePlayer.webinarInfo.author_nickname] ? @"主持人" : self.watchVideoView.moviePlayer.webinarInfo.author_nickname roleName:1 content:[NSString stringWithFormat:@"%@了问答",isOpen ? @"开启" : @"关闭"] info:nil];
 }
 
-#pragma mark - 当前是否开启问答功能
+#pragma mark 当前是否开启问答功能
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isQuestion_status:(BOOL)isQuestion_status question_name:(NSString *)questionName
 {
-    self.questionName = questionName;
+    self.questionName = [VUITool isBlankString:questionName] ? @"问答" : questionName;;
     
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isQuestion_status];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isQuestion_status isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint];
+}
+
+#pragma mark - VHRecordChapterDelegate
+#pragma mark 点击章节
+- (void)clickChapterItemCreateAt:(CGFloat)createAt
+{
+    self.watchVideoView.moviePlayer.currentPlaybackTime = createAt;
+}
+#pragma mark - VHVideoPointViewDelegate
+#pragma mark 点击视频打点
+- (void)clickVideoPointTime:(NSInteger)time
+{
+    self.watchVideoView.moviePlayer.currentPlaybackTime = time;
 }
 
 #pragma mark - VHallGiftObjectDelegate
-#pragma mark - 收到礼物
+#pragma mark 收到礼物
 - (void)vhGifttoModel:(VHallGiftModel *)model
 {
     // 给聊天模块增加数据
     [self.chatView vhGifttoModel:model];
 }
 #pragma mark - VHSignInAlertViewDelegate
-#pragma mark - 收到主持人发起签到消息
+#pragma mark 收到主持人发起签到消息
 - (void)startSign
 {
     // 自定义消息
-    [self.chatView chatCustomWithNickName:self.webinarInfoData.webinar.userinfo.nickname roleName:1 content:@"发起了签到" info:nil];
+    [self.chatView chatCustomWithNickName:[VUITool isBlankString:self.watchVideoView.moviePlayer.webinarInfo.author_nickname] ? @"主持人" : self.watchVideoView.moviePlayer.webinarInfo.author_nickname roleName:1 content:@"发起了签到" info:nil];
 }
 
 #pragma mark - VHSurveyObjectDelegate
-#pragma mark - 收到问卷 v4.0.0新增
+#pragma mark 收到问卷
 - (void)receivedSurveyWithURL:(NSURL *)surveyURL surveyId:(NSString *)surveyId
 {
     // 刷新列表
     [self.surveyListView showSurveyIsShow:NO];
     // 自定义消息
     NSMutableDictionary * info = [NSMutableDictionary dictionaryWithDictionary:@{@"surveyURL":surveyURL,@"surveyId":surveyId}];
-    [self.chatView chatCustomWithNickName:self.webinarInfoData.webinar.userinfo.nickname roleName:1 content:@"发起了问卷" info:info];
+    [self.chatView chatCustomWithNickName:[VUITool isBlankString:self.watchVideoView.moviePlayer.webinarInfo.author_nickname] ? @"主持人" : self.watchVideoView.moviePlayer.webinarInfo.author_nickname roleName:1 content:@"发起了问卷" info:info];
 }
 
-#pragma mark - 点击问卷
-- (void)clickSurveyToId:(NSString *)surveyId
+#pragma mark 点击问卷
+- (void)clickSurveyToId:(NSString *)surveyId surveyURL:(NSURL *)surveyURL
 {
-    [self.surveyListView clickSurveyToId:surveyId];
+    [self.surveyListView clickSurveyToId:surveyId surveyURL:surveyURL];
+}
+
+#pragma mark - VHLotteryDelegate
+#pragma mark 抽奖开始
+- (void)startLottery:(VHallStartLotteryModel *)msg
+{
+    [self.chatView chatLotteryWithStartModel:msg endModel:nil];
+}
+
+#pragma mark 抽奖结束
+- (void)endLottery:(VHallEndLotteryModel *)msg
+{
+    [self.chatView chatLotteryWithStartModel:nil endModel:msg];
 }
 
 #pragma mark - 直播和互动播放器切换
@@ -561,6 +634,7 @@
         [_inavView destroyMP];
         // 布局
         [self.view addSubview:self.watchVideoView];
+        [self.view insertSubview:self.watchVideoView atIndex:0];
         [self.watchVideoView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.mas_equalTo(0);
             make.height.mas_equalTo((Screen_Width < Screen_Height ? Screen_Width : Screen_Height) * 9 / 16);
@@ -576,6 +650,7 @@
         [_watchVideoView pausePlay];
         // 布局
         [self.view addSubview:self.inavView];
+        [self.view insertSubview:self.inavView atIndex:0];
         [self.inavView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.mas_equalTo(0);
             make.height.mas_equalTo((Screen_Width < Screen_Height ? Screen_Width : Screen_Height) * 9 / 16);
@@ -736,9 +811,16 @@
 - (void)clickLeftBarItem
 {
     // 销毁互动
-    [self.inavView destroyMP];
+    if (_inavView) {
+        [_inavView destroyMP];
+        _inavView = nil;
+    }
+    
     // 销毁直播
-    [self.watchVideoView destroyMP];
+    if (_watchVideoView) {
+        [_watchVideoView destroyMP];
+        _watchVideoView = nil;
+    }
 
     // 返回上级
     [super clickLeftBarItem];
@@ -754,7 +836,8 @@
         _categoryView.titleColor = [UIColor colorWithHex:@"#222222"];
         _categoryView.titleSelectedColor = [UIColor colorWithHex:@"#666666"];
         _categoryView.averageCellSpacingEnabled = NO;
-        _categoryView.selectedAnimationEnabled = YES;
+        _categoryView.selectedAnimationEnabled = NO;
+        _categoryView.contentScrollViewClickTransitionAnimationEnabled = NO;
         _categoryView.titles = self.listContainerArray;
         _categoryView.listContainer = self.listContainerView;
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
@@ -854,12 +937,12 @@
         _chatView.delegate = self;
     }return _chatView;
 }
-- (VHDocView *)docView
+- (VHDocViewController *)docViewController
 {
-    if (!_docView){
-        _docView = [[VHDocView alloc] init];
-        _docView.delegate = self;
-    }return _docView;
+    if (!_docViewController){
+        _docViewController = [[VHDocViewController alloc] init];
+        _docViewController.delegate = self;
+    }return _docViewController;
 }
 - (VHIntroView *)introView
 {

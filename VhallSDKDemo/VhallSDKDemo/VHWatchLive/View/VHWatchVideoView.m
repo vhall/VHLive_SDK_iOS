@@ -9,7 +9,7 @@
 #import "VHDefiniteionsViewModel.h"
 #import "VHSliderView.h"
 
-@interface VHWatchVideoView ()<VHallMoviePlayerDelegate,VHallMoviePlayerDeprocatedDelegate,VHWebinarInfoDelegate,UIGestureRecognizerDelegate>
+@interface VHWatchVideoView ()<VHallMoviePlayerDelegate,VHWebinarInfoDelegate,UIGestureRecognizerDelegate>
 
 // 基础控件
 /// 用户View
@@ -59,15 +59,22 @@
 @property(nonatomic) float minimumValue;                          // default 0.0. the current value may change if outside new min value
 @property(nonatomic) float maximumValue;                          // default 1.0. the current value may change if outside new max value
 
+// 是否初次加载
+@property (nonatomic, assign) BOOL isFirst;
 @end
 
 @implementation VHWatchVideoView
+
+- (void)dealloc {
+    VHLog(@"%s释放",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String]);
+}
 
 #pragma mark - 初始化
 - (instancetype)initWithWebinarInfoData:(VHWebinarInfoData *)webinarInfoData
 {
     if ([super init]) {
         
+        self.isFirst = YES;
         self.webinarInfoData = webinarInfoData;
         
         // 添加控件
@@ -228,14 +235,17 @@
 {
     [_headImg sd_setImageWithURL:[NSURL URLWithString:webinarInfo.author_avatar] placeholderImage:[UIImage imageNamed:@"vh_no_head_icon"]];
     
-    NSString * nickName = webinarInfo.author_nickname;
-    if (nickName.length > 8) {
-        nickName = [NSString stringWithFormat:@"%@...",[webinarInfo.author_nickname substringToIndex:8]];
+    NSString * nickName = [VUITool isBlankString:webinarInfo.author_nickname] ? @"主持人" : webinarInfo.author_nickname;
+    
+    NSInteger const kMaxNicknameLength = 8;
+    if (nickName.length > kMaxNicknameLength) {
+        nickName = [NSString stringWithFormat:@"%@...", [webinarInfo.author_nickname substringToIndex:kMaxNicknameLength]];
     }
-    _nickNameLab.text = [VUITool substringToIndex:8 text:nickName isReplenish:YES];
     
-    self.all_update_online_num = self.all_update_online_num + webinarInfo.online_virtual;
+    _nickNameLab.text = [VUITool substringToIndex:kMaxNicknameLength text:nickName isReplenish:YES];
     
+    self.all_update_online_num += webinarInfo.online_virtual;
+
     NSInteger olNum = [_onlineLab.text integerValue]+webinarInfo.online_real+webinarInfo.online_virtual;
     
     _onlineLab.text = olNum > 999 ? @"999+" : [NSString stringWithFormat:@"%ld",olNum];
@@ -250,19 +260,15 @@
     _heatImg.hidden = !webinarInfo.pv_show;
     _heatLab.hidden = !webinarInfo.pv_show;
     
-    if (webinarInfo.online_show) {
-        [_heatImg mas_remakeConstraints:^(MASConstraintMaker *make) {
+    [_heatImg mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(_headImg.mas_bottom).offset(-2);
+        make.size.mas_equalTo(CGSizeMake(10, 10));
+        if (webinarInfo.online_show) {
             make.left.mas_equalTo(_onlineLab.mas_right).offset(4);
-            make.bottom.mas_equalTo(_headImg.mas_bottom).offset(-2);
-            make.size.mas_equalTo(CGSizeMake(10, 10));
-        }];
-    }else{
-        [_heatImg mas_remakeConstraints:^(MASConstraintMaker *make) {
+        } else {
             make.left.mas_equalTo(_headImg.mas_right).offset(6);
-            make.bottom.mas_equalTo(_headImg.mas_bottom).offset(-2);
-            make.size.mas_equalTo(CGSizeMake(10, 10));
-        }];
-    }
+        }
+    }];
 }
 
 
@@ -278,6 +284,8 @@
 #pragma mark - 开始播放
 - (void)startPlay
 {
+    VHLog(@"🍌 === 点击开始播放");
+    
     // 判断是直播还是回放
     if (self.webinarInfoData.webinar.type == 1){
         [self.moviePlayer startPlay:[self playParam]];
@@ -324,6 +332,7 @@
     VHLog(@"播放连接状态：%ld",state);
     
     if (state == VHPlayerStatePlaying) {
+        VHLog(@"🍌 === 开始播放");
         // 设置总时长
         [self setMaximumValue:player.duration];
     }
@@ -333,7 +342,6 @@
     } else {
         self.startBtn.selected = YES;
     }
-    
 }
 // 播放时错误的回调
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer playError:(VHSaasLivePlayErrorType)livePlayErrorType info:(NSDictionary *)info
@@ -392,6 +400,14 @@
         [self.definiteionsDataSource addObject:model];
     }
 }
+/// 返回视频打点数据（若存在打点信息）
+- (void)moviePlayer:(VHallMoviePlayer *)moviePlayer
+      videoPointArr:(NSArray <VHVidoePointModel *> *)pointArr
+{
+    if ([self.delegate respondsToSelector:@selector(moviePlayer:videoPointArr:)]) {
+        [self.delegate moviePlayer:moviePlayer videoPointArr:pointArr];
+    }
+}
 // 主持人显示/隐藏文档
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isHaveDocument:(BOOL)isHave isShowDocument:(BOOL)isShow
 {
@@ -407,6 +423,11 @@
     }
     
     return 0;
+}
+// 房间人数改变回调 （目前仅支持真实人数改变触发此回调）
+- (void)onlineChangeRealNum:(NSUInteger)online_real virtualNum:(NSUInteger)online_virtual
+{
+    
 }
 #pragma mark - 发布公告的回调
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer announcementContentDidChange:(NSString*)content pushTime:(NSString*)pushTime duration:(NSInteger)duration
@@ -442,6 +463,10 @@
 /// 当前活动是否允许举手申请上麦回调
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isInteractiveActivity:(BOOL)isInteractive interactivePermission:(VHInteractiveState)state
 {
+    if (!self.isFirst) {
+        [VHProgressHud showToast: state == VHInteractiveStateHave ? @"开启互动连麦" : @"关闭互动连麦"];
+    }
+    self.isFirst = NO;
     if (self.delegate && [self.delegate respondsToSelector:@selector(moviePlayer:isInteractiveActivity:interactivePermission:)]) {
         [self.delegate moviePlayer:moviePlayer isInteractiveActivity:isInteractive interactivePermission:state];
     }
@@ -543,21 +568,8 @@
 - (void)playButtonClick:(UIButton *)sender
 {
     if (sender.selected) {
-        if (self.webinarInfoData.webinar.type == 4 || self.webinarInfoData.webinar.type == 5) {
-            
-            if (self.moviePlayer.currentPlaybackTime >= self.moviePlayer.duration) {
-                
-                [self.moviePlayer setCurrentPlaybackTime:0];
-            } else {
-                
-                [self.moviePlayer reconnectPlay];
-            }
-        } else {
-            
-            [self.moviePlayer reconnectPlay];
-        }
+        [self reconnectPlay];
     } else {
-        
         [self.moviePlayer pausePlay];
     }
 }
@@ -632,6 +644,7 @@
     if (_moviePlayer) {
         [_moviePlayer stopPlay];
         [_moviePlayer destroyMoivePlayer];
+        _moviePlayer = nil;
     }
     [self removeFromSuperview];
 }
@@ -651,6 +664,8 @@
         _moviePlayer = [[VHallMoviePlayer alloc] initWithDelegate:self];
         _moviePlayer.movieScalingMode = VHRTMPMovieScalingModeAspectFit;
         _moviePlayer.defaultDefinition = VHMovieDefinitionOrigin;
+        _moviePlayer.bufferTime = 2;
+//        _moviePlayer.initialPlaybackTime = 180;
     }return _moviePlayer;
 }
 - (UIView *)userView

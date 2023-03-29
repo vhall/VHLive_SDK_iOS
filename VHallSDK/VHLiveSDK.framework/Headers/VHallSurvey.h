@@ -42,7 +42,7 @@
 
 /// 收到问卷 v4.0.0新增
 /// @param surveyURL 问卷地址
-- (void)receivedSurveyWithURL:(NSURL *)surveyURL surveryId:(NSString *)surveryId;
+- (void)receivedSurveyWithURL:(NSURL *)surveyURL surveyId:(NSString *)surveyId;
 
 /// 收到问卷 v6.4新增
 /// @param surveyURL 问卷地址
