@@ -124,8 +124,10 @@
 #pragma mark - 初始化UI
 - (void)masonryUI
 {
-    self.moviePlayer.moviePlayerView.frame = self.bounds;
-    
+    [self.moviePlayer.moviePlayerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self);
+    }];
+        
     [self.userView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(10);
         make.top.mas_equalTo(10);
@@ -224,9 +226,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    _moviePlayer.moviePlayerView.frame = self.bounds;
-        
+            
     _bottomGradient.frame = _bottomView.bounds;
 }
 
