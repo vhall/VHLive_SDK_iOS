@@ -21,15 +21,26 @@
 @implementation VHIntroView
 
 #pragma mark - 初始化
-- (instancetype)initWithWebinarInfoData:(VHWebinarInfoData *)webinarInfoData
+- (void)setWebinarInfoData:(VHWebinarInfoData *)webinarInfoData
+{
+    _webinarInfoData = webinarInfoData;
+    
+    // 初始化UI
+    self.emptyView.hidden = !([VUITool isBlankString:webinarInfoData.webinar.introduction] || [webinarInfoData.webinar.introduction isEqualToString:@"<p></p>"]);
+    self.webView.hidden = ([VUITool isBlankString:webinarInfoData.webinar.introduction] || [webinarInfoData.webinar.introduction isEqualToString:@"<p></p>"]);
+
+    self.webinarTitleLab.text = [VUITool substringToIndex:8 text:webinarInfoData.webinar.subject isReplenish:YES];
+    
+    self.startTimeLab.text = webinarInfoData.webinar.start_time;
+
+    [self.webView loadHTMLString:webinarInfoData.webinar.introduction baseURL:nil];
+
+}
+- (instancetype)init
 {
     if ([super init]) {
         
         self.backgroundColor = [UIColor whiteColor];
-
-        // 初始化UI
-        self.emptyView.hidden = !([VUITool isBlankString:webinarInfoData.webinar.introduction] || [webinarInfoData.webinar.introduction isEqualToString:@"<p></p>"]);
-        self.webView.hidden = ([VUITool isBlankString:webinarInfoData.webinar.introduction] || [webinarInfoData.webinar.introduction isEqualToString:@"<p></p>"]);
 
         [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self);
@@ -50,12 +61,6 @@
             make.top.mas_equalTo(self.startTimeLab.mas_bottom).offset(16);
             make.bottom.mas_equalTo(0);
         }];
-        
-        self.webinarTitleLab.text = [VUITool substringToIndex:8 text:webinarInfoData.webinar.subject isReplenish:YES];
-        
-        self.startTimeLab.text = webinarInfoData.webinar.start_time;
-
-        [self.webView loadHTMLString:webinarInfoData.webinar.introduction baseURL:nil];
 
     }return self;
 }

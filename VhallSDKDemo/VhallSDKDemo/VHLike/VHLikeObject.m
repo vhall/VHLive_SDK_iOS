@@ -31,25 +31,29 @@
 
 @implementation VHLikeObject
 
-- (instancetype)initLikeWithObject:(NSObject *)obj webinarInfoData:(VHWebinarInfoData *)webinarInfoData
+- (instancetype)init
 {
     if ([super init]){
         
         self = [VHLikeObject buttonWithType:UIButtonTypeCustom];
         
-        self.webinarInfoData = webinarInfoData;
-        
-        self.likeObject = [[VHallLikeObject alloc] initWithObject:obj];
-        self.likeObject.delegate = self;
-        
         self.layer.masksToBounds = YES;
         self.layer.cornerRadius = 35/2;
         [self setImage:[UIImage imageNamed:@"vh_fs_like_btn"] forState:UIControlStateNormal];
         [self addTarget:self action:@selector(clickLikeBtn) forControlEvents:UIControlEventTouchUpInside];
-
-        [self requestGetRoomLikeWithRoomId];
         
     }return self;
+}
+
+#pragma mark - 初始化
+- (void)requestObject:(NSObject *)obj webinarInfoData:(VHWebinarInfoData *)webinarInfoData
+{
+    self.likeObject = [[VHallLikeObject alloc] initWithObject:obj];
+    self.likeObject.delegate = self;
+
+    self.webinarInfoData = webinarInfoData;
+
+    [self requestGetRoomLikeWithRoomId];
 }
 
 #pragma mark - ---------------------点赞业务---------------------------

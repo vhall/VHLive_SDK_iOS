@@ -36,7 +36,7 @@
 /// - Parameters:
 ///   - obj: 对象
 ///   - webinarInfoData: 房间详情
-- (instancetype)initWithObject:(NSObject *)obj webinarInfoData:(VHWebinarInfoData *)webinarInfoData;
+- (void)requestObject:(NSObject *)obj webinarInfoData:(VHWebinarInfoData *)webinarInfoData;
 
 /// 当前活动是否允许举手申请上麦回调
 - (void)isInteractiveActivity:(BOOL)isInteractive interactivePermission:(VHInteractiveState)state;

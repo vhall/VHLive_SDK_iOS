@@ -6,6 +6,7 @@
 //
 
 #import "VHSignSetVC.h"
+#import "VHCodeVC.h"
 
 @interface VHSignSetVC ()
 /// appKey
@@ -42,8 +43,19 @@
     rightBtn.frame = CGRectMake(0, 0, 30, 30);
     [rightBtn setImage:[UIImage imageNamed:@"vh_signSet_alert_w"] forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(clickRightBarItem:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
-    self.navigationItem.rightBarButtonItem = rightBarItem;
+    UIView * rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [rightView addSubview:rightBtn];
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithCustomView:rightView];
+    
+    UIButton * codeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [codeBtn setFrame:CGRectMake(0, 0, 30, 30)];
+    [codeBtn setImage:[UIImage imageNamed:@"vh_signSet_code_w"] forState:UIControlStateNormal];
+    [codeBtn addTarget:self action:@selector(clickCodeBtn) forControlEvents:UIControlEventTouchUpInside];
+    UIView * codeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [codeView addSubview:codeBtn];
+    UIBarButtonItem * codeBarItem = [[UIBarButtonItem alloc] initWithCustomView:codeView];
+
+    self.navigationItem.rightBarButtonItems = @[codeBarItem,rightBarItem];
 }
 
 - (IBAction)saveBtn:(UIButton *)sender {
@@ -62,11 +74,25 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+#pragma mark - 复制
 - (IBAction)clickCopyBtn:(UIButton *)sender
 {
     UIPasteboard*pboard =[UIPasteboard generalPasteboard];
     pboard.string = self.bundleIDTF.text;
     [VHProgressHud showToast:@"复制成功"];
+}
+
+#pragma mark - 扫描二维码
+- (void)clickCodeBtn
+{
+    VHCodeVC * codeVC = [VHCodeVC new];
+    codeVC.codeType = VHCodeENUM_Setting;
+    __weak __typeof(self)weakSelf = self;
+    codeVC.scanSettingWithData = ^(NSString *appKey, NSString *appSecretKey) {
+        weakSelf.appKeyTF.text = appKey;
+        weakSelf.appSecretKeyTF.text = appSecretKey;
+    };
+    [self.navigationController pushViewController:codeVC animated:YES];
 }
 
 /*

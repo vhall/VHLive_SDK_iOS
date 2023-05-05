@@ -294,42 +294,49 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    id model = [self.chatDataSource objectAtIndex:indexPath.row];
-    VHChatCell * cell = [VHChatCell createCellWithTableView:tableView];
-    
-    VHChatCustomCell * customCell = [VHChatCustomCell createCellWithTableView:tableView];
-    __weak __typeof(self)weakSelf = self;
-    customCell.clickSurveyToModel = ^(VHChatCustomModel *chatCustomModel) {
-        if ([weakSelf.delegate respondsToSelector:@selector(clickSurveyToId:surveyURL:)]){
-            [weakSelf.delegate clickSurveyToId:chatCustomModel.info[@"surveyId"] surveyURL:chatCustomModel.info[@"surveyURL"]];
+    if (self.chatDataSource.count > indexPath.row) {
+        id model = [self.chatDataSource objectAtIndex:indexPath.row];
+        VHChatCell * cell = [VHChatCell createCellWithTableView:tableView];
+        
+        VHChatCustomCell * customCell = [VHChatCustomCell createCellWithTableView:tableView];
+        __weak __typeof(self)weakSelf = self;
+        customCell.clickSurveyToModel = ^(VHChatCustomModel *chatCustomModel) {
+            if ([weakSelf.delegate respondsToSelector:@selector(clickSurveyToId:surveyURL:)]){
+                [weakSelf.delegate clickSurveyToId:chatCustomModel.info[@"surveyId"] surveyURL:chatCustomModel.info[@"surveyURL"]];
+            }
+        };
+        
+        VHChatGiftCell * giftCell = [VHChatGiftCell createCellWithTableView:tableView];
+        
+        VHChatLotteryCell * lotteryCell = [VHChatLotteryCell createCellWithTableView:tableView];
+        lotteryCell.clickChekWinList = ^(VHallEndLotteryModel *endLotteryModel) {
+            if ([weakSelf.delegate respondsToSelector:@selector(clickCheckWinListWithEndLotteryModel:)]){
+                [weakSelf.delegate clickCheckWinListWithEndLotteryModel:endLotteryModel];
+            }
+        };
+        
+        if ([model isKindOfClass:[VHallChatModel class]]){
+            [cell setModel:model];
+        }else if ([model isKindOfClass:[VHChatCustomModel class]]){
+            [customCell setChatCustomModel:model];
+            return customCell;
+        }else if ([model isKindOfClass:[VHallGiftModel class]]){
+            [giftCell setGiftModel:model];
+            return giftCell;
+        }else if ([model isKindOfClass:[VHallStartLotteryModel class]]){
+            [lotteryCell setStartModel:model];
+            return lotteryCell;
+        }else if ([model isKindOfClass:[VHallEndLotteryModel class]]){
+            [lotteryCell setEndModel:model];
+            return lotteryCell;
         }
-    };
-    
-    VHChatGiftCell * giftCell = [VHChatGiftCell createCellWithTableView:tableView];
-    
-    VHChatLotteryCell * lotteryCell = [VHChatLotteryCell createCellWithTableView:tableView];
-    lotteryCell.clickChekWinList = ^(VHallEndLotteryModel *endLotteryModel) {
-        if ([weakSelf.delegate respondsToSelector:@selector(clickCheckWinListWithEndLotteryModel:)]){
-            [weakSelf.delegate clickCheckWinListWithEndLotteryModel:endLotteryModel];
-        }
-    };
-    
-    if ([model isKindOfClass:[VHallChatModel class]]){
-        [cell setModel:model];
-    }else if ([model isKindOfClass:[VHChatCustomModel class]]){
-        [customCell setChatCustomModel:model];
-        return customCell;
-    }else if ([model isKindOfClass:[VHallGiftModel class]]){
-        [giftCell setGiftModel:model];
-        return giftCell;
-    }else if ([model isKindOfClass:[VHallStartLotteryModel class]]){
-        [lotteryCell setStartModel:model];
-        return lotteryCell;
-    }else if ([model isKindOfClass:[VHallEndLotteryModel class]]){
-        [lotteryCell setEndModel:model];
-        return lotteryCell;
+        return cell;
+    } else {
+        UITableViewCell *defaultCell = [[UITableViewCell alloc]
+                                        initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        defaultCell.textLabel.text = @"No Data Available";
+        return defaultCell;
     }
-    return cell;
 }
 
 #pragma mark - 发送消息

@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface VHIntroView : UIView<JXCategoryListContentViewDelegate>
 
-- (instancetype)initWithWebinarInfoData:(VHWebinarInfoData *)webinarInfoData;
+/// 活动详情
+@property (nonatomic, strong) VHWebinarInfoData * webinarInfoData;
 
 @end
 

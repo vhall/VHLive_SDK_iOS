@@ -15,8 +15,16 @@
 @property (nonatomic, strong) UIImageView * headIcon;
 /// 昵称
 @property (nonatomic, strong) UILabel * nickNameLab;
+/// 弱网占位
+@property (nonatomic, strong) UIView * networkAnomalyView;
+/// 弱网图片
+@property (nonatomic, strong) UIImageView * networkAnomalyImg;
+/// 弱网文案
+@property (nonatomic, strong) UILabel * networkAnomalyLab;
 /// 是否是自己
 @property (nonatomic, assign) BOOL isMe;
+/// 计时器
+@property (nonatomic, strong) NSTimer * timer;
 
 @end
 
@@ -46,13 +54,8 @@
 /// 本地视频view
 @property (nonatomic, strong) VHLocalRenderView * localRenderView;
 
-/// 初始化
-/// - Parameters:
-///   - webinarInfoData: 活动详情
-- (instancetype)initWithWebinarInfoData:(VHWebinarInfoData *)webinarInfoData;
-
 /// 进入房间
-- (void)enterRoomBtn;
+- (void)enterRoomWithWebinarId:(NSString *)webinarId;
 
 /// 销毁播放器
 - (void)destroyMP;

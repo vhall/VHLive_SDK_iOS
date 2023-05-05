@@ -10,6 +10,8 @@
 #import "VHWarmUpViewController.h"
 #import "VHWatchVC.h"
 #import "VHAuthAlertView.h"
+#import "VHCodeVC.h"
+#import "VHPublishVC.h"
 
 @interface VHHomeViewController ()<VHallApiDelegate,VHWarmUpViewControllerDelegate,VHAuthAlertViewDelegate>
 
@@ -19,8 +21,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView * headImage;
 /// 昵称
 @property (weak, nonatomic) IBOutlet UILabel * nickName;
+/// 容器
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 /// 活动id
 @property (weak, nonatomic) IBOutlet UITextField * activityTF;
+/// 点击扫码
+@property (nonatomic, strong) UIButton * codeBtn;
 /// 是否开启权限校验
 @property (weak, nonatomic) IBOutlet UISwitch * authSwitch;
 /// 进入按钮
@@ -29,6 +35,8 @@
 @property (nonatomic, strong) VHAuthAlertView * authAlertView;
 /// 观看权限类型
 @property (nonatomic, copy) NSString * type;
+/// 发起直播按钮
+@property (weak, nonatomic) IBOutlet UIButton *livePublishBtn;
 @end
 
 @implementation VHHomeViewController
@@ -50,9 +58,9 @@
 #pragma mark - 初始化
 - (void)initWithData
 {
-    self.nickName.text             = [VHallApi currentUserNickName];
+    self.nickName.text = [VHallApi currentUserNickName];
     
-    self.activityTF.text       = DEMO_Setting.activityID;
+    self.activityTF.text = [VUITool isBlankString:DEMO_Setting.activityID] ? @"305821089" : DEMO_Setting.activityID;
     
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:[VHallApi currentUserHeadUrl]] placeholderImage:[UIImage imageNamed:@"defaultHead"]];
 
@@ -60,17 +68,30 @@
 #pragma mark - 设置样式
 - (void)setWithUI
 {
+    self.activityTF.clearButtonMode = UITextFieldViewModeNever;
+    
     self.authSwitch.onTintColor = VHMainColor;
     
     self.enterRoomBtn.layer.masksToBounds = YES;
     self.enterRoomBtn.layer.cornerRadius = 40/2;
+    
+    self.livePublishBtn.layer.masksToBounds = YES;
+    self.livePublishBtn.layer.cornerRadius = 40/2;
+    
+    [self.contentView addSubview:self.codeBtn];
+    [self.codeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.activityTF.mas_centerY);
+        make.right.mas_equalTo(0);
+        make.width.height.mas_equalTo(30);
+    }];
 }
 
 #pragma mark - 点击退出登录
-- (IBAction)clickOutLoginBtn:(UIButton *)sender {
-    
+- (IBAction)clickOutLoginBtn:(UIButton *)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
     [VHallApi logout:^{
-        [self.navigationController popViewControllerAnimated:YES];
+        [VHProgressHud showToast:@"退出登录成功"];
     } failure:^(NSError *error) {
         [VHProgressHud showToast:error.localizedDescription];
     }];
@@ -130,62 +151,62 @@
     __weak __typeof(self)weakSelf = self;
     // 增加一个hud
     [VHProgressHud showLoading];
-    // 房间详情接口
-    [VHWebinarInfoData requestWatchInitWebinarId:self.activityTF.text pass:nil k_id:nil nick_name:nil email:nil record_id:nil auth_model:1 complete:^(VHWebinarInfoData *webinarInfoData, NSError *error) {
+    // 查询活动详情
+    [VHWebinarBaseInfo getWebinarBaseInfoWithWebinarId:self.activityTF.text success:^(VHWebinarBaseInfo * _Nonnull baseInfo) {
+        
         // 防止重复点击
         weakSelf.enterRoomBtn.userInteractionEnabled = YES;
+        
+        [VHProgressHud hideLoading];
 
-        // 有返回数据
-        if (webinarInfoData) {
-            [VHProgressHud hideLoading];
-
-            //1-直播中，2-预约，3-结束，4-点播，5-回放
-            switch (webinarInfoData.webinar.type) {
-                case 1:
-                {
-                    VHWatchVC * watchVC = [VHWatchVC new];
-                    watchVC.webinarInfoData = webinarInfoData;
-                    [weakSelf.navigationController pushViewController:watchVC animated:YES];
-                }
-                    break;
-                    
-                case 2:
-                {
-                    VHWarmUpViewController * warmUP = [VHWarmUpViewController new];
-                    warmUP.webinarInfoData = webinarInfoData;
-                    warmUP.delegate = self;
-                    [weakSelf.navigationController pushViewController:warmUP animated:YES];
-                }
-                    break;
-                case 3:
-                {
-                    [VHProgressHud showToast:@"直播结束"];
-                }
-                    break;
-                case 4:
-                {
-                    VHWatchVC * watchVC = [VHWatchVC new];
-                    watchVC.webinarInfoData = webinarInfoData;
-                    [weakSelf.navigationController pushViewController:watchVC animated:YES];
-                }
-                    break;
-                case 5:
-                {
-                    VHWatchVC * watchVC = [VHWatchVC new];
-                    watchVC.webinarInfoData = webinarInfoData;
-                    [weakSelf.navigationController pushViewController:watchVC animated:YES];
-                }
-                    break;
-
-                default:
-                    break;
+        //1-直播中，2-预约，3-结束，4-点播，5-回放
+        switch (baseInfo.type) {
+            case 1:
+            {
+                VHWatchVC * watchVC = [VHWatchVC new];
+                watchVC.webinar_id = baseInfo.ID;
+                watchVC.type = baseInfo.type;
+                [weakSelf.navigationController pushViewController:watchVC animated:YES];
             }
-        }
+                break;
+                
+            case 2:
+            {
+                VHWarmUpViewController * warmUP = [VHWarmUpViewController new];
+                warmUP.webinarId = baseInfo.ID;
+                warmUP.delegate = self;
+                [weakSelf.navigationController pushViewController:warmUP animated:YES];
+            }
+                break;
+            case 3:
+            {
+                [VHProgressHud showToast:@"直播结束"];
+            }
+                break;
+            case 4:
+            {
+                VHWatchVC * watchVC = [VHWatchVC new];
+                watchVC.webinar_id = baseInfo.ID;
+                watchVC.type = baseInfo.type;
+                [weakSelf.navigationController pushViewController:watchVC animated:YES];
+            }
+                break;
+            case 5:
+            {
+                VHWatchVC * watchVC = [VHWatchVC new];
+                watchVC.webinar_id = baseInfo.ID;
+                watchVC.type = baseInfo.type;
+                [weakSelf.navigationController pushViewController:watchVC animated:YES];
+            }
+                break;
 
-        // 报错
-        if (error) {
-            [VHProgressHud showToast:error.domain];
+            default:
+                break;
         }
+    } fail:^(NSError * _Nonnull error) {
+        // 防止重复点击
+        weakSelf.enterRoomBtn.userInteractionEnabled = YES;
+        [VHProgressHud showToast:error.domain];
     }];
 }
 
@@ -204,13 +225,43 @@
         if (error) {
             [VHProgressHud showToast:error.domain];
         }
-    }];}
+    }];
+}
 
 #pragma mark - VHWarmUpViewControllerDelegate
 #pragma mark - 进入房间回调
 - (void)enterRoom
 {
     [self clickEnterRoomBtn:nil];
+}
+
+#pragma mark - 点击发起直播
+- (IBAction)clickLivePublish:(UIButton *)sender
+{
+    if (self.activityTF.text.length <= 0) {
+        [VHProgressHud showToast:@"请输入活动ID"];
+        return;
+    }
+        
+    // 记录房间号
+    DEMO_Setting.activityID = self.activityTF.text;
+
+    VHPublishVC * publishVC = [VHPublishVC new];
+    publishVC.webinar_id = self.activityTF.text;
+    publishVC.screenLandscape = NO;
+    [self.navigationController pushViewController:publishVC animated:YES];
+}
+
+#pragma mark - 扫描二维码
+- (void)clickCodeBtn
+{
+    VHCodeVC * codeVC = [VHCodeVC new];
+    codeVC.codeType = VHCodeENUM_WebinarID;
+    __weak __typeof(self)weakSelf = self;
+    codeVC.scanWebianrIDWithData = ^(NSString *webinarId) {
+        weakSelf.activityTF.text = webinarId;
+    };
+    [self.navigationController pushViewController:codeVC animated:YES];
 }
 
 #pragma mark - 懒加载
@@ -222,6 +273,16 @@
         [self.view addSubview:self.authAlertView];
     }
     return _authAlertView;
+}
+
+- (UIButton *)codeBtn
+{
+    if (!_codeBtn) {
+        _codeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _codeBtn.userInteractionEnabled = YES;
+        [_codeBtn setImage:[UIImage imageNamed:@"vh_signSet_code_b"] forState:UIControlStateNormal];
+        [_codeBtn addTarget:self action:@selector(clickCodeBtn) forControlEvents:UIControlEventTouchUpInside];
+    } return _codeBtn;
 }
 
 @end

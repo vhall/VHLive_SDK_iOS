@@ -92,7 +92,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) id            data;               ///<活动详情原数据
 @property (nonatomic) VHRoleNameData *      roleData;           ///<角色数据
 @property (nonatomic) VHWebinarLiveType     webinar_type;       ///<1 音频直播 2 视频直播 3 互动直播
-@property (nonatomic) VHMovieActiveState    type;               ///<1为直播,2为预约,3为结束,4回放
+@property (nonatomic) VHMovieActiveState    type;               ///<1-直播中，2-预约，3-结束，4-点播，5-回放
 @property (nonatomic) NSInteger             webinar_show_type;  ///<横竖屏 0竖屏 1横屏
 @property (nonatomic) NSInteger             no_delay_webinar;   ///<是否无延迟直播 1:是 0:否
 @property (nonatomic) NSInteger             inav_num;           ///<当前活动设置的最大连麦人数， 如：6表示1v5，16表示1v15...
@@ -239,6 +239,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL                        pv_show;            ///<是否显示热度
 @property (nonatomic, readonly) BOOL                        online_show;        ///<是否显示在线人数
 @property (nonatomic, readonly) NSInteger                   inav_num;           ///<当前活动设置的支持大连麦人数， 如：6表示1v5，16表示1v15...
+@property (nonatomic, readonly) NSInteger                   speakerAndShowLayout; ///<0 -- 分离模式；1 -- 合并模式；
 
 @end
 

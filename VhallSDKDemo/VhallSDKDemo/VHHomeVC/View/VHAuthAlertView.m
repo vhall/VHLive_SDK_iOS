@@ -124,7 +124,7 @@
 
     [super disMissContentView];
     
-    if ([self.delegate respondsToSelector:@selector(changeTextWithVerifyValue:)]) {
+    if ([self.delegate  respondsToSelector:@selector(changeTextWithVerifyValue:)]) {
         [self.delegate changeTextWithVerifyValue:self.verifyValueTextF.text];
     }
 }

@@ -13,7 +13,7 @@
 
 /// 注册对象
 @property (nonatomic, strong) NSObject * obj;
-/// 房间详情
+/// 活动详情
 @property (nonatomic, strong) VHWebinarInfoData * webinarInfoData;
 /// 头像
 @property (nonatomic, strong) UIImageView * headImg;
@@ -55,26 +55,17 @@
 }
 
 #pragma mark - 初始化
-- (instancetype)initWithObject:(NSObject *)obj webinarInfoData:(VHWebinarInfoData *)webinarInfoData
+- (instancetype)init
 {
     if ([super init]) {
         
         self.backgroundColor = [UIColor whiteColor];
-        
-        self.obj = obj;
-        self.webinarInfoData = webinarInfoData;
 
         // 添加控件
         [self addViews];
         
         // 初始化布局
         [self masonryUI];
-
-        // 初始化聊天
-        [self participateInIsChat:YES];
-        
-        // 初始化数据
-        [self initWithData];
         
     }return self;
 }
@@ -133,6 +124,22 @@
 
 }
 
+#pragma mark - 初始化
+- (void)requestObject:(NSObject *)obj webinarInfoData:(VHWebinarInfoData *)webinarInfoData
+{
+    self.obj = obj;
+    self.webinarInfoData = webinarInfoData;
+    
+    // 初始化聊天
+    [self participateInIsChat:YES];
+    
+    // 初始化数据
+    [self initWithData];
+    
+    // 初始化点赞
+    [self.likeBtn requestObject:obj webinarInfoData:webinarInfoData];
+}
+
 #pragma mark - 初始化数据
 - (void)initWithData
 {
@@ -188,17 +195,13 @@
 #pragma mark - 当前活动是否允许举手申请上麦回调
 - (void)isInteractiveActivity:(BOOL)isInteractive interactivePermission:(VHInteractiveState)state
 {
-    // 互动期间常显连麦按钮
-    if (!self.isLive) {
-        
-        [self inavBtnIsHidden:NO];
-
-    } else {
-        
-        // 非互动期间 根据状态判断 是否显示参与互动连麦的按钮
+    if (self.isLive) {
+        // 直播期间 根据状态判断 是否显示参与互动连麦的按钮
         BOOL isShow = isInteractive && state == VHInteractiveStateHave;
-        
         [self inavBtnIsHidden:!isShow];
+    } else {
+        // 互动常显
+        [self inavBtnIsHidden:NO];
     }
 }
 
@@ -403,7 +406,6 @@
 {
     if (!_giftBtn) {
         _giftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _giftBtn.hidden = YES;
         [_giftBtn setImage:[UIImage imageNamed:@"vh_fs_gift_btn"] forState:UIControlStateNormal];
         [_giftBtn addTarget:self action:@selector(clickGiftBtn) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_giftBtn];
@@ -412,8 +414,7 @@
 - (VHLikeObject *)likeBtn
 {
     if (!_likeBtn) {
-        _likeBtn = [[VHLikeObject alloc] initLikeWithObject:self.obj webinarInfoData:self.webinarInfoData];
-        _likeBtn.hidden = YES;
+        _likeBtn = [[VHLikeObject alloc] init];
         [self addSubview:_likeBtn];
     }return _likeBtn;
 }

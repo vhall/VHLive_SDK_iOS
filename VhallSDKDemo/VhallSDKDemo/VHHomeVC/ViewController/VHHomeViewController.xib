@@ -12,8 +12,10 @@
             <connections>
                 <outlet property="activityTF" destination="XVj-te-plj" id="CEv-et-dMu"/>
                 <outlet property="authSwitch" destination="Y6f-z2-CUC" id="GrI-15-Hc9"/>
-                <outlet property="enterRoomBtn" destination="C0d-PT-RJ2" id="JtI-7l-dMG"/>
+                <outlet property="contentView" destination="9ze-HE-V8R" id="QFo-s6-6P2"/>
+                <outlet property="enterRoomBtn" destination="C0d-PT-RJ2" id="Y3u-8v-gsF"/>
                 <outlet property="headImage" destination="k3v-cL-9tj" id="ma1-Vl-8uW"/>
+                <outlet property="livePublishBtn" destination="7sr-ko-nCm" id="6kx-0S-4bM"/>
                 <outlet property="nickName" destination="Jut-58-1jc" id="1B5-bT-APn"/>
                 <outlet property="outLoginBtn" destination="0nS-m9-LUz" id="OAG-Bo-BTS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -154,7 +156,7 @@
                         <constraint firstAttribute="width" constant="100" id="1j1-4f-ziZ"/>
                         <constraint firstAttribute="height" constant="45" id="XlN-HX-nnQ"/>
                     </constraints>
-                    <state key="normal" title="进入">
+                    <state key="normal" title="观看">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -172,6 +174,25 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sr-ko-nCm">
+                    <rect key="frame" x="137.5" y="523" width="100" height="45"/>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.2274509804" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="3it-gU-qeG"/>
+                        <constraint firstAttribute="height" constant="45" id="Tgf-Cr-rMW"/>
+                    </constraints>
+                    <state key="normal" title="发起直播">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="clickLivePublish:" destination="-1" eventType="touchUpInside" id="lTw-td-6YG"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -185,10 +206,12 @@
                 <constraint firstItem="Svq-0i-1hS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WnI-CL-aMq"/>
                 <constraint firstItem="eVf-Si-YFm" firstAttribute="leading" secondItem="9ze-HE-V8R" secondAttribute="leading" id="ZUY-hc-FHS"/>
                 <constraint firstAttribute="trailing" secondItem="Svq-0i-1hS" secondAttribute="trailing" id="hha-Cr-nAV"/>
+                <constraint firstItem="7sr-ko-nCm" firstAttribute="centerX" secondItem="C0d-PT-RJ2" secondAttribute="centerX" id="mtP-cF-vkZ"/>
+                <constraint firstItem="7sr-ko-nCm" firstAttribute="top" secondItem="C0d-PT-RJ2" secondAttribute="bottom" constant="8" symbolic="YES" id="mzK-0U-dfU"/>
                 <constraint firstItem="C0d-PT-RJ2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ts9-hj-L3U"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-1250.4000000000001" y="-311.69415292353824"/>
+            <point key="canvasLocation" x="-1889" y="-313"/>
         </view>
     </objects>
     <resources>

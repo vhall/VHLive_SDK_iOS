@@ -20,7 +20,7 @@
 /// 代理
 @property (nonatomic, weak) id <VHWarmUpViewControllerDelegate> delegate;
 
-/// 活动详情
-@property (nonatomic, strong) VHWebinarInfoData * webinarInfoData;
+/// 基础信息
+@property (nonatomic, copy) NSString * webinarId;
 
 @end

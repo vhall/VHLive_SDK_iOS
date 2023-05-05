@@ -50,7 +50,7 @@
 @property (nonatomic, strong) VHIntroView * introView;
 /// 章节打点
 @property (nonatomic, strong) VHRecordChapter * recordChapterView;
-/// 视频打点
+/// 精彩时刻
 @property (nonatomic, strong) VHVideoPointView * videoPointView;
 /// 底部工具
 @property (nonatomic, strong) VHWatchLiveBottomView * bottomView;
@@ -110,13 +110,16 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.isLive = YES;
+    
     // 设置样式
     [self setWithUI];
     
-    // 初始化
-    [self initWithData];
-    
+    // 返回角色数据
+    [self getRoleName];
+
 }
+
 #pragma mark - 设置样式
 - (void)setWithUI
 {
@@ -149,6 +152,7 @@
         make.height.mas_equalTo(30);
     }];
 }
+
 #pragma mark - 底部工具兰的显隐
 - (void)bottomWithHidden:(BOOL)hidden
 {
@@ -164,20 +168,11 @@
         }];
     }
 }
-#pragma mark - 初始化
-- (void)initWithData
-{
-    // 返回角色数据
-    [self getRoleName];
-    
-    // 播放直播或回放
-    [self changePlayerIsLive:YES];
-    
-}
+
 #pragma mark - 获取房间主要信息
 - (void)getRoleName
 {
-    [VHWebinarBaseInfo getRoleNameWebinar_id:self.webinarInfoData.webinar.data_id dataCallBack:^(VHRoleNameData * roleData) {
+    [VHWebinarBaseInfo getRoleNameWebinar_id:self.webinar_id dataCallBack:^(VHRoleNameData * roleData) {
         VH_MB_HOST = roleData.host_name;
         VH_MB_GUEST = roleData.guest_name;
         VH_MB_ASSIST = roleData.assist_name;
@@ -215,7 +210,7 @@
         return self.vhQAView;
     }else if ([title isEqualToString:@"章节"]){
         return self.recordChapterView;
-    }else if ([title isEqualToString:@"视频打点"]){
+    }else if ([title isEqualToString:@"精彩时刻"]){
         return self.videoPointView;
     }
 
@@ -238,10 +233,10 @@
     // 添加剩余的
     [self.listContainerArray addObject:@"聊天"];
     if (isOpenDoc) { [self.listContainerArray addObject:@"文档"]; }
+    [self.listContainerArray addObject:@"简介"];
     if (isOpenQA) { [self.listContainerArray addObject:self.questionName]; }
     if (isOpenRecordChapter) { [self.listContainerArray addObject:@"章节"]; }
-    if (isOpenVideoPoint) { [self.listContainerArray addObject:@"视频打点"]; }
-    [self.listContainerArray addObject:@"简介"];
+    if (isOpenVideoPoint) { [self.listContainerArray addObject:@"精彩时刻"]; }
 
     // 添加
     self.categoryView.titles = self.listContainerArray;
@@ -277,18 +272,24 @@
 #pragma mark 初始化互动工具
 - (void)initWithInteractiveTool
 {
+    // 初始化简介
+    self.introView.webinarInfoData = self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData;
+    
+    // 初始化底部信息
+    [self.bottomView requestObject:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
+    
     // 初始化问答
-    self.vhQAView = [[VHQAView alloc] initQAWithFrame:self.view.frame obj:self.watchVideoView.moviePlayer webinarInfoData:self.webinarInfoData];
+    self.vhQAView = [[VHQAView alloc] initQAWithFrame:self.view.frame obj:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
     self.vhQAView.delegate = self;
     
     // 初始化章节
-    if (self.webinarInfoData.webinar.type == 4 || self.webinarInfoData.webinar.type == 5) {
-        self.recordChapterView = [[VHRecordChapter alloc] initRCWithFrame:self.view.frame webinarInfoData:self.webinarInfoData];
+    if (self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.webinar.type == 4 || self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.webinar.type == 5) {
+        self.recordChapterView = [[VHRecordChapter alloc] initRCWithFrame:self.view.frame webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
         self.recordChapterView.delegate = self;
     }
 
     // 初始化问卷
-    self.surveyListView = [[VHSurveyListView alloc] initSurveyWithObject:self.watchVideoView.moviePlayer webinarInfoData:self.webinarInfoData];
+    self.surveyListView = [[VHSurveyListView alloc] initSurveyWithObject:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
     self.surveyListView.delegate = self;
 
     // 初始化礼物
@@ -296,11 +297,11 @@
     self.giftObject.delegate = self;
     
     // 初始化签到
-    self.signInAlertView = [[VHSignInAlertView alloc] initSignWithFrame:self.view.frame obj:self.watchVideoView.moviePlayer webinarInfoData:self.webinarInfoData];
+    self.signInAlertView = [[VHSignInAlertView alloc] initSignWithFrame:self.view.frame obj:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
     self.signInAlertView.delegate = self;
     
     // 初始化抽奖
-    self.vhLottery = [[VHLottery alloc] initLotteryWithObj:self.watchVideoView.moviePlayer webinarInfoData:self.webinarInfoData];
+    self.vhLottery = [[VHLottery alloc] initLotteryWithObj:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
     self.vhLottery.delegate = self;
 }
 
@@ -333,7 +334,7 @@
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer announcementContentDidChange:(NSString*)content pushTime:(NSString*)pushTime duration:(NSInteger)duration
 {
     // 刷新接口
-    [self.announcementList loadDataRoomId:self.webinarInfoData.interact.room_id isShow:NO];
+    [self.announcementList loadDataRoomId:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.interact.room_id isShow:NO];
     
     // 显示公告
     [self.announcementView startAnimationWithContent:content pushTime:pushTime duration:duration view:self.listContainerView isFull:self.isFull];
@@ -426,12 +427,11 @@
 #pragma mark 屏幕旋转
 - (void)clickFullIsSelect:(BOOL)isSelect
 {
-    // 互动不可以横屏
-    if (!self.isLive) {
-        return;
+    // 只有直播可以切换横竖屏
+    if (self.isLive) {
+        // 切换全屏 横竖屏刷新布局
+        [self screenChangeWithIsFull:isSelect];
     }
-    // 切换全屏 横竖屏刷新布局
-    [self screenChangeWithIsFull:isSelect];
 }
 #pragma mark 直播已结束回调
 - (void)liveDidStoped:(VHallMoviePlayer *)moviePlayer
@@ -524,7 +524,7 @@
     [self.giftListView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
-    [self.giftListView showGiftToWebinarInfoData:self.webinarInfoData];
+    [self.giftListView showGiftToWebinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
 }
 #pragma mark 点击参与互动连麦
 - (void)clickInav
@@ -627,46 +627,49 @@
     
     // 刷新状态
     self.isLive = isLive;
-    self.bottomView.isLive = isLive;
-            
+    // 显隐
+    _bottomView.isLive = isLive;
+
     if (isLive) {
         // 销毁互动
-        [_inavView destroyMP];
+        if (_inavView) {
+            [_inavView destroyMP];
+            _inavView = nil;
+        }
         // 布局
         [self.view addSubview:self.watchVideoView];
-        [self.view insertSubview:self.watchVideoView atIndex:0];
-        [self.watchVideoView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        [self.view insertSubview:_watchVideoView atIndex:0];
+        [_watchVideoView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.mas_equalTo(0);
             make.height.mas_equalTo((Screen_Width < Screen_Height ? Screen_Width : Screen_Height) * 9 / 16);
         }];
-        
+
         [self.categoryView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.watchVideoView.mas_bottom);
         }];
-        // 播放直播或回放 非预加载方式，直接播放，在收到"播放连接成功回调"后，才能使用聊天、签到等功能
-        [self.watchVideoView reconnectPlay];
+        // 观看直播
+        [_watchVideoView reconnectPlay];
     }else{
         // 销毁直播
-        [_watchVideoView pausePlay];
+        [_watchVideoView stopPlay];
         // 布局
         [self.view addSubview:self.inavView];
-        [self.view insertSubview:self.inavView atIndex:0];
-        [self.inavView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        [self.view insertSubview:_inavView atIndex:0];
+        [_inavView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.mas_equalTo(0);
             make.height.mas_equalTo((Screen_Width < Screen_Height ? Screen_Width : Screen_Height) * 9 / 16);
         }];
-        
+
         [self.categoryView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.inavView.mas_bottom);
         }];
         // 参与互动
-        [self.inavView enterRoomBtn];
+        [_inavView enterRoomWithWebinarId:self.webinar_id];
     }
     
-    // 显隐
     _watchVideoView.hidden = !isLive;
     _inavView.hidden = isLive;
-
+    
     // 强制竖屏
     [self clickFullIsSelect:NO];
 }
@@ -784,15 +787,16 @@
 }
 
 #pragma mark - 前台
-- (void)appWillEnterForeground {
+- (void)appWillEnterForeground
+{
     [super appWillEnterForeground];
     // 如果是互动状态且当前停止推流了,则恢复旁路
-    if (!self.isLive && !self.inavView.inavRoom.isPublishing) {
+    if (!self.isLive && !_inavView.inavRoom.isPublishing) {
         [self changePlayerIsLive:YES];
     }
     // 获取房间详情,如果是结束状态需要退出房间
     __weak __typeof(self)weakSelf = self;
-    [VHWebinarInfoData requestWatchInitWebinarId:self.webinarInfoData.webinar.data_id pass:nil k_id:nil nick_name:nil email:nil record_id:nil auth_model:1 complete:^(VHWebinarInfoData *webinarInfoData, NSError *error) {
+    [VHWebinarInfoData requestWatchInitWebinarId:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.webinar.data_id pass:nil k_id:nil nick_name:nil email:nil record_id:nil auth_model:1 complete:^(VHWebinarInfoData *webinarInfoData, NSError *error) {
         // 有返回数据
         if (webinarInfoData) {
             // 如果状态不一致,则退出房间
@@ -802,9 +806,9 @@
 }
 
 #pragma mark - 后台
-- (void)appDidEnterBackground {
+- (void)appDidEnterBackground
+{
     [super appDidEnterBackground];
-    
 }
 
 #pragma mark - 点击返回
@@ -896,7 +900,7 @@
                 [weakSelf.announcementList mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.edges.mas_equalTo(weakSelf.view);
                 }];
-                [weakSelf.announcementList loadDataRoomId:weakSelf.webinarInfoData.interact.room_id isShow:YES];
+                [weakSelf.announcementList loadDataRoomId:weakSelf.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.interact.room_id isShow:YES];
             }
         }];
         
@@ -906,7 +910,7 @@
 - (void)foldBtnIsHidden
 {
     NSString * title = self.listContainerArray[self.categoryView.selectedIndex];
-    if (self.webinarInfoData.webinar.type == 1){
+    if (self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.webinar.type == 1 && !self.isFull){
         self.foldBtn.hidden = ![title isEqualToString:@"聊天"];
     } else {
         self.foldBtn.hidden = YES;
@@ -915,16 +919,15 @@
 - (VHWatchVideoView *)watchVideoView
 {
     if (!_watchVideoView) {
-        _watchVideoView = [[VHWatchVideoView alloc] initWithWebinarInfoData:self.webinarInfoData];
+        _watchVideoView = [[VHWatchVideoView alloc] initWithWebinarId:self.webinar_id type:self.type];
         _watchVideoView.delegate = self;
-        _watchVideoView.hidden = YES;
         [self.view addSubview:_watchVideoView];
     }return _watchVideoView;
 }
 - (VHInavView *)inavView
 {
     if (!_inavView) {
-        _inavView = [[VHInavView alloc] initWithWebinarInfoData:self.webinarInfoData];
+        _inavView = [[VHInavView alloc] init];
         _inavView.delegate = self;
         _inavView.hidden = YES;
         [self.view addSubview:_inavView];
@@ -947,14 +950,15 @@
 - (VHIntroView *)introView
 {
     if (!_introView) {
-        _introView = [[VHIntroView alloc] initWithWebinarInfoData:self.webinarInfoData];
+        _introView = [[VHIntroView alloc] init];
     }return _introView;
 }
 - (VHWatchLiveBottomView *)bottomView
 {
     if (!_bottomView) {
-        _bottomView = [[VHWatchLiveBottomView alloc] initWithObject:self.watchVideoView.moviePlayer webinarInfoData:self.webinarInfoData];
+        _bottomView = [[VHWatchLiveBottomView alloc] init];
         _bottomView.delegate = self;
+        _bottomView.isLive = self.isLive;
         [self.view addSubview:_bottomView];
     }return _bottomView;
 }

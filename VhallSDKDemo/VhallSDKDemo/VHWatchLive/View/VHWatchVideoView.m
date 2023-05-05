@@ -11,6 +11,10 @@
 
 @interface VHWatchVideoView ()<VHallMoviePlayerDelegate,VHWebinarInfoDelegate,UIGestureRecognizerDelegate>
 
+/// 活动id
+@property (nonatomic, copy) NSString * webinarId;
+/// 活动状态
+@property (nonatomic, assign) VHMovieActiveState type;
 // 基础控件
 /// 用户View
 @property (nonatomic, strong) UIView * userView;
@@ -47,9 +51,6 @@
 /// 全屏按钮
 @property (nonatomic, strong) UIButton * fullBtn;
 
-// 活动信息
-@property (nonatomic, strong) VHWebinarInfoData * webinarInfoData;
-
 // 播放器信息
 /// 当前视频支持的清晰度
 @property (nonatomic, strong) NSMutableArray * definiteionsDataSource;
@@ -58,42 +59,50 @@
 @property(nonatomic) float value;                                 // default 0.0. this value will be pinned to min/max
 @property(nonatomic) float minimumValue;                          // default 0.0. the current value may change if outside new min value
 @property(nonatomic) float maximumValue;                          // default 1.0. the current value may change if outside new max value
-
-// 是否初次加载
-@property (nonatomic, assign) BOOL isFirst;
 @end
 
 @implementation VHWatchVideoView
 
 - (void)dealloc {
+    
+    // 移除监听电话
+    [[NSNotificationCenter defaultCenter] removeObserver:AVAudioSessionInterruptionNotification];
+    
     VHLog(@"%s释放",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String]);
 }
 
 #pragma mark - 初始化
-- (instancetype)initWithWebinarInfoData:(VHWebinarInfoData *)webinarInfoData
+- (instancetype)initWithWebinarId:(NSString *)webinarId type:(VHMovieActiveState)type
 {
     if ([super init]) {
         
-        self.isFirst = YES;
-        self.webinarInfoData = webinarInfoData;
+        self.webinarId = webinarId;
         
+        self.type = type;
+        
+        // 显隐控件
+        [self controlsWithIsHidden:type == VHMovieActiveStateLive ? YES : NO];
+
         // 添加控件
         [self addViews];
         
         // 初始化UI
         [self masonryUI];
         
-        // 显隐控件
-        [self controlsWithIsHidden:webinarInfoData.webinar.type == 1 ? YES : NO];
-
         // 设置进度条监听
         [self.slider addTarget:self action:@selector(slideTouchBegin:) forControlEvents:UIControlEventTouchDown];
         [self.slider addTarget:self action:@selector(slideTouchEnd:) forControlEvents:UIControlEventTouchUpOutside];
         [self.slider addTarget:self action:@selector(slideTouchEnd:) forControlEvents:UIControlEventTouchUpInside];
         [self.slider addTarget:self action:@selector(slideTouchEnd:) forControlEvents:UIControlEventTouchCancel];
         [self.slider addTarget:self action:@selector(slideValueChanged:) forControlEvents:UIControlEventValueChanged];
+        
+        // 监听电话
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleInterruption:) name:AVAudioSessionInterruptionNotification object:nil];
 
-    }return self;
+        // 开始播放
+        [self startPlay];
+
+    } return self;
 }
 
 #pragma mark - 添加UI
@@ -271,7 +280,6 @@
     }];
 }
 
-
 #pragma mark - 显隐控件 直播为true
 - (void)controlsWithIsHidden:(BOOL)isHidden
 {
@@ -281,15 +289,40 @@
     self.rateBtn.hidden = isHidden;
 }
 
+#pragma mark - 电话监听
+- (void)handleInterruption:(NSNotification *)notification {
+    NSDictionary *userInfo = notification.userInfo;
+    AVAudioSessionInterruptionType type = [[userInfo objectForKey:AVAudioSessionInterruptionTypeKey] unsignedIntegerValue];
+
+    switch (type) {
+        case AVAudioSessionInterruptionTypeBegan:
+            // 处理中断开始事件
+            // 如果当前正在播放，拔掉耳机，暂停播放
+            [self pausePlay];
+            break;
+
+        case AVAudioSessionInterruptionTypeEnded: {
+            AVAudioSessionInterruptionOptions options = [[userInfo objectForKey:AVAudioSessionInterruptionOptionKey] unsignedIntegerValue];
+            if (options & AVAudioSessionInterruptionOptionShouldResume) {
+                // 处理中断结束事件
+            }
+            break;
+        }
+
+        default:
+            break;
+    }
+}
+
+
 #pragma mark - 开始播放
 - (void)startPlay
 {
     VHLog(@"🍌 === 点击开始播放");
-    
     // 判断是直播还是回放
-    if (self.webinarInfoData.webinar.type == 1){
+    if (self.type == VHMovieActiveStateLive){
         [self.moviePlayer startPlay:[self playParam]];
-    }else if (self.webinarInfoData.webinar.type == 4 || self.webinarInfoData.webinar.type == 5){
+    }else if (self.type == VHMovieActiveStateReplay || self.type == VHMovieActiveStatePlayBack){
         [self.moviePlayer startPlayback:[self playParam]];
         // 播放从0开始进度条
         [self setValue:0];
@@ -299,6 +332,12 @@
 - (void)pausePlay
 {
     [self.moviePlayer pausePlay];
+}
+
+#pragma mark - 停止播放
+- (void)stopPlay
+{
+    [self.moviePlayer stopPlay];
 }
 #pragma mark - 恢复
 - (void)reconnectPlay
@@ -354,8 +393,19 @@
             [self.delegate moviePlayer:moviePlayer isKickout:YES];
         }
     } else {
-        NSString * errorStr = info[@"content"];
+        NSString * errorStr = [NSString stringWithFormat:@"type == %ld , %@",livePlayErrorType,info[@"content"]];
         [VHProgressHud showToast:errorStr];
+        
+        if (livePlayErrorType == VHSaasLivePlayGetUrlError) {
+            if ([self.delegate respondsToSelector:@selector(moviePlayer:isKickout:)]) {
+                [self.delegate moviePlayer:moviePlayer isKickout:NO];
+            }
+        }
+    }
+    
+    if (livePlayErrorType == VHSaasLivePlayCDNConnectError) {
+        // 出现这种报错后 继续重试
+        [self reconnectPlay];
     }
 }
 // 当前播放时间回调
@@ -463,10 +513,6 @@
 /// 当前活动是否允许举手申请上麦回调
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isInteractiveActivity:(BOOL)isInteractive interactivePermission:(VHInteractiveState)state
 {
-    if (!self.isFirst) {
-        [VHProgressHud showToast: state == VHInteractiveStateHave ? @"开启互动连麦" : @"关闭互动连麦"];
-    }
-    self.isFirst = NO;
     if (self.delegate && [self.delegate respondsToSelector:@selector(moviePlayer:isInteractiveActivity:interactivePermission:)]) {
         [self.delegate moviePlayer:moviePlayer isInteractiveActivity:isInteractive interactivePermission:state];
     }
@@ -653,7 +699,7 @@
 - (NSDictionary *)playParam
 {
     NSMutableDictionary * param = [[NSMutableDictionary alloc] init];
-    param[@"id"] =  self.webinarInfoData.webinar.data_id;
+    param[@"id"] =  self.webinarId;
     param[@"name"] = [VHallApi currentUserNickName];
     param[@"auth_model"] = @(1);
     return param;
@@ -664,7 +710,7 @@
         _moviePlayer = [[VHallMoviePlayer alloc] initWithDelegate:self];
         _moviePlayer.movieScalingMode = VHRTMPMovieScalingModeAspectFit;
         _moviePlayer.defaultDefinition = VHMovieDefinitionOrigin;
-        _moviePlayer.bufferTime = 2;
+//        _moviePlayer.bufferTime = 0;
 //        _moviePlayer.initialPlaybackTime = 180;
     }return _moviePlayer;
 }

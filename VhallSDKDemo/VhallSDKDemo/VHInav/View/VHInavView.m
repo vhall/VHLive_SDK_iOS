@@ -36,6 +36,11 @@
     [super layoutSubviews];
 }
 
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    [self stopTimer];
+}
 
 #pragma mark - 赋值
 - (void)setAttendView:(VHRenderView *)attendView
@@ -44,12 +49,25 @@
     
     [self.contentView addSubview:attendView];
     [attendView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self);
+        make.edges.mas_equalTo(self.contentView);
     }];
-    
+        
     [self.contentView addSubview:self.nickNameLab];
     [self.nickNameLab mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.mas_equalTo(0);
+    }];
+    
+    [self.contentView addSubview:self.networkAnomalyView];
+    [self.networkAnomalyView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.contentView);
+    }];
+    [self.networkAnomalyImg mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(self.contentView);
+        make.size.mas_equalTo(CGSizeMake(24, 18));
+    }];
+    [self.networkAnomalyLab mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.mas_centerX);
+        make.top.mas_equalTo(self.networkAnomalyImg.mas_bottom);
     }];
     
     [self.contentView addSubview:self.headIcon];
@@ -57,7 +75,7 @@
         make.center.equalTo(self.contentView);
         make.size.equalTo(@(CGSizeMake(60, 60)));
     }];
-
+    
     NSDictionary *userData = attendView.userData.mj_JSONObject;
     NSDictionary *streamAttributes = attendView.streamAttributes.mj_JSONObject;
 
@@ -77,11 +95,65 @@
     
     BOOL isCloseVideo = [remoteMuteStream[@"video"] boolValue];
     
-    self.headIcon.hidden = !isCloseVideo;
+    self.headIcon.hidden = self.networkAnomalyView.hidden == YES ? !isCloseVideo : YES;
     
     VHLog(@"---用户进入房间时传的数据：%@---用户推流上麦时所传数据：%@---此流的 流音视频开启情况：%@",userData,streamAttributes,remoteMuteStream);
+
+    if (!self.isMe) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    }
 }
 
+#pragma mark - 开启计时器
+- (void)timerAction
+{
+    NSMutableDictionary * remoteMuteStream = [NSMutableDictionary dictionary];
+    
+    if (self.isMe) {
+        remoteMuteStream = [NSMutableDictionary dictionaryWithDictionary:self.attendView.muteStream];
+    } else {
+        remoteMuteStream = [NSMutableDictionary dictionaryWithDictionary:self.attendView.remoteMuteStream.mj_JSONObject];
+    }
+    
+    BOOL isCloseVideo = [remoteMuteStream[@"video"] boolValue];
+
+    if (!self.isMe) {
+        __block int i = 0;
+        __weak __typeof(self)weakSelf = self;
+        [self.attendView getSsrcStats:^(NSString * _Nonnull mediaType, long kbps, NSDictionary<NSString *,NSString *> * _Nonnull values) {
+            if ([mediaType isEqualToString:@"video"]) {
+                VHLog(@"下行速率 === %ld",kbps);
+                __strong __typeof(weakSelf)strongSelf = weakSelf;
+                if (kbps < 10) {
+                    i ++;
+                } else {
+                    i = 0;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        strongSelf.networkAnomalyView.hidden = YES;
+                        strongSelf.headIcon.hidden = strongSelf.networkAnomalyView.hidden == YES ? !isCloseVideo : YES;
+                    });
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (i > 8) {
+                        strongSelf.networkAnomalyView.hidden = NO;
+                    }
+                    strongSelf.headIcon.hidden = strongSelf.networkAnomalyView.hidden == YES ? !isCloseVideo : YES;
+                });
+            }
+        }];
+    }
+    self.headIcon.hidden = self.networkAnomalyView.hidden == YES ? !isCloseVideo : YES;
+}
+#pragma mark - 停止计时器
+- (void)stopTimer
+{
+    if (_timer){
+        [_timer invalidate];
+        _timer = nil;
+    }
+}
 #pragma mark - 懒加载
 - (UILabel *)nickNameLab {
     if (!_nickNameLab) {
@@ -103,15 +175,42 @@
     } return _headIcon;
 }
 
+- (UIView *)networkAnomalyView {
+    if (!_networkAnomalyView) {
+        _networkAnomalyView = [[UIView alloc] init];
+        _networkAnomalyView.hidden = YES;
+        _networkAnomalyView.backgroundColor = [UIColor blackColor];
+        [_networkAnomalyView addSubview:self.networkAnomalyImg];
+        [_networkAnomalyView addSubview:self.networkAnomalyLab];
+    }
+    return _networkAnomalyView;
+}
+
+- (UIImageView *)networkAnomalyImg {
+    if (!_networkAnomalyImg) {
+        _networkAnomalyImg = [[UIImageView alloc] init];
+        _networkAnomalyImg.image = [UIImage imageNamed:@"vh_inav_anomaly"];
+    }
+    return _networkAnomalyImg;
+}
+
+- (UILabel *)networkAnomalyLab {
+    if (!_networkAnomalyLab) {
+        _networkAnomalyLab = [[UILabel alloc] init];
+        _networkAnomalyLab.text = @"网络异常";
+        _networkAnomalyLab.textColor = [UIColor colorWithHex:@"#CCCCCC"];
+        _networkAnomalyLab.font = FONT(12);
+    }
+    return _networkAnomalyLab;
+}
+
+
 @end
 
 @interface VHInavView ()<VHRoomDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 /// 房间详情
 @property (nonatomic, strong) VHRoomInfo * roomInfo;
-/// 活动详情
-@property (nonatomic, strong) VHWebinarInfoData * webinarInfoData;
-
 /// 互动view
 @property (nonatomic, strong) UICollectionView * collectionView;
 /// 数据源
@@ -127,19 +226,16 @@
     VHLog(@"%s释放",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String]);
 }
 #pragma mark - 初始化
-- (instancetype)initWithWebinarInfoData:(VHWebinarInfoData *)webinarInfoData
+- (instancetype)init
 {
     if ([super init]) {
-        
-        self.webinarInfoData = webinarInfoData;
-        
+                
         // 添加控件
         [self addViews];
         
         // 初始化UI
         [self masonryUI];
         
-
     }return self;
 }
 
@@ -170,9 +266,14 @@
 }
 
 #pragma mark - 进入房间
-- (void)enterRoomBtn
+- (void)enterRoomWithWebinarId:(NSString *)webinarId;
 {
-    [self.inavRoom enterRoomWithParams:self.inavRoomParam];
+    NSMutableDictionary * param = [[NSMutableDictionary alloc] init];
+    param[@"id"] =  webinarId;
+    param[@"name"] = [VHallApi currentUserNickName];
+    param[@"auth_model"] = @(1);
+
+    [self.inavRoom enterRoomWithParams:param];
 }
 #pragma mark - VHRoomDelegate
 #pragma mark - 进入房间回调
@@ -254,6 +355,8 @@
     }
     VHLog(@"某人下麦:%@",attendView.userId);
     
+    VHLog(@"测试 === 用户已下麦");
+    [attendView stopStats];
     [self.dataSource removeObject:attendView];
     [self reloadDataSource];
 }
@@ -463,9 +566,14 @@
 - (void)destroyMP
 {
     if (_dataSource) {
+        VHLog(@"测试 === 当前有%ld个view",_dataSource.count);
+        for (VHRenderView * renderView in _dataSource) {
+            [renderView stopStats];
+        }
         [_dataSource removeAllObjects];
     }
     if (_localRenderView) {
+        VHLog(@"测试 === 移除本地画面");
         [_localRenderView removeFromSuperview];
         _localRenderView = nil;
     }
@@ -477,13 +585,6 @@
 }
 
 #pragma mark - 懒加载
-- (NSDictionary *)inavRoomParam {
-    NSMutableDictionary * param = [[NSMutableDictionary alloc] init];
-    param[@"id"] =  self.webinarInfoData.webinar.data_id;
-    param[@"name"] = [VHallApi currentUserNickName];
-    param[@"auth_model"] = @(1);
-    return param;
-}
 - (VHRoom *)inavRoom {
     if (!_inavRoom) {
         _inavRoom = [[VHRoom alloc] init];
@@ -495,14 +596,18 @@
 {
     if (!_localRenderView) {
         // 设置推流分辨率
-        VHFrameResolutionValue resolution = VHFrameResolution480x360;
+        VHFrameResolutionValue resolution = VHFrameResolution640x480;
         NSDictionary *options = @{VHFrameResolutionTypeKey:@(resolution),VHStreamOptionStreamType:@(VHInteractiveStreamTypeAudioAndVideo)};
         // 初始化
-        _localRenderView = [[VHLocalRenderView alloc] initCameraViewWithFrame:CGRectZero options:options];
+        _localRenderView = [[VHLocalRenderView alloc] initCameraViewWithFrame:self.bounds options:options];
+        // 开启美颜
+        VHLog(@"测试 === 初始化本地画面");
+        _localRenderView.beautifyEnable = NO;
         // 设置预览画面方向
         [_localRenderView setDeviceOrientation:UIDeviceOrientationPortrait];
         // 画面填充模式
         [_localRenderView setScalingMode:VHRenderViewScalingModeAspectFit];
+        
     } return _localRenderView;
 }
 

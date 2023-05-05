@@ -9,6 +9,10 @@
 
 @interface VHLikeObject : UIButton
 
-- (instancetype)initLikeWithObject:(NSObject *)obj webinarInfoData:(VHWebinarInfoData *)webinarInfoData;
+/// 初始化
+/// - Parameters:
+///   - obj: 对象
+///   - webinarInfoData: 房间详情
+- (void)requestObject:(NSObject *)obj webinarInfoData:(VHWebinarInfoData *)webinarInfoData;
 
 @end

@@ -61,15 +61,18 @@
 @property (nonatomic, strong) VHallMoviePlayer  * moviePlayer;
 
 /// 初始化
-/// - Parameters:
-///   - webinarInfoData: 活动详情
-- (instancetype)initWithWebinarInfoData:(VHWebinarInfoData *)webinarInfoData;
+/// - Parameter webinarId: 活动id
+/// - Parameter type: 活动状态
+- (instancetype)initWithWebinarId:(NSString *)webinarId type:(VHMovieActiveState)type;
 
 /// 开始播放
 - (void)startPlay;
 
 /// 暂停播放
 - (void)pausePlay;
+
+/// 停止播放
+- (void)stopPlay;
 
 /// 恢复
 - (void)reconnectPlay;

@@ -15,6 +15,7 @@
 
 @interface VHWarmUpViewController ()<VHWarmInfoObjectDelegate,WKUIDelegate,WKNavigationDelegate,UIScrollViewDelegate>
 
+@property (nonatomic, strong) VHWebinarInfoData *   webinarInfoData;    ///<活动详情
 @property (nonatomic, strong) VHWarmInfoObject  *   warmInfo;           ///<暖场视频类
 @property (nonatomic, strong) UIImageView       *   headImg;            ///<头像
 @property (nonatomic, strong) UILabel           *   nicknameLab;        ///<昵称
@@ -62,9 +63,6 @@
 
     // ui布局
     [self masonryToUI];
-
-    // 初始化
-    self.warmInfo = [[VHWarmInfoObject alloc] initWithWebinarInfoData:self.webinarInfoData delegate:self];
     
     // 初始化数据
     [self requestWebinarInfoData];
@@ -161,36 +159,56 @@
 #pragma mark - 获取详情
 - (void)requestWebinarInfoData
 {
-    // 标题
-    self.title = [VUITool substringToIndex:8 text:self.webinarInfoData.webinar.subject isReplenish:YES];
-
-    // 获取活动信息
-    self.infoLab.text = @"简介";
-    
-    // 获取暖场视频封面
-    [self.warmImg sd_setImageWithURL:[NSURL URLWithString:self.webinarInfoData.webinar.img_url]];
-
-    // 昵称
-    self.nicknameLab.text = [VUITool substringToIndex:8 text:self.webinarInfoData.webinar.userinfo.nickname isReplenish:YES];
-    // 主持人头像
-    [self.headImg sd_setImageWithURL:[NSURL URLWithString:self.webinarInfoData.webinar.userinfo.avatar] placeholderImage:[UIImage imageNamed:@"vh_no_head_icon"]];
+    __weak __typeof(self)weakSelf = self;
+    [VHWebinarInfoData requestWatchInitWebinarId:self.webinarId pass:nil k_id:nil nick_name:nil email:nil record_id:nil auth_model:1 complete:^(VHWebinarInfoData *webinarInfoData, NSError *error) {
+        
+        if (webinarInfoData) {
             
-    // 获取开播时间
-    [self startToTime:self.webinarInfoData.webinar.start_time];
-    
-    // 活动标题
-    self.webinarTitleLab.text = [VUITool substringToIndex:8 text:self.webinarInfoData.webinar.subject isReplenish:YES];
-    
-    // 时间
-    self.startTimeLab.text = self.webinarInfoData.webinar.start_time;
-    
-    // 空空如也
-    self.emptyView.hidden = !([VUITool isBlankString:self.webinarInfoData.webinar.introduction] || [self.webinarInfoData.webinar.introduction isEqualToString:@"<p></p>"]);
-    self.webView.hidden = ([VUITool isBlankString:self.webinarInfoData.webinar.introduction] || [self.webinarInfoData.webinar.introduction isEqualToString:@"<p></p>"]);
+            self.webinarInfoData = webinarInfoData;
+            
+            // 初始化
+            weakSelf.warmInfo = [[VHWarmInfoObject alloc] initWithWebinarInfoData:webinarInfoData delegate:weakSelf];
 
-    // 简介页面
-    [self.webView loadHTMLString:self.webinarInfoData.webinar.introduction baseURL:nil];
 
+            // 获取暖场视频封面
+            [weakSelf.warmImg sd_setImageWithURL:[NSURL URLWithString:weakSelf.warmInfoModel.is_open_warm_video == 1 ? weakSelf.warmInfoModel.img_url : weakSelf.webinarInfoData.webinar.img_url]];
+
+            // 标题
+            weakSelf.title = [VUITool substringToIndex:8 text:webinarInfoData.webinar.subject isReplenish:YES];
+
+            // 获取活动信息
+            weakSelf.infoLab.text = @"简介";
+            
+            // 获取暖场视频封面
+            [weakSelf.warmImg sd_setImageWithURL:[NSURL URLWithString:webinarInfoData.webinar.img_url]];
+
+            // 昵称
+            weakSelf.nicknameLab.text = [VUITool substringToIndex:8 text:webinarInfoData.webinar.userinfo.nickname isReplenish:YES];
+            // 主持人头像
+            [weakSelf.headImg sd_setImageWithURL:[NSURL URLWithString:webinarInfoData.webinar.userinfo.avatar] placeholderImage:[UIImage imageNamed:@"vh_no_head_icon"]];
+                    
+            // 获取开播时间
+            [weakSelf startToTime:webinarInfoData.webinar.start_time];
+            
+            // 活动标题
+            weakSelf.webinarTitleLab.text = [VUITool substringToIndex:8 text:webinarInfoData.webinar.subject isReplenish:YES];
+            
+            // 时间
+            weakSelf.startTimeLab.text = webinarInfoData.webinar.start_time;
+            
+            // 空空如也
+            weakSelf.emptyView.hidden = !([VUITool isBlankString:webinarInfoData.webinar.introduction] || [webinarInfoData.webinar.introduction isEqualToString:@"<p></p>"]);
+            weakSelf.webView.hidden = ([VUITool isBlankString:webinarInfoData.webinar.introduction] || [webinarInfoData.webinar.introduction isEqualToString:@"<p></p>"]);
+
+            // 简介页面
+            [weakSelf.webView loadHTMLString:webinarInfoData.webinar.introduction baseURL:nil];
+
+        }
+        
+        if (error) {
+            [VHProgressHud showToast:error.domain];
+        }
+    }];
 }
 #pragma mark - 增加播放器
 - (void)addMoviePlayerView

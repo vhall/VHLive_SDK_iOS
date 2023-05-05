@@ -148,7 +148,8 @@ typedef NS_ENUM(NSInteger,VHMovieActiveState) {
     VHMovieActiveStateLive              = 1,    ///<直播
     VHMovieActiveStateReservation       = 2,    ///<预约
     VHMovieActiveStateEnd               = 3,    ///<结束
-    VHMovieActiveStateReplay            = 4,    ///<回放or点播
+    VHMovieActiveStateReplay            = 4,    ///<点播
+    VHMovieActiveStatePlayBack          = 5,    ///<回放
 };
 
 /**
