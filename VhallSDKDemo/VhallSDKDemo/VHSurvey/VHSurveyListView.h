@@ -9,12 +9,12 @@
 
 @interface VHSurveyListCell : UITableViewCell
 
-@property (nonatomic, strong) UIView * bgView;      ///<背景
-@property (nonatomic, strong) UILabel * timeLab;    ///<时间
-@property (nonatomic, strong) UILabel * titleLab;   ///<标题
-@property (nonatomic, strong) UILabel * checkLab;   ///<查看
+@property (nonatomic, strong) UIView *bgView;       ///<背景
+@property (nonatomic, strong) UILabel *timeLab;     ///<时间
+@property (nonatomic, strong) UILabel *titleLab;    ///<标题
+@property (nonatomic, strong) UILabel *checkLab;    ///<查看
 
-@property (nonatomic, strong) VHSurveyModel * model;
+@property (nonatomic, strong) VHSurveyModel *model;
 
 + (VHSurveyListCell *)createCellWithTableView:(UITableView *)tableView;
 
@@ -44,4 +44,3 @@
 - (void)clickSurveyToId:(NSString *)surveyId surveyURL:(NSURL *)surveyURL;
 
 @end
-

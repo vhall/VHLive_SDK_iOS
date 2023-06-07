@@ -149,25 +149,6 @@
                         <constraint firstItem="kou-dE-IvO" firstAttribute="top" secondItem="7AY-n7-t9L" secondAttribute="bottom" constant="20" id="nf1-C9-ByI"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0d-PT-RJ2">
-                    <rect key="frame" x="137.5" y="470" width="100" height="45"/>
-                    <color key="backgroundColor" red="0.98431372549999996" green="0.2274509804" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="1j1-4f-ziZ"/>
-                        <constraint firstAttribute="height" constant="45" id="XlN-HX-nnQ"/>
-                    </constraints>
-                    <state key="normal" title="观看">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="clickEnterRoomBtn:" destination="-1" eventType="touchUpInside" id="pGn-md-q9s"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="观看直播" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVf-Si-YFm">
                     <rect key="frame" x="40" y="310" width="82" height="24"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -193,6 +174,25 @@
                         <action selector="clickLivePublish:" destination="-1" eventType="touchUpInside" id="lTw-td-6YG"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0d-PT-RJ2">
+                    <rect key="frame" x="137.5" y="470" width="100" height="45"/>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.2274509804" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="1j1-4f-ziZ"/>
+                        <constraint firstAttribute="height" constant="45" id="XlN-HX-nnQ"/>
+                    </constraints>
+                    <state key="normal" title="观看">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="clickEnterRoomBtn:" destination="-1" eventType="touchUpInside" id="pGn-md-q9s"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -208,10 +208,10 @@
                 <constraint firstAttribute="trailing" secondItem="Svq-0i-1hS" secondAttribute="trailing" id="hha-Cr-nAV"/>
                 <constraint firstItem="7sr-ko-nCm" firstAttribute="centerX" secondItem="C0d-PT-RJ2" secondAttribute="centerX" id="mtP-cF-vkZ"/>
                 <constraint firstItem="7sr-ko-nCm" firstAttribute="top" secondItem="C0d-PT-RJ2" secondAttribute="bottom" constant="8" symbolic="YES" id="mzK-0U-dfU"/>
-                <constraint firstItem="C0d-PT-RJ2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ts9-hj-L3U"/>
+                <constraint firstItem="C0d-PT-RJ2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tRg-VU-RVd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-1889" y="-313"/>
+            <point key="canvasLocation" x="-2279" y="-329"/>
         </view>
     </objects>
     <resources>

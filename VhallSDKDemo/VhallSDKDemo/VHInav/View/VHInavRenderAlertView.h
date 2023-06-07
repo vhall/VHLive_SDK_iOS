@@ -7,10 +7,10 @@
 
 #import "VHInavAlertView.h"
 
-typedef void(^ClickCameraAction)(BOOL cameraStatus);
-typedef void(^ClickMicAction)(BOOL micStatus);
-typedef void(^ClickOverturnAction)(void);
-typedef void(^ClickUnApplyAction)(void);
+typedef void (^ClickCameraAction)(BOOL cameraStatus);
+typedef void (^ClickMicAction)(BOOL micStatus);
+typedef void (^ClickOverturnAction)(void);
+typedef void (^ClickUnApplyAction)(void);
 
 @interface VHInavRenderAlertView : VHInavAlertView
 

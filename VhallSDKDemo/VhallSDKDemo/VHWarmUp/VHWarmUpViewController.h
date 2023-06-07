@@ -21,6 +21,6 @@
 @property (nonatomic, weak) id <VHWarmUpViewControllerDelegate> delegate;
 
 /// 基础信息
-@property (nonatomic, copy) NSString * webinarId;
+@property (nonatomic, copy) NSString *webinarId;
 
 @end

@@ -6,12 +6,12 @@
 //  Copyright © 2020 vhall. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <EventKit/EventKit.h>//日历备忘录
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^ReturnBlock)(BOOL isOpen);
+typedef void (^ReturnBlock)(BOOL isOpen);
 
 @interface VHPrivacyManager : NSObject
 //是否开启摄像头

@@ -11,9 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIButton (VHBadge)
- 
+
 @property (strong, nonatomic) UILabel *badge;
- 
+
 // Badge value to be display
 @property (nonatomic) NSString *badgeValue;
 // Badge background color

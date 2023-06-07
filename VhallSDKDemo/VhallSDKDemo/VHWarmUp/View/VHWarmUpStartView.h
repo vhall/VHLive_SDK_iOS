@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^ClickStartBtn)(void);
+typedef void (^ClickStartBtn)(void);
 
 @interface VHWarmUpStartView : UIView
 

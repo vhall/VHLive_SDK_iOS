@@ -28,6 +28,7 @@
 #import "VUITool.h"
 #import "VHProgressHud.h"
 #import "VHStystemSetting.h"
+#import "VhallSDKDemoTestsHeader.h"
 
 // 分类
 #import "UIColor+VUI.h"

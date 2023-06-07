@@ -10,10 +10,10 @@
 @interface VHQAViewListCell : UITableViewCell
 
 /// 提问数据
-@property (nonatomic, strong) VHallQuestionModel * vhQuestionModel;
+@property (nonatomic, strong) VHallQuestionModel *vhQuestionModel;
 
 /// 回答数据
-@property (nonatomic, strong) VHallAnswerModel * vhAnswerModel;
+@property (nonatomic, strong) VHallAnswerModel *vhAnswerModel;
 
 
 + (VHQAViewListCell *)createCellWithTableView:(UITableView *)tableView;
@@ -32,7 +32,7 @@
 @property (nonatomic, weak) id <VHQAViewDelegate> delegate;
 
 /// 问答类
-@property (nonatomic, strong) VHallQAndA * vhQA;
+@property (nonatomic, strong) VHallQAndA *vhQA;
 
 /// 初始化
 /// - Parameter frame: frame
@@ -44,4 +44,3 @@
 - (void)sendQAMsg:(NSString *)msg;
 
 @end
-

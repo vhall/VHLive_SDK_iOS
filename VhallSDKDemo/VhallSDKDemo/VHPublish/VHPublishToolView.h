@@ -9,14 +9,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^ClickCamera)(BOOL isSelect);
-typedef void(^ClickMic)(BOOL isSelect);
-typedef void(^ClickPlay)(BOOL isSelect);
+typedef void (^ClickCamera)(BOOL isSelect);
+typedef void (^ClickMic)(BOOL isSelect);
+typedef void (^ClickPlay)(BOOL isSelect);
 
 @interface VHPublishToolView : UIView
 
 /// 网速
-@property (nonatomic, strong) UILabel * kbpsLab;
+@property (nonatomic, strong) UILabel *kbpsLab;
 
 @property (nonatomic, copy) ClickCamera clickCamera;
 @property (nonatomic, copy) ClickMic clickMic;

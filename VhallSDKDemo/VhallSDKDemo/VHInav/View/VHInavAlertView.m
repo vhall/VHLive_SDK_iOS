@@ -16,36 +16,39 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if ([super initWithFrame:frame]) {
-        
         self.alpha = 0;
         self.backgroundColor = [UIColor clearColor];
-        
-        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(disMissContentView)];
+
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(disMissContentView)];
         [self addGestureRecognizer:tap];
-        
-    }return self;
+    }
+
+    return self;
 }
 
 #pragma mark - 显示
 - (void)show
 {
     self.alpha = 0;
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3
+                     animations:^{
         self.alpha = 1;
-    } completion:^(BOOL finished) {
-
+    }
+                     completion:^(BOOL finished) {
     }];
 }
 
 #pragma mark - 隐藏
 - (void)disMissContentView
 {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3
+                     animations:^{
         self.alpha = 0;
-    } completion:^(BOOL finished) {
-        
+    }
+                     completion:^(BOOL finished) {
     }];
 }
+
 #pragma mark - 懒加载
 - (UIView *)contentView
 {
@@ -54,7 +57,9 @@
         _contentView.backgroundColor = [UIColor whiteColor];
         _contentView.layer.masksToBounds = YES;
         _contentView.layer.cornerRadius = 8;
-    }return _contentView;
+    }
+
+    return _contentView;
 }
 
 @end

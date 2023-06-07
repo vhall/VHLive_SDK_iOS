@@ -10,9 +10,9 @@
 @interface VHInavBtn : UIButton
 
 /// 图标
-@property (nonatomic, strong) UIImageView * icon;
+@property (nonatomic, strong) UIImageView *icon;
 
 /// 标题
-@property (nonatomic, strong) UILabel * titleLab;
+@property (nonatomic, strong) UILabel *titleLab;
 
 @end

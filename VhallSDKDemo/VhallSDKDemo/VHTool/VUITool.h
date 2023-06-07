@@ -10,9 +10,9 @@
 
 @interface VUITool : NSObject
 /// 角色修改
-extern NSString * VH_MB_HOST;
-extern NSString * VH_MB_GUEST;
-extern NSString * VH_MB_ASSIST;
+    extern NSString *VH_MB_HOST;
+extern NSString *VH_MB_GUEST;
+extern NSString *VH_MB_ASSIST;
 
 /// UITextField/UItextView输入计数
 /// - Parameters:
@@ -100,8 +100,14 @@ extern NSString * VH_MB_ASSIST;
 /// - Parameter text: 字符串
 + (NSString *)disable_emoji:(NSString *)str;
 
+/// 发送自动化测试消息
+/// - Parameter key: 应用通知消息
+/// - Parameter userInfo: 其它信息
++ (void)sendTestsNotificationCenterWithKey:(NSString *)key otherInfo:(NSDictionary *)otherInfo;
+
 /// 获取设备权限
 /// - Parameter completionBlock: 权限状态回调
-+ (void)getMediaAccess:(void(^_Nullable)(BOOL videoAccess,BOOL audioAcess))completionBlock;
++ (void)getMediaAccess:(void (^_Nullable)(BOOL videoAccess, BOOL audioAcess))completionBlock;
+
 
 @end

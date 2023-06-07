@@ -7,6 +7,10 @@
 
 #import "VHBaseViewController.h"
 
+typedef void(^ClickSaveBtn)(void);
+
 @interface VHSignSetVC : VHBaseViewController
+
+@property (nonatomic, copy) ClickSaveBtn clickSaveBtn;
 
 @end

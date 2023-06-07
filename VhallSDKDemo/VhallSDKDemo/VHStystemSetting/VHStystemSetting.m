@@ -1,6 +1,6 @@
 //
 //  VHStystemSetting.m
-//  
+//
 //
 //  Created by vhall on 16/5/11.
 //  Copyright (c) 2016年 www.vhall.com. All rights reserved.
@@ -20,6 +20,7 @@ static VHStystemSetting *_sharedSetting = nil;
 
 + (id)allocWithZone:(NSZone *)zone {
     static dispatch_once_t onceToken;
+
     dispatch_once(&onceToken, ^{
         _sharedSetting = [super allocWithZone:zone];
     });
@@ -33,10 +34,11 @@ static VHStystemSetting *_sharedSetting = nil;
 - (id)init
 {
     self = [super init];
-    if (self)
-    {
+
+    if (self) {
         
     }
+
     return self;
 }
 
@@ -45,8 +47,8 @@ static VHStystemSetting *_sharedSetting = nil;
 {
     [[NSUserDefaults standardUserDefaults] setObject:appKey forKey:@"VHappKey"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
 }
+
 - (NSString *)appKey
 {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHappKey"];
@@ -58,6 +60,7 @@ static VHStystemSetting *_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] setObject:appSecretKey forKey:@"VHappSecretKey"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 - (NSString *)appSecretKey
 {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHappSecretKey"];
@@ -68,6 +71,7 @@ static VHStystemSetting *_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] setValue:rsaPrivateKey forKey:@"VHrsaPrivateKey"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 - (NSString *)rsaPrivateKey {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHrsaPrivateKey"];
 }
@@ -77,6 +81,7 @@ static VHStystemSetting *_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] setValue:activityID forKey:@"VHactivityID"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 - (NSString *)activityID {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHactivityID"];
 }
@@ -87,6 +92,7 @@ static VHStystemSetting *_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] setObject:account forKey:@"VHaccount"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 - (NSString *)account
 {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHaccount"];
@@ -98,6 +104,7 @@ static VHStystemSetting *_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] setObject:password forKey:@"VHpassword"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 - (NSString *)password
 {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHpassword"];
@@ -108,6 +115,7 @@ static VHStystemSetting *_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] setValue:third_Id forKey:@"third_Id"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 - (NSString *)third_Id {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"third_Id"];
 }
@@ -117,6 +125,7 @@ static VHStystemSetting *_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] setValue:third_nickName forKey:@"third_nickName"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 - (NSString *)third_nickName {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"third_nickName"];
 }
@@ -126,11 +135,14 @@ static VHStystemSetting *_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] setValue:third_avatar forKey:@"third_avatar"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 - (NSString *)third_avatar {
     NSString *avatar = [[NSUserDefaults standardUserDefaults] valueForKey:@"third_avatar"];
-    if(!avatar) {
+
+    if (!avatar) {
         avatar = VHDefaultAvatar;
     }
+
     return avatar;
 }
 

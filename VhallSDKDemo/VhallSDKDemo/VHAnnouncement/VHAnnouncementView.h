@@ -14,7 +14,7 @@
 /// 开始动画
 /// - Parameter content: 详情
 /// - Parameter view: 父view
-- (void)startAnimationWithContent:(NSString*)content pushTime:(NSString*)pushTime duration:(NSInteger)duration view:(UIView *)view isFull:(BOOL)isFull;
+- (void)startAnimationWithContent:(NSString *)content pushTime:(NSString *)pushTime duration:(NSInteger)duration view:(UIView *)view isFull:(BOOL)isFull;
 
 /// 结束动画
 - (void)endAnimation;

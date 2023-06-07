@@ -9,23 +9,23 @@
 #import <UIKit/UIKit.h>
 
 
-typedef void(^ClickSendBtnBlock)(void);
+typedef void (^ClickSendBtnBlock)(void);
 
 @interface VHFashionStyleGiftListCell : UICollectionViewCell
 
 /// 是否选中
-@property (nonatomic, assign) BOOL          isSelect;
+@property (nonatomic, assign) BOOL isSelect;
 /// 白色背景
-@property (nonatomic, strong) UIView *      giftView;
+@property (nonatomic, strong) UIView *giftView;
 /// 礼物图片
-@property (nonatomic, strong) UIImageView * giftImg;
+@property (nonatomic, strong) UIImageView *giftImg;
 /// 标题
-@property (nonatomic, strong) UILabel *     titleLab;
+@property (nonatomic, strong) UILabel *titleLab;
 /// 发送按钮
-@property (nonatomic, strong) UIButton *    sendBtn;
+@property (nonatomic, strong) UIButton *sendBtn;
 
 /// 数据model
-@property (nonatomic, strong) VHallGiftListItem * giftListItem;
+@property (nonatomic, strong) VHallGiftListItem *giftListItem;
 
 /// 点击发送回调
 @property (nonatomic, copy) ClickSendBtnBlock clickSendBtnBlock;
@@ -40,4 +40,3 @@ typedef void(^ClickSendBtnBlock)(void);
 - (void)dismiss;
 
 @end
-

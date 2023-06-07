@@ -10,12 +10,12 @@
 
 @implementation VHLiveWeakTimer
 + (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)interval
-                                      target:(id)aTarget
-                                    selector:(SEL)aSelector
-                                    userInfo:(nullable id)userInfo
-                                     repeats:(BOOL)repeats{
-
+                                     target:(id)aTarget
+                                   selector:(SEL)aSelector
+                                   userInfo:(nullable id)userInfo
+                                    repeats:(BOOL)repeats {
     VHLiveWeakTimer *weakTimer = [VHLiveWeakTimer new];
+
     weakTimer.target = aTarget;
     weakTimer.selector = aSelector;
     weakTimer.timer = [NSTimer scheduledTimerWithTimeInterval:interval target:weakTimer selector:@selector(fire:) userInfo:userInfo repeats:repeats];
@@ -23,10 +23,7 @@
     return weakTimer.timer;
 }
 
-
-
--(void)fire:(NSTimer *)timer{
-
+- (void)fire:(NSTimer *)timer {
     if (self.target) {
         [self.target performSelector:self.selector withObject:timer.userInfo];
     } else {

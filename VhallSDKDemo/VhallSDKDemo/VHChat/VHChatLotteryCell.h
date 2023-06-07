@@ -7,13 +7,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^ClickChekWinList)(VHallEndLotteryModel *endLotteryModel);
+typedef void (^ClickChekWinList)(VHallEndLotteryModel *endLotteryModel);
 
 @interface VHChatLotteryCell : UITableViewCell
 /// 抽奖开始
-@property (nonatomic, strong) VHallStartLotteryModel * startModel;
+@property (nonatomic, strong) VHallStartLotteryModel *startModel;
 /// 抽奖结束
-@property (nonatomic, strong) VHallEndLotteryModel * endModel;
+@property (nonatomic, strong) VHallEndLotteryModel *endModel;
 /// 点击查看中奖名单
 @property (nonatomic, copy) ClickChekWinList clickChekWinList;
 /// 初始化

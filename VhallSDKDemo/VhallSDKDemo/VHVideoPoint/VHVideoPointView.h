@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VHVideoPointViewListCell : UITableViewCell
 
 /// 视频打点数据
-@property (nonatomic, strong) VHVidoePointModel * vidoePointModel;
+@property (nonatomic, strong) VHVidoePointModel *vidoePointModel;
 /// index
 @property (nonatomic, assign) NSInteger indexRow;
 

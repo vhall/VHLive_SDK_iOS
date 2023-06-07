@@ -7,12 +7,12 @@
 
 #import "VHBaseViewController.h"
 
-typedef void(^ScanSettingWithData)(NSString * appKey,NSString * appSecretKey);
+typedef void (^ScanSettingWithData)(NSString *appKey, NSString *appSecretKey);
 
-typedef void(^ScanWebianrIDWithData)(NSString * webinarId);
+typedef void (^ScanWebianrIDWithData)(NSString *webinarId);
 
 typedef NS_ENUM(NSInteger, VHCodeENUM) {
-    VHCodeENUM_Setting = 0,// 设置界面 appkey sk
+    VHCodeENUM_Setting   = 0,// 设置界面 appkey sk
     VHCodeENUM_WebinarID = 1 // 首页 活动id
 };
 

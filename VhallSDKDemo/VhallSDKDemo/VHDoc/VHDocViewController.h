@@ -25,4 +25,3 @@
 - (void)quitFull;
 
 @end
-

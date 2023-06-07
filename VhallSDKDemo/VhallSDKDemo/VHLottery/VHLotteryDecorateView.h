@@ -10,4 +10,3 @@
 @interface VHLotteryDecorateView : UIImageView
 
 @end
-

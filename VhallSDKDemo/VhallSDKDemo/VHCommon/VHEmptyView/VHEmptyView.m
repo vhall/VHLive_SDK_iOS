@@ -9,28 +9,29 @@
 
 @interface VHEmptyView ()
 
-@property (nonatomic, strong) UILabel * tileLab;
-@property (nonatomic, strong) UIImageView * icon;
+@property (nonatomic, strong) UILabel *tileLab;
+@property (nonatomic, strong) UIImageView *icon;
 @end
 
 @implementation VHEmptyView
 - (instancetype)init
 {
     if ([super init]) {
-        
         [self.icon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.mas_equalTo(self);
             make.centerX.mas_equalTo(0);
             make.size.mas_equalTo(CGSizeMake(207, 154));
         }];
-        
+
         [self.tileLab mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.icon.mas_bottom).offset(10);
             make.centerX.mas_equalTo(0);
         }];
+    }
 
-    }return self;
+    return self;
 }
+
 #pragma mark - 懒加载
 - (UILabel *)tileLab {
     if (!_tileLab) {
@@ -39,17 +40,19 @@
         _tileLab.textColor = [UIColor colorWithHex:@"#666666"];
         _tileLab.font = FONT(14);
         [self addSubview:_tileLab];
+    }
 
-    } return _tileLab;
+    return _tileLab;
 }
+
 - (UIImageView *)icon {
     if (!_icon) {
         _icon = [[UIImageView alloc] init];
         _icon.image = [UIImage imageNamed:@"vh_info_empty"];
         [self addSubview:_icon];
     }
+
     return _icon;
 }
-
 
 @end

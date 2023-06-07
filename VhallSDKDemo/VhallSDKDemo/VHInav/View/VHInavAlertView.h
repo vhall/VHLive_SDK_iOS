@@ -10,7 +10,7 @@
 @interface VHInavAlertView : UIView
 
 /// 容器
-@property (nonatomic, strong) UIView * contentView;
+@property (nonatomic, strong) UIView *contentView;
 
 /// 初始化
 - (instancetype)initWithFrame:(CGRect)frame;

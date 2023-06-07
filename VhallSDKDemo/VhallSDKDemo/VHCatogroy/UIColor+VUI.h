@@ -10,12 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 /**
- 渐变方式
- 
- - IHGradientChangeDirectionLevel:              水平渐变
- - IHGradientChangeDirectionVertical:           竖直渐变
- - IHGradientChangeDirectionUpwardDiagonalLine: 向下对角线渐变
- - IHGradientChangeDirectionDownDiagonalLine:   向上对角线渐变
+   渐变方式
+
+   - IHGradientChangeDirectionLevel:              水平渐变
+   - IHGradientChangeDirectionVertical:           竖直渐变
+   - IHGradientChangeDirectionUpwardDiagonalLine: 向下对角线渐变
+   - IHGradientChangeDirectionDownDiagonalLine:   向上对角线渐变
  */
 typedef NS_ENUM(NSInteger, IHGradientChangeDirection) {
     IHGradientChangeDirectionLevel,
@@ -26,14 +26,14 @@ typedef NS_ENUM(NSInteger, IHGradientChangeDirection) {
 
 @interface UIColor (VUI)
 /**
- 创建渐变颜色
- 
- @param size       渐变的size
- @param direction  渐变方式
- @param startcolor 开始颜色
- @param endColor   结束颜色
- 
- @return 创建的渐变颜色
+   创建渐变颜色
+
+   @param size       渐变的size
+   @param direction  渐变方式
+   @param startcolor 开始颜色
+   @param endColor   结束颜色
+
+   @return 创建的渐变颜色
  */
 + (instancetype)bm_colorGradientChangeWithSize:(CGSize)size
                                      direction:(IHGradientChangeDirection)direction
@@ -52,7 +52,7 @@ typedef NS_ENUM(NSInteger, IHGradientChangeDirection) {
 + (UIColor *)colorWithHex:(NSString *)hexString;
 + (UIColor *)colorWithHexString:(NSString *)hexString;
 + (UIColor *)colorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha;
- 
+
 /**
  * @brief 字符串中得到颜色值
  *
@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, IHGradientChangeDirection) {
  *
  * @return 颜色对象
  */
-+ (UIColor *)colorWithRGBA_Ext:(uint) hex;
++ (UIColor *)colorWithRGBA_Ext:(uint)hex;
 
 
 /**
@@ -82,22 +82,22 @@ typedef NS_ENUM(NSInteger, IHGradientChangeDirection) {
  *
  * @return 颜色对象
  */
-+ (UIColor *)colorWithARGB_Ext:(uint) hex;
++ (UIColor *)colorWithARGB_Ext:(uint)hex;
 
 
 /**
  * @brief RGB风格获取颜色值
- *UIColor *solidColor = [UIColor colorWithHex:0xFF0000];
+ * UIColor *solidColor = [UIColor colorWithHex:0xFF0000];
  *
  * @param hex rgb的值
  *
  * @return 颜色对象
  */
-+ (UIColor *)colorWithRGB_Ext:(uint) hex;
++ (UIColor *)colorWithRGB_Ext:(uint)hex;
 
 /*usage
- safe to omit # sign as well
- UIColor *solidColor = [UIColor colorWithWeb:@"FF0000"];
+   safe to omit # sign as well
+   UIColor *solidColor = [UIColor colorWithWeb:@"FF0000"];
  */
 
 

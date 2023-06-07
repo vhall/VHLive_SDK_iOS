@@ -14,8 +14,8 @@
 
 // 主持人显示/隐藏文档
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer
-            isHaveDocument:(BOOL)isHave
-            isShowDocument:(BOOL)isShow;
+     isHaveDocument:(BOOL)isHave
+     isShowDocument:(BOOL)isShow;
 
 // 直播文档同步，直播文档有延迟，指定需要延迟的秒数 （默认为直播缓冲时间，即：realityBufferTime/1000.0）
 - (NSTimeInterval)documentDelayTime:(VHallMoviePlayer *)moviePlayer;
@@ -24,7 +24,7 @@
 /// @param content 公告内容
 /// @param pushTime 发布时间
 /// @param duration 显示时长 单位：秒  最小传入10   0:默认一直显示
-- (void)moviePlayer:(VHallMoviePlayer *)moviePlayer announcementContentDidChange:(NSString*)content pushTime:(NSString*)pushTime duration:(NSInteger)duration;
+- (void)moviePlayer:(VHallMoviePlayer *)moviePlayer announcementContentDidChange:(NSString *)content pushTime:(NSString *)pushTime duration:(NSInteger)duration;
 
 /// 当前活动是否允许举手申请上麦回调
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isInteractiveActivity:(BOOL)isInteractive interactivePermission:(VHInteractiveState)state;
@@ -58,10 +58,11 @@
 @property (nonatomic, weak) id <VHWatchVideoViewDelegate> delegate;
 
 /// 播放器
-@property (nonatomic, strong) VHallMoviePlayer  * moviePlayer;
+@property (nonatomic, strong) VHallMoviePlayer *moviePlayer;
 
 /// 初始化
 /// - Parameter webinarId: 活动id
+/// - Parameter recordId: 指定回放id
 /// - Parameter type: 活动状态
 - (instancetype)initWithWebinarId:(NSString *)webinarId type:(VHMovieActiveState)type;
 
@@ -77,6 +78,10 @@
 /// 恢复
 - (void)reconnectPlay;
 
+/// 播放指定回放视频
+/// - Parameter recordId: 回放id
+- (void)startPlayBackWithRecordId:(NSString *)recordId;
+
 /// 销毁播放器
 - (void)destroyMP;
 
@@ -90,4 +95,3 @@
 - (void)quitFull;
 
 @end
-

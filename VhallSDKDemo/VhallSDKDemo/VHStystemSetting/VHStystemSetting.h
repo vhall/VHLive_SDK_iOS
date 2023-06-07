@@ -15,22 +15,26 @@
 + (VHStystemSetting *)sharedSetting;
 
 /// AppKey
-@property (nonatomic, copy) NSString * appKey;
+@property (nonatomic, copy) NSString *appKey;
 /// App SecretKey
-@property (nonatomic, copy) NSString * appSecretKey;
+@property (nonatomic, copy) NSString *appSecretKey;
+/// host
+@property (nonatomic, copy) NSString *host;
+/// apihost
+@property (nonatomic, copy) NSString *apihost;
 /// rsaPrivateKey
-@property (nonatomic, copy) NSString * rsaPrivateKey;
+@property (nonatomic, copy) NSString *rsaPrivateKey;
 /// 发直播活动ID
-@property (nonatomic, copy) NSString * activityID;
+@property (nonatomic, copy) NSString *activityID;
 /// 账号
-@property (nonatomic, copy) NSString * account;
+@property (nonatomic, copy) NSString *account;
 /// 密码
-@property (nonatomic, copy) NSString * password;
+@property (nonatomic, copy) NSString *password;
 /// 三方登录账号
-@property (nonatomic, copy) NSString * third_Id;
+@property (nonatomic, copy) NSString *third_Id;
 /// 三方登录密码
-@property (nonatomic, copy) NSString * third_nickName;
+@property (nonatomic, copy) NSString *third_nickName;
 /// 三方登录头像
-@property (nonatomic, copy) NSString * third_avatar;
+@property (nonatomic, copy) NSString *third_avatar;
 
 @end

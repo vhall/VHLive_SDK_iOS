@@ -9,7 +9,7 @@
 
 @interface VHChatGiftCell : UITableViewCell
 
-@property (nonatomic, strong) VHallGiftModel * giftModel;
+@property (nonatomic, strong) VHallGiftModel *giftModel;
 
 /// 初始化
 + (VHChatGiftCell *)createCellWithTableView:(UITableView *)tableView;

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VHRecordChapterListCell : UITableViewCell
 
 /// 章节打点数据
-@property (nonatomic, strong) VHChaptersItem * chaptersItem;
+@property (nonatomic, strong) VHChaptersItem *chaptersItem;
 /// index
 @property (nonatomic, assign) NSInteger indexRow;
 

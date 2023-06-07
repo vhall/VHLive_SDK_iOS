@@ -10,9 +10,9 @@
 @interface VHLotterySubmitListCell : UITableViewCell
 
 /// 领奖页提交中奖用户信息填写选项的配置
-@property (nonatomic, strong) VHallLotterySubmitConfig * submitConfig;
+@property (nonatomic, strong) VHallLotterySubmitConfig *submitConfig;
 
-@property (nonatomic, strong) UITextField * contentTF;
+@property (nonatomic, strong) UITextField *contentTF;
 
 + (VHLotterySubmitListCell *)createCellWithTableView:(UITableView *)tableView index:(NSInteger)index;
 
@@ -30,4 +30,3 @@
 - (void)dismiss;
 
 @end
-

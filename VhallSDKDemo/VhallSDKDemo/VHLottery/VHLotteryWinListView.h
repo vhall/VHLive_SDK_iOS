@@ -10,7 +10,7 @@
 @interface VHLotteryWinListCell : UITableViewCell
 
 /// 中奖名单模型
-@property (nonatomic, strong) VHallLotteryResultModel_ListItem * item;
+@property (nonatomic, strong) VHallLotteryResultModel_ListItem *item;
 /// index
 @property (nonatomic, assign) NSInteger indexRow;
 

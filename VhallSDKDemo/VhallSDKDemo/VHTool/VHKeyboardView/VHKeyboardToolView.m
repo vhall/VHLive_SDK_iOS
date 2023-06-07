@@ -7,8 +7,8 @@
 //
 #define InputViewHeight 47 //输入栏高度
 
-#import "VHKeyboardToolView.h"
 #import <NSAttributedString+YYText.h>
+#import "VHKeyboardToolView.h"
 
 @interface VHKeyboardToolView ()<UITextViewDelegate>
 @property (nonatomic, strong) UIButton *keyboardBackView; ///<背景（点击收起键盘）
@@ -29,6 +29,7 @@
         [self configFrame];
         self.frame = CGRectMake(0, Screen_Height, Screen_Width, InputViewHeight);
     }
+
     return self;
 }
 
@@ -40,7 +41,6 @@
 }
 
 - (void)configFrame {
-    
     [_sendBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
         make.right.mas_equalTo(-16);
@@ -54,15 +54,15 @@
         make.height.equalTo(@(32));
         make.right.equalTo(self.sendBtn.mas_left).offset(-12);
     }];
-    
 }
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
     _placeholder = placeholder;
-    
+
     self.textView.placeholder = self.placeholder;
 }
+
 #pragma mark - 键盘监听
 - (void)addKeyboardMonitor {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -81,9 +81,10 @@
     self.keyboardBackView.frame = [UIApplication sharedApplication].delegate.window.bounds;
     [self.superview insertSubview:self.keyboardBackView belowSubview:self];
     CGFloat keyboradHeight = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-    
+
     UIWindow *keyboardWindow = [[[UIApplication sharedApplication] windows] lastObject];
     Class class = NSClassFromString(@"UIInputSetHostView");
+
     for (UIView *subview in keyboardWindow.rootViewController.view.subviews) {
         if ([subview isKindOfClass:class]) {
             if (keyboradHeight != subview.frame.size.height) {
@@ -91,10 +92,13 @@
             }
         }
     }
+
     CGFloat duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]; //动画时间
-    [UIView animateWithDuration:duration animations:^{
+    [UIView animateWithDuration:duration
+                     animations:^{
         self.frame = CGRectMake(0, Screen_Height - keyboradHeight - InputViewHeight, Screen_Width, InputViewHeight);
-    } completion:^(BOOL finished) {
+    }
+                     completion:^(BOOL finished) {
         [self.superview bringSubviewToFront:self];
     }];
 }
@@ -130,8 +134,10 @@
 //发送
 - (void)sendBtnClick:(UIButton *)sender {
     NSString *text = self.textView.text;
+
     text = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]; //去除首尾空格和换行
     NSString *tempSelf = text;
+
     while ([tempSelf containsString:@"\r\r"] || [tempSelf containsString:@"\n\n"] || [tempSelf containsString:@"\n\r"] || [tempSelf containsString:@"\r\n"]) {//去除连续两个换行
         tempSelf = [tempSelf stringByReplacingOccurrencesOfString:@"\r\r" withString:@"\r"];
         tempSelf = [tempSelf stringByReplacingOccurrencesOfString:@"\n\n" withString:@"\n"];
@@ -139,8 +145,8 @@
         tempSelf = [tempSelf stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\r"];
     }
     text = tempSelf; //替换连续两个换行为一个
-    
-    if(text.length < 1) {
+
+    if (text.length < 1) {
         [VHProgressHud showToast:@"内容不能为空"];
         return;
     }
@@ -157,7 +163,7 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    if (textView.text.length > self.maxLength && self.maxLength){
+    if (textView.text.length > self.maxLength && self.maxLength) {
         textView.text = [textView.text substringToIndex:self.maxLength];
     }
 }
@@ -172,25 +178,29 @@
     _isEditing = NO;
 }
 
-
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if ([text isEqualToString:@"\n"]) {
         [self sendBtnClick:self.sendBtn];
         return NO;
     }
+
     //长度限制操作
     NSString *str = [NSString stringWithFormat:@"%@%@", textView.text, text];
-    if (str.length > self.maxLength && self.maxLength){
+
+    if (str.length > self.maxLength && self.maxLength) {
         NSRange rangeIndex = [str rangeOfComposedCharacterSequenceAtIndex:self.maxLength];
-        if (rangeIndex.length == 1){//字数超限
+
+        if (rangeIndex.length == 1) {//字数超限
             textView.text = [str substringToIndex:self.maxLength];
-        }else{
+        } else {
             NSRange rangeRange = [str rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, self.maxLength)];
             textView.text = [str substringWithRange:rangeRange];
         }
+
         return NO;
     }
+
     return YES;
 }
 
@@ -199,40 +209,44 @@
     if (![self textView:self.textView shouldChangeTextInRange:NSMakeRange(self.textView.text.length, str.length) replacementText:str]) {
         return;
     }
+
     NSString *chatText = self.textView.text;
+
     if (!isDelete && str.length > 0) {
-        self.textView.text = [NSString stringWithFormat:@"%@%@",chatText,str];
-    }else {
+        self.textView.text = [NSString stringWithFormat:@"%@%@", chatText, str];
+    } else {
         if (chatText.length >= 2) {
             NSInteger toIndex = 0;
             BOOL findStartFace = NO;
             BOOL findEndFace = NO;
-            
+
             NSString *temp = [chatText substringWithRange:NSMakeRange([chatText length] - 1, 1)];
+
             if ([temp isEqualToString:@"]"]) {
                 findStartFace = YES;
             }
-            
-            for (NSInteger i=[chatText length]-1; i>=0; i--) {
+
+            for (NSInteger i = [chatText length] - 1; i >= 0; i--) {
                 NSString *temp = [chatText substringWithRange:NSMakeRange(i, 1)];
-                if([temp isEqualToString:@"["])
-                {
+
+                if ([temp isEqualToString:@"["]) {
                     toIndex = i;
                     findEndFace = YES;
                     break;
                 }
             }
-            
+
             if (findStartFace && findEndFace) {
                 _textView.text = [chatText substringToIndex:toIndex];
                 return;
             }
         }
-        
+
         if (chatText.length > 0) {
-            _textView.text = [chatText substringToIndex:chatText.length-1];
+            _textView.text = [chatText substringToIndex:chatText.length - 1];
         }
     }
+
     [self textViewDidChange:_textView];
 }
 
@@ -242,24 +256,24 @@
         _keyboardBackView.backgroundColor = [UIColor clearColor];
         [_keyboardBackView addTarget:self action:@selector(keyboardToolViewBackViewClick) forControlEvents:UIControlEventTouchUpInside];
     }
+
     return _keyboardBackView;
 }
 
 - (UIButton *)sendBtn
 {
-    if (!_sendBtn)
-    {
+    if (!_sendBtn) {
         _sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_sendBtn setImage:[UIImage imageNamed:@"vh_chat_send_icon"] forState:UIControlStateNormal];
         [_sendBtn addTarget:self action:@selector(sendBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
+
     return _sendBtn;
 }
 
 - (VHTextView *)textView
 {
-    if (!_textView)
-    {
+    if (!_textView) {
         _textView = [[VHTextView alloc] init];
         _textView.textColor = [UIColor colorWithHex:@"#222222"];
         _textView.font = FONT(14);
@@ -269,8 +283,10 @@
         _textView.returnKeyType = UIReturnKeySend;
         _textView.layer.cornerRadius = 18;
         _textView.backgroundColor = [UIColor colorWithHex:@"#F7F7F7"];
-        _textView.textContainerInset = UIEdgeInsetsMake(8, 12, 8, 12);;
+        _textView.textContainerInset = UIEdgeInsetsMake(8, 12, 8, 12);
     }
+
     return _textView;
 }
+
 @end

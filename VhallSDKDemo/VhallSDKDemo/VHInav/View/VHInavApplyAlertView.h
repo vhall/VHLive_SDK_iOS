@@ -20,10 +20,9 @@
 @property (nonatomic, weak) id <VHInavApplyAlertViewDelegate> delegate;
 
 /// 播放器
-@property (nonatomic, strong) VHallMoviePlayer  * moviePlayer;
+@property (nonatomic, strong) VHallMoviePlayer *moviePlayer;
 
 /// 停止并收起弹窗
 - (void)stopOrDismiss;
 
 @end
-

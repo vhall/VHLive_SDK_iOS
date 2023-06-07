@@ -9,15 +9,15 @@
 
 @interface VHAuthAlertView ()
 /// 标题
-@property (nonatomic, strong) UILabel * titleLab;
+@property (nonatomic, strong) UILabel *titleLab;
 /// 观看地址
-@property (nonatomic, strong) UITextField * verifyValueTextF;
+@property (nonatomic, strong) UITextField *verifyValueTextF;
 /// 分割线
-@property (nonatomic, strong) UIView * lineView;
+@property (nonatomic, strong) UIView *lineView;
 /// 新版本进入
-@property (nonatomic, strong) UIButton * newEnterRoomBtn;
+@property (nonatomic, strong) UIButton *newEnterRoomBtn;
 /// 关闭按钮
-@property (nonatomic, strong) UIButton * closeBtn;
+@property (nonatomic, strong) UIButton *closeBtn;
 
 @end
 
@@ -26,10 +26,9 @@
 #pragma mark - 初始化
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    if ([super initWithFrame:frame]){
-        
+    if ([super initWithFrame:frame]) {
         self.backgroundColor = [UIColor colorWithHexString:@"#000000" alpha:.2];
-                
+
         [self addSubview:self.contentView];
         [self.contentView addSubview:self.titleLab];
         [self.contentView addSubview:self.verifyValueTextF];
@@ -39,9 +38,9 @@
 
         // 初始化布局
         [self setUpMasonry];
+    }
 
-    }return self;
-
+    return self;
 }
 
 #pragma mark - 初始化布局
@@ -53,7 +52,7 @@
         make.right.mas_equalTo(-25);
         make.height.mas_equalTo(260);
     }];
-    
+
     [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(45);
         make.centerX.mas_equalTo(self.contentView.mas_centerX);
@@ -64,25 +63,24 @@
         make.centerX.mas_equalTo(self.contentView.mas_centerX);
         make.size.mas_equalTo(CGSizeMake(280, 30));
     }];
-    
+
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.verifyValueTextF.mas_bottom);
         make.left.right.mas_equalTo(self.verifyValueTextF);
         make.height.mas_equalTo(.5);
     }];
-    
+
     [self.newEnterRoomBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.contentView.mas_centerX);
         make.bottom.mas_equalTo(-10);
         make.size.mas_equalTo(CGSizeMake(100, 45));
     }];
-    
+
     [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(18);
         make.right.mas_equalTo(-16);
         make.size.mas_equalTo(CGSizeMake(14, 14));
     }];
-
 }
 
 - (void)layoutSubviews
@@ -94,7 +92,7 @@
 - (void)showAuthWithType:(NSString *)type
 {
     self.verifyValueTextF.text = @"";
-    
+
     if ([type isEqualToString:@"1"]) {
         self.titleLab.text = @"观看限制密码验证";
         self.verifyValueTextF.placeholder = @"请输入密码";
@@ -102,7 +100,7 @@
         self.titleLab.text = @"观看限制白名单验证";
         self.verifyValueTextF.placeholder = @"请输入白名单验证号码";
     }
-    
+
     [[VUITool getCurrentScreenViewController].view addSubview:self];
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.bottom.mas_equalTo(0);
@@ -123,8 +121,8 @@
     [self disMissContentView];
 
     [super disMissContentView];
-    
-    if ([self.delegate  respondsToSelector:@selector(changeTextWithVerifyValue:)]) {
+
+    if ([self.delegate respondsToSelector:@selector(changeTextWithVerifyValue:)]) {
         [self.delegate changeTextWithVerifyValue:self.verifyValueTextF.text];
     }
 }
@@ -142,6 +140,7 @@
         _verifyValueTextF.textColor = [UIColor blackColor];
         _verifyValueTextF.font = FONT(12);
     }
+
     return _verifyValueTextF;
 }
 
@@ -151,6 +150,7 @@
         _lineView = [UIView new];
         _lineView.backgroundColor = [UIColor colorWithHexString:@"#000000" alpha:.3];
     }
+
     return _lineView;
 }
 
@@ -160,6 +160,7 @@
         _titleLab.textColor = [UIColor colorWithHex:@"#1A1A1A"];
         _titleLab.font = FONT(14);
     }
+
     return _titleLab;
 }
 
@@ -168,11 +169,12 @@
         _newEnterRoomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _newEnterRoomBtn.backgroundColor = [UIColor colorWithHex:@"#FB2626"];
         _newEnterRoomBtn.titleLabel.font = FONT(16);
-        _newEnterRoomBtn.layer.cornerRadius = 45/2;
+        _newEnterRoomBtn.layer.cornerRadius = 45 / 2;
         [_newEnterRoomBtn setTitle:@"进入房间" forState:UIControlStateNormal];
         [_newEnterRoomBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_newEnterRoomBtn addTarget:self action:@selector(newEnterRoomBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     }
+
     return _newEnterRoomBtn;
 }
 
@@ -182,6 +184,7 @@
         [_closeBtn addTarget:self action:@selector(clickCloseBtn) forControlEvents:UIControlEventTouchUpInside];
         [_closeBtn setImage:[UIImage imageNamed:@"vh_close_alert"] forState:UIControlStateNormal];
     }
+
     return _closeBtn;
 }
 

@@ -25,4 +25,3 @@
 - (instancetype)initSignWithFrame:(CGRect)frame obj:(NSObject *)obj webinarInfoData:(VHWebinarInfoData *)webinarInfoData;
 
 @end
-

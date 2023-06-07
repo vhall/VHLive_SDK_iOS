@@ -73,6 +73,6 @@
 /// 收到抽奖消息
 /// - Parameter startModel: 开始抽奖模型
 /// - Parameter endModel: 结束抽奖模型
-- (void)chatLotteryWithStartModel:(VHallStartLotteryModel * )startModel endModel:(VHallEndLotteryModel *)endModel;
+- (void)chatLotteryWithStartModel:(VHallStartLotteryModel *)startModel endModel:(VHallEndLotteryModel *)endModel;
 
 @end

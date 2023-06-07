@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VHPublishVC : VHBaseViewController
 
 /// 活动详情
-@property (nonatomic, copy) NSString * webinar_id;
+@property (nonatomic, copy) NSString *webinar_id;
 /// 是否为横屏 ，YES：横屏 NO：竖屏 ，默认NO
-@property (nonatomic , assign) BOOL screenLandscape;
+@property (nonatomic, assign) BOOL screenLandscape;
 
 @end
 

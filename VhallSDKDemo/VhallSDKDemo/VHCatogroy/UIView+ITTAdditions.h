@@ -116,12 +116,12 @@ CGRect ITTScreenBounds();
 /**
  * Finds the first descendant view (including this view) that is a member of a particular class.
  */
-- (UIView*)descendantOrSelfWithClass:(Class)cls;
+- (UIView *)descendantOrSelfWithClass:(Class)cls;
 
 /**
  * Finds the first ancestor view (including this view) that is a member of a particular class.
  */
-- (UIView*)ancestorOrSelfWithClass:(Class)cls;
+- (UIView *)ancestorOrSelfWithClass:(Class)cls;
 
 /**
  * Removes all subviews.
@@ -133,11 +133,11 @@ CGRect ITTScreenBounds();
  *
  * otherView should be a parent view of this view.
  */
-- (CGPoint)offsetFromView:(UIView*)otherView;
+- (CGPoint)offsetFromView:(UIView *)otherView;
 
 /**
  *  方法功能：获取view所在的UIViewController
  */
-- (UIViewController*)viewController;
+- (UIViewController *)viewController;
 
 @end

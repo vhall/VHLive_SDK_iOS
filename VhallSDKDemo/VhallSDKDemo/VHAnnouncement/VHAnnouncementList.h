@@ -10,9 +10,9 @@
 
 @interface VHAnnouncementListCell : UITableViewCell
 
-@property (nonatomic, strong) UIView * bgView;      ///<背景
-@property (nonatomic, strong) UILabel * timeLab;    ///<时间
-@property (nonatomic, strong) UILabel * titleLab;   ///<标题
+@property (nonatomic, strong) UIView *bgView;       ///<背景
+@property (nonatomic, strong) UILabel *timeLab;     ///<时间
+@property (nonatomic, strong) UILabel *titleLab;    ///<标题
 
 @property (nonatomic, strong) VHallAnnouncementModel *model;
 

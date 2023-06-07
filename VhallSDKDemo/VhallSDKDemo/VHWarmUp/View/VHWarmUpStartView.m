@@ -8,10 +8,10 @@
 #import "VHWarmUpStartView.h"
 
 @interface VHWarmUpStartView ()
-@property (nonatomic, strong) UIView * contentView;
-@property (nonatomic, strong) UIImageView * icon;
-@property (nonatomic, strong) UILabel * titleLab;
-@property (nonatomic, strong) UIButton * startBtn;
+@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIImageView *icon;
+@property (nonatomic, strong) UILabel *titleLab;
+@property (nonatomic, strong) UIButton *startBtn;
 @end
 
 
@@ -20,10 +20,9 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if ([super initWithFrame:frame]) {
-        
         self.alpha = 0;
         self.backgroundColor = [UIColor clearColor];
-        
+
         [self addSubview:self.contentView];
         [self.contentView addSubview:self.icon];
         [self.contentView addSubview:self.titleLab];
@@ -31,8 +30,9 @@
 
         // 初始化布局
         [self setUpMasonry];
-        
-    }return self;
+    }
+
+    return self;
 }
 
 #pragma mark - 初始化布局
@@ -44,42 +44,45 @@
         make.right.mas_equalTo(-50);
         make.height.mas_equalTo(_contentView.mas_width);
     }];
-    
+
     [_startBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(_contentView.mas_centerX);
         make.bottom.mas_equalTo(-25);
         make.size.mas_equalTo(CGSizeMake(170, 40));
     }];
-    
+
     [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(_startBtn.mas_top).offset(-20);
         make.centerX.mas_equalTo(_contentView.mas_centerX);
     }];
-    
+
     [_icon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(_contentView.mas_centerX);
         make.bottom.mas_equalTo(_titleLab.mas_top).offset(-20);
         make.size.mas_equalTo(CGSizeMake(135, 135));
     }];
-    
 }
+
 #pragma mark - 显示
 - (void)show
 {
     self.alpha = 0;
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3
+                     animations:^{
         self.alpha = 1;
-    } completion:^(BOOL finished) {
-
+    }
+                     completion:^(BOOL finished) {
     }];
 }
 
 #pragma mark - 隐藏
 - (void)dismiss
 {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3
+                     animations:^{
         self.alpha = 0;
-    } completion:^(BOOL finished) {
+    }
+                     completion:^(BOOL finished) {
     }];
 }
 
@@ -87,6 +90,7 @@
 - (void)startBtnAction
 {
     [self dismiss];
+
     if (self.clickStartBtn) {
         self.clickStartBtn();
     }
@@ -100,7 +104,9 @@
         _contentView.backgroundColor = [UIColor colorWithHex:@"#FFF4F4"];
         _contentView.layer.masksToBounds = YES;
         _contentView.layer.cornerRadius = 16;
-    }return _contentView;
+    }
+
+    return _contentView;
 }
 
 - (UIImageView *)icon {
@@ -108,6 +114,7 @@
         _icon = [[UIImageView alloc] init];
         _icon.image = [UIImage imageNamed:@"vh_warmUp_icon"];
     }
+
     return _icon;
 }
 
@@ -119,6 +126,7 @@
         _titleLab.font = FONT(14);
         _titleLab.preferredMaxLayoutWidth = Screen_Width - 50 * 2 - 10;
     }
+
     return _titleLab;
 }
 
@@ -128,14 +136,13 @@
         _startBtn.titleLabel.font = FONT(14);
         _startBtn.backgroundColor = VHMainColor;
         _startBtn.layer.masksToBounds = YES;
-        _startBtn.layer.cornerRadius = 40/2;
+        _startBtn.layer.cornerRadius = 40 / 2;
         [_startBtn setTitle:@"立即观看" forState:UIControlStateNormal];
         [_startBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_startBtn addTarget:self action:@selector(startBtnAction) forControlEvents:UIControlEventTouchUpInside];
     }
+
     return _startBtn;
 }
-
-
 
 @end

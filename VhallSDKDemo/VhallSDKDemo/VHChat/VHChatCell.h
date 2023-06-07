@@ -9,9 +9,9 @@
 
 @interface VHChatPhotoCollectionCell : UICollectionViewCell
 
-@property(nonatomic, copy) NSString * image_url;
+@property (nonatomic, copy) NSString *image_url;
 
-@property(nonatomic, assign) BOOL isLeft;
+@property (nonatomic, assign) BOOL isLeft;
 
 @end
 
@@ -21,6 +21,6 @@
 + (VHChatCell *)createCellWithTableView:(UITableView *)tableView;
 
 /// 模型
-@property(nonatomic, strong) VHallChatModel * model;
+@property (nonatomic, strong) VHallChatModel *model;
 
 @end

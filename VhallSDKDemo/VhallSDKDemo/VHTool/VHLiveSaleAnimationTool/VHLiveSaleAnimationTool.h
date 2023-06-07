@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface VHLiveSaleAnimationTool : NSObject
-+ (void)praiseAnimation :(NSString *)imageUrl view:(UIView *)view;
++ (void)praiseAnimation:(NSString *)imageUrl view:(UIView *)view;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -12,9 +12,12 @@
 /// 选中的回调 Block
 /// @param obj 选中的元素
 /// @param index 选中的索引
-typedef void(^VHFoldButtonDidSelectedHandler)(VHFoldButtonItem *obj, NSInteger index);
+typedef void (^VHFoldButtonDidSelectedHandler)(VHFoldButtonItem *obj, NSInteger index);
 
 @interface VHFoldButton : UIView
+
+/// 更多按钮
+@property (nonatomic, strong) UIButton *foldButton;
 
 /// 展开视图的高度
 @property (nonatomic, assign) CGFloat contentHeight;
@@ -23,7 +26,7 @@ typedef void(^VHFoldButtonDidSelectedHandler)(VHFoldButtonItem *obj, NSInteger i
 @property (nonatomic, assign) CGFloat itemHeight;
 
 /// 内容文本的属性
-@property (nonatomic, strong)NSDictionary<NSAttributedStringKey,id> *textAttribute;
+@property (nonatomic, strong) NSDictionary<NSAttributedStringKey, id> *textAttribute;
 
 /// 配置需要展示的数据源
 /// @param datas 数据源
@@ -31,18 +34,18 @@ typedef void(^VHFoldButtonDidSelectedHandler)(VHFoldButtonItem *obj, NSInteger i
 
 /// 选中方法回调
 /// @param handler 回调 Block
-- (void)didSelectedWithHandler:(VHFoldButtonDidSelectedHandler) handler ;
+- (void)didSelectedWithHandler:(VHFoldButtonDidSelectedHandler)handler;
 
 @end
 
 #pragma mark - VHFoldButtonCell
 @interface VHFoldButtonCell : UITableViewCell
-@property (nonatomic, strong) VHFoldButtonItem * item;
-@property (nonatomic, strong) UIImageView * icon;
+@property (nonatomic, strong) VHFoldButtonItem *item;
+@property (nonatomic, strong) UIImageView *icon;
 + (VHFoldButtonCell *)createCellWithTableView:(UITableView *)tableView;
 @end
 
 #pragma mark - VHFoldButtonItem
 @interface VHFoldButtonItem : NSObject
-@property (nonatomic, copy) NSString * title;
+@property (nonatomic, copy) NSString *title;
 @end

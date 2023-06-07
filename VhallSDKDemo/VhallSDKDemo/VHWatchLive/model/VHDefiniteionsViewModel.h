@@ -10,10 +10,10 @@
 
 @interface VHDefiniteionsViewModel : NSObject
 /// 画质
-@property(nonatomic, assign) VHMovieDefinition def;
+@property (nonatomic, assign) VHMovieDefinition def;
 /// 文案
-@property (nonatomic, copy) NSString * title;
+@property (nonatomic, copy) NSString *title;
 /// 选中
-@property(nonatomic, assign) BOOL isSelect;
+@property (nonatomic, assign) BOOL isSelect;
 
 @end

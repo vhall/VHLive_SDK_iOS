@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AES : NSObject
-+(NSString *)AES128Encrypt:(NSString *)plainText key:(NSString *)key;
-+(NSString *)AES128Decrypt:(NSString *)encryptText key:(NSString *)key;
++ (NSString *)AES128Encrypt:(NSString *)plainText key:(NSString *)key;
++ (NSString *)AES128Decrypt:(NSString *)encryptText key:(NSString *)key;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -26,11 +26,11 @@
 /*! 输入框*/
 @property (nonatomic, strong) VHTextView *textView;
 /*! 输入的最大长度 默认 0不限制 */
-@property (nonatomic,assign) NSInteger maxLength;
+@property (nonatomic, assign) NSInteger maxLength;
 /*!  提示文案 */
-@property (nonatomic, copy) NSString * placeholder;
+@property (nonatomic, copy) NSString *placeholder;
 /*! 是否正在编辑*/
-@property (nonatomic , assign , readonly) BOOL isEditing;
+@property (nonatomic, assign, readonly) BOOL isEditing;
 /*! 代理指针*/
 @property (nonatomic, weak) id <VHKeyboardToolViewDelegate> delegate;
 

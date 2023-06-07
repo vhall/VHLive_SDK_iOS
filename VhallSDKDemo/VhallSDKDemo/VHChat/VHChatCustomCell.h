@@ -10,21 +10,21 @@
 @interface VHChatCustomModel : NSObject
 
 /// 昵称
-@property(nonatomic, copy) NSString * nickName;
+@property (nonatomic, copy) NSString *nickName;
 /// 身份
 @property (nonatomic, assign) NSInteger roleName;
 /// 详情
-@property(nonatomic, copy) NSString * content;
+@property (nonatomic, copy) NSString *content;
 /// 附加信息
-@property (nonatomic, strong) NSMutableDictionary * info;
+@property (nonatomic, strong) NSMutableDictionary *info;
 
 @end
 
-typedef void(^ClickSurveyToModel)(VHChatCustomModel * chatCustomModel);
+typedef void (^ClickSurveyToModel)(VHChatCustomModel *chatCustomModel);
 
 @interface VHChatCustomCell : UITableViewCell
 
-@property (nonatomic, strong) VHChatCustomModel * chatCustomModel;
+@property (nonatomic, strong) VHChatCustomModel *chatCustomModel;
 
 @property (nonatomic, copy) ClickSurveyToModel clickSurveyToModel;
 
@@ -32,4 +32,3 @@ typedef void(^ClickSurveyToModel)(VHChatCustomModel * chatCustomModel);
 + (VHChatCustomCell *)createCellWithTableView:(UITableView *)tableView;
 
 @end
-

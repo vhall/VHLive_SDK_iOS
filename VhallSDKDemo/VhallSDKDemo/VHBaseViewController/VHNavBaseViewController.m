@@ -16,7 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     // 导航禁止手势返回
     self.interactivePopGestureRecognizer.enabled = NO;
 }
@@ -25,4 +25,5 @@
 - (UIViewController *)childViewControllerForStatusBarStyle {
     return self.topViewController;
 }
+
 @end

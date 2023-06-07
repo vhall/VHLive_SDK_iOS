@@ -7,12 +7,9 @@
 
 #import "VHFoldButton.h"
 
-@interface VHFoldButton ()<UITableViewDelegate,UITableViewDataSource>
-{
+@interface VHFoldButton ()<UITableViewDelegate, UITableViewDataSource> {
     BOOL __isFolded;
 }
-
-@property (nonatomic, strong) UIButton *foldButton;
 
 @property (nonatomic, strong) UITableView *foldTable;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -27,10 +24,10 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
 
+    if (self) {
         self.itemHeight = 40;
-        
+
         [self.foldButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.bottom.right.mas_equalTo(0);
             make.height.mas_equalTo(30);
@@ -41,6 +38,7 @@
             make.height.mas_equalTo(0);
         }];
     }
+
     return self;
 }
 
@@ -52,12 +50,12 @@
     if (self.dataSource.count > 0) {
         [self.dataSource removeAllObjects];
     }
-    
+
     [self.dataSource addObjectsFromArray:datas];
     [self.foldTable reloadData];
 }
 
-- (void) didSelectedWithHandler:(VHFoldButtonDidSelectedHandler) handler {
+- (void)didSelectedWithHandler:(VHFoldButtonDidSelectedHandler)handler {
     self.selectedHandler = handler;
 }
 
@@ -69,8 +67,9 @@
             [self.superview bringSubviewToFront:self];
         }
     }
-    
+
     button.selected = !button.selected;
+
     if (__isFolded) {
         [self close];
     } else {
@@ -84,13 +83,16 @@
     if (__isFolded == YES) {
         return;
     }
+
     __isFolded = YES;
-    
-    [UIView animateWithDuration:0.1 animations:^{
+
+    [UIView animateWithDuration:0.1
+                     animations:^{
         [self mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(30 + self.contentHeight);
         }];
-    } completion:^(BOOL finished) {
+    }
+                     completion:^(BOOL finished) {
     }];
 }
 
@@ -100,8 +102,9 @@
     if (__isFolded == NO) {
         return;
     }
+
     __isFolded = NO;
-    
+
     [self mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(30);
     }];
@@ -116,12 +119,12 @@
             make.height.mas_equalTo(0);
         }];
     } else {
-        [UIView animateWithDuration:0.1 animations:^{
+        [UIView animateWithDuration:0.1
+                         animations:^{
             [self.foldTable mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(self.contentHeight);
             }];
         }];
-        
     }
 }
 
@@ -132,7 +135,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VHFoldButtonCell *cell = [VHFoldButtonCell createCellWithTableView:tableView];
+
     cell.item = self.dataSource[indexPath.row];
+
+    if ([cell.item.title isEqualToString:@"问卷"]) {
+        cell.accessibilityLabel = VHTests_Fold_Survey;
+    }
+
+    if ([cell.item.title isEqualToString:@"公告"]) {
+        cell.accessibilityLabel = VHTests_Fold_Announcement;
+    }
+    cell.accessibilityHint = @"Tap to select this row";
+
     return cell;
 }
 
@@ -141,13 +155,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    VHFoldButtonItem * obj = [self.dataSource objectAtIndex:indexPath.row];
-    
+    VHFoldButtonItem *obj = [self.dataSource objectAtIndex:indexPath.row];
+
     if (self.selectedHandler) {
         self.selectedHandler(obj, indexPath.row);
     }
-    
+
     [self foldButtonAction:self.foldButton];
 }
 
@@ -158,7 +171,9 @@
         [_foldButton setImage:[UIImage imageNamed:@"vh_fold_icon"] forState:UIControlStateNormal];
         [_foldButton addTarget:self action:@selector(foldButtonAction:) forControlEvents:(UIControlEventTouchUpInside)];
         [self addSubview:_foldButton];
-    } return _foldButton;
+    }
+
+    return _foldButton;
 }
 
 - (UITableView *)foldTable {
@@ -170,14 +185,19 @@
         _foldTable.dataSource = self;
         _foldTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self addSubview:_foldTable];
-    } return _foldTable;
+    }
+
+    return _foldTable;
 }
 
 - (NSMutableArray *)dataSource {
     if (_dataSource == nil) {
         _dataSource = [NSMutableArray array];
-    } return _dataSource;
+    }
+
+    return _dataSource;
 }
+
 @end
 
 #pragma mark - VHFoldButtonCell
@@ -185,41 +205,46 @@
 
 + (VHFoldButtonCell *)createCellWithTableView:(UITableView *)tableView
 {
-    VHFoldButtonCell * cell = [tableView dequeueReusableCellWithIdentifier:@"VHFoldButtonCell"];
+    VHFoldButtonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VHFoldButtonCell"];
+
     if (!cell) {
         cell = [[VHFoldButtonCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"VHFoldButtonCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+
     return cell;
 }
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-
         self.backgroundColor = [UIColor clearColor];
         self.contentView.backgroundColor = [UIColor clearColor];
 
         [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self);
         }];
-        
+
         [self.contentView addSubview:self.icon];
         [self.icon mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.center.mas_equalTo(self);
             make.size.mas_equalTo(CGSizeMake(30, 30));
         }];
     }
+
     return self;
 }
 
 - (void)setItem:(VHFoldButtonItem *)item {
     _item = item;
-    
+
     if ([item.title isEqualToString:@"问卷"]) {
         self.icon.image = [UIImage imageNamed:@"vh_more_tool_su_icon"];
     }
+
     if ([item.title isEqualToString:@"公告"]) {
         self.icon.image = [UIImage imageNamed:@"vh_more_tool_an_icon"];
     }
+
     if ([item.title isEqualToString:@"签到"]) {
         self.icon.image = [UIImage imageNamed:@"vh_more_tool_sin_icon"];
     }
@@ -229,8 +254,11 @@
 - (UIImageView *)icon {
     if (!_icon) {
         _icon = [[UIImageView alloc] init];
-    } return _icon;
+    }
+
+    return _icon;
 }
+
 @end
 
 #pragma mark - VHFoldButtonItem
