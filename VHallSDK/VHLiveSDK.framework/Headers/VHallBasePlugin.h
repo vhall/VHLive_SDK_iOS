@@ -17,7 +17,7 @@
 /**
  * 活动Model 活动正常开始后 才会有值
  */
-@property (nonatomic,weak) VHallActivityModel *activityModel;
+@property (nonatomic, weak) VHallActivityModel *activityModel;
 
 /**
  * 开始活动通知
@@ -28,13 +28,13 @@
  * 初始化功能模块
  * livePublish 发起端实例
  */
-- (instancetype)initWithLivePublish:(VHallLivePublish *)livePublish __deprecated_msg("Use initWithObject: instead");
+- (instancetype)initWithLivePublish:(VHallLivePublish *) livePublish __deprecated_msg("Use initWithObject: instead");
 
 /**
  * 初始化功能模块
  * moviePlayer 观看端实例
  */
-- (instancetype)initWithMoviePlayer:(VHallMoviePlayer *)moviePlayer __deprecated_msg("Use initWithObject: instead");
+- (instancetype)initWithMoviePlayer:(VHallMoviePlayer *) moviePlayer __deprecated_msg("Use initWithObject: instead");
 
 /**
  * 初始化功能模块 通用方法

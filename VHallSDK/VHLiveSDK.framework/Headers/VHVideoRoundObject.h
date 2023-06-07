@@ -16,6 +16,6 @@
 /// @param is_next 是否是下一组， 0：当前组， 1：下一组
 /// @param success 成功
 /// @param fail 失败
-+ (void)getRoundUsers:(NSString *)room_id is_next:(NSString *)is_next success:(void(^)(NSDictionary *response))success fail:(void(^)(NSError *error))fail;
++ (void)getRoundUsers:(NSString *)room_id is_next:(NSString *)is_next success:(void (^)(NSDictionary *response))success fail:(void (^)(NSError *error))fail;
 
 @end

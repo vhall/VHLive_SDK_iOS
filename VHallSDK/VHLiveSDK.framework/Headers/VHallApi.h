@@ -9,29 +9,29 @@
 #ifndef VHallApi_h
 #define VHallApi_h
 
-#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #import "VHallConst.h"
 
+#import "VHallAnnouncement.h"
 #import "VHallBasePlugin.h"
-#import "VHallMsgModels.h"
 #import "VHallChat.h"
-#import "VHallQAndA.h"
-#import "VHallLottery.h"
 #import "VHallComment.h"
+#import "VHallGiftObject.h"
+#import "VHallLikeObject.h"
+#import "VHallLottery.h"
+#import "VHallMsgModels.h"
+#import "VHallQAndA.h"
+#import "VHallRehearsalObject.h"
 #import "VHallSign.h"
 #import "VHallSurvey.h"
-#import "VHallAnnouncement.h"
 #import "VHallTimerObject.h"
-#import "VHallLikeObject.h"
-#import "VHallGiftObject.h"
-#import "VHallRehearsalObject.h"
-#import "VHWarmInfoObject.h"
 #import "VHChaptersObject.h"
-#import "VHVideoRoundObject.h"
 #import "VHCommonObject.h"
 #import "VHExamObject.h"
+#import "VHVideoRoundObject.h"
+#import "VHWarmInfoObject.h"
 
 
 @protocol VHallApiDelegate <NSObject>
@@ -51,8 +51,8 @@
  * 用来获得当前sdk的版本号
  * return 返回sdk版本号
  */
-+(NSString *) sdkVersion;
-+(NSString *) sdkVersionEX;
++ (NSString *)sdkVersion;
++ (NSString *)sdkVersionEX;
 
 /*！
  *  注册app
@@ -71,7 +71,7 @@
  *  @param secretKey    vhall后台注册生成的appsecretKey
  *  @param host         微吼服务所在域名，可传nil默认使用微吼域名
  */
-+ (void)registerApp:(NSString *)appKey SecretKey:(NSString *)secretKey host:(NSString*)host;
++ (void)registerApp:(NSString *)appKey SecretKey:(NSString *)secretKey host:(NSString *)host;
 
 
 /*！
@@ -82,7 +82,7 @@
  *  @param host         微吼服务所在域名，可传nil默认使用微吼域名
  *  @param rsaPrivateKey    RSA私钥，若控制台设置使用RSA加密方式，则需要传此值
  */
-+ (void)registerApp:(NSString *)appKey SecretKey:(NSString *)secretKey host:(NSString*)host rsaPrivateKey:(NSString *)rsaPrivateKey;
++ (void)registerApp:(NSString *)appKey SecretKey:(NSString *)secretKey host:(NSString *)host rsaPrivateKey:(NSString *)rsaPrivateKey;
 
 
 /*！
@@ -155,19 +155,19 @@
  *  获取当前登录用户头像
  *  @result 当前登陆用户头像地址
  */
-+ (NSString*)currentUserHeadUrl;
++ (NSString *)currentUserHeadUrl;
 
 /*!
  *  获取当前登录用户昵称
  *  @result 当前登陆用户昵称
  */
-+ (NSString*)currentUserNickName;
++ (NSString *)currentUserNickName;
 
 /*!
  *  查询错误码对应错误内容
  *  @result 错误内容
  */
-+ (NSString*)errorMsgWithCode:(NSInteger) errorCode;
++ (NSString *)errorMsgWithCode:(NSInteger)errorCode;
 
 @end
 
@@ -185,7 +185,7 @@
                      nickName:(NSString *)nickName
                        avatar:(NSString *)avatar
                       success:(void (^)(void))successBlock
-                      failure:(void (^)(NSError *error))failureBlock __deprecated_msg("此api命名不规范,推荐使用loginWithThirdUserId:nickName:avatar:success:failure:");;
+                      failure:(void (^)(NSError * error)) failureBlock __deprecated_msg("此api命名不规范,推荐使用loginWithThirdUserId:nickName:avatar:success:failure:");
 
 @end
 

@@ -16,8 +16,8 @@ typedef NS_ENUM(NSUInteger, VHPlatformType) {
 //平台参数 0：iOS App 4：iOS SDK  详见：http://wiki.vhallops.com/pages/viewpage.action?pageId=151552622
 
 #import "VHSSRoomInfo.h"
-#define VHSSNewVerion    !([VHSaaSShareApi sharedInstance].disableHuadie)  //化蝶接口是否可用
-#define VHSSNewSaaSH5   (![VHSaaSShareApi sharedInstance].currentWebinar_isOld && ![VHSaaSShareApi sharedInstance].disableHuadie) // 新版H5活动 && 化蝶接口可用 (微吼直播app会使用该宏)
+#define VHSSNewVerion !([VHSaaSShareApi sharedInstance].disableHuadie)     //化蝶接口是否可用
+#define VHSSNewSaaSH5 (![VHSaaSShareApi sharedInstance].currentWebinar_isOld && ![VHSaaSShareApi sharedInstance].disableHuadie)   // 新版H5活动 && 化蝶接口可用 (微吼直播app会使用该宏)
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,13 +26,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL currentWebinar_isOld;     ///<当前活动是否是老活动，是则需要调用旧版接口，默认为NO（即新活动），每次操作一个活动时，需要给此属性赋值
 
 @property (nonatomic, copy) NSString *RSAPrivateKey;     ///<RSA私钥 (若控制台选择RSA加密方式，则需要此值)
-@property (nonatomic,assign,readonly) VHPlatformType platform; ///<平台
-@property (nonatomic,copy,readonly) NSString *biz_id; ///<业务线id，2化蝶，4知客
-@property (nonatomic,copy,readonly) NSString *saasApiHost;  ///<接口域名
-@property (nonatomic,copy,readonly) NSString *saasAppKey;  ///<SaaS appKey
-@property (nonatomic,copy,readonly) NSString *saasSecretKey;  ///<SaaS SecretKey
-@property (nonatomic,copy) NSString *bundleId;   ///<集成sdk的项目包名
-@property (nonatomic,copy) NSString *saasSDKVersion;  ///<SaaS SDK版本号
+@property (nonatomic, assign, readonly) VHPlatformType platform; ///<平台
+@property (nonatomic, copy, readonly) NSString *biz_id; ///<业务线id，2化蝶，4知客
+@property (nonatomic, copy, readonly) NSString *saasApiHost;  ///<接口域名
+@property (nonatomic, copy, readonly) NSString *saasAppKey;  ///<SaaS appKey
+@property (nonatomic, copy, readonly) NSString *saasSecretKey;  ///<SaaS SecretKey
+@property (nonatomic, copy) NSString *bundleId;   ///<集成sdk的项目包名
+@property (nonatomic, copy) NSString *saasSDKVersion;  ///<SaaS SDK版本号
 
 @property (nonatomic, copy, nullable) NSString *token;  ///<请求头token（登录后返回，app保存本地，SDK保存内存）
 @property (nonatomic, copy, nullable) NSString *visitor_id;     ///<访客唯一标识（口令登录验证接口使用，app保存本地，SDK保存内存）
@@ -45,11 +45,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger roll_back;     ///<化蝶接口是否回滚
 @property (nonatomic, copy) NSString *logReportUrl;     ///<进入直播、观看上报业务日志地址
-@property (nonatomic, assign) NSInteger sign_type;     ///<加密方式 0:md5 1:rsa  
+@property (nonatomic, assign) NSInteger sign_type;     ///<加密方式 0:md5 1:rsa
 @property (nonatomic, assign) BOOL is_jump_hd;     ///<是否跳转化蝶（迁移用户），默认设置YES，获取用户信息后更新此值（app创建直播时，需要使用此参数来判断，YES，走化蝶  NO，走老接口）
 
 
-@property (nonatomic,strong,nullable) VHSSRoomInfo *roomInfo;  ///<房间信息（需要自己设置）
+@property (nonatomic, strong, nullable) VHSSRoomInfo *roomInfo;  ///<房间信息（需要自己设置）
 
 
 + (instancetype)sharedInstance;
@@ -57,20 +57,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// app配置 （默认业务线bizId = 2）
 /// @param apiHost 接口请求域名
-+ (void)appRegisterApihost:(NSString*)apiHost;
++ (void)appRegisterApihost:(NSString *)apiHost;
 
 
 /// app配置，指定业务线id
 /// @param apiHost 接口请求域名
 /// @param bizId 业务线id：2化蝶，4知客
-+ (void)appRegisterApihost:(NSString*)apiHost bizId:(NSString *)bizId;
++ (void)appRegisterApihost:(NSString *)apiHost bizId:(NSString *)bizId;
 
 
 /// SDK配置
 /// @param appkey SaaS appKey
 /// @param secretKey SaaS secretKey
 /// @param apiHost 接口请求域名
-+ (void)sdkRegisterWithAppKey:(NSString *)appkey secretKey:(NSString *)secretKey apihost:(NSString*)apiHost rsaPrivateKey:(NSString *)rsaPrivateKey;
++ (void)sdkRegisterWithAppKey:(NSString *)appkey secretKey:(NSString *)secretKey apihost:(NSString *)apiHost rsaPrivateKey:(NSString *)rsaPrivateKey;
 
 //清除房间信息以及当前房间关联的信息
 - (void)clearRoomInfo;

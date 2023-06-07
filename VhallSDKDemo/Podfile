@@ -7,8 +7,8 @@ target 'VhallSDKDemo' do
 
   # Pods for VhallSDKDemo
 
-  pod 'VHLiveSDK', '6.13.1'
-  pod 'VHLiveSDK_Interactive', '6.13.1'
+  pod 'VHLiveSDK', '6.15.0'
+  pod 'VHLiveSDK_Interactive', '6.15.0'
 
   pod 'MJRefresh', '~> 3.7.5'
   pod 'MJExtension', '~> 3.4.1'

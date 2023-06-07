@@ -7,31 +7,31 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VHallRawBaseModel.h"
 #import "VHallBasePlugin.h"
-#import "VHWebinarInfoData.h"
 #import "VHallConst.h"
+#import "VHallRawBaseModel.h"
+#import "VHWebinarInfoData.h"
 
 /// 视频详情
 @interface VHWarmInfoRecordListItem : NSObject
 
-@property (nonatomic , copy) NSString              *    paas_record_id;         ///<暖场视频paas_id
-@property (nonatomic , copy) NSString              *    record_name;            ///<暖场视频名称
-@property (nonatomic , copy) NSString              *    created_at;             ///<关联成为暖场视频时间
-@property (nonatomic , copy) NSString              *    storage;                ///<大小
-@property (nonatomic , assign) float                      duration;               ///<时长
+@property (nonatomic, copy) NSString *paas_record_id;                           ///<暖场视频paas_id
+@property (nonatomic, copy) NSString *record_name;                              ///<暖场视频名称
+@property (nonatomic, copy) NSString *created_at;                               ///<关联成为暖场视频时间
+@property (nonatomic, copy) NSString *storage;                                  ///<大小
+@property (nonatomic, assign) float duration;                                   ///<时长
 
 @end
 
 /// 暖场视频详情
 @interface VHWarmInfoModel : VHallRawBaseModel
 
-@property (nonatomic , assign) NSInteger                    player_type;        ///<1:单次播放 2:循环播放
-@property (nonatomic , assign) NSInteger                    is_open_warm_video; ///<暖场视频是否开启：0关闭  1开启
-@property (nonatomic , copy) NSString              *        img_url;            ///<暖场视频图片
-@property (nonatomic , copy) NSString              *        warm_id;            ///<暖场视频id
-@property (nonatomic , copy) NSString              *        webinar_id;         ///<活动id
-@property (nonatomic , copy) NSArray <VHWarmInfoRecordListItem *> * record_list;        ///<视频详情
+@property (nonatomic, assign) NSInteger player_type;                            ///<1:单次播放 2:循环播放
+@property (nonatomic, assign) NSInteger is_open_warm_video;                     ///<暖场视频是否开启：0关闭  1开启
+@property (nonatomic, copy) NSString *img_url;                                  ///<暖场视频图片
+@property (nonatomic, copy) NSString *warm_id;                                  ///<暖场视频id
+@property (nonatomic, copy) NSString *webinar_id;                               ///<活动id
+@property (nonatomic, copy) NSArray <VHWarmInfoRecordListItem *> *record_list;  ///<视频详情
 
 @end
 
@@ -67,7 +67,7 @@
 
 @property (nonatomic, weak)   id <VHWarmInfoObjectDelegate> delegate;           ///<代理
 
-@property (nonatomic, strong) UIView *                      moviePlayerView;    ///<播放器
+@property (nonatomic, strong) UIView *moviePlayerView;                          ///<播放器
 
 /// 初始化
 /// - Parameter webinarInfoData: 活动详情

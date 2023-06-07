@@ -7,16 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VHallRawBaseModel.h"
 #import "VHallBasePlugin.h"
+#import "VHallRawBaseModel.h"
 
 @interface VHallTimerObjectModel : VHallRawBaseModel
 
-@property (nonatomic, readonly) NSInteger   duration;       ///<总时间 秒
-@property (nonatomic, readonly) NSInteger   remain_time;    ///<剩余时间 秒
-@property (nonatomic, readonly) NSInteger   status;         ///<4=暂停
-@property (nonatomic, readonly) BOOL        is_all_show;    ///<是否所有人可见
-@property (nonatomic, readonly) BOOL        is_timeout;     ///<是否允许超时
+@property (nonatomic, readonly) NSInteger duration;         ///<总时间 秒
+@property (nonatomic, readonly) NSInteger remain_time;      ///<剩余时间 秒
+@property (nonatomic, readonly) NSInteger status;           ///<4=暂停
+@property (nonatomic, readonly) BOOL is_all_show;           ///<是否所有人可见
+@property (nonatomic, readonly) BOOL is_timeout;            ///<是否允许超时
 
 @end
 
@@ -64,7 +64,6 @@
 /// 查询计时器进度
 /// @param success 成功
 /// @param fail 失败
-+ (void)requestInteractsTimerInfoSuccess:(void(^)(VHallTimerObjectModel *timerModel))success
-                                    fail:(void(^)(NSError *error))fail;
++ (void)requestInteractsTimerInfoSuccess:(void (^)(VHallTimerObjectModel *timerModel))success
+                                    fail:(void (^)(NSError *error))fail;
 @end
-

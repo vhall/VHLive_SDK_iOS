@@ -60,7 +60,7 @@
 {
     self.nickName.text = [VHallApi currentUserNickName];
     
-    self.activityTF.text = [VUITool isBlankString:DEMO_Setting.activityID] ? @"305821089" : DEMO_Setting.activityID;
+    self.activityTF.text = [VUITool isBlankString:DEMO_Setting.activityID] ? @"232911019" : DEMO_Setting.activityID;
     
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:[VHallApi currentUserHeadUrl]] placeholderImage:[UIImage imageNamed:@"defaultHead"]];
 

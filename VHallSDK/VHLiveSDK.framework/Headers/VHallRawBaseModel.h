@@ -10,9 +10,8 @@
 
 @interface VHallRawBaseModel : NSObject
 
-@property (nonatomic , strong ) NSDictionary        * responseObject;
+@property (nonatomic, strong) NSDictionary *responseObject;
 
 - (instancetype)initWithResponseObject:(NSDictionary *)responseObject;
 
 @end
-

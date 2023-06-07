@@ -7,27 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VHallRawBaseModel.h"
 #import "VHallBasePlugin.h"
+#import "VHallRawBaseModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 // 礼物
 @interface VHallGiftModel : NSObject
-@property (nonatomic, assign) NSInteger         source_status;      ///<来源类型：0 web 1 app
-@property (nonatomic, assign) CGFloat           gift_price;         ///<价格
-@property (nonatomic, copy) NSString *          event_type;         ///<事件名称
-@property (nonatomic, copy) NSString *          type;               ///<消息类型
-@property (nonatomic, copy) NSString *          gift_creator_id;    ///<礼物创建者ID
-@property (nonatomic, copy) NSString *          gift_id;            ///<礼物id
-@property (nonatomic, copy) NSString *          gift_image_url;     ///<礼物图片
-@property (nonatomic, copy) NSString *          gift_name;          ///<礼物名称
-@property (nonatomic, copy) NSString *          gift_receiver_id;   ///<礼物接收者ID
-@property (nonatomic, copy) NSString *          gift_user_avatar;   ///<赠送礼物者用户头像
-@property (nonatomic, copy) NSString *          gift_user_id;       ///<赠送礼物者用户ID
-@property (nonatomic, copy) NSString *          gift_user_name;     ///<赠送礼物者用户名
-@property (nonatomic, copy) NSString *          gift_user_nickname; ///< 赠送礼物者昵称
-@property (nonatomic, copy) NSString *          room_id;            ///< 房间id
+@property (nonatomic, assign) NSInteger source_status;              ///<来源类型：0 web 1 app
+@property (nonatomic, assign) CGFloat gift_price;                   ///<价格
+@property (nonatomic, copy) NSString *event_type;                   ///<事件名称
+@property (nonatomic, copy) NSString *type;                         ///<消息类型
+@property (nonatomic, copy) NSString *gift_creator_id;              ///<礼物创建者ID
+@property (nonatomic, copy) NSString *gift_id;                      ///<礼物id
+@property (nonatomic, copy) NSString *gift_image_url;               ///<礼物图片
+@property (nonatomic, copy) NSString *gift_name;                    ///<礼物名称
+@property (nonatomic, copy) NSString *gift_receiver_id;             ///<礼物接收者ID
+@property (nonatomic, copy) NSString *gift_user_avatar;             ///<赠送礼物者用户头像
+@property (nonatomic, copy) NSString *gift_user_id;                 ///<赠送礼物者用户ID
+@property (nonatomic, copy) NSString *gift_user_name;               ///<赠送礼物者用户名
+@property (nonatomic, copy) NSString *gift_user_nickname;           ///< 赠送礼物者昵称
+@property (nonatomic, copy) NSString *room_id;                      ///< 房间id
 
 - (instancetype)initWithData:(NSDictionary *)data;
 
@@ -36,43 +36,43 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface VHallGiftListItem : VHallRawBaseModel
 
-@property (nonatomic , readonly) NSString              *    giftId;         ///<礼物id
-@property (nonatomic , readonly) NSString              *    image_url;      ///<礼物图片
-@property (nonatomic , readonly) NSString              *    name;           ///<礼物名称
-@property (nonatomic , readonly) NSString              *    price;          ///<礼物价格
-@property (nonatomic , readonly) NSInteger                  source_status;  ///<来源类型：0 web 1 app
-@property (nonatomic , readonly) NSInteger                  source_type;    ///<0 系统礼物 1 自定义礼物
+@property (nonatomic, readonly) NSString *giftId;                           ///<礼物id
+@property (nonatomic, readonly) NSString *image_url;                        ///<礼物图片
+@property (nonatomic, readonly) NSString *name;                             ///<礼物名称
+@property (nonatomic, readonly) NSString *price;                            ///<礼物价格
+@property (nonatomic, readonly) NSInteger source_status;                    ///<来源类型：0 web 1 app
+@property (nonatomic, readonly) NSInteger source_type;                      ///<0 系统礼物 1 自定义礼物
 
 @end
 
 @interface VHallSendGiftModel : VHallRawBaseModel
 
-@property (nonatomic , readonly) NSString              * source_type;       ///<0 系统礼物 1 自定义礼物
-@property (nonatomic , readonly) NSString              * gift_user_id;      ///<赠送礼物者用户ID
-@property (nonatomic , readonly) NSString              * gift_user_avatar;  ///<赠送礼物者用户头像
-@property (nonatomic , readonly) NSString              * gift_id;           ///<礼物ID
-@property (nonatomic , readonly) NSString              * gift_user_name;    ///<赠送礼物者用户名
-@property (nonatomic , readonly) NSString              * name;              ///<礼物名称
-@property (nonatomic , readonly) NSString              * source_id;         ///<房间ID
-@property (nonatomic , readonly) NSString              * gift_user_nickname;///<赠送礼物者昵称
-@property (nonatomic , readonly) NSString              * gift_user_phone;   ///<赠送礼物者用户手机号
-@property (nonatomic , readonly) NSString              * source_status;     ///<来源类型：0 web 1 app
-@property (nonatomic , readonly) NSString              * pay_status;        ///<礼物支付状态：0 等待支付 1 支付成功 2 支付失败
-@property (nonatomic , readonly) NSString              * trade_no;          ///<礼物订单号
-@property (nonatomic , readonly) NSString              * creator_id;        ///<礼物创建者ID
-@property (nonatomic , readonly) NSString              * receiver_id;       ///<礼物接收者ID
-@property (nonatomic , readonly) NSString              * image_url;         ///<礼物图片地址
-@property (nonatomic , readonly) NSString              * price;             ///<礼物价格
+@property (nonatomic, readonly) NSString *source_type;                      ///<0 系统礼物 1 自定义礼物
+@property (nonatomic, readonly) NSString *gift_user_id;                     ///<赠送礼物者用户ID
+@property (nonatomic, readonly) NSString *gift_user_avatar;                 ///<赠送礼物者用户头像
+@property (nonatomic, readonly) NSString *gift_id;                          ///<礼物ID
+@property (nonatomic, readonly) NSString *gift_user_name;                   ///<赠送礼物者用户名
+@property (nonatomic, readonly) NSString *name;                             ///<礼物名称
+@property (nonatomic, readonly) NSString *source_id;                        ///<房间ID
+@property (nonatomic, readonly) NSString *gift_user_nickname;               ///<赠送礼物者昵称
+@property (nonatomic, readonly) NSString *gift_user_phone;                  ///<赠送礼物者用户手机号
+@property (nonatomic, readonly) NSString *source_status;                    ///<来源类型：0 web 1 app
+@property (nonatomic, readonly) NSString *pay_status;                       ///<礼物支付状态：0 等待支付 1 支付成功 2 支付失败
+@property (nonatomic, readonly) NSString *trade_no;                         ///<礼物订单号
+@property (nonatomic, readonly) NSString *creator_id;                       ///<礼物创建者ID
+@property (nonatomic, readonly) NSString *receiver_id;                      ///<礼物接收者ID
+@property (nonatomic, readonly) NSString *image_url;                        ///<礼物图片地址
+@property (nonatomic, readonly) NSString *price;                            ///<礼物价格
 
-@property (nonatomic , readonly) NSString              * creator_nickname;
-@property (nonatomic , readonly) NSString              * updated_at;
-@property (nonatomic , readonly) NSString              * bu;
-@property (nonatomic , readonly) NSString              * deleted;
-@property (nonatomic , readonly) NSString              * creator_avatar;
-@property (nonatomic , readonly) NSString              * app_id;
-@property (nonatomic , readonly) NSString              * deleted_at;
-@property (nonatomic , readonly) NSString              * created_at;
-@property (nonatomic , strong , readonly) NSDictionary        * data;
+@property (nonatomic, readonly) NSString *creator_nickname;
+@property (nonatomic, readonly) NSString *updated_at;
+@property (nonatomic, readonly) NSString *bu;
+@property (nonatomic, readonly) NSString *deleted;
+@property (nonatomic, readonly) NSString *creator_avatar;
+@property (nonatomic, readonly) NSString *app_id;
+@property (nonatomic, readonly) NSString *deleted_at;
+@property (nonatomic, readonly) NSString *created_at;
+@property (nonatomic, strong, readonly) NSDictionary *data;
 
 @end
 
@@ -92,7 +92,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param roomId 房间id
 /// @param complete giftItem:礼物列表 error:错误详情
 + (void)webinarUsingGiftListWithRoomId:(NSString *)roomId
-                              complete:(void(^)(NSArray <VHallGiftListItem *> *giftList, NSError *error))complete;
+                              complete:(void (^)(NSArray <VHallGiftListItem *> *giftList, NSError *error))complete;
 
 
 /// 观看端_发送礼物给主持人
@@ -107,10 +107,9 @@ NS_ASSUME_NONNULL_BEGIN
                    channel:(NSString *)channel
               service_code:(NSString *)service_code
                   giftItem:(VHallGiftListItem *)giftItem
-                  complete:(void(^)(VHallSendGiftModel *sendGiftModel, NSError *error))complete;
+                  complete:(void (^)(VHallSendGiftModel *sendGiftModel, NSError *error))complete;
 
 
 @end
 
 NS_ASSUME_NONNULL_END
-

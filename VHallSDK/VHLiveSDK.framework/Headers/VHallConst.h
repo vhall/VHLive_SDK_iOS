@@ -138,6 +138,9 @@ typedef NS_ENUM(NSInteger,VHMovieDefinition) {
     VHMovieDefinitionHD                 = 2,    ///<高清
     VHMovieDefinitionSD                 = 3,    ///<标清
     VHMovieDefinitionAudio              = 4,    ///<纯音频
+    VHMovieDefinition916crop            = 5,    ///<特殊裁剪分辨率,普通视频设置无效
+    VHMovieDefinition1080p              = 6,    ///<1080p
+
 };
 
 /**

@@ -121,22 +121,22 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL is_banned;           //当前用户是否被禁言
 @property (nonatomic, assign) BOOL is_kicked;           //当前用户是否被踢出
 @property (nonatomic, assign) BOOL question_status;     //问答是否处于开启状态 1 开启 0 关闭
-@property (nonatomic, assign) BOOL qa_status;            //是否开启了问答禁言 YES 开启 NO 未开启 
+@property (nonatomic, assign) BOOL qa_status;           //是否开启了问答禁言 YES 开启 NO 未开启
 //问答名称
-@property (nonatomic,copy) NSString *question_name;
+@property (nonatomic, copy) NSString *question_name;
 @property (nonatomic, assign) BOOL is_desktop;          //开关桌面演示，1开0关
 @property (nonatomic, assign) BOOL is_doc;              //开关文档，1开0关
 @property (nonatomic, assign) BOOL is_handsup;          //当前举手开关，1开0关
 @property (nonatomic, assign) BOOL is_invitecard;       //开关邀请卡 1是0否
 @property (nonatomic, assign) NSInteger speakerAndShowLayout;   //0 -- 分离模式；1 -- 合并模式；
 @property (nonatomic, assign) NSInteger start_type;     //获取活动发起类型 1 web 2 app 3 sdk 4 推拉流 5 定时 6 admin后台 7第三方8 助手
-@property (nonatomic, copy)   NSString* doc_permission;   //文档权限（主讲人的id）
-@property (nonatomic, copy)   NSString* main_screen;      //主画面绑定的参会ID，默认为主持人
-@property (nonatomic, copy)   NSString* rebroadcast;      //转播源房间id
-@property (nonatomic, copy)   NSString* layout;           //获取观看端布局, 未设置返回空
+@property (nonatomic, copy)   NSString *doc_permission;   //文档权限（主讲人的id）
+@property (nonatomic, copy)   NSString *main_screen;      //主画面绑定的参会ID，默认为主持人
+@property (nonatomic, copy)   NSString *rebroadcast;      //转播源房间id
+@property (nonatomic, copy)   NSString *layout;         //获取观看端布局, 未设置返回空
 @property (nonatomic, strong) NSArray <VHSSRoomSpeaker *> *speaker_list;    //此时的上麦列表
-@property (nonatomic, strong) NSString* definition;     //获取视频清晰度， 未设置返回空
-@property(nonatomic, strong) NSDictionary * videoBackGroundMap; //背景图相关属性
+@property (nonatomic, strong) NSString *definition;     //获取视频清晰度， 未设置返回空
+@property (nonatomic, strong) NSDictionary *videoBackGroundMap; //背景图相关属性
 - (instancetype)initWithDict:(NSDictionary *)dict;
 @end
 

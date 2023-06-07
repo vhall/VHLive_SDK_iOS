@@ -25,8 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param content 公告内容
 /// @param pushTime 发布时间
 /// @param duration 公告显示时长 0代表永久显示
-- (void)announcementContentDidChange:(NSString*)content
-                            pushTime:(NSString*)pushTime
+- (void)announcementContentDidChange:(NSString *)content
+                            pushTime:(NSString *)pushTime
                             duration:(NSInteger)duration;
 
 @end
@@ -46,8 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
                              page_num:(NSInteger)page_num
                             page_size:(NSInteger)page_size
                             startTime:(NSString *)startTime
-                              success:(void(^)(NSArray <VHallAnnouncementModel *> *dataArr))success
-                                 fail:(void(^)(NSError *error))fail;
+                              success:(void (^)(NSArray <VHallAnnouncementModel *> *dataArr))success
+                                 fail:(void (^)(NSError *error))fail;
 
 @end
 

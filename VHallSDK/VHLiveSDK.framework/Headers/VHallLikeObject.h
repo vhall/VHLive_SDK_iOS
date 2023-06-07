@@ -27,12 +27,12 @@
 /// @param complete responseObject:成功详情 error:错误详情
 + (void)createUserLikeWithRoomId:(NSString *)roomId
                              num:(NSInteger)num
-                        complete:(void(^)(NSDictionary *responseObject, NSError *error))complete;
+                        complete:(void (^)(NSDictionary *responseObject, NSError *error))complete;
 
 /// 获取房间的点赞数量
 /// @param roomId 房间id
 /// @param complete total:点赞数 error:错误详情
 + (void)getRoomLikeWithRoomId:(NSString *)roomId
-                     complete:(void(^)(NSInteger total, NSError *error))complete;
+                     complete:(void (^)(NSInteger total, NSError *error))complete;
 
 @end

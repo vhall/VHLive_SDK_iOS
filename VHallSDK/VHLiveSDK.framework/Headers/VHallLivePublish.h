@@ -5,8 +5,8 @@
 //  Created by liwenlong on 16/2/3.
 //  Copyright © 2016年 vhall. All rights reserved.
 //
-#import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import <UIKit/UIKit.h>
 #import "VHallConst.h"
 #import "VHPublishConfig.h"
 #import "VHWebinarInfo.h"
@@ -14,21 +14,21 @@
 @interface VHallLivePublish : NSObject
 
 @property (nonatomic, weak) id <VHallLivePublishDelegate>       delegate;               ///<代理
-@property (nonatomic, assign) BOOL                              isMute;                 ///<设置静音 (开始直播后设置有效)
-@property (nonatomic, assign) BOOL                              isRehearsal;            ///<是否彩排 YES：彩排模式开播 NO：正常直播 (默认NO,开播前设置有效)
-@property (nonatomic, strong, readonly) UIView *                displayView;            ///<用来显示摄像头拍摄内容的View
-@property (nonatomic, assign, readonly) BOOL                    isPublishing;           ///<获取当前推流状态
+@property (nonatomic, assign) BOOL isMute;                                              ///<设置静音 (开始直播后设置有效)
+@property (nonatomic, assign) BOOL isRehearsal;                                         ///<是否彩排 YES：彩排模式开播 NO：正常直播 (默认NO,开播前设置有效)
+@property (nonatomic, strong, readonly) UIView *displayView;                            ///<用来显示摄像头拍摄内容的View
+@property (nonatomic, assign, readonly) BOOL isPublishing;                              ///<获取当前推流状态
 @property (nonatomic, assign, readonly) AVCaptureDevicePosition captureDevicePosition;  ///<获取用户使用是前置还是后置摄像头
 
 /// 初始化
 /// @param config  config参数
-- (instancetype)initWithConfig:(VHPublishConfig*)config;
+- (instancetype)initWithConfig:(VHPublishConfig *)config;
 
 /// 高级美颜
 /// @param config config参数
 /// @param handle 设置结果
-- (instancetype)initWithBeautyConfig:(VHPublishConfig*)config
-                         handleError:(void(^)(NSError *error))handle;
+- (instancetype)initWithBeautyConfig:(VHPublishConfig *)config
+                         handleError:(void (^)(NSError *error))handle;
 
 /// 开始视频采集 显示视频预览
 - (BOOL)startVideoCapture;
@@ -41,7 +41,7 @@
 /// param[@"id"]           = 活动Id，必传
 /// param[@"access_token"] = 发直播token （新版v3控制台创建的直播活动可不传此值，v6.0修改）
 /// param[@"nickname"]     = 发起直播更改主播昵称，非必传（v6.0新增）
-- (void)startLive:(NSDictionary*)param;
+- (void)startLive:(NSDictionary *)param;
 
 /// 结束直播 与startLive成对出现，如果调用startLive，则需要调用stopLive以释放相应资源
 - (void)stopLive;
@@ -91,7 +91,7 @@
 
 #pragma mark - --------------------云导播-------------------------
 
-@property (nonatomic, strong, readonly) UIView *                liveView;           ///<回显云导播台画面
+@property (nonatomic, strong, readonly) UIView *liveView;                           ///<回显云导播台画面
 
 /// 以主持人身份发起直播
 /// @param param
@@ -99,7 +99,7 @@
 /// param[@"access_token"] = 发直播token （新版v3控制台创建的直播活动可不传此值，v6.0修改）
 /// param[@"nickname"]     = 发起直播更改主播昵称，非必传（v6.0新增）
 - (instancetype)initDirectorHostEnter:(NSDictionary *)param
-                                 fail:(void(^)(NSError *))failure;
+                                 fail:(void (^)(NSError *))failure;
 
 /// 云导播:机位推流到云导播台
 /// @param param param
@@ -108,7 +108,7 @@
 /// param[@"access_token"] = 发直播token （新版v3控制台创建的直播活动可不传此值，v6.0修改）
 /// param[@"nickname"]     = 发起直播更改主播昵称，非必传（v6.0新增）
 /// @param checkHostLine 是否检查主机线路
-- (void)startSeatPushDirectorLive:(NSDictionary*)param
+- (void)startSeatPushDirectorLive:(NSDictionary *)param
                     checkHostLine:(BOOL)checkHostLine;
 
 /// 开始云导播
@@ -130,17 +130,17 @@
 /// @param liveStatus 直播状态
 /// @param info 详细信息，字典结构：{code：错误码，content：错误信息}
 - (void)publishStatus:(VHLiveStatus)liveStatus
-             withInfo:(NSDictionary*)info;
+             withInfo:(NSDictionary *)info;
 
 /// 采集到第一帧的回调
 /// @param image 第一帧的图片
--(void)firstCaptureImage:(UIImage*)image;
+- (void)firstCaptureImage:(UIImage *)image;
 
 /// 活动相关信息回调（注意：此接口为v6.0新增，仅限新版控制台(v3及以上)创建的活动使用，否则不会回调）
 /// @param publishObject 推流对象
 /// @param webinarInfo 活动相关信息
 - (void)publish:(VHallLivePublish *)publishObject
-            webinarInfo:(VHWebinarInfo *)webinarInfo;
+    webinarInfo:(VHWebinarInfo *)webinarInfo;
 
 #pragma mark - --------------------云导播-------------------------
 /// 云导播-主持人进入 房间内是否流

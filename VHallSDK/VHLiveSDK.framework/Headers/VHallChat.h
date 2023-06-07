@@ -69,40 +69,40 @@
 @property (nonatomic, weak) id <VHallChatDelegate> delegate;
 
 /// 是否被禁言（YES：自己被禁言或全体被禁言，NO：自己未被禁言且全体未被禁言）
-@property (nonatomic, assign ,readonly) BOOL isSpeakBlocked;
+@property (nonatomic, assign, readonly) BOOL isSpeakBlocked;
 
 /// 是否被禁言
-@property (nonatomic, assign ,readonly) BOOL isMeSpeakBlocked;
+@property (nonatomic, assign, readonly) BOOL isMeSpeakBlocked;
 
 /// 是否全体被禁言
-@property (nonatomic, assign ,readonly) BOOL isAllSpeakBlocked;
+@property (nonatomic, assign, readonly) BOOL isAllSpeakBlocked;
 
 /// 是否开启了问答禁言 YES 开启 NO 未开启
-@property (nonatomic, assign ,readonly) BOOL isQaStatus;
+@property (nonatomic, assign, readonly) BOOL isQaStatus;
 
 /// 发送聊天内容
 /// @param msg 消息内容
 /// @param success 成功回调
 /// @param reslutFailedCallback 失败回调 字典结构：{code：错误码，content：错误信息}
 - (void)sendMsg:(NSString *)msg
-        success:(void(^)(void))success
-         failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
+        success:(void (^)(void))success
+         failed:(void (^)(NSDictionary *failedData))reslutFailedCallback;
 
 /// 发送自定义消息
 /// @param jsonStr 消息内容
 /// @param success 成功回调
 /// @param reslutFailedCallback 失败回调 字典结构：{code：错误码，content：错误信息}
 - (void)sendCustomMsg:(NSString *)jsonStr
-              success:(void(^)(void))success
-               failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
+              success:(void (^)(void))success
+               failed:(void (^)(NSDictionary *failedData))reslutFailedCallback;
 
 /// 获取100条聊天历史记录，返回至多100条数据，最新消息在数组最后一位
 /// @param showAll NO 只获取本次直播产生的聊天记录，YES 获取包含以前开播产生的聊天记录 （H5活动该参数无效，默认YES）
 /// @param success 成功回调 返回聊天历史记录
 /// @param reslutFailedCallback 失败回调 字典结构：{code：错误码，content：错误信息}
 - (void)getHistoryWithType:(BOOL)showAll
-                   success:(void(^)(NSArray <VHallChatModel *> * msgs))success
-                    failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
+                   success:(void (^)(NSArray <VHallChatModel *> *msgs))success
+                    failed:(void (^)(NSDictionary *failedData))reslutFailedCallback;
 
 /// 分页获取聊天历史记录，最新消息在数组最后一位（仅支持H5活动，Flash活动若使用该方法效果同上：getHistoryWithType:YES） (v5.0新增)
 /// @param page_num 当前页码数，第一页从1开始
@@ -113,8 +113,8 @@
 - (void)getHistoryWithPage_num:(NSInteger)page_num
                      page_size:(NSInteger)page_size
                     start_time:(NSString *)start_time
-                       success:(void(^)(NSArray <VHallChatModel *> * msgs))success
-                        failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
+                       success:(void (^)(NSArray <VHallChatModel *> *msgs))success
+                        failed:(void (^)(NSDictionary *failedData))reslutFailedCallback;
 
 /// 获取当前房间聊天列表（仅支持化蝶） (v6.4.1新增)
 /// @param msg_id 聊天记录 锚点消息id,此参数存在时anchor_path 参数必须存在
@@ -126,12 +126,12 @@
 /// @param success 成功回调 msgs：聊天历史记录
 /// @param reslutFailedCallback 失败回调 字典结构：{code：错误码，content：错误信息}
 - (void)getInteractsChatGetListWithMsg_id:(NSString *)msg_id
-                                  page_num:(NSInteger)page_num
-                                 page_size:(NSInteger)page_size
+                                 page_num:(NSInteger)page_num
+                                page_size:(NSInteger)page_size
                                start_time:(NSString *)start_time
                                   is_role:(NSInteger)is_role
                               anchor_path:(NSString *)anchor_path
-                                  success:(void(^)(NSArray <VHallChatModel *> * msgs))success
-                                   failed:(void (^)(NSDictionary* failedData))reslutFailedCallback;
+                                  success:(void (^)(NSArray <VHallChatModel *> *msgs))success
+                                   failed:(void (^)(NSDictionary *failedData))reslutFailedCallback;
 
 @end

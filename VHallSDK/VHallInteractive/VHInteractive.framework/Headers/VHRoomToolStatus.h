@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 // 互动工具状态
 @interface VHRoomToolStatus : NSObject
 
-@property (nonatomic,copy,readonly) NSString *  question_name;      ///<问答名字
-@property (nonatomic,assign,readonly) BOOL      question_status;    ///<问答状态 YES 开启了问答 NO: 关闭了问答
+@property (nonatomic, copy, readonly) NSString *question_name;      ///<问答名字
+@property (nonatomic, assign, readonly) BOOL question_status;       ///<问答状态 YES 开启了问答 NO: 关闭了问答
 
 + (VHRoomToolStatus *)transfer:(VHSSRoomToolsStatus *)roomStatus;
 
