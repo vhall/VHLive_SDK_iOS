@@ -6,7 +6,6 @@
 //
 
 #import "VHBaseViewController.h"
-#import "VHPrivacyManager.h"
 
 @interface VHBaseViewController ()
 

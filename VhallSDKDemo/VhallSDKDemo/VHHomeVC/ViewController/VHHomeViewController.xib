@@ -14,6 +14,7 @@
                 <outlet property="authSwitch" destination="Y6f-z2-CUC" id="GrI-15-Hc9"/>
                 <outlet property="contentView" destination="9ze-HE-V8R" id="QFo-s6-6P2"/>
                 <outlet property="enterRoomBtn" destination="C0d-PT-RJ2" id="Y3u-8v-gsF"/>
+                <outlet property="h5Btn" destination="6Xa-TM-S5X" id="2dh-AC-Gvw"/>
                 <outlet property="headImage" destination="k3v-cL-9tj" id="ma1-Vl-8uW"/>
                 <outlet property="livePublishBtn" destination="7sr-ko-nCm" id="6kx-0S-4bM"/>
                 <outlet property="nickName" destination="Jut-58-1jc" id="1B5-bT-APn"/>
@@ -193,11 +194,31 @@
                         <action selector="clickEnterRoomBtn:" destination="-1" eventType="touchUpInside" id="pGn-md-q9s"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Xa-TM-S5X">
+                    <rect key="frame" x="137.5" y="576" width="100" height="45"/>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.2274509804" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="aiG-My-NlL"/>
+                        <constraint firstAttribute="width" constant="100" id="nLj-Ma-MJV"/>
+                    </constraints>
+                    <state key="normal" title="H5观看">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="clickH5WithVC:" destination="-1" eventType="touchUpInside" id="ezN-2f-Hgw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="9ze-HE-V8R" firstAttribute="top" secondItem="eVf-Si-YFm" secondAttribute="bottom" constant="21" id="9as-ng-bsm"/>
                 <constraint firstItem="9ze-HE-V8R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="C3Y-sb-d4Z"/>
+                <constraint firstItem="6Xa-TM-S5X" firstAttribute="top" secondItem="7sr-ko-nCm" secondAttribute="bottom" constant="8" symbolic="YES" id="ED0-yu-ANE"/>
                 <constraint firstItem="eVf-Si-YFm" firstAttribute="top" secondItem="Svq-0i-1hS" secondAttribute="bottom" constant="30" id="MWY-WE-UQf"/>
                 <constraint firstItem="Svq-0i-1hS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Onh-z6-MOW"/>
                 <constraint firstItem="9ze-HE-V8R" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PgA-Pl-3B9"/>
@@ -205,6 +226,7 @@
                 <constraint firstAttribute="trailing" secondItem="9ze-HE-V8R" secondAttribute="trailing" constant="40" id="ThM-Di-dwK"/>
                 <constraint firstItem="Svq-0i-1hS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WnI-CL-aMq"/>
                 <constraint firstItem="eVf-Si-YFm" firstAttribute="leading" secondItem="9ze-HE-V8R" secondAttribute="leading" id="ZUY-hc-FHS"/>
+                <constraint firstItem="6Xa-TM-S5X" firstAttribute="centerX" secondItem="7sr-ko-nCm" secondAttribute="centerX" id="doW-Iy-8QE"/>
                 <constraint firstAttribute="trailing" secondItem="Svq-0i-1hS" secondAttribute="trailing" id="hha-Cr-nAV"/>
                 <constraint firstItem="7sr-ko-nCm" firstAttribute="centerX" secondItem="C0d-PT-RJ2" secondAttribute="centerX" id="mtP-cF-vkZ"/>
                 <constraint firstItem="7sr-ko-nCm" firstAttribute="top" secondItem="C0d-PT-RJ2" secondAttribute="bottom" constant="8" symbolic="YES" id="mzK-0U-dfU"/>

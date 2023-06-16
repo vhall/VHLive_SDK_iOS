@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger,VHLiveStatus)
     VHLiveStatusSendError               = 8,        ///<直播发送数据错误
     VHLiveStatusUploadSpeed             = 9,        ///<直播上传速率
     VHLiveStatusAudioRecoderError       = 24,       ///<音频采集失败，提示用户查看权限或者重新推流，切记此事件会回调多次，直到音频采集正常为止
+    VHLiveStatusVideoError              = 25,       ///<视频采集失败
     VHLiveStatusUploadNetworkException  = 14,       ///<发起端网络环境差
     VHLiveStatusUploadNetworkOK         = 15,       ///<发起端网络环境恢复正常
     VHLiveStatusGetUrlError             = 99,       ///<获取推流地址失败

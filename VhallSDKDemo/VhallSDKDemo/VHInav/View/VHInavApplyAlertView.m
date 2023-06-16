@@ -66,7 +66,7 @@
 {
     // 判断权限
     __weak __typeof(self) weakSelf = self;
-    [VUITool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+    [VHPrivacyManager getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
         if (videoAccess && audioAcess) {
             // 防重复点击
             sender.userInteractionEnabled = NO;

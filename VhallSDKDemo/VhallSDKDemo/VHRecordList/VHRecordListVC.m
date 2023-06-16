@@ -55,7 +55,7 @@
     
     self.pageNum = pageNum;
     __weak __typeof(self)weakSelf = self;
-    [VHRecordListModel getRecordListWithWebinarId:self.webinar_id pageNum:pageNum pageSize:10 complete:^(NSArray<VHRecordListModel *> *recordList, NSError *error) {
+    [VHWebinarBaseInfo getRecordListWithWebinarId:self.webinar_id pageNum:pageNum pageSize:10 complete:^(NSArray<VHRecordListModel *> *recordList, NSError *error) {
         
         if (recordList) {
             if (pageNum == 1) {

@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *appKeyTF;
 /// appSK
 @property (weak, nonatomic) IBOutlet UITextField *appSecretKeyTF;
+/// rsa
+@property (weak, nonatomic) IBOutlet UITextField *rsaTF;
 /// 包名
 @property (weak, nonatomic) IBOutlet UITextField *bundleIDTF;
 /// 保存
@@ -33,6 +35,8 @@
     self.appKeyTF.text = DEMO_Setting.appKey;
 
     self.appSecretKeyTF.text = DEMO_Setting.appSecretKey;
+    
+    self.rsaTF.text = DEMO_Setting.rsaPrivateKey;
 
     self.bundleIDTF.text = [[NSBundle mainBundle] bundleIdentifier];
 
@@ -62,6 +66,7 @@
 - (IBAction)saveBtn:(UIButton *)sender {
     DEMO_Setting.appKey = self.appKeyTF.text;
     DEMO_Setting.appSecretKey = self.appSecretKeyTF.text;
+    DEMO_Setting.rsaPrivateKey = self.rsaTF.text;
 
     if (self.clickSaveBtn) {
         self.clickSaveBtn();

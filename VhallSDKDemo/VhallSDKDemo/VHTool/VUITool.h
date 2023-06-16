@@ -105,9 +105,4 @@ extern NSString *VH_MB_ASSIST;
 /// - Parameter userInfo: 其它信息
 + (void)sendTestsNotificationCenterWithKey:(NSString *)key otherInfo:(NSDictionary *)otherInfo;
 
-/// 获取设备权限
-/// - Parameter completionBlock: 权限状态回调
-+ (void)getMediaAccess:(void (^_Nullable)(BOOL videoAccess, BOOL audioAcess))completionBlock;
-
-
 @end

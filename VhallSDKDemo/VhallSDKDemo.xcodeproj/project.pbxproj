@@ -53,7 +53,7 @@
 		4E32F49D2951AA4100B5388F /* VHInavApplyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F49C2951AA4100B5388F /* VHInavApplyAlertView.m */; };
 		4E32F4A02951BB9800B5388F /* VHInavRenderAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F49F2951BB9800B5388F /* VHInavRenderAlertView.m */; };
 		4E32F4A32951BBD000B5388F /* VHInavBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F4A22951BBD000B5388F /* VHInavBtn.m */; };
-		4E4F1B47299110A000979BC7 /* VHPrivacyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F1B46299110A000979BC7 /* VHPrivacyManager.m */; };
+		4E4F1B432990F7E600979BC7 /* VHAirPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F1B422990F7E600979BC7 /* VHAirPlayViewController.m */; };
 		4E858E8929F66CEF0007B792 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E858E8829F66CEF0007B792 /* SystemConfiguration.framework */; };
 		4E858E8D29F66D380007B792 /* VHNetworkSpeedMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E858E8C29F66D380007B792 /* VHNetworkSpeedMonitor.m */; };
 		4E858E9029F670F00007B792 /* VHSpeedMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E858E8F29F670F00007B792 /* VHSpeedMonitor.m */; };
@@ -71,6 +71,7 @@
 		4EDEBACE29C197CF0086D706 /* VHLotteryTurntableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDEBACD29C197CF0086D706 /* VHLotteryTurntableView.m */; };
 		4EDEBAD129C19ADF0086D706 /* VHLottery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDEBAD029C19ADF0086D706 /* VHLottery.m */; };
 		4EE0DE2429C464260094437C /* VHLotteryPrivateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0DE2329C464260094437C /* VHLotteryPrivateView.m */; };
+		4EE11ADE299CA7950062913B /* VHWebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE11ADD299CA7950062913B /* VHWebViewVC.m */; };
 		4EE7A30F29C7F9F100369CBD /* VHLotteryWinListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE7A30E29C7F9F100369CBD /* VHLotteryWinListView.m */; };
 		4EE7A31229C8319100369CBD /* VHChatLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE7A31129C8319100369CBD /* VHChatLotteryCell.m */; };
 		4EE7A31529C8501500369CBD /* VHLotteryDecorateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE7A31429C8501500369CBD /* VHLotteryDecorateView.m */; };
@@ -89,6 +90,8 @@
 		4EEEEB8F293EE96900538BC2 /* VhallSDKDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEB8E293EE96900538BC2 /* VhallSDKDemoTests.m */; };
 		4EEEEB9B293EE96900538BC2 /* VhallSDKDemoUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEB9A293EE96900538BC2 /* VhallSDKDemoUITestsLaunchTests.m */; };
 		4EEEEBB5293F213D00538BC2 /* VHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEBB4293F213D00538BC2 /* VHBaseViewController.m */; };
+		4EF334ED2A32FD2A006838EF /* VHFileDownloadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF334EC2A32FD2A006838EF /* VHFileDownloadVC.m */; };
+		4EF334F02A3346E5006838EF /* VHFileDownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF334EF2A3346E5006838EF /* VHFileDownloadCell.m */; };
 		4EF5534C29ECE80B0008DA1A /* VHPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF5534B29ECE80B0008DA1A /* VHPublishVC.m */; };
 		4EF5534F29ED28CF0008DA1A /* VHPublishToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF5534E29ED28CF0008DA1A /* VHPublishToolView.m */; };
 		4EF8258B2995EC67007874DA /* LBLelinkKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF825892995EC67007874DA /* LBLelinkKitManager.m */; };
@@ -226,8 +229,8 @@
 		4E32F4A12951BBD000B5388F /* VHInavBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHInavBtn.h; sourceTree = "<group>"; };
 		4E32F4A22951BBD000B5388F /* VHInavBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHInavBtn.m; sourceTree = "<group>"; };
 		4E354DC92A0CBFCB004D6701 /* VhallSDKDemoTestsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VhallSDKDemoTestsHeader.h; sourceTree = "<group>"; };
-		4E4F1B45299110A000979BC7 /* VHPrivacyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHPrivacyManager.h; sourceTree = "<group>"; };
-		4E4F1B46299110A000979BC7 /* VHPrivacyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHPrivacyManager.m; sourceTree = "<group>"; };
+		4E4F1B412990F7E600979BC7 /* VHAirPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHAirPlayViewController.h; sourceTree = "<group>"; };
+		4E4F1B422990F7E600979BC7 /* VHAirPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHAirPlayViewController.m; sourceTree = "<group>"; };
 		4E858E8829F66CEF0007B792 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4E858E8B29F66D380007B792 /* VHNetworkSpeedMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHNetworkSpeedMonitor.h; sourceTree = "<group>"; };
 		4E858E8C29F66D380007B792 /* VHNetworkSpeedMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHNetworkSpeedMonitor.m; sourceTree = "<group>"; };
@@ -260,6 +263,8 @@
 		4EDEBAD029C19ADF0086D706 /* VHLottery.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHLottery.m; sourceTree = "<group>"; };
 		4EE0DE2229C464260094437C /* VHLotteryPrivateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHLotteryPrivateView.h; sourceTree = "<group>"; };
 		4EE0DE2329C464260094437C /* VHLotteryPrivateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHLotteryPrivateView.m; sourceTree = "<group>"; };
+		4EE11ADC299CA7950062913B /* VHWebViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHWebViewVC.h; sourceTree = "<group>"; };
+		4EE11ADD299CA7950062913B /* VHWebViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHWebViewVC.m; sourceTree = "<group>"; };
 		4EE7A30D29C7F9F100369CBD /* VHLotteryWinListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHLotteryWinListView.h; sourceTree = "<group>"; };
 		4EE7A30E29C7F9F100369CBD /* VHLotteryWinListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHLotteryWinListView.m; sourceTree = "<group>"; };
 		4EE7A31029C8319100369CBD /* VHChatLotteryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChatLotteryCell.h; sourceTree = "<group>"; };
@@ -295,6 +300,10 @@
 		4EEEEBAA293F201100538BC2 /* VhallSDKDemoPCH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VhallSDKDemoPCH.h; sourceTree = "<group>"; };
 		4EEEEBB3293F213D00538BC2 /* VHBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHBaseViewController.h; sourceTree = "<group>"; };
 		4EEEEBB4293F213D00538BC2 /* VHBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHBaseViewController.m; sourceTree = "<group>"; };
+		4EF334EB2A32FD2A006838EF /* VHFileDownloadVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHFileDownloadVC.h; sourceTree = "<group>"; };
+		4EF334EC2A32FD2A006838EF /* VHFileDownloadVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHFileDownloadVC.m; sourceTree = "<group>"; };
+		4EF334EE2A3346E5006838EF /* VHFileDownloadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHFileDownloadCell.h; sourceTree = "<group>"; };
+		4EF334EF2A3346E5006838EF /* VHFileDownloadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHFileDownloadCell.m; sourceTree = "<group>"; };
 		4EF5534A29ECE80B0008DA1A /* VHPublishVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHPublishVC.h; sourceTree = "<group>"; };
 		4EF5534B29ECE80B0008DA1A /* VHPublishVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHPublishVC.m; sourceTree = "<group>"; };
 		4EF5534D29ED28CF0008DA1A /* VHPublishToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHPublishToolView.h; sourceTree = "<group>"; };
@@ -394,7 +403,6 @@
 		4E23FC63294046A300341EA4 /* VHTool */ = {
 			isa = PBXGroup;
 			children = (
-				4E4F1B44299110A000979BC7 /* VHPrivacyManager */,
 				4E23FD00294C1D4E00341EA4 /* VHLiveSaleAnimationTool */,
 				4E23FCCB2948A28900341EA4 /* VHKeyboardView */,
 				4E23FCC82948A28900341EA4 /* VHTextView */,
@@ -645,13 +653,13 @@
 			path = VHAnnouncement;
 			sourceTree = "<group>";
 		};
-		4E4F1B44299110A000979BC7 /* VHPrivacyManager */ = {
+		4E4F1B402990F7C700979BC7 /* VHAirPlay */ = {
 			isa = PBXGroup;
 			children = (
-				4E4F1B45299110A000979BC7 /* VHPrivacyManager.h */,
-				4E4F1B46299110A000979BC7 /* VHPrivacyManager.m */,
+				4E4F1B412990F7E600979BC7 /* VHAirPlayViewController.h */,
+				4E4F1B422990F7E600979BC7 /* VHAirPlayViewController.m */,
 			);
-			path = VHPrivacyManager;
+			path = VHAirPlay;
 			sourceTree = "<group>";
 		};
 		4E858E8A29F66D080007B792 /* VHNetworkSpeedMonitor */ = {
@@ -724,6 +732,15 @@
 			path = VHLottery;
 			sourceTree = "<group>";
 		};
+		4EE11ADB299CA77D0062913B /* VHWebView */ = {
+			isa = PBXGroup;
+			children = (
+				4EE11ADC299CA7950062913B /* VHWebViewVC.h */,
+				4EE11ADD299CA7950062913B /* VHWebViewVC.m */,
+			);
+			path = VHWebView;
+			sourceTree = "<group>";
+		};
 		4EE7F2E72A207FF9004FEA0E /* VHRecordList */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,6 +807,7 @@
 		4EEEEB71293EE96600538BC2 /* VhallSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4E4F1B402990F7C700979BC7 /* VHAirPlay */,
 				4E23FD2429503FE600341EA4 /* VHAnnouncement */,
 				4EEEEBB6293F216B00538BC2 /* VHBaseViewController */,
 				4E20671C299226B100438B00 /* VHBrowser */,
@@ -797,6 +815,7 @@
 				4E23FCA5294820C900341EA4 /* VHChat */,
 				4E23FC8E2946C69700341EA4 /* VHCommon */,
 				4E23FCE22949C80C00341EA4 /* VHDoc */,
+				4EF334EA2A32FD08006838EF /* VHFileDownload */,
 				4E23FCF2294C118900341EA4 /* VHGift */,
 				4E23FC7C294076DE00341EA4 /* VHHomeVC */,
 				4EF84E6D295191F1001299E4 /* VHInav */,
@@ -818,6 +837,7 @@
 				4E23FC8A2946C58F00341EA4 /* VHWarmUp */,
 				4E23FCE6294AC2E300341EA4 /* VHWatchBack */,
 				4E23FCA02948207B00341EA4 /* VHWatchLive */,
+				4EE11ADB299CA77D0062913B /* VHWebView */,
 				4EEEEB72293EE96600538BC2 /* AppDelegate.h */,
 				4EEEEB73293EE96600538BC2 /* AppDelegate.m */,
 				4EEEEB84293EE96800538BC2 /* main.m */,
@@ -879,6 +899,17 @@
 				4EE848982952EF4B00F1BA1D /* VHNavBaseViewController.m */,
 			);
 			path = VHBaseViewController;
+			sourceTree = "<group>";
+		};
+		4EF334EA2A32FD08006838EF /* VHFileDownload */ = {
+			isa = PBXGroup;
+			children = (
+				4EF334EB2A32FD2A006838EF /* VHFileDownloadVC.h */,
+				4EF334EC2A32FD2A006838EF /* VHFileDownloadVC.m */,
+				4EF334EE2A3346E5006838EF /* VHFileDownloadCell.h */,
+				4EF334EF2A3346E5006838EF /* VHFileDownloadCell.m */,
+			);
+			path = VHFileDownload;
 			sourceTree = "<group>";
 		};
 		4EF5534929ECE7E90008DA1A /* VHPublish */ = {
@@ -988,7 +1019,6 @@
 				4EEEEB86293EE96900538BC2 /* Sources */,
 				4EEEEB87293EE96900538BC2 /* Frameworks */,
 				4EEEEB88293EE96900538BC2 /* Resources */,
-				F928BD7EA1F7101A1A8BE153 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1210,23 +1240,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F928BD7EA1F7101A1A8BE153 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemoTests/Pods-VhallSDKDemoTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemoTests/Pods-VhallSDKDemoTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemoTests/Pods-VhallSDKDemoTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1249,6 +1262,7 @@
 				4E23FD19294C5B7A00341EA4 /* VHFoldButton.m in Sources */,
 				4E23FCFC294C15AE00341EA4 /* VHLikeObject.m in Sources */,
 				4E23FCF7294C11AC00341EA4 /* VHFashionStyleGiftPushView.m in Sources */,
+				4EE11ADE299CA7950062913B /* VHWebViewVC.m in Sources */,
 				4E858E9029F670F00007B792 /* VHSpeedMonitor.m in Sources */,
 				4EE7A31529C8501500369CBD /* VHLotteryDecorateView.m in Sources */,
 				4EDE10EE2959901200B10DB9 /* VHDefiniteionsViewModel.m in Sources */,
@@ -1262,11 +1276,11 @@
 				4EDE10EA2959759000B10DB9 /* UIImage+VHUtil.m in Sources */,
 				4EE7F2EA2A20802D004FEA0E /* VHRecordListVC.m in Sources */,
 				4EE848992952EF4B00F1BA1D /* VHNavBaseViewController.m in Sources */,
+				4EF334F02A3346E5006838EF /* VHFileDownloadCell.m in Sources */,
 				4E23FC722940676500341EA4 /* VHLoginViewController.m in Sources */,
 				4EED8D3F2955BDC7002913AC /* VHChatCustomCell.m in Sources */,
 				4ECFA82729C2C84E00A141F7 /* VHLotteryLosingView.m in Sources */,
 				4E1D431B29DE9C910099C85C /* AES.m in Sources */,
-				4E4F1B47299110A000979BC7 /* VHPrivacyManager.m in Sources */,
 				4ECFA82429C2BB4900A141F7 /* VHLotteryResultView.m in Sources */,
 				4EE7A31229C8319100369CBD /* VHChatLotteryCell.m in Sources */,
 				4ECFA82A29C2F0A800A141F7 /* VHLotterySubmitView.m in Sources */,
@@ -1297,6 +1311,7 @@
 				4EE7A30F29C7F9F100369CBD /* VHLotteryWinListView.m in Sources */,
 				4E23FC832940831800341EA4 /* VHSignSetVC.m in Sources */,
 				4EEEEBB5293F213D00538BC2 /* VHBaseViewController.m in Sources */,
+				4EF334ED2A32FD2A006838EF /* VHFileDownloadVC.m in Sources */,
 				4E068D5A29A5FE4500887E1E /* VHAuthAlertView.m in Sources */,
 				4E23FCFF294C18DD00341EA4 /* UIButton+VHBadge.m in Sources */,
 				4EE0DE2429C464260094437C /* VHLotteryPrivateView.m in Sources */,
@@ -1307,6 +1322,7 @@
 				4EEEEB85293EE96800538BC2 /* main.m in Sources */,
 				4E32F4A32951BBD000B5388F /* VHInavBtn.m in Sources */,
 				4E23FCD82948A28900341EA4 /* VHKeyboardToolView.m in Sources */,
+				4E4F1B432990F7E600979BC7 /* VHAirPlayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1482,7 +1498,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S82ZX9394G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1507,7 +1523,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.15.0;
+				MARKETING_VERSION = 6.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1525,7 +1541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S82ZX9394G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1550,7 +1566,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.15.0;
+				MARKETING_VERSION = 6.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

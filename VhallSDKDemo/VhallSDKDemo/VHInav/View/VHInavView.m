@@ -657,7 +657,6 @@
         // 初始化
         _localRenderView = [[VHLocalRenderView alloc] initCameraViewWithFrame:self.bounds options:options];
         // 开启美颜
-        VHLog(@"测试 === 初始化本地画面");
         _localRenderView.beautifyEnable = NO;
         // 设置预览画面方向
         [_localRenderView setDeviceOrientation:UIDeviceOrientationPortrait];

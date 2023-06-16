@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 
 #import "VHallConst.h"
+#import "VHPrivacyManager.h"
 
 #import "VHallAnnouncement.h"
 #import "VHallBasePlugin.h"
@@ -32,6 +33,7 @@
 #import "VHExamObject.h"
 #import "VHVideoRoundObject.h"
 #import "VHWarmInfoObject.h"
+#import "VHFileDownloadObject.h"
 
 
 @protocol VHallApiDelegate <NSObject>

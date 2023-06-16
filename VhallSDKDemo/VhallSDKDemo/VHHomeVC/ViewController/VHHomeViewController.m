@@ -6,12 +6,14 @@
 //
 
 
+#import "VHAirPlayViewController.h"
 #import "VHAuthAlertView.h"
 #import "VHCodeVC.h"
 #import "VHHomeViewController.h"
 #import "VHPublishVC.h"
 #import "VHWarmUpViewController.h"
 #import "VHWatchVC.h"
+#import "VHWebViewVC.h"
 
 @interface VHHomeViewController ()<VHallApiDelegate, VHWarmUpViewControllerDelegate, VHAuthAlertViewDelegate>
 
@@ -37,6 +39,8 @@
 @property (nonatomic, copy) NSString *type;
 /// 发起直播按钮
 @property (weak, nonatomic) IBOutlet UIButton *livePublishBtn;
+/// H5观看页
+@property (weak, nonatomic) IBOutlet UIButton *h5Btn;
 
 @end
 
@@ -64,7 +68,7 @@
 {
     self.nickName.text = [VHallApi currentUserNickName];
 
-    self.activityTF.text = [VUITool isBlankString:DEMO_Setting.activityID] ? @"305821089" : DEMO_Setting.activityID;
+    self.activityTF.text = [VUITool isBlankString:DEMO_Setting.activityID] ? @"" : DEMO_Setting.activityID;
 
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:[VHallApi currentUserHeadUrl]] placeholderImage:[UIImage imageNamed:@"defaultHead"]];
 }
@@ -269,10 +273,58 @@
     // 记录房间号
     DEMO_Setting.activityID = self.activityTF.text;
 
-    VHPublishVC *publishVC = [VHPublishVC new];
-    publishVC.webinar_id = self.activityTF.text;
-    publishVC.screenLandscape = NO;
-    [self.navigationController pushViewController:publishVC animated:YES];
+    // 取消键盘
+    [self.view endEditing:YES];
+
+    // 防止重复点击
+    self.enterRoomBtn.userInteractionEnabled = NO;
+
+    __weak __typeof(self) weakSelf = self;
+    // 增加一个hud
+    [VHProgressHud showLoading];
+    // 查询活动详情
+    [VHWebinarBaseInfo getWebinarBaseInfoWithWebinarId:self.activityTF.text
+                                               success:^(VHWebinarBaseInfo *_Nonnull baseInfo) {
+        // 防止重复点击
+        weakSelf.enterRoomBtn.userInteractionEnabled = YES;
+
+        [VHProgressHud hideLoading];
+        
+        VHPublishVC *publishVC = [VHPublishVC new];
+        publishVC.webinar_id = weakSelf.activityTF.text;
+        publishVC.webinar_type = baseInfo.webinar_type;
+        publishVC.screenLandscape = NO;
+        [weakSelf.navigationController pushViewController:publishVC animated:YES];
+    }
+                                                  fail:^(NSError *_Nonnull error) {
+        // 防止重复点击
+        weakSelf.enterRoomBtn.userInteractionEnabled = YES;
+        [VHProgressHud showToast:error.domain];
+    }];
+}
+
+- (IBAction)clickH5WithVC:(UIButton *)sender {
+    if (self.activityTF.text.length <= 0) {
+        [VHProgressHud showToast:@"请输入活动ID"];
+        return;
+    }
+
+    // 记录房间号
+    DEMO_Setting.activityID = self.activityTF.text;
+
+    VHWebViewVC * webView = [VHWebViewVC new];
+    webView.webinar_id = self.activityTF.text;
+    webView.vh_NavIsHidden = NO;
+    [self.navigationController pushViewController:webView animated:YES];
+}
+
+#pragma mark - 体验airplay投屏或者webview嵌入页
+- (IBAction)clickAirPlayTestVC:(UIButton *)sender
+{
+    VHAirPlayViewController *airplayVC = [VHAirPlayViewController new];
+
+    airplayVC.vh_NavIsHidden = NO;
+    [self.navigationController pushViewController:airplayVC animated:YES];
 }
 
 #pragma mark - 扫描二维码

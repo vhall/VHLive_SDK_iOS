@@ -169,6 +169,21 @@
 {
 }
 
+
+#pragma mark - 删除消息
+- (void)deleteChatMsgId:(NSString *)msgId
+{
+    for (id msg in self.chatDataSource.reverseObjectEnumerator) {
+        if ([msg isKindOfClass:[VHallChatModel class]]) {
+            if ([msgId isEqualToString:((VHallChatModel *)msg).msg_id]) {
+                [self.chatDataSource removeObject:msg];
+                [self reloadChatToBottom:YES beforeChange:0];
+                return;
+            }
+        }
+    }
+}
+
 #pragma mark - 收到自己被禁言/取消禁言
 - (void)forbidChat:(BOOL)forbidChat
 {

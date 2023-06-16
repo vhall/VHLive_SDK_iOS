@@ -41,6 +41,9 @@
 /// 是否打开问答
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isQuestion_status:(BOOL)isQuestion_status question_name:(NSString *)questionName;
 
+/// 当前是否开启文件下载功能
+- (void)moviePlayer:(VHallMoviePlayer *)moviePlayer is_file_download:(BOOL)is_file_download file_download_menu:(VHallPlayMenuModel *)file_download_menu;
+
 /// 直播已结束回调
 - (void)liveDidStoped:(VHallMoviePlayer *)moviePlayer;
 

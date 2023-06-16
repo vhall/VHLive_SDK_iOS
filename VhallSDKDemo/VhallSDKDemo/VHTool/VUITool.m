@@ -8,7 +8,6 @@
 
 #import <CommonCrypto/CommonDigest.h>
 #import <mach/mach.h>
-#import "VHPrivacyManager.h"
 #import "VUITool.h"
 
 @implementation VUITool
@@ -363,39 +362,6 @@ NSString *VH_MB_ASSIST = @"助理";
     [[NSNotificationCenter defaultCenter] postNotificationName:VHTestsNotificationCenter
                                                         object:nil
                                                       userInfo:userInfo];
-}
-
-BOOL videoAccess = NO;
-BOOL audioAccess = NO;
-+ (void)getMediaAccess:(void (^_Nullable)(BOOL videoAccess, BOOL audioAcess))completionBlock
-{
-    videoAccess = NO;
-    audioAccess = NO;
-    dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
-    dispatch_group_async(group, queue, ^{
-        dispatch_group_enter(group);
-        //相机权限
-        [VHPrivacyManager openCaptureDeviceServiceWithBlock:^(BOOL isOpen) {
-            VHLog(@"相机权限：%d", isOpen);
-            videoAccess = isOpen;
-            dispatch_group_leave(group);
-        }];
-    });
-
-    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
-        dispatch_group_enter(group);
-        //麦克风权限
-        [VHPrivacyManager openRecordServiceWithBlock:^(BOOL isOpen) {
-            VHLog(@"麦克风权限：%d", isOpen);
-            audioAccess = isOpen;
-            dispatch_group_leave(group);
-        }];
-    });
-
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        completionBlock ? completionBlock(videoAccess, audioAccess) : nil;
-    });
 }
 
 @end

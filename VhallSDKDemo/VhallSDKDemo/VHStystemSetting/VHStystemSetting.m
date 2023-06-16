@@ -35,9 +35,7 @@ static VHStystemSetting *_sharedSetting = nil;
 {
     self = [super init];
 
-    if (self) {
-        
-    }
+    if (self) {}
 
     return self;
 }
@@ -64,6 +62,36 @@ static VHStystemSetting *_sharedSetting = nil;
 - (NSString *)appSecretKey
 {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHappSecretKey"];
+}
+
+#pragma mark - host
+- (void)setHost:(NSString *)host {
+    [[NSUserDefaults standardUserDefaults] setValue:host forKey:@"VHhost"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)host {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHhost"];
+}
+
+#pragma mark - apihost
+- (void)setApihost:(NSString *)apihost {
+    [[NSUserDefaults standardUserDefaults] setValue:apihost forKey:@"VHapihost"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)apihost {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHapihost"];
+}
+
+#pragma mark - webhost
+- (void)setWebhost:(NSString *)webhost {
+    [[NSUserDefaults standardUserDefaults] setValue:webhost forKey:@"VHwebhost"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)webhost {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHwebhost"];
 }
 
 #pragma mark - rsaPrivateKey

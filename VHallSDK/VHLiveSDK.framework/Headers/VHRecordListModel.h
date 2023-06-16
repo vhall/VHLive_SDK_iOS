@@ -49,16 +49,6 @@
 /// 课件重置进度 生成进度 如88 初始为0
 @property (nonatomic, assign) NSInteger remake_doc_progress;
 
-
-
-/// 获取指定活动下的回放列表
-/// - Parameters:
-///   - webinarId: 活动id
-///   - pageNum: 页数
-///   - pageSize: 一页几个
-///   - complete: 返回结果的回调
-+ (void)getRecordListWithWebinarId:(NSString *)webinarId pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize complete:(void (^)(NSArray <VHRecordListModel *> *recordList, NSError *error))complete;
-
 @end
 
 

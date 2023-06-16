@@ -123,7 +123,7 @@
         [VHProgressHud showToast:@"开始推流"];
     } else if (liveStatus == VHLiveStatusUploadSpeed) {
         VHLog(@"直播速率 === %@", [info mj_JSONString]);
-    } else if (liveStatus == VHLiveStatusPushConnectError ||  liveStatus == VHLiveStatusParamError || liveStatus == VHLiveStatusSendError || liveStatus == VHLiveStatusAudioRecoderError || liveStatus == VHLiveStatusGetUrlError || liveStatus == VHLiveStatusDirectorError) {
+    } else if (liveStatus == VHLiveStatusPushConnectError ||  liveStatus == VHLiveStatusParamError || liveStatus == VHLiveStatusSendError || liveStatus == VHLiveStatusAudioRecoderError || liveStatus == VHLiveStatusVideoError || liveStatus == VHLiveStatusGetUrlError || liveStatus == VHLiveStatusDirectorError ) {
         [VHProgressHud showToast:info[@"content"]];
         [self.startBtn setHidden:NO];
     } else {
@@ -139,6 +139,7 @@
 // 活动相关信息回调（注意：此接口为v6.0新增，仅限新版控制台(v3及以上)创建的活动使用，否则不会回调）
 - (void)publish:(VHallLivePublish *)publishObject webinarInfo:(VHWebinarInfo *)webinarInfo
 {
+    
 }
 
 #pragma mark - 屏幕旋转
@@ -230,7 +231,7 @@
 {
     if (!_livePublish) {
         VHPublishConfig *config = [VHPublishConfig configWithType:VHPublishConfigTypeDefault];
-        config.pushType = VHStreamTypeVideoAndAudio;
+        config.pushType = self.webinar_type == VHWebinarLiveType_Audio ? VHStreamTypeOnlyAudio : VHStreamTypeVideoAndAudio;
         config.beautifyFilterEnable = YES;
         config.videoCaptureFPS = 25;
         config.videoBitRate = 1500;

@@ -17,14 +17,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-        
+    
+    // 初始化
+    DEMO_Setting.appKey = @"";
+    DEMO_Setting.appSecretKey = @"";
+    
+    [VHallApi registerApp:DEMO_Setting.appKey SecretKey:DEMO_Setting.appSecretKey];
+
     // 键盘管理
     [self keyboardManager];
-    
+
     // 进入登录页
-    VHLoginViewController * loginVC = [[VHLoginViewController alloc] init];
+    VHLoginViewController *loginVC = [[VHLoginViewController alloc] init];
     loginVC.vh_NavIsHidden = YES;
-    VHNavBaseViewController * navC = [[VHNavBaseViewController alloc] initWithRootViewController:loginVC];
+    VHNavBaseViewController *navC = [[VHNavBaseViewController alloc] initWithRootViewController:loginVC];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:navC];
     [self.window makeKeyAndVisible];
@@ -38,20 +44,20 @@
     // 是都开启键盘工具
     [[IQKeyboardManager sharedManager] setEnable:YES];
     // 是否显示键盘提示工具栏
-    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
     // 键盘弹出时，点击背景，键盘收回
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    // 下一步
+    [IQKeyboardManager sharedManager].previousNextDisplayMode = IQPreviousNextDisplayModeAlwaysShow;
 }
 
 #pragma mark - 屏幕旋转
 - (void)setLaunchScreen:(BOOL)launchScreen {
-
     _launchScreen = launchScreen;
     [self application:[UIApplication sharedApplication] supportedInterfaceOrientationsForWindow:nil];
 }
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
-
     if (self.isLaunchScreen) {
         return UIInterfaceOrientationMaskLandscapeRight;
     }

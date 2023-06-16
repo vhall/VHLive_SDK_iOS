@@ -22,11 +22,12 @@
 #import "VHSurveyListView.h"
 #import "VHVideoPointView.h"
 #import "VHRecordListVC.h"
+#import "VHFileDownloadVC.h"
 #import "VHWatchLiveBottomView.h"
 #import "VHWatchVC.h"
 #import "VHWatchVideoView.h"
 
-@interface VHWatchVC ()<VHWatchVideoViewDelegate, VHInavViewDelegate, VHWatchLiveBottomViewDelegate, VHChatViewDelegate, JXCategoryViewDelegate, JXCategoryListContainerViewDelegate, VHallGiftObjectDelegate, VHQAViewDelegate, VHSignInAlertViewDelegate, VHSurveyListViewDelegate, VHDocViewDelegate, VHRecordChapterDelegate, VHVideoPointViewDelegate, VHLotteryDelegate, VHExamObjectDelegate, VHRecordListDelegate>
+@interface VHWatchVC ()<VHWatchVideoViewDelegate, VHInavViewDelegate, VHWatchLiveBottomViewDelegate, VHChatViewDelegate, JXCategoryViewDelegate, JXCategoryListContainerViewDelegate, VHallGiftObjectDelegate, VHQAViewDelegate, VHSignInAlertViewDelegate, VHSurveyListViewDelegate, VHDocViewDelegate, VHRecordChapterDelegate, VHVideoPointViewDelegate, VHLotteryDelegate, VHExamObjectDelegate, VHRecordListDelegate,VHFileDownloadDelegate>
 
 // 控件
 /// 分页控件
@@ -56,6 +57,8 @@
 /// 精彩片段
 @property (nonatomic, strong) VHRecordListVC * recordListVC;
 @property (nonatomic, strong) NSArray<VHRecordListModel *> *recordList;
+/// 文件下载
+@property (nonatomic, strong) VHFileDownloadVC *fileDownloadVC;
 /// 底部工具
 @property (nonatomic, strong) VHWatchLiveBottomView *bottomView;
 /// 礼物类
@@ -80,6 +83,8 @@
 // 赋值
 /// 问答名称
 @property (nonatomic, copy) NSString *questionName;
+/// 下载文件名称
+@property (nonatomic, copy) NSString *fileDownloadName;
 
 // 标识
 /// 标识当前直播还是互动
@@ -88,6 +93,7 @@
 @property (nonatomic, assign) BOOL isOpenQA;
 @property (nonatomic, assign) BOOL isOpenRecordChapter;
 @property (nonatomic, assign) BOOL isOpenVideoPoint;
+@property (nonatomic, assign) BOOL isOpenFileDownload;
 @property (nonatomic, assign) BOOL isFull;
 @property (nonatomic, assign) BOOL isDocFull;
 @property (nonatomic, assign) BOOL isVideoFull;
@@ -223,18 +229,21 @@
         return self.videoPointView;
     } else if ([title isEqualToString:@"精彩片段"]) {
         return self.recordListVC;
+    } else if ([title isEqualToString:self.fileDownloadName]) {
+        return self.fileDownloadVC;
     }
 
     return nil;
 }
 
 #pragma mark 刷新标签页显示 文档/问答/章节
-- (void)roomWithIsOpenDoc:(BOOL)isOpenDoc isOpenQA:(BOOL)isOpenQA isOpenRecordChapter:(BOOL)isOpenRecordChapter isOpenVideoPoint:(BOOL)isOpenVideoPoint
+- (void)roomWithIsOpenDoc:(BOOL)isOpenDoc isOpenQA:(BOOL)isOpenQA isOpenRecordChapter:(BOOL)isOpenRecordChapter isOpenVideoPoint:(BOOL)isOpenVideoPoint isOpenFileDownload:(BOOL)isOpenFileDownload
 {
     self.isOpenDoc = isOpenDoc;
     self.isOpenQA = isOpenQA;
     self.isOpenRecordChapter = isOpenRecordChapter;
     self.isOpenVideoPoint = isOpenVideoPoint;
+    self.isOpenFileDownload = isOpenFileDownload;
 
     // 获取当前显示的标签页名称
     NSString *selectTitle = self.listContainerArray[self.categoryView.selectedIndex];
@@ -265,6 +274,10 @@
     
     if ((self.type == VHMovieActiveStateReplay || self.type == VHMovieActiveStatePlayBack) && self.recordList.count > 1) {
         [self.listContainerArray addObject:@"精彩片段"];
+    }
+    
+    if (isOpenFileDownload) {
+        [self.listContainerArray addObject:self.fileDownloadName];
     }
 
     // 添加
@@ -310,9 +323,9 @@
     if (self.type == VHMovieActiveStateReplay || self.type == VHMovieActiveStatePlayBack) {
         self.recordListVC.record_id = self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.record.record_id;
         __weak __typeof(self)weakSelf = self;
-        [VHRecordListModel getRecordListWithWebinarId:self.webinar_id pageNum:1 pageSize:10 complete:^(NSArray<VHRecordListModel *> *recordList, NSError *error) {
+        [VHWebinarBaseInfo getRecordListWithWebinarId:self.webinar_id pageNum:1 pageSize:10 complete:^(NSArray<VHRecordListModel *> *recordList, NSError *error) {
             weakSelf.recordList = recordList;
-            [weakSelf roomWithIsOpenDoc:weakSelf.isOpenDoc isOpenQA:weakSelf.isOpenQA isOpenRecordChapter:weakSelf.isOpenRecordChapter isOpenVideoPoint:weakSelf.isOpenVideoPoint];
+            [weakSelf roomWithIsOpenDoc:weakSelf.isOpenDoc isOpenQA:weakSelf.isOpenQA isOpenRecordChapter:weakSelf.isOpenRecordChapter isOpenVideoPoint:weakSelf.isOpenVideoPoint isOpenFileDownload:weakSelf.isOpenFileDownload];
         }];
     }
 
@@ -355,7 +368,7 @@
     BOOL isOpen = isHave && isShow ? YES : NO;
 
     // 判断是否显示
-    [self roomWithIsOpenDoc:isOpen isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint];
+    [self roomWithIsOpenDoc:isOpen isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload];
     // 文档显示隐藏
     moviePlayer.documentView.hidden = !isOpen;
     // 赋值文档
@@ -395,7 +408,7 @@
     self.videoPointView = [[VHVideoPointView alloc] initVPWithFrame:self.view.frame videoPointArr:pointArr];
     self.videoPointView.delegate = self;
     // 判断是否显示
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:pointArr.count > 0 ? YES : NO];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:pointArr.count > 0 ? YES : NO isOpenFileDownload:self.isOpenFileDownload];
 }
 
 #pragma mark - 互动
@@ -449,7 +462,7 @@
                                                             handler:^(UIAlertAction *_Nonnull action) {
             // 判断权限
             __weak __typeof(self) weakSelf = self;
-            [VUITool getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
+            [VHPrivacyManager getMediaAccess:^(BOOL videoAccess, BOOL audioAcess) {
                 if (videoAccess && audioAcess) {
                     // 同意上麦,使用互动
                     [weakSelf replyInvitationWithType:YES];
@@ -612,7 +625,7 @@
 - (void)watchRecordChapterIsOpen:(BOOL)isOpen
 {
     // 判断是否显示
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:isOpen isOpenVideoPoint:self.isOpenVideoPoint];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:isOpen isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload];
 }
 
 #pragma mark - VHQAViewDelegate
@@ -621,7 +634,7 @@
 {
     self.questionName = [VUITool isBlankString:self.vhQAView.vhQA.question_name] ? @"问答" : self.vhQAView.vhQA.question_name;
 
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isOpen isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isOpen isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload];
 
     // 自定义消息
     [self.chatView chatCustomWithNickName:[VUITool isBlankString:self.watchVideoView.moviePlayer.webinarInfo.author_nickname] ? @"主持人" : self.watchVideoView.moviePlayer.webinarInfo.author_nickname roleName:1 content:[NSString stringWithFormat:@"%@了问答", isOpen ? @"开启" : @"关闭"] info:nil];
@@ -632,7 +645,7 @@
 {
     self.questionName = [VUITool isBlankString:questionName] ? @"问答" : questionName;
 
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isQuestion_status isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isQuestion_status isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload];
 }
 
 #pragma mark - VHRecordChapterDelegate
@@ -652,12 +665,42 @@
 #pragma mark - VHRecordListDelegate
 #pragma mark 选择指定回放视频
 - (void)selectPlaybackVideoWithRecordId:(NSString *)recordId {
-    // 判断是否显示
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:NO];
+    // 先隐藏
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:NO isOpenFileDownload:self.isOpenFileDownload];
+    
+    // 先移除
     [self.videoPointView removeFromSuperview];
     self.videoPointView = nil;
+    
     // 播放新的
     [self.watchVideoView startPlayBackWithRecordId:recordId];
+}
+
+#pragma mark - 当前是否开启文件下载功能
+- (void)moviePlayer:(VHallMoviePlayer *)moviePlayer is_file_download:(BOOL)is_file_download file_download_menu:(VHallPlayMenuModel *)file_download_menu
+{
+    self.fileDownloadName = file_download_menu.name;
+    
+    // 是否显示
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:NO isOpenFileDownload:is_file_download];
+
+    // 显示则请求列表
+    if (is_file_download) {
+        [self.fileDownloadVC getFileDownloadListWithWebinarId:self.watchVideoView.moviePlayer.webinarInfo.webinarId file_download_menu_id:file_download_menu.ID];        
+    }
+}
+
+#pragma mark 更新文件下载列表
+- (void)uploadFileDownLoadWithModel:(VHFileDownLoadUploadModel *)model {
+    
+    self.fileDownloadName = model.name;
+
+    // 判断是否显示
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:model.status == 1 ? YES : NO];
+    
+    if (model.status == 1) {
+        [self.fileDownloadVC getFileDownloadListWithWebinarId:self.watchVideoView.moviePlayer.webinarInfo.webinarId file_download_menu_id:model.menu_id];
+    }
 }
 
 #pragma mark - VHallGiftObjectDelegate
@@ -905,25 +948,6 @@
     if (!self.isLive && !_inavView.inavRoom.isPublishing) {
         [self changePlayerIsLive:YES];
     }
-
-    // 获取房间详情,如果是结束状态需要退出房间
-    __weak __typeof(self) weakSelf = self;
-    [VHWebinarInfoData requestWatchInitWebinarId:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.webinar.data_id
-                                            pass:nil
-                                            k_id:nil
-                                       nick_name:nil
-                                           email:nil
-                                       record_id:nil
-                                      auth_model:1
-                                        complete:^(VHWebinarInfoData *webinarInfoData, NSError *error) {
-        // 有返回数据
-        if (webinarInfoData) {
-        // 如果状态不一致,则退出房间
-            if (webinarInfoData.webinar.type != weakSelf.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.webinar.type) {
-                [weakSelf clickLeftBarItem];
-            }
-        }
-    }];
 }
 
 #pragma mark - 后台
@@ -1116,6 +1140,15 @@
     }
     
     return _recordListVC;
+}
+
+- (VHFileDownloadVC *)fileDownloadVC
+{
+    if (!_fileDownloadVC) {
+        _fileDownloadVC = [[VHFileDownloadVC alloc] init];
+        _fileDownloadVC.delegate = self;
+    }
+    return _fileDownloadVC;
 }
 
 - (VHWatchLiveBottomView *)bottomView

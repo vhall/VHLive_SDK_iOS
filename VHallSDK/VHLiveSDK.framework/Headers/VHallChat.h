@@ -30,6 +30,10 @@
 /// @param msgs msgs 消息详情
 - (void)reciveCustomMsg:(NSArray <VHallCustomMsgModel *> *)msgs;
 
+/// 删除消息
+/// @param msgId 消息id
+- (void)deleteChatMsgId:(NSString *)msgId;
+
 /// 收到自己被禁言/取消禁言
 /// @param forbidChat YES:禁言 NO:取消禁言
 - (void)forbidChat:(BOOL)forbidChat;

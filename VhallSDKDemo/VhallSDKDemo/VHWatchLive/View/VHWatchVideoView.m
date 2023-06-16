@@ -602,6 +602,14 @@
     }
 }
 
+/// 当前是否开启文件下载功能
+- (void)moviePlayer:(VHallMoviePlayer *)moviePlayer is_file_download:(BOOL)is_file_download file_download_menu:(VHallPlayMenuModel *)file_download_menu
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(moviePlayer:is_file_download:file_download_menu:)]) {
+        [self.delegate moviePlayer:moviePlayer is_file_download:is_file_download file_download_menu:file_download_menu];
+    }
+}
+
 #pragma mark - 收到虚拟人数消息
 - (void)vhBaseNumUpdateToUpdate_online_num:(NSInteger)update_online_num
                                  update_pv:(NSInteger)update_pv
@@ -791,7 +799,7 @@
 
     param[@"id"] =  self.webinarId;
     param[@"record_id"] = self.recordId;
-    param[@"name"] = [VHallApi currentUserNickName];
+    param[@"name"] = [NSString stringWithFormat:@"123\n%@",[VHallApi currentUserNickName]];
     param[@"auth_model"] = @(1);
     return param;
 }

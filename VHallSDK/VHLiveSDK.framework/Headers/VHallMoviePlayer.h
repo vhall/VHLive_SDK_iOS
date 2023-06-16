@@ -314,6 +314,12 @@
     isQuestion_status:(BOOL)isQuestion_status
         question_name:(NSString *)questionName;
 
+/// 当前是否开启文件下载功能
+/// @param moviePlayer 播放器实例
+/// @param is_file_download 1开启 0关闭
+/// @param file_download_menu 菜单-文件下载
+- (void)moviePlayer:(VHallMoviePlayer *)moviePlayer is_file_download:(BOOL)is_file_download file_download_menu:(VHallPlayMenuModel *)file_download_menu;
+
 @end
 
 @protocol VHallMoviePlayerDeprocatedDelegate <NSObject>

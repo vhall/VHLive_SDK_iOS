@@ -25,6 +25,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//菜单
+@interface VHallPlayMenuModel : VHallRawBaseModel
+///id
+@property (nonatomic, copy) NSString *ID;
+///名称
+@property (nonatomic, copy) NSString *name;
+///类型
+@property (nonatomic, assign) NSInteger type;
+///状态
+@property (nonatomic, assign) NSInteger status;
+@end
+
 // 检测配置项权限
 @interface VHPermissionConfigItem : VHallRawBaseModel
 
@@ -173,6 +185,17 @@ NS_ASSUME_NONNULL_BEGIN
                         success:(void (^)(VHLotteryListModel *listModel))success
                            fail:(void (^)(NSError *error))fail;
 
+/// 获取指定活动下的回放列表
+/// - Parameters:
+///   - webinarId: 活动id
+///   - pageNum: 页数
+///   - pageSize: 一页几个
+///   - complete: 返回结果的回调
++ (void)getRecordListWithWebinarId:(NSString *)webinarId
+                           pageNum:(NSInteger)pageNum
+                          pageSize:(NSInteger)pageSize
+                          complete:(void (^)(NSArray <VHRecordListModel *> *recordList, NSError *error))complete;
+
 #pragma mark - 云导播活动
 /// 导播台是否开启 director_status=YES:已开启，NO:未开启
 /// @param webinarId 活动id
@@ -241,7 +264,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL online_show;                               ///<是否显示在线人数
 @property (nonatomic, readonly) NSInteger inav_num;                             ///<当前活动设置的支持大连麦人数， 如：6表示1v5，16表示1v15...
 @property (nonatomic, readonly) NSInteger speakerAndShowLayout;                   ///<0 -- 分离模式；1 -- 合并模式；
-
 @end
 
 NS_ASSUME_NONNULL_END
