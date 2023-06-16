@@ -37,5 +37,5 @@ Pod::Spec.new do |spec|
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
     'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
   }
-  spec.dependency 'VHLiveSDK', ">=6.14.0"
+  spec.dependency 'VHLiveSDK', ">=6.16.0"
 end
