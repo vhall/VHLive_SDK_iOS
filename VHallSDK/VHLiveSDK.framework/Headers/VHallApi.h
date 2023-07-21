@@ -34,7 +34,7 @@
 #import "VHVideoRoundObject.h"
 #import "VHWarmInfoObject.h"
 #import "VHFileDownloadObject.h"
-
+#import "VHPushScreenCardObject.h"
 
 @protocol VHallApiDelegate <NSObject>
 

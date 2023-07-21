@@ -13,11 +13,12 @@
 @protocol VHallLivePublishDelegate;
 @interface VHallLivePublish : NSObject
 
-@property (nonatomic, weak) id <VHallLivePublishDelegate>       delegate;               ///<代理
-@property (nonatomic, assign) BOOL isMute;                                              ///<设置静音 (开始直播后设置有效)
-@property (nonatomic, assign) BOOL isRehearsal;                                         ///<是否彩排 YES：彩排模式开播 NO：正常直播 (默认NO,开播前设置有效)
-@property (nonatomic, strong, readonly) UIView *displayView;                            ///<用来显示摄像头拍摄内容的View
-@property (nonatomic, assign, readonly) BOOL isPublishing;                              ///<获取当前推流状态
+@property (nonatomic, weak) id <VHallLivePublishDelegate>       delegate;              ///<代理
+@property (nonatomic, assign) BOOL cameraMute;                                         ///<静视频。回显以及观众看到的是黑屏，不影响音频相关内容
+@property (nonatomic, assign) BOOL isMute;                                             ///<设置静音 (开始直播后设置有效)
+@property (nonatomic, assign) BOOL isRehearsal;                                        ///<是否彩排 YES：彩排模式开播 NO：正常直播 (默认NO,开播前设置有效)
+@property (nonatomic, strong, readonly) UIView *displayView;                           ///<用来显示摄像头拍摄内容的View
+@property (nonatomic, assign, readonly) BOOL isPublishing;                             ///<获取当前推流状态
 @property (nonatomic, assign, readonly) AVCaptureDevicePosition captureDevicePosition;  ///<获取用户使用是前置还是后置摄像头
 
 /// 初始化

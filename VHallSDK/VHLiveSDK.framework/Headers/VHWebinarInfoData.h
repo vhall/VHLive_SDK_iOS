@@ -89,6 +89,8 @@
 @property (nonatomic, assign) NSInteger mode;                                           ///<模式（1-音频、2-视频、3-互动、 4-文档、5-定时直播、6-分组讨论）
 @property (nonatomic, assign) NSInteger webinar_show_type;                              ///<
 @property (nonatomic, assign) NSInteger verify;                                         ///<验证类别，0 无验证，1 密码，2 白名单，3 付费活动, 4 F码, 6 F码+付费
+@property (nonatomic, assign) NSInteger live_subtitle_type; ///<0：关闭，1：中文转中文字幕，2：中文转中英字幕，3：中文转英文字幕，4：英文转英文字母，5：英文转中英字幕
+
 @end
 
 

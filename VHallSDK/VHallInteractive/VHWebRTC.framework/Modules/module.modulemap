@@ -1,0 +1,6 @@
+framework module VHWebRTC {
+  umbrella header "VHWebRTC.h"
+
+  export *
+  module * { export * }
+}

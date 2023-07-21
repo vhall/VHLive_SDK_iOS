@@ -121,6 +121,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *start_time;                  ///<直播开始时间
 @property (nonatomic, copy) NSString *actual_start_time;        ///<实际开始时间
 @property (nonatomic, copy) NSString *end_time;                    ///<直播结束时间
+@property (nonatomic, assign) NSInteger live_subtitle_type; ///<0：关闭，1：中文转中文字幕，2：中文转中英字幕，3：中文转英文字幕，4：英文转英文字母，5：英文转中英字幕
 
 /// 查询活动基础信息
 /// @param webinarId 活动id
@@ -264,6 +265,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL online_show;                               ///<是否显示在线人数
 @property (nonatomic, readonly) NSInteger inav_num;                             ///<当前活动设置的支持大连麦人数， 如：6表示1v5，16表示1v15...
 @property (nonatomic, readonly) NSInteger speakerAndShowLayout;                   ///<0 -- 分离模式；1 -- 合并模式；
+@property (nonatomic, readonly) NSInteger live_subtitle_type; ///<0：关闭，1：中文转中文字幕，2：中文转中英字幕，3：中文转英文字幕，4：英文转英文字母，5：英文转中英字幕
+
 @end
 
 NS_ASSUME_NONNULL_END

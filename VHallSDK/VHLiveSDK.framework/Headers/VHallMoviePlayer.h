@@ -20,17 +20,20 @@
 @property (nonatomic, strong, readonly) UIView *moviePlayerView;                        ///<获取播放器view
 @property (nonatomic, strong, readonly) UIView *documentView;                           ///<获取文档演示view，如果没有文档则为nil (在收到"文档显示/隐藏回调"后获取)
 @property (nonatomic, strong, readonly) UIImageView *waterImg;                          ///<水印（在收到"播放连接成功回调"后使用）
+@property (nonatomic, strong, readonly) VHWebinarInfo *webinarInfo;                     ///<活动相关信息 （在收到"视频信息预加载回调"或"播放连接成功回调"后使用，v6.0新增，仅限新版控制台(v3及以上)创建的活动使用）
 @property (nonatomic, assign, readonly) int realityBufferTime;                          ///<获取RTMP播放实际的缓冲时间，单位毫秒
 @property (nonatomic, assign, readonly) VHMovieVideoPlayMode playMode;                  ///<获取当前视频观看模式
 @property (nonatomic, assign, readonly) VHMovieActiveState activeState;                 ///<活动状态 （在收到"视频信息预加载回调"或"播放连接成功回调"后使用）
 @property (nonatomic, assign, readonly) VHPlayerState playerState;                      ///<获取播放器状态
-@property (nonatomic, strong, readonly) VHWebinarInfo *webinarInfo;                     ///<活动相关信息 （在收到"视频信息预加载回调"或"播放连接成功回调"后使用，v6.0新增，仅限新版控制台(v3及以上)创建的活动使用）
-
-@property (nonatomic, assign) int timeout;                                              ///<设置链接的超时时间 默认5000毫秒，单位为毫秒  MP4点播 最小10000毫秒
-@property (nonatomic, assign) int bufferTime;                                           ///<设置RTMP 的缓冲时间 默认 6秒 单位为秒 必须>0 值越小延时越小,卡顿增加
 @property (nonatomic, assign) VHRTMPMovieScalingMode movieScalingMode;                  ///<设置视频的填充模式 默认是自适应模式：VHRTMPMovieScalingModeAspectFit
 @property (nonatomic, assign) VHMovieDefinition defaultDefinition;                      ///<设置默认播放的清晰度 默认原画
 @property (nonatomic, assign) VHMovieDefinition curDefinition;                          ///<设置当前播放的清晰度
+@property (nonatomic, assign) int timeout;                                              ///<设置链接的超时时间 默认5000毫秒，单位为毫秒  MP4点播 最小10000毫秒
+@property (nonatomic, assign) int bufferTime;                                           ///<设置RTMP 的缓冲时间 默认 6秒 单位为秒 必须>0 值越小延时越小,卡顿增加
+
+//---------------以下属性 直播使用--------------------
+@property (nonatomic, assign) BOOL default_live_subtitle;                               ///<是否使用字幕视频 [播放开始前设置]
+@property (nonatomic, assign) BOOL live_subtitle;                                       ///<是否使用字幕视频 [播放开始后设置]
 
 //---------------以下属性 点播/回放播放时使用 直播无效--------------------
 @property (nonatomic, assign, readonly) NSTimeInterval duration;                        ///<视频时长

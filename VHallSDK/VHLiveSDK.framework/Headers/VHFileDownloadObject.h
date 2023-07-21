@@ -30,28 +30,20 @@
 
 @interface VHFileDownloadListModel : VHallRawBaseModel
 
+/// 文件名称
 @property (nonatomic , copy) NSString              * file_name;
+/// 文件大小
 @property (nonatomic , copy) NSString              * file_size;
+/// 文件类型
 @property (nonatomic , copy) NSString              * file_ext;
+/// 文件id
 @property (nonatomic , copy) NSString              * file_id;
+/// 文件类型
 @property (nonatomic , copy) NSString              * file_type;
+/// 文件简介
 @property (nonatomic , copy) NSString              * file_desc;
+/// 文件icon图片
 @property (nonatomic , copy) NSString              * img_url;
-
-///// 是否显示 1显示 0不显示
-//@property (nonatomic , assign) NSInteger             status;
-///// 活动id
-//@property (nonatomic , copy) NSString              * webinar_id;
-///// 用户id
-//@property (nonatomic , copy) NSString              * user_id;
-///// 类型
-//@property (nonatomic , copy) NSString              * type;
-///// 菜单id
-//@property (nonatomic , copy) NSString              * menu_id;
-///// 名称
-//@property (nonatomic , copy) NSString              * name;
-///// url
-//@property (nonatomic , copy) NSString              * url;
 
 @end
 
