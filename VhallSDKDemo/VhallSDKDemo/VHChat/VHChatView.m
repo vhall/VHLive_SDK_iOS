@@ -9,6 +9,7 @@
 #import "VHChatGiftCell.h"
 #import "VHChatLotteryCell.h"
 #import "VHChatView.h"
+#import "VHChatPushScreenCardCell.h"
 
 @interface VHChatView ()<VHallChatDelegate, UITableViewDataSource, UITableViewDelegate>
 /// 聊天
@@ -141,6 +142,12 @@
 }
 
 #pragma mark - ----------------------VHallChatDelegate----------------------
+#pragma mark - 所有消息
+- (void)receiveAllMessage:(VHMessage *)message
+{
+    
+}
+
 #pragma mark - 收到上下线消息
 - (void)reciveOnlineMsg:(NSArray <VHallOnlineStateModel *> *)msgs
 {
@@ -352,6 +359,13 @@
                 [weakSelf.delegate clickCheckWinListWithEndLotteryModel:endLotteryModel];
             }
         };
+        
+        VHChatPushScreenCardCell *pushScreenCardCell = [VHChatPushScreenCardCell createCellWithTableView:tableView];
+        pushScreenCardCell.clickPushScreenCardCell = ^(VHPushScreenCardItem *pushScreenCardListItem) {
+            if ([weakSelf.delegate respondsToSelector:@selector(clickCheckPushScreenCardModel:)]) {
+                [weakSelf.delegate clickCheckPushScreenCardModel:pushScreenCardListItem];
+            }
+        };
 
         if ([model isKindOfClass:[VHallChatModel class]]) {
             [cell setModel:model];
@@ -367,6 +381,9 @@
         } else if ([model isKindOfClass:[VHallEndLotteryModel class]]) {
             [lotteryCell setEndModel:model];
             return lotteryCell;
+        } else if ([model isKindOfClass:[VHPushScreenCardItem class]]) {
+            [pushScreenCardCell setPushScreenCardListItem:model];
+            return pushScreenCardCell;
         }
 
         return cell;
@@ -432,6 +449,14 @@
 - (void)chatLotteryWithStartModel:(VHallStartLotteryModel *)startModel endModel:(VHallEndLotteryModel *)endModel
 {
     [self.chatDataSource addObject:startModel ? startModel : endModel];
+
+    [self reloadChatToBottom:YES beforeChange:0];
+}
+
+#pragma mark - 收到推屏卡片消息
+- (void)chatPushScreenCardModel:(VHPushScreenCardItem *)model
+{
+    [self.chatDataSource addObject:model];
 
     [self reloadChatToBottom:YES beforeChange:0];
 }

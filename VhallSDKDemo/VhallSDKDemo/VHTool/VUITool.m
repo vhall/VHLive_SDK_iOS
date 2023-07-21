@@ -364,4 +364,12 @@ NSString *VH_MB_ASSIST = @"助理";
                                                       userInfo:userInfo];
 }
 
++ (BOOL)isFullScreen {
+    UIWindow *window = [UIApplication sharedApplication].windows.firstObject;
+    if (@available(iOS 13.0, *)) {
+        return window.windowScene.interfaceOrientation == UIInterfaceOrientationLandscapeLeft || window.windowScene.interfaceOrientation == UIInterfaceOrientationLandscapeRight;
+    } else {
+        return [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight;
+    }
+}
 @end

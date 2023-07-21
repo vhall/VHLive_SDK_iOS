@@ -89,6 +89,8 @@
     self.signSetBtn.accessibilityLabel = VHTests_Login_SignSetBtn;
     self.thirdIdTextField.accessibilityLabel = VHTests_Login_ThirdId;
     self.thirdNameTextField.accessibilityLabel = VHTests_Login_ThirdName;
+    
+    // 给登录按钮绑定标识
     self.loginBtn.accessibilityLabel = VHTests_Login_LoginBtn;
 }
 #pragma mark - 点击签名设置

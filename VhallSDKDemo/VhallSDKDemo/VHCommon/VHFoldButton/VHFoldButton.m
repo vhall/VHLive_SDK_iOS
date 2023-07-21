@@ -248,6 +248,11 @@
     if ([item.title isEqualToString:@"签到"]) {
         self.icon.image = [UIImage imageNamed:@"vh_more_tool_sin_icon"];
     }
+    
+    if ([item.title isEqualToString:@"推屏卡片"]) {
+        self.icon.image = [UIImage imageNamed:@"vh_more_tool_card_icon"];
+    }
+
 }
 
 #pragma mark - 懒加载

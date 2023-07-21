@@ -70,7 +70,7 @@
         }
 
         if (error) {
-            [VHProgressHud showToast:error.localizedDescription];
+//            [VHProgressHud showToast:error.localizedDescription];
         }
     }];
 }

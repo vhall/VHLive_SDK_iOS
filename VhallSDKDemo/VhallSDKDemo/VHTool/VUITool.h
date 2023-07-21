@@ -105,4 +105,6 @@ extern NSString *VH_MB_ASSIST;
 /// - Parameter userInfo: 其它信息
 + (void)sendTestsNotificationCenterWithKey:(NSString *)key otherInfo:(NSDictionary *)otherInfo;
 
+/// 当前是否为全屏状态
++ (BOOL)isFullScreen;
 @end

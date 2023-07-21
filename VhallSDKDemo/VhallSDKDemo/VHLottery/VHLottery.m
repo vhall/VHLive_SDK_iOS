@@ -56,7 +56,10 @@
         [self.delegate startLottery:msg];
     }
 
-    [self.lotteryTurntableView showLotteryTurntableWithVHLottery:self.vhLottery startModel:msg];
+    // 非全屏展示
+    if (![VUITool isFullScreen]) {
+        [self.lotteryTurntableView showLotteryTurntableWithVHLottery:self.vhLottery startModel:msg];
+    }
 }
 
 #pragma mark - 抽奖结束
@@ -68,13 +71,16 @@
         [self.delegate endLottery:msg];
     }
 
-    // 判断自己是否中奖
-    if (msg.isWin) {
-        // 中奖
-        [self.lotteryResultView showLotteryResultWithVHLottery:self.vhLottery endLotteryModel:msg];
-    } else {
-        // 未中奖
-        [self.lotteryLosingView showLotteryLosingWithVHLottery:self.vhLottery endLotteryModel:msg];
+    // 非全屏展示
+    if (![VUITool isFullScreen]) {
+        // 判断自己是否中奖
+        if (msg.isWin) {
+            // 中奖
+            [self.lotteryResultView showLotteryResultWithVHLottery:self.vhLottery endLotteryModel:msg];
+        } else {
+            // 未中奖
+            [self.lotteryLosingView showLotteryLosingWithVHLottery:self.vhLottery endLotteryModel:msg];
+        }
     }
 }
 
@@ -87,19 +93,22 @@
     [self.vhLottery getSubmitConfigWithWebinarId:self.webinarInfoData.webinar.data_id
                                       lottery_id:endLotteryModel.huadieInfo.lottery_id
                                          success:^(NSArray<VHallLotterySubmitConfig *> *submitList, NSInteger receive_award_way) {
-        // 判断领奖方式 1寄送奖品,2私信兑奖,3无需领奖
-        if (receive_award_way == 1) {
-            // 寄送界面 填写信息弹窗
-            [weakSelf.lotterySubmitView showLotterySubmitWithVHLottery:weakSelf.vhLottery
-                                                       endLotteryModel:endLotteryModel
-                                                            submitList:submitList];
-            }
+        // 非全屏展示
+        if (![VUITool isFullScreen]) {
+            // 判断领奖方式 1寄送奖品,2私信兑奖,3无需领奖
+            if (receive_award_way == 1) {
+                // 寄送界面 填写信息弹窗
+                [weakSelf.lotterySubmitView showLotterySubmitWithVHLottery:weakSelf.vhLottery
+                                                           endLotteryModel:endLotteryModel
+                                                                submitList:submitList];
+                }
 
-        if (receive_award_way == 2) {
-            // 私信领奖
-            [weakSelf.lotteryPrivateView showLotteryPrivateWithVHLottery:weakSelf.vhLottery
-                                                         endLotteryModel:endLotteryModel
-                                                              submitList:submitList];
+            if (receive_award_way == 2) {
+                // 私信领奖
+                [weakSelf.lotteryPrivateView showLotteryPrivateWithVHLottery:weakSelf.vhLottery
+                                                             endLotteryModel:endLotteryModel
+                                                                  submitList:submitList];
+            }
         }
     }
                                           failed:^(NSDictionary *failedData) {
@@ -113,7 +122,10 @@
 {
     [self dismiss];
 
-    [self.lotteryWinListView showLotteryWinListWithVHLottery:self.vhLottery endLotteryModel:endLotteryModel];
+    // 非全屏展示
+    if (![VUITool isFullScreen]) {
+        [self.lotteryWinListView showLotteryWinListWithVHLottery:self.vhLottery endLotteryModel:endLotteryModel];
+    }
 }
 
 #pragma mark - 点击查看中奖名单
@@ -121,7 +133,10 @@
 {
     [self dismiss];
 
-    [self.lotteryWinListView showLotteryWinListWithVHLottery:self.vhLottery endLotteryModel:endLotteryModel];
+    // 非全屏展示
+    if (![VUITool isFullScreen]) {
+        [self.lotteryWinListView showLotteryWinListWithVHLottery:self.vhLottery endLotteryModel:endLotteryModel];
+    }
 }
 
 #pragma mark - 隐藏弹窗

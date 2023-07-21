@@ -368,8 +368,7 @@
     }
 }
 
-/// 播放指定回放视频
-/// - Parameter recordId: 回放id
+#pragma mark - 播放指定回放视频
 - (void)startPlayBackWithRecordId:(NSString *)recordId {
     self.recordId = recordId;
     if (self.type == VHMovieActiveStateReplay || self.type == VHMovieActiveStatePlayBack) {
@@ -442,8 +441,8 @@
     }
 
     if (livePlayErrorType == VHSaasLivePlayCDNConnectError) {
-        // 出现这种报错后 继续重试
-        [self reconnectPlay];
+//        // 出现这种报错后 继续重试
+//        [self reconnectPlay];
     }
 }
 
@@ -808,15 +807,15 @@
 {
     if (!_moviePlayer) {
         _moviePlayer = [[VHallMoviePlayer alloc] initWithDelegate:self];
-        _moviePlayer.movieScalingMode = VHRTMPMovieScalingModeAspectFit;
+        _moviePlayer.movieScalingMode = 2;
         _moviePlayer.defaultDefinition = VHMovieDefinitionOrigin;
+        _moviePlayer.default_live_subtitle = YES;
+//        _moviePlayer.initialPlaybackTime = 180;
         // 创建双击手势识别器
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
         tapGesture.numberOfTapsRequired = 2;
         // 将手势识别器添加到视图中
         [_moviePlayer.moviePlayerView addGestureRecognizer:tapGesture];
-//        _moviePlayer.bufferTime = 0;
-//        _moviePlayer.initialPlaybackTime = 180;
     }
 
     return _moviePlayer;

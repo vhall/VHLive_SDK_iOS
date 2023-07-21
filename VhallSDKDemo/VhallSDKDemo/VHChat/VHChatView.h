@@ -41,6 +41,10 @@
 /// - Parameter endLotteryModel: 结束抽奖数据源
 - (void)clickCheckWinListWithEndLotteryModel:(VHallEndLotteryModel *)endLotteryModel;
 
+/// 点击查看推屏卡片
+/// - Parameter model: 推屏卡片详情
+- (void)clickCheckPushScreenCardModel:(VHPushScreenCardItem *)model;
+
 @end
 
 @interface VHChatView : UIView<JXCategoryListContentViewDelegate>
@@ -74,5 +78,9 @@
 /// - Parameter startModel: 开始抽奖模型
 /// - Parameter endModel: 结束抽奖模型
 - (void)chatLotteryWithStartModel:(VHallStartLotteryModel *)startModel endModel:(VHallEndLotteryModel *)endModel;
+
+/// 收到推屏卡片消息
+/// - Parameter model: 推屏卡片模型
+- (void)chatPushScreenCardModel:(VHPushScreenCardItem *)model;
 
 @end

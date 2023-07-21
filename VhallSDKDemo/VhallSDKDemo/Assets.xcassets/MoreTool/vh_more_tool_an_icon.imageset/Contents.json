@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "vh_an_btnIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "vh_more_tool_an_icon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "vh_more_tool_an_icon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

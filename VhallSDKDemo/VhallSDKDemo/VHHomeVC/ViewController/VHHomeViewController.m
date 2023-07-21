@@ -346,7 +346,7 @@
     if (!_authAlertView) {
         _authAlertView = [[VHAuthAlertView alloc] initWithFrame:self.view.frame];
         _authAlertView.delegate = self;
-        [self.view addSubview:self.authAlertView];
+        [self.view addSubview:_authAlertView];
     }
 
     return _authAlertView;

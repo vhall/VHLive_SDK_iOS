@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "VHAnnouncementList.h"
 #import "VHAnnouncementView.h"
+#import "VHPushScreenCardList.h"
 #import "VHChatView.h"
 #import "VHDocViewController.h"
 #import "VHFashionStyleGiftListView.h"
@@ -27,7 +28,7 @@
 #import "VHWatchVC.h"
 #import "VHWatchVideoView.h"
 
-@interface VHWatchVC ()<VHWatchVideoViewDelegate, VHInavViewDelegate, VHWatchLiveBottomViewDelegate, VHChatViewDelegate, JXCategoryViewDelegate, JXCategoryListContainerViewDelegate, VHallGiftObjectDelegate, VHQAViewDelegate, VHSignInAlertViewDelegate, VHSurveyListViewDelegate, VHDocViewDelegate, VHRecordChapterDelegate, VHVideoPointViewDelegate, VHLotteryDelegate, VHExamObjectDelegate, VHRecordListDelegate,VHFileDownloadDelegate>
+@interface VHWatchVC ()<VHWatchVideoViewDelegate, VHInavViewDelegate, VHWatchLiveBottomViewDelegate, VHChatViewDelegate, JXCategoryViewDelegate, JXCategoryListContainerViewDelegate, VHallGiftObjectDelegate, VHQAViewDelegate, VHSignInAlertViewDelegate, VHSurveyListViewDelegate, VHDocViewDelegate, VHRecordChapterDelegate, VHVideoPointViewDelegate, VHLotteryDelegate, VHExamObjectDelegate, VHRecordListDelegate,VHFileDownloadDelegate,VHPushScreenCardListDelegate>
 
 // 控件
 /// 分页控件
@@ -71,6 +72,8 @@
 @property (nonatomic, strong) VHAnnouncementView *announcementView;
 /// 公告列表
 @property (nonatomic, strong) VHAnnouncementList *announcementList;
+/// 推屏卡片
+@property (nonatomic, strong) VHPushScreenCardList *pushScreenCardList;
 /// 申请互动连麦弹窗
 @property (nonatomic, strong) VHInavApplyAlertView *inavApplyAlertView;
 /// 签到
@@ -333,33 +336,54 @@
     [self.bottomView requestObject:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
 
     // 初始化问答
-    self.vhQAView = [[VHQAView alloc] initQAWithFrame:self.view.frame obj:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
-    self.vhQAView.delegate = self;
+    if (!_vhQAView) {
+        self.vhQAView = [[VHQAView alloc] initQAWithFrame:self.view.frame obj:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
+        self.vhQAView.delegate = self;
+    }
 
     // 初始化章节
     if (self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.webinar.type == 4 || self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.webinar.type == 5) {
-        self.recordChapterView = [[VHRecordChapter alloc] initRCWithFrame:self.view.frame webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
-        self.recordChapterView.delegate = self;
+        if (!_recordChapterView) {
+            self.recordChapterView = [[VHRecordChapter alloc] initRCWithFrame:self.view.frame webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
+            self.recordChapterView.delegate = self;
+        }
     }
 
     // 初始化问卷
-    self.surveyListView = [[VHSurveyListView alloc] initSurveyWithObject:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
-    self.surveyListView.delegate = self;
+    if (!_surveyListView) {
+        self.surveyListView = [[VHSurveyListView alloc] initSurveyWithObject:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
+        self.surveyListView.delegate = self;
+    }
 
     // 初始化礼物
-    self.giftObject = [[VHallGiftObject alloc] initWithObject:self.watchVideoView.moviePlayer];
-    self.giftObject.delegate = self;
+    if (!_giftObject) {
+        self.giftObject = [[VHallGiftObject alloc] initWithObject:self.watchVideoView.moviePlayer];
+        self.giftObject.delegate = self;
+    }
 
     // 初始化签到
-    self.signInAlertView = [[VHSignInAlertView alloc] initSignWithFrame:self.view.frame obj:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
-    self.signInAlertView.delegate = self;
+    if (!_signInAlertView) {
+        self.signInAlertView = [[VHSignInAlertView alloc] initSignWithFrame:self.view.frame obj:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
+        self.signInAlertView.delegate = self;
+    }
 
     // 初始化抽奖
-    self.vhLottery = [[VHLottery alloc] initLotteryWithObj:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
-    self.vhLottery.delegate = self;
+    if (!_vhLottery) {
+        self.vhLottery = [[VHLottery alloc] initLotteryWithObj:self.watchVideoView.moviePlayer webinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
+        self.vhLottery.delegate = self;
+    }
 
-    self.vhExam = [[VHExamObject alloc] initWithObject:self.watchVideoView.moviePlayer];
-    self.vhExam.delegate = self;
+    // 快问快答
+    if (!_vhExam) {
+        self.vhExam = [[VHExamObject alloc] initWithObject:self.watchVideoView.moviePlayer];
+        self.vhExam.delegate = self;
+    }
+    
+    // 推屏卡片
+    if (!_pushScreenCardList) {
+        self.pushScreenCardList = [[VHPushScreenCardList alloc] initWithFrame:self.view.bounds object:self.watchVideoView.moviePlayer];
+        self.pushScreenCardList.delegate = self;
+    }
 }
 
 #pragma mark 主持人显示/隐藏文档
@@ -588,6 +612,12 @@
     [self.vhLottery clickCheckWinListWithEndLotteryModel:endLotteryModel];
 }
 
+#pragma mark 点击消息上的查看推屏卡片
+- (void)clickCheckPushScreenCardModel:(VHPushScreenCardItem *)model
+{
+    [self.pushScreenCardList showPushScreenCard:model];
+}
+
 #pragma mark - VHWatchLiveBottomViewDelegate
 #pragma mark 发送消息
 - (void)sendText:(NSString *)text
@@ -759,6 +789,13 @@
         };
         [[UIApplication sharedApplication] openURL:examWebUrl options:options completionHandler:nil];
     }
+}
+
+#pragma mark - VHPushScreenCardListDelegate
+#pragma mark 推屏卡片消息
+- (void)pushScreenCardModel:(VHPushScreenCardItem *)model
+{    
+    [self.chatView chatPushScreenCardModel:model];
 }
 
 #pragma mark - 直播和互动播放器切换
@@ -970,7 +1007,7 @@
         [_watchVideoView destroyMP];
         _watchVideoView = nil;
     }
-
+    
     // 返回上级
     [super clickLeftBarItem];
 }
@@ -989,7 +1026,7 @@
         _categoryView.contentScrollViewClickTransitionAnimationEnabled = NO;
         _categoryView.titles = self.listContainerArray;
         _categoryView.listContainer = self.listContainerView;
-        _categoryView.collectionView.accessibilityLabel = VHTests_Intro_Click;
+        _categoryView.collectionView.accessibilityLabel = VHTests_Menus_View;
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
         lineView.indicatorWidth = 20;
         lineView.indicatorHeight = 3;
@@ -1025,7 +1062,7 @@
 - (VHFoldButton *)foldBtn
 {
     if (!_foldBtn) {
-        NSArray *arr = @[@"问卷", @"公告"];
+        NSArray *arr = @[@"问卷", @"公告",@"推屏卡片"];
         NSMutableArray *datas = [NSMutableArray arrayWithCapacity:arr.count];
 
         for (NSString *title in arr) {
@@ -1061,6 +1098,15 @@
                 [weakSelf.announcementList loadDataRoomId:weakSelf.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.interact.room_id
                                                    isShow:YES];
             }
+            
+            if ([obj.title isEqualToString:@"推屏卡片"]) {
+                [weakSelf.view addSubview:weakSelf.pushScreenCardList];
+                [weakSelf.pushScreenCardList mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.edges.mas_equalTo(weakSelf.view);
+                }];
+                [weakSelf.pushScreenCardList loadDataWebinarId:weakSelf.webinar_id switch_id:weakSelf.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.data_switch.switch_id isShow:YES];
+            }
+            
         }];
     }
 
@@ -1072,7 +1118,8 @@
 {
     NSString *title = self.listContainerArray[self.categoryView.selectedIndex];
 
-    if (self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.webinar.type == 1 && !self.isFull) {
+    // v6.16.0 因为要测试回放问卷,所以修改为回放也可以操作更多功能
+    if (!self.isFull) {
         self.foldBtn.hidden = ![title isEqualToString:@"聊天"];
     } else {
         self.foldBtn.hidden = YES;
@@ -1086,7 +1133,6 @@
         _watchVideoView.delegate = self;
         [self.view addSubview:_watchVideoView];
     }
-
     return _watchVideoView;
 }
 
@@ -1098,7 +1144,6 @@
         _inavView.hidden = YES;
         [self.view addSubview:_inavView];
     }
-
     return _inavView;
 }
 
@@ -1108,7 +1153,6 @@
         _chatView = [[VHChatView alloc] init];
         _chatView.delegate = self;
     }
-
     return _chatView;
 }
 
@@ -1118,7 +1162,6 @@
         _docViewController = [[VHDocViewController alloc] init];
         _docViewController.delegate = self;
     }
-
     return _docViewController;
 }
 
@@ -1127,7 +1170,6 @@
     if (!_introView) {
         _introView = [[VHIntroView alloc] init];
     }
-
     return _introView;
 }
 
@@ -1138,7 +1180,6 @@
         _recordListVC.delegate = self;
         _recordListVC.webinar_id = self.webinar_id;
     }
-    
     return _recordListVC;
 }
 
@@ -1169,7 +1210,6 @@
         _giftListView = [VHFashionStyleGiftListView new];
         [self.view addSubview:_giftListView];
     }
-
     return _giftListView;
 }
 
@@ -1178,7 +1218,6 @@
     if (!_announcementList) {
         _announcementList = [[VHAnnouncementList alloc] initWithFrame:self.view.frame];
     }
-
     return _announcementList;
 }
 
@@ -1188,7 +1227,6 @@
         _announcementView = [[VHAnnouncementView alloc]initWithFrame:CGRectMake(0, 0, Screen_Width, 40)];
         _announcementView.accessibilityLabel = VHTests_Announcement_Show;
     }
-
     return _announcementView;
 }
 
@@ -1202,7 +1240,6 @@
             make.left.top.right.bottom.mas_equalTo(0);
         }];
     }
-
     return _inavApplyAlertView;
 }
 

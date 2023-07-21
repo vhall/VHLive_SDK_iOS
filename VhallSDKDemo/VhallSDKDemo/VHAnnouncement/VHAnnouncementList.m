@@ -77,9 +77,20 @@
 {
     _model = model;
 
-    self.timeLab.text = model.created_at;
-
     self.titleLab.text = model.content;
+
+    NSString *inputString = model.created_at;
+
+    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+    [inputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [inputFormatter dateFromString:inputString];
+
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateFormat:@"MM-dd HH:mm"];
+    NSString *outputString = [outputFormatter stringFromDate:date];
+    
+    self.timeLab.text = outputString;
+
 }
 
 #pragma mark - 懒加载

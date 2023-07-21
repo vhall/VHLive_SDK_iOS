@@ -22,6 +22,7 @@
 #define VHTests_SignIn                @"VHTests_SignIn" // 开始签到消息
 #define VHTests_NC_MicroInvitation    @"VHTests_Inav_MicroInvitation" // 收到主持人邀请上麦消息
 #define VHTests_Inav_Participate      @"VHTests_Inav_Participate" // 参与互动
+#define VHTests_PushScreenCard        @"VHTests_PushScreenCard" // 开始推屏卡片
 #define VHTests_END                   @"VHTests_END" // 结束自动化测试
 
 // 控件标识
@@ -64,8 +65,8 @@
 // 点赞
 #define VHTests_Like_Click            @"VHTests_Like_Click" // 进行点赞
 
-// 简介
-#define VHTests_Intro_Click           @"VHTests_Intro_Click" // 点击简介标签
+// 菜单
+#define VHTests_Menus_View           @"VHTests_Menus_View" // 菜单
 
 // 公告
 #define VHTests_Announcement_Show     @"VHTests_Announcement_Show" // 显示公告跑马灯功能
@@ -106,5 +107,8 @@
 
 // 精彩时刻
 #define VHTests_Back_VideoPoint       @"VHTests_WatchBack_VideoPoint"  // 精彩时刻列表
+
+// 推屏卡片
+#define VHTests_PushScreenCard_Close  @"VHTests_PushScreenCard_Close" // 点击推屏卡片关闭按钮
 
 #endif /* VhallSDKDemoTestsHeader_h */

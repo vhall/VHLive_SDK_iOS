@@ -20,11 +20,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    // 给返回按钮,增加标识
     leftBtn.accessibilityLabel = VHTest_Base_BackBtn;
     leftBtn.frame = CGRectMake(0, 0, 20, 20);
-    [leftBtn setImage:[UIImage imageNamed:@"vh_back"] forState:UIControlStateNormal];
-    [leftBtn addTarget:self action:@selector(clickLeftBarItem) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+    [leftBtn setImage:[UIImage imageNamed:@"vh_back"]
+             forState:UIControlStateNormal];
+    [leftBtn addTarget:self action:@selector(clickLeftBarItem)
+      forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc]
+                                    initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = leftBarItem;
 
     // 导航栏不透明

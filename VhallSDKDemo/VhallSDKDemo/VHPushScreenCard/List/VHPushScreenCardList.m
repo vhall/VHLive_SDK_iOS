@@ -1,21 +1,21 @@
 //
-//  VHSurveyListView.m
+//  VHPushScreenCardList.m
 //  VhallSDKDemo
 //
-//  Created by 郭超 on 2022/12/16.
+//  Created by 郭超 on 2023/7/3.
 //
 
-#import "VHSurveyListView.h"
-#import "VHSurveyWebView.h"
+#import "VHPushScreenCardList.h"
+#import "VHPushScreenCardAlert.h"
 
-@implementation VHSurveyListCell
+@implementation VHPushScreenCardListCell
 
-+ (VHSurveyListCell *)createCellWithTableView:(UITableView *)tableView
++ (VHPushScreenCardListCell *)createCellWithTableView:(UITableView *)tableView
 {
-    VHSurveyListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VHSurveyListCell"];
+    VHPushScreenCardListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VHPushScreenCardListCell"];
 
     if (!cell) {
-        cell = [[VHSurveyListCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"VHSurveyListCell"];
+        cell = [[VHPushScreenCardListCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"VHPushScreenCardListCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 
@@ -30,7 +30,6 @@
         [self.contentView addSubview:self.bgView];
         [self.bgView addSubview:self.titleLab];
         [self.bgView addSubview:self.timeLab];
-        [self.bgView addSubview:self.checkLab];
 
         // 设置约束
         [self setMasonryUI];
@@ -68,24 +67,18 @@
         make.bottom.mas_equalTo(-12);
     }];
 
-    [self.checkLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.titleLab.mas_bottom).offset(5);
-        make.right.mas_equalTo(self.titleLab.mas_right);
-        make.bottom.mas_equalTo(-12);
-    }];
-
     [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.bgView.mas_bottom).priorityHigh();
     }];
 }
 
-- (void)setModel:(VHSurveyModel *)model
+- (void)setModel:(VHPushScreenCardItem *)model
 {
     _model = model;
-
+    
     self.titleLab.text = model.title;
-
-    NSString *inputString = model.created_at;
+    
+    NSString *inputString = model.push_time;
 
     NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
     [inputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -96,8 +89,6 @@
     NSString *outputString = [outputFormatter stringFromDate:date];
     
     self.timeLab.text = outputString;
-
-    self.checkLab.text = model.is_answered ? @"已填写" : @"填写";
 }
 
 #pragma mark - 懒加载
@@ -116,7 +107,7 @@
 {
     if (!_titleLab) {
         _titleLab = [[UILabel alloc] init];
-        _titleLab.numberOfLines = 0;
+        _titleLab.numberOfLines = 2;
         _titleLab.preferredMaxLayoutWidth = Screen_Width - 22 - 12 - 12 - 22;
         _titleLab.font = FONT(14);
         _titleLab.textColor = [UIColor colorWithHex:@"#1A1A1A"];
@@ -136,61 +127,54 @@
     return _timeLab;
 }
 
-- (UILabel *)checkLab
-{
-    if (!_checkLab) {
-        _checkLab = [[UILabel alloc] init];
-        _checkLab.font = FONT(12);
-        _checkLab.textColor = [UIColor colorWithHex:@"#3562FA"];
-    }
-
-    return _checkLab;
-}
-
 @end
 
-@interface VHSurveyListView ()<UITableViewDelegate, UITableViewDataSource, VHallSurveyDelegate, UIGestureRecognizerDelegate>
+@interface VHPushScreenCardList ()<UITableViewDelegate, UITableViewDataSource, VHPushScreenCardObjectDelegate, UIGestureRecognizerDelegate>
 
-/// 问卷嵌入页
-@property (nonatomic, strong) VHSurveyWebView *surveyWebView;
 /// 容器
 @property (nonatomic, strong) UIView *contentView;
 /// 图标
-@property (nonatomic, strong) UIImageView *anIcon;
+@property (nonatomic, strong) UIImageView *icon;
 /// 列表
 @property (nonatomic, strong) UITableView *tableView;
 /// 关闭
 @property (nonatomic, strong) UIButton *closeBtn;
-/// 问卷类
-@property (nonatomic, strong) VHallSurvey *vhSurvey;
 /// 数据源
 @property (nonatomic, strong) NSMutableArray *dataSource;
 /// 页码
 @property (nonatomic, assign) NSInteger pageNum;
-/// 房间详情
-@property (nonatomic, strong) VHWebinarInfoData *webinarInfoData;
+/// 活动id
+@property (nonatomic, copy) NSString *webinar_id;
+/// 场次id
+@property (nonatomic, copy) NSString *switch_id;
+
+/// 推屏卡片类
+@property (nonatomic, strong) VHPushScreenCardObject *pushScreenCardObject;
+/// 参与抽奖弹窗
+@property (nonatomic, strong) VHPushScreenCardAlert *pushScreenCardAlert;
 
 @end
 
-@implementation VHSurveyListView
+@implementation VHPushScreenCardList
 
-
-- (instancetype)initSurveyWithObject:(NSObject *)obj webinarInfoData:(VHWebinarInfoData *)webinarInfoData; {
-    if ([super init]) {
+- (instancetype)initWithFrame:(CGRect)frame object:(NSObject *)object
+{
+    if ([super initWithFrame:frame]) {
         self.alpha = 0;
         self.backgroundColor = [UIColor clearColor];
-
-        self.webinarInfoData = webinarInfoData;
-
-        self.vhSurvey = [[VHallSurvey alloc] initWithObject:obj];
-        self.vhSurvey.delegate = self;
 
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(disMissContentView)];
         tap.delegate = self;
         [self addGestureRecognizer:tap];
 
+        // 推屏卡片
+        if (!_pushScreenCardObject) {
+            _pushScreenCardObject = [[VHPushScreenCardObject alloc] initWithObject:object];
+            _pushScreenCardObject.delegate = self;
+        }
+
         [self addSubview:self.contentView];
-        [self.contentView addSubview:self.anIcon];
+        [self.contentView addSubview:self.icon];
         [self.contentView addSubview:self.closeBtn];
         [self.contentView addSubview:self.tableView];
 
@@ -200,6 +184,7 @@
 
     return self;
 }
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -213,11 +198,10 @@
     [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(0);
         make.centerX.mas_equalTo(self.mas_centerX);
-        make.width.mas_equalTo(self.mas_width);
-        make.height.mas_equalTo(338);
+        make.size.mas_equalTo(CGSizeMake(self.width, 338));
     }];
 
-    [_anIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_icon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(0);
         make.centerX.mas_equalTo(self.contentView.mas_centerX);
         make.size.mas_equalTo(CGSizeMake(125, 60));
@@ -237,16 +221,19 @@
 }
 
 #pragma mark - 显示
-- (void)showSurveyIsShow:(BOOL)isShow
+- (void)loadDataWebinarId:(NSString *)webinar_id switch_id:(NSString *)switch_id isShow:(BOOL)isShow
 {
-    [self requestSurveyIsShow:isShow];
+    self.webinar_id = webinar_id;
+    self.switch_id = switch_id;
+    // 加载
+    [self requestPushCardListWithWebinarId:webinar_id switch_id:switch_id pageNum:1 isShow:isShow];
 }
 
 #pragma mark - 显示
 - (void)show
 {
     if (self.dataSource.count <= 0) {
-        [VHProgressHud showToast:@"暂无问卷"];
+        [VHProgressHud showToast:@"暂无推屏列表"];
         return;
     }
 
@@ -260,8 +247,7 @@
 }
 
 #pragma mark - 隐藏
-- (void)disMissContentView
-{
+- (void)disMissContentView {
     [UIView animateWithDuration:0.3
                      animations:^{
         self.alpha = 0;
@@ -270,29 +256,53 @@
     }];
 }
 
-#pragma mark - 显示问卷
-- (void)requestSurveyIsShow:(BOOL)isShow
+#pragma mark - 手势冲突
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    [self.dataSource removeAllObjects];
-    __weak __typeof(self) weakSelf = self;
-    [self.vhSurvey fetchSurveyListWebinarId:self.webinarInfoData.webinar.data_id
-                                     roomId:self.webinarInfoData.interact.room_id
-                                   switchId:self.webinarInfoData.data_switch.switch_id
-                                    success:^(VHSurveyListModel *listModel) {
-        if (listModel.listModel.count > 0) {
-            [weakSelf.dataSource addObjectsFromArray:listModel.listModel];
-        }
-
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView.mj_header endRefreshing];
-
-        // 显示弹窗
-        if (isShow) {
-            [weakSelf show];
-        }
+    if ([touch.view isEqual:self]) {
+        return YES;
+    } else {
+        return NO;
     }
-                                       fail:^(NSError *error) {
-        [VHProgressHud showToast:error.domain];
+}
+
+#pragma mark - 推屏列表列表
+- (void)requestPushCardListWithWebinarId:(NSString *)webinar_id switch_id:(NSString *)switch_id pageNum:(NSInteger)pageNum isShow:(BOOL)isShow
+{
+    self.pageNum = pageNum;
+    __weak __typeof(self) weakSelf = self;
+    [VHPushScreenCardObject requestPushScreenCardListWithWebinarId:webinar_id switch_id:switch_id curr_page:pageNum page_size:10 complete:^(NSArray<VHPushScreenCardItem *> *list, NSInteger total, NSError *error) {
+        __strong __typeof(weakSelf)self = weakSelf;
+        
+        if (list) {
+            
+            if (pageNum == 1) {
+                [self.dataSource removeAllObjects];
+            }
+            
+            [self.dataSource addObjectsFromArray:list];
+
+            if (self.dataSource.count >= total) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            } else {
+                [self.tableView.mj_footer endRefreshing];
+            }
+            
+            // 显示弹窗
+            if (isShow) {
+                [self show];
+            }
+            
+            self.pageNum++;
+        }
+        
+        if (error) {
+            [VHProgressHud showToast:error.domain];
+            [self.tableView.mj_footer endRefreshing];
+        }
+        
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
     }];
 }
 
@@ -304,95 +314,67 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    VHSurveyListCell *cell = [VHSurveyListCell createCellWithTableView:tableView];
-
+    VHPushScreenCardListCell *cell = [VHPushScreenCardListCell createCellWithTableView:tableView];
     cell.model = self.dataSource[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    VHSurveyModel *model = self.dataSource[indexPath.row];
-
-    if (model.is_answered) {
-        return;
-    }
-
-    [self.surveyWebView showSurveyUrl:model.openLink];
+    // 隐藏
     [self disMissContentView];
+    
+    // 点击展示
+    VHPushScreenCardItem * item = self.dataSource[indexPath.row];
+    [self.pushScreenCardAlert showPushScreenCard:item isChat:NO];
 }
 
-#pragma mark - 显示问卷
-- (void)clickSurveyToId:(NSString *)surveyId surveyURL:(NSURL *)surveyURL
+#pragma mark - 显示弹窗
+- (void)showPushScreenCard:(VHPushScreenCardItem *)model
 {
-    [self.dataSource removeAllObjects];
-    __weak __typeof(self) weakSelf = self;
-    [self.vhSurvey fetchSurveyListWebinarId:self.webinarInfoData.webinar.data_id
-                                     roomId:self.webinarInfoData.interact.room_id
-                                   switchId:self.webinarInfoData.data_switch.switch_id
-                                    success:^(VHSurveyListModel *listModel) {
-        if (listModel.listModel.count > 0) {
-            [weakSelf.dataSource addObjectsFromArray:listModel.listModel];
-        }
+    [self.pushScreenCardAlert showPushScreenCard:model isChat:NO];
+}
 
-        for (VHSurveyModel *model in weakSelf.dataSource) {
-            if ([surveyId isEqualToString:[VUITool safeString:model.question_id]]) {
-                if (model.is_answered) {
-                    [VHProgressHud showToast:@"此问卷已填写"]; return;
-                }
-
-                [weakSelf.surveyWebView showSurveyUrl:model.openLink];
-                [weakSelf disMissContentView];
-                return;
-            }
-        }
+#pragma mark - VHPushScreenCardObject
+#pragma mark 推屏卡片消息
+- (void)pushScreenCardModel:(VHPushScreenCardItem *)model
+{
+    // 刷新列表 (如果没活动id,则代表没有打开过列表也就不需要执行刷新操作)
+    if (![VUITool isBlankString:self.webinar_id]) {
+        [self requestPushCardListWithWebinarId:self.webinar_id switch_id:self.switch_id pageNum:1 isShow:NO];
     }
-                                       fail:^(NSError *error) {
-        if (error.code == 516003) {
-            [weakSelf.surveyWebView showSurveyUrl:surveyURL];
-        } else {
-            [VHProgressHud showToast:error.domain];
-        }
-    }];
-}
 
-#pragma mark - VHallSurveyDelegate
-/// 收到问卷 v4.0.0新增
-/// @param surveyURL 问卷地址
-- (void)receivedSurveyWithURL:(NSURL *)surveyURL surveyId:(NSString *)surveyId
-{
-    if ([self.delegate respondsToSelector:@selector(receivedSurveyWithURL:surveyId:)]) {
-        [self.delegate receivedSurveyWithURL:surveyURL surveyId:surveyId];
+    // 非全屏展示
+    if (![VUITool isFullScreen]) {
+        // 展示弹窗
+        [self.pushScreenCardAlert showPushScreenCard:model isChat:YES];
     }
+    
+    // 判断代理是否实现了推送屏幕卡片的回调方法
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pushScreenCardModel:)]) {
+        [self.delegate pushScreenCardModel:model];
+    }
+    
+    // 自动化测试,开始推屏卡片
+    NSMutableDictionary *otherInfo = [NSMutableDictionary dictionary];
+    [VUITool sendTestsNotificationCenterWithKey:VHTests_PushScreenCard otherInfo:otherInfo];
 }
 
-/// 收到问卷 v6.4新增
-/// @param surveyURL 问卷地址
-/// @param surveyName 问卷名称
-- (void)receivedSurveyWithURL:(NSURL *)surveyURL
-                   surveyName:(NSString *)surveyName
-                     surveyId:(NSString *)surveyId
+#pragma mark 更新推屏卡片
+- (void)updateScreenCardModel:(VHPushScreenCardItem *)model
 {
-    if ([self.delegate respondsToSelector:@selector(receivedSurveyWithURL:surveyId:)]) {
-        [self.delegate receivedSurveyWithURL:surveyURL surveyId:surveyId];
+    // 刷新列表 (如果没活动id,则代表没有打开过列表也就不需要执行刷新操作)
+    if (![VUITool isBlankString:self.webinar_id]) {
+        [self requestPushCardListWithWebinarId:self.webinar_id switch_id:self.switch_id pageNum:1 isShow:NO];
     }
 }
 
-/// 提交问卷成功 v6.4新增
-/// @param surveyid 问卷id
-/// @param accountid 提交人id
-- (void)receivedSucceed:(NSString *)surveyid
-        surveyAccountId:(NSString *)accountid
+#pragma mark 删除推屏卡片
+- (void)deleteScreenCardList:(NSArray *)list
 {
-//    [VHProgressHud showToast:@"提交问卷成功"];
-}
-
-#pragma mark - 手势冲突
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    if ([touch.view isEqual:self]) {
-        return YES;
-    } else {
-        return NO;
+    // 刷新列表 (如果没活动id,则代表没有打开过列表也就不需要执行刷新操作)
+    if (![VUITool isBlankString:self.webinar_id]) {
+        [self requestPushCardListWithWebinarId:self.webinar_id switch_id:self.switch_id pageNum:1 isShow:NO];
     }
 }
 
@@ -403,19 +385,6 @@
 }
 
 #pragma mark - 懒加载
-- (VHSurveyWebView *)surveyWebView
-{
-    if (!_surveyWebView) {
-        _surveyWebView = [[VHSurveyWebView alloc] initWithFrame:[VUITool getCurrentScreenViewController].view.frame];
-        [[VUITool getCurrentScreenViewController].view addSubview:_surveyWebView];
-        [_surveyWebView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.bottom.mas_equalTo(0);
-        }];
-    }
-
-    return _surveyWebView;
-}
-
 - (UIView *)contentView
 {
     if (!_contentView) {
@@ -428,14 +397,14 @@
     return _contentView;
 }
 
-- (UIImageView *)anIcon
+- (UIImageView *)icon
 {
-    if (!_anIcon) {
-        _anIcon = [UIImageView new];
-        _anIcon.image = [UIImage imageNamed:@"vh_survey_title_icon"];
+    if (!_icon) {
+        _icon = [UIImageView new];
+        _icon.image = [UIImage imageNamed:@"vh_pushcard_title_icon"];
     }
 
-    return _anIcon;
+    return _icon;
 }
 
 - (UIButton *)closeBtn {
@@ -459,7 +428,10 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         __weak __typeof(self) weakSelf = self;
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [weakSelf requestSurveyIsShow:NO];
+            [weakSelf requestPushCardListWithWebinarId:self.webinar_id switch_id:self.switch_id pageNum:1 isShow:NO];
+        }];
+        _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            [weakSelf requestPushCardListWithWebinarId:self.webinar_id switch_id:self.switch_id pageNum:self.pageNum isShow:NO];
         }];
     }
 
@@ -473,6 +445,20 @@
     }
 
     return _dataSource;
+}
+
+- (VHPushScreenCardAlert *)pushScreenCardAlert
+{
+    if (!_pushScreenCardAlert) {
+        _pushScreenCardAlert = [[VHPushScreenCardAlert alloc] initWithFrame:[VUITool getCurrentScreenViewController].view.bounds];
+    }
+    return _pushScreenCardAlert;
+}
+
+#pragma mark - 释放
+- (void)dealloc
+{
+    VHLog(@"%s释放", [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String]);
 }
 
 @end

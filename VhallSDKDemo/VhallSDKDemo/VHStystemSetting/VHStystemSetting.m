@@ -84,7 +84,7 @@ static VHStystemSetting *_sharedSetting = nil;
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHapihost"];
 }
 
-#pragma mark - webhost
+#pragma mark - apihost
 - (void)setWebhost:(NSString *)webhost {
     [[NSUserDefaults standardUserDefaults] setValue:webhost forKey:@"VHwebhost"];
     [[NSUserDefaults standardUserDefaults] synchronize];
