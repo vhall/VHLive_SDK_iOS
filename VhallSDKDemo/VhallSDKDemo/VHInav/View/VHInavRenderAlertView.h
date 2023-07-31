@@ -7,12 +7,15 @@
 
 #import "VHInavAlertView.h"
 
+typedef void (^ClickMirrorAction)(BOOL mirror);
 typedef void (^ClickCameraAction)(BOOL cameraStatus);
 typedef void (^ClickMicAction)(BOOL micStatus);
 typedef void (^ClickOverturnAction)(void);
 typedef void (^ClickUnApplyAction)(void);
 
 @interface VHInavRenderAlertView : VHInavAlertView
+
+@property (nonatomic, copy) ClickMirrorAction clickMirrorAction;
 
 @property (nonatomic, copy) ClickCameraAction cameraAction;
 

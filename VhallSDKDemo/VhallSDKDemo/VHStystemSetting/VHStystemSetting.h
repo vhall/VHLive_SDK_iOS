@@ -24,6 +24,8 @@
 @property (nonatomic, copy) NSString *apihost;
 /// webhost
 @property (nonatomic, copy) NSString *webhost;
+/// webView
+@property (nonatomic, copy) NSString *webView;
 /// rsaPrivateKey
 @property (nonatomic, copy) NSString *rsaPrivateKey;
 /// 发直播活动ID

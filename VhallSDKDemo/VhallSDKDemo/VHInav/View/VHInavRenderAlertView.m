@@ -9,7 +9,8 @@
 #import "VHInavRenderAlertView.h"
 
 @interface VHInavRenderAlertView ()
-
+/// 镜像
+@property (nonatomic, strong) VHInavBtn *mirrorBtn;
 /// 摄像头
 @property (nonatomic, strong) VHInavBtn *cameraBtn;
 /// 麦克风
@@ -35,6 +36,7 @@
         self.backgroundColor = [UIColor clearColor];
 
         [self addSubview:self.contentView];
+        [self.contentView addSubview:self.mirrorBtn];
         [self.contentView addSubview:self.cameraBtn];
         [self.contentView addSubview:self.micBtn];
         [self.contentView addSubview:self.overturnBtn];
@@ -58,7 +60,7 @@
         make.height.mas_equalTo(123);
     }];
 
-    NSArray *array = @[self.cameraBtn, self.micBtn, self.overturnBtn, self.unApplyBtn];
+    NSArray *array = @[self.mirrorBtn,self.cameraBtn, self.micBtn, self.overturnBtn, self.unApplyBtn];
     [array mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:50 leadSpacing:20 tailSpacing:20];
     [array mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
@@ -90,11 +92,21 @@
     self.micBtn.icon.image = [UIImage imageNamed:micStatus ? @"vh_inav_mic" : @"vh_inav_mic_un"];
 }
 
+#pragma mark - 操作镜像
+- (void)mirrorBtnAction:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    
+    if (self.clickMirrorAction) {
+        self.clickMirrorAction(sender.selected);
+    }
+}
+
 #pragma mark - 操作摄像头
 - (void)cameraBtnAction
 {
-    if (self.cameraAction) {
-        self.cameraAction(self.cameraStatus);
+    if (self.clickMirrorAction) {
+        self.clickMirrorAction(self.cameraStatus);
     }
 
     [self disMissContentView];
@@ -135,6 +147,17 @@
 }
 
 #pragma mark - 懒加载
+
+- (VHInavBtn *)mirrorBtn {
+    if (!_mirrorBtn) {
+        _mirrorBtn = [[VHInavBtn alloc] init];
+        _mirrorBtn.titleLab.text = @"镜像";
+        _mirrorBtn.icon.image = [UIImage imageNamed:@"vh_inav_mirror"];
+        [_mirrorBtn addTarget:self action:@selector(mirrorBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _mirrorBtn;
+}
 
 - (VHInavBtn *)cameraBtn {
     if (!_cameraBtn) {

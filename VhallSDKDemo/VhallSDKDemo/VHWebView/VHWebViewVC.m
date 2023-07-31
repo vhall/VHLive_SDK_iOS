@@ -22,8 +22,15 @@
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
-    DEMO_Setting.webhost = [VUITool isBlankString:DEMO_Setting.webhost] ? @"https://live.vhall.com/v3" : DEMO_Setting.webhost;
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/lives/embedclientfull/watch/%@",DEMO_Setting.webhost,self.webinar_id]] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.f];
+    
+    NSString * urlStr = @"";
+    if ([VUITool isBlankString:DEMO_Setting.webView]) {
+        DEMO_Setting.webhost = [VUITool isBlankString:DEMO_Setting.webhost] ? @"https://live.vhall.com/v3" : DEMO_Setting.webhost;
+        urlStr = [NSString stringWithFormat:@"%@/lives/embedclientfull/watch/%@",DEMO_Setting.webhost,self.webinar_id];
+    } else {
+        urlStr = DEMO_Setting.webView;
+    }
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.f];
     [self.webView loadRequest:request];
 }
 

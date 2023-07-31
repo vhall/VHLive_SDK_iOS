@@ -232,7 +232,7 @@
     if (!_livePublish) {
         VHPublishConfig *config = [VHPublishConfig configWithType:VHPublishConfigTypeDefault];
         config.pushType = self.webinar_type == VHWebinarLiveType_Audio ? VHStreamTypeOnlyAudio : VHStreamTypeVideoAndAudio;
-        config.beautifyFilterEnable = YES;
+        config.beautifyFilterEnable = NO;
         config.videoCaptureFPS = 25;
         config.videoBitRate = 1500;
         config.publishConnectTimeout = 10;
@@ -281,6 +281,9 @@
         };
         _toolView.clickMic = ^(BOOL isSelect) {
             weakSelf.livePublish.isMute = isSelect;
+        };
+        _toolView.clickMirror = ^(BOOL mirror) {
+            [weakSelf.livePublish camVidMirror:mirror];
         };
         [self.view addSubview:_toolView];
     }

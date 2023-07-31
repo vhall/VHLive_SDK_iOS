@@ -8,7 +8,8 @@
 #import "VHPublishToolView.h"
 
 @interface VHPublishToolView ()
-
+/// 镜像
+@property (nonatomic, strong) UIButton *mirrorBtn;
 /// 前后置
 @property (nonatomic, strong) UIButton *cameraBtn;
 /// 音频
@@ -45,11 +46,25 @@
             make.centerY.mas_equalTo(self.mas_centerY);
             make.size.mas_equalTo(CGSizeMake(30, 30));
         }];
+        [self.mirrorBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.cameraBtn.mas_left).offset(-15);
+            make.centerY.mas_equalTo(self.mas_centerY);
+            make.size.mas_equalTo(CGSizeMake(30, 30));
+        }];
+        
     }
 
     return self;
 }
-
+#pragma mark - 点击镜像
+- (void)mirrorBtnAction:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    
+    if (self.clickMirror) {
+        self.clickMirror(sender.selected);
+    }
+}
 #pragma mark - 点击摄像头
 - (void)cameraBtnAction:(UIButton *)sender
 {
@@ -88,6 +103,18 @@
     }
 
     return _kbpsLab;
+}
+
+- (UIButton *)mirrorBtn {
+    if (!_mirrorBtn) {
+        _mirrorBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_mirrorBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+        [_mirrorBtn setImage:[UIImage imageNamed:@"vh_crame_mirror"] forState:UIControlStateNormal];
+        [_mirrorBtn addTarget:self action:@selector(mirrorBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_mirrorBtn];
+    }
+
+    return _mirrorBtn;
 }
 
 - (UIButton *)cameraBtn {

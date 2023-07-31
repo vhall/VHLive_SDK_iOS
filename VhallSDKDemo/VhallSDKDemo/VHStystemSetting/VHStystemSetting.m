@@ -84,7 +84,7 @@ static VHStystemSetting *_sharedSetting = nil;
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHapihost"];
 }
 
-#pragma mark - apihost
+#pragma mark - webhost
 - (void)setWebhost:(NSString *)webhost {
     [[NSUserDefaults standardUserDefaults] setValue:webhost forKey:@"VHwebhost"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -92,6 +92,16 @@ static VHStystemSetting *_sharedSetting = nil;
 
 - (NSString *)webhost {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHwebhost"];
+}
+
+#pragma mark - webView
+- (void)setWebView:(NSString *)webView {
+    [[NSUserDefaults standardUserDefaults] setValue:webView forKey:@"VHWebView"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)webView {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:@"VHWebView"];
 }
 
 #pragma mark - rsaPrivateKey

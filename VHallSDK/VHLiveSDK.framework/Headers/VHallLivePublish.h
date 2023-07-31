@@ -77,6 +77,10 @@
 /// @param contentMode 模式
 - (void)setContentMode:(VHRTMPMovieScalingMode)contentMode;
 
+/// 镜像摄像头
+/// @param mirror YES:镜像 NO:不镜像
+- (void)camVidMirror:(BOOL)mirror;
+
 /// 美颜参数设置
 /// @param beautify     磨皮 --- 默认 4.0f  取值范围[1.0, 10.0]  10.0 正常图片没有磨皮
 /// @param brightness   亮度 --- 默认 1.150f 取值范围[0.0, 2.0]  1.0 正常亮度

@@ -551,6 +551,12 @@
     [self.inavRenderAlertView showCameraStatus:!isCloseVideo micStatus:!isCloseAudio isShow:isShow];
 
     __weak __typeof(self) weakSelf = self;
+    
+    // 镜像
+    self.inavRenderAlertView.clickMirrorAction = ^(BOOL mirror) {
+        [weakSelf.localRenderView camVidMirror:mirror];
+    };
+    
     // 点击摄像头
     self.inavRenderAlertView.cameraAction = ^(BOOL cameraStatus) {
         cameraStatus ? [weakSelf.localRenderView muteVideo] : [weakSelf.localRenderView unmuteVideo];

@@ -76,22 +76,22 @@ typedef void(^FinishBlock)(int code, NSString * _Nullable message);//code 200 �
 ///推流摄像头view类，该类定义了摄像头视图的创建、推流等Api，通过此类进行互动推流。使用此类请先在plist文件中添加对于摄像头和麦克风的权限描述。
 @interface VHRenderView : UIView
 
-@property (nonatomic) VHRenderViewScalingMode scalingMode;  ///< 画面填充模式 (默认 VHRenderViewScalingModeAspectFit)
-@property (nonatomic) BOOL isPublish;                       ///< 是否在推流
-@property (nonatomic) BOOL isSubscribe;                     ///< 是否已订阅
-@property (nonatomic) int voiceChangeType;                  ///< 变音 注意只在本地相机renderview , 只能在推流成功后调用有效(0 不变音 1是变音)
-@property (nonatomic) BOOL beautifyEnable;                  ///< 美颜开关 默认关，只对本地流有效，可随时设置
-@property (nonatomic) NSDictionary *remoteMuteStream;       ///< 此流的流音视频开启情况YES:Mute (推流端)
-@property (nonatomic, readonly) int streamType;             ///< 流类型 VHInteractiveStreamType
-@property (nonatomic, copy, readonly) NSString *streamId;   ///< 流ID
-@property (nonatomic, copy, readonly) NSString *userId;     ///< 用户id
-@property (nonatomic, copy, readonly) NSString *userData;   ///< 用户数据进入房间时传的数据
+@property (nonatomic) VHRenderViewScalingMode scalingMode;          ///< 画面填充模式 (默认 VHRenderViewScalingModeAspectFit)
+@property (nonatomic) BOOL isPublish;                               ///< 是否在推流
+@property (nonatomic) BOOL isSubscribe;                             ///< 是否已订阅
+@property (nonatomic) int voiceChangeType;                          ///< 变音 注意只在本地相机renderview , 只能在推流成功后调用有效(0 不变音 1是变音)
+@property (nonatomic) BOOL beautifyEnable;                          ///< 美颜开关 默认关，只对本地流有效，可随时设置
+@property (nonatomic) NSDictionary *remoteMuteStream;               ///< 此流的流音视频开启情况YES:Mute (推流端)
+@property (nonatomic, readonly) int streamType;                     ///< 流类型 VHInteractiveStreamType
+@property (nonatomic, copy, readonly) NSString *streamId;           ///< 流ID
+@property (nonatomic, copy, readonly) NSString *userId;             ///< 用户id
+@property (nonatomic, copy, readonly) NSString *userData;           ///< 用户数据进入房间时传的数据
 @property (nonatomic, copy, readonly) NSString *streamAttributes;   ///< 用户推流上麦时所传数据
 @property (nonatomic, copy, readonly) NSDictionary *options;        ///< 设置的音视频参数
-@property (nonatomic, readonly) BOOL isLocal;               ///< 是否是本地相机view
-@property (nonatomic, readonly) int simulcastLayers;        ///< 此流是否是支持大小流切换，支持几路切换(1 一路流  2两路流)
-@property (nonatomic, readonly) NSDictionary *muteStream;   ///< 本地相机view 只有这一个属性 (订阅端)
-@property (nonatomic, readonly) CGSize videoSize;           ///< 此流视频宽高
+@property (nonatomic, readonly) BOOL isLocal;                       ///< 是否是本地相机view
+@property (nonatomic, readonly) int simulcastLayers;                ///< 此流是否是支持大小流切换，支持几路切换(1 一路流  2两路流)
+@property (nonatomic, readonly) NSDictionary *muteStream;           ///< 本地相机view 只有这一个属性 (订阅端)
+@property (nonatomic, readonly) CGSize videoSize;                   ///< 此流视频宽高
 
 /// 创建本地摄像头view
 /// @param frame 默认参数 使用服务器配置参数
