@@ -132,6 +132,16 @@
 
 // 主色调
 #define VHMainColor        [UIColor colorWithHex:@"#FB3A32"]
+#define VHBlack15          [UIColor colorWithHex:@"#D9D9D9"]
+#define VHBlack25          [UIColor colorWithHex:@"#BFBFBF"]
+#define VHBlack45          [UIColor colorWithHex:@"#8C8C8C"]
+#define VHBlack65          [UIColor colorWithHex:@"#595959"]
+#define VHBlack85          [UIColor colorWithHex:@"#262626"]
+#define VHWhite35          [UIColor colorWithHex:@"#595959"]
+#define VHWhite45          [UIColor colorWithHex:@"#737373"]
+#define VHWhite65          [UIColor colorWithHex:@"#A6A6A6"]
+#define VHWhite85          [UIColor colorWithHex:@"#D9D9D9"]
+
 // 随机颜色
 #define randomColor        random(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 //rgb取色 + 透明度
@@ -141,5 +151,7 @@
 // 0xffffff 16进制取色
 #define RGBHex(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16)) / 255.0 green:((float)((rgbValue & 0xFF00) >> 8)) / 255.0 blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 
+// 通知
+#define VH_GOODS_ORDERINFO @"VH_GOODS_ORDERINFO"
 
 #endif /* CONSTS_h */

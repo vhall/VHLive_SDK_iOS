@@ -45,6 +45,10 @@
 /// - Parameter model: 推屏卡片详情
 - (void)clickCheckPushScreenCardModel:(VHPushScreenCardItem *)model;
 
+/// 点击查看商品详情
+/// - Parameter model: 商品详情详情
+- (void)clickCheckGoodsDetailModel:(VHGoodsPushMessageItem *)model;
+
 @end
 
 @interface VHChatView : UIView<JXCategoryListContentViewDelegate>
@@ -82,5 +86,9 @@
 /// 收到推屏卡片消息
 /// - Parameter model: 推屏卡片模型
 - (void)chatPushScreenCardModel:(VHPushScreenCardItem *)model;
+
+/// 收到商品消息
+/// - Parameter model: 商品消息模型
+- (void)chatGoodsModel:(VHGoodsPushMessageItem *)model;
 
 @end

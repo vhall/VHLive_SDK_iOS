@@ -16,6 +16,7 @@
 #import "VHInavApplyAlertView.h"
 #import "VHInavView.h"
 #import "VHIntroView.h"
+#import "VHGoodsList.h"
 #import "VHLottery.h"
 #import "VHQAView.h"
 #import "VHRecordChapter.h"
@@ -28,7 +29,7 @@
 #import "VHWatchVC.h"
 #import "VHWatchVideoView.h"
 
-@interface VHWatchVC ()<VHWatchVideoViewDelegate, VHInavViewDelegate, VHWatchLiveBottomViewDelegate, VHChatViewDelegate, JXCategoryViewDelegate, JXCategoryListContainerViewDelegate, VHallGiftObjectDelegate, VHQAViewDelegate, VHSignInAlertViewDelegate, VHSurveyListViewDelegate, VHDocViewDelegate, VHRecordChapterDelegate, VHVideoPointViewDelegate, VHLotteryDelegate, VHExamObjectDelegate, VHRecordListDelegate,VHFileDownloadDelegate,VHPushScreenCardListDelegate>
+@interface VHWatchVC ()<VHWatchVideoViewDelegate, VHInavViewDelegate, VHWatchLiveBottomViewDelegate, VHChatViewDelegate, JXCategoryViewDelegate, JXCategoryListContainerViewDelegate, VHallGiftObjectDelegate, VHQAViewDelegate, VHSignInAlertViewDelegate, VHSurveyListViewDelegate, VHDocViewDelegate, VHRecordChapterDelegate, VHVideoPointViewDelegate, VHLotteryDelegate, VHExamObjectDelegate, VHRecordListDelegate,VHFileDownloadDelegate,VHPushScreenCardListDelegate,VHGoodsListDelegate>
 
 // 控件
 /// 分页控件
@@ -51,6 +52,8 @@
 @property (nonatomic, strong) VHQAView *vhQAView;
 /// 简介
 @property (nonatomic, strong) VHIntroView *introView;
+/// 商品列表
+@property (nonatomic, strong) VHGoodsList *goodsList;
 /// 章节打点
 @property (nonatomic, strong) VHRecordChapter *recordChapterView;
 /// 精彩时刻
@@ -97,6 +100,7 @@
 @property (nonatomic, assign) BOOL isOpenRecordChapter;
 @property (nonatomic, assign) BOOL isOpenVideoPoint;
 @property (nonatomic, assign) BOOL isOpenFileDownload;
+@property (nonatomic, assign) BOOL isHaveGoods;
 @property (nonatomic, assign) BOOL isFull;
 @property (nonatomic, assign) BOOL isDocFull;
 @property (nonatomic, assign) BOOL isVideoFull;
@@ -224,6 +228,8 @@
         return self.docViewController;
     } else if ([title isEqualToString:@"简介"]) {
         return self.introView;
+    } else if ([title isEqualToString:@"商品"]) {
+        return self.goodsList;
     } else if ([title isEqualToString:self.questionName]) {
         return self.vhQAView;
     } else if ([title isEqualToString:@"章节"]) {
@@ -240,13 +246,14 @@
 }
 
 #pragma mark 刷新标签页显示 文档/问答/章节
-- (void)roomWithIsOpenDoc:(BOOL)isOpenDoc isOpenQA:(BOOL)isOpenQA isOpenRecordChapter:(BOOL)isOpenRecordChapter isOpenVideoPoint:(BOOL)isOpenVideoPoint isOpenFileDownload:(BOOL)isOpenFileDownload
+- (void)roomWithIsOpenDoc:(BOOL)isOpenDoc isOpenQA:(BOOL)isOpenQA isOpenRecordChapter:(BOOL)isOpenRecordChapter isOpenVideoPoint:(BOOL)isOpenVideoPoint isOpenFileDownload:(BOOL)isOpenFileDownload isHaveGoods:(BOOL)isHaveGoods
 {
     self.isOpenDoc = isOpenDoc;
     self.isOpenQA = isOpenQA;
     self.isOpenRecordChapter = isOpenRecordChapter;
     self.isOpenVideoPoint = isOpenVideoPoint;
     self.isOpenFileDownload = isOpenFileDownload;
+    self.isHaveGoods = isHaveGoods;
 
     // 获取当前显示的标签页名称
     NSString *selectTitle = self.listContainerArray[self.categoryView.selectedIndex];
@@ -263,6 +270,10 @@
 
     [self.listContainerArray addObject:@"简介"];
 
+    if (isHaveGoods) {
+        [self.listContainerArray addObject:@"商品"];
+    }
+    
     if (isOpenQA) {
         [self.listContainerArray addObject:self.questionName];
     }
@@ -322,13 +333,16 @@
     // 初始化简介
     self.introView.webinarInfoData = self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData;
     
+    // 初始化列表
+    [self.goodsList requestGoodsGetList];
+    
     // 精彩片段
     if (self.type == VHMovieActiveStateReplay || self.type == VHMovieActiveStatePlayBack) {
         self.recordListVC.record_id = self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.record.record_id;
         __weak __typeof(self)weakSelf = self;
         [VHWebinarBaseInfo getRecordListWithWebinarId:self.webinar_id pageNum:1 pageSize:10 complete:^(NSArray<VHRecordListModel *> *recordList, NSError *error) {
             weakSelf.recordList = recordList;
-            [weakSelf roomWithIsOpenDoc:weakSelf.isOpenDoc isOpenQA:weakSelf.isOpenQA isOpenRecordChapter:weakSelf.isOpenRecordChapter isOpenVideoPoint:weakSelf.isOpenVideoPoint isOpenFileDownload:weakSelf.isOpenFileDownload];
+            [weakSelf roomWithIsOpenDoc:weakSelf.isOpenDoc isOpenQA:weakSelf.isOpenQA isOpenRecordChapter:weakSelf.isOpenRecordChapter isOpenVideoPoint:weakSelf.isOpenVideoPoint isOpenFileDownload:weakSelf.isOpenFileDownload isHaveGoods:self.isHaveGoods];
         }];
     }
 
@@ -392,7 +406,7 @@
     BOOL isOpen = isHave && isShow ? YES : NO;
 
     // 判断是否显示
-    [self roomWithIsOpenDoc:isOpen isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload];
+    [self roomWithIsOpenDoc:isOpen isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload isHaveGoods:self.isHaveGoods];
     // 文档显示隐藏
     moviePlayer.documentView.hidden = !isOpen;
     // 赋值文档
@@ -432,7 +446,7 @@
     self.videoPointView = [[VHVideoPointView alloc] initVPWithFrame:self.view.frame videoPointArr:pointArr];
     self.videoPointView.delegate = self;
     // 判断是否显示
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:pointArr.count > 0 ? YES : NO isOpenFileDownload:self.isOpenFileDownload];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:pointArr.count > 0 ? YES : NO isOpenFileDownload:self.isOpenFileDownload isHaveGoods:self.isHaveGoods];
 }
 
 #pragma mark - 互动
@@ -618,6 +632,12 @@
     [self.pushScreenCardList showPushScreenCard:model];
 }
 
+#pragma mark - 点击查看商品详情
+- (void)clickCheckGoodsDetailModel:(VHGoodsPushMessageItem *)model
+{
+    [self.goodsList clickCheckDetail:model.goods_info];
+}
+
 #pragma mark - VHWatchLiveBottomViewDelegate
 #pragma mark 发送消息
 - (void)sendText:(NSString *)text
@@ -655,7 +675,7 @@
 - (void)watchRecordChapterIsOpen:(BOOL)isOpen
 {
     // 判断是否显示
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:isOpen isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:isOpen isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload isHaveGoods:self.isHaveGoods];
 }
 
 #pragma mark - VHQAViewDelegate
@@ -664,7 +684,7 @@
 {
     self.questionName = [VUITool isBlankString:self.vhQAView.vhQA.question_name] ? @"问答" : self.vhQAView.vhQA.question_name;
 
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isOpen isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isOpen isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload isHaveGoods:self.isHaveGoods];
 
     // 自定义消息
     [self.chatView chatCustomWithNickName:[VUITool isBlankString:self.watchVideoView.moviePlayer.webinarInfo.author_nickname] ? @"主持人" : self.watchVideoView.moviePlayer.webinarInfo.author_nickname roleName:1 content:[NSString stringWithFormat:@"%@了问答", isOpen ? @"开启" : @"关闭"] info:nil];
@@ -675,7 +695,7 @@
 {
     self.questionName = [VUITool isBlankString:questionName] ? @"问答" : questionName;
 
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isQuestion_status isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:isQuestion_status isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload isHaveGoods:self.isHaveGoods];
 }
 
 #pragma mark - VHRecordChapterDelegate
@@ -696,7 +716,7 @@
 #pragma mark 选择指定回放视频
 - (void)selectPlaybackVideoWithRecordId:(NSString *)recordId {
     // 先隐藏
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:NO isOpenFileDownload:self.isOpenFileDownload];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:NO isOpenFileDownload:self.isOpenFileDownload isHaveGoods:self.isHaveGoods];
     
     // 先移除
     [self.videoPointView removeFromSuperview];
@@ -712,7 +732,7 @@
     self.fileDownloadName = file_download_menu.name;
     
     // 是否显示
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:NO isOpenFileDownload:is_file_download];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:NO isOpenFileDownload:is_file_download isHaveGoods:self.isHaveGoods];
 
     // 显示则请求列表
     if (is_file_download) {
@@ -726,7 +746,7 @@
     self.fileDownloadName = model.name;
 
     // 判断是否显示
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:model.status == 1 ? YES : NO];
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:model.status == 1 ? YES : NO isHaveGoods:self.isHaveGoods];
     
     if (model.status == 1) {
         [self.fileDownloadVC getFileDownloadListWithWebinarId:self.watchVideoView.moviePlayer.webinarInfo.webinarId file_download_menu_id:model.menu_id];
@@ -796,6 +816,22 @@
 - (void)pushScreenCardModel:(VHPushScreenCardItem *)model
 {    
     [self.chatView chatPushScreenCardModel:model];
+}
+
+#pragma mark - VHGoodsListDelegate
+#pragma mark 是否有商品
+- (void)isHaveGoods:(BOOL)isHaveGoods
+{
+    if (isHaveGoods == self.isHaveGoods){
+        return;
+    }
+    // 判断是否显示
+    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload isHaveGoods:isHaveGoods];
+}
+
+- (void)pushGoodsCardModel:(VHGoodsPushMessageItem *)model
+{
+    [self.chatView chatGoodsModel:model];
 }
 
 #pragma mark - 直播和互动播放器切换
@@ -1171,6 +1207,15 @@
         _introView = [[VHIntroView alloc] init];
     }
     return _introView;
+}
+
+- (VHGoodsList *)goodsList
+{
+    if (!_goodsList) {
+        _goodsList = [[VHGoodsList alloc] initWithFrame:self.listContainerView.bounds object:self.watchVideoView.moviePlayer];
+        _goodsList.delegate = self;
+    }
+    return _goodsList;
 }
 
 - (VHRecordListVC *)recordListVC

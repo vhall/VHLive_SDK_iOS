@@ -798,7 +798,7 @@
 
     param[@"id"] =  self.webinarId;
     param[@"record_id"] = self.recordId;
-    param[@"name"] = [NSString stringWithFormat:@"123\n%@",[VHallApi currentUserNickName]];
+    param[@"name"] = [VHallApi currentUserNickName];
     param[@"auth_model"] = @(1);
     return param;
 }

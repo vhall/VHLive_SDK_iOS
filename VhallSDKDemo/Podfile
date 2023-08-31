@@ -22,7 +22,8 @@ target 'VhallSDKDemo' do
   pod 'GKPhotoBrowser/SD', '~> 2.4.4'
   pod 'Reachability', '~> 3.2'
 
-#  pod 'VHYun_Beautify', '1.0.6'
+  pod 'VHYun_Beautify','1.0.6'
+  pod 'FURenderKit','8.3.0'
 
   target 'VhallSDKDemoTests' do
     inherit! :search_paths

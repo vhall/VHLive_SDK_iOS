@@ -23,7 +23,7 @@
 {
     if ([super initWithFrame:frame]) {
         self.alpha = 0;
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor colorWithHexString:@"#000000" alpha:.5];
 
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(disMissContentView)];
         [self addGestureRecognizer:tap];

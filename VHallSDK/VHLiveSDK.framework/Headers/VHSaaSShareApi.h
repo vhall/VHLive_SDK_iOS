@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger roll_back;     ///<化蝶接口是否回滚
 @property (nonatomic, copy) NSString *logReportUrl;     ///<进入直播、观看上报业务日志地址
-@property (nonatomic, assign) NSInteger sign_type;     ///<加密方式 0:md5 1:rsa
+@property (nonatomic, assign) NSInteger sign_type;     ///<加密方式 0：md5 1：rsa 2：sha256 3：sm3
 @property (nonatomic, assign) BOOL is_jump_hd;     ///<是否跳转化蝶（迁移用户），默认设置YES，获取用户信息后更新此值（app创建直播时，需要使用此参数来判断，YES，走化蝶  NO，走老接口）
 
 

@@ -2,14 +2,47 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>是否允许图片存入相册</string>
-    <key>UIUserInterfaceStyle</key>
-    <string>Light</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>是否允许使用麦克风</string>
-    <key>NSCameraUsageDescription</key>
-    <string>是否允许使用相机</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>是否允许图片存入相册</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>是否允许使用麦克风</string>
+	<key>NSCameraUsageDescription</key>
+	<string>是否允许使用相机</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>demoscheme</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>yyy.xxx.com</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>vhallsdk</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>vhallsdk</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>basescheme</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>xxx.com</string>
+			</array>
+		</dict>
+	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

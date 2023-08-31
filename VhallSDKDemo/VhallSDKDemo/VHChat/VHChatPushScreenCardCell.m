@@ -64,7 +64,7 @@
 {
     _pushScreenCardListItem = pushScreenCardListItem;
 
-    NSString *content = [NSString stringWithFormat:@"%@ 推送了卡片 点击查看\n%@", pushScreenCardListItem.operator_role, pushScreenCardListItem.title];
+    NSString *content = [NSString stringWithFormat:@"%@ %@ 推送了卡片 点击查看\n%@", pushScreenCardListItem.operator_role, pushScreenCardListItem.operator_name, pushScreenCardListItem.title];
 
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:content];
         
@@ -76,6 +76,8 @@
     YYTextBorder *border = [YYTextBorder borderWithFillColor:[pushScreenCardListItem.role_name integerValue] == 1 ? [UIColor colorWithHex:@"#FFD1C9"] : [UIColor colorWithHex:@"#ADE1FF"] cornerRadius:15 / 2];
     border.insets = UIEdgeInsetsMake(-2, -2, -2, -2);
     [attributedString yy_setTextBackgroundBorder:border range:[content rangeOfString:pushScreenCardListItem.operator_role]];
+
+    [attributedString yy_setColor:VHBlack45 range:[content rangeOfString:pushScreenCardListItem.operator_name]];
 
     __weak __typeof(self) weakSelf = self;
     [attributedString yy_setTextHighlightRange:[content rangeOfString:@"点击查看"]

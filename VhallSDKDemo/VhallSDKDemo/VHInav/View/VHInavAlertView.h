@@ -12,6 +12,9 @@
 /// 容器
 @property (nonatomic, strong) UIView *contentView;
 
+/// 是否显示中
+@property (nonatomic, assign) BOOL isShow;
+
 /// 初始化
 - (instancetype)initWithFrame:(CGRect)frame;
 

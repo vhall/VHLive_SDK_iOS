@@ -10,6 +10,11 @@
 #import "VHPublishToolView.h"
 #import "VHPublishVC.h"
 #import "VHSpeedMonitor.h"
+#import "VHSliderView.h"
+
+/// 新增美颜依赖库
+#import <VHBeautifyKit/VHBeautifyKit.h>
+#import <VHBFURender/VHBFURender.h>
 
 @interface VHPublishVC ()<VHallLivePublishDelegate>
 
@@ -25,6 +30,8 @@
 @property (nonatomic, strong) NSTimer *timer;
 /// 是否横屏
 @property (nonatomic, assign) BOOL isFull;
+///美颜
+@property (nonatomic, strong) VHBeautifyKit *beautKit;
 
 @end
 
@@ -59,7 +66,7 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    self.title = @"勿动,隔夜测试";//lss_4aab3f7e
+    self.title = @"勿动,隔夜测试";
 
     // 设置样式
     [self setWithUI];
@@ -72,7 +79,6 @@
 
     self.timer = [VHLiveWeakTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
 }
-
 #pragma mark - 开启计时器
 - (void)timerAction
 {
@@ -125,6 +131,7 @@
         VHLog(@"直播速率 === %@", [info mj_JSONString]);
     } else if (liveStatus == VHLiveStatusPushConnectError ||  liveStatus == VHLiveStatusParamError || liveStatus == VHLiveStatusSendError || liveStatus == VHLiveStatusAudioRecoderError || liveStatus == VHLiveStatusVideoError || liveStatus == VHLiveStatusGetUrlError || liveStatus == VHLiveStatusDirectorError ) {
         [VHProgressHud showToast:info[@"content"]];
+        [self.livePublish stopLive];
         [self.startBtn setHidden:NO];
     } else {
         VHLog(@"liveStatus === %ld 其他 === %@", liveStatus, [info mj_JSONString]);
@@ -172,11 +179,7 @@
         NSNumber *orientationTarget = [NSNumber numberWithInteger:interfaceOrientation];
         [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
     }
-
-//    [self.navigationController.navigationBar setBackgroundImage:isFull ? nil : [UIImage imageWithColor:VHMainColor] forBarMetrics:UIBarMetricsDefault];resume 13:55:24  error 13:56:50
-//    [self.navigationController.navigationBar setShadowImage: isFull ? nil : [UIImage imageWithColor:VHMainColor]]; resume 14:01:17.514727  error 14:01:39
-//    [self.navigationController setNavigationBarHidden:isFull animated:NO];
-
+    
     if (isFull) {
         self.livePublish.displayView.frame = CGRectMake(0, 0, Screen_Width > Screen_Height ? Screen_Width : Screen_Height, Screen_Width < Screen_Height ? Screen_Width : Screen_Height);
     } else {
@@ -221,6 +224,11 @@
         [_livePublish destoryObject];
         _livePublish = nil;
     }
+    
+    // 销毁高级美颜
+    if (_beautKit) {
+        [VHBeautifyKit destroy];
+    }
 
     // 返回上级
     [super clickLeftBarItem];
@@ -232,7 +240,7 @@
     if (!_livePublish) {
         VHPublishConfig *config = [VHPublishConfig configWithType:VHPublishConfigTypeDefault];
         config.pushType = self.webinar_type == VHWebinarLiveType_Audio ? VHStreamTypeOnlyAudio : VHStreamTypeVideoAndAudio;
-        config.beautifyFilterEnable = NO;
+        config.beautifyFilterEnable = YES;
         config.videoCaptureFPS = 25;
         config.videoBitRate = 1500;
         config.publishConnectTimeout = 10;
@@ -243,7 +251,22 @@
         config.captureDevicePosition = AVCaptureDevicePositionFront;
         config.customVideoWidth = self.screenLandscape ? 1280 : 720;
         config.customVideoHeight = self.screenLandscape ? 720 : 1280;
-        _livePublish = [[VHallLivePublish alloc] initWithConfig:config];
+//        _livePublish = [[VHallLivePublish alloc] initWithConfig:config];
+        
+        __weak __typeof(self)weakSelf = self;
+        config.beautifyFilterEnable = NO;
+        config.advancedBeautifyEnable = YES;
+        _livePublish = [[VHallLivePublish alloc] initWithBeautyConfig:config handleError:^(NSError *error) {
+            __strong __typeof(weakSelf)self = weakSelf;
+            if(error) {
+                [VHProgressHud showToast:[NSString stringWithFormat:@"⚠️美颜信息 : %@", error]];
+            } else {
+                self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
+                VHLog(@"%@",self.beautKit.enable ? @"高级美颜开启" : @"高级美颜未开启");
+                [_beautKit setEffectKey:eff_key_FU_CheekThinning toValue:@(0.8)];
+            }
+            
+        }];
         _livePublish.delegate = self;
         [self.view addSubview:_livePublish.displayView];
     }
@@ -283,6 +306,7 @@
             weakSelf.livePublish.isMute = isSelect;
         };
         _toolView.clickMirror = ^(BOOL mirror) {
+            // 镜像
             [weakSelf.livePublish camVidMirror:mirror];
         };
         [self.view addSubview:_toolView];

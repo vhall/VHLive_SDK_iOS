@@ -107,4 +107,17 @@ extern NSString *VH_MB_ASSIST;
 
 /// 当前是否为全屏状态
 + (BOOL)isFullScreen;
+
+/// 格式化微吼价格样式¥xxx.xx
+/// - Parameter string: 价格样式¥xxx.xx
++ (NSMutableAttributedString *)vhPriceToString:(NSString *)string;
+
+/// 将传入的URL字符串进行解码
+/// - Parameter urlString: 字符串
++ (NSString *)vh_URLDecodedString:(NSString *)urlString;
+
+/// 将传入的URL字符串进行编码
+/// - Parameter urlString: 字符串
++ (NSString *)vh_URLEncodedString:(NSString *)urlString;
+
 @end

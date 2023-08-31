@@ -372,4 +372,63 @@ NSString *VH_MB_ASSIST = @"助理";
         return [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight;
     }
 }
+
+/// 格式化微吼价格样式¥xxx.xx
+/// - Parameter string: 价格样式¥xxx.xx
++ (NSMutableAttributedString *)vhPriceToString:(NSString *)string
+{
+    if ([string isEqualToString:@"¥"]) {
+        NSMutableAttributedString *price_attributedText = [[NSMutableAttributedString alloc] initWithString:@""];
+        // 将attributedText应用到UILabel上
+        return price_attributedText;
+    } else {
+        NSMutableAttributedString *price_attributedText = [[NSMutableAttributedString alloc] initWithString:string];
+        // 设置'¥'的字体大小为10
+        [price_attributedText yy_setFont:FONT(10) range:[string rangeOfString:@"¥"]];
+        // 设置'.'的字体大小为8
+        [price_attributedText yy_setFont:FONT(8) range:[string rangeOfString:@"."]];
+        
+        // 设置'xx'的字体大小为10
+        // 查找'.'的位置
+        NSRange dotRange = [string rangeOfString:@"."];
+        if (dotRange.location != NSNotFound) {
+            // 获取'.'之后的字符串
+            NSString *subString = [string substringFromIndex:dotRange.location + 1];
+            [price_attributedText yy_setFont:FONT(10) range:[string rangeOfString:subString]];
+        } else {
+            VHLog(@"'.' not found in the string");
+        }
+        
+        // 设置'xxx'的字体大小为14
+        // 查找'¥'的位置
+        NSRange yenRange = [string rangeOfString:@"¥"];
+        if (yenRange.location != NSNotFound && dotRange.location != NSNotFound && dotRange.location > yenRange.location) {
+            // 获取'¥'和'.'之间的字符串
+            NSRange subStringRange = NSMakeRange(yenRange.location + 1, dotRange.location - yenRange.location - 1);
+            NSString *subString = [string substringWithRange:subStringRange];
+            [price_attributedText yy_setFont:FONT(14) range:[string rangeOfString:subString]];
+        } else {
+            VHLog(@"'¥' or '.' not found in the string or in incorrect order");
+        }
+        // 将attributedText应用到UILabel上
+        return price_attributedText;
+    }
+}
+
+// 将传入的URL字符串进行解码
++ (NSString *)vh_URLDecodedString:(NSString *)urlString {
+    NSString *string = urlString;
+    NSString *decodedString = [string stringByRemovingPercentEncoding];
+    return decodedString;
+}
+
+// 将传入的URL字符串进行编码
++ (NSString *)vh_URLEncodedString:(NSString *)urlString {
+    NSString *string = urlString;
+    NSString *allowedCharacters = @"!*'();:@&=+$,/?%#[]";
+    NSCharacterSet *allowedCharacterSet = [NSCharacterSet characterSetWithCharactersInString:allowedCharacters];
+    NSString *encodedString = [string stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet];
+    
+    return encodedString;
+}
 @end

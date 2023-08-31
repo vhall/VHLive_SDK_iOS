@@ -65,4 +65,22 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
+#pragma mark - 跳转返回通知
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+    // 路由跳转回调
+    if ([url.scheme isEqualToString:@"vhallsdk"] || [url.scheme isEqualToString:@"xxx.com"] || [url.scheme isEqualToString:@"yyy.xxx.com"]) {
+        // 发送通知刷新订单状态
+        [[NSNotificationCenter defaultCenter] postNotificationName:VH_GOODS_ORDERINFO object:self userInfo:nil];
+        if (![VUITool isBlankString:url.resourceSpecifier]) {
+            // 对url进行解码
+            [VHProgressHud showToast:[VUITool vh_URLDecodedString:url.resourceSpecifier]];
+            // 复制url携带的参数
+            UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+            [pasteboard setString:[VUITool vh_URLDecodedString:url.resourceSpecifier]];
+        }
+    }
+    return YES;
+}
+
+
 @end

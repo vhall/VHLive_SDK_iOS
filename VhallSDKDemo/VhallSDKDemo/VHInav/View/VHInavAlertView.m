@@ -18,7 +18,8 @@
     if ([super initWithFrame:frame]) {
         self.alpha = 0;
         self.backgroundColor = [UIColor clearColor];
-
+        self.userInteractionEnabled = YES;
+        
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(disMissContentView)];
         [self addGestureRecognizer:tap];
     }
@@ -29,6 +30,8 @@
 #pragma mark - 显示
 - (void)show
 {
+    self.isShow = YES;
+    
     self.alpha = 0;
     [UIView animateWithDuration:0.3
                      animations:^{
@@ -41,6 +44,8 @@
 #pragma mark - 隐藏
 - (void)disMissContentView
 {
+    self.isShow = NO;
+
     [UIView animateWithDuration:0.3
                      animations:^{
         self.alpha = 0;

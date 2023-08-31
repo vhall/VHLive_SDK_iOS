@@ -61,7 +61,7 @@
 ///   - switch_id: 场次ID
 ///   - curr_page: 当前页码，默认 1
 ///   - page_size: 每页条数，默认 10
-///   - complete: 完成返回卡片列表,失败及错误详情
+///   - complete: 完成返回卡片列表,失败错误详情
 + (void)requestPushScreenCardListWithWebinarId:(NSString *)webinar_id
                                      switch_id:(NSString *)switch_id
                                      curr_page:(NSInteger)curr_page
@@ -71,7 +71,7 @@
 /// 获取推屏卡片信息
 /// @param webinar_id 活动ID
 /// @param card_id 卡片ID
-/// @param complete 完成返回推屏卡片详情,失败及错误详情
+/// @param complete 完成返回推屏卡片详情,失败错误详情
 + (void)requestPushScreenCardInfoWithWebinarId:(NSString *)webinar_id
                                        card_id:(NSString *)card_id
                                       complete:(void (^)(VHPushScreenCardItem *item, NSError *error))complete;

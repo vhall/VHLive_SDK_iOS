@@ -7,6 +7,8 @@
 
 #import "VHInavRenderAlertView.h"
 #import "VHInavView.h"
+#import <VHBeautifyKit/VHBeautifyKit.h>
+#import <VHBFURender/VHBFURender.h>
 
 @implementation VHInavCell
 
@@ -231,6 +233,8 @@
 @property (nonatomic, strong) NSMutableArray *dataSource;
 /// 设备操作
 @property (nonatomic, strong) VHInavRenderAlertView *inavRenderAlertView;
+/// 高级美颜
+@property (nonatomic) VHBeautifyKit *beautifykit;
 
 @end
 
@@ -662,15 +666,27 @@
         };
         // 初始化
         _localRenderView = [[VHLocalRenderView alloc] initCameraViewWithFrame:self.bounds options:options];
-        // 开启美颜
-        _localRenderView.beautifyEnable = NO;
+//        // 开启美颜
+//        _localRenderView.beautifyEnable = YES;
         // 设置预览画面方向
         [_localRenderView setDeviceOrientation:UIDeviceOrientationPortrait];
         // 画面填充模式
         [_localRenderView setScalingMode:VHRenderViewScalingModeAspectFit];
+//        // 美颜
+//        [_localRenderView useBeautifyModule:[self.beautifykit currentModule] HandleError:^(NSError *error) {
+//            if(error){
+//                [VHProgressHud showToast:[NSString stringWithFormat:@"⚠️美颜信息 : %@", error]];
+//            }
+//        }];
     }
-
     return _localRenderView;
+}
+- (VHBeautifyKit *)beautifykit {
+    if(!_beautifykit){
+        _beautifykit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
+        [_beautifykit setCaptureImageOrientation:3];
+    }
+    return _beautifykit;
 }
 
 - (UICollectionView *)collectionView
