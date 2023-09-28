@@ -9,6 +9,8 @@
 
 @interface VHPublishToolView ()
 /// 镜像
+@property (nonatomic, strong) UIButton *beautyBtn;
+/// 镜像
 @property (nonatomic, strong) UIButton *mirrorBtn;
 /// 前后置
 @property (nonatomic, strong) UIButton *cameraBtn;
@@ -51,10 +53,23 @@
             make.centerY.mas_equalTo(self.mas_centerY);
             make.size.mas_equalTo(CGSizeMake(30, 30));
         }];
-        
+        [self.beautyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.mirrorBtn.mas_left).offset(-15);
+            make.centerY.mas_equalTo(self.mas_centerY);
+            make.size.mas_equalTo(CGSizeMake(30, 30));
+        }];
     }
 
     return self;
+}
+#pragma mark - 点击美颜
+- (void)beautyBtnAction:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    
+    if (self.clickOpenBeauty) {
+        self.clickOpenBeauty(sender.selected);
+    }
 }
 #pragma mark - 点击镜像
 - (void)mirrorBtnAction:(UIButton *)sender
@@ -103,6 +118,18 @@
     }
 
     return _kbpsLab;
+}
+
+- (UIButton *)beautyBtn {
+    if (!_beautyBtn) {
+        _beautyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_beautyBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+        [_beautyBtn setImage:[UIImage imageNamed:@"ruddy_select"] forState:UIControlStateNormal];
+        [_beautyBtn addTarget:self action:@selector(beautyBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_beautyBtn];
+    }
+
+    return _beautyBtn;
 }
 
 - (UIButton *)mirrorBtn {

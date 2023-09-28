@@ -18,7 +18,8 @@ typedef void(^ClickCheckDetailBlock)(VHGoodsListItem *item);
 @property (nonatomic, assign) BOOL isShow;
 /// 查看详情
 @property (nonatomic, copy) ClickCheckDetailBlock clickCheckDetailBlock;
-
+/// 点击支付
+@property (nonatomic, copy) ClickCheckDetailBlock clickPayBlock;
 /// 显示
 - (void)showGoodsCardItem:(VHGoodsListItem *)item;
 /// 隐藏

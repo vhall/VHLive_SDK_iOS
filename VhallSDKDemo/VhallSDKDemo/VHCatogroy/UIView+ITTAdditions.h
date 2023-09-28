@@ -140,4 +140,9 @@ CGRect ITTScreenBounds();
  */
 - (UIViewController *)viewController;
 
+/**
+ * UIView设置圆角
+ */
+- (void)radiusTool:(CGFloat)cornerRadius borderWidth:(CGFloat)width borderColor:(UIColor *)borderColor;
+
 @end

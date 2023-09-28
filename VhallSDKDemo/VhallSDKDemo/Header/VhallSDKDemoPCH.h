@@ -11,6 +11,8 @@
 // 微吼
 #import <VHLiveSDK/VHallApi.h>
 #import <VHInteractive/VHRoom.h>
+// 美颜
+#import "VHBeautyHeader.h"
 
 // 三方
 #import "Masonry.h"
@@ -22,6 +24,7 @@
 #import "UIImageView+WebCache.h"
 #import "JXCategoryView.h"
 #import "GKPhotoBrowser.h"
+#import "LYEmptyViewHeader.h"
 
 // 头文件
 #import "CONSTS.h"

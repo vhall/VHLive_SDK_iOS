@@ -12,9 +12,8 @@
 #import "VHSpeedMonitor.h"
 #import "VHSliderView.h"
 
-/// 新增美颜依赖库
-#import <VHBeautifyKit/VHBeautifyKit.h>
-#import <VHBFURender/VHBFURender.h>
+#import "VHBeautyView.h"
+#import "VHBeautyAdjustController.h"
 
 @interface VHPublishVC ()<VHallLivePublishDelegate>
 
@@ -31,7 +30,10 @@
 /// 是否横屏
 @property (nonatomic, assign) BOOL isFull;
 ///美颜
+@property (nonatomic, strong) VHBeautyView *beautyView; //美颜工具类
+@property (nonatomic, strong) VHBeautyAdjustController *adjustVC;
 @property (nonatomic, strong) VHBeautifyKit *beautKit;
+@property (nonatomic, strong) FUBeauty *beauty;// 美颜功能 FUBeauty*
 
 @end
 
@@ -261,9 +263,8 @@
             if(error) {
                 [VHProgressHud showToast:[NSString stringWithFormat:@"⚠️美颜信息 : %@", error]];
             } else {
-                self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
+                self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class] faceBundlePath:@""];
                 VHLog(@"%@",self.beautKit.enable ? @"高级美颜开启" : @"高级美颜未开启");
-                [_beautKit setEffectKey:eff_key_FU_CheekThinning toValue:@(0.8)];
             }
             
         }];
@@ -309,6 +310,10 @@
             // 镜像
             [weakSelf.livePublish camVidMirror:mirror];
         };
+        _toolView.clickOpenBeauty = ^(BOOL isSelect) {
+            [weakSelf.adjustVC refreshEffect:weakSelf.beautKit];
+            [weakSelf presentViewController:weakSelf.adjustVC animated:YES completion:nil];
+        };
         [self.view addSubview:_toolView];
     }
 
@@ -324,6 +329,19 @@
     return _speedMonitor;
 }
 
+- (VHBeautyView *)beautyView{
+    if (!_beautyView) {
+        _beautyView = [[VHBeautyView alloc] init];
+    }
+    return _beautyView;
+}
+
+- (VHBeautyAdjustController *)adjustVC{
+    if (!_adjustVC) {
+        _adjustVC = [[VHBeautyAdjustController alloc] init];
+    }
+    return _adjustVC;
+}
 /*
  #pragma mark - Navigation
 

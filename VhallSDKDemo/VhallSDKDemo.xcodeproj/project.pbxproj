@@ -15,6 +15,7 @@
 		4E0D39CC2A84CE1700B0AFE7 /* VHGoodsDetailAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D39CB2A84CE1700B0AFE7 /* VHGoodsDetailAlert.m */; };
 		4E0EA0F12A09E7CA00FD17F7 /* VhallSDKDemoLoginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0EA0EA2A09E7A400FD17F7 /* VhallSDKDemoLoginTests.m */; };
 		4E0EA1052A0A498400FD17F7 /* VhallSDKDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEB98293EE96900538BC2 /* VhallSDKDemoUITests.m */; };
+		4E161FAD2AA82B61009D8A1F /* VHGoodsCouponAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E161FAC2AA82B61009D8A1F /* VHGoodsCouponAlert.m */; };
 		4E1BCB6D2A832B8D000E7BC0 /* VHGoodsCardAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BCB6C2A832B8D000E7BC0 /* VHGoodsCardAlert.m */; };
 		4E1BCB702A835EF6000E7BC0 /* VHGoodsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BCB6F2A835EF6000E7BC0 /* VHGoodsList.m */; };
 		4E1D431829DE95BB0099C85C /* VHCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1D431729DE95BB0099C85C /* VHCodeVC.m */; };
@@ -103,6 +104,29 @@
 		4EEEEB8F293EE96900538BC2 /* VhallSDKDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEB8E293EE96900538BC2 /* VhallSDKDemoTests.m */; };
 		4EEEEB9B293EE96900538BC2 /* VhallSDKDemoUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEB9A293EE96900538BC2 /* VhallSDKDemoUITestsLaunchTests.m */; };
 		4EEEEBB5293F213D00538BC2 /* VHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEBB4293F213D00538BC2 /* VHBaseViewController.m */; };
+		4EF15B1E2AAEAA960082190F /* VHBeautyTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15AEE2AAEAA960082190F /* VHBeautyTopView.m */; };
+		4EF15B212AAEAA960082190F /* UILabel+VHConvenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15AF72AAEAA960082190F /* UILabel+VHConvenient.m */; };
+		4EF15B222AAEAA960082190F /* UIView+RedRot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15AF82AAEAA960082190F /* UIView+RedRot.m */; };
+		4EF15B232AAEAA960082190F /* UIButton+VHConvenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15AF92AAEAA960082190F /* UIButton+VHConvenient.m */; };
+		4EF15B242AAEAA960082190F /* VHReflect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15AFE2AAEAA960082190F /* VHReflect.m */; };
+		4EF15B252AAEAA960082190F /* VHBeautyAdjustController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15AFF2AAEAA960082190F /* VHBeautyAdjustController.m */; };
+		4EF15B262AAEAA960082190F /* VHSaveBeautyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B042AAEAA960082190F /* VHSaveBeautyTool.m */; };
+		4EF15B272AAEAA960082190F /* VHBeautyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B052AAEAA960082190F /* VHBeautyModel.m */; };
+		4EF15B282AAEAA960082190F /* VHBeautyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B0A2AAEAA960082190F /* VHBeautyAlertView.m */; };
+		4EF15B292AAEAA960082190F /* VHSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B0E2AAEAA960082190F /* VHSlider.m */; };
+		4EF15B2A2AAEAA960082190F /* VHSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B102AAEAA960082190F /* VHSwitchCell.m */; };
+		4EF15B2B2AAEAA960082190F /* VHBeautyFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B122AAEAA960082190F /* VHBeautyFilterCell.m */; };
+		4EF15B2C2AAEAA960082190F /* VHBeautyEffectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B132AAEAA960082190F /* VHBeautyEffectCell.m */; };
+		4EF15B2D2AAEAA960082190F /* CALayer+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B1A2AAEAA960082190F /* CALayer+Convenient.m */; };
+		4EF15B2E2AAEAA960082190F /* VHChangeSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B1B2AAEAA960082190F /* VHChangeSegmentView.m */; };
+		4EF15B2F2AAEAA960082190F /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B1C2AAEAA960082190F /* NSString+Size.m */; };
+		4EF15B302AAEAA960082190F /* VHBeautyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B1D2AAEAA960082190F /* VHBeautyView.m */; };
+		4EF15B3F2AAEAEB60082190F /* VHActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B342AAEAEB60082190F /* VHActionSheetCell.m */; };
+		4EF15B402AAEAEB60082190F /* VHActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B382AAEAEB60082190F /* VHActionSheet.m */; };
+		4EF15B412AAEAEB60082190F /* VHCBaseActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B392AAEAEB60082190F /* VHCBaseActionView.m */; };
+		4EF15B422AAEAEB60082190F /* VHActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B3A2AAEAEB60082190F /* VHActionSheetViewController.m */; };
+		4EF15B432AAEAEB60082190F /* VHActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B3C2AAEAEB60082190F /* VHActionSheetConfig.m */; };
+		4EF15B442AAEAEB60082190F /* VHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B3E2AAEAEB60082190F /* VHAlertView.m */; };
 		4EF334ED2A32FD2A006838EF /* VHFileDownloadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF334EC2A32FD2A006838EF /* VHFileDownloadVC.m */; };
 		4EF334F02A3346E5006838EF /* VHFileDownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF334EF2A3346E5006838EF /* VHFileDownloadCell.m */; };
 		4EF5534C29ECE80B0008DA1A /* VHPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF5534B29ECE80B0008DA1A /* VHPublishVC.m */; };
@@ -168,6 +192,8 @@
 		4E0EA0F22A09F22000FD17F7 /* VHInteractive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VHInteractive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0EA0F42A09F22000FD17F7 /* VHLiveSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VHLiveSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0EA0F62A09F24300FD17F7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/iOSSupport/System/Library/PrivateFrameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		4E161FAB2AA82B61009D8A1F /* VHGoodsCouponAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsCouponAlert.h; sourceTree = "<group>"; };
+		4E161FAC2AA82B61009D8A1F /* VHGoodsCouponAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsCouponAlert.m; sourceTree = "<group>"; };
 		4E1BCB6B2A832B8D000E7BC0 /* VHGoodsCardAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsCardAlert.h; sourceTree = "<group>"; };
 		4E1BCB6C2A832B8D000E7BC0 /* VHGoodsCardAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsCardAlert.m; sourceTree = "<group>"; };
 		4E1BCB6E2A835EF6000E7BC0 /* VHGoodsList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsList.h; sourceTree = "<group>"; };
@@ -339,6 +365,53 @@
 		4EEEEBAA293F201100538BC2 /* VhallSDKDemoPCH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VhallSDKDemoPCH.h; sourceTree = "<group>"; };
 		4EEEEBB3293F213D00538BC2 /* VHBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHBaseViewController.h; sourceTree = "<group>"; };
 		4EEEEBB4293F213D00538BC2 /* VHBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHBaseViewController.m; sourceTree = "<group>"; };
+		4EF15AEE2AAEAA960082190F /* VHBeautyTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHBeautyTopView.m; sourceTree = "<group>"; };
+		4EF15AF12AAEAA960082190F /* UIView+RedRot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RedRot.h"; sourceTree = "<group>"; };
+		4EF15AF22AAEAA960082190F /* UILabel+VHConvenient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+VHConvenient.h"; sourceTree = "<group>"; };
+		4EF15AF42AAEAA960082190F /* UIButton+VHConvenient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+VHConvenient.h"; sourceTree = "<group>"; };
+		4EF15AF72AAEAA960082190F /* UILabel+VHConvenient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+VHConvenient.m"; sourceTree = "<group>"; };
+		4EF15AF82AAEAA960082190F /* UIView+RedRot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RedRot.m"; sourceTree = "<group>"; };
+		4EF15AF92AAEAA960082190F /* UIButton+VHConvenient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+VHConvenient.m"; sourceTree = "<group>"; };
+		4EF15AFB2AAEAA960082190F /* VHBeautyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHBeautyHeader.h; sourceTree = "<group>"; };
+		4EF15AFC2AAEAA960082190F /* VHBeautyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHBeautyView.h; sourceTree = "<group>"; };
+		4EF15AFE2AAEAA960082190F /* VHReflect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHReflect.m; sourceTree = "<group>"; };
+		4EF15AFF2AAEAA960082190F /* VHBeautyAdjustController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHBeautyAdjustController.m; sourceTree = "<group>"; };
+		4EF15B002AAEAA960082190F /* VHReflect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHReflect.h; sourceTree = "<group>"; };
+		4EF15B012AAEAA960082190F /* VHBeautyAdjustController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHBeautyAdjustController.h; sourceTree = "<group>"; };
+		4EF15B022AAEAA960082190F /* VHBeautyTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHBeautyTopView.h; sourceTree = "<group>"; };
+		4EF15B042AAEAA960082190F /* VHSaveBeautyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHSaveBeautyTool.m; sourceTree = "<group>"; };
+		4EF15B052AAEAA960082190F /* VHBeautyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHBeautyModel.m; sourceTree = "<group>"; };
+		4EF15B062AAEAA960082190F /* VHSaveBeautyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHSaveBeautyTool.h; sourceTree = "<group>"; };
+		4EF15B072AAEAA960082190F /* VHBeautyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHBeautyModel.h; sourceTree = "<group>"; };
+		4EF15B0A2AAEAA960082190F /* VHBeautyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHBeautyAlertView.m; sourceTree = "<group>"; };
+		4EF15B0B2AAEAA960082190F /* VHBeautyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHBeautyAlertView.h; sourceTree = "<group>"; };
+		4EF15B0D2AAEAA960082190F /* VHSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHSlider.h; sourceTree = "<group>"; };
+		4EF15B0E2AAEAA960082190F /* VHSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHSlider.m; sourceTree = "<group>"; };
+		4EF15B102AAEAA960082190F /* VHSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHSwitchCell.m; sourceTree = "<group>"; };
+		4EF15B112AAEAA960082190F /* VHBeautyEffectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHBeautyEffectCell.h; sourceTree = "<group>"; };
+		4EF15B122AAEAA960082190F /* VHBeautyFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHBeautyFilterCell.m; sourceTree = "<group>"; };
+		4EF15B132AAEAA960082190F /* VHBeautyEffectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHBeautyEffectCell.m; sourceTree = "<group>"; };
+		4EF15B142AAEAA960082190F /* VHSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHSwitchCell.h; sourceTree = "<group>"; };
+		4EF15B152AAEAA960082190F /* VHBeautyFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHBeautyFilterCell.h; sourceTree = "<group>"; };
+		4EF15B172AAEAA960082190F /* VHChangeSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHChangeSegmentView.h; sourceTree = "<group>"; };
+		4EF15B182AAEAA960082190F /* CALayer+Convenient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Convenient.h"; sourceTree = "<group>"; };
+		4EF15B192AAEAA960082190F /* NSString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Size.h"; sourceTree = "<group>"; };
+		4EF15B1A2AAEAA960082190F /* CALayer+Convenient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Convenient.m"; sourceTree = "<group>"; };
+		4EF15B1B2AAEAA960082190F /* VHChangeSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHChangeSegmentView.m; sourceTree = "<group>"; };
+		4EF15B1C2AAEAA960082190F /* NSString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
+		4EF15B1D2AAEAA960082190F /* VHBeautyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHBeautyView.m; sourceTree = "<group>"; };
+		4EF15B322AAEAEB60082190F /* VHAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHAlertView.h; sourceTree = "<group>"; };
+		4EF15B342AAEAEB60082190F /* VHActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetCell.m; sourceTree = "<group>"; };
+		4EF15B352AAEAEB60082190F /* VHActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetViewController.h; sourceTree = "<group>"; };
+		4EF15B362AAEAEB60082190F /* VHCBaseActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHCBaseActionView.h; sourceTree = "<group>"; };
+		4EF15B372AAEAEB60082190F /* VHActionSheetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetConfig.h; sourceTree = "<group>"; };
+		4EF15B382AAEAEB60082190F /* VHActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheet.m; sourceTree = "<group>"; };
+		4EF15B392AAEAEB60082190F /* VHCBaseActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHCBaseActionView.m; sourceTree = "<group>"; };
+		4EF15B3A2AAEAEB60082190F /* VHActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetViewController.m; sourceTree = "<group>"; };
+		4EF15B3B2AAEAEB60082190F /* VHActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetCell.h; sourceTree = "<group>"; };
+		4EF15B3C2AAEAEB60082190F /* VHActionSheetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetConfig.m; sourceTree = "<group>"; };
+		4EF15B3D2AAEAEB60082190F /* VHActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheet.h; sourceTree = "<group>"; };
+		4EF15B3E2AAEAEB60082190F /* VHAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHAlertView.m; sourceTree = "<group>"; };
 		4EF334EB2A32FD2A006838EF /* VHFileDownloadVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHFileDownloadVC.h; sourceTree = "<group>"; };
 		4EF334EC2A32FD2A006838EF /* VHFileDownloadVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHFileDownloadVC.m; sourceTree = "<group>"; };
 		4EF334EE2A3346E5006838EF /* VHFileDownloadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHFileDownloadCell.h; sourceTree = "<group>"; };
@@ -454,6 +527,8 @@
 				4E0D39CB2A84CE1700B0AFE7 /* VHGoodsDetailAlert.m */,
 				4E2C37932A85CC3D0079BFB1 /* VHGoodsConfirmOrderAlert.h */,
 				4E2C37942A85CC3D0079BFB1 /* VHGoodsConfirmOrderAlert.m */,
+				4E161FAB2AA82B61009D8A1F /* VHGoodsCouponAlert.h */,
+				4E161FAC2AA82B61009D8A1F /* VHGoodsCouponAlert.m */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -489,6 +564,7 @@
 		4E23FC63294046A300341EA4 /* VHTool */ = {
 			isa = PBXGroup;
 			children = (
+				4EF15B312AAEAEB60082190F /* Alert */,
 				4E2C379B2A8605D30079BFB1 /* VHRunTime */,
 				4E2C37962A85D1280079BFB1 /* VHGoodsNumberButton */,
 				4E23FD00294C1D4E00341EA4 /* VHLiveSaleAnimationTool */,
@@ -505,12 +581,18 @@
 			children = (
 				4E23FCFD294C18DD00341EA4 /* UIButton+VHBadge.h */,
 				4E23FCFE294C18DD00341EA4 /* UIButton+VHBadge.m */,
+				4EF15AF42AAEAA960082190F /* UIButton+VHConvenient.h */,
+				4EF15AF92AAEAA960082190F /* UIButton+VHConvenient.m */,
 				4E23FC6929404A9E00341EA4 /* UIColor+VUI.h */,
 				4E23FC6829404A9E00341EA4 /* UIColor+VUI.m */,
-				4E23FC992946C7F500341EA4 /* UIView+ITTAdditions.h */,
-				4E23FC982946C7F500341EA4 /* UIView+ITTAdditions.m */,
 				4EDE10E82959759000B10DB9 /* UIImage+VHUtil.h */,
 				4EDE10E92959759000B10DB9 /* UIImage+VHUtil.m */,
+				4EF15AF22AAEAA960082190F /* UILabel+VHConvenient.h */,
+				4EF15AF72AAEAA960082190F /* UILabel+VHConvenient.m */,
+				4E23FC992946C7F500341EA4 /* UIView+ITTAdditions.h */,
+				4E23FC982946C7F500341EA4 /* UIView+ITTAdditions.m */,
+				4EF15AF12AAEAA960082190F /* UIView+RedRot.h */,
+				4EF15AF82AAEAA960082190F /* UIView+RedRot.m */,
 			);
 			path = VHCatogroy;
 			sourceTree = "<group>";
@@ -1014,6 +1096,134 @@
 			path = VHBaseViewController;
 			sourceTree = "<group>";
 		};
+		4EF15AED2AAEAA960082190F /* BeautyView */ = {
+			isa = PBXGroup;
+			children = (
+				4EF15AFA2AAEAA960082190F /* config */,
+				4EF15B032AAEAA960082190F /* model */,
+				4EF15B082AAEAA960082190F /* view */,
+				4EF15AFD2AAEAA960082190F /* controller */,
+				4EF15B022AAEAA960082190F /* VHBeautyTopView.h */,
+				4EF15AEE2AAEAA960082190F /* VHBeautyTopView.m */,
+				4EF15AFC2AAEAA960082190F /* VHBeautyView.h */,
+				4EF15B1D2AAEAA960082190F /* VHBeautyView.m */,
+			);
+			path = BeautyView;
+			sourceTree = "<group>";
+		};
+		4EF15AFA2AAEAA960082190F /* config */ = {
+			isa = PBXGroup;
+			children = (
+				4EF15AFB2AAEAA960082190F /* VHBeautyHeader.h */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		4EF15AFD2AAEAA960082190F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				4EF15AFE2AAEAA960082190F /* VHReflect.m */,
+				4EF15AFF2AAEAA960082190F /* VHBeautyAdjustController.m */,
+				4EF15B002AAEAA960082190F /* VHReflect.h */,
+				4EF15B012AAEAA960082190F /* VHBeautyAdjustController.h */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		4EF15B032AAEAA960082190F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4EF15B042AAEAA960082190F /* VHSaveBeautyTool.m */,
+				4EF15B052AAEAA960082190F /* VHBeautyModel.m */,
+				4EF15B062AAEAA960082190F /* VHSaveBeautyTool.h */,
+				4EF15B072AAEAA960082190F /* VHBeautyModel.h */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		4EF15B082AAEAA960082190F /* view */ = {
+			isa = PBXGroup;
+			children = (
+				4EF15B092AAEAA960082190F /* alert */,
+				4EF15B0C2AAEAA960082190F /* slider */,
+				4EF15B0F2AAEAA960082190F /* cell */,
+				4EF15B162AAEAA960082190F /* segmentView */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		4EF15B092AAEAA960082190F /* alert */ = {
+			isa = PBXGroup;
+			children = (
+				4EF15B0A2AAEAA960082190F /* VHBeautyAlertView.m */,
+				4EF15B0B2AAEAA960082190F /* VHBeautyAlertView.h */,
+			);
+			path = alert;
+			sourceTree = "<group>";
+		};
+		4EF15B0C2AAEAA960082190F /* slider */ = {
+			isa = PBXGroup;
+			children = (
+				4EF15B0D2AAEAA960082190F /* VHSlider.h */,
+				4EF15B0E2AAEAA960082190F /* VHSlider.m */,
+			);
+			path = slider;
+			sourceTree = "<group>";
+		};
+		4EF15B0F2AAEAA960082190F /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				4EF15B102AAEAA960082190F /* VHSwitchCell.m */,
+				4EF15B112AAEAA960082190F /* VHBeautyEffectCell.h */,
+				4EF15B122AAEAA960082190F /* VHBeautyFilterCell.m */,
+				4EF15B132AAEAA960082190F /* VHBeautyEffectCell.m */,
+				4EF15B142AAEAA960082190F /* VHSwitchCell.h */,
+				4EF15B152AAEAA960082190F /* VHBeautyFilterCell.h */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		4EF15B162AAEAA960082190F /* segmentView */ = {
+			isa = PBXGroup;
+			children = (
+				4EF15B172AAEAA960082190F /* VHChangeSegmentView.h */,
+				4EF15B182AAEAA960082190F /* CALayer+Convenient.h */,
+				4EF15B192AAEAA960082190F /* NSString+Size.h */,
+				4EF15B1A2AAEAA960082190F /* CALayer+Convenient.m */,
+				4EF15B1B2AAEAA960082190F /* VHChangeSegmentView.m */,
+				4EF15B1C2AAEAA960082190F /* NSString+Size.m */,
+			);
+			path = segmentView;
+			sourceTree = "<group>";
+		};
+		4EF15B312AAEAEB60082190F /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				4EF15B322AAEAEB60082190F /* VHAlertView.h */,
+				4EF15B332AAEAEB60082190F /* VHActionSheet */,
+				4EF15B3E2AAEAEB60082190F /* VHAlertView.m */,
+			);
+			name = Alert;
+			path = "../../../../../Downloads/VHLive_SDK_iOS-6.11.0/VHSDKUIModel/UIModel/Common/Tools/Alert";
+			sourceTree = "<group>";
+		};
+		4EF15B332AAEAEB60082190F /* VHActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				4EF15B342AAEAEB60082190F /* VHActionSheetCell.m */,
+				4EF15B352AAEAEB60082190F /* VHActionSheetViewController.h */,
+				4EF15B362AAEAEB60082190F /* VHCBaseActionView.h */,
+				4EF15B372AAEAEB60082190F /* VHActionSheetConfig.h */,
+				4EF15B382AAEAEB60082190F /* VHActionSheet.m */,
+				4EF15B392AAEAEB60082190F /* VHCBaseActionView.m */,
+				4EF15B3A2AAEAEB60082190F /* VHActionSheetViewController.m */,
+				4EF15B3B2AAEAEB60082190F /* VHActionSheetCell.h */,
+				4EF15B3C2AAEAEB60082190F /* VHActionSheetConfig.m */,
+				4EF15B3D2AAEAEB60082190F /* VHActionSheet.h */,
+			);
+			path = VHActionSheet;
+			sourceTree = "<group>";
+		};
 		4EF334EA2A32FD08006838EF /* VHFileDownload */ = {
 			isa = PBXGroup;
 			children = (
@@ -1028,6 +1238,7 @@
 		4EF5534929ECE7E90008DA1A /* VHPublish */ = {
 			isa = PBXGroup;
 			children = (
+				4EF15AED2AAEAA960082190F /* BeautyView */,
 				4EF5534A29ECE80B0008DA1A /* VHPublishVC.h */,
 				4EF5534B29ECE80B0008DA1A /* VHPublishVC.m */,
 				4EF5534D29ED28CF0008DA1A /* VHPublishToolView.h */,
@@ -1429,7 +1640,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EF15B2E2AAEAA960082190F /* VHChangeSegmentView.m in Sources */,
 				4E23FD272950408E00341EA4 /* VHAnnouncementList.m in Sources */,
+				4EF15B2A2AAEAA960082190F /* VHSwitchCell.m in Sources */,
 				4E23FD20294C5B8900341EA4 /* VHLiveWeakTimer.m in Sources */,
 				4E23FCA8294820E600341EA4 /* VHChatView.m in Sources */,
 				4E23FD2A29504D6100341EA4 /* VHAnnouncementView.m in Sources */,
@@ -1444,6 +1657,7 @@
 				4E23FD19294C5B7A00341EA4 /* VHFoldButton.m in Sources */,
 				4E23FCFC294C15AE00341EA4 /* VHLikeObject.m in Sources */,
 				4E2170B82A89F7BA001E751C /* VHChatGoodsCell.m in Sources */,
+				4EF15B252AAEAA960082190F /* VHBeautyAdjustController.m in Sources */,
 				4E23FCF7294C11AC00341EA4 /* VHFashionStyleGiftPushView.m in Sources */,
 				4EE11ADE299CA7950062913B /* VHWebViewVC.m in Sources */,
 				4E858E9029F670F00007B792 /* VHSpeedMonitor.m in Sources */,
@@ -1453,31 +1667,41 @@
 				4E23FCF8294C11AC00341EA4 /* VHFashionStyleGiftListView.m in Sources */,
 				4EDEBAD129C19ADF0086D706 /* VHLottery.m in Sources */,
 				4EF8258C2995EC67007874DA /* LBDeviceListModel.m in Sources */,
+				4EF15B222AAEAA960082190F /* UIView+RedRot.m in Sources */,
+				4EF15B422AAEAEB60082190F /* VHActionSheetViewController.m in Sources */,
 				4EF8CBCF2A5276BB000ACCA6 /* VHPushScreenCardList.m in Sources */,
 				4E23FC7729406CF200341EA4 /* VHStystemSetting.m in Sources */,
 				4EDE10E429594B3E00B10DB9 /* VHEmptyView.m in Sources */,
 				4E2C379E2A8606040079BFB1 /* NSObject+VHRunTime.m in Sources */,
 				4E2C37992A85D1490079BFB1 /* VHGoodsNumberButton.m in Sources */,
 				4EF84E752951A072001299E4 /* VHInavAlertView.m in Sources */,
+				4EF15B412AAEAEB60082190F /* VHCBaseActionView.m in Sources */,
 				4EDE10EA2959759000B10DB9 /* UIImage+VHUtil.m in Sources */,
 				4EE7F2EA2A20802D004FEA0E /* VHRecordListVC.m in Sources */,
 				4EE848992952EF4B00F1BA1D /* VHNavBaseViewController.m in Sources */,
+				4EF15B2D2AAEAA960082190F /* CALayer+Convenient.m in Sources */,
+				4EF15B232AAEAA960082190F /* UIButton+VHConvenient.m in Sources */,
 				4EF334F02A3346E5006838EF /* VHFileDownloadCell.m in Sources */,
 				4E23FC722940676500341EA4 /* VHLoginViewController.m in Sources */,
 				4EED8D3F2955BDC7002913AC /* VHChatCustomCell.m in Sources */,
 				4ECFA82729C2C84E00A141F7 /* VHLotteryLosingView.m in Sources */,
 				4E1D431B29DE9C910099C85C /* AES.m in Sources */,
 				4ECFA82429C2BB4900A141F7 /* VHLotteryResultView.m in Sources */,
+				4EF15B432AAEAEB60082190F /* VHActionSheetConfig.m in Sources */,
 				4EE7A31229C8319100369CBD /* VHChatLotteryCell.m in Sources */,
 				4ECFA82A29C2F0A800A141F7 /* VHLotterySubmitView.m in Sources */,
 				4ED2C42E2953F21D00E29DED /* VHSignInAlertView.m in Sources */,
 				4E2C37952A85CC3D0079BFB1 /* VHGoodsConfirmOrderAlert.m in Sources */,
+				4EF15B402AAEAEB60082190F /* VHActionSheet.m in Sources */,
+				4EF15B442AAEAEB60082190F /* VHAlertView.m in Sources */,
 				4E23FCA32948209D00341EA4 /* VHWatchVC.m in Sources */,
 				4EDEBACE29C197CF0086D706 /* VHLotteryTurntableView.m in Sources */,
+				4EF15B3F2AAEAEB60082190F /* VHActionSheetCell.m in Sources */,
 				4E23FC6A29404A9E00341EA4 /* UIColor+VUI.m in Sources */,
 				4E0C8E922A53B5B100C1C66C /* VHPushScreenCardAlert.m in Sources */,
 				4E32F4A02951BB9800B5388F /* VHInavRenderAlertView.m in Sources */,
 				4E2170B52A89CBD9001E751C /* UIButton+VHRadius.m in Sources */,
+				4EF15B292AAEAA960082190F /* VHSlider.m in Sources */,
 				4EE7F2ED2A20816E004FEA0E /* VHRecordListCell.m in Sources */,
 				4E23FC8D2946C58F00341EA4 /* VHWarmUpViewController.m in Sources */,
 				4E1BCB702A835EF6000E7BC0 /* VHGoodsList.m in Sources */,
@@ -1485,16 +1709,22 @@
 				4EDE10F12959BD1700B10DB9 /* VHChatGiftCell.m in Sources */,
 				4E20671F299226DD00438B00 /* VHBrowserVC.m in Sources */,
 				4E1D431829DE95BB0099C85C /* VHCodeVC.m in Sources */,
+				4EF15B1E2AAEAA960082190F /* VHBeautyTopView.m in Sources */,
+				4E161FAD2AA82B61009D8A1F /* VHGoodsCouponAlert.m in Sources */,
 				4E32F49D2951AA4100B5388F /* VHInavApplyAlertView.m in Sources */,
+				4EF15B262AAEAA960082190F /* VHSaveBeautyTool.m in Sources */,
 				4E23FD10294C4F5D00341EA4 /* VHSurveyListView.m in Sources */,
 				4E23FC892941E90D00341EA4 /* VHHomeViewController.m in Sources */,
 				4EF8258B2995EC67007874DA /* LBLelinkKitManager.m in Sources */,
 				4E0D39CC2A84CE1700B0AFE7 /* VHGoodsDetailAlert.m in Sources */,
+				4EF15B212AAEAA960082190F /* UILabel+VHConvenient.m in Sources */,
+				4EF15B272AAEAA960082190F /* VHBeautyModel.m in Sources */,
 				4E23FCEB294AC34200341EA4 /* VHWatchBackView.m in Sources */,
 				4EF5534F29ED28CF0008DA1A /* VHPublishToolView.m in Sources */,
 				4E23FCF1294B269800341EA4 /* VHSliderView.m in Sources */,
 				4E23FD03294C1D6400341EA4 /* VHLiveSaleAnimationTool.m in Sources */,
 				4E08428129877875002EEB25 /* VHWarmUpStartView.m in Sources */,
+				4EF15B242AAEAA960082190F /* VHReflect.m in Sources */,
 				4E23FCB52948875700341EA4 /* VHWatchLiveBottomView.m in Sources */,
 				4EF5534C29ECE80B0008DA1A /* VHPublishVC.m in Sources */,
 				4E23FC6E29404C7500341EA4 /* VHProgressHud.m in Sources */,
@@ -1502,17 +1732,22 @@
 				4EE7A30F29C7F9F100369CBD /* VHLotteryWinListView.m in Sources */,
 				4E23FC832940831800341EA4 /* VHSignSetVC.m in Sources */,
 				4EEEEBB5293F213D00538BC2 /* VHBaseViewController.m in Sources */,
+				4EF15B302AAEAA960082190F /* VHBeautyView.m in Sources */,
 				4EF334ED2A32FD2A006838EF /* VHFileDownloadVC.m in Sources */,
 				4E068D5A29A5FE4500887E1E /* VHAuthAlertView.m in Sources */,
 				4E23FCFF294C18DD00341EA4 /* UIButton+VHBadge.m in Sources */,
 				4EE0DE2429C464260094437C /* VHLotteryPrivateView.m in Sources */,
 				4EF84E7229519221001299E4 /* VHInavView.m in Sources */,
 				4E23FCD62948A28900341EA4 /* VHTextView.m in Sources */,
+				4EF15B2F2AAEAA960082190F /* NSString+Size.m in Sources */,
+				4EF15B2C2AAEAA960082190F /* VHBeautyEffectCell.m in Sources */,
 				4E1BCB6D2A832B8D000E7BC0 /* VHGoodsCardAlert.m in Sources */,
 				4E23FC9A2946C7F500341EA4 /* UIView+ITTAdditions.m in Sources */,
 				4E858E8D29F66D380007B792 /* VHNetworkSpeedMonitor.m in Sources */,
+				4EF15B282AAEAA960082190F /* VHBeautyAlertView.m in Sources */,
 				4EEEEB85293EE96800538BC2 /* main.m in Sources */,
 				4E0C8E952A541DE100C1C66C /* VHPushScreenCardDeleteAlert.m in Sources */,
+				4EF15B2B2AAEAA960082190F /* VHBeautyFilterCell.m in Sources */,
 				4E32F4A32951BBD000B5388F /* VHInavBtn.m in Sources */,
 				4EF8CBDD2A52DA0B000ACCA6 /* VHChatPushScreenCardCell.m in Sources */,
 				4E23FCD82948A28900341EA4 /* VHKeyboardToolView.m in Sources */,
@@ -1721,7 +1956,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/VhallSDKDemo/VHLib/WeChatPay",
 				);
-				MARKETING_VERSION = 6.18.0;
+				MARKETING_VERSION = 6.19.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1769,7 +2004,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/VhallSDKDemo/VHLib/WeChatPay",
 				);
-				MARKETING_VERSION = 6.18.0;
+				MARKETING_VERSION = 6.19.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

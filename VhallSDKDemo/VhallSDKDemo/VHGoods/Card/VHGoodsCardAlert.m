@@ -17,7 +17,7 @@
 @property (nonatomic, strong) UIImageView *priceImg;    ///<抢
 
 @property (nonatomic, strong) UILabel *titleLab;        ///<标题
-@property (nonatomic, strong) UILabel *priceLab;///<优惠价格
+@property (nonatomic, strong) UILabel *priceLab;        ///<优惠价格
 
 @property (nonatomic, strong) UIButton *closeBtn;       ///<关闭按钮
 
@@ -34,8 +34,12 @@
         self.layer.shadowOffset = CGSizeMake(3,3);
         self.layer.shadowRadius = 6;
         self.layer.shadowOpacity = 1;
+        
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(checkDetail)];
         [self addGestureRecognizer:tap];
+        
+        UITapGestureRecognizer *priceViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(checkPay)];
+        [self.priceView addGestureRecognizer:priceViewTap];
 
         [self addSubview:self.contentView];
         
@@ -143,6 +147,14 @@
 {
     if (self.clickCheckDetailBlock) {
         self.clickCheckDetailBlock(self.item);
+    }
+}
+
+#pragma mark - 去支付
+- (void)checkPay
+{
+    if (self.clickPayBlock) {
+        self.clickPayBlock(self.item);
     }
 }
 

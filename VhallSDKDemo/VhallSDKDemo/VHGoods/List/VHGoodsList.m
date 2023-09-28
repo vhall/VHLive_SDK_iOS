@@ -10,6 +10,7 @@
 #import "VHGoodsDetailAlert.h"
 #import "VHGoodsConfirmOrderAlert.h"
 #import "VHPushScreenCardDeleteAlert.h"
+#import "VHGoodsCouponAlert.h"
 
 @implementation VHGoodsListCell
 
@@ -302,6 +303,8 @@
 @property (nonatomic, strong) VHGoodsConfirmOrderAlert *goodOrderAlert;
 /// 已被删除提示
 @property (nonatomic, strong) VHPushScreenCardDeleteAlert *pushScreenCardDeleteAlert;
+/// 优惠券列表
+@property (nonatomic, strong) VHGoodsCouponAlert *goodsCouponAlert;
 /// 订单号
 @property (nonatomic, copy) NSString *order_no;
 /// 设置界面的详情
@@ -398,6 +401,35 @@
     return cell;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.width, 48)];
+    
+    UIButton * couponBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [couponBtn setBackgroundColor:VHBlack25];
+    [couponBtn setFrame:CGRectMake(tableView.width - 102, (48 - 24)/2, 102, 24)];
+    [couponBtn.titleLabel setFont:FONT(14)];
+    [couponBtn setImage:[UIImage imageNamed:@"vh_goods_list_coupon"] forState:UIControlStateNormal];
+    [couponBtn setTitle:@"我的优惠券" forState:UIControlStateNormal];
+    [couponBtn addTarget:self action:@selector(clickCouponBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    [VUITool clipView:couponBtn corner:UIRectCornerTopLeft | UIRectCornerBottomLeft anSize:CGSizeMake(24, 24)];
+
+    // 设置按钮的图片在左侧，文本在图片右边
+    CGFloat spacing = 2.0; // 图片和文本的间距
+    couponBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacing);
+    couponBtn.titleEdgeInsets = UIEdgeInsetsMake(0, spacing, 0, 0);
+
+    [headerView addSubview:couponBtn];
+    
+    return headerView;
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 48;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 点击展示
@@ -478,6 +510,12 @@
             [VHProgressHud showToast:error.domain];
         }
     }];
+}
+
+#pragma mark - 优惠券列表
+- (void)clickCouponBtn
+{
+    [self.goodsCouponAlert showGoodsCouponWithWebinarInfo:self.webinarInfo goodItem:nil goodNum:nil];
 }
 
 #pragma mark - VHGoodsObjectDelegate
@@ -629,6 +667,10 @@
             __strong __typeof(weakSelf)self = weakSelf;
             [self checkDetailWithInquire:item];
         };
+        _goodsCardAlert.clickPayBlock = ^(VHGoodsListItem *item) {
+            __strong __typeof(weakSelf)self = weakSelf;
+            [self goodsSettingWithListItem:item];
+        };
         [[VUITool getCurrentScreenViewController].view addSubview:_goodsCardAlert];
     }
     return _goodsCardAlert;
@@ -672,6 +714,15 @@
     }
     
     return _pushScreenCardDeleteAlert;
+}
+
+- (VHGoodsCouponAlert *)goodsCouponAlert
+{
+    if (!_goodsCouponAlert) {
+        _goodsCouponAlert = [[VHGoodsCouponAlert alloc] initWithFrame:[VUITool getCurrentScreenViewController].view.bounds];
+        [[VUITool getCurrentScreenViewController].view addSubview:_goodsCouponAlert];
+    }
+    return _goodsCouponAlert;
 }
 
 #pragma mark - 分页

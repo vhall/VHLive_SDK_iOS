@@ -7,8 +7,6 @@
 
 #import "VHInavRenderAlertView.h"
 #import "VHInavView.h"
-#import <VHBeautifyKit/VHBeautifyKit.h>
-#import <VHBFURender/VHBFURender.h>
 
 @implementation VHInavCell
 
@@ -683,7 +681,7 @@
 }
 - (VHBeautifyKit *)beautifykit {
     if(!_beautifykit){
-        _beautifykit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class]];
+        _beautifykit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class] faceBundlePath:@""];
         [_beautifykit setCaptureImageOrientation:3];
     }
     return _beautifykit;

@@ -121,7 +121,7 @@
     if (!_timeLab) {
         _timeLab = [[UILabel alloc] init];
         _timeLab.font = FONT(12);
-        _timeLab.textColor = [UIColor colorWithHex:@"#8C8C8C"];
+        _timeLab.textColor = VHBlack45;
     }
 
     return _timeLab;

@@ -10,6 +10,34 @@
 #import "VHallRawBaseModel.h"
 
 // 订单明细
+@interface VHGoodsCouponInfoItem : VHallRawBaseModel
+@property (nonatomic, copy)   NSString *coupon_id;                  ///<优惠券id
+@property (nonatomic, copy)   NSString *coupon_name;                ///<优惠券名称
+@property (nonatomic, copy)   NSString *validity_start_time;        ///<有效期开始时间
+@property (nonatomic, copy)   NSString *validity_end_time;          ///<有效期结束时间
+@property (nonatomic, copy)   NSString *use_desc;                   ///<使用说明
+@property (nonatomic, copy)   NSString *goods_num;                  ///<商品数量
+@property (nonatomic, copy)   NSString *business_uid;               ///<操作人id
+@property (nonatomic, copy)   NSString *nick_name;                  ///<操作人昵称
+@property (nonatomic, copy)   NSString *updated_at;                 ///<更新时间
+@property (nonatomic, copy)   NSString *coupon_user_id;             ///<用户领取优惠券ID
+@property (nonatomic, assign) CGFloat   threshold_amount;           ///<门槛金额
+@property (nonatomic, assign) CGFloat   deduction_amount;           ///<减免金额
+@property (nonatomic, assign) NSInteger coupon_type;                ///<优惠券类型 0-满减优惠 1-无门槛优惠
+@property (nonatomic, assign) NSInteger validity_type;              ///<有效期类型 0-固定日期 1-固定天数
+@property (nonatomic, assign) NSInteger validity_day;               ///<有效期天数
+@property (nonatomic, assign) NSInteger applicable_product_type;    ///<适用商品类型 0-全部商品 1-指定商品可用 2-指定商品不可用
+@property (nonatomic, assign) NSInteger unavailable_type;           ///<不可用原因 0-未达条件 1-已失效-2-已使用
+
+
+/** 业务封装 */
+@property (nonatomic, assign) BOOL isAvailable;                     ///<当前优惠券是否可用  YES:可用 NO:不可用
+@property (nonatomic, assign) BOOL isBest;                          ///<是否最优,这个参数只在可用优惠券列表生效 YES:是 NO:不是
+@property (nonatomic, assign) BOOL isShowUseDesc;                   ///<是否展开详情 YES:是 NO:不是
+@end
+
+
+// 订单明细
 @interface VHGoodsOrderInfoItem : VHallRawBaseModel
 @property (nonatomic, copy)   NSString *goods_id;           ///<商品ID
 @property (nonatomic, copy)   NSString *cover_img;          ///<商品封面图片
@@ -183,8 +211,9 @@
 ///   - pay_channel: 支付渠道(取值范围:WEIXIN,ALIPAY)
 ///   - channel_source: 渠道来源(main)
 ///   - pay_amount: 实付金额
+///   - coupon_user_ids: 优惠券集合 coupon_user_id
 ///   - complete: 完成返回详情,失败错误详情
-+ (void)goodsCreateOtherWithSwitchId:(NSString *)switch_id third_user_id:(NSString *)third_user_id username:(NSString *)username phone:(NSString *)phone remark:(NSString *)remark goods_id:(NSString *)goods_id quantity:(NSInteger)quantity pay_channel:(NSString *)pay_channel channel_source:(NSString *)channel_source pay_amount:(NSString *)pay_amount complete:(void (^)(VHGoodsCreateOtherItem *createOtherItem, NSError *error))complete;
++ (void)goodsCreateOtherWithSwitchId:(NSString *)switch_id third_user_id:(NSString *)third_user_id username:(NSString *)username phone:(NSString *)phone remark:(NSString *)remark goods_id:(NSString *)goods_id quantity:(NSInteger)quantity pay_channel:(NSString *)pay_channel channel_source:(NSString *)channel_source pay_amount:(NSString *)pay_amount coupon_user_ids:(NSArray *)coupon_user_ids complete:(void (^)(VHGoodsCreateOtherItem *createOtherItem, NSError *error))complete;
 
 /// 获取我的订单信息
 /// - Parameters:
@@ -197,6 +226,22 @@
 /// - Parameter scheme: app配置的scheme,用来支付完成后返回应用,必须使用微信配置的顶级域名或子域名,例如顶级域名是vhall.com,则可以设置为demo.vhall.com
 /// - Parameter referer: 用来配置微信支付授权的必传参数,最好使用微信配置的顶级域名
 - (void)platformPaymentToPayWithOrderUrl:(NSURL *)url scheme:(NSString *)scheme referer:(NSString *)referer;
+
+/// 可用优惠券列表
+/// - Parameters:
+///   - webinar_id: 活动id
+///   - goods_id: 商品id
+///   - goods_num: 商品数量
+///   - complete: 完成返回详情,失败错误详情
++ (void)couponAvailableListWithWebinarId:(NSString *)webinar_id goods_id:(NSString *)goods_id goods_num:(NSString *)goods_num complete:(void (^)(NSArray <VHGoodsCouponInfoItem *> *list, NSError *error))complete;
+
+/// 不可用优惠券列表
+/// - Parameters:
+///   - webinar_id: 活动id
+///   - goods_id: 商品id
+///   - goods_num: 商品数量
+///   - complete: 完成返回详情,失败错误详情
++ (void)couponUnavailableListWithWebinarId:(NSString *)webinar_id goods_id:(NSString *)goods_id goods_num:(NSString *)goods_num complete:(void (^)(NSArray <VHGoodsCouponInfoItem *> *list, NSError *error))complete;
 
 @end
 

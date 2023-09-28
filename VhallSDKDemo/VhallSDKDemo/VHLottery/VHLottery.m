@@ -82,6 +82,9 @@
             [self.lotteryLosingView showLotteryLosingWithVHLottery:self.vhLottery endLotteryModel:msg];
         }
     }
+    
+    // 结束中奖通知优惠券列表(如果需要可以刷新一下优惠券)
+    [[NSNotificationCenter defaultCenter] postNotificationName:VH_LOTTERY_END object:self];
 }
 
 #pragma mark - 点击立即领奖

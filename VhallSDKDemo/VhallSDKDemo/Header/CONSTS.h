@@ -13,42 +13,66 @@
 #define VHLog(...) NSLog(__VA_ARGS__)
 
 // 判断是否是 iphone 4
-#define isIPhone4                    CGSizeEqualToSize(CGSizeMake(320, 480), [[UIScreen mainScreen] bounds].size)
+#define isIPhone4                       CGSizeEqualToSize(CGSizeMake(320, 480), [[UIScreen mainScreen] bounds].size)
 // 判断是否是 iphone 5 / 5s / SE
-#define isIPhone5_5s_SE              CGSizeEqualToSize(CGSizeMake(320, 568), [[UIScreen mainScreen] bounds].size)
+#define isIPhone5_5s_SE                 CGSizeEqualToSize(CGSizeMake(320, 568), [[UIScreen mainScreen] bounds].size)
 // 判断是否是 iphone 6 / 6s / 7 / 8
-#define isIPhone6_6s_7_8             CGSizeEqualToSize(CGSizeMake(375, 667), [[UIScreen mainScreen] bounds].size)
+#define isIPhone6_6s_7_8                CGSizeEqualToSize(CGSizeMake(375, 667), [[UIScreen mainScreen] bounds].size)
 // 判断是否是 iphone 6 Plus / 6s Plus / 7 Plus / 8 Plus
-#define isIPhone6p_6sp_7p_8p         CGSizeEqualToSize(CGSizeMake(414, 736), [[UIScreen mainScreen] bounds].size)
+#define isIPhone6p_6sp_7p_8p            CGSizeEqualToSize(CGSizeMake(414, 736), [[UIScreen mainScreen] bounds].size)
 // 判断是否是 iphone X / Xs / 11 Pro /  12 mini
-#define isIPhoneX_Xs_11Pro_12Mini    CGSizeEqualToSize(CGSizeMake(375, 812), [[UIScreen mainScreen] bounds].size)
+#define isIPhoneX_Xs_11Pro_12Mini       CGSizeEqualToSize(CGSizeMake(375, 812), [[UIScreen mainScreen] bounds].size)
 // 判断是否是 iphone Xs Max / XR / 11 / 11 Pro Max
-#define isIPhoneXsMax_XR_11_11ProMax CGSizeEqualToSize(CGSizeMake(414, 896), [[UIScreen mainScreen] bounds].size)
+#define isIPhoneXsMax_XR_11_11ProMax    CGSizeEqualToSize(CGSizeMake(414, 896), [[UIScreen mainScreen] bounds].size)
 // 判断是否是 iphone 12 / 12 Pro
-#define isIPhone12_12Pro             CGSizeEqualToSize(CGSizeMake(390, 844), [[UIScreen mainScreen] bounds].size)
+#define isIPhone12_12Pro                CGSizeEqualToSize(CGSizeMake(390, 844), [[UIScreen mainScreen] bounds].size)
 // 判断是否是 iphone 12 Pro Max
-#define isIPhone12ProMax             CGSizeEqualToSize(CGSizeMake(428, 926), [[UIScreen mainScreen] bounds].size)
+#define isIPhone12ProMax                CGSizeEqualToSize(CGSizeMake(428, 926), [[UIScreen mainScreen] bounds].size)
 // 是否是 刘海儿屏/异形屏
-#define isAlien                      ([UIScreen mainScreen].bounds.size.height > 736 ? YES : NO)
+#define isAlien                         ([UIScreen mainScreen].bounds.size.height > 736 ? YES : NO)
 
 // 获取屏幕尺寸
-#define Screen_Bounds                [UIScreen mainScreen].bounds
+#define Screen_Bounds                   [UIScreen mainScreen].bounds
 // 屏幕宽度
-#define Screen_Width                 ([UIScreen mainScreen].bounds.size.width)
+#define Screen_Width                    ([UIScreen mainScreen].bounds.size.width)
 // 屏幕高度
-#define Screen_Height                ([UIScreen mainScreen].bounds.size.height)
+#define Screen_Height                   ([UIScreen mainScreen].bounds.size.height)
 // 状态栏高度
-#define STATUS_BAR_H                 (isAlien ? 44.f : 20.f)
+#define STATUS_BAR_H                    (isAlien ? 44.f : 20.f)
 // 导航栏高度
-#define NAVIGATION_BAR_H             (isAlien ? 88.f : 64.f)
+#define NAVIGATION_BAR_H                (isAlien ? 88.f : 64.f)
 // tabBar高度
-#define TAB_BAR_H                    (isAlien ? (49.f + 34.f) : 49.f)
+#define TAB_BAR_H                       (isAlien ? (49.f + 34.f) : 49.f)
 // 安全区域-底部高度
-#define SAFE_BOTTOM                  (isAlien ? 34.f : 0.f)
+#define SAFE_BOTTOM                     (isAlien ? 34.f : 0.f)
 // 安全区域-底部高度
-#define SAFE_TOP                     (isAlien ? 20.f : 0.f)
+#define SAFE_TOP                        (isAlien ? 20.f : 0.f)
+
 // 是否为横屏显示
-#define VH_KScreenIsLandscape        UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)
+#define VH_KScreenIsLandscape           UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)
+
+//以横屏为例 横屏292*375，竖屏375*206
+#define VHWRateScale                    (Screen_Width/375.0)//竖屏
+#define VHHRateSacle                    (Screen_Height/375.0)//横屏
+//横竖屏比率
+#define VHRateScale                     (VH_KScreenIsLandscape?VHHRateSacle:VHWRateScale)
+
+//头部高度45 + 10//55
+#define kVHBeautyTopHeight              (VHRateScale*45)
+//滑动条高度 16 + 24//61
+#define kVHSliderHeight                 (VHRateScale*20)
+//美颜单元格高度 20+6+20+24
+#define kVHCellBeautyHeight             (VHRateScale*46)
+//美颜单元格宽度 44
+#define kVHCellBeautyWidth              (VHRateScale*34)
+//滤镜单元格高度
+#define kVHCellFilterHeight             (VHRateScale*85)
+//滤镜单元格宽度
+#define kVHCellFilterWidth              (VHRateScale*48)
+//弹框高度
+#define kBeautyAlertViewHeight          (VHRateScale * 145.5)
+//弹框宽度
+#define kBeautyAlertViewWidth           (VHRateScale * 311)
 
 // 默认 常规字体
 #define FONT(s)              [UIFont systemFontOfSize:s]
@@ -152,6 +176,10 @@
 #define RGBHex(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16)) / 255.0 green:((float)((rgbValue & 0xFF00) >> 8)) / 255.0 blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 
 // 通知
-#define VH_GOODS_ORDERINFO @"VH_GOODS_ORDERINFO"
+/// 商品通知
+#define VH_GOODS_ORDERINFO  @"VH_GOODS_ORDERINFO"
+
+/// 抽奖通知
+#define VH_LOTTERY_END      @"VH_LOTTERY_END"
 
 #endif /* CONSTS_h */

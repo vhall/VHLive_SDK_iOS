@@ -459,7 +459,7 @@
 - (UILabel *)nickNameLab {
     if (!_nickNameLab) {
         _nickNameLab = [[UILabel alloc] init];
-        _nickNameLab.textColor = [UIColor colorWithHex:@"#8C8C8C"];
+        _nickNameLab.textColor = VHBlack45;
         _nickNameLab.font = FONT(14);
     }
 
