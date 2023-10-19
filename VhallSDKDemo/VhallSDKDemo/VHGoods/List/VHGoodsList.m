@@ -700,7 +700,7 @@
             // 订单号
             self.order_no = order_no;
             // 跳转三方应用支付
-            [self.goodsObject platformPaymentToPayWithOrderUrl:url scheme:@"demo.vhall.com" referer:referer];
+//            [self.goodsObject platformPaymentToPayWithOrderUrl:url scheme:@"demo.vhall.com" referer:referer];
         };
         [[VUITool getCurrentScreenViewController].view addSubview:_goodOrderAlert];
     }

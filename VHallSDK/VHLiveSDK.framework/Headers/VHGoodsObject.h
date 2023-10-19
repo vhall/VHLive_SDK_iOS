@@ -221,12 +221,6 @@
 ///   - complete: 完成返回详情,失败错误详情
 + (void)goodsOrderInfoWithOrderNo:(NSString *)order_no complete:(void (^)(VHGoodsOrderInfo *orderInfo, NSError *error))complete;
 
-/// 三方平台支付
-/// - Parameter url: 使用创建订单接口返回的ext地址,创建url对象进行跳转
-/// - Parameter scheme: app配置的scheme,用来支付完成后返回应用,必须使用微信配置的顶级域名或子域名,例如顶级域名是vhall.com,则可以设置为demo.vhall.com
-/// - Parameter referer: 用来配置微信支付授权的必传参数,最好使用微信配置的顶级域名
-- (void)platformPaymentToPayWithOrderUrl:(NSURL *)url scheme:(NSString *)scheme referer:(NSString *)referer;
-
 /// 可用优惠券列表
 /// - Parameters:
 ///   - webinar_id: 活动id

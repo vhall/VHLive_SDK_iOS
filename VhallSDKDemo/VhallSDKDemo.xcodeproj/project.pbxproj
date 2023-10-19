@@ -65,6 +65,12 @@
 		4E32F4A02951BB9800B5388F /* VHInavRenderAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F49F2951BB9800B5388F /* VHInavRenderAlertView.m */; };
 		4E32F4A32951BBD000B5388F /* VHInavBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F4A22951BBD000B5388F /* VHInavBtn.m */; };
 		4E4F1B432990F7E600979BC7 /* VHAirPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F1B422990F7E600979BC7 /* VHAirPlayViewController.m */; };
+		4E5F0D7B2AE11A6F00D8B7C3 /* VHActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D702AE11A6F00D8B7C3 /* VHActionSheetCell.m */; };
+		4E5F0D7C2AE11A6F00D8B7C3 /* VHActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D742AE11A6F00D8B7C3 /* VHActionSheet.m */; };
+		4E5F0D7D2AE11A6F00D8B7C3 /* VHCBaseActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D752AE11A6F00D8B7C3 /* VHCBaseActionView.m */; };
+		4E5F0D7E2AE11A6F00D8B7C3 /* VHActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D762AE11A6F00D8B7C3 /* VHActionSheetViewController.m */; };
+		4E5F0D7F2AE11A6F00D8B7C3 /* VHActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D782AE11A6F00D8B7C3 /* VHActionSheetConfig.m */; };
+		4E5F0D802AE11A6F00D8B7C3 /* VHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D7A2AE11A6F00D8B7C3 /* VHAlertView.m */; };
 		4E858E8929F66CEF0007B792 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E858E8829F66CEF0007B792 /* SystemConfiguration.framework */; };
 		4E858E8D29F66D380007B792 /* VHNetworkSpeedMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E858E8C29F66D380007B792 /* VHNetworkSpeedMonitor.m */; };
 		4E858E9029F670F00007B792 /* VHSpeedMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E858E8F29F670F00007B792 /* VHSpeedMonitor.m */; };
@@ -121,12 +127,6 @@
 		4EF15B2E2AAEAA960082190F /* VHChangeSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B1B2AAEAA960082190F /* VHChangeSegmentView.m */; };
 		4EF15B2F2AAEAA960082190F /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B1C2AAEAA960082190F /* NSString+Size.m */; };
 		4EF15B302AAEAA960082190F /* VHBeautyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B1D2AAEAA960082190F /* VHBeautyView.m */; };
-		4EF15B3F2AAEAEB60082190F /* VHActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B342AAEAEB60082190F /* VHActionSheetCell.m */; };
-		4EF15B402AAEAEB60082190F /* VHActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B382AAEAEB60082190F /* VHActionSheet.m */; };
-		4EF15B412AAEAEB60082190F /* VHCBaseActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B392AAEAEB60082190F /* VHCBaseActionView.m */; };
-		4EF15B422AAEAEB60082190F /* VHActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B3A2AAEAEB60082190F /* VHActionSheetViewController.m */; };
-		4EF15B432AAEAEB60082190F /* VHActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B3C2AAEAEB60082190F /* VHActionSheetConfig.m */; };
-		4EF15B442AAEAEB60082190F /* VHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF15B3E2AAEAEB60082190F /* VHAlertView.m */; };
 		4EF334ED2A32FD2A006838EF /* VHFileDownloadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF334EC2A32FD2A006838EF /* VHFileDownloadVC.m */; };
 		4EF334F02A3346E5006838EF /* VHFileDownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF334EF2A3346E5006838EF /* VHFileDownloadCell.m */; };
 		4EF5534C29ECE80B0008DA1A /* VHPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF5534B29ECE80B0008DA1A /* VHPublishVC.m */; };
@@ -292,6 +292,18 @@
 		4E354DC92A0CBFCB004D6701 /* VhallSDKDemoTestsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VhallSDKDemoTestsHeader.h; sourceTree = "<group>"; };
 		4E4F1B412990F7E600979BC7 /* VHAirPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHAirPlayViewController.h; sourceTree = "<group>"; };
 		4E4F1B422990F7E600979BC7 /* VHAirPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHAirPlayViewController.m; sourceTree = "<group>"; };
+		4E5F0D6E2AE11A6F00D8B7C3 /* VHAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHAlertView.h; sourceTree = "<group>"; };
+		4E5F0D702AE11A6F00D8B7C3 /* VHActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetCell.m; sourceTree = "<group>"; };
+		4E5F0D712AE11A6F00D8B7C3 /* VHActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetViewController.h; sourceTree = "<group>"; };
+		4E5F0D722AE11A6F00D8B7C3 /* VHCBaseActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHCBaseActionView.h; sourceTree = "<group>"; };
+		4E5F0D732AE11A6F00D8B7C3 /* VHActionSheetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetConfig.h; sourceTree = "<group>"; };
+		4E5F0D742AE11A6F00D8B7C3 /* VHActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheet.m; sourceTree = "<group>"; };
+		4E5F0D752AE11A6F00D8B7C3 /* VHCBaseActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHCBaseActionView.m; sourceTree = "<group>"; };
+		4E5F0D762AE11A6F00D8B7C3 /* VHActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetViewController.m; sourceTree = "<group>"; };
+		4E5F0D772AE11A6F00D8B7C3 /* VHActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetCell.h; sourceTree = "<group>"; };
+		4E5F0D782AE11A6F00D8B7C3 /* VHActionSheetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetConfig.m; sourceTree = "<group>"; };
+		4E5F0D792AE11A6F00D8B7C3 /* VHActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheet.h; sourceTree = "<group>"; };
+		4E5F0D7A2AE11A6F00D8B7C3 /* VHAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHAlertView.m; sourceTree = "<group>"; };
 		4E751BA82A42DCCB006E301C /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		4E858E8829F66CEF0007B792 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4E858E8B29F66D380007B792 /* VHNetworkSpeedMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHNetworkSpeedMonitor.h; sourceTree = "<group>"; };
@@ -400,18 +412,6 @@
 		4EF15B1B2AAEAA960082190F /* VHChangeSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHChangeSegmentView.m; sourceTree = "<group>"; };
 		4EF15B1C2AAEAA960082190F /* NSString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		4EF15B1D2AAEAA960082190F /* VHBeautyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHBeautyView.m; sourceTree = "<group>"; };
-		4EF15B322AAEAEB60082190F /* VHAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHAlertView.h; sourceTree = "<group>"; };
-		4EF15B342AAEAEB60082190F /* VHActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetCell.m; sourceTree = "<group>"; };
-		4EF15B352AAEAEB60082190F /* VHActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetViewController.h; sourceTree = "<group>"; };
-		4EF15B362AAEAEB60082190F /* VHCBaseActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHCBaseActionView.h; sourceTree = "<group>"; };
-		4EF15B372AAEAEB60082190F /* VHActionSheetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetConfig.h; sourceTree = "<group>"; };
-		4EF15B382AAEAEB60082190F /* VHActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheet.m; sourceTree = "<group>"; };
-		4EF15B392AAEAEB60082190F /* VHCBaseActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHCBaseActionView.m; sourceTree = "<group>"; };
-		4EF15B3A2AAEAEB60082190F /* VHActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetViewController.m; sourceTree = "<group>"; };
-		4EF15B3B2AAEAEB60082190F /* VHActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetCell.h; sourceTree = "<group>"; };
-		4EF15B3C2AAEAEB60082190F /* VHActionSheetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetConfig.m; sourceTree = "<group>"; };
-		4EF15B3D2AAEAEB60082190F /* VHActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheet.h; sourceTree = "<group>"; };
-		4EF15B3E2AAEAEB60082190F /* VHAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHAlertView.m; sourceTree = "<group>"; };
 		4EF334EB2A32FD2A006838EF /* VHFileDownloadVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHFileDownloadVC.h; sourceTree = "<group>"; };
 		4EF334EC2A32FD2A006838EF /* VHFileDownloadVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHFileDownloadVC.m; sourceTree = "<group>"; };
 		4EF334EE2A3346E5006838EF /* VHFileDownloadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHFileDownloadCell.h; sourceTree = "<group>"; };
@@ -564,7 +564,7 @@
 		4E23FC63294046A300341EA4 /* VHTool */ = {
 			isa = PBXGroup;
 			children = (
-				4EF15B312AAEAEB60082190F /* Alert */,
+				4E5F0D6D2AE11A6F00D8B7C3 /* Alert */,
 				4E2C379B2A8605D30079BFB1 /* VHRunTime */,
 				4E2C37962A85D1280079BFB1 /* VHGoodsNumberButton */,
 				4E23FD00294C1D4E00341EA4 /* VHLiveSaleAnimationTool */,
@@ -853,6 +853,33 @@
 				4E4F1B422990F7E600979BC7 /* VHAirPlayViewController.m */,
 			);
 			path = VHAirPlay;
+			sourceTree = "<group>";
+		};
+		4E5F0D6D2AE11A6F00D8B7C3 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				4E5F0D6E2AE11A6F00D8B7C3 /* VHAlertView.h */,
+				4E5F0D6F2AE11A6F00D8B7C3 /* VHActionSheet */,
+				4E5F0D7A2AE11A6F00D8B7C3 /* VHAlertView.m */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		4E5F0D6F2AE11A6F00D8B7C3 /* VHActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				4E5F0D702AE11A6F00D8B7C3 /* VHActionSheetCell.m */,
+				4E5F0D712AE11A6F00D8B7C3 /* VHActionSheetViewController.h */,
+				4E5F0D722AE11A6F00D8B7C3 /* VHCBaseActionView.h */,
+				4E5F0D732AE11A6F00D8B7C3 /* VHActionSheetConfig.h */,
+				4E5F0D742AE11A6F00D8B7C3 /* VHActionSheet.m */,
+				4E5F0D752AE11A6F00D8B7C3 /* VHCBaseActionView.m */,
+				4E5F0D762AE11A6F00D8B7C3 /* VHActionSheetViewController.m */,
+				4E5F0D772AE11A6F00D8B7C3 /* VHActionSheetCell.h */,
+				4E5F0D782AE11A6F00D8B7C3 /* VHActionSheetConfig.m */,
+				4E5F0D792AE11A6F00D8B7C3 /* VHActionSheet.h */,
+			);
+			path = VHActionSheet;
 			sourceTree = "<group>";
 		};
 		4E858E8A29F66D080007B792 /* VHNetworkSpeedMonitor */ = {
@@ -1194,34 +1221,6 @@
 				4EF15B1C2AAEAA960082190F /* NSString+Size.m */,
 			);
 			path = segmentView;
-			sourceTree = "<group>";
-		};
-		4EF15B312AAEAEB60082190F /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				4EF15B322AAEAEB60082190F /* VHAlertView.h */,
-				4EF15B332AAEAEB60082190F /* VHActionSheet */,
-				4EF15B3E2AAEAEB60082190F /* VHAlertView.m */,
-			);
-			name = Alert;
-			path = "../../../../../Downloads/VHLive_SDK_iOS-6.11.0/VHSDKUIModel/UIModel/Common/Tools/Alert";
-			sourceTree = "<group>";
-		};
-		4EF15B332AAEAEB60082190F /* VHActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				4EF15B342AAEAEB60082190F /* VHActionSheetCell.m */,
-				4EF15B352AAEAEB60082190F /* VHActionSheetViewController.h */,
-				4EF15B362AAEAEB60082190F /* VHCBaseActionView.h */,
-				4EF15B372AAEAEB60082190F /* VHActionSheetConfig.h */,
-				4EF15B382AAEAEB60082190F /* VHActionSheet.m */,
-				4EF15B392AAEAEB60082190F /* VHCBaseActionView.m */,
-				4EF15B3A2AAEAEB60082190F /* VHActionSheetViewController.m */,
-				4EF15B3B2AAEAEB60082190F /* VHActionSheetCell.h */,
-				4EF15B3C2AAEAEB60082190F /* VHActionSheetConfig.m */,
-				4EF15B3D2AAEAEB60082190F /* VHActionSheet.h */,
-			);
-			path = VHActionSheet;
 			sourceTree = "<group>";
 		};
 		4EF334EA2A32FD08006838EF /* VHFileDownload */ = {
@@ -1644,8 +1643,10 @@
 				4E23FD272950408E00341EA4 /* VHAnnouncementList.m in Sources */,
 				4EF15B2A2AAEAA960082190F /* VHSwitchCell.m in Sources */,
 				4E23FD20294C5B8900341EA4 /* VHLiveWeakTimer.m in Sources */,
+				4E5F0D7E2AE11A6F00D8B7C3 /* VHActionSheetViewController.m in Sources */,
 				4E23FCA8294820E600341EA4 /* VHChatView.m in Sources */,
 				4E23FD2A29504D6100341EA4 /* VHAnnouncementView.m in Sources */,
+				4E5F0D7F2AE11A6F00D8B7C3 /* VHActionSheetConfig.m in Sources */,
 				4EEEEB74293EE96600538BC2 /* AppDelegate.m in Sources */,
 				4E23FC66294046B500341EA4 /* VUITool.m in Sources */,
 				4E23FD13294C4F6800341EA4 /* VHSurveyWebView.m in Sources */,
@@ -1657,25 +1658,25 @@
 				4E23FD19294C5B7A00341EA4 /* VHFoldButton.m in Sources */,
 				4E23FCFC294C15AE00341EA4 /* VHLikeObject.m in Sources */,
 				4E2170B82A89F7BA001E751C /* VHChatGoodsCell.m in Sources */,
+				4E5F0D7B2AE11A6F00D8B7C3 /* VHActionSheetCell.m in Sources */,
 				4EF15B252AAEAA960082190F /* VHBeautyAdjustController.m in Sources */,
 				4E23FCF7294C11AC00341EA4 /* VHFashionStyleGiftPushView.m in Sources */,
 				4EE11ADE299CA7950062913B /* VHWebViewVC.m in Sources */,
 				4E858E9029F670F00007B792 /* VHSpeedMonitor.m in Sources */,
 				4EE7A31529C8501500369CBD /* VHLotteryDecorateView.m in Sources */,
+				4E5F0D802AE11A6F00D8B7C3 /* VHAlertView.m in Sources */,
 				4EDE10EE2959901200B10DB9 /* VHDefiniteionsViewModel.m in Sources */,
 				4EED93F229D40B160031A8E5 /* VHDocViewController.m in Sources */,
 				4E23FCF8294C11AC00341EA4 /* VHFashionStyleGiftListView.m in Sources */,
 				4EDEBAD129C19ADF0086D706 /* VHLottery.m in Sources */,
 				4EF8258C2995EC67007874DA /* LBDeviceListModel.m in Sources */,
 				4EF15B222AAEAA960082190F /* UIView+RedRot.m in Sources */,
-				4EF15B422AAEAEB60082190F /* VHActionSheetViewController.m in Sources */,
 				4EF8CBCF2A5276BB000ACCA6 /* VHPushScreenCardList.m in Sources */,
 				4E23FC7729406CF200341EA4 /* VHStystemSetting.m in Sources */,
 				4EDE10E429594B3E00B10DB9 /* VHEmptyView.m in Sources */,
 				4E2C379E2A8606040079BFB1 /* NSObject+VHRunTime.m in Sources */,
 				4E2C37992A85D1490079BFB1 /* VHGoodsNumberButton.m in Sources */,
 				4EF84E752951A072001299E4 /* VHInavAlertView.m in Sources */,
-				4EF15B412AAEAEB60082190F /* VHCBaseActionView.m in Sources */,
 				4EDE10EA2959759000B10DB9 /* UIImage+VHUtil.m in Sources */,
 				4EE7F2EA2A20802D004FEA0E /* VHRecordListVC.m in Sources */,
 				4EE848992952EF4B00F1BA1D /* VHNavBaseViewController.m in Sources */,
@@ -1687,16 +1688,12 @@
 				4ECFA82729C2C84E00A141F7 /* VHLotteryLosingView.m in Sources */,
 				4E1D431B29DE9C910099C85C /* AES.m in Sources */,
 				4ECFA82429C2BB4900A141F7 /* VHLotteryResultView.m in Sources */,
-				4EF15B432AAEAEB60082190F /* VHActionSheetConfig.m in Sources */,
 				4EE7A31229C8319100369CBD /* VHChatLotteryCell.m in Sources */,
 				4ECFA82A29C2F0A800A141F7 /* VHLotterySubmitView.m in Sources */,
 				4ED2C42E2953F21D00E29DED /* VHSignInAlertView.m in Sources */,
 				4E2C37952A85CC3D0079BFB1 /* VHGoodsConfirmOrderAlert.m in Sources */,
-				4EF15B402AAEAEB60082190F /* VHActionSheet.m in Sources */,
-				4EF15B442AAEAEB60082190F /* VHAlertView.m in Sources */,
 				4E23FCA32948209D00341EA4 /* VHWatchVC.m in Sources */,
 				4EDEBACE29C197CF0086D706 /* VHLotteryTurntableView.m in Sources */,
-				4EF15B3F2AAEAEB60082190F /* VHActionSheetCell.m in Sources */,
 				4E23FC6A29404A9E00341EA4 /* UIColor+VUI.m in Sources */,
 				4E0C8E922A53B5B100C1C66C /* VHPushScreenCardAlert.m in Sources */,
 				4E32F4A02951BB9800B5388F /* VHInavRenderAlertView.m in Sources */,
@@ -1704,6 +1701,7 @@
 				4EF15B292AAEAA960082190F /* VHSlider.m in Sources */,
 				4EE7F2ED2A20816E004FEA0E /* VHRecordListCell.m in Sources */,
 				4E23FC8D2946C58F00341EA4 /* VHWarmUpViewController.m in Sources */,
+				4E5F0D7D2AE11A6F00D8B7C3 /* VHCBaseActionView.m in Sources */,
 				4E1BCB702A835EF6000E7BC0 /* VHGoodsList.m in Sources */,
 				4EDEBACA29C166B80086D706 /* VHVideoPointView.m in Sources */,
 				4EDE10F12959BD1700B10DB9 /* VHChatGiftCell.m in Sources */,
@@ -1752,6 +1750,7 @@
 				4EF8CBDD2A52DA0B000ACCA6 /* VHChatPushScreenCardCell.m in Sources */,
 				4E23FCD82948A28900341EA4 /* VHKeyboardToolView.m in Sources */,
 				4E4F1B432990F7E600979BC7 /* VHAirPlayViewController.m in Sources */,
+				4E5F0D7C2AE11A6F00D8B7C3 /* VHActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
