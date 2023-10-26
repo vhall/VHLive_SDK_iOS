@@ -10,7 +10,6 @@
 #import "VHChatLotteryCell.h"
 #import "VHChatView.h"
 #import "VHChatPushScreenCardCell.h"
-#import "VHChatGoodsCell.h"
 
 @interface VHChatView ()<VHallChatDelegate, UITableViewDataSource, UITableViewDelegate>
 /// 聊天
@@ -368,13 +367,6 @@
             }
         };
 
-        VHChatGoodsCell *goodsCell = [VHChatGoodsCell createCellWithTableView:tableView];
-        goodsCell.clickGoodsCell = ^(VHGoodsPushMessageItem *messageItem) {
-            if ([weakSelf.delegate respondsToSelector:@selector(clickCheckGoodsDetailModel:)]) {
-                [weakSelf.delegate clickCheckGoodsDetailModel:messageItem];
-            }
-        };
-        
         if ([model isKindOfClass:[VHallChatModel class]]) {
             [cell setModel:model];
         } else if ([model isKindOfClass:[VHChatCustomModel class]]) {
@@ -392,9 +384,6 @@
         } else if ([model isKindOfClass:[VHPushScreenCardItem class]]) {
             [pushScreenCardCell setPushScreenCardListItem:model];
             return pushScreenCardCell;
-        } else if ([model isKindOfClass:[VHGoodsPushMessageItem class]]) {
-            [goodsCell setMessageItem:model];
-            return goodsCell;
         }
 
         return cell;
@@ -472,13 +461,6 @@
     [self reloadChatToBottom:YES beforeChange:0];
 }
 
-#pragma mark - 收到商品消息
-- (void)chatGoodsModel:(VHGoodsPushMessageItem *)model
-{
-    [self.chatDataSource addObject:model];
-
-    [self reloadChatToBottom:YES beforeChange:0];
-}
 #pragma mark - 懒加载
 - (VHallChat *)chat
 {

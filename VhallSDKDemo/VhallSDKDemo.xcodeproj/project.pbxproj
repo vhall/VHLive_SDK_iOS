@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,17 +12,12 @@
 		4E08428129877875002EEB25 /* VHWarmUpStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08428029877875002EEB25 /* VHWarmUpStartView.m */; };
 		4E0C8E922A53B5B100C1C66C /* VHPushScreenCardAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C8E912A53B5B100C1C66C /* VHPushScreenCardAlert.m */; };
 		4E0C8E952A541DE100C1C66C /* VHPushScreenCardDeleteAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C8E942A541DE100C1C66C /* VHPushScreenCardDeleteAlert.m */; };
-		4E0D39CC2A84CE1700B0AFE7 /* VHGoodsDetailAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D39CB2A84CE1700B0AFE7 /* VHGoodsDetailAlert.m */; };
 		4E0EA0F12A09E7CA00FD17F7 /* VhallSDKDemoLoginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0EA0EA2A09E7A400FD17F7 /* VhallSDKDemoLoginTests.m */; };
 		4E0EA1052A0A498400FD17F7 /* VhallSDKDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEEB98293EE96900538BC2 /* VhallSDKDemoUITests.m */; };
-		4E161FAD2AA82B61009D8A1F /* VHGoodsCouponAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E161FAC2AA82B61009D8A1F /* VHGoodsCouponAlert.m */; };
-		4E1BCB6D2A832B8D000E7BC0 /* VHGoodsCardAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BCB6C2A832B8D000E7BC0 /* VHGoodsCardAlert.m */; };
-		4E1BCB702A835EF6000E7BC0 /* VHGoodsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BCB6F2A835EF6000E7BC0 /* VHGoodsList.m */; };
 		4E1D431829DE95BB0099C85C /* VHCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1D431729DE95BB0099C85C /* VHCodeVC.m */; };
 		4E1D431B29DE9C910099C85C /* AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1D431929DE9C910099C85C /* AES.m */; };
 		4E20671F299226DD00438B00 /* VHBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E20671E299226DD00438B00 /* VHBrowserVC.m */; };
 		4E2170B52A89CBD9001E751C /* UIButton+VHRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2170B42A89CBD9001E751C /* UIButton+VHRadius.m */; };
-		4E2170B82A89F7BA001E751C /* VHChatGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2170B72A89F7BA001E751C /* VHChatGoodsCell.m */; };
 		4E23FC522940358A00341EA4 /* Pods_VhallSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5401D4E75AF6641CAE310871 /* Pods_VhallSDKDemo.framework */; };
 		4E23FC66294046B500341EA4 /* VUITool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FC65294046B500341EA4 /* VUITool.m */; };
 		4E23FC6A29404A9E00341EA4 /* UIColor+VUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FC6829404A9E00341EA4 /* UIColor+VUI.m */; };
@@ -58,19 +53,12 @@
 		4E23FD20294C5B8900341EA4 /* VHLiveWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD1E294C5B8900341EA4 /* VHLiveWeakTimer.m */; };
 		4E23FD272950408E00341EA4 /* VHAnnouncementList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD252950408E00341EA4 /* VHAnnouncementList.m */; };
 		4E23FD2A29504D6100341EA4 /* VHAnnouncementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23FD2929504D6100341EA4 /* VHAnnouncementView.m */; };
-		4E2C37952A85CC3D0079BFB1 /* VHGoodsConfirmOrderAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2C37942A85CC3D0079BFB1 /* VHGoodsConfirmOrderAlert.m */; };
 		4E2C37992A85D1490079BFB1 /* VHGoodsNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2C37982A85D1490079BFB1 /* VHGoodsNumberButton.m */; };
 		4E2C379E2A8606040079BFB1 /* NSObject+VHRunTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2C379D2A8606040079BFB1 /* NSObject+VHRunTime.m */; };
 		4E32F49D2951AA4100B5388F /* VHInavApplyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F49C2951AA4100B5388F /* VHInavApplyAlertView.m */; };
 		4E32F4A02951BB9800B5388F /* VHInavRenderAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F49F2951BB9800B5388F /* VHInavRenderAlertView.m */; };
 		4E32F4A32951BBD000B5388F /* VHInavBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F4A22951BBD000B5388F /* VHInavBtn.m */; };
 		4E4F1B432990F7E600979BC7 /* VHAirPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F1B422990F7E600979BC7 /* VHAirPlayViewController.m */; };
-		4E5F0D7B2AE11A6F00D8B7C3 /* VHActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D702AE11A6F00D8B7C3 /* VHActionSheetCell.m */; };
-		4E5F0D7C2AE11A6F00D8B7C3 /* VHActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D742AE11A6F00D8B7C3 /* VHActionSheet.m */; };
-		4E5F0D7D2AE11A6F00D8B7C3 /* VHCBaseActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D752AE11A6F00D8B7C3 /* VHCBaseActionView.m */; };
-		4E5F0D7E2AE11A6F00D8B7C3 /* VHActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D762AE11A6F00D8B7C3 /* VHActionSheetViewController.m */; };
-		4E5F0D7F2AE11A6F00D8B7C3 /* VHActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D782AE11A6F00D8B7C3 /* VHActionSheetConfig.m */; };
-		4E5F0D802AE11A6F00D8B7C3 /* VHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F0D7A2AE11A6F00D8B7C3 /* VHAlertView.m */; };
 		4E858E8929F66CEF0007B792 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E858E8829F66CEF0007B792 /* SystemConfiguration.framework */; };
 		4E858E8D29F66D380007B792 /* VHNetworkSpeedMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E858E8C29F66D380007B792 /* VHNetworkSpeedMonitor.m */; };
 		4E858E9029F670F00007B792 /* VHSpeedMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E858E8F29F670F00007B792 /* VHSpeedMonitor.m */; };
@@ -137,6 +125,12 @@
 		4EF84E752951A072001299E4 /* VHInavAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF84E742951A072001299E4 /* VHInavAlertView.m */; };
 		4EF8CBCF2A5276BB000ACCA6 /* VHPushScreenCardList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8CBCE2A5276BB000ACCA6 /* VHPushScreenCardList.m */; };
 		4EF8CBDD2A52DA0B000ACCA6 /* VHChatPushScreenCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8CBDC2A52DA0B000ACCA6 /* VHChatPushScreenCardCell.m */; };
+		4EFDF2392AD8D0C600710FDD /* VHActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDF22E2AD8D0C600710FDD /* VHActionSheetCell.m */; };
+		4EFDF23A2AD8D0C600710FDD /* VHActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDF2322AD8D0C600710FDD /* VHActionSheet.m */; };
+		4EFDF23B2AD8D0C600710FDD /* VHCBaseActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDF2332AD8D0C600710FDD /* VHCBaseActionView.m */; };
+		4EFDF23C2AD8D0C600710FDD /* VHActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDF2342AD8D0C600710FDD /* VHActionSheetViewController.m */; };
+		4EFDF23D2AD8D0C600710FDD /* VHActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDF2362AD8D0C600710FDD /* VHActionSheetConfig.m */; };
+		4EFDF23E2AD8D0C600710FDD /* VHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDF2382AD8D0C600710FDD /* VHAlertView.m */; };
 		7C75F54EDF39F2D3773FBE22 /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E26F687E80B8B2BB47A859E /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework */; };
 		EDE93B43E701F247BFC39F38 /* Pods_VhallSDKDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494BE4CE29A050223829ADDE /* Pods_VhallSDKDemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -186,18 +180,10 @@
 		4E0C8E912A53B5B100C1C66C /* VHPushScreenCardAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHPushScreenCardAlert.m; sourceTree = "<group>"; };
 		4E0C8E932A541DE100C1C66C /* VHPushScreenCardDeleteAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHPushScreenCardDeleteAlert.h; sourceTree = "<group>"; };
 		4E0C8E942A541DE100C1C66C /* VHPushScreenCardDeleteAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHPushScreenCardDeleteAlert.m; sourceTree = "<group>"; };
-		4E0D39CA2A84CE1700B0AFE7 /* VHGoodsDetailAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsDetailAlert.h; sourceTree = "<group>"; };
-		4E0D39CB2A84CE1700B0AFE7 /* VHGoodsDetailAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsDetailAlert.m; sourceTree = "<group>"; };
 		4E0EA0EA2A09E7A400FD17F7 /* VhallSDKDemoLoginTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VhallSDKDemoLoginTests.m; sourceTree = "<group>"; };
 		4E0EA0F22A09F22000FD17F7 /* VHInteractive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VHInteractive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0EA0F42A09F22000FD17F7 /* VHLiveSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VHLiveSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0EA0F62A09F24300FD17F7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/iOSSupport/System/Library/PrivateFrameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
-		4E161FAB2AA82B61009D8A1F /* VHGoodsCouponAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsCouponAlert.h; sourceTree = "<group>"; };
-		4E161FAC2AA82B61009D8A1F /* VHGoodsCouponAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsCouponAlert.m; sourceTree = "<group>"; };
-		4E1BCB6B2A832B8D000E7BC0 /* VHGoodsCardAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsCardAlert.h; sourceTree = "<group>"; };
-		4E1BCB6C2A832B8D000E7BC0 /* VHGoodsCardAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsCardAlert.m; sourceTree = "<group>"; };
-		4E1BCB6E2A835EF6000E7BC0 /* VHGoodsList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsList.h; sourceTree = "<group>"; };
-		4E1BCB6F2A835EF6000E7BC0 /* VHGoodsList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsList.m; sourceTree = "<group>"; };
 		4E1D431629DE95BB0099C85C /* VHCodeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHCodeVC.h; sourceTree = "<group>"; };
 		4E1D431729DE95BB0099C85C /* VHCodeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHCodeVC.m; sourceTree = "<group>"; };
 		4E1D431929DE9C910099C85C /* AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AES.m; sourceTree = "<group>"; };
@@ -206,8 +192,6 @@
 		4E20671E299226DD00438B00 /* VHBrowserVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHBrowserVC.m; sourceTree = "<group>"; };
 		4E2170B32A89CBD9001E751C /* UIButton+VHRadius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+VHRadius.h"; sourceTree = "<group>"; };
 		4E2170B42A89CBD9001E751C /* UIButton+VHRadius.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+VHRadius.m"; sourceTree = "<group>"; };
-		4E2170B62A89F7B9001E751C /* VHChatGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChatGoodsCell.h; sourceTree = "<group>"; };
-		4E2170B72A89F7BA001E751C /* VHChatGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHChatGoodsCell.m; sourceTree = "<group>"; };
 		4E23FC4A2940353E00341EA4 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
 		4E23FC4B2940353E00341EA4 /* VHInteractive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VHInteractive.framework; sourceTree = "<group>"; };
 		4E23FC4C2940353E00341EA4 /* VHLiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VHLiveSDK.framework; sourceTree = "<group>"; };
@@ -277,8 +261,6 @@
 		4E23FD262950408E00341EA4 /* VHAnnouncementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHAnnouncementList.h; sourceTree = "<group>"; };
 		4E23FD2829504D6100341EA4 /* VHAnnouncementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHAnnouncementView.h; sourceTree = "<group>"; };
 		4E23FD2929504D6100341EA4 /* VHAnnouncementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHAnnouncementView.m; sourceTree = "<group>"; };
-		4E2C37932A85CC3D0079BFB1 /* VHGoodsConfirmOrderAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsConfirmOrderAlert.h; sourceTree = "<group>"; };
-		4E2C37942A85CC3D0079BFB1 /* VHGoodsConfirmOrderAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsConfirmOrderAlert.m; sourceTree = "<group>"; };
 		4E2C37972A85D1490079BFB1 /* VHGoodsNumberButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsNumberButton.h; sourceTree = "<group>"; };
 		4E2C37982A85D1490079BFB1 /* VHGoodsNumberButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsNumberButton.m; sourceTree = "<group>"; };
 		4E2C379C2A8606040079BFB1 /* NSObject+VHRunTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+VHRunTime.h"; sourceTree = "<group>"; };
@@ -292,18 +274,6 @@
 		4E354DC92A0CBFCB004D6701 /* VhallSDKDemoTestsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VhallSDKDemoTestsHeader.h; sourceTree = "<group>"; };
 		4E4F1B412990F7E600979BC7 /* VHAirPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHAirPlayViewController.h; sourceTree = "<group>"; };
 		4E4F1B422990F7E600979BC7 /* VHAirPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHAirPlayViewController.m; sourceTree = "<group>"; };
-		4E5F0D6E2AE11A6F00D8B7C3 /* VHAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHAlertView.h; sourceTree = "<group>"; };
-		4E5F0D702AE11A6F00D8B7C3 /* VHActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetCell.m; sourceTree = "<group>"; };
-		4E5F0D712AE11A6F00D8B7C3 /* VHActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetViewController.h; sourceTree = "<group>"; };
-		4E5F0D722AE11A6F00D8B7C3 /* VHCBaseActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHCBaseActionView.h; sourceTree = "<group>"; };
-		4E5F0D732AE11A6F00D8B7C3 /* VHActionSheetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetConfig.h; sourceTree = "<group>"; };
-		4E5F0D742AE11A6F00D8B7C3 /* VHActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheet.m; sourceTree = "<group>"; };
-		4E5F0D752AE11A6F00D8B7C3 /* VHCBaseActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHCBaseActionView.m; sourceTree = "<group>"; };
-		4E5F0D762AE11A6F00D8B7C3 /* VHActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetViewController.m; sourceTree = "<group>"; };
-		4E5F0D772AE11A6F00D8B7C3 /* VHActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetCell.h; sourceTree = "<group>"; };
-		4E5F0D782AE11A6F00D8B7C3 /* VHActionSheetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetConfig.m; sourceTree = "<group>"; };
-		4E5F0D792AE11A6F00D8B7C3 /* VHActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheet.h; sourceTree = "<group>"; };
-		4E5F0D7A2AE11A6F00D8B7C3 /* VHAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHAlertView.m; sourceTree = "<group>"; };
 		4E751BA82A42DCCB006E301C /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		4E858E8829F66CEF0007B792 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4E858E8B29F66D380007B792 /* VHNetworkSpeedMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHNetworkSpeedMonitor.h; sourceTree = "<group>"; };
@@ -354,7 +324,6 @@
 		4EE7F2EC2A20816E004FEA0E /* VHRecordListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHRecordListCell.m; sourceTree = "<group>"; };
 		4EE848972952EF4B00F1BA1D /* VHNavBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHNavBaseViewController.h; sourceTree = "<group>"; };
 		4EE848982952EF4B00F1BA1D /* VHNavBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHNavBaseViewController.m; sourceTree = "<group>"; };
-		4EEBCDEB29A4A67200704C7D /* VHallSDKDemoInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = VHallSDKDemoInfo.plist; sourceTree = "<group>"; };
 		4EECCC572A1B689D0017A847 /* VhallSDKDemoPlayBackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VhallSDKDemoPlayBackTests.m; sourceTree = "<group>"; };
 		4EECCC592A1B69EC0017A847 /* VhallSDKDemoWarmUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VhallSDKDemoWarmUpTests.m; sourceTree = "<group>"; };
 		4EED8D3D2955BDC7002913AC /* VHChatCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChatCustomCell.h; sourceTree = "<group>"; };
@@ -432,6 +401,18 @@
 		4EF8CBCE2A5276BB000ACCA6 /* VHPushScreenCardList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHPushScreenCardList.m; sourceTree = "<group>"; };
 		4EF8CBDB2A52DA0B000ACCA6 /* VHChatPushScreenCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChatPushScreenCardCell.h; sourceTree = "<group>"; };
 		4EF8CBDC2A52DA0B000ACCA6 /* VHChatPushScreenCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHChatPushScreenCardCell.m; sourceTree = "<group>"; };
+		4EFDF22C2AD8D0C600710FDD /* VHAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHAlertView.h; sourceTree = "<group>"; };
+		4EFDF22E2AD8D0C600710FDD /* VHActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetCell.m; sourceTree = "<group>"; };
+		4EFDF22F2AD8D0C600710FDD /* VHActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetViewController.h; sourceTree = "<group>"; };
+		4EFDF2302AD8D0C600710FDD /* VHCBaseActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHCBaseActionView.h; sourceTree = "<group>"; };
+		4EFDF2312AD8D0C600710FDD /* VHActionSheetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetConfig.h; sourceTree = "<group>"; };
+		4EFDF2322AD8D0C600710FDD /* VHActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheet.m; sourceTree = "<group>"; };
+		4EFDF2332AD8D0C600710FDD /* VHCBaseActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHCBaseActionView.m; sourceTree = "<group>"; };
+		4EFDF2342AD8D0C600710FDD /* VHActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetViewController.m; sourceTree = "<group>"; };
+		4EFDF2352AD8D0C600710FDD /* VHActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheetCell.h; sourceTree = "<group>"; };
+		4EFDF2362AD8D0C600710FDD /* VHActionSheetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHActionSheetConfig.m; sourceTree = "<group>"; };
+		4EFDF2372AD8D0C600710FDD /* VHActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHActionSheet.h; sourceTree = "<group>"; };
+		4EFDF2382AD8D0C600710FDD /* VHAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHAlertView.m; sourceTree = "<group>"; };
 		5401D4E75AF6641CAE310871 /* Pods_VhallSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VhallSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C1B319186E8BC448956B868 /* Pods-VhallSDKDemo-VhallSDKDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemo-VhallSDKDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7E3B1D39559C1B7E02091616 /* Pods-VhallSDKDemo-VhallSDKDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemo-VhallSDKDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -509,39 +490,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		4E1BCB682A8327BB000E7BC0 /* VHGoods */ = {
-			isa = PBXGroup;
-			children = (
-				4E1BCB692A8327C9000E7BC0 /* Card */,
-				4E1BCB6A2A8327CF000E7BC0 /* List */,
-			);
-			path = VHGoods;
-			sourceTree = "<group>";
-		};
-		4E1BCB692A8327C9000E7BC0 /* Card */ = {
-			isa = PBXGroup;
-			children = (
-				4E1BCB6B2A832B8D000E7BC0 /* VHGoodsCardAlert.h */,
-				4E1BCB6C2A832B8D000E7BC0 /* VHGoodsCardAlert.m */,
-				4E0D39CA2A84CE1700B0AFE7 /* VHGoodsDetailAlert.h */,
-				4E0D39CB2A84CE1700B0AFE7 /* VHGoodsDetailAlert.m */,
-				4E2C37932A85CC3D0079BFB1 /* VHGoodsConfirmOrderAlert.h */,
-				4E2C37942A85CC3D0079BFB1 /* VHGoodsConfirmOrderAlert.m */,
-				4E161FAB2AA82B61009D8A1F /* VHGoodsCouponAlert.h */,
-				4E161FAC2AA82B61009D8A1F /* VHGoodsCouponAlert.m */,
-			);
-			path = Card;
-			sourceTree = "<group>";
-		};
-		4E1BCB6A2A8327CF000E7BC0 /* List */ = {
-			isa = PBXGroup;
-			children = (
-				4E1BCB6E2A835EF6000E7BC0 /* VHGoodsList.h */,
-				4E1BCB6F2A835EF6000E7BC0 /* VHGoodsList.m */,
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
 		4E20671C299226B100438B00 /* VHBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,7 +512,7 @@
 		4E23FC63294046A300341EA4 /* VHTool */ = {
 			isa = PBXGroup;
 			children = (
-				4E5F0D6D2AE11A6F00D8B7C3 /* Alert */,
+				4EFDF22B2AD8D0C600710FDD /* Alert */,
 				4E2C379B2A8605D30079BFB1 /* VHRunTime */,
 				4E2C37962A85D1280079BFB1 /* VHGoodsNumberButton */,
 				4E23FD00294C1D4E00341EA4 /* VHLiveSaleAnimationTool */,
@@ -694,8 +642,6 @@
 				4EE7A31129C8319100369CBD /* VHChatLotteryCell.m */,
 				4EF8CBDB2A52DA0B000ACCA6 /* VHChatPushScreenCardCell.h */,
 				4EF8CBDC2A52DA0B000ACCA6 /* VHChatPushScreenCardCell.m */,
-				4E2170B62A89F7B9001E751C /* VHChatGoodsCell.h */,
-				4E2170B72A89F7BA001E751C /* VHChatGoodsCell.m */,
 			);
 			path = VHChat;
 			sourceTree = "<group>";
@@ -855,33 +801,6 @@
 			path = VHAirPlay;
 			sourceTree = "<group>";
 		};
-		4E5F0D6D2AE11A6F00D8B7C3 /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				4E5F0D6E2AE11A6F00D8B7C3 /* VHAlertView.h */,
-				4E5F0D6F2AE11A6F00D8B7C3 /* VHActionSheet */,
-				4E5F0D7A2AE11A6F00D8B7C3 /* VHAlertView.m */,
-			);
-			path = Alert;
-			sourceTree = "<group>";
-		};
-		4E5F0D6F2AE11A6F00D8B7C3 /* VHActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				4E5F0D702AE11A6F00D8B7C3 /* VHActionSheetCell.m */,
-				4E5F0D712AE11A6F00D8B7C3 /* VHActionSheetViewController.h */,
-				4E5F0D722AE11A6F00D8B7C3 /* VHCBaseActionView.h */,
-				4E5F0D732AE11A6F00D8B7C3 /* VHActionSheetConfig.h */,
-				4E5F0D742AE11A6F00D8B7C3 /* VHActionSheet.m */,
-				4E5F0D752AE11A6F00D8B7C3 /* VHCBaseActionView.m */,
-				4E5F0D762AE11A6F00D8B7C3 /* VHActionSheetViewController.m */,
-				4E5F0D772AE11A6F00D8B7C3 /* VHActionSheetCell.h */,
-				4E5F0D782AE11A6F00D8B7C3 /* VHActionSheetConfig.m */,
-				4E5F0D792AE11A6F00D8B7C3 /* VHActionSheet.h */,
-			);
-			path = VHActionSheet;
-			sourceTree = "<group>";
-		};
 		4E858E8A29F66D080007B792 /* VHNetworkSpeedMonitor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1027,7 +946,6 @@
 		4EEEEB71293EE96600538BC2 /* VhallSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
-				4E1BCB682A8327BB000E7BC0 /* VHGoods */,
 				4EF8CBC92A5275CE000ACCA6 /* VHPushScreenCard */,
 				4E4F1B402990F7C700979BC7 /* VHAirPlay */,
 				4E23FD2429503FE600341EA4 /* VHAnnouncement */,
@@ -1063,7 +981,6 @@
 				4EEEEB72293EE96600538BC2 /* AppDelegate.h */,
 				4EEEEB73293EE96600538BC2 /* AppDelegate.m */,
 				4EEEEB84293EE96800538BC2 /* main.m */,
-				4EEBCDEB29A4A67200704C7D /* VHallSDKDemoInfo.plist */,
 				4EEEEB7E293EE96800538BC2 /* Assets.xcassets */,
 				4EEEEBB1293F201A00538BC2 /* Header */,
 				4EEEEB80293EE96800538BC2 /* LaunchScreen.storyboard */,
@@ -1309,6 +1226,33 @@
 				4E0C8E942A541DE100C1C66C /* VHPushScreenCardDeleteAlert.m */,
 			);
 			path = Card;
+			sourceTree = "<group>";
+		};
+		4EFDF22B2AD8D0C600710FDD /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				4EFDF22C2AD8D0C600710FDD /* VHAlertView.h */,
+				4EFDF2382AD8D0C600710FDD /* VHAlertView.m */,
+				4EFDF22D2AD8D0C600710FDD /* VHActionSheet */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		4EFDF22D2AD8D0C600710FDD /* VHActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				4EFDF22E2AD8D0C600710FDD /* VHActionSheetCell.m */,
+				4EFDF22F2AD8D0C600710FDD /* VHActionSheetViewController.h */,
+				4EFDF2302AD8D0C600710FDD /* VHCBaseActionView.h */,
+				4EFDF2312AD8D0C600710FDD /* VHActionSheetConfig.h */,
+				4EFDF2322AD8D0C600710FDD /* VHActionSheet.m */,
+				4EFDF2332AD8D0C600710FDD /* VHCBaseActionView.m */,
+				4EFDF2342AD8D0C600710FDD /* VHActionSheetViewController.m */,
+				4EFDF2352AD8D0C600710FDD /* VHActionSheetCell.h */,
+				4EFDF2362AD8D0C600710FDD /* VHActionSheetConfig.m */,
+				4EFDF2372AD8D0C600710FDD /* VHActionSheet.h */,
+			);
+			path = VHActionSheet;
 			sourceTree = "<group>";
 		};
 		5EADBE64C7F4B31A430FAAD8 /* Pods */ = {
@@ -1643,10 +1587,10 @@
 				4E23FD272950408E00341EA4 /* VHAnnouncementList.m in Sources */,
 				4EF15B2A2AAEAA960082190F /* VHSwitchCell.m in Sources */,
 				4E23FD20294C5B8900341EA4 /* VHLiveWeakTimer.m in Sources */,
-				4E5F0D7E2AE11A6F00D8B7C3 /* VHActionSheetViewController.m in Sources */,
+				4EFDF23C2AD8D0C600710FDD /* VHActionSheetViewController.m in Sources */,
 				4E23FCA8294820E600341EA4 /* VHChatView.m in Sources */,
 				4E23FD2A29504D6100341EA4 /* VHAnnouncementView.m in Sources */,
-				4E5F0D7F2AE11A6F00D8B7C3 /* VHActionSheetConfig.m in Sources */,
+				4EFDF23D2AD8D0C600710FDD /* VHActionSheetConfig.m in Sources */,
 				4EEEEB74293EE96600538BC2 /* AppDelegate.m in Sources */,
 				4E23FC66294046B500341EA4 /* VUITool.m in Sources */,
 				4E23FD13294C4F6800341EA4 /* VHSurveyWebView.m in Sources */,
@@ -1657,14 +1601,13 @@
 				4E23FD0C294C480700341EA4 /* VHIntroView.m in Sources */,
 				4E23FD19294C5B7A00341EA4 /* VHFoldButton.m in Sources */,
 				4E23FCFC294C15AE00341EA4 /* VHLikeObject.m in Sources */,
-				4E2170B82A89F7BA001E751C /* VHChatGoodsCell.m in Sources */,
-				4E5F0D7B2AE11A6F00D8B7C3 /* VHActionSheetCell.m in Sources */,
+				4EFDF2392AD8D0C600710FDD /* VHActionSheetCell.m in Sources */,
 				4EF15B252AAEAA960082190F /* VHBeautyAdjustController.m in Sources */,
 				4E23FCF7294C11AC00341EA4 /* VHFashionStyleGiftPushView.m in Sources */,
 				4EE11ADE299CA7950062913B /* VHWebViewVC.m in Sources */,
 				4E858E9029F670F00007B792 /* VHSpeedMonitor.m in Sources */,
 				4EE7A31529C8501500369CBD /* VHLotteryDecorateView.m in Sources */,
-				4E5F0D802AE11A6F00D8B7C3 /* VHAlertView.m in Sources */,
+				4EFDF23E2AD8D0C600710FDD /* VHAlertView.m in Sources */,
 				4EDE10EE2959901200B10DB9 /* VHDefiniteionsViewModel.m in Sources */,
 				4EED93F229D40B160031A8E5 /* VHDocViewController.m in Sources */,
 				4E23FCF8294C11AC00341EA4 /* VHFashionStyleGiftListView.m in Sources */,
@@ -1691,7 +1634,6 @@
 				4EE7A31229C8319100369CBD /* VHChatLotteryCell.m in Sources */,
 				4ECFA82A29C2F0A800A141F7 /* VHLotterySubmitView.m in Sources */,
 				4ED2C42E2953F21D00E29DED /* VHSignInAlertView.m in Sources */,
-				4E2C37952A85CC3D0079BFB1 /* VHGoodsConfirmOrderAlert.m in Sources */,
 				4E23FCA32948209D00341EA4 /* VHWatchVC.m in Sources */,
 				4EDEBACE29C197CF0086D706 /* VHLotteryTurntableView.m in Sources */,
 				4E23FC6A29404A9E00341EA4 /* UIColor+VUI.m in Sources */,
@@ -1701,20 +1643,17 @@
 				4EF15B292AAEAA960082190F /* VHSlider.m in Sources */,
 				4EE7F2ED2A20816E004FEA0E /* VHRecordListCell.m in Sources */,
 				4E23FC8D2946C58F00341EA4 /* VHWarmUpViewController.m in Sources */,
-				4E5F0D7D2AE11A6F00D8B7C3 /* VHCBaseActionView.m in Sources */,
-				4E1BCB702A835EF6000E7BC0 /* VHGoodsList.m in Sources */,
+				4EFDF23B2AD8D0C600710FDD /* VHCBaseActionView.m in Sources */,
 				4EDEBACA29C166B80086D706 /* VHVideoPointView.m in Sources */,
 				4EDE10F12959BD1700B10DB9 /* VHChatGiftCell.m in Sources */,
 				4E20671F299226DD00438B00 /* VHBrowserVC.m in Sources */,
 				4E1D431829DE95BB0099C85C /* VHCodeVC.m in Sources */,
 				4EF15B1E2AAEAA960082190F /* VHBeautyTopView.m in Sources */,
-				4E161FAD2AA82B61009D8A1F /* VHGoodsCouponAlert.m in Sources */,
 				4E32F49D2951AA4100B5388F /* VHInavApplyAlertView.m in Sources */,
 				4EF15B262AAEAA960082190F /* VHSaveBeautyTool.m in Sources */,
 				4E23FD10294C4F5D00341EA4 /* VHSurveyListView.m in Sources */,
 				4E23FC892941E90D00341EA4 /* VHHomeViewController.m in Sources */,
 				4EF8258B2995EC67007874DA /* LBLelinkKitManager.m in Sources */,
-				4E0D39CC2A84CE1700B0AFE7 /* VHGoodsDetailAlert.m in Sources */,
 				4EF15B212AAEAA960082190F /* UILabel+VHConvenient.m in Sources */,
 				4EF15B272AAEAA960082190F /* VHBeautyModel.m in Sources */,
 				4E23FCEB294AC34200341EA4 /* VHWatchBackView.m in Sources */,
@@ -1739,7 +1678,6 @@
 				4E23FCD62948A28900341EA4 /* VHTextView.m in Sources */,
 				4EF15B2F2AAEAA960082190F /* NSString+Size.m in Sources */,
 				4EF15B2C2AAEAA960082190F /* VHBeautyEffectCell.m in Sources */,
-				4E1BCB6D2A832B8D000E7BC0 /* VHGoodsCardAlert.m in Sources */,
 				4E23FC9A2946C7F500341EA4 /* UIView+ITTAdditions.m in Sources */,
 				4E858E8D29F66D380007B792 /* VHNetworkSpeedMonitor.m in Sources */,
 				4EF15B282AAEAA960082190F /* VHBeautyAlertView.m in Sources */,
@@ -1750,7 +1688,7 @@
 				4EF8CBDD2A52DA0B000ACCA6 /* VHChatPushScreenCardCell.m in Sources */,
 				4E23FCD82948A28900341EA4 /* VHKeyboardToolView.m in Sources */,
 				4E4F1B432990F7E600979BC7 /* VHAirPlayViewController.m in Sources */,
-				4E5F0D7C2AE11A6F00D8B7C3 /* VHActionSheet.m in Sources */,
+				4EFDF23A2AD8D0C600710FDD /* VHActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1926,7 +1864,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = S82ZX9394G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1935,10 +1873,9 @@
 				);
 				GCC_PREFIX_HEADER = VhallSDKDemo/Header/VhallSDKDemoPCH.h;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VhallSDKDemo/VHallSDKDemoInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VHallSaaS;
-				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许使用相机";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "是否允许使用麦克风";
+				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许使用相机,进行直播的视频采集";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "是否允许使用麦克风,进行直播的音频采集";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "是否允许图片存入相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1955,7 +1892,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/VhallSDKDemo/VHLib/WeChatPay",
 				);
-				MARKETING_VERSION = 6.19.0;
+				MARKETING_VERSION = 6.19.5;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1974,7 +1911,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = S82ZX9394G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1983,10 +1920,9 @@
 				);
 				GCC_PREFIX_HEADER = VhallSDKDemo/Header/VhallSDKDemoPCH.h;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VhallSDKDemo/VHallSDKDemoInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VHallSaaS;
-				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许使用相机";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "是否允许使用麦克风";
+				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许使用相机,进行直播的视频采集";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "是否允许使用麦克风,进行直播的音频采集";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "是否允许图片存入相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2003,7 +1939,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/VhallSDKDemo/VHLib/WeChatPay",
 				);
-				MARKETING_VERSION = 6.19.0;
+				MARKETING_VERSION = 6.19.5;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

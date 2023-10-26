@@ -16,7 +16,6 @@
 #import "VHInavApplyAlertView.h"
 #import "VHInavView.h"
 #import "VHIntroView.h"
-#import "VHGoodsList.h"
 #import "VHLottery.h"
 #import "VHQAView.h"
 #import "VHRecordChapter.h"
@@ -29,7 +28,7 @@
 #import "VHWatchVC.h"
 #import "VHWatchVideoView.h"
 
-@interface VHWatchVC ()<VHWatchVideoViewDelegate, VHInavViewDelegate, VHWatchLiveBottomViewDelegate, VHChatViewDelegate, JXCategoryViewDelegate, JXCategoryListContainerViewDelegate, VHallGiftObjectDelegate, VHQAViewDelegate, VHSignInAlertViewDelegate, VHSurveyListViewDelegate, VHDocViewDelegate, VHRecordChapterDelegate, VHVideoPointViewDelegate, VHLotteryDelegate, VHExamObjectDelegate, VHRecordListDelegate,VHFileDownloadDelegate,VHPushScreenCardListDelegate,VHGoodsListDelegate>
+@interface VHWatchVC ()<VHWatchVideoViewDelegate, VHInavViewDelegate, VHWatchLiveBottomViewDelegate, VHChatViewDelegate, JXCategoryViewDelegate, JXCategoryListContainerViewDelegate, VHallGiftObjectDelegate, VHQAViewDelegate, VHSignInAlertViewDelegate, VHSurveyListViewDelegate, VHDocViewDelegate, VHRecordChapterDelegate, VHVideoPointViewDelegate, VHLotteryDelegate, VHExamObjectDelegate, VHRecordListDelegate,VHFileDownloadDelegate,VHPushScreenCardListDelegate>
 
 // 控件
 /// 分页控件
@@ -52,8 +51,6 @@
 @property (nonatomic, strong) VHQAView *vhQAView;
 /// 简介
 @property (nonatomic, strong) VHIntroView *introView;
-/// 商品列表
-@property (nonatomic, strong) VHGoodsList *goodsList;
 /// 章节打点
 @property (nonatomic, strong) VHRecordChapter *recordChapterView;
 /// 精彩时刻
@@ -228,8 +225,6 @@
         return self.docViewController;
     } else if ([title isEqualToString:@"简介"]) {
         return self.introView;
-    } else if ([title isEqualToString:@"商品"]) {
-        return self.goodsList;
     } else if ([title isEqualToString:self.questionName]) {
         return self.vhQAView;
     } else if ([title isEqualToString:@"章节"]) {
@@ -332,10 +327,7 @@
 {
     // 初始化简介
     self.introView.webinarInfoData = self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData;
-    
-    // 初始化列表
-    [self.goodsList requestGoodsGetList];
-    
+        
     // 精彩片段
     if (self.type == VHMovieActiveStateReplay || self.type == VHMovieActiveStatePlayBack) {
         self.recordListVC.record_id = self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData.record.record_id;
@@ -632,12 +624,6 @@
     [self.pushScreenCardList showPushScreenCard:model];
 }
 
-#pragma mark - 点击查看商品详情
-- (void)clickCheckGoodsDetailModel:(VHGoodsPushMessageItem *)model
-{
-    [self.goodsList clickCheckDetail:model.goods_info];
-}
-
 #pragma mark - VHWatchLiveBottomViewDelegate
 #pragma mark 发送消息
 - (void)sendText:(NSString *)text
@@ -816,22 +802,6 @@
 - (void)pushScreenCardModel:(VHPushScreenCardItem *)model
 {    
     [self.chatView chatPushScreenCardModel:model];
-}
-
-#pragma mark - VHGoodsListDelegate
-#pragma mark 是否有商品
-- (void)isHaveGoods:(BOOL)isHaveGoods
-{
-    if (isHaveGoods == self.isHaveGoods){
-        return;
-    }
-    // 判断是否显示
-    [self roomWithIsOpenDoc:self.isOpenDoc isOpenQA:self.isOpenQA isOpenRecordChapter:self.isOpenRecordChapter isOpenVideoPoint:self.isOpenVideoPoint isOpenFileDownload:self.isOpenFileDownload isHaveGoods:isHaveGoods];
-}
-
-- (void)pushGoodsCardModel:(VHGoodsPushMessageItem *)model
-{
-    [self.chatView chatGoodsModel:model];
 }
 
 #pragma mark - 直播和互动播放器切换
@@ -1207,15 +1177,6 @@
         _introView = [[VHIntroView alloc] init];
     }
     return _introView;
-}
-
-- (VHGoodsList *)goodsList
-{
-    if (!_goodsList) {
-        _goodsList = [[VHGoodsList alloc] initWithFrame:self.listContainerView.bounds object:self.watchVideoView.moviePlayer];
-        _goodsList.delegate = self;
-    }
-    return _goodsList;
 }
 
 - (VHRecordListVC *)recordListVC

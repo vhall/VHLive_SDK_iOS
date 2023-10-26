@@ -356,7 +356,8 @@ NSString *VH_MB_ASSIST = @"助理";
 
 + (void)sendTestsNotificationCenterWithKey:(NSString *)key otherInfo:(NSDictionary *)otherInfo
 {
-    NSMutableDictionary * userInfo = [NSMutableDictionary dictionary];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+
     userInfo[@"key"] = key;
     userInfo[@"otherInfo"] = otherInfo;
     [[NSNotificationCenter defaultCenter] postNotificationName:VHTestsNotificationCenter
@@ -366,6 +367,7 @@ NSString *VH_MB_ASSIST = @"助理";
 
 + (BOOL)isFullScreen {
     UIWindow *window = [UIApplication sharedApplication].windows.firstObject;
+
     if (@available(iOS 13.0, *)) {
         return window.windowScene.interfaceOrientation == UIInterfaceOrientationLandscapeLeft || window.windowScene.interfaceOrientation == UIInterfaceOrientationLandscapeRight;
     } else {
@@ -387,10 +389,11 @@ NSString *VH_MB_ASSIST = @"助理";
         [price_attributedText yy_setFont:FONT(10) range:[string rangeOfString:@"¥"]];
         // 设置'.'的字体大小为8
         [price_attributedText yy_setFont:FONT(8) range:[string rangeOfString:@"."]];
-        
+
         // 设置'xx'的字体大小为10
         // 查找'.'的位置
         NSRange dotRange = [string rangeOfString:@"."];
+
         if (dotRange.location != NSNotFound) {
             // 获取'.'之后的字符串
             NSString *subString = [string substringFromIndex:dotRange.location + 1];
@@ -398,10 +401,11 @@ NSString *VH_MB_ASSIST = @"助理";
         } else {
             VHLog(@"'.' not found in the string");
         }
-        
+
         // 设置'xxx'的字体大小为14
         // 查找'¥'的位置
         NSRange yenRange = [string rangeOfString:@"¥"];
+
         if (yenRange.location != NSNotFound && dotRange.location != NSNotFound && dotRange.location > yenRange.location) {
             // 获取'¥'和'.'之间的字符串
             NSRange subStringRange = NSMakeRange(yenRange.location + 1, dotRange.location - yenRange.location - 1);
@@ -410,6 +414,7 @@ NSString *VH_MB_ASSIST = @"助理";
         } else {
             VHLog(@"'¥' or '.' not found in the string or in incorrect order");
         }
+
         // 将attributedText应用到UILabel上
         return price_attributedText;
     }
@@ -419,6 +424,7 @@ NSString *VH_MB_ASSIST = @"助理";
 + (NSString *)vh_URLDecodedString:(NSString *)urlString {
     NSString *string = urlString;
     NSString *decodedString = [string stringByRemovingPercentEncoding];
+
     return decodedString;
 }
 
@@ -428,7 +434,46 @@ NSString *VH_MB_ASSIST = @"助理";
     NSString *allowedCharacters = @"!*'();:@&=+$,/?%#[]";
     NSCharacterSet *allowedCharacterSet = [NSCharacterSet characterSetWithCharactersInString:allowedCharacters];
     NSString *encodedString = [string stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet];
-    
+
     return encodedString;
 }
+
+// 字典转json字符串方法
++ (NSString *)jsonStringWithObject:(id)dict
+{
+    if (!dict) {
+        return @"";
+    }
+
+    if ([dict isKindOfClass:[NSString class]]) {
+        return dict;
+    }
+
+    NSString *jsonString = @"";
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict
+                                                       options:0
+                                                         error:&error];
+
+    if (error) {
+        VHLog(@"%@", error);
+        return @"";
+    } else {
+        jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+
+    return (jsonString.length > 0) ? jsonString : @"";
+}
+
+// 当前时间戳
++ (NSString *)nowTimeInterval {
+    // 获取当前时间0秒后的时间
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
+    // *1000 是精确到毫秒，不乘就是精确到秒
+    NSTimeInterval time = [date timeIntervalSince1970] * 1000;
+    NSString *timeStr = [NSString stringWithFormat:@"%.0f", time];
+
+    return timeStr;
+}
+
 @end

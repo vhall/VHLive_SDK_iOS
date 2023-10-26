@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface VUITool : NSObject
+
 /// 角色修改
-    extern NSString *VH_MB_HOST;
+extern NSString *VH_MB_HOST;
 extern NSString *VH_MB_GUEST;
 extern NSString *VH_MB_ASSIST;
 
@@ -119,5 +120,12 @@ extern NSString *VH_MB_ASSIST;
 /// 将传入的URL字符串进行编码
 /// - Parameter urlString: 字符串
 + (NSString *)vh_URLEncodedString:(NSString *)urlString;
+
+/// 字典转json字符串方法
+/// - Parameter dict: 字典
++ (NSString *)jsonStringWithObject:(id)dict;
+
+/// 当前时间戳
++ (NSString *)nowTimeInterval;
 
 @end

@@ -97,7 +97,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 观看端_发送礼物给主持人
 /// @param roomId 房间id
-/// @param channel 支付渠道 "ALIPAY":支付宝相关的 "WEIXIN":微信相关的
+/// @param channel
 /// @param service_code 支付方式
 /// "QR_PAY":支付宝二维码支付 "H5_PAY":支付宝移动支付 "CASHIER":支付宝收银台支付
 /// "QR_PAY":微信二维码支付 "QR_PAY":微信移动浏览器支付 "JSAPI":微信内置支付

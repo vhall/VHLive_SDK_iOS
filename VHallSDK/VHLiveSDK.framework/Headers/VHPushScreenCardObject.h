@@ -9,7 +9,7 @@
 #import "VHallBasePlugin.h"
 #import "VHallRawBaseModel.h"
 
-// 章节打点数据类
+// 推屏卡片数据类
 @interface VHPushScreenCardItem : VHallRawBaseModel
 
 @property (nonatomic , copy) NSString *     ID;             ///<ID
