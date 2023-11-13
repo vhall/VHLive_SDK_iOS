@@ -1,11 +1,11 @@
 Pod::Spec.new do |spec|
   
   spec.name         = 'VHLiveSDK'
-  spec.version      = '6.19.2'
+  spec.version      = '6.19.3'
 
   spec.summary      = "Vhall iOS SDK #{spec.name.to_s}"
   spec.homepage     = 'https://www.vhall.com'
-  spec.author       = { "LiGuoliang" => "guoliang.li@vhall.com" }
+  spec.author       = { "GuoChao" => "chao.guo@vhall.com" }
   spec.license      = { :type =>'MIT', :text=><<-LICENSE
     Copyright (c) 2010-2020 VHall Software Foundation (https://www.vhall.com/)
     Permission is hereby granted, free of charge, to any person obtaining a copy

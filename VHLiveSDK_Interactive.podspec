@@ -1,11 +1,11 @@
 Pod::Spec.new do |spec|
   
   spec.name         = 'VHLiveSDK_Interactive'
-  spec.version      = '6.19.2'
+  spec.version      = '6.19.3'
 
   spec.summary      = "VHall iOS SDK #{spec.name.to_s}"
   spec.homepage     = 'https://www.vhall.com'
-  spec.author       = { "LiGuoliang" => "guoliang.li@vhall.com" }
+  spec.author       = { "GuoChao" => "chao.guo@vhall.com" }
   spec.license      = { :type =>'MIT', :text=><<-LICENSE
     Copyright (c) 2010-2020 VHall Software Foundation (https://www.vhall.com/)
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37,5 +37,5 @@ Pod::Spec.new do |spec|
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
     'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
   }
-  spec.dependency 'VHLiveSDK', ">=6.19.1"
+  spec.dependency 'VHLiveSDK', ">=6.19.3"
 end
