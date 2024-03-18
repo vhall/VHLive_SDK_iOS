@@ -8,6 +8,7 @@
 #import "VHDefiniteionsViewModel.h"
 #import "VHSliderView.h"
 #import "VHWatchVideoView.h"
+#import "VHDanmu.h"
 
 @interface VHWatchVideoView ()<VHallMoviePlayerDelegate, VHWebinarInfoDelegate, UIGestureRecognizerDelegate>
 
@@ -52,6 +53,8 @@
 @property (nonatomic, strong) UIButton *definitionBtn;
 /// 全屏按钮
 @property (nonatomic, strong) UIButton *fullBtn;
+/// 弹幕
+@property (nonatomic, strong) VHDanmu *danmu;
 
 // 播放器信息
 /// 当前视频支持的清晰度
@@ -113,7 +116,7 @@
 - (void)addViews
 {
     [self addSubview:self.moviePlayer.moviePlayerView];
-
+    
     [self addSubview:self.userView];
     [self.userView addSubview:self.headImg];
     [self.userView addSubview:self.nickNameLab];
@@ -271,12 +274,15 @@
 
     NSInteger olNum = [_onlineLab.text integerValue] + webinarInfo.online_real + webinarInfo.online_virtual;
 
+    // 人数
     _onlineLab.text = olNum > 999 ? @"999+" : [NSString stringWithFormat:@"%ld", olNum];
 
     NSInteger heatNum = [_heatLab.text integerValue] + webinarInfo.pv_real + webinarInfo.pv_virtual;
 
+    //  热度
     _heatLab.text = heatNum > 999 ? @"999+" : [NSString stringWithFormat:@"%ld", heatNum];
 
+    // 显隐逻辑
     _onlineImg.hidden = !webinarInfo.online_show;
     _onlineLab.hidden = !webinarInfo.online_show;
 
@@ -344,18 +350,27 @@
         // 播放从0开始进度条
         [self setValue:0];
     }
+    
+    // 开始播放弹幕
+    [self.danmu start];
 }
 
 #pragma mark - 暂停播放
 - (void)pausePlay
 {
     [self.moviePlayer pausePlay];
+    
+    // 暂停播放弹幕
+    [self.danmu pause];
 }
 
 #pragma mark - 停止播放
 - (void)stopPlay
 {
     [self.moviePlayer stopPlay];
+    
+    // 停止播放弹幕
+    [self.danmu stop];
 }
 
 #pragma mark - 恢复
@@ -624,6 +639,15 @@
     _heatLab.text = heatNum > 999 ? @"999+" : [NSString stringWithFormat:@"%ld", heatNum];
 }
 
+#pragma mark - 聊天消息
+- (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs
+{
+    VHallChatModel * msgModel = msgs[0];
+
+    // 显示弹幕
+    [self.danmu sendWithMsgModel:msgModel superView:self.moviePlayer.moviePlayerView];
+}
+
 #pragma mark - 收到上下线消息
 - (void)reciveOnlineMsg:(NSArray <VHallOnlineStateModel *> *)msgs
 {
@@ -787,6 +811,10 @@
         [_moviePlayer destroyMoivePlayer];
         _moviePlayer = nil;
     }
+    
+    if (_danmu) {
+        [_danmu stop];
+    }
 
     [self removeFromSuperview];
 }
@@ -841,6 +869,13 @@
     }
 }
 
+- (VHDanmu *)danmu
+{
+    if (!_danmu) {
+        _danmu = [[VHDanmu alloc] init];
+    }
+    return _danmu;
+}
 - (UIView *)userView
 {
     if (!_userView) {

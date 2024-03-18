@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -132,6 +132,7 @@
 		4EFDF23D2AD8D0C600710FDD /* VHActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDF2362AD8D0C600710FDD /* VHActionSheetConfig.m */; };
 		4EFDF23E2AD8D0C600710FDD /* VHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDF2382AD8D0C600710FDD /* VHAlertView.m */; };
 		7C75F54EDF39F2D3773FBE22 /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E26F687E80B8B2BB47A859E /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework */; };
+		C09691F52BA4415200EED661 /* VHDanmu.m in Sources */ = {isa = PBXBuildFile; fileRef = C09691F32BA4415200EED661 /* VHDanmu.m */; };
 		EDE93B43E701F247BFC39F38 /* Pods_VhallSDKDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494BE4CE29A050223829ADDE /* Pods_VhallSDKDemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -416,6 +417,8 @@
 		5401D4E75AF6641CAE310871 /* Pods_VhallSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VhallSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C1B319186E8BC448956B868 /* Pods-VhallSDKDemo-VhallSDKDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemo-VhallSDKDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7E3B1D39559C1B7E02091616 /* Pods-VhallSDKDemo-VhallSDKDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemo-VhallSDKDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C09691F32BA4415200EED661 /* VHDanmu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHDanmu.m; sourceTree = "<group>"; };
+		C09691F42BA4415200EED661 /* VHDanmu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHDanmu.h; sourceTree = "<group>"; };
 		D28BA50D1D20871908164F4B /* Pods-VhallSDKDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemoTests.release.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemoTests/Pods-VhallSDKDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F144C26B8E47A7FED450FF44 /* Pods-VhallSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -946,6 +949,7 @@
 		4EEEEB71293EE96600538BC2 /* VhallSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C09691F22BA4415200EED661 /* VHDanmu */,
 				4EF8CBC92A5275CE000ACCA6 /* VHPushScreenCard */,
 				4E4F1B402990F7C700979BC7 /* VHAirPlay */,
 				4E23FD2429503FE600341EA4 /* VHAnnouncement */,
@@ -1266,6 +1270,15 @@
 				D28BA50D1D20871908164F4B /* Pods-VhallSDKDemoTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C09691F22BA4415200EED661 /* VHDanmu */ = {
+			isa = PBXGroup;
+			children = (
+				C09691F32BA4415200EED661 /* VHDanmu.m */,
+				C09691F42BA4415200EED661 /* VHDanmu.h */,
+			);
+			path = VHDanmu;
 			sourceTree = "<group>";
 		};
 		C85A46C11EAD3493F15BBF3A /* Frameworks */ = {
@@ -1620,6 +1633,7 @@
 				4E2C379E2A8606040079BFB1 /* NSObject+VHRunTime.m in Sources */,
 				4E2C37992A85D1490079BFB1 /* VHGoodsNumberButton.m in Sources */,
 				4EF84E752951A072001299E4 /* VHInavAlertView.m in Sources */,
+				C09691F52BA4415200EED661 /* VHDanmu.m in Sources */,
 				4EDE10EA2959759000B10DB9 /* UIImage+VHUtil.m in Sources */,
 				4EE7F2EA2A20802D004FEA0E /* VHRecordListVC.m in Sources */,
 				4EE848992952EF4B00F1BA1D /* VHNavBaseViewController.m in Sources */,
@@ -1864,7 +1878,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = S82ZX9394G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1892,7 +1906,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/VhallSDKDemo/VHLib/WeChatPay",
 				);
-				MARKETING_VERSION = 6.19.3;
+				MARKETING_VERSION = 6.19.6;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1911,7 +1925,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = S82ZX9394G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1939,7 +1953,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/VhallSDKDemo/VHLib/WeChatPay",
 				);
-				MARKETING_VERSION = 6.19.3;
+				MARKETING_VERSION = 6.19.6;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

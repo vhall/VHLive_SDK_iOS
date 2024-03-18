@@ -35,6 +35,7 @@
 #import "VHWarmInfoObject.h"
 #import "VHFileDownloadObject.h"
 #import "VHPushScreenCardObject.h"
+#import "VHMarqueeOptionModel.h"
 
 @protocol VHallApiDelegate <NSObject>
 

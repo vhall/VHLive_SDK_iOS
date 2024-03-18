@@ -94,6 +94,9 @@
 /// 收到上下线消息
 - (void)reciveOnlineMsg:(NSArray <VHallOnlineStateModel *> *)msgs;
 
+/// 聊天消息
+- (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs;
+
 /// 退出全屏
 - (void)quitFull;
 

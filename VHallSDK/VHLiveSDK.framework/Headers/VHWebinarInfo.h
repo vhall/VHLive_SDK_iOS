@@ -87,16 +87,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 跑马灯配置信息
 @interface VHWebinarScrollTextInfo : NSObject
-@property (nonatomic, copy, readonly) NSString *webinar_id;        ///<活动id
-@property (nonatomic, copy, readonly) NSString *color;             ///<十六进制色值 如：#FFFFFF
-@property (nonatomic, copy, readonly) NSString *text;              ///<文本内容
-@property (nonatomic, assign, readonly) NSInteger scrolling_open;       ///<是否开启跑马灯  1：开启 0：关闭
-@property (nonatomic, assign, readonly) NSInteger text_type;       ///<文本显示格式，1：固定文本 2：固定文本+观看者id和昵称
-@property (nonatomic, assign, readonly) NSInteger alpha;           ///<不透明度，如：60%不透明度，则属性值为60
-@property (nonatomic, assign, readonly) NSInteger size;            ///<字号
-@property (nonatomic, assign, readonly) NSInteger interval;        ///<间隔时间，秒
-@property (nonatomic, assign, readonly) NSInteger speed;           ///<滚屏速度 10000：慢 6000：中 3000：快
-@property (nonatomic, assign, readonly) NSInteger position;        ///<显示位置 1：随机 2：上 3：中 4：下
+@property (nonatomic, copy, readonly) NSString *  webinar_id;         ///<活动id
+@property (nonatomic, copy, readonly) NSString *  text;               ///<文本内容
+@property (nonatomic, copy, readonly) NSString *  color;              ///<十六进制色值 如：#FFFFFF
+@property (nonatomic, assign, readonly) NSInteger scrolling_open;     ///<是否开启跑马灯  1：开启 0：关闭
+@property (nonatomic, assign, readonly) NSInteger text_type;          ///<文本显示格式，1：固定文本 2：固定文本+观看者id和昵称
+@property (nonatomic, assign, readonly) NSInteger alpha;              ///<不透明度，若60%不透明度，则属性值为60
+@property (nonatomic, assign, readonly) NSInteger size;               ///<字号
+@property (nonatomic, assign, readonly) NSInteger interval;           ///<间隔时间，秒
+@property (nonatomic, assign, readonly) NSInteger speed;              ///<滚屏速度 10000：慢 6000：中 3000：快
+@property (nonatomic, assign, readonly) NSInteger position;           ///<显示位置 1：随机 2：上 3：中 4：下
+@property (nonatomic, assign, readonly) NSInteger scroll_type;        ///<显示方式 1 滚动 2 闪烁
 @end
 
 // 活动基础信息

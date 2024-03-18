@@ -9,6 +9,7 @@
 #import "VHallConst.h"
 #import "VHPlayerCommonModel.h"
 #import "VHWebinarInfo.h"
+#import "VHMarqueeOptionModel.h"
 
 @class VHDLNAControl;
 @protocol VHallMoviePlayerDelegate;
@@ -30,6 +31,7 @@
 @property (nonatomic, assign) VHMovieDefinition curDefinition;                          ///<设置当前播放的清晰度
 @property (nonatomic, assign) int timeout;                                              ///<设置链接的超时时间 默认5000毫秒，单位为毫秒  MP4点播 最小10000毫秒
 @property (nonatomic, assign) int bufferTime;                                           ///<设置RTMP 的缓冲时间 默认 6秒 单位为秒 必须>0 值越小延时越小,卡顿增加
+@property (nonatomic, strong) VHMarqueeOptionModel *marqueeOptionConfig;///<跑马灯
 
 //---------------以下属性 直播使用--------------------
 @property (nonatomic, assign) BOOL default_live_subtitle;                               ///<是否使用字幕视频 [播放开始前设置]
