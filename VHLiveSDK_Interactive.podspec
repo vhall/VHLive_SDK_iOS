@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   
   spec.name         = 'VHLiveSDK_Interactive'
-  spec.version      = '6.19.6'
+  spec.version      = '6.19.7'
 
   spec.summary      = "VHall iOS SDK #{spec.name.to_s}"
   spec.homepage     = 'https://www.vhall.com'
@@ -37,5 +37,5 @@ Pod::Spec.new do |spec|
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
     'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
   }
-  spec.dependency 'VHLiveSDK', ">=6.19.6"
+  spec.dependency 'VHLiveSDK', ">=6.19.7"
 end
