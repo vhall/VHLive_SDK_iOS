@@ -6,7 +6,7 @@
 //  Copyright © 2019年 vhall. All rights reserved.
 //
 
-#import "VHRenderView.h"
+#import <VHRTC/VHRenderView.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

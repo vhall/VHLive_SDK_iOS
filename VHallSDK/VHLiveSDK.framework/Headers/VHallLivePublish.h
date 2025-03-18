@@ -7,9 +7,12 @@
 //
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
+
 #import "VHallConst.h"
-#import "VHPublishConfig.h"
 #import "VHWebinarInfo.h"
+
+#import <VHLSS/VHPublishConfig.h>
+
 @protocol VHallLivePublishDelegate;
 @interface VHallLivePublish : NSObject
 

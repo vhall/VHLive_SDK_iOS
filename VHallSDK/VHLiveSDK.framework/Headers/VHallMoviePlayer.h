@@ -7,9 +7,9 @@
 //
 #import <MediaPlayer/MPMoviePlayerController.h>
 #import "VHallConst.h"
-#import "VHPlayerCommonModel.h"
+#import <VHLSS/VHPlayerCommonModel.h>
 #import "VHWebinarInfo.h"
-#import "VHMarqueeOptionModel.h"
+#import <VHLSS/VHMarqueeOptionModel.h>
 
 @class VHDLNAControl;
 @protocol VHallMoviePlayerDelegate;

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <VHInteractive/VHRoomEnum.h>
 #import <VHLiveSDK/VHallConst.h>
-#import <VHLiveSDK/VHDocument.h>
+#import <VHDoc/VHDocument.h>
 #import <VHLiveSDK/VHSSInteractModel.h>
 #import <VHLiveSDK/VHWebinarInfoData.h>
 

@@ -11,7 +11,7 @@
 #import <VHInteractive/VHRoomBroadCastConfig.h>
 #import <VHInteractive/VHRoomEnum.h>
 #import <VHInteractive/VHRoomInfo.h>
-#import <VHLiveSDK/VHDocument.h>
+#import <VHDoc/VHDocument.h>
 #import <VHLiveSDK/VHWebinarInfo.h>
 
 #import <VHInteractive/VHRoomDocumentModel.h>
