@@ -61,6 +61,8 @@
 /// param[@"name"]          = 昵称
 /// param[@"auth_model"]    = 0 : 校验观看权限(默认)  1 : 不校验观看权限
 - (BOOL)startPlay:(NSDictionary *)param;
+/// @param isPIP 是否开启画中画
+- (BOOL)startPlay:(NSDictionary *)param isPIP:(BOOL)isPIP;
 
 /// 观看回放/点播视频，在收到"播放连接成功回调"后，才可使用聊天、签到、问答、抽奖等功能
 /// @param param 传参信息
@@ -69,6 +71,8 @@
 /// param[@"name"]          = 昵称
 /// param[@"auth_model"]    = 0 : 校验观看权限(默认)  1 : 不校验观看权限
 - (BOOL)startPlayback:(NSDictionary *)param;
+/// @param isPIP 是否开启画中画
+- (BOOL)startPlayback:(NSDictionary *)param isPIP:(BOOL)isPIP;;
 
 /// 暂停播放 （如果是直播，等同于stopPlay）
 - (void)pausePlay;
@@ -129,6 +133,15 @@
 
 /// 设置音频输出设备
 + (void)audioOutput:(BOOL)inSpeaker;
+
+/// 开启画中画
+- (BOOL)openPIPSupported;
+
+/// 关闭画中画
+- (void)closePIPSupported;
+
+/// 是否开启画中画
+- (void)setIsOpenPIP:(BOOL)isOpenPIP;
 
 /// 是否启用陀螺仪控制画面模式，仅播放 VR 活动时有效
 /// @param usingGyro 是否使用陀螺仪
@@ -324,6 +337,22 @@
 /// @param is_file_download 1开启 0关闭
 /// @param file_download_menu 菜单-文件下载
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer is_file_download:(BOOL)is_file_download file_download_menu:(VHallPlayMenuModel *)file_download_menu;
+
+/// 即将开启画中画
+- (void)pictureInPictureControllerWillStart;
+/// 已经开启画中画
+- (void)pictureInPictureControllerDidStart;
+/// 开启画中画失败
+/// - Parameter error: 错误信息
+- (void)pictureInPictureWithFailedToStartPictureInPictureWithError:(NSError *)error;
+/// 即将关闭画中画
+- (void)pictureInPictureControllerWillStop;
+/// 已经关闭画中画
+- (void)pictureInPictureControllerDidStop;
+/// 关闭画中画且恢复播放界面
+/// - Parameter completionHandler: 恢复是否完成
+- (void)pictureInPictureWithRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^)(BOOL restored))completionHandler;
+
 
 @end
 
