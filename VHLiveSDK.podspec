@@ -43,6 +43,6 @@ Pod::Spec.new do |spec|
   spec.dependency 'VHYun_IM'
   spec.dependency 'VHYun_LSS', ">=2.8.6"
   spec.dependency 'VHYun_OPS'
-  spec.dependency 'VHYun_RTC'
+  spec.dependency 'VHYun_RTC', ">=2.8.3"
 
 end
