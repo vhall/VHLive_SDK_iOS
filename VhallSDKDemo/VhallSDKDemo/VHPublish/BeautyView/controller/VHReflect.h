@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <VHLiveSDK/IVHBeautifyModule.h>
-#import <VHInteractive/IVHBeautifyModule.h>
+#import <VHBeautifyKit/IVHBeautifyModule.h>
+#import <VHBeautifyKit/IVHBeautifyModule.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface VHReflect : NSObject

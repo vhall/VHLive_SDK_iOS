@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 是否为横屏 ，YES：横屏 NO：竖屏 ，默认NO
 @property (nonatomic, assign) BOOL screenLandscape;
 
+@property (nonatomic, assign) BOOL isV2Live;
 @end
 
 NS_ASSUME_NONNULL_END

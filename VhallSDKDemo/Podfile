@@ -7,9 +7,9 @@ target 'VhallSDKDemo' do
 
   # Pods for VhallSDKDemo
 
-  pod 'VHLiveSDK', '6.19.7' # 直播
-  pod 'VHLiveSDK_Interactive', '6.19.7' # 互动
-  pod 'VHGoodsSDK', '6.19.7' # 商品
+  pod 'VHLiveSDK', '6.23.0' # 直播
+  pod 'VHLiveSDK_Interactive', '6.23.0' # 互动
+  pod 'VHGoodsSDK', '6.23.0' # 商品
 
 
   pod 'MJRefresh', '~> 3.7.5'

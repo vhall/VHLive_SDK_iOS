@@ -34,7 +34,10 @@
 @property (nonatomic, strong) VHBeautyAdjustController *adjustVC;
 @property (nonatomic, strong) VHBeautifyKit *beautKit;
 @property (nonatomic, strong) FUBeauty *beauty;// 美颜功能 FUBeauty*
-
+@property (nonatomic, assign) BOOL isStart;
+@property (nonatomic,strong)NSString* licenseUrl;
+@property (nonatomic,strong)NSString* licenseKey;
+@property (nonatomic, strong) UIView *    stopVirtualCamera;
 @end
 
 @implementation VHPublishVC
@@ -65,9 +68,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
     self.view.backgroundColor = [UIColor whiteColor];
-
+     self.licenseUrl=@"";
+     self.licenseKey =@"";
     self.title = @"勿动,隔夜测试";
 
     // 设置样式
@@ -110,6 +113,7 @@
 #pragma mark - 初始化
 - (void)initWithData
 {
+
     [self.livePublish startVideoCapture];
 }
 
@@ -119,8 +123,18 @@
     [self.startBtn setHidden:YES];
 
     [self.toolView setHidden:NO];
+     if(self.isStart){
+          [self.livePublish reconnect];
+     }else{
+          [self.livePublish startLive:@{ @"id": self.webinar_id }];
+     }
+}
 
-    [self.livePublish startLive:@{ @"id": self.webinar_id }];
+- (UIView *)stopVirtualCamera {
+    if (!self.stopVirtualCamera) {
+         self.stopVirtualCamera = [[UIView alloc] init];
+         self.stopVirtualCamera.backgroundColor = [UIColor blackColor];
+    } return self.stopVirtualCamera;
 }
 
 #pragma mark - VHallLivePublishDelegate
@@ -129,13 +143,39 @@
 {
     if (liveStatus == VHLiveStatusPushConnectSucceed) {
         [VHProgressHud showToast:@"开始推流"];
+         self.isStart = true;
     } else if (liveStatus == VHLiveStatusUploadSpeed) {
         VHLog(@"直播速率 === %@", [info mj_JSONString]);
     } else if (liveStatus == VHLiveStatusPushConnectError ||  liveStatus == VHLiveStatusParamError || liveStatus == VHLiveStatusSendError || liveStatus == VHLiveStatusAudioRecoderError || liveStatus == VHLiveStatusVideoError || liveStatus == VHLiveStatusGetUrlError || liveStatus == VHLiveStatusDirectorError ) {
         [VHProgressHud showToast:info[@"content"]];
-        [self.livePublish stopLive];
+         if(self.isStart){
+              [_startBtn setTitle:@"重新推流" forState:UIControlStateNormal];
+              [self.livePublish disconnect];
+              if(self.isV2Live){
+                   [self.livePublish startVideoCapture];
+              }
+         }else{
+              [self.livePublish stopLive];
+         }
         [self.startBtn setHidden:NO];
-    } else {
+    } else if(liveStatus == VHLiveV2LicenseError){
+         [VHProgressHud showToast:@"license 认证失败"];
+         if(self.isStart){
+              [_startBtn setTitle:@"重新推流" forState:UIControlStateNormal];
+              [self.startBtn setHidden:NO];
+         }
+    }
+    else if(liveStatus == VHLiveStatusParamError){
+        [VHProgressHud showToast:@"license 开始推流失败"];
+        if(self.isStart){
+             [_startBtn setTitle:@"重新推流" forState:UIControlStateNormal];
+             [self.startBtn setHidden:NO];
+        }
+   }
+    else if(liveStatus == VHLiveV2StatusPushReconnetingError){
+         [VHProgressHud showToast:@"推流异常正在重连"];
+    }
+    else {
         VHLog(@"liveStatus === %ld 其他 === %@", liveStatus, [info mj_JSONString]);
     }
 }
@@ -240,7 +280,8 @@
 - (VHallLivePublish *)livePublish
 {
     if (!_livePublish) {
-        VHPublishConfig *config = [VHPublishConfig configWithType:VHPublishConfigTypeDefault];
+
+        VHPublishConfig *config = [VHPublishConfig configWithType:VHPublishConfigType1280x720_25];
         config.pushType = self.webinar_type == VHWebinarLiveType_Audio ? VHStreamTypeOnlyAudio : VHStreamTypeVideoAndAudio;
         config.beautifyFilterEnable = YES;
         config.videoCaptureFPS = 25;
@@ -251,23 +292,35 @@
         config.volumeAmplificateSize = 0.5;
         config.orientation = self.screenLandscape ? AVCaptureVideoOrientationLandscapeRight : AVCaptureVideoOrientationPortrait;
         config.captureDevicePosition = AVCaptureDevicePositionFront;
-        config.customVideoWidth = self.screenLandscape ? 1280 : 720;
-        config.customVideoHeight = self.screenLandscape ? 720 : 1280;
+        config.customVideoWidth = self.screenLandscape ? 1280 : 720;         //V2版本不生效
+        config.customVideoHeight = self.screenLandscape ? 720 : 1280;         //V2版本不生效
 //        _livePublish = [[VHallLivePublish alloc] initWithConfig:config];
-        
         __weak __typeof(self)weakSelf = self;
         config.beautifyFilterEnable = NO;
         config.advancedBeautifyEnable = YES;
-        _livePublish = [[VHallLivePublish alloc] initWithBeautyConfig:config handleError:^(NSError *error) {
-            __strong __typeof(weakSelf)self = weakSelf;
-            if(error) {
-                [VHProgressHud showToast:[NSString stringWithFormat:@"⚠️美颜信息 : %@", error]];
-            } else {
-                self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class] faceBundlePath:@""];
-                VHLog(@"%@",self.beautKit.enable ? @"高级美颜开启" : @"高级美颜未开启");
-            }
-            
-        }];
+
+         if(self.isV2Live){
+              self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class] faceBundlePath:@""];
+              _livePublish = [[VHallLivePublish alloc] initWithLiveV2Config:config andvancedBeautify:[self.beautKit currentModule] licenseUrl:self.licenseUrl licenseKey:self.licenseKey  handleError:^(NSError *error) {
+                 __strong __typeof(weakSelf)self = weakSelf;
+                 if(error) {
+                      [self.beautKit enable];
+                     [VHProgressHud showToast:[NSString stringWithFormat:@"⚠️美颜信息 : %@", error]];
+                 } else {
+                     VHLog(@"%@",self.beautKit.enable ? @"高级美颜开启" : @"高级美颜未开启");
+                 }
+             }];
+         }else{
+             _livePublish = [[VHallLivePublish alloc] initWithBeautyConfig:config handleError:^(NSError *error) {
+                __strong __typeof(weakSelf)self = weakSelf;
+                if(error) {
+                    [VHProgressHud showToast:[NSString stringWithFormat:@"⚠️美颜信息 : %@", error]];
+                } else {
+                    self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class] faceBundlePath:@""];
+                    VHLog(@"%@",self.beautKit.enable ? @"高级美颜开启" : @"高级美颜未开启");
+                }
+            }];
+         }
         _livePublish.delegate = self;
         [self.view addSubview:_livePublish.displayView];
     }
@@ -303,6 +356,27 @@
         _toolView.clickCamera = ^(BOOL isSelect) {
             [weakSelf.livePublish swapCameras:weakSelf.livePublish.captureDevicePosition == AVCaptureDevicePositionBack ? AVCaptureDevicePositionFront : AVCaptureDevicePositionBack];
         };
+         if(!self.isV2Live){
+             [ _toolView.cameraCaptureBtn setHidden:YES];
+         }
+         _toolView.clickCameraCapture = ^(BOOL isSelect) {
+              if(weakSelf.isV2Live){
+                   if(isSelect){
+                        // 推图片
+                        int w = 320;
+                        int h = 240;
+                        UIGraphicsBeginImageContextWithOptions(CGSizeMake(weakSelf.screenLandscape ? h:w, weakSelf.screenLandscape ? w:h), YES, 0);
+                        [[UIColor blackColor] setFill]; // 设置填充色为黑色
+                        UIRectFill(CGRectMake(0, 0, weakSelf.screenLandscape ? h:w, weakSelf.screenLandscape ? w:h)); // 用黑色填充整个上下文区域
+                        UIImage *im = UIGraphicsGetImageFromCurrentImageContext();
+                        UIGraphicsEndImageContext();
+                        [weakSelf.livePublish stopVideoCaptureV2:im];
+                   }
+                   else{
+                        [weakSelf.livePublish startVideoCapture];
+                   }
+              }
+         };
         _toolView.clickMic = ^(BOOL isSelect) {
             weakSelf.livePublish.isMute = isSelect;
         };

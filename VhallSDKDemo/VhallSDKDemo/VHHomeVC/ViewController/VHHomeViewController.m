@@ -41,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *livePublishBtn;
 /// H5观看页
 @property (weak, nonatomic) IBOutlet UIButton *h5Btn;
+@property (weak, nonatomic) IBOutlet UIButton *liveV2;
 
 @end
 
@@ -68,7 +69,7 @@
 {
     self.nickName.text = [VHallApi currentUserNickName];
 
-    self.activityTF.text = [VUITool isBlankString:DEMO_Setting.activityID] ? @"" : DEMO_Setting.activityID;
+    self.activityTF.text = [VUITool isBlankString:DEMO_Setting.activityID] ? @"305821089" : DEMO_Setting.activityID;
 
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:[VHallApi currentUserHeadUrl]] placeholderImage:[UIImage imageNamed:@"defaultHead"]];
 }
@@ -85,6 +86,9 @@
 
     self.livePublishBtn.layer.masksToBounds = YES;
     self.livePublishBtn.layer.cornerRadius = 20 / 2;
+     
+     self.liveV2.layer.masksToBounds = YES;
+     self.liveV2.layer.cornerRadius = 20 / 2;
 
     [self.contentView addSubview:self.codeBtn];
     [self.codeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -263,44 +267,54 @@
     [self clickEnterRoomBtn:nil];
 }
 
+
+-(void) startLive:(BOOL)isV2{
+     if (self.activityTF.text.length <= 0) {
+         [VHProgressHud showToast:@"请输入活动ID"];
+         return;
+     }
+
+     // 记录房间号
+     DEMO_Setting.activityID = self.activityTF.text;
+
+     // 取消键盘
+     [self.view endEditing:YES];
+
+     // 防止重复点击
+     self.enterRoomBtn.userInteractionEnabled = NO;
+
+     __weak __typeof(self) weakSelf = self;
+     // 增加一个hud
+     [VHProgressHud showLoading];
+     // 查询活动详情
+     [VHWebinarBaseInfo getWebinarBaseInfoWithWebinarId:self.activityTF.text
+                                                success:^(VHWebinarBaseInfo *_Nonnull baseInfo) {
+         // 防止重复点击
+         weakSelf.enterRoomBtn.userInteractionEnabled = YES;
+
+         [VHProgressHud hideLoading];
+         
+         VHPublishVC *publishVC = [VHPublishVC new];
+         publishVC.webinar_id = weakSelf.activityTF.text;
+         publishVC.webinar_type = baseInfo.webinar_type;
+          publishVC.isV2Live = isV2;
+          publishVC.screenLandscape = baseInfo.webinar_show_type == 0 ? NO : YES;
+         [weakSelf.navigationController pushViewController:publishVC animated:YES];
+     }
+                                                   fail:^(NSError *_Nonnull error) {
+         // 防止重复点击
+         weakSelf.enterRoomBtn.userInteractionEnabled = YES;
+         [VHProgressHud showToast:error.domain];
+     }];
+}
+
+- (IBAction)clickLiveV2:(id)sender {
+     [self startLive:YES];
+}
+
 #pragma mark - 点击发起直播
 - (IBAction)clickLivePublish:(UIButton *)sender {
-    if (self.activityTF.text.length <= 0) {
-        [VHProgressHud showToast:@"请输入活动ID"];
-        return;
-    }
-
-    // 记录房间号
-    DEMO_Setting.activityID = self.activityTF.text;
-
-    // 取消键盘
-    [self.view endEditing:YES];
-
-    // 防止重复点击
-    self.enterRoomBtn.userInteractionEnabled = NO;
-
-    __weak __typeof(self) weakSelf = self;
-    // 增加一个hud
-    [VHProgressHud showLoading];
-    // 查询活动详情
-    [VHWebinarBaseInfo getWebinarBaseInfoWithWebinarId:self.activityTF.text
-                                               success:^(VHWebinarBaseInfo *_Nonnull baseInfo) {
-        // 防止重复点击
-        weakSelf.enterRoomBtn.userInteractionEnabled = YES;
-
-        [VHProgressHud hideLoading];
-        
-        VHPublishVC *publishVC = [VHPublishVC new];
-        publishVC.webinar_id = weakSelf.activityTF.text;
-        publishVC.webinar_type = baseInfo.webinar_type;
-        publishVC.screenLandscape = NO;
-        [weakSelf.navigationController pushViewController:publishVC animated:YES];
-    }
-                                                  fail:^(NSError *_Nonnull error) {
-        // 防止重复点击
-        weakSelf.enterRoomBtn.userInteractionEnabled = YES;
-        [VHProgressHud showToast:error.domain];
-    }];
+     [self startLive:NO];
 }
 
 - (IBAction)clickH5WithVC:(UIButton *)sender {

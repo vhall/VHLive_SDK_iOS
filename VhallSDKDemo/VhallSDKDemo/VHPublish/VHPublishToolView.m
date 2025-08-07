@@ -8,6 +8,9 @@
 #import "VHPublishToolView.h"
 
 @interface VHPublishToolView ()
+
+/// 镜像
+
 /// 镜像
 @property (nonatomic, strong) UIButton *beautyBtn;
 /// 镜像
@@ -58,6 +61,11 @@
             make.centerY.mas_equalTo(self.mas_centerY);
             make.size.mas_equalTo(CGSizeMake(30, 30));
         }];
+         [self.cameraCaptureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+             make.right.mas_equalTo(self.beautyBtn.mas_left).offset(-15);
+             make.centerY.mas_equalTo(self.mas_centerY);
+             make.size.mas_equalTo(CGSizeMake(30, 30));
+         }];
     }
 
     return self;
@@ -71,6 +79,17 @@
         self.clickOpenBeauty(sender.selected);
     }
 }
+
+#pragma mark - 摄像头开关
+- (void)cameraCaptureBtnAction:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    
+    if (self.clickCameraCapture) {
+        self.clickCameraCapture(sender.selected);
+    }
+}
+
 #pragma mark - 点击镜像
 - (void)mirrorBtnAction:(UIButton *)sender
 {
@@ -130,6 +149,20 @@
     }
 
     return _beautyBtn;
+}
+
+
+
+- (UIButton *)cameraCaptureBtn {
+    if (!_cameraCaptureBtn) {
+         _cameraCaptureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_cameraCaptureBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+        [_cameraCaptureBtn setImage:[UIImage imageNamed:@"live_topTool_video_on"] forState:UIControlStateNormal];
+        [_cameraCaptureBtn addTarget:self action:@selector(cameraCaptureBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_cameraCaptureBtn];
+    }
+
+    return _cameraCaptureBtn;
 }
 
 - (UIButton *)mirrorBtn {
