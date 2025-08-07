@@ -36,6 +36,8 @@ typedef NS_ENUM(NSInteger,VHLiveStatus)
     VHLiveStatusUploadNetworkOK         = 15,       ///<发起端网络环境恢复正常
     VHLiveStatusGetUrlError             = 99,       ///<获取推流地址失败
     VHLiveStatusDirectorError            = 100,     ///<云导播机位推流失败
+    VHLiveV2StatusPushReconnetingError            = 101,     ///推流异常正在进行重新推流
+     VHLiveV2LicenseError            = 102,     ///V2直播license错误
 };
 
 /**
