@@ -134,6 +134,12 @@
 		7C75F54EDF39F2D3773FBE22 /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E26F687E80B8B2BB47A859E /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework */; };
 		C09691F52BA4415200EED661 /* VHDanmu.m in Sources */ = {isa = PBXBuildFile; fileRef = C09691F32BA4415200EED661 /* VHDanmu.m */; };
 		EDE93B43E701F247BFC39F38 /* Pods_VhallSDKDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494BE4CE29A050223829ADDE /* Pods_VhallSDKDemoTests.framework */; };
+		FABE2DB42E45913A00CFBA7B /* VHGoodsConfirmOrderAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE2DAA2E45913A00CFBA7B /* VHGoodsConfirmOrderAlert.m */; };
+		FABE2DB52E45913A00CFBA7B /* VHGoodsDetailAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE2DAE2E45913A00CFBA7B /* VHGoodsDetailAlert.m */; };
+		FABE2DB62E45913A00CFBA7B /* VHGoodsCardAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE2DA82E45913A00CFBA7B /* VHGoodsCardAlert.m */; };
+		FABE2DB72E45913A00CFBA7B /* VHGoodsList.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE2DB12E45913A00CFBA7B /* VHGoodsList.m */; };
+		FABE2DB82E45913A00CFBA7B /* VHGoodsCouponAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE2DAC2E45913A00CFBA7B /* VHGoodsCouponAlert.m */; };
+		FABE2DBD2E4593EF00CFBA7B /* VHChatGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE2DBA2E4593EF00CFBA7B /* VHChatGoodsCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -421,6 +427,20 @@
 		C09691F42BA4415200EED661 /* VHDanmu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHDanmu.h; sourceTree = "<group>"; };
 		D28BA50D1D20871908164F4B /* Pods-VhallSDKDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemoTests.release.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemoTests/Pods-VhallSDKDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F144C26B8E47A7FED450FF44 /* Pods-VhallSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		FABE2DA72E45913A00CFBA7B /* VHGoodsCardAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsCardAlert.h; sourceTree = "<group>"; };
+		FABE2DA82E45913A00CFBA7B /* VHGoodsCardAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsCardAlert.m; sourceTree = "<group>"; };
+		FABE2DA92E45913A00CFBA7B /* VHGoodsConfirmOrderAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsConfirmOrderAlert.h; sourceTree = "<group>"; };
+		FABE2DAA2E45913A00CFBA7B /* VHGoodsConfirmOrderAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsConfirmOrderAlert.m; sourceTree = "<group>"; };
+		FABE2DAB2E45913A00CFBA7B /* VHGoodsCouponAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsCouponAlert.h; sourceTree = "<group>"; };
+		FABE2DAC2E45913A00CFBA7B /* VHGoodsCouponAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsCouponAlert.m; sourceTree = "<group>"; };
+		FABE2DAD2E45913A00CFBA7B /* VHGoodsDetailAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsDetailAlert.h; sourceTree = "<group>"; };
+		FABE2DAE2E45913A00CFBA7B /* VHGoodsDetailAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsDetailAlert.m; sourceTree = "<group>"; };
+		FABE2DB02E45913A00CFBA7B /* VHGoodsList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsList.h; sourceTree = "<group>"; };
+		FABE2DB12E45913A00CFBA7B /* VHGoodsList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsList.m; sourceTree = "<group>"; };
+		FABE2DB92E4593EF00CFBA7B /* VHChatGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChatGoodsCell.h; sourceTree = "<group>"; };
+		FABE2DBA2E4593EF00CFBA7B /* VHChatGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHChatGoodsCell.m; sourceTree = "<group>"; };
+		FABE2DBF2E45966100CFBA7B /* VhallSDKDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VhallSDKDemo.entitlements; sourceTree = "<group>"; };
+		FABE2DC02E45969300CFBA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -633,6 +653,8 @@
 		4E23FCA5294820C900341EA4 /* VHChat */ = {
 			isa = PBXGroup;
 			children = (
+				FABE2DB92E4593EF00CFBA7B /* VHChatGoodsCell.h */,
+				FABE2DBA2E4593EF00CFBA7B /* VHChatGoodsCell.m */,
 				4E23FCA6294820E600341EA4 /* VHChatView.h */,
 				4E23FCA7294820E600341EA4 /* VHChatView.m */,
 				4E23FCA92948421C00341EA4 /* VHChatCell.h */,
@@ -949,6 +971,9 @@
 		4EEEEB71293EE96600538BC2 /* VhallSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				FABE2DC02E45969300CFBA7B /* Info.plist */,
+				FABE2DBF2E45966100CFBA7B /* VhallSDKDemo.entitlements */,
+				FABE2DB32E45913A00CFBA7B /* VHGoods */,
 				C09691F22BA4415200EED661 /* VHDanmu */,
 				4EF8CBC92A5275CE000ACCA6 /* VHPushScreenCard */,
 				4E4F1B402990F7C700979BC7 /* VHAirPlay */,
@@ -1300,6 +1325,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FABE2DAF2E45913A00CFBA7B /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				FABE2DA72E45913A00CFBA7B /* VHGoodsCardAlert.h */,
+				FABE2DA82E45913A00CFBA7B /* VHGoodsCardAlert.m */,
+				FABE2DA92E45913A00CFBA7B /* VHGoodsConfirmOrderAlert.h */,
+				FABE2DAA2E45913A00CFBA7B /* VHGoodsConfirmOrderAlert.m */,
+				FABE2DAB2E45913A00CFBA7B /* VHGoodsCouponAlert.h */,
+				FABE2DAC2E45913A00CFBA7B /* VHGoodsCouponAlert.m */,
+				FABE2DAD2E45913A00CFBA7B /* VHGoodsDetailAlert.h */,
+				FABE2DAE2E45913A00CFBA7B /* VHGoodsDetailAlert.m */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		FABE2DB22E45913A00CFBA7B /* List */ = {
+			isa = PBXGroup;
+			children = (
+				FABE2DB02E45913A00CFBA7B /* VHGoodsList.h */,
+				FABE2DB12E45913A00CFBA7B /* VHGoodsList.m */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		FABE2DB32E45913A00CFBA7B /* VHGoods */ = {
+			isa = PBXGroup;
+			children = (
+				FABE2DAF2E45913A00CFBA7B /* Card */,
+				FABE2DB22E45913A00CFBA7B /* List */,
+			);
+			path = VHGoods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1446,9 +1504,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1502,9 +1564,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1563,9 +1629,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1580,9 +1650,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1641,6 +1715,11 @@
 				4EF15B232AAEAA960082190F /* UIButton+VHConvenient.m in Sources */,
 				4EF334F02A3346E5006838EF /* VHFileDownloadCell.m in Sources */,
 				4E23FC722940676500341EA4 /* VHLoginViewController.m in Sources */,
+				FABE2DB42E45913A00CFBA7B /* VHGoodsConfirmOrderAlert.m in Sources */,
+				FABE2DB52E45913A00CFBA7B /* VHGoodsDetailAlert.m in Sources */,
+				FABE2DB62E45913A00CFBA7B /* VHGoodsCardAlert.m in Sources */,
+				FABE2DB72E45913A00CFBA7B /* VHGoodsList.m in Sources */,
+				FABE2DB82E45913A00CFBA7B /* VHGoodsCouponAlert.m in Sources */,
 				4EED8D3F2955BDC7002913AC /* VHChatCustomCell.m in Sources */,
 				4ECFA82729C2C84E00A141F7 /* VHLotteryLosingView.m in Sources */,
 				4E1D431B29DE9C910099C85C /* AES.m in Sources */,
@@ -1653,6 +1732,7 @@
 				4E23FC6A29404A9E00341EA4 /* UIColor+VUI.m in Sources */,
 				4E0C8E922A53B5B100C1C66C /* VHPushScreenCardAlert.m in Sources */,
 				4E32F4A02951BB9800B5388F /* VHInavRenderAlertView.m in Sources */,
+				FABE2DBD2E4593EF00CFBA7B /* VHChatGoodsCell.m in Sources */,
 				4E2170B52A89CBD9001E751C /* UIButton+VHRadius.m in Sources */,
 				4EF15B292AAEAA960082190F /* VHSlider.m in Sources */,
 				4EE7F2ED2A20816E004FEA0E /* VHRecordListCell.m in Sources */,
@@ -1877,6 +1957,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VhallSDKDemo/VhallSDKDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = S82ZX9394G;
@@ -1887,6 +1968,7 @@
 				);
 				GCC_PREFIX_HEADER = VhallSDKDemo/Header/VhallSDKDemoPCH.h;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VhallSDKDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VHallSaaS;
 				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许使用相机,进行直播的视频采集";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "是否允许使用麦克风,进行直播的音频采集";
@@ -1924,6 +2006,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VhallSDKDemo/VhallSDKDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = S82ZX9394G;
@@ -1934,6 +2017,7 @@
 				);
 				GCC_PREFIX_HEADER = VhallSDKDemo/Header/VhallSDKDemoPCH.h;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VhallSDKDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VHallSaaS;
 				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许使用相机,进行直播的视频采集";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "是否允许使用麦克风,进行直播的音频采集";

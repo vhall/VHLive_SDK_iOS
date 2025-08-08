@@ -38,6 +38,9 @@
 /// 屏幕旋转
 - (void)clickFullIsSelect:(BOOL)isSelect;
 
+/// 点击画中画
+- (void)clickPIP;
+
 /// 是否打开问答
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isQuestion_status:(BOOL)isQuestion_status question_name:(NSString *)questionName;
 

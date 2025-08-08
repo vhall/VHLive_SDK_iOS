@@ -11,6 +11,7 @@
 // 微吼
 #import <VHLiveSDK/VHallApi.h>
 #import <VHInteractive/VHRoom.h>
+#import <VHGoodsSDK/VHGoodsObject.h>
 // 美颜
 #import "VHBeautyHeader.h"
 

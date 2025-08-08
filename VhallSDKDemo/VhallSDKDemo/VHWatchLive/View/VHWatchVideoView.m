@@ -35,6 +35,8 @@
 @property (nonatomic, strong) UILabel *heatLab;
 /// 热度图片
 @property (nonatomic, strong) UIImageView *heatImg;
+/// 开始播放
+@property (nonatomic, strong) UIButton *pipBtn;
 /// 底部背景
 @property (nonatomic, strong) UIView *bottomView;
 /// 渐变色
@@ -124,6 +126,8 @@
     [self.userView addSubview:self.onlineImg];
     [self.userView addSubview:self.heatLab];
     [self.userView addSubview:self.heatImg];
+    
+    [self addSubview:self.pipBtn];
 
     [self addSubview:self.bottomView];
     [self addSubview:self.slider];
@@ -186,6 +190,11 @@
     [self.userView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.right.mas_greaterThanOrEqualTo(_nickNameLab.mas_right).offset(10).priorityHigh();
         make.right.mas_greaterThanOrEqualTo(_heatLab.mas_right).offset(10).priorityHigh();
+    }];
+    
+    [self.pipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.mas_equalTo(0);
+        make.size.mas_equalTo(CGSizeMake(60, 60));
     }];
 
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -343,10 +352,11 @@
     VHLog(@"🍌 === 点击开始播放");
 
     // 判断是直播还是回放
+    [self.moviePlayer setIsOpenPIP:YES];
     if (self.type == VHMovieActiveStateLive) {
-        [self.moviePlayer startPlay:[self playParam]];
+        [self.moviePlayer startPlay:[self playParam] isPIP:YES];
     } else if (self.type == VHMovieActiveStateReplay || self.type == VHMovieActiveStatePlayBack) {
-        [self.moviePlayer startPlayback:[self playParam]];
+        [self.moviePlayer startPlayback:[self playParam] isPIP:YES];
         // 播放从0开始进度条
         [self setValue:0];
     }
@@ -434,7 +444,6 @@
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer playError:(VHSaasLivePlayErrorType)livePlayErrorType info:(NSDictionary *)info
 {
     VHLog(@"播放错误：%@", info);
-    
 
     if (livePlayErrorType == VHSaasPlaySSOKickout) {
         [VHProgressHud showToast:@"被踢出"];
@@ -624,6 +633,33 @@
     }
 }
 
+#pragma mark - 画中画
+/// 即将开启画中画
+- (void)pictureInPictureControllerWillStart {
+    
+}
+/// 已经开启画中画
+- (void)pictureInPictureControllerDidStart {
+    
+}
+/// 开启画中画失败
+/// - Parameter error: 错误信息
+- (void)pictureInPictureWithFailedToStartPictureInPictureWithError:(NSError *)error {
+    
+}
+/// 即将关闭画中画
+- (void)pictureInPictureControllerWillStop {
+    
+}
+/// 已经关闭画中画
+- (void)pictureInPictureControllerDidStop {
+    [self.moviePlayer reconnectPlay];
+}
+/// 关闭画中画且恢复播放界面
+/// - Parameter completionHandler: 恢复是否完成
+- (void)pictureInPictureWithRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^)(BOOL restored))completionHandler {
+}
+
 #pragma mark - 收到虚拟人数消息
 - (void)vhBaseNumUpdateToUpdate_online_num:(NSInteger)update_online_num
                                  update_pv:(NSInteger)update_pv
@@ -687,11 +723,12 @@
 
 - (void)slideTouchEnd:(UISlider *)slider
 {
-    [self.moviePlayer setCurrentPlaybackTime:slider.value];
+    [self.moviePlayer setCurrentPlaybackTime:slider.value];    
 }
 
 - (void)slideValueChanged:(UISlider *)slider
 {
+    
 }
 
 - (void)actionTapGesture:(UITapGestureRecognizer *)sender {
@@ -800,6 +837,13 @@
 
     if ([self.delegate respondsToSelector:@selector(clickFullIsSelect:)]) {
         [self.delegate clickFullIsSelect:self.fullBtn.selected];
+    }
+}
+
+#pragma mark - 点击画中画
+- (void)pipButtonClick {
+    if ([self.delegate respondsToSelector:@selector(clickPIP)]) {
+        [self.delegate clickPIP];
     }
 }
 
@@ -956,6 +1000,16 @@
     }
 
     return _heatImg;
+}
+
+- (UIButton *)pipBtn
+{
+    if (!_pipBtn) {
+        _pipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_pipBtn setImage:[UIImage imageNamed:@"vh_pip_icon"] forState:UIControlStateNormal];
+        [_pipBtn addTarget:self action:@selector(pipButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _pipBtn;
 }
 
 - (UIView *)bottomView {

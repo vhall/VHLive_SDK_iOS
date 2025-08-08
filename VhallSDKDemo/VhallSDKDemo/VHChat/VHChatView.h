@@ -8,7 +8,12 @@
 #import <UIKit/UIKit.h>
 #import "VHChatCustomCell.h"
 
+
 @protocol VHChatViewDelegate <NSObject>
+
+/// 聊天消息
+/// @param msgs 消息详情
+- (void)reciveChatMsg:(NSArray <VHallChatModel *> *)msgs;
 
 /// 收到上下线消息
 /// @param msgs 消息详情
@@ -44,6 +49,10 @@
 /// 点击查看推屏卡片
 /// - Parameter model: 推屏卡片详情
 - (void)clickCheckPushScreenCardModel:(VHPushScreenCardItem *)model;
+
+/// 点击查看商品详情
+/// - Parameter model: 商品详情详情
+- (void)clickCheckGoodsDetailModel:(VHGoodsPushMessageItem *)model;
 
 @end
 
@@ -82,5 +91,9 @@
 /// 收到推屏卡片消息
 /// - Parameter model: 推屏卡片模型
 - (void)chatPushScreenCardModel:(VHPushScreenCardItem *)model;
+
+/// 收到商品消息
+/// - Parameter model: 商品消息模型
+- (void)chatGoodsModel:(VHGoodsPushMessageItem *)model;
 
 @end
