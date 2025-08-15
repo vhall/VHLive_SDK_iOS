@@ -104,6 +104,8 @@
 @property (nonatomic, assign) BOOL isFull;
 @property (nonatomic, assign) BOOL isDocFull;
 @property (nonatomic, assign) BOOL isVideoFull;
+@property (nonatomic, assign) BOOL isBackGroundPlay;
+@property (nonatomic, assign) BOOL isPipStart;
 @end
 
 @implementation VHWatchVC
@@ -115,6 +117,7 @@
     [self clickFullIsSelect:NO];
     // 设为YES则保持常亮，不自动锁屏，默认为NO会自动锁屏
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -551,8 +554,14 @@
 - (void)clickPIP
 {
     if (_watchVideoView) {
+        [_watchVideoView.moviePlayer setIsOpenPIP:YES];
         [_watchVideoView.moviePlayer openPIPSupported];
     }
+}
+
+- (void)clickBackGroundPlay:(BOOL)isSelect
+{
+     self.isBackGroundPlay = isSelect;
 }
 
 #pragma mark 直播已结束回调
@@ -1030,7 +1039,9 @@
 - (void)appWillEnterForeground
 {
     [super appWillEnterForeground];
-
+     if(self.isBackGroundPlay){
+          [_watchVideoView.moviePlayer disableBackgroundAudioPlayback];
+     }
     // 如果是互动状态且当前停止推流了,则恢复旁路
     if (!self.isLive && !_inavView.inavRoom.isPublishing) {
         [self changePlayerIsLive:YES];
@@ -1041,7 +1052,14 @@
 - (void)appDidEnterBackground
 {
     if (_watchVideoView) {
-        [_watchVideoView.moviePlayer openPIPSupported];
+         if ([UIScreen mainScreen].brightness == 0){ //锁屏
+              if(self.isBackGroundPlay){
+                  [_watchVideoView.moviePlayer enableBackgroundAudioPlayback];
+              }
+         }
+         else{
+              [_watchVideoView.moviePlayer openPIPSupported];
+         }
     }
     [super appDidEnterBackground];
 }

@@ -41,6 +41,10 @@
 /// 点击画中画
 - (void)clickPIP;
 
+/// 点击画中画
+- (void)clickBackGroundPlay:(BOOL)isSelect;
+
+
 /// 是否打开问答
 - (void)moviePlayer:(VHallMoviePlayer *)moviePlayer isQuestion_status:(BOOL)isQuestion_status question_name:(NSString *)questionName;
 

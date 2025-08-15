@@ -37,6 +37,8 @@
 @property (nonatomic, strong) UIImageView *heatImg;
 /// 开始播放
 @property (nonatomic, strong) UIButton *pipBtn;
+/// 后台播放
+@property (nonatomic, strong) UIButton *backGroundPlayBtn;
 /// 底部背景
 @property (nonatomic, strong) UIView *bottomView;
 /// 渐变色
@@ -57,6 +59,8 @@
 @property (nonatomic, strong) UIButton *fullBtn;
 /// 弹幕
 @property (nonatomic, strong) VHDanmu *danmu;
+
+@property (nonatomic, assign) BOOL isEnablePlayBack;
 
 // 播放器信息
 /// 当前视频支持的清晰度
@@ -128,7 +132,7 @@
     [self.userView addSubview:self.heatImg];
     
     [self addSubview:self.pipBtn];
-
+     [self addSubview:self.backGroundPlayBtn];
     [self addSubview:self.bottomView];
     [self addSubview:self.slider];
 
@@ -196,6 +200,14 @@
         make.top.right.mas_equalTo(0);
         make.size.mas_equalTo(CGSizeMake(60, 60));
     }];
+     
+     [self.backGroundPlayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+          // 关键：backGroundPlayBtn的右边缘 等于 pipBtn的左边缘 减去10（即左边偏移10像素）
+          make.right.mas_equalTo(self.pipBtn.mas_left).offset(-10);
+          // 顶部与pipBtn对齐（可选，根据需求调整垂直位置）
+          make.top.mas_equalTo(self.pipBtn.mas_top).offset(10);
+          make.size.mas_equalTo(CGSizeMake(40, 40));
+     }];
 
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.mas_equalTo(0);
@@ -350,9 +362,7 @@
 - (void)startPlay
 {
     VHLog(@"🍌 === 点击开始播放");
-
     // 判断是直播还是回放
-    [self.moviePlayer setIsOpenPIP:YES];
     if (self.type == VHMovieActiveStateLive) {
         [self.moviePlayer startPlay:[self playParam] isPIP:YES];
     } else if (self.type == VHMovieActiveStateReplay || self.type == VHMovieActiveStatePlayBack) {
@@ -360,7 +370,6 @@
         // 播放从0开始进度条
         [self setValue:0];
     }
-    
     // 开始播放弹幕
     [self.danmu start];
 }
@@ -636,11 +645,11 @@
 #pragma mark - 画中画
 /// 即将开启画中画
 - (void)pictureInPictureControllerWillStart {
-    
+     [self.moviePlayer setPictureInPictureControls:NO];
 }
 /// 已经开启画中画
 - (void)pictureInPictureControllerDidStart {
-    
+
 }
 /// 开启画中画失败
 /// - Parameter error: 错误信息
@@ -655,9 +664,21 @@
 - (void)pictureInPictureControllerDidStop {
     [self.moviePlayer reconnectPlay];
 }
+
+///画中画模式下点击画中画中播放&暂停按键状态变化回调
+/// - Parameter  （isPlaying为YES表示播放，NO表示暂停）
+- (void)pictureInPicturePlaybackStateDidChange:(BOOL)isPlaying{
+     if(isPlaying){
+          [VHProgressHud showToast:@"开始播放"];
+     }else{
+          [VHProgressHud showToast:@"暂停播放"];
+     }
+}
+
 /// 关闭画中画且恢复播放界面
 /// - Parameter completionHandler: 恢复是否完成
 - (void)pictureInPictureWithRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^)(BOOL restored))completionHandler {
+     completionHandler(YES);
 }
 
 #pragma mark - 收到虚拟人数消息
@@ -847,6 +868,18 @@
     }
 }
 
+- (void)backGroundPlayButtonClick {
+     self.isEnablePlayBack  = !self.isEnablePlayBack ;
+     if ([self.delegate respondsToSelector:@selector(clickBackGroundPlay:)]) {
+          [self.delegate clickBackGroundPlay: self.isEnablePlayBack];
+    }
+     if(self.isEnablePlayBack){
+          [_backGroundPlayBtn setImage:[UIImage imageNamed:@"vh_background_select"] forState:UIControlStateNormal];
+     }else{
+          [_backGroundPlayBtn setImage:[UIImage imageNamed:@"vh_background_play"] forState:UIControlStateNormal];
+     }
+}
+
 #pragma mark - 销毁播放器
 - (void)destroyMP
 {
@@ -1010,6 +1043,18 @@
         [_pipBtn addTarget:self action:@selector(pipButtonClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _pipBtn;
+}
+
+- (UIButton *)backGroundPlayBtn
+{
+      
+    if (!_backGroundPlayBtn) {
+         self.isEnablePlayBack = NO;
+         _backGroundPlayBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_backGroundPlayBtn setImage:[UIImage imageNamed:@"vh_background_play"] forState:UIControlStateNormal];
+        [_backGroundPlayBtn addTarget:self action:@selector(backGroundPlayButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _backGroundPlayBtn;
 }
 
 - (UIView *)bottomView {
