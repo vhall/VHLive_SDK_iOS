@@ -10,7 +10,7 @@
 
 #import "NSString+Size.h"
 #import "CALayer+Convenient.h"
-#define VHSegmentViewWidth 110*VHRateScale
+#define VHSegmentViewWidth 110*kAdaptScale
 #define MAX_TitleNumInWindow 5
 #define SFQRedColor [UIColor colorWithRed:255/255.0 green:92/255.0 blue:79/255.0 alpha:1]
 @interface VHChangeSegmentView()

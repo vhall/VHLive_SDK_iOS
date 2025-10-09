@@ -47,16 +47,9 @@
 - (CGRect)trackRectForBounds:(CGRect)bounds {
     /*! @brief 重写方法-返回进度条的bounds-修改进度条的高度 */
     bounds = [super trackRectForBounds:bounds];
-    return CGRectMake(bounds.origin.x, bounds.origin.y + (bounds.size.height - VHRateScale * 2) / 2, bounds.size.width, VHRateScale *2);
+    return CGRectMake(bounds.origin.x, bounds.origin.y + (bounds.size.height - kAdaptScale * 2) / 2, bounds.size.width, kAdaptScale *2);
 }
-//-(CGRect)thumbRectForBounds:(CGRect)bounds trackRect:(CGRect)rect value:(float)value{
-//
-//    rect.origin.x=rect.origin.x-10;
-//
-//    rect.size.width=rect.size.width+20;
-//
-//    return CGRectInset([super thumbRectForBounds:bounds trackRect:rect value:value],10,10);
-//}
+
 - (void)setValue:(float)value animated:(BOOL)animated {
     
     [super setValue:value animated:animated];

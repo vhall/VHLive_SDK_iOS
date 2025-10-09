@@ -9,6 +9,36 @@
 #ifndef CONSTS_h
 #define CONSTS_h
 
+/*
+   // 1、AppDelegate.mm 修改为.mm
+   // 2、关闭bitcode
+   // 3、plist中 App Transport Security Settings -> Allow Arbitrary Loads 设置为YES
+   // 4、设置以下数据 检查 Bundle ID 即可观看直播
+
+   //接口文档说明： http://www.vhall.com/index.php?r=doc/index/index
+
+ #define DEMO_AppKey         @"替换成您自己的AppKey"        //详见：http://e.vhall.com/home/vhallapi/authlist
+ #define DEMO_AppSecretKey   @"替换成您自己的AppSecretKey"  //AppSecretKey
+ #define DEMO_ActivityId     @"" //活动id    详见：http://www.vhall.com/index.php?r=doc/detail/index&project_id=4&doc_id=27
+ #define DEMO_AccessToken    @"" //发起直播Token 24小时有效 详见：http://www.vhall.com/index.php?r=doc/detail/index&project_id=4&doc_id=71
+ #define DEMO_account        @"" //api注册账号 对应 third_user_id 详见：http://www.vhall.com/index.php?r=doc/detail/index&project_id=4&doc_id=70
+ #define DEMO_password       @"" //密码 对应 pass字段
+
+ */
+//////////⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️发布到Github要删除以下内容 上边定义要去掉注释 重新运行demo工程 重要⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+
+//#define DEMO_ActivityId     [GLEnvs current][@"ActivityId"]
+//#define DEMO_AccessToken    [GLEnvs current][@"AccessToken"]
+//#define DEMO_AppKey         [GLEnvs current][@"AppKey"]
+//#define DEMO_account        [GLEnvs current][@"account"]
+//#define DEMO_password       [GLEnvs current][@"password"]
+//#define DEMO_AppSecretKey   [GLEnvs current][@"secretKey"]
+
+// AppDelegate+DebugUpdate
+// AppDelegate+Evns
+
+////////⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️发布到Github要删除以上内容 重要⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+
 // Log
 #define VHLog(...) NSLog(__VA_ARGS__)
 
@@ -47,6 +77,10 @@
 #define SAFE_BOTTOM                     (isAlien ? 34.f : 0.f)
 // 安全区域-底部高度
 #define SAFE_TOP                        (isAlien ? 20.f : 0.f)
+
+#define SCREEN_SCALE [UIScreen mainScreen].scale
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 // 是否为横屏显示
 #define VH_KScreenIsLandscape           UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)

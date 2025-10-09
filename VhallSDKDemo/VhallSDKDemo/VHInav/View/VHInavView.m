@@ -7,6 +7,7 @@
 
 #import "VHInavRenderAlertView.h"
 #import "VHInavView.h"
+#import "VHBFURender/VHBFURender.h"
 
 @implementation VHInavCell
 

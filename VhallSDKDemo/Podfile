@@ -7,9 +7,9 @@ target 'VhallSDKDemo' do
 
   # Pods for VhallSDKDemo
 
-  pod 'VHLiveSDK', '6.24.0' # 直播
-  pod 'VHLiveSDK_Interactive', '6.24.0' # 互动
-  pod 'VHGoodsSDK', '6.24.0' # 商品
+  pod 'VHLiveSDK', '6.25.0' # 直播
+  pod 'VHLiveSDK_Interactive', '6.25.0' # 互动
+  pod 'VHGoodsSDK', '6.25.0' # 商品
 
 
   pod 'MJRefresh', '~> 3.7.5'
@@ -26,8 +26,10 @@ target 'VhallSDKDemo' do
   pod 'LYEmptyView', '~> 1.3.1'
   pod 'BarrageRenderer', '1.9.1'
 
-  pod 'VHYun_Beautify','1.0.6'
-  pod 'FURenderKit','8.3.0'
+#  pod 'VHYun_Beautify','1.0.6'
+#  pod 'FURenderKit','8.3.0'
+  
+  pod 'VH_Beautify','1.1.0'
 
   target 'VhallSDKDemoTests' do
     inherit! :search_paths

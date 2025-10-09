@@ -18,19 +18,19 @@ typedef void(^OperationClick)(NSInteger index);
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         
-        self.frame = CGRectMake(0, 0, VH_KScreenIsLandscape?Screen_Height:Screen_Width, VH_KScreenIsLandscape?Screen_Width:Screen_Height);
+        self.frame = CGRectMake(0, 0, VH_KScreenIsLandscape?SCREEN_HEIGHT:SCREEN_WIDTH, VH_KScreenIsLandscape?SCREEN_WIDTH:SCREEN_HEIGHT);
     }
     return self;
 }
 - (instancetype)init{
     if (self = [super init]) {
-        self.frame = CGRectMake(0, 0,Screen_Width, Screen_Height);
+        self.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
     }
     return self;
 }
 - (void)alertContent:(CGSize)alertSize AlertType:(AlertViewType)alertType alertString:(NSString *)alertString clickCall:(void(^)(NSInteger index))operation{
     self.click = operation;
-    UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height)];
+    UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     bgview.backgroundColor = [UIColor blackColor];
     bgview.alpha = 0.9;
     bgview.userInteractionEnabled = YES;
@@ -50,10 +50,10 @@ typedef void(^OperationClick)(NSInteger index);
     label.textAlignment =  NSTextAlignmentCenter;
     [contentView addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.offset(VHRateScale * 40.5);
+        make.top.offset(kAdaptScale * 40.5);
         make.centerX.offset(0);
         make.width.equalTo(contentView.mas_width).offset(0);
-        make.height.mas_equalTo(VHRateScale * 22);
+        make.height.mas_equalTo(kAdaptScale * 22);
     }];
     
     //分割线
@@ -61,16 +61,16 @@ typedef void(^OperationClick)(NSInteger index);
     hLine.backgroundColor = [UIColor colorWithHex:@"#CCCCCC"];
     [contentView addSubview:hLine];
     [hLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(VHRateScale * 95.5);
+        make.top.mas_equalTo(kAdaptScale * 95.5);
         make.left.right.offset(0);
-        make.height.mas_equalTo(0.5*VHRateScale);
+        make.height.mas_equalTo(0.5*kAdaptScale);
     }];
     if (alertType == AlertView_One) {
         UIButton *sure = [UIButton creatWithTitle:@"确定" titleFont:16 titleColor:@"#FB3A32" backgroundColor:@"#FFFFFF"];
         sure.tag = 100;
         [sure addTarget:self action:@selector(operation:) forControlEvents:UIControlEventTouchUpInside];
         [contentView addSubview:sure];
-        sure.layer.cornerRadius = 8*VHRateScale;
+        sure.layer.cornerRadius = 8*kAdaptScale;
         [sure mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(hLine.mas_bottom).offset(0);
             make.bottom.right.offset(0);
@@ -83,7 +83,7 @@ typedef void(^OperationClick)(NSInteger index);
         [contentView addSubview:vLine];
         [vLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(hLine.mas_bottom).offset(0);
-            make.width.mas_equalTo(0.5*VHRateScale);
+            make.width.mas_equalTo(0.5*kAdaptScale);
             make.centerX.offset(0);
             make.bottom.offset(0);
         }];
@@ -92,7 +92,7 @@ typedef void(^OperationClick)(NSInteger index);
         [cancel addTarget:self action:@selector(operation:) forControlEvents:UIControlEventTouchUpInside];
         cancel.tag = 101;
         [contentView addSubview:cancel];
-        cancel.layer.cornerRadius = 8*VHRateScale;
+        cancel.layer.cornerRadius = 8*kAdaptScale;
         [cancel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(hLine.mas_bottom).offset(0);
             make.bottom.left.offset(0);
@@ -102,7 +102,7 @@ typedef void(^OperationClick)(NSInteger index);
         sure.tag = 100;
         [contentView addSubview:sure];
         [sure addTarget:self action:@selector(operation:) forControlEvents:UIControlEventTouchUpInside];
-        sure.layer.cornerRadius = 8*VHRateScale;
+        sure.layer.cornerRadius = 8*kAdaptScale;
         [sure mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(hLine.mas_bottom).offset(0);
             make.bottom.right.offset(0);

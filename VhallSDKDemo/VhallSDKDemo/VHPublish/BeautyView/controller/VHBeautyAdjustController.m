@@ -17,6 +17,8 @@
 #import "VHChangeSegmentView.h"
 #import "UIColor+VUI.h"
 #import "UILabel+VHConvenient.h"
+#import "VHBFURender/VHBeautifyEffectList.h"
+#import "VHAlertView.h"
 
 static NSString * const effectCell = @"VHBeautyEffectCell";
 static NSString *const filterCell = @"VHBeautyFilterCell";
@@ -82,6 +84,7 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
         [self hiddenSliderOperation:NO];
         [self updateSliderProgressValue];
     }
+     
     [VHSaveBeautyTool closeBeauty:self.beautyEffectArray[self.beautyType] beautifyKit:self.beautyModule closeBeautyEffect:!self.isEnable];
   
 }
@@ -98,12 +101,12 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(0);;
         make.right.offset(0);
-        make.width.mas_equalTo(VH_KScreenIsLandscape?VHRateScale*292:Screen_Width);
+        make.width.mas_equalTo(VH_KScreenIsLandscape?kAdaptScale*292:SCREEN_WIDTH);
         if (VH_KScreenIsLandscape) {
             make.top.offset(0);
         }else{
             make.left.offset(0);
-            make.height.mas_equalTo(VHRateScale*206);
+            make.height.mas_equalTo(kAdaptScale*206);
         }
     }];
     [self setupTopView];
@@ -119,7 +122,7 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
         make.height.mas_equalTo(kVHBeautyTopHeight);
         make.top.left.right.offset(0);
     }];
-    VHChangeSegmentView *segementView = [[VHChangeSegmentView alloc] initWithFrame:CGRectMake(22*VHRateScale, 0, VHRateScale*110, VHRateScale *45) titles:@[@"美颜",@"滤镜"] clickBlick:^(NSInteger index) {
+    VHChangeSegmentView *segementView = [[VHChangeSegmentView alloc] initWithFrame:CGRectMake(22*kAdaptScale, 0, kAdaptScale*110, kAdaptScale *45) titles:@[@"美颜",@"滤镜"] clickBlick:^(NSInteger index) {
         NSLog(@"点击的第%ld个",(long)index);
         [self changeSegment:index -1];
     }];
@@ -136,17 +139,20 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
     [self.topView addSubview:reset];
     [reset addTarget:self action:@selector(alert) forControlEvents:UIControlEventTouchUpInside];
     [reset mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.offset(-22*VHRateScale);
+        make.right.offset(-22*kAdaptScale);
         make.height.mas_equalTo(20);
         make.width.mas_equalTo(33);
         make.centerY.offset(0);
     }];
+    //[reset setImage:BundleUIImage(@"clockwiserotation") forState:UIControlStateNormal];
+    //[reset setDefaultImageTitleStyleWithSpacing:5];
+    
     UIImageView *resetIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"clockwiserotation"]];
     [self.topView addSubview:resetIcon];
     [resetIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(reset.mas_left).offset(-5);
         make.centerY.offset(0);
-        make.width.height.mas_equalTo(15*VHRateScale);
+        make.width.height.mas_equalTo(15*kAdaptScale);
     }];
     
 }
@@ -217,29 +223,28 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
     self.sliderView.hidden = YES;
     self.sliderView.minimumValue = 0.0;
     self.sliderView.maximumValue = 100.0;
+    
     [self.sliderView setThumbImage:[UIImage imageNamed:@"full-brush"] forState:UIControlStateNormal];
     [self.sliderView setThumbImage:[UIImage imageNamed:@"full-brush"] forState:UIControlStateHighlighted];;
-    //self.sliderView.thumbTintColor = [UIColor colorWithHex:@"#FB3A32"];
     self.sliderView.minimumTrackTintColor = [UIColor colorWithHex:@"#FB3A32"];
     self.sliderView.maximumTrackTintColor = [UIColor colorWithHex:@"#D8D8D8"];
     [self.contentView addSubview:self.sliderView];
-    __weak __typeof(self)weakSelf = self;
+     __weak typeof(self) weak_self = self;
     self.sliderView.valueChanged = ^(VHSlider *slider) {
         if ([slider.valueText floatValue] > 0) {
             slider.valueText = [NSString stringWithFormat:@"+%.0f", slider.value];
         }else{
             slider.valueText = [NSString stringWithFormat:@"%.0f", slider.value];
         }
-        NSLog(@"slidervalue====%f",slider.value);
-        [weakSelf sliderValueChange:slider.value];
-        [weakSelf updateLeftRightSliderView:slider.value];
+        [weak_self sliderValueChange:slider.value];
+        [weak_self updateLeftRightSliderView:slider.value];
     };
     [self.sliderView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(kVHBeautyTopHeight+VHRateScale*14);
+        make.top.mas_equalTo(kVHBeautyTopHeight+kAdaptScale*14);
         make.height.mas_equalTo(kVHSliderHeight);
         make.left.offset(30);
         make.right.offset(-60);
-        make.height.mas_equalTo(VHRateScale * 20);
+        make.height.mas_equalTo(kAdaptScale * 20);
     }];
 }
 #pragma mark ---滑块值
@@ -250,28 +255,26 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
             VHBeautyModel *model = self.beautyConfig[self.beautyEffectArray[self.beautyType][self.beauty_Index].name];
             NSString *clickName = self.beautyEffectArray[self.beautyType][self.beauty_Index].name;
             if ([clickName isEqual:VH_Effect_BlurLevel]) {
-                //磨皮为[0,6]:显示[0,100]
+                // 磨皮为[0,6]:显示[0,100]
                 model.currentValue = value/100 *6;
-            }else if ([clickName isEqual:VH_Effect_IntensityForeheadV2] || [clickName isEqual:VH_Effect_IntensityNoseV2] || [clickName isEqual:VH_Effect_IntensityMouthV2]){
-                
-                //额头,鼻子，嘴巴[0,1]，显示是[-100,100],0.5
-             model.currentValue = (value + 100)/200;
-            }else{
-                model.currentValue = value/100;//更新模型里面的值
+            } else if ([clickName isEqual:VH_Effect_ColorLevel] || [clickName isEqual:VH_Effect_RedLevel]){
+                // 美白 红润
+                model.currentValue = value/100 *2;
+            } else if ([clickName isEqual:VH_Effect_IntensityChin] || [clickName isEqual:VH_Effect_IntensityForeheadV2] || [clickName isEqual:VH_Effect_IntensityMouthV2] || [clickName isEqual:VH_Effect_IntensityEyeSpace]  || [clickName isEqual:VH_Effect_IntensityEyeRotate]  || [clickName isEqual:VH_Effect_IntensityLongNose]  || [clickName isEqual:VH_Effect_IntensityPhiltrum]  || [clickName isEqual:VH_Effect_BrowHeight] || [clickName isEqual:VH_Effect_BrowSpace] || [clickName isEqual:VH_Effect_IntensityLipThick] || [clickName isEqual:VH_Effect_BrowThick] || [clickName isEqual:VH_Effect_EyeHeight] || [clickName isEqual:VH_Effect_IntensityNoseV2]){
+                // 额头,鼻子，嘴巴[0,1]，显示是[-100,100],0.5
+                model.currentValue = (value + 100)/200;
+            } else {
+                model.currentValue = value / 100;//更新模型里面的值
             }
-           
+
             [self.beautyModule setEffectKey:model.effectName toValue:@(model.currentValue)];
         }
             break;
         case BeautyType_Filter:{
             VHBeautyModel *model = self.beautyConfig[self.beautyEffectArray[self.beautyType][self.filter_Index].name];
             model.currentValue = value/100;//更新模型里面的值
-//            eff_key_FU_FilterName
-//            [self gengeralEffect:eff_key_FU_FilterName value:model.effectName];
-//            [self gengeralEffect:eff_key_FU_FilterLevel value:@(value/100)];
-            
-            [self.beautyModule setEffectKey:eff_key_FU_FilterName toValue:model.effectName];
-            [self.beautyModule setEffectKey:eff_key_FU_FilterLevel toValue:@(value/100)];
+            [self.beautyModule setEffectKey:VH_Filter_Name toValue:model.effectName];
+            [self.beautyModule setEffectKey:VH_Filter_Level toValue:@(value/100)];
         }
             break;
         default:
@@ -300,18 +303,16 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
     self.collectionView.bounces = YES;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
-//    self.collectionView.backgroundColor = UIColor.yellowColor;
     [self.contentView addSubview:self.collectionView];
     [self.collectionView registerClass:[VHBeautyEffectCell class] forCellWithReuseIdentifier:effectCell];
     [self.collectionView registerClass:[VHSwitchCell class] forCellWithReuseIdentifier:switchEffectCell];
     [self.collectionView registerClass:[VHBeautyFilterCell class] forCellWithReuseIdentifier:filterCell];
-    self.collectionView.contentInset = UIEdgeInsetsMake(0, VHRateScale * 22, 0, VHRateScale * 22);
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, kAdaptScale * 22, 0, kAdaptScale * 22);
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(0);
         make.right.offset(0);
-        //make.top.mas_equalTo(self.sliderView.mas_bottom).offset(VHRateScale *14);
-        make.top.offset(kVHBeautyTopHeight+(14*VHRateScale));
-        VH_KScreenIsLandscape?make.bottom.offset(0):make.height.offset(VHRateScale * 46);
+        make.top.offset(kVHBeautyTopHeight+(14*kAdaptScale));
+        VH_KScreenIsLandscape?make.bottom.offset(0):make.height.offset(kAdaptScale * 46);
     }];
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -410,16 +411,26 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
         self.sliderView.minimumValue = model.minValue * 100;
         self.sliderView.maximumValue = model.maxValue * 50/3;
         self.sliderView.value = model.currentValue * 50/3;
-    }else if ([clickName isEqual:VH_Effect_IntensityForeheadV2] || [clickName isEqual:VH_Effect_IntensityNoseV2] || [clickName isEqual:VH_Effect_IntensityMouthV2]){
+    } else if ([clickName isEqual:VH_Effect_ColorLevel]  || [clickName isEqual:VH_Effect_RedLevel]) {
+        self.sliderView.minimumTrackTintColor = [UIColor colorWithHex:@"#FB3A32"];
+        self.sliderView.maximumTrackTintColor = [UIColor colorWithHex:@"#D8D8D8"];
+        self.midDotView.hidden = YES;
+        self.adjustView.hidden = YES;
+        //磨皮为[0,6]:显示[0,100]
+        self.sliderView.minimumValue = model.minValue * 100;
+        self.sliderView.maximumValue = model.maxValue * 50;
+        self.sliderView.value = model.currentValue * 50;
+    } else if ([clickName isEqual:VH_Effect_IntensityChin] || [clickName isEqual:VH_Effect_IntensityForeheadV2] || [clickName isEqual:VH_Effect_IntensityMouthV2] || [clickName isEqual:VH_Effect_IntensityEyeSpace]  || [clickName isEqual:VH_Effect_IntensityEyeRotate]  || [clickName isEqual:VH_Effect_IntensityLongNose]  || [clickName isEqual:VH_Effect_IntensityPhiltrum]  || [clickName isEqual:VH_Effect_BrowHeight] || [clickName isEqual:VH_Effect_BrowSpace] || [clickName isEqual:VH_Effect_IntensityLipThick] || [clickName isEqual:VH_Effect_BrowThick] || [clickName isEqual:VH_Effect_EyeHeight] || [clickName isEqual:VH_Effect_IntensityNoseV2]){
         self.sliderView.minimumTrackTintColor = [UIColor colorWithHex:@"#D8D8D8"];
         self.sliderView.maximumTrackTintColor = [UIColor colorWithHex:@"#D8D8D8"];
         self.midDotView.hidden = NO;
         self.adjustView.hidden = NO;
-        //额头,鼻子，嘴巴[0,1]，显示是[-100,100],0.5
+        // 额头,鼻子，嘴巴[0,1]，显示是[-100,100],0.5
         self.sliderView.minimumValue = model.minValue * 100 - 100;
         self.sliderView.maximumValue = model.maxValue * 100;
         self.sliderView.value = (model.currentValue - 0.5) * 200;
-    }else{
+
+    } else {
         self.midDotView.hidden = YES;
         self.adjustView.hidden = YES;
         self.sliderView.minimumTrackTintColor = [UIColor colorWithHex:@"#FB3A32"];
@@ -428,10 +439,10 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
         self.sliderView.maximumValue = model.maxValue * 100;
         self.sliderView.value = model.currentValue * 100;
     }
-   
+    
     if (model.currentValue > 0 && self.sliderView.value >0) {
         self.sliderView.valueText = [NSString stringWithFormat:@"+%.0f",self.sliderView.value];
-    }else{
+    } else {
         self.sliderView.valueText = [NSString stringWithFormat:@"%.0f",self.sliderView.value];
     }
     switch (self.beautyType) {
@@ -443,10 +454,8 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
             break;
         case BeautyType_Filter:{
             VHBeautyModel *model = self.beautyConfig[self.beautyEffectArray[self.beautyType][self.filter_Index].name];
-//            [self gengeralEffect:eff_key_FU_FilterName value:model.effectName];
-//            [self gengeralEffect:eff_key_FU_FilterLevel value:@(model.currentValue)];
-            [self.beautyModule setEffectKey:eff_key_FU_FilterName toValue:model.effectName];
-            [self.beautyModule setEffectKey:eff_key_FU_FilterLevel toValue:@(model.currentValue)];
+            [self.beautyModule setEffectKey:VH_Filter_Name toValue:model.effectName];
+            [self.beautyModule setEffectKey:VH_Filter_Level toValue:@(model.currentValue)];
         }
         default:
             break;
@@ -462,55 +471,57 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
     self.adjustView.hidden = YES;
     [self.adjustView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.offset(0);
-        make.height.mas_equalTo(VHRateScale*2);
+        make.height.mas_equalTo(kAdaptScale*2);
         make.width.mas_equalTo(0);
-        make.centerY.offset(0.5*VHRateScale);
+        make.centerY.offset(0.5*kAdaptScale);
     }];
     //固定小红点
     self.midDotView = [[UIView alloc] init];
     self.midDotView.layer.backgroundColor = [UIColor colorWithHex:@"#FB3A32"].CGColor;
     self.midDotView.hidden = YES;
-    [self.midDotView radiusTool:VHRateScale*3 borderWidth:VHRateScale*3 borderColor:[UIColor colorWithHex:@"#FB3A32"]];
+    [self.midDotView radiusTool:kAdaptScale*3 borderWidth:kAdaptScale*3 borderColor:[UIColor colorWithHex:@"#FB3A32"]];
     [self.sliderView addSubview:self.midDotView];
     [self.midDotView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(VHRateScale*6);
-        make.center.offset(0.5*VHRateScale);
+        make.width.height.mas_equalTo(kAdaptScale*6);
+        make.center.offset(0.5*kAdaptScale);
     }];
     
 }
+
 - (void)updateLeftRightSliderView:(float)value{
     [self.sliderView bringSubviewToFront:self.midDotView];
     [self.sliderView bringSubviewToFront:self.adjustView];
-    NSLog(@"value=====%f",value);
     [self.adjustView mas_remakeConstraints:^(MASConstraintMaker *make) {
         //根据左滑动(right+width),右滑动(left+width)
         if (value < 0.0f) {
-            make.width.mas_equalTo(self.sliderView.width *0.5 *fabsf(value/100) - 5*VHRateScale);
+            make.width.mas_equalTo(self.sliderView.width *0.5 *fabsf(value/100) - 5*kAdaptScale);
             make.right.equalTo(self.midDotView.mas_left).offset(0);
         }else{
-            make.width.mas_equalTo(self.sliderView.width * 0.5 *fabsf(value/100) - 5*VHRateScale);
+            make.width.mas_equalTo(self.sliderView.width * 0.5 *fabsf(value/100) - 5*kAdaptScale);
             make.left.equalTo(self.midDotView.mas_right).offset(0);
         }
-        make.height.mas_equalTo(VHRateScale * 2);
-        make.centerY.offset(0.5*VHRateScale);
+        make.height.mas_equalTo(kAdaptScale * 2);
+        make.centerY.offset(0.5*kAdaptScale);
     }];
 }
+
 #pragma mark ----根据选择的美颜进行UI布局的调整
 - (void)hiddenSliderOperation:(BOOL)isHidden{
     self.sliderView.hidden = isHidden;
     
     [self.collectionView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.offset(isHidden?(kVHBeautyTopHeight+(20*VHRateScale)):(kVHBeautyTopHeight+kVHSliderHeight+VHRateScale*28));//
-        make.left.offset(VHRateScale * 0);
-        make.right.offset(-VHRateScale *0);
-        VH_KScreenIsLandscape?make.bottom.offset(0): make.height.mas_equalTo((self.beautyType == BeautyType_Beauty)?VHRateScale * 46:VHRateScale * 85);
+        make.top.offset(isHidden?(kVHBeautyTopHeight+(20*kAdaptScale)):(kVHBeautyTopHeight+kVHSliderHeight+kAdaptScale*28));//
+        make.left.offset(kAdaptScale * 0);
+        make.right.offset(-kAdaptScale *0);
+        VH_KScreenIsLandscape?make.bottom.offset(0): make.height.mas_equalTo((self.beautyType == BeautyType_Beauty)?kAdaptScale * 46:kAdaptScale * 85);
     }];
 }
+
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self saveBeautyConfigModel];
 }
-///写入缓存
+// 写入缓存
 - (void)saveBeautyConfigModel{
     [VHSaveBeautyTool writeCurrentBeautyEffectConfig:self.beautyConfig];
     //记录美颜和滤镜的值
@@ -522,4 +533,3 @@ static NSString * const switchEffectCell = @"VHSwitchCell";
     NSLog(@"%s", __FUNCTION__);
 }
 @end
-

@@ -11,7 +11,8 @@
 #import "VHPublishVC.h"
 #import "VHSpeedMonitor.h"
 #import "VHSliderView.h"
-
+#import "FURenderKit/FUBeauty.h"
+#import "VHBFURender/VHBFURender.h"
 #import "VHBeautyView.h"
 #import "VHBeautyAdjustController.h"
 
@@ -297,7 +298,7 @@
 //        _livePublish = [[VHallLivePublish alloc] initWithConfig:config];
         __weak __typeof(self)weakSelf = self;
         config.beautifyFilterEnable = NO;
-        config.advancedBeautifyEnable = YES;
+        config.advancedBeautifyEnable = NO;
 
          if(self.isV2Live){
               self.beautKit = [VHBeautifyKit beautifyManagerWithModuleClass:[VHBFURender class] faceBundlePath:@""];
@@ -305,6 +306,7 @@
                  __strong __typeof(weakSelf)self = weakSelf;
                  if(error) {
                       [self.beautKit enable];
+
                      [VHProgressHud showToast:[NSString stringWithFormat:@"⚠️美颜信息 : %@", error]];
                  } else {
                      VHLog(@"%@",self.beautKit.enable ? @"高级美颜开启" : @"高级美颜未开启");

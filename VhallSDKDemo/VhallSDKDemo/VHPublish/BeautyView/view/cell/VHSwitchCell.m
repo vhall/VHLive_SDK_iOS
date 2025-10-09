@@ -21,13 +21,16 @@
 - (void)setupContentView{
     UIView *bgView = [[UIView alloc] init];
     bgView.userInteractionEnabled = YES;
+    
     [self.contentView addSubview:bgView];
     [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.offset(0);//28*16
-        make.width.mas_equalTo(VHRateScale*46);
-        make.height.mas_equalTo(VHRateScale*26);
+        make.width.mas_equalTo(kAdaptScale*46);
+        make.height.mas_equalTo(kAdaptScale*26);
     }];
+    
     self.cellSwitch.transform = CGAffineTransformMakeScale(0.6, 0.6);
+    
     [bgView addSubview:self.cellSwitch];
     [self.cellSwitch mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.right.left.offset(0);
