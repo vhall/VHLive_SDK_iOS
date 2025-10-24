@@ -1972,7 +1972,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/VhallSDKDemo/VHLib/WeChatPay",
 				);
-				MARKETING_VERSION = 6.25.0;
+				MARKETING_VERSION = 6.26.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.cyx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2021,7 +2021,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/VhallSDKDemo/VHLib/WeChatPay",
 				);
-				MARKETING_VERSION = 6.25.0;
+				MARKETING_VERSION = 6.26.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.cyx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
