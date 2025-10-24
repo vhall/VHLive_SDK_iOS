@@ -101,12 +101,23 @@
 
 #pragma mark - 使用用户系统相关功能需登录SDK
 /*!
- *  账号密码登录
+ *  账号密码登录. 无需进行三方用户升级。适用于使用SDK进行推流发起
  *  @param aAccount         账号  需服务器调用微吼注册API 注册该用户账号密码
  *  @param aPassword        密码
  *  @param aSuccessBlock    成功的回调
  *  @param aFailureBlock    失败的回调
- *
+ */
++ (void)login:(NSString *)aAccount
+                password:(NSString *)aPassword
+                 success:(void (^)(void))aSuccessBlock
+                 failure:(void (^)(NSError *error))aFailureBlock;
+
+/*!
+ *  账号密码登录. 需要将子账号升级为三方用户
+ *  @param aAccount         账号 需服务器调用微吼注册API 注册该用户账号密码
+ *  @param aPassword        密码
+ *  @param aSuccessBlock    成功的回调
+ *  @param aFailureBlock    失败的回调
  */
 + (void)loginWithAccount:(NSString *)aAccount
                 password:(NSString *)aPassword

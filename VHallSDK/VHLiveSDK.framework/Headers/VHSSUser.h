@@ -56,6 +56,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param failureBlock 失败回调
 + (void)getAuthCodeWithAccount:(NSString *)account type:(NSInteger)accountType sendId:(NSString *)scene_id bizId:(NSString *)bizId sucess:(void (^)(void))sucessBlock failure:(void (^)(NSError *error))failureBlock;
 
+/// 账号密码登录
+/// @param account 账号：手机号/邮箱
+/// @param psw 密码
+/// @param sucessBlock 成功回调
+/// @param failureBlock 失败回调
++ (void)login:(NSString *)account passWord:(NSString *)psw sucess:(void (^)(VHSSUserModel *userInfo))sucessBlock failure:(void (^)(NSError *error))failureBlock;
+
 /// 账号密码登录/账号验证码登录
 /// @param account 账号：手机号/邮箱
 /// @param psw 密码/验证码

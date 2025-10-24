@@ -153,7 +153,10 @@
     [VHProgressHud showLoading];
 
     __weak __typeof(self) weakSelf = self;
-    [VHallApi loginWithAccount:DEMO_Setting.account
+     
+  //  1: login 账号登录方法，控制台账号直接登录。适用于直播推流发起端
+  //  2: loginWithAccount 为子账号升级为三方账号使用方法
+    [VHallApi login:DEMO_Setting.account
                       password:DEMO_Setting.password
                        success:^{
         [VHProgressHud hideLoading];
