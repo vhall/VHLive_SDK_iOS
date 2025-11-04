@@ -30,19 +30,11 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, '10.0'
 
   spec.source          = { :git => "https://github.com/vhall/VHLive_SDK_iOS.git", :tag => spec.version.to_s}
-
-  spec.vendored_frameworks = 'VHallSDK/VHVss.framework','VHallSDK/VHLiveSDK.framework'
-
+  spec.vendored_frameworks = 'VHallSDK/VhallLiveBaseApi.framework', 'VHallSDK/VHLiveSDK.framework'
   spec.frameworks   = "AVFoundation", "VideoToolbox","OpenAL","CoreMedia","CoreTelephony" ,"OpenGLES" ,"MediaPlayer" ,"AssetsLibrary","QuartzCore" ,"JavaScriptCore","Security"
   
   spec.pod_target_xcconfig = {
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
     'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
   }
-
-  spec.dependency 'VHYun_IM', 
-  spec.dependency 'VHYun_LSS', 
-  spec.dependency 'VHYun_OPS', 
-  spec.dependency 'VHYun_RTC', 
-
 end
