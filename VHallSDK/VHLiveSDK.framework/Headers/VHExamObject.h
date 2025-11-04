@@ -8,7 +8,7 @@
 
 #import "VHallBasePlugin.h"
 #import "VHallRawBaseModel.h"
-#import <VHCore/VHMessage.h>
+#import "VHMessage.h"
 
 // 答题前置条件检查
 @interface VHExamUserFormCheckModel : VHallRawBaseModel

@@ -132,7 +132,6 @@ NS_ASSUME_NONNULL_BEGIN
                                 success:(void (^)(VHWebinarBaseInfo *baseInfo))success
                                    fail:(void (^)(NSError *error))fail;
 
-
 /// 获取活动权限检测
 /// @param webinarId 活动id 1、传活动id时，返回活动id+活动创建者相关的配置项信息 2、不传活动id时，获取登录用户的配置项信息
 /// @param webinar_user_id 活动发起者用户id，有webinar_id时，必传
@@ -231,9 +230,6 @@ NS_ASSUME_NONNULL_BEGIN
                             success:(void (^)(BOOL isHaveStream))success
                                fail:(void (^)(NSError *error))fail;
 
-
-// 内部接口
-+ (BOOL)isEnableBeauty;
 @end
 
 @protocol VHWebinarInfoDelegate <NSObject>

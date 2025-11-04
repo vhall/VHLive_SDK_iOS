@@ -7,11 +7,9 @@
 //
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
-
 #import "VHallConst.h"
+#import "VHPublishConfig.h"
 #import "VHWebinarInfo.h"
-#import <VHLSS/VHPublishConfig.h>
-
 @protocol VHallLivePublishDelegate;
 @interface VHallLivePublish : NSObject
 
@@ -33,25 +31,11 @@
 - (instancetype)initWithBeautyConfig:(VHPublishConfig *)config
                          handleError:(void (^)(NSError *error))handle;
 
-/// V2版本直播SDK
-/// @param config config参数
-///@param licenseUrl
-///@param licenseKey
-/// @param handle 设置结果
-- (instancetype)initWithLiveV2Config:(VHPublishConfig *)config
-                         andvancedBeautify:(Class)module
-                         licenseUrl:(NSString*)licenseUrl
-                         licenseKey:(NSString*)licenseKey
-                         handleError:(void (^)(NSError *error))handle;
-
 /// 开始视频采集 显示视频预览
 - (BOOL)startVideoCapture;
 
 /// 停止视频采集 关闭视频预览
 - (BOOL)stopVideoCapture;
-
-/// 停止视频采集 关闭视频预览
-- (BOOL)stopVideoCaptureV2:(UIImage*)image;
 
 /// 开始直播
 /// @param param
