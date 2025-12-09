@@ -7,7 +7,6 @@
 
 #import "VHInavAlertView.h"
 
-/// 立即购买
 typedef void(^ClickPayBtnBlock)(VHGoodsListItem *item);
 
 @interface VHGoodsDetailAlert : VHInavAlertView
@@ -15,7 +14,7 @@ typedef void(^ClickPayBtnBlock)(VHGoodsListItem *item);
 /// 商品详情
 @property (nonatomic, strong) VHGoodsListItem *item;
 
-/// 立即购买
+
 @property (nonatomic, copy) ClickPayBtnBlock clickPayBtnBlock;
 
 /// 显示详情弹窗

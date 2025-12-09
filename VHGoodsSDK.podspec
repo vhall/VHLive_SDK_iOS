@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   
   spec.name         = 'VHGoodsSDK'
-  spec.version      = '6.26.0'
+  spec.version      = '6.27.0'
 
   spec.summary      = "VHall iOS SDK #{spec.name.to_s}"
   spec.homepage     = 'https://www.vhall.com'

@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger is_open;      ///<是否公开,默认0为公开，1为不公开
 @property (nonatomic, assign) NSInteger webinar_type;       ///<1 音频 2 视频 3 互动
 @property (nonatomic, assign) NSInteger verify;       ///<验证类别，0 无验证，1 密码，2 白名单，3 付费活动, 4 F码, 5 报名表单
-@property (nonatomic, copy) NSString *fee;       ///<付费金额
+@property (nonatomic, copy) NSString *fee;       ///<金额
 @property (nonatomic, copy) NSString *password;       ///<观看密码
 @property (nonatomic, assign) NSInteger type;       ///<1为直播，2为预约,3为结束
 @property (nonatomic, assign) NSInteger is_custom;       ///<是否定制，1为定制

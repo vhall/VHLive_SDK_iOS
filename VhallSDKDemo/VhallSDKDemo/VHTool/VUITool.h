@@ -97,6 +97,9 @@ extern NSString *VH_MB_ASSIST;
 /// - Parameter strLenth: 字符串长度
 + (NSString *)getSubStr:(NSString *)str strLenth:(int)strLenth;
 
+
++ (NSString *)getNewUUID;
+
 /// 处理表情为空串
 /// - Parameter text: 字符串
 + (NSString *)disable_emoji:(NSString *)str;

@@ -122,7 +122,16 @@
     self.priceLab.hidden = [VUITool isBlankString:item.discount_price] && [VUITool isBlankString:item.price];
     
     // 设置self.priceLab的文本为item的折扣价格，格式为¥xxx
-    self.priceLab.attributedText = [VUITool vhPriceToString:[NSString stringWithFormat:@"¥%@", [VUITool isBlankString:item.discount_price] ? item.price : item.discount_price]];
+     if(item.covered_status == 1){
+          self.priceLab.attributedText = [VUITool vhPriceToString:[NSString stringWithFormat:@"¥%@", item.covered_price]];
+     }
+     else{
+          self.priceLab.attributedText = [VUITool vhPriceToString:[NSString stringWithFormat:@"¥%@", [VUITool isBlankString:item.discount_price] ? item.price : item.discount_price]];
+     }
+     
+     if(item.sale_status == 0){
+          self.priceLab.attributedText = [VUITool vhPriceToString:[NSString stringWithFormat:@"售罄"]];
+     }
 
     // 使用动画将卡片推入屏幕
     [UIView animateWithDuration:0.5 animations:^{

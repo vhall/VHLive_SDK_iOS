@@ -59,7 +59,7 @@
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *lottery_publisher_id;
 @property (nonatomic, copy) NSString *lottery_winners;              ///<中奖人id,逗号隔开的
-
+@property (nonatomic, assign) NSInteger submit_command;             ///<是否提交过口令抽奖
 @property (nonatomic, assign) NSInteger actual_lottery_number;      ///<实际中奖人数
 @property (nonatomic, assign) NSInteger publish_winner;             ///<抽奖结束后是否显示中奖名单 1: 显示
 @property (nonatomic, assign) NSInteger is_new;                     ///<是否为新版抽奖 1：是

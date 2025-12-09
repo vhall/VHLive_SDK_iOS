@@ -11,12 +11,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface VHSSGoodsAPI : NSObject
 
-/// 在线活动商品列表(发起/观看端)
+/// 在线活动sp列表(发起/观看端)
 /// - Parameters:
 ///   - status: 状态(1. 上架 2.上架及推送上架). 不传默认查询所有
 ///   - success: 成功
 ///   - fail: 失败
 + (void)goodsGetOnlineListWithStatus:(NSInteger)status success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
+
+//// 获取CDN在线sp列表
+/// - Parameters:
+///   - cdn:
+///   - success: 成功
+///   - fail: 失败
++ (void)goodsGetOnlineListFromCDN:(NSString*)cdn success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
 
 /// 获取活动设置
 /// - Parameters:
@@ -32,14 +39,33 @@ NS_ASSUME_NONNULL_BEGIN
 ///   - fail: 失败
 + (void)goodsPartnerWithWithWebinarId:(NSString *)webinar_id success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
 
-/// 获取商品详情
+/// 获取sp详情
 /// - Parameters:
-///   - goods_id: 商品id
+///   - goods_id: sp id
 ///   - success: 成功
 ///   - fail: 失败
 + (void)goodsWebinarOnlineGoodsInfoWithGoodsId:(NSString *)goods_id success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
 
-/// 获取我的订单信息
+/// - Parameters:
+///   - switch_id: 场次ID
+///     buy_type 类型
+///   - third_user_id: 三方用户ID
+///   - username: 姓名
+///   - phone: 手机号
+///   - remark: 留言备注
+///   - goods_id: ID
+///   - quantity: 数量
+///   - pay_channel:
+///   - service_code:
+///   - channel_source:
+///   - pay_amount:
+///   - coupon_user_ids: 
+///   - success: 成功
+///   - fail: 失败
++ (void)goodsCreateOtherWithSwitchId:(NSString *)switch_id buy_type:(NSInteger)buy_type third_user_id:(NSString *)third_user_id username:(NSString *)username phone:(NSString *)phone remark:(NSString *)remark goods_id:(NSString *)goods_id quantity:(NSInteger)quantity pay_channel:(NSString *)pay_channel service_code:(NSString *)service_code channel_source:(NSString *)channel_source pay_amount:(NSString *)pay_amount coupon_user_ids:(NSArray *)coupon_user_ids success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
+
+
+/// 获取信息
 /// - Parameters:
 ///   - order_no: 订单号
 ///   - success: 成功
@@ -49,8 +75,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 可用优惠券列表
 /// - Parameters:
 ///   - webinar_id: 活动id
-///   - goods_id: 商品id
-///   - goods_num: 商品数量
+///   - goods_id: id
+///   - goods_num: 数量
 ///   - success: 成功
 ///   - fail: 失败
 + (void)couponAvailableListWithWebinarId:(NSString *)webinar_id goods_id:(NSString *)goods_id goods_num:(NSString *)goods_num success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
@@ -58,8 +84,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 不可用优惠券列表
 /// - Parameters:
 ///   - webinar_id: 活动id
-///   - goods_id: 商品id
-///   - goods_num: 商品数量
+///   - goods_id: id
+///   - goods_num: 数量
 ///   - success: 成功
 ///   - fail: 失败
 + (void)couponUnavailableListWithWebinarId:(NSString *)webinar_id goods_id:(NSString *)goods_id goods_num:(NSString *)goods_num success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;

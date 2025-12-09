@@ -421,8 +421,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 观看端发送礼物给主持人
 /// @param roomId 房间id
 /// @param gift_id 礼物ID
-/// @param channel 支付渠道
-/// @param service_code 支付方式
+/// @param channel
+/// @param service_code 
 /// @param success 成功
 /// @param fail 失败
 + (void)requestSendGiftWithRoomId:(NSString *)roomId

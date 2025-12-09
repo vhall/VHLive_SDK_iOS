@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 // 抽奖列表
 @interface VHLotteryListModel : NSObject
 
+@property (nonatomic, strong) NSMutableDictionary *data;
+
 @property (nonatomic, strong) NSArray <VHLotteryModel *> *listModel;
 
 + (VHLotteryListModel *)fetchLotteryList:(NSArray *)lotteryList;
@@ -23,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 抽奖详情
 @interface VHLotteryModel : NSObject
+@property (nonatomic, strong) NSMutableDictionary *data;
 @property (nonatomic, copy, readonly) id award_snapshoot;           ///<奖品快照
 @property (nonatomic, copy, readonly) NSString *title;              ///<抽奖标题
 @property (nonatomic, copy, readonly) NSString *created_at;         ///<创建时间

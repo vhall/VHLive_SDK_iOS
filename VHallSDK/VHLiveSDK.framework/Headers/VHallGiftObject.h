@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *gift_user_nickname;               ///<赠送礼物者昵称
 @property (nonatomic, copy) NSString *gift_user_phone;                  ///<赠送礼物者用户手机号
 @property (nonatomic, copy) NSString *source_status;                    ///<来源类型：0 web 1 app
-@property (nonatomic, copy) NSString *pay_status;                       ///<礼物支付状态：0 等待支付 1 支付成功 2 支付失败
+@property (nonatomic, copy) NSString *pay_status;                       ///<礼物状态：0 等待 1 成功 2 失败
 @property (nonatomic, copy) NSString *trade_no;                         ///<礼物订单号
 @property (nonatomic, copy) NSString *creator_id;                       ///<礼物创建者ID
 @property (nonatomic, copy) NSString *receiver_id;                      ///<礼物接收者ID
@@ -98,9 +98,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 观看端_发送礼物给主持人
 /// @param roomId 房间id
 /// @param channel
-/// @param service_code 支付方式
-/// "QR_PAY":支付宝二维码支付 "H5_PAY":支付宝移动支付 "CASHIER":支付宝收银台支付
-/// "QR_PAY":微信二维码支付 "QR_PAY":微信移动浏览器支付 "JSAPI":微信内置支付
+/// @param service_code 方式
+/// "QR_PAY":
+/// "QR_PAY":
 /// @param giftItem 礼物数据模型(其参数giftId不能为空)
 /// @param complete sendGiftModel:发送成功返回的数据详情 error:错误详情
 + (void)sendGiftWithRoomId:(NSString *)roomId

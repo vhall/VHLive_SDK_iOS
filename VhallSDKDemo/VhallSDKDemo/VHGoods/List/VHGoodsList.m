@@ -471,30 +471,85 @@
     // 平台购买
     if (listItem.buy_type == 1) {
         __weak __typeof(self)weakSelf = self;
-        [VHGoodsObject goodsWebinarSettingInfoWithWebinarId:self.webinarInfo.webinarId complete:^(VHGoodsSettingItem *settingItem, NSError *error) {
-            __strong __typeof(weakSelf)self = weakSelf;
-            if (settingItem) {
-                self.settingItem = settingItem;
-                [self.goodOrderAlert showGoodsOrder:listItem settingItem:settingItem webinarInfo:self.webinarInfo];
-            }
-            
-            if (error) {
-                [VHProgressHud showToast:error.domain];
-            }
-        }];
-    }
-    
-    // 外链购买直接跳转出去
-    if (listItem.buy_type == 2) {
+//         //平台购买时如果有嵌入详情页面，也可以使用嵌入方式进行商品购买。
+//         if(listItem.goods_detail_url != nil && listItem.goods_detail_url.length > 0){
+//              [[UIApplication sharedApplication]  openURL:[NSURL URLWithString:listItem.goods_detail_url]
+//                                                  options:@{}
+//                                        completionHandler:^(BOOL success) {
+//                  VHLog(@"外链跳转%@", success ? @"完成" : @"失败");
+//              }];
+//         }else{
+//              [VHGoodsObject goodsWebinarSettingInfoWithWebinarId:self.webinarInfo.webinarId complete:^(VHGoodsSettingItem *settingItem, NSError *error) {
+//                __strong __typeof(weakSelf)self = weakSelf;
+//                if (settingItem) {
+//                    self.settingItem = settingItem;
+//                    [self.goodOrderAlert showGoodsOrder:listItem settingItem:settingItem webinarInfo:self.webinarInfo];
+//                }
+//                
+//                if (error) {
+//                    [VHProgressHud showToast:error.domain];
+//                }
+//            }];
+//         }
+         
+         // 创建选择弹窗
+         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"选择支付方式"
+                                                                        message:@"请选择商品购买方式"
+                                                                 preferredStyle:UIAlertControllerStyleActionSheet];
+         
+         // 1. URL支付选项（如果有goods_detail_url才显示）
+         if (listItem.goods_detail_url != nil && listItem.goods_detail_url.length > 0) {
+             UIAlertAction *urlPayAction = [UIAlertAction actionWithTitle:@"平台购买：URL支付"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                 // 执行URL跳转支付
+                  //携带自生成的ext_order_no 作为参数方便回跳作为查询参数，查询订单信息
+                  NSString *ext_order_no = [VUITool getNewUUID];
+                  NSString* url = [NSString stringWithFormat:@"%@&=ext_order_no=%@",listItem.goods_detail_url,ext_order_no];
+                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]
+                                                    options:@{}
+                                          completionHandler:^(BOOL success) {
+                     VHLog(@"外链跳转%@", success ? @"完成" : @"失败");
+                 }];
+             }];
+             [alert addAction:urlPayAction];
+         }
+         
+         // 2. 本地支付选项
+         UIAlertAction *localPayAction = [UIAlertAction actionWithTitle:@"平台购买：本地支付"
+                                                                  style:UIAlertActionStyleDefault
+                                                                handler:^(UIAlertAction * _Nonnull action) {
+             // 执行本地支付逻辑
+             [VHGoodsObject goodsWebinarSettingInfoWithWebinarId:self.webinarInfo.webinarId complete:^(VHGoodsSettingItem *settingItem, NSError *error) {
+                 __strong __typeof(weakSelf)self = weakSelf;
+                 if (settingItem) {
+                     self.settingItem = settingItem;
+                     [self.goodOrderAlert showGoodsOrder:listItem settingItem:settingItem webinarInfo:self.webinarInfo];
+                 }
+                 
+                 if (error) {
+                     [VHProgressHud showToast:error.domain];
+                 }
+             }];
+         }];
+         [alert addAction:localPayAction];
+         
+         // 3. 取消选项
+         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消"
+                                                                style:UIAlertActionStyleCancel
+                                                              handler:nil];
+         [alert addAction:cancelAction];
+         
+         // 显示弹窗
+         [[VUITool getCurrentScreenViewController] presentViewController:alert animated:YES completion:nil];
+
+    } else if (listItem.buy_type == 2) {    // 外链购买直接跳转出去
         [[UIApplication sharedApplication]  openURL:[NSURL URLWithString:listItem.url]
                                             options:@{}
                                   completionHandler:^(BOOL success) {
             VHLog(@"外链跳转%@", success ? @"完成" : @"失败");
         }];
-    }
-    
-    // 自定义购买
-    if (listItem.buy_type == 3) {
+    }else if (listItem.buy_type == 3) {    // 自定义购买
         [VHProgressHud showToast:[NSString stringWithFormat:@"三方商品id%@",listItem.third_goods_id]];
     }
 }
@@ -525,7 +580,6 @@
     // 推送
     if (push_status == 1) {
         [self.goodsCardAlert showGoodsCardItem:model.goods_info];
-        
         if ([self.delegate respondsToSelector:@selector(pushGoodsCardModel:)]) {
             [self.delegate pushGoodsCardModel:model];
         }
@@ -601,6 +655,63 @@
     VHLog(@"支付状态 == %@",item.order_status);
     [VHProgressHud showToast:[NSString stringWithFormat:@"支付状态 %@",item.order_status]];
 }
+
+
+/// 售罄回调
+/// - Parameter item: sp信息
+- (void)goodsSaleOut:(VHGoodsListItem *)model cdn_url:(NSString *)cdn_url{
+     [self.goodsCardAlert showGoodsCardItem:model];
+}
+
+/// 在售中
+/// - Parameter item: sp信息
+- (void)goodsSaleIng:(VHGoodsListItem *)model cdn_url:(NSString *)cdn_url{
+     [self.goodsCardAlert showGoodsCardItem:model];
+     
+     //使用goodsGetOnlineListFromCDN 从CDN拉取商品列表回减小服务器压力。如果更新列表推荐使用此接口
+     __weak __typeof(self)weakSelf = self;
+     [VHGoodsObject goodsGetOnlineListFromCDN:cdn_url complete:^(NSArray<VHGoodsListItem *> *list, NSError *error) {
+         __strong __typeof(weakSelf)self = weakSelf;
+         if (list) {
+             [self.dataSource removeAllObjects];
+             [self.dataSource addObjectsFromArray:list];
+             
+             for (VHGoodsListItem * item in list) {
+                 if (item.push_status == 1) {
+                     [self.goodsCardAlert showGoodsCardItem:item];
+                     break;
+                 }
+             }
+         }
+         
+         if (error) {
+             [VHProgressHud showToast:error.domain];
+         }
+         
+         // 回调当前是否有商品
+         if (self.delegate && [self.delegate respondsToSelector:@selector(isHaveGoods:)]) {
+             [self.delegate isHaveGoods:self.dataSource.count > 0];
+         }
+         
+         [self.tableView reloadData];
+     }];
+}
+
+/// 隐藏价格
+/// - Parameter item: 订单信息
+- (void)goodsPriceCovered:(VHGoodsListItem *)model cdn_url:(NSString *)cdn_url{
+     [self.goodsCardAlert showGoodsCardItem:model];
+}
+
+/// 显示价格
+/// - Parameter item: 订单信息
+- (void)goodsPriceShow:(VHGoodsListItem *)model cdn_url:(NSString *)cdn_url{
+     [self.goodsCardAlert showGoodsCardItem:model];
+}
+
+/// 跳转zf是否完成
+/// - Parameter complete: YES : 成功  NO : 失败
+
 
 #pragma mark 跳转支付是否完成
 - (void)paySkipIsComplete:(BOOL)complete

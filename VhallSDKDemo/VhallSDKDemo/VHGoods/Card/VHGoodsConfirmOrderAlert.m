@@ -520,13 +520,13 @@
     pay_channel = !self.aliBtn.selected && !self.wechatBtn.selected ? @"" : pay_channel;
 
     __weak __typeof(self)weakSelf = self;
-    [VHGoodsObject goodsCreateOtherWithSwitchId:self.webinarInfo.webinarInfoData.data_switch.switch_id third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:username phone:phone remark:remark goods_id:self.item.goods_id quantity:self.numberBtn.currentNumber pay_channel:pay_channel channel_source:@"main" pay_amount:[NSString stringWithFormat:@"%.2lf",self.totalPrice] coupon_user_ids:self.bestCoupon ? [NSArray arrayWithObject:self.bestCoupon.coupon_user_id] : nil complete:^(VHGoodsCreateOtherItem *createOtherItem, NSError *error) {
+     [VHGoodsObject goodsCreateOtherWithSwitchId:self.webinarInfo.webinarInfoData.data_switch.switch_id buy_type:self.item.buy_type third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:username phone:phone remark:remark goods_id:self.item.goods_id quantity:self.numberBtn.currentNumber pay_channel:pay_channel channel_source:@"main" pay_amount:[NSString stringWithFormat:@"%.2lf",self.totalPrice] coupon_user_ids:self.bestCoupon ? [NSArray arrayWithObject:self.bestCoupon.coupon_user_id] : nil complete:^(VHGoodsCreateOtherItem *createOtherItem, NSError *error) {
         __strong __typeof(weakSelf)self = weakSelf;
         
         if (createOtherItem) {
             NSURL * url = [NSURL URLWithString:createOtherItem.order_url];
             if (([createOtherItem.order_url containsString:@"wx"] || [createOtherItem.order_url containsString:@"ali"]) && self.skipWXOrALIPayBlock) {
-                // 判断如果包含微信或者支付宝则跳转三方支付
+              //   判断如果包含微信或者支付宝则跳转三方支付
                 self.skipWXOrALIPayBlock(url,createOtherItem.referer,createOtherItem.order_no);
             } else {
                 // 打开客户端

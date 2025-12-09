@@ -7,7 +7,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 /// 立即购买
 typedef void(^ClickPayBtnBlock)(VHGoodsListItem *item);
 

@@ -322,6 +322,13 @@ NSString *VH_MB_ASSIST = @"助理";
     return isMatch;
 }
 
++ (NSString *)getNewUUID{
+     CFUUIDRef puuid = CFUUIDCreate( nil );
+     CFStringRef uuidString = CFUUIDCreateString(nil, puuid);
+     NSString *result = (NSString *)CFBridgingRelease(CFStringCreateCopy( NULL, uuidString));
+     return result;
+}
+
 + (NSString *)getSubStr:(NSString *)str strLenth:(int)strLenth
 {
     NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
