@@ -516,7 +516,15 @@
     NSString * username = self.settingItem.enable_username == 0 ? @"" : self.userNameField.text;
     NSString * phone = self.settingItem.enable_phone == 0 ? @"" : self.phoneField.text;
     NSString * remark = self.settingItem.enable_remark == 0 ? @"" : self.remarkField.text;
-    
+    if(username){
+        username = [username stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    }
+    if(phone){
+        phone = [phone stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    }
+    if(remark){
+        remark = [remark stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    }
     // 支付渠道,如果是三方则需要传WEIXIN,ALIPAY,否则传@""
     NSString * pay_channel = self.wechatBtn.selected ? @"WEIXIN" : @"ALIPAY";
     pay_channel = !self.aliBtn.selected && !self.wechatBtn.selected ? @"" : pay_channel;
@@ -524,7 +532,7 @@
     __weak __typeof(self)weakSelf = self;
     
     //用于在下单前同步在聊天区域显示***正在买对应商品
-    [VHGoodsObject goodsOrderNotice:self.webinarInfo.webinarId user_id: [NSString stringWithFormat:@"%ld",(long)self.webinarInfo.webinarInfoData.join_info.user_id]  third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:self.webinarInfo.webinarInfoData.join_info.nickname goods_id:self.item.goods_id notice_type:@"buy" success:^(NSString *msg) {
+    [VHGoodsObject goodsOrderNotice:self.webinarInfo.webinarId user_id: [NSString stringWithFormat:@"%ld",(long)self.webinarInfo.webinarInfoData.join_info.user_id]  third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:username goods_id:self.item.goods_id notice_type:@"buy" success:^(NSString *msg) {
         
     } fail:^(NSError *error) {
         
