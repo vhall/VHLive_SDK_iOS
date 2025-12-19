@@ -1974,7 +1974,7 @@
 				);
 				MARKETING_VERSION = 6.26.0;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.cyx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.liveBroadcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2023,7 +2023,7 @@
 				);
 				MARKETING_VERSION = 6.26.0;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.cyx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.liveBroadcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

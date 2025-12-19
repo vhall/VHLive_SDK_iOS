@@ -10,6 +10,8 @@
 #import "UIButton+VHRadius.h"
 #import "VHGoodsCouponAlert.h"
 #import "VHLiveWeakTimer.h"
+#import <WXApi.h>
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface VHGoodsConfirmOrderAlert ()
 
@@ -520,31 +522,99 @@
     pay_channel = !self.aliBtn.selected && !self.wechatBtn.selected ? @"" : pay_channel;
 
     __weak __typeof(self)weakSelf = self;
-     [VHGoodsObject goodsCreateOtherWithSwitchId:self.webinarInfo.webinarInfoData.data_switch.switch_id buy_type:self.item.buy_type third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:username phone:phone remark:remark goods_id:self.item.goods_id quantity:self.numberBtn.currentNumber pay_channel:pay_channel channel_source:@"main" pay_amount:[NSString stringWithFormat:@"%.2lf",self.totalPrice] coupon_user_ids:self.bestCoupon ? [NSArray arrayWithObject:self.bestCoupon.coupon_user_id] : nil complete:^(VHGoodsCreateOtherItem *createOtherItem, NSError *error) {
-        __strong __typeof(weakSelf)self = weakSelf;
+    
+    //用于在下单前同步在聊天区域显示***正在买对应商品
+    [VHGoodsObject goodsOrderNotice:self.webinarInfo.webinarId user_id: [NSString stringWithFormat:@"%ld",(long)self.webinarInfo.webinarInfoData.join_info.user_id]  third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:self.webinarInfo.webinarInfoData.join_info.nickname goods_id:self.item.goods_id notice_type:@"buy" success:^(NSString *msg) {
         
-        if (createOtherItem) {
-            NSURL * url = [NSURL URLWithString:createOtherItem.order_url];
-            if (([createOtherItem.order_url containsString:@"wx"] || [createOtherItem.order_url containsString:@"ali"]) && self.skipWXOrALIPayBlock) {
-              //   判断如果包含微信或者支付宝则跳转三方支付
-                self.skipWXOrALIPayBlock(url,createOtherItem.referer,createOtherItem.order_no);
-            } else {
-                // 打开客户端
-                [[UIApplication sharedApplication]  openURL:url
-                              options:@{}
-                    completionHandler:^(BOOL success) {
-                    NSLog(@"客户端跳转%@", success ? @"完成" : @"失败");
-                }];
-            }
-            
-            [self dismiss];
-        }
-        
-        if (error) {
-            [VHProgressHud showToast:error.domain];
-        }
+    } fail:^(NSError *error) {
         
     }];
+    
+    [VHGoodsObject goodsCreateOrderByNative:self.webinarInfo.webinarInfoData.data_switch.switch_id buy_type:self.item.buy_type third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:username phone:phone remark:remark goods_id:self.item.goods_id quantity:self.numberBtn.currentNumber pay_channel:pay_channel channel_source:@"main" pay_amount:[NSString stringWithFormat:@"%.2lf",self.totalPrice] coupon_user_ids:self.bestCoupon ? [NSArray arrayWithObject:self.bestCoupon.coupon_user_id] : nil complete:^(VHGoodsCreateNativeModel *createOtherItem, NSError *error) {
+       __strong __typeof(weakSelf)self = weakSelf;
+        
+       if (createOtherItem) {
+           if([pay_channel isEqualToString:@"WEIXIN"]){
+               //openid 和 universalLink 需要联系技术支持进行获取
+               BOOL ret =  [WXApi registerApp:@"wxc6c0a273cf2f67f7" universalLink:@"https://vhall/app/"];
+               PayReq *request = [[PayReq alloc] init];
+               request.openID = createOtherItem.appid;
+               request.timeStamp = (UInt32)[createOtherItem.timestamp integerValue];
+               request.nonceStr = createOtherItem.noncestr;
+               request.sign = createOtherItem.sign;
+               request.partnerId = createOtherItem.partnerid;
+               request.prepayId = createOtherItem.prepayId;
+               request.package = @"package";
+               if([WXApi isWXAppInstalled] == YES){
+                  [WXApi sendReq:request completion:^(BOOL success) {
+                       if(success){
+                           [VHProgressHud showToast:@"支付请求成功"];
+                       }else{
+                           [VHProgressHud showToast:@"支付请求失败"];
+                       }
+                  }];
+               }
+           }else if([pay_channel isEqualToString:@"ALIPAY"]){
+               //应用注册scheme,在Info.plist定义URL types
+               NSString *appScheme = @"vhallSDKDemo";
+               
+               // NOTE: 将签名成功字符串格式化为订单字符串,请严格按照该格式
+               NSString *orderString = createOtherItem.aliOrderUrl;
+               
+               // NOTE: 调用支付结果开始支付
+               [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+                   NSLog(@"reslut = %@",resultDic);
+               }];
+           }
+               
+//           NSURL * url = [NSURL URLWithString:createOtherItem.order_url];
+//           if (([createOtherItem.order_url containsString:@"wx"] || [createOtherItem.order_url containsString:@"ali"]) && self.skipWXOrALIPayBlock) {
+//             //   判断如果包含微信或者支付宝则跳转三方支付
+//       
+//           } else {
+//               // 打开客户端
+//               [[UIApplication sharedApplication]  openURL:url
+//                             options:@{}
+//                   completionHandler:^(BOOL success) {
+//                   NSLog(@"客户端跳转%@", success ? @"完成" : @"失败");
+//               }];
+//           }
+           
+           [self dismiss];
+       }
+       
+       if (error) {
+           [VHProgressHud showToast:error.domain];
+       }
+       
+   }];
+    
+    
+//     [VHGoodsObject goodsCreateOtherWithSwitchId:self.webinarInfo.webinarInfoData.data_switch.switch_id buy_type:self.item.buy_type third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:username phone:phone remark:remark goods_id:self.item.goods_id quantity:self.numberBtn.currentNumber pay_channel:pay_channel channel_source:@"main" pay_amount:[NSString stringWithFormat:@"%.2lf",self.totalPrice] coupon_user_ids:self.bestCoupon ? [NSArray arrayWithObject:self.bestCoupon.coupon_user_id] : nil complete:^(VHGoodsCreateOtherItem *createOtherItem, NSError *error) {
+//        __strong __typeof(weakSelf)self = weakSelf;
+//        
+//        if (createOtherItem) {
+//            NSURL * url = [NSURL URLWithString:createOtherItem.order_url];
+//            if (([createOtherItem.order_url containsString:@"wx"] || [createOtherItem.order_url containsString:@"ali"]) && self.skipWXOrALIPayBlock) {
+//              //   判断如果包含微信或者支付宝则跳转三方支付
+//                self.skipWXOrALIPayBlock(url,createOtherItem.referer,createOtherItem.order_no);
+//            } else {
+//                // 打开客户端
+//                [[UIApplication sharedApplication]  openURL:url
+//                              options:@{}
+//                    completionHandler:^(BOOL success) {
+//                    NSLog(@"客户端跳转%@", success ? @"完成" : @"失败");
+//                }];
+//            }
+//            
+//            [self dismiss];
+//        }
+//        
+//        if (error) {
+//            [VHProgressHud showToast:error.domain];
+//        }
+//        
+//    }];
 }
 
 

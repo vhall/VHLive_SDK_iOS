@@ -76,6 +76,19 @@
 @property (nonatomic, copy)   NSString *referer;            ///<referer
 @end
 
+// 创建订单模型
+@interface VHGoodsCreateNativeModel : VHallRawBaseModel
+@property (nonatomic, copy)   NSString *timestamp;       ///< 时间
+@property (nonatomic, copy)   NSString *signType;          ///签名类型
+@property (nonatomic, copy)   NSString *prepayId;          ///欲购买
+@property (nonatomic, copy)   NSString *sign;            ///<签名
+@property (nonatomic, copy)   NSString *noncestr;            ///<随机串
+@property (nonatomic, copy)   NSString *appid;            ///<应用ID
+@property (nonatomic, copy)   NSString *package;            ///<package
+@property (nonatomic, copy)   NSString *partnerid;           ///<商户号
+@property (nonatomic, copy)   NSString *aliOrderUrl;         ///<ZFB url
+@end
+
 // 结果
 @interface VHGoodsPayStatusItem : VHallRawBaseModel
 @property (nonatomic, copy)   NSString *order_no;           ///<订单号
@@ -243,6 +256,37 @@
 ///   - coupon_user_ids: 优惠券集合 coupon_user_id
 ///   - complete: 完成返回详情,失败错误详情
 + (void)goodsCreateOtherWithSwitchId:(NSString *)switch_id buy_type:(NSInteger)buy_type third_user_id:(NSString *)third_user_id username:(NSString *)username phone:(NSString *)phone remark:(NSString *)remark goods_id:(NSString *)goods_id quantity:(NSInteger)quantity pay_channel:(NSString *)pay_channel channel_source:(NSString *)channel_source pay_amount:(NSString *)pay_amount coupon_user_ids:(NSArray *)coupon_user_ids complete:(void (^)(VHGoodsCreateOtherItem *createOtherItem, NSError *error))complete;
+
+
+/// - Parameters:
+///   - switch_id: 场次ID
+///     buy_type 类型 1平台
+///   - third_user_id: 三方用户ID
+///   - username: 姓名,不能超过30个字符
+///   - phone: 手机号(是国内手机号)
+///   - remark: 留言备注,不能超过50个字符
+///   - goods_id: 商品ID
+///   - quantity: 数量,不能超过100个
+///   - pay_channel: 渠道 
+///   - channel_source: 渠道来源(main)
+///   - pay_amount:
+///   - coupon_user_ids: 优惠券集合 coupon_user_id
+///   - complete: 完成返回详情,失败错误详情
++ (void)goodsCreateOrderByNative:(NSString *)switch_id buy_type:(NSInteger)buy_type third_user_id:(NSString *)third_user_id username:(NSString *)username phone:(NSString *)phone remark:(NSString *)remark goods_id:(NSString *)goods_id quantity:(NSInteger)quantity pay_channel:(NSString *)pay_channel channel_source:(NSString *)channel_source pay_amount:(NSString *)pay_amount coupon_user_ids:(NSArray *)coupon_user_ids complete:(void (^)(VHGoodsCreateNativeModel *createOtherItem, NSError *error))complete;
+
+
+/// - Parameters:
+///   - webinar_id: 活动ID
+///   - third_user_id: 三方用户ID
+///   - user_id: 登录用户id
+///   - username: 姓名
+///   - goods_id: ID
+///   - business_uid: 商品信息中bid
+///   - notice_type: 固定buy
+///   - coupon_user_ids:
+///   - success: 成功
+///   - fail: 失败
++ (void)goodsOrderNotice:(NSString *)webinar_id user_id:(NSString*)user_id third_user_id:(NSString *)third_user_id username:(NSString *)username goods_id:(NSString *)goods_id   notice_type:(NSString *)notice_type success:(void (^)(NSString *msg))success fail:(void (^)(NSError *error))fail;
 
 /// 获取我的订单信息
 /// - Parameters:

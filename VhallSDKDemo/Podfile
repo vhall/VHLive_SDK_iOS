@@ -12,6 +12,8 @@ target 'VhallSDKDemo' do
   pod 'VHGoodsSDK', '6.27.0' # 商品
 
 
+  pod 'WechatOpenSDK-XCFramework'
+  pod 'AlipaySDK-iOS'
   pod 'MJRefresh', '~> 3.7.5'
   pod 'MJExtension', '~> 3.4.1'
   pod 'SDWebImage', '~> 5.14.3'

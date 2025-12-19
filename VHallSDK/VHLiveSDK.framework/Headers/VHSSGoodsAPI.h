@@ -89,6 +89,21 @@ NS_ASSUME_NONNULL_BEGIN
 ///   - success: 成功
 ///   - fail: 失败
 + (void)couponUnavailableListWithWebinarId:(NSString *)webinar_id goods_id:(NSString *)goods_id goods_num:(NSString *)goods_num success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
+
+
+/// - Parameters:
+///   - webinar_id: 活动ID
+///   - third_user_id: 三方用户ID
+///   - user_id: 登录用户id
+///   - username: 姓名
+///   - goods_id: ID
+///   - business_uid: 商品信息中bid
+///   - notice_type: 固定buy
+///   - coupon_user_ids:
+///   - success: 成功
+///   - fail: 失败
++ (void)goodsOrderNotice:(NSString *)webinar_id user_id:(NSString*)user_id third_user_id:(NSString *)third_user_id username:(NSString *)username goods_id:(NSString *)goods_id   notice_type:(NSString *)notice_type success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
+
 @end
 
 NS_ASSUME_NONNULL_END
