@@ -645,7 +645,7 @@
 #pragma mark - 画中画
 /// 即将开启画中画
 - (void)pictureInPictureControllerWillStart {
-     [self.moviePlayer setPictureInPictureControls:NO];
+     [self.moviePlayer setPictureInPictureControls:YES];
 }
 /// 已经开启画中画
 - (void)pictureInPictureControllerDidStart {
@@ -670,6 +670,7 @@
 - (void)pictureInPicturePlaybackStateDidChange:(BOOL)isPlaying{
      if(isPlaying){
           [VHProgressHud showToast:@"开始播放"];
+         [self.moviePlayer reconnectPlay];
      }else{
           [VHProgressHud showToast:@"暂停播放"];
      }
