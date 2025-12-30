@@ -199,6 +199,7 @@
                 watchVC.webinar_id = baseInfo.ID;
                 //获取当前活动类型
                 watchVC.type = webinarInfoData.webinar.type;
+                baseInfo.type = webinarInfoData.webinar.type;
 
                 // 预告页
                 VHWarmUpViewController *warmUP = [VHWarmUpViewController new];
