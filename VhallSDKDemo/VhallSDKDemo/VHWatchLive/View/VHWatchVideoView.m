@@ -682,8 +682,6 @@
         else{
             [self.moviePlayer reconnectPlay];
         }
-    }else{
-         [VHProgressHud showToast:@"暂停播放"];
     }
 }
 

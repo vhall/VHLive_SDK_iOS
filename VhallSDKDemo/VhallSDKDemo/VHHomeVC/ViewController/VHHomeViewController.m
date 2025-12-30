@@ -160,83 +160,100 @@
     }
 }
 
+
 #pragma mark - 获取房间详情
 - (void)watchInit
 {
     // 取消键盘
     [self.view endEditing:YES];
-
     // 防止重复点击
     self.enterRoomBtn.userInteractionEnabled = NO;
-
     __weak __typeof(self) weakSelf = self;
     // 增加一个hud
     [VHProgressHud showLoading];
-    // 查询活动详情
-    [VHWebinarBaseInfo getWebinarBaseInfoWithWebinarId:self.activityTF.text
-                                               success:^(VHWebinarBaseInfo *_Nonnull baseInfo) {
-        // 防止重复点击
-        weakSelf.enterRoomBtn.userInteractionEnabled = YES;
+    [VHWebinarInfoData requestWatchInitWebinarId:self.activityTF.text
+                                            pass:nil
+                                            k_id:nil
+                                       nick_name:nil
+                                           email:nil
+                                       record_id:nil
+                                      auth_model:1
+                                        complete:^(VHWebinarInfoData *webinarInfoData, NSError *error) {
+        if (webinarInfoData) {
+            // 查询活动详情
+            [VHWebinarBaseInfo getWebinarBaseInfoWithWebinarId:self.activityTF.text
+                                                       success:^(VHWebinarBaseInfo *_Nonnull baseInfo) {
+                // 防止重复点击
+                weakSelf.enterRoomBtn.userInteractionEnabled = YES;
 
-        [VHProgressHud hideLoading];
+                [VHProgressHud hideLoading];
 
-        // 执行自动化测试用例
-        NSMutableDictionary * otherInfo = [NSMutableDictionary dictionary];
-        otherInfo[@"type"] = @(baseInfo.type);
-        [VUITool sendTestsNotificationCenterWithKey:VHTests_EnterRoom otherInfo:otherInfo];
+                // 执行自动化测试用例
+                NSMutableDictionary * otherInfo = [NSMutableDictionary dictionary];
+                otherInfo[@"type"] = @(baseInfo.type);
+                [VUITool sendTestsNotificationCenterWithKey:VHTests_EnterRoom otherInfo:otherInfo];
 
-        // 直播 回放
-        VHWatchVC *watchVC = [VHWatchVC new];
-        watchVC.accessibilityLabel = @"直播间";
-        watchVC.webinar_id = baseInfo.ID;
-        watchVC.type = baseInfo.type;
+                // 直播 回放
+                VHWatchVC *watchVC = [VHWatchVC new];
+                watchVC.accessibilityLabel = @"直播间";
+                watchVC.webinar_id = baseInfo.ID;
+                //获取当前活动类型
+                watchVC.type = webinarInfoData.webinar.type;
 
-        // 预告页
-        VHWarmUpViewController *warmUP = [VHWarmUpViewController new];
-        warmUP.webinarId = baseInfo.ID;
-        warmUP.delegate = self;
+                // 预告页
+                VHWarmUpViewController *warmUP = [VHWarmUpViewController new];
+                warmUP.webinarId = baseInfo.ID;
+                warmUP.delegate = self;
 
-        //1-直播中，2-预约，3-结束，4-点播，5-回放
-        switch (baseInfo.type) {
-            case 1:{
-                [weakSelf.navigationController pushViewController:watchVC
-                                                         animated:YES];
+                //1-直播中，2-预约，3-结束，4-点播，5-回放
+                switch (baseInfo.type) {
+                    case 1:{
+                        [weakSelf.navigationController pushViewController:watchVC
+                                                                 animated:YES];
+                    }
+                    break;
+
+                    case 2:{
+                        [weakSelf.navigationController pushViewController:warmUP
+                                                                 animated:YES];
+                    }
+                    break;
+
+                    case 3:{
+                        [VHProgressHud showToast:@"直播结束"];
+                    }
+                    break;
+
+                    case 4:{
+                        [weakSelf.navigationController pushViewController:watchVC
+                                                                 animated:YES];
+                    }
+                    break;
+
+                    case 5:{
+                        [weakSelf.navigationController pushViewController:watchVC
+                                                                 animated:YES];
+                    }
+                    break;
+
+                    default:
+                        break;
+                }
             }
-            break;
-
-            case 2:{
-                [weakSelf.navigationController pushViewController:warmUP
-                                                         animated:YES];
-            }
-            break;
-
-            case 3:{
-                [VHProgressHud showToast:@"直播结束"];
-            }
-            break;
-
-            case 4:{
-                [weakSelf.navigationController pushViewController:watchVC
-                                                         animated:YES];
-            }
-            break;
-
-            case 5:{
-                [weakSelf.navigationController pushViewController:watchVC
-                                                         animated:YES];
-            }
-            break;
-
-            default:
-                break;
+            fail:^(NSError *_Nonnull error) {
+                // 防止重复点击
+                weakSelf.enterRoomBtn.userInteractionEnabled = YES;
+                [VHProgressHud showToast:error.domain];
+            }];
         }
-    }
-                                                  fail:^(NSError *_Nonnull error) {
-        // 防止重复点击
-        weakSelf.enterRoomBtn.userInteractionEnabled = YES;
-        [VHProgressHud showToast:error.domain];
+
+        if (error) {
+            weakSelf.enterRoomBtn.userInteractionEnabled = YES;
+            [VHProgressHud showToast:error.domain];
+        }
     }];
 }
+
 
 #pragma mark - VHAuthAlertViewDelegate
 #pragma mark - 填写的回调
