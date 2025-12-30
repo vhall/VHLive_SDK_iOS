@@ -181,71 +181,61 @@
                                         complete:^(VHWebinarInfoData *webinarInfoData, NSError *error) {
         if (webinarInfoData) {
             // 查询活动详情
-            [VHWebinarBaseInfo getWebinarBaseInfoWithWebinarId:self.activityTF.text
-                                                       success:^(VHWebinarBaseInfo *_Nonnull baseInfo) {
-                // 防止重复点击
-                weakSelf.enterRoomBtn.userInteractionEnabled = YES;
+            weakSelf.enterRoomBtn.userInteractionEnabled = YES;
 
-                [VHProgressHud hideLoading];
+            [VHProgressHud hideLoading];
 
-                // 执行自动化测试用例
-                NSMutableDictionary * otherInfo = [NSMutableDictionary dictionary];
-                otherInfo[@"type"] = @(baseInfo.type);
-                [VUITool sendTestsNotificationCenterWithKey:VHTests_EnterRoom otherInfo:otherInfo];
+            // 执行自动化测试用例
+            NSMutableDictionary * otherInfo = [NSMutableDictionary dictionary];
+            otherInfo[@"type"] = @(webinarInfoData.webinar.type);
+            [VUITool sendTestsNotificationCenterWithKey:VHTests_EnterRoom otherInfo:otherInfo];
 
-                // 直播 回放
-                VHWatchVC *watchVC = [VHWatchVC new];
-                watchVC.accessibilityLabel = @"直播间";
-                watchVC.webinar_id = baseInfo.ID;
-                //获取当前活动类型
-                watchVC.type = webinarInfoData.webinar.type;
-                baseInfo.type = webinarInfoData.webinar.type;
+            // 直播 回放
+            VHWatchVC *watchVC = [VHWatchVC new];
+            watchVC.accessibilityLabel = @"直播间";
+            watchVC.webinar_id = self.activityTF.text;
+            //获取当前活动类型
+            watchVC.type = webinarInfoData.webinar.type;
 
-                // 预告页
-                VHWarmUpViewController *warmUP = [VHWarmUpViewController new];
-                warmUP.webinarId = baseInfo.ID;
-                warmUP.delegate = self;
+            // 预告页
+            VHWarmUpViewController *warmUP = [VHWarmUpViewController new];
+            warmUP.webinarId = self.activityTF.text;
+            warmUP.delegate = self;
 
-                //1-直播中，2-预约，3-结束，4-点播，5-回放
-                switch (baseInfo.type) {
-                    case 1:{
-                        [weakSelf.navigationController pushViewController:watchVC
-                                                                 animated:YES];
-                    }
-                    break;
-
-                    case 2:{
-                        [weakSelf.navigationController pushViewController:warmUP
-                                                                 animated:YES];
-                    }
-                    break;
-
-                    case 3:{
-                        [VHProgressHud showToast:@"直播结束"];
-                    }
-                    break;
-
-                    case 4:{
-                        [weakSelf.navigationController pushViewController:watchVC
-                                                                 animated:YES];
-                    }
-                    break;
-
-                    case 5:{
-                        [weakSelf.navigationController pushViewController:watchVC
-                                                                 animated:YES];
-                    }
-                    break;
-
-                    default:
-                        break;
+            //1-直播中，2-预约，3-结束，4-点播，5-回放
+            switch (webinarInfoData.webinar.type) {
+                case 1:{
+                    [weakSelf.navigationController pushViewController:watchVC
+                                                             animated:YES];
                 }
+                break;
+
+                case 2:{
+                    [weakSelf.navigationController pushViewController:warmUP
+                                                             animated:YES];
+                }
+                break;
+
+                case 3:{
+                    [VHProgressHud showToast:@"直播结束"];
+                }
+                break;
+
+                case 4:{
+                    [weakSelf.navigationController pushViewController:watchVC
+                                                             animated:YES];
+                }
+                break;
+
+                case 5:{
+                    [weakSelf.navigationController pushViewController:watchVC
+                                                             animated:YES];
+                }
+                break;
+
+                default:
+                    break;
             }
-            fail:^(NSError *_Nonnull error) {
-                // 防止重复点击
-                weakSelf.enterRoomBtn.userInteractionEnabled = YES;
-                [VHProgressHud showToast:error.domain];
-            }];
         }
 
         if (error) {
