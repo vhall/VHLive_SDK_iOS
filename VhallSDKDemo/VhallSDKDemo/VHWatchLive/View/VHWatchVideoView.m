@@ -668,12 +668,23 @@
 ///画中画模式下点击画中画中播放&暂停按键状态变化回调
 /// - Parameter  （isPlaying为YES表示播放，NO表示暂停）
 - (void)pictureInPicturePlaybackStateDidChange:(BOOL)isPlaying{
-     if(isPlaying){
-          [VHProgressHud showToast:@"开始播放"];
-         [self.moviePlayer reconnectPlay];
-     }else{
-          [VHProgressHud showToast:@"暂停播放"];
-     }
+    if(isPlaying){
+         [VHProgressHud showToast:@"开始播放"];
+        NSInteger currentPlaybackTime = (NSInteger)self.moviePlayer.currentPlaybackTime;
+        NSInteger duration = (NSInteger)self.moviePlayer.duration;
+        //如果播放完毕，则设置进度重新播放
+        if(currentPlaybackTime == duration){
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.moviePlayer setCurrentPlaybackTime:0];
+                [self.moviePlayer reconnectPlay];
+            });
+        }
+        else{
+            [self.moviePlayer reconnectPlay];
+        }
+    }else{
+         [VHProgressHud showToast:@"暂停播放"];
+    }
 }
 
 /// 关闭画中画且恢复播放界面
