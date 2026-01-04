@@ -669,7 +669,6 @@
 /// - Parameter  （isPlaying为YES表示播放，NO表示暂停）
 - (void)pictureInPicturePlaybackStateDidChange:(BOOL)isPlaying{
     if(isPlaying){
-         [VHProgressHud showToast:@"开始播放"];
         NSInteger currentPlaybackTime = (NSInteger)self.moviePlayer.currentPlaybackTime;
         NSInteger duration = (NSInteger)self.moviePlayer.duration;
         //如果播放完毕，则设置进度重新播放
