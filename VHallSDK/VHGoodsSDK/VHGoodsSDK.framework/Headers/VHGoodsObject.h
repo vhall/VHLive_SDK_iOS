@@ -11,16 +11,16 @@
 
 // dd明细
 @interface VHGoodsCouponInfoItem : VHallRawBaseModel
-@property (nonatomic, copy)   NSString *coupon_id;                  ///<优惠券id
-@property (nonatomic, copy)   NSString *coupon_name;                ///<优惠券名称
-@property (nonatomic, copy)   NSString *validity_start_time;        ///<有效期开始时间
-@property (nonatomic, copy)   NSString *validity_end_time;          ///<有效期结束时间
-@property (nonatomic, copy)   NSString *use_desc;                   ///<使用说明
-@property (nonatomic, copy)   NSString *goods_num;                  ///<数量
-@property (nonatomic, copy)   NSString *business_uid;               ///<操作人id
-@property (nonatomic, copy)   NSString *nick_name;                  ///<操作人昵称
-@property (nonatomic, copy)   NSString *updated_at;                 ///<更新时间
-@property (nonatomic, copy)   NSString *coupon_user_id;             ///<用户领取优惠券ID
+@property (nonatomic, copy, nullable)   NSString *coupon_id;                  ///<优惠券id
+@property (nonatomic, copy, nullable)   NSString *coupon_name;                ///<优惠券名称
+@property (nonatomic, copy, nullable)   NSString *validity_start_time;        ///<有效期开始时间
+@property (nonatomic, copy, nullable)   NSString *validity_end_time;          ///<有效期结束时间
+@property (nonatomic, copy, nullable)   NSString *use_desc;                   ///<使用说明
+@property (nonatomic, copy, nullable)   NSString *goods_num;                  ///<数量
+@property (nonatomic, copy, nullable)   NSString *business_uid;               ///<操作人id
+@property (nonatomic, copy, nullable)   NSString *nick_name;                  ///<操作人昵称
+@property (nonatomic, copy, nullable)   NSString *updated_at;                 ///<更新时间
+@property (nonatomic, copy, nullable)   NSString *coupon_user_id;             ///<用户领取优惠券ID
 @property (nonatomic, assign) CGFloat   threshold_amount;           ///<门槛金额
 @property (nonatomic, assign) CGFloat   deduction_amount;           ///<减免金额
 @property (nonatomic, assign) NSInteger coupon_type;                ///<优惠券类型 0-满减优惠 1-无门槛优惠
@@ -39,67 +39,67 @@
 
 // dd明细
 @interface VHGoodsOrderInfoItem : VHallRawBaseModel
-@property (nonatomic, copy)   NSString *goods_id;           ///<ID
-@property (nonatomic, copy)   NSString *cover_img;          ///<封面图片
-@property (nonatomic, copy)   NSString *price;              ///<原始
-@property (nonatomic, copy)   NSString *discount_price;     ///<优惠
-@property (nonatomic, copy)   NSString *info;               ///<描述
-@property (nonatomic, copy)   NSString *name;               ///<名称
+@property (nonatomic, copy, nullable)   NSString *goods_id;           ///<ID
+@property (nonatomic, copy, nullable)   NSString *cover_img;          ///<封面图片
+@property (nonatomic, copy, nullable)   NSNumber *price;              ///<原始
+@property (nonatomic, copy, nullable)   NSNumber *discount_price;     ///<优惠
+@property (nonatomic, copy, nullable)   NSString *info;               ///<描述
+@property (nonatomic, copy, nullable)   NSString *name;               ///<名称
 @property (nonatomic, assign) NSInteger quantity;           ///<数量
 @end
 
 //dd详情
 @interface VHGoodsOrderInfo : VHallRawBaseModel
-@property (nonatomic, copy)   NSString *order_no;           ///<dd号
-@property (nonatomic, copy)   NSString *total_amount;       ///<订单总金额
-@property (nonatomic, copy)   NSString *pay_amount;         ///<实付金额
-@property (nonatomic, copy)   NSString *webinar_subject;    ///<活动名称
-@property (nonatomic, copy)   NSString *created_at;         ///<下单时间
-@property (nonatomic, copy)   NSString *username;           ///<用户姓名
-@property (nonatomic, copy)   NSString *phone;              ///<用户手机号
-@property (nonatomic, copy)   NSString *remark;             ///<用户留言
-@property (nonatomic, copy)   NSString *order_status;       ///<订单状态
-@property (nonatomic, copy)   NSString *pay_channel;        ///<渠道
-@property (nonatomic, copy)   NSString *pay_time;           ///<时间
-@property (nonatomic, copy)   NSString *service_code;       ///<方式
-@property (nonatomic, copy)   NSString *trade_no;           ///<流水号
+@property (nonatomic, copy, nullable)   NSString *order_no;           ///<dd号
+@property (nonatomic, copy, nullable)   NSString *total_amount;       ///<订单总金额
+@property (nonatomic, copy, nullable)   NSString *pay_amount;         ///<实付金额
+@property (nonatomic, copy, nullable)   NSString *webinar_subject;    ///<活动名称
+@property (nonatomic, copy, nullable)   NSString *created_at;         ///<下单时间
+@property (nonatomic, copy, nullable)   NSString *username;           ///<用户姓名
+@property (nonatomic, copy, nullable)   NSString *phone;              ///<用户手机号
+@property (nonatomic, copy, nullable)   NSString *remark;             ///<用户留言
+@property (nonatomic, copy, nullable)   NSString *order_status;       ///<订单状态
+@property (nonatomic, copy, nullable)   NSString *pay_channel;        ///<渠道
+@property (nonatomic, copy, nullable)   NSString *pay_time;           ///<时间
+@property (nonatomic, copy, nullable)   NSString *service_code;       ///<方式
+@property (nonatomic, copy, nullable)   NSString *trade_no;           ///<流水号
 @property (nonatomic, assign) NSInteger webinar_id;         ///<活动ID
 @property (nonatomic, assign) NSInteger buy_type;           ///<类型(1.平台 2.外链 3.自定义)
-@property (nonatomic, copy)   NSArray<VHGoodsOrderInfoItem *> *order_items;///<订单明细
+@property (nonatomic, copy, nullable)   NSArray<VHGoodsOrderInfoItem *> *order_items;///<订单明细
 @end
 
 // 创建订单模型
 @interface VHGoodsCreateOtherItem : VHallRawBaseModel
-@property (nonatomic, copy)   NSString *order_no;           ///<订单号
-@property (nonatomic, copy)   NSString *order_status;       ///<订单状态
-@property (nonatomic, copy)   NSString *order_url;          /// url
-@property (nonatomic, copy)   NSString *referer;            ///<referer
+@property (nonatomic, copy, nullable)   NSString *order_no;           ///<订单号
+@property (nonatomic, copy, nullable)   NSString *order_status;       ///<订单状态
+@property (nonatomic, copy, nullable)   NSString *order_url;          /// url
+@property (nonatomic, copy, nullable)   NSString *referer;            ///<referer
 @end
 
 // 创建订单模型
 @interface VHGoodsCreateNativeModel : VHallRawBaseModel
-@property (nonatomic, copy)   NSString *timestamp;       ///< 时间
-@property (nonatomic, copy)   NSString *signType;          ///签名类型
-@property (nonatomic, copy)   NSString *prepayId;          ///欲购买
-@property (nonatomic, copy)   NSString *sign;            ///<签名
-@property (nonatomic, copy)   NSString *noncestr;            ///<随机串
-@property (nonatomic, copy)   NSString *appid;            ///<应用ID
-@property (nonatomic, copy)   NSString *package;            ///<package
-@property (nonatomic, copy)   NSString *partnerid;           ///<商户号
-@property (nonatomic, copy)   NSString *aliOrderUrl;         ///<ZFB url
+@property (nonatomic, copy, nullable)   NSString *timestamp;       ///< 时间
+@property (nonatomic, copy, nullable)   NSString *signType;          ///签名类型
+@property (nonatomic, copy, nullable)   NSString *prepayId;          ///欲购买
+@property (nonatomic, copy, nullable)   NSString *sign;            ///<签名
+@property (nonatomic, copy, nullable)   NSString *noncestr;            ///<随机串
+@property (nonatomic, copy, nullable)   NSString *appid;            ///<应用ID
+@property (nonatomic, copy, nullable)   NSString *package;            ///<package
+@property (nonatomic, copy, nullable)   NSString *partnerid;           ///<商户号
+@property (nonatomic, copy, nullable)   NSString *aliOrderUrl;         ///<ZFB url
 @end
 
 // 结果
 @interface VHGoodsPayStatusItem : VHallRawBaseModel
-@property (nonatomic, copy)   NSString *order_no;           ///<订单号
-@property (nonatomic, copy)   NSString *order_status;       ///<订单状态
-@property (nonatomic, copy)   NSString *pay_time;           ///<时间
-@property (nonatomic, copy)   NSString *trade_no;           ///<交易号
+@property (nonatomic, copy, nullable)   NSString *order_no;           ///<订单号
+@property (nonatomic, copy, nullable)   NSString *order_status;       ///<订单状态
+@property (nonatomic, copy, nullable)   NSString *pay_time;           ///<时间
+@property (nonatomic, copy, nullable)   NSString *trade_no;           ///<交易号
 @end
 
 // 商品设置参数
 @interface VHGoodsSettingItem : VHallRawBaseModel
-@property (nonatomic, copy)   NSString *webinar_id;         ///<活动id
+@property (nonatomic, copy, nullable)   NSString *webinar_id;         ///<活动id
 @property (nonatomic, assign) NSInteger enable_username;    ///<开启姓名;0.否 1.是
 @property (nonatomic, assign) NSInteger enable_phone;       ///<开启手机号;0.否 1.是
 @property (nonatomic, assign) NSInteger enable_remark;      ///<开启留言;0.否 1.是
@@ -110,23 +110,23 @@
 
 // 商品图片list
 @interface VHGoodsImageList_Item : VHallRawBaseModel
-@property (nonatomic, copy)   NSString *img_url;            ///<图片地址
+@property (nonatomic, copy, nullable)   NSString *img_url;            ///<图片地址
 @property (nonatomic, assign) NSInteger is_cover;           ///<是否是封面图片(0.否 1.是)
 @end
 
 // 商品类
 @interface VHGoodsListItem : VHallRawBaseModel
 
-@property (nonatomic, copy)   NSString *goods_id;           ///<商品ID
-@property (nonatomic, copy)   NSString *price;              ///<原价
-@property (nonatomic, copy)   NSString *discount_price;     ///<优惠价
-@property (nonatomic, copy)   NSString *info;               ///<商品描述
-@property (nonatomic, copy)   NSString *cover_img;          ///<封面图片
-@property (nonatomic, copy)   NSString *url;                ///<商品链接
-@property (nonatomic, copy)   NSString *qr_code_url;        ///<二维码链接
-@property (nonatomic, copy)   NSString *name;               ///<商品名称
-@property (nonatomic, copy)   NSString *shop_url;           ///<店铺链接
-@property (nonatomic, copy)   NSString *third_goods_id;     ///<三方商品ID
+@property (nonatomic, copy, nullable)   NSString *goods_id;           ///<商品ID
+@property (nonatomic, copy, nullable)   NSNumber *price;              ///<原价
+@property (nonatomic, copy, nullable)   NSNumber *discount_price;     ///<优惠价
+@property (nonatomic, copy, nullable)   NSString *info;               ///<商品描述
+@property (nonatomic, copy, nullable)   NSString *cover_img;          ///<封面图片
+@property (nonatomic, copy, nullable)   NSString *url;                ///<商品链接
+@property (nonatomic, copy, nullable)   NSString *qr_code_url;        ///<二维码链接
+@property (nonatomic, copy, nullable)   NSString *name;               ///<商品名称
+@property (nonatomic, copy, nullable)   NSString *shop_url;           ///<店铺链接
+@property (nonatomic, copy, nullable)   NSString *third_goods_id;     ///<三方商品ID
 @property (nonatomic, assign) NSInteger buy_type;           ///<类型;1.平台 2.外链 3.自定义
 @property (nonatomic, assign) NSInteger webinar_goods_id;   ///<活动商品ID
 @property (nonatomic, assign) NSInteger order_num;          ///<排序
@@ -134,27 +134,27 @@
 @property (nonatomic, assign) NSInteger push_status;        ///<推送状态;(0.未推送 1. 推送中 2.已推送)
 @property (nonatomic, assign) NSInteger shop_show;          ///<显示店铺
 @property (nonatomic, assign) NSInteger covered_status;          ///<隐藏价格，0-不隐藏 1-隐藏价格
-@property (nonatomic, assign) NSString * covered_price;          ///<隐藏价格，eg：？
+@property (nonatomic, assign, nullable) NSString * covered_price;          ///<隐藏价格，eg：？
 @property (nonatomic, assign) NSInteger auto_pop;          ///是否自动弹窗 默认值：0
-@property (nonatomic, assign) NSString* ext_data;          ///拓展字段
+@property (nonatomic, assign, nullable) NSString* ext_data;          ///拓展字段
 @property (nonatomic, assign) long push_time;          ///推送时间
 @property (nonatomic, assign) NSInteger sale_status;          ///售卖状态 （0=售罄 1 销售中（默认）2=其他）
-@property (nonatomic, assign) NSString*  goods_detail_url;          ///商品详情
-@property (nonatomic, assign) NSString*  goods_order_url;    ///支付页面
-@property (nonatomic, copy)   NSArray<VHGoodsImageList_Item *> *images; ///<图片集合
+@property (nonatomic, assign, nullable) NSString*  goods_detail_url;          ///商品详情
+@property (nonatomic, assign, nullable) NSString*  goods_order_url;    ///支付页面
+@property (nonatomic, copy, nullable)   NSArray<VHGoodsImageList_Item *> *images; ///<图片集合
 @end
 
 @interface VHGoodsPushMessageItem : VHallRawBaseModel
 
-@property (nonatomic, copy)   NSString *cdn_url;            ///<cdn请求(获取列表数据)
-@property (nonatomic, copy)   NSString *room_id;            ///<lss_id
-@property (nonatomic, copy)   NSString *pusher_nickname;    ///<推送人昵称
-@property (nonatomic, copy)   NSString *type;               ///<消息类型
-@property (nonatomic, copy)   NSString *goods_name;         ///<商品名称
+@property (nonatomic, copy, nullable)   NSString *cdn_url;            ///<cdn请求(获取列表数据)
+@property (nonatomic, copy, nullable)   NSString *room_id;            ///<lss_id
+@property (nonatomic, copy, nullable)   NSString *pusher_nickname;    ///<推送人昵称
+@property (nonatomic, copy, nullable)   NSString *type;               ///<消息类型
+@property (nonatomic, copy, nullable)   NSString *goods_name;         ///<商品名称
 @property (nonatomic, assign) NSInteger role_name;          ///<用户身份
 @property (nonatomic, assign) NSInteger push_status;        ///<推送状态 1推送 2.取消推送
 @property (nonatomic, assign) NSInteger goods_id;           ///<商品id
-@property (nonatomic, strong) VHGoodsListItem *goods_info;  ///<详情
+@property (nonatomic, strong, nullable) VHGoodsListItem *goods_info;  ///<详情
 
 @end
 
