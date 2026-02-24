@@ -9,7 +9,7 @@ target 'VhallSDKDemo' do
 
   pod 'VHLiveSDK', '6.28.1' # 直播
   pod 'VHLiveSDK_Interactive', '6.28.1' # 互动
-  pod 'VHGoodsSDK', '6.28.1' # 商品
+  pod 'VHGoodsSDK', '6.28.2' # 商品
 
 
   pod 'WechatOpenSDK-XCFramework'

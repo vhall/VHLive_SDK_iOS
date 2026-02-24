@@ -538,7 +538,7 @@
         
     }];
     
-    [VHGoodsObject goodsCreateOrderByNative:self.webinarInfo.webinarInfoData.data_switch.switch_id buy_type:self.item.buy_type third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:username phone:phone remark:remark goods_id:self.item.goods_id quantity:self.numberBtn.currentNumber pay_channel:pay_channel channel_source:@"main" pay_amount:[NSString stringWithFormat:@"%.2lf",self.totalPrice] coupon_user_ids:self.bestCoupon ? [NSArray arrayWithObject:self.bestCoupon.coupon_user_id] : nil complete:^(VHGoodsCreateNativeModel *createOtherItem, NSError *error) {
+    [VHGoodsObject goodsCreateOrderByNative:self.webinarInfo.webinarInfoData.data_switch.switch_id buy_type:self.item.buy_type third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:username phone:phone remark:remark goods_id:self.item.goods_id quantity:self.numberBtn.currentNumber pay_channel:pay_channel channel_source:@"main" pay_amount:[NSString stringWithFormat:@"%.2lf",self.totalPrice] coupon_user_ids:self.bestCoupon ? [NSArray arrayWithObject:self.bestCoupon.coupon_user_id] : nil mch_app_id:@"" open_id:@"" complete:^(VHGoodsCreateNativeModel *createOtherItem, NSError *error) {
        __strong __typeof(weakSelf)self = weakSelf;
         
        if (createOtherItem) {
