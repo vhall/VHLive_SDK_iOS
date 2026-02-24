@@ -59,10 +59,12 @@ NS_ASSUME_NONNULL_BEGIN
 ///   - service_code:
 ///   - channel_source:
 ///   - pay_amount:
-///   - coupon_user_ids: 
+///   - coupon_user_ids:
+///   - mch_app_id  商户应用ID,对应商户号下的服务号AppId或小程序AppId
+///   - open_id  微信用户标识,微信JSAPI支付必传参数
 ///   - success: 成功
 ///   - fail: 失败
-+ (void)goodsCreateOtherWithSwitchId:(NSString *)switch_id buy_type:(NSInteger)buy_type third_user_id:(NSString *)third_user_id username:(NSString *)username phone:(NSString *)phone remark:(NSString *)remark goods_id:(NSString *)goods_id quantity:(NSInteger)quantity pay_channel:(NSString *)pay_channel service_code:(NSString *)service_code channel_source:(NSString *)channel_source pay_amount:(NSString *)pay_amount coupon_user_ids:(NSArray *)coupon_user_ids success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
++ (void)goodsCreateOtherWithSwitchId:(NSString *)switch_id buy_type:(NSInteger)buy_type third_user_id:(NSString *)third_user_id username:(NSString *)username phone:(NSString *)phone remark:(NSString *)remark goods_id:(NSString *)goods_id quantity:(NSInteger)quantity pay_channel:(NSString *)pay_channel service_code:(NSString *)service_code channel_source:(NSString *)channel_source pay_amount:(NSString *)pay_amount coupon_user_ids:(NSArray *)coupon_user_ids mch_app_id:(NSString*)mch_app_id open_id:(NSString*)open_id success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
 
 
 /// 获取信息

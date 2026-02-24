@@ -254,8 +254,10 @@
 ///   - channel_source: 渠道来源(main)
 ///   - pay_amount:
 ///   - coupon_user_ids: 优惠券集合 coupon_user_id
+///   - mch_app_id  商户应用ID,对应商户号下的服务号AppId或小程序AppId
+///   - open_id  微信用户标识,微信JSAPI支付必传参数
 ///   - complete: 完成返回详情,失败错误详情
-+ (void)goodsCreateOtherWithSwitchId:(NSString *)switch_id buy_type:(NSInteger)buy_type third_user_id:(NSString *)third_user_id username:(NSString *)username phone:(NSString *)phone remark:(NSString *)remark goods_id:(NSString *)goods_id quantity:(NSInteger)quantity pay_channel:(NSString *)pay_channel channel_source:(NSString *)channel_source pay_amount:(NSString *)pay_amount coupon_user_ids:(NSArray *)coupon_user_ids complete:(void (^)(VHGoodsCreateOtherItem *createOtherItem, NSError *error))complete;
++ (void)goodsCreateOtherWithSwitchId:(NSString *)switch_id buy_type:(NSInteger)buy_type third_user_id:(NSString *)third_user_id username:(NSString *)username phone:(NSString *)phone remark:(NSString *)remark goods_id:(NSString *)goods_id quantity:(NSInteger)quantity pay_channel:(NSString *)pay_channel channel_source:(NSString *)channel_source pay_amount:(NSString *)pay_amount coupon_user_ids:(NSArray *)coupon_user_ids  mch_app_id:(NSString*)mch_app_id open_id:(NSString*)open_id complete:(void (^)(VHGoodsCreateOtherItem *createOtherItem, NSError *error))complete;
 
 
 /// - Parameters:
@@ -271,8 +273,10 @@
 ///   - channel_source: 渠道来源(main)
 ///   - pay_amount:
 ///   - coupon_user_ids: 优惠券集合 coupon_user_id
+///   - mch_app_id  商户应用ID,对应商户号下的服务号AppId或小程序AppId
+///   - open_id  微信用户标识,微信JSAPI支付必传参数
 ///   - complete: 完成返回详情,失败错误详情
-+ (void)goodsCreateOrderByNative:(NSString *)switch_id buy_type:(NSInteger)buy_type third_user_id:(NSString *)third_user_id username:(NSString *)username phone:(NSString *)phone remark:(NSString *)remark goods_id:(NSString *)goods_id quantity:(NSInteger)quantity pay_channel:(NSString *)pay_channel channel_source:(NSString *)channel_source pay_amount:(NSString *)pay_amount coupon_user_ids:(NSArray *)coupon_user_ids complete:(void (^)(VHGoodsCreateNativeModel *createOtherItem, NSError *error))complete;
++ (void)goodsCreateOrderByNative:(NSString *)switch_id buy_type:(NSInteger)buy_type third_user_id:(NSString *)third_user_id username:(NSString *)username phone:(NSString *)phone remark:(NSString *)remark goods_id:(NSString *)goods_id quantity:(NSInteger)quantity pay_channel:(NSString *)pay_channel channel_source:(NSString *)channel_source pay_amount:(NSString *)pay_amount coupon_user_ids:(NSArray *)coupon_user_ids mch_app_id:(NSString*)mch_app_id open_id:(NSString*)open_id complete:(void (^)(VHGoodsCreateNativeModel *createOtherItem, NSError *error))complete;
 
 
 /// - Parameters:

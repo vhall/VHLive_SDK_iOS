@@ -96,12 +96,12 @@
 
 
 @interface VHWebinarInfoData_Switch : NSObject
-@property (nonatomic, copy) NSString *switch_id;                                        ///<场次id
-@property (nonatomic, copy) NSString *start_time;                                       ///<开始时间
-@property (nonatomic, copy) NSString *end_time;                                         ///<结束时间
-@property (nonatomic, assign) NSInteger end_type;                                       ///<结束类型 1:WEB 2:APP 3:SDK 4:推拉流 5:定时 6:Admin后台
-@property (nonatomic, assign) NSInteger type;                                           ///<类型 0 直播 1录制
-@property (nonatomic, assign) NSInteger start_type;                                     ///<开始类型 1:WEB 2:APP 3:SDK 4:推拉流 5:定时 6:Admin后台
+@property (nonatomic, copy, nullable) NSString *switch_id;                          ///<场次id
+@property (nonatomic, copy, nullable) NSString *start_time;                         ///<开始时间
+@property (nonatomic, copy, nullable) NSString *end_time;                           ///<结束时间
+@property (nonatomic, assign) NSInteger end_type;                                   ///<结束类型 1:WEB 2:APP 3:SDK 4:推拉流 5:定时6:Admin后台
+@property (nonatomic, assign) NSInteger type;                                       ///<类型 0 直播 1录制
+@property (nonatomic, assign) NSInteger start_type;                                 ///<开始类型 1:WEB 2:APP 3:SDK 4:推拉流 5:定时 6:Admin后台
 @end
 
 
