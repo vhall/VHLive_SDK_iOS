@@ -87,6 +87,9 @@
 @property (nonatomic, copy, nullable)   NSString *package;            ///<package
 @property (nonatomic, copy, nullable)   NSString *partnerid;           ///<商户号
 @property (nonatomic, copy, nullable)   NSString *aliOrderUrl;         ///<ZFB url
+@property (nonatomic, copy, nullable)   NSString *order_no;           ///<订单号
+@property (nonatomic, copy, nullable)   NSString *order_status;       ///<订单状态
+@property (nonatomic, copy, nullable)   NSString *referer;            ///<referer
 @end
 
 // 结果
