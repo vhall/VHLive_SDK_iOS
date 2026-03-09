@@ -145,6 +145,20 @@ NS_ASSUME_NONNULL_BEGIN
                               success:(void (^)(VHPermissionConfigItem *item))success
                               failure:(void (^)(NSError *error))failure;
 
+
+/// 获取活动权限检测
+/// @param webinarId 活动id 1、传活动id时，返回活动id+活动创建者相关的配置项信息 2、不传活动id时，获取登录用户的配置项信息
+/// @param webinar_user_id 活动发起者用户id，有webinar_id时，必传
+/// @param scene_id 使用场景：1权限检测（默认1）  2获取配置项选中值
+/// @param success 成功
+/// @param failure 失败
++ (void)permissionsCheckWithWebinarNumber:(NSNumber *)webinarId
+                      webinar_user_id:(NSString *)webinar_user_id
+                             scene_id:(NSString *)scene_id
+                              success:(void (^)(VHPermissionConfigItem *item))success
+                              failure:(void (^)(NSError *error))failure;
+
+
 /// 返回角色数据
 /// @param webinarId 活动id
 /// @param roleNameData 角色信息

@@ -73,6 +73,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param fail 失败回调
 + (void)getWebinarBaseInfoWithWebinarId:(NSString *)webinarId is_no_check:(BOOL)no_check success:(void (^)(VHSSWebinarBaseInfoModel *webinarBaseInfo))success fail:(void (^)(NSError *error))fail;
 
+/// 获取活动基础信息
+/// @param webinarId 活动id
+/// @param no_check 检查是否属于当前用户 YES 不检查 NO 检查
+/// @param success 成功回调
+/// @param fail 失败回调
++ (void)getWebinarBaseInfoWithWebinarNumber:(NSNumber *)webinarId is_no_check:(BOOL)no_check success:(void (^)(VHSSWebinarBaseInfoModel *webinarBaseInfo))success fail:(void (^)(NSError *error))fail;
+
 /// 发起端初始化直播间
 /// @param webinarId 活动id
 /// @param nickname 发直播昵称
@@ -213,6 +220,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param webinar_user_id （传webinar_id时，必传webinar_user_id）
 /// @param scene_id 使用场景：1权限检测（默认1）  2获取配置项选中值
 + (void)getConfigListWithWebinarId:(NSString *_Nullable)webinarId webinar_user_id:(NSString *_Nullable)webinar_user_id scene_id:(NSString *_Nullable)scene_id success:(void (^)(NSDictionary *response))success failure:(void (^)(NSError *error))failure;
+
++ (void)getConfigListWithWebinarNumber:(NSNumber *)webinarId webinar_user_id:(NSString *_Nullable)webinar_user_id scene_id:(NSString *_Nullable)scene_id success:(void (^)(NSDictionary *response))success failure:(void (^)(NSError *error))failure;
 
 
 /// 获取多语种 http://yapi.vhall.domain/project/99/interface/api/44437
