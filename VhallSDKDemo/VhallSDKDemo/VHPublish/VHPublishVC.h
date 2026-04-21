@@ -6,6 +6,7 @@
 //
 
 #import "VHBaseViewController.h"
+#import "VHLivePusher/VHallLivePublish.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
