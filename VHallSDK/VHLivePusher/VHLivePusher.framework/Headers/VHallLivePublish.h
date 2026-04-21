@@ -8,8 +8,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 
-#import "VHallConst.h"
-#import "VHWebinarInfo.h"
+#import "VHLiveSDK/VHallConst.h"
+#import "VHLiveSDK/VHWebinarInfo.h"
 #import <VHLSS/VHPublishConfig.h>
 
 @protocol VHallLivePublishDelegate;

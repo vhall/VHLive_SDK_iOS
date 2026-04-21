@@ -1,9 +1,9 @@
 Pod::Spec.new do |spec|
   
-  spec.name         = 'VHLiveSDK'
+  spec.name         = 'VHLivePusher'
   spec.version      = '6.29.0'
 
-  spec.summary      = "Vhall iOS SDK #{spec.name.to_s}"
+  spec.summary      = "VHall iOS SDK #{spec.name.to_s}"
   spec.homepage     = 'https://www.vhall.com'
   spec.author       = { "GuoChao" => "chao.guo@vhall.com" }
   spec.license      = { :type =>'MIT', :text=><<-LICENSE
@@ -30,19 +30,13 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, '10.0'
 
   spec.source          = { :git => "https://github.com/vhall/VHLive_SDK_iOS.git", :tag => spec.version.to_s}
-
-  spec.vendored_frameworks = 'VHallSDK/VHVss.framework','VHallSDK/VHLiveSDK.framework'
-
+  spec.vendored_frameworks = 'VHallSDK/VHLivePusher/VHLivePusher.framework'
   spec.frameworks   = "AVFoundation", "VideoToolbox","OpenAL","CoreMedia","CoreTelephony" ,"OpenGLES" ,"MediaPlayer" ,"AssetsLibrary","QuartzCore" ,"JavaScriptCore","Security"
   
   spec.pod_target_xcconfig = {
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
     'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
   }
-
-  spec.dependency 'VHYun_IM'
-  spec.dependency 'VHYun_LSS', ">=2.9.2"
-  spec.dependency 'VHYun_OPS'
-  spec.dependency 'VHYun_RTC', ">=2.8.3"
-
+  spec.dependency 'VHLiveSDK', ">=6.29.0"
+  spec.dependency 'VHYun_LSS_V2', ">=3.0.1"
 end

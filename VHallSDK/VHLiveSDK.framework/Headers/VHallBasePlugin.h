@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VHallLivePublish.h"
+//#import "VHallLivePublish.h"
 #import "VHallMoviePlayer.h"
 
 @class VHallActivityModel;
@@ -23,12 +23,6 @@
  * 开始活动通知
  */
 - (void)startActivity:(NSNotification *)notify;
-
-/**
- * 初始化功能模块
- * livePublish 发起端实例
- */
-- (instancetype)initWithLivePublish:(VHallLivePublish *) livePublish __deprecated_msg("Use initWithObject: instead");
 
 /**
  * 初始化功能模块
