@@ -59,6 +59,10 @@
 
 ## 版本更新信息
 
+#### 版本：v6.29.2 更新时间 2026.6.8
+
+1. 【优化】观看初始化接口[requestWatchInitWebinarId]新增渠道channel_id参数。如果初始化设置了渠道channel_id参数，在调用[startPlayback]\[startPlay]接口是同样需要传递‘channel_id’参数
+
 #### 版本：v6.29.0 更新时间 2026.4.21
 
 1. 【优化】将支持推流模块拆分为独立framework，从此版本开始如需直播推流能力需要集成pod 'VHLivePuhser' 
