@@ -60,6 +60,7 @@
 /// param[@"id"]            = 活动Id，必传
 /// param[@"name"]          = 昵称
 /// param[@"auth_model"]    = 0 : 校验观看权限(默认)  1 : 不校验观看权限
+/// param[@"channel_id"]    =  渠道id ， 非必传。
 - (BOOL)startPlay:(NSDictionary *)param;
 /// @param isPIP 是否开启画中画
 - (BOOL)startPlay:(NSDictionary *)param isPIP:(BOOL)isPIP;
@@ -70,6 +71,7 @@
 /// param[@"record_id"]     = 回放id，可以通过回放列表获取 getRecordListWithWebinarId
 /// param[@"name"]          = 昵称
 /// param[@"auth_model"]    = 0 : 校验观看权限(默认)  1 : 不校验观看权限
+/// param[@"channel_id"]    =  渠道id ， 非必传。
 - (BOOL)startPlayback:(NSDictionary *)param;
 /// @param isPIP 是否开启画中画
 - (BOOL)startPlayback:(NSDictionary *)param isPIP:(BOOL)isPIP;;

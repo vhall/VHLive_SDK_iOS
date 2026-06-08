@@ -73,13 +73,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param fail 失败回调
 + (void)getWebinarBaseInfoWithWebinarId:(NSString *)webinarId is_no_check:(BOOL)no_check success:(void (^)(VHSSWebinarBaseInfoModel *webinarBaseInfo))success fail:(void (^)(NSError *error))fail;
 
-/// 获取活动基础信息
-/// @param webinarId 活动id
-/// @param no_check 检查是否属于当前用户 YES 不检查 NO 检查
-/// @param success 成功回调
-/// @param fail 失败回调
-+ (void)getWebinarBaseInfoWithWebinarNumber:(NSNumber *)webinarId is_no_check:(BOOL)no_check success:(void (^)(VHSSWebinarBaseInfoModel *webinarBaseInfo))success fail:(void (^)(NSError *error))fail;
-
 /// 发起端初始化直播间
 /// @param webinarId 活动id
 /// @param nickname 发直播昵称
@@ -127,6 +120,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param email               邮箱
 /// @param record_id      回放id
 /// @param auth_model      0 : 校验观看权限(默认)  1 : 不校验观看权限
+/// @param channel          应用层更加业务需求传入渠道号，可为空
 /// @param success          成功回调
 /// @param fail                 失败回调
 + (void)watchInitWithWebinarId:(NSString *)webinarId
@@ -135,6 +129,7 @@ NS_ASSUME_NONNULL_BEGIN
                       nickname:(NSString *_Nullable)nickname
                          email:(NSString *_Nullable)email
                      record_id:(NSString *_Nullable)record_id
+                     channel_id:(NSString *_Nullable)channel_id
                     auth_model:(NSInteger)auth_model
                        success:(void (^)(VHSSWebinarWatchInitInfoModel *initModel))success
                           fail:(void (^)(NSError *error))fail;

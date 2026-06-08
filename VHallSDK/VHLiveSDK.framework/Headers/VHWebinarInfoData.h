@@ -151,12 +151,13 @@
 ///   - record_id:  回放id非必传
 ///   - auth_model: 0 : 校验观看权限(默认)  1 : 不校验观看权限
 ///   - complete:   请求完成,包含数据详情和错误信息
-+ (void)requestWatchInitWebinarId:(NSString *)webinarId
-                             pass:(NSString *)pass
-                             k_id:(NSString *)k_id
-                        nick_name:(NSString *)nick_name
-                            email:(NSString *)email
-                        record_id:(NSString *)record_id
++ (void)requestWatchInitWebinarId:(NSString *_Nullable)webinarId
+                             pass:(NSString *_Nullable)pass
+                             k_id:(NSString *_Nullable)k_id
+                        nick_name:(NSString *_Nullable)nick_name
+                            email:(NSString *_Nullable)email
+                        record_id:(NSString *_Nullable)record_id
+                        channel_id:(NSString *_Nullable)channel_id
                        auth_model:(NSInteger)auth_model
                          complete:(void (^)(VHWebinarInfoData *webinarInfoData, NSError *error))complete;
 

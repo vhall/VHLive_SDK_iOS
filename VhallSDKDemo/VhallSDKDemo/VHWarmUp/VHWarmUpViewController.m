@@ -165,6 +165,7 @@
                                        nick_name:nil
                                            email:nil
                                        record_id:nil
+                                      channel_id:nil
                                       auth_model:1
                                         complete:^(VHWebinarInfoData *webinarInfoData, NSError *error) {
         if (webinarInfoData) {

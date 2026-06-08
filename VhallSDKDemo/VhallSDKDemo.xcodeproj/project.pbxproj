@@ -159,19 +159,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		4EEBCDF929A4A74300704C7D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		17104494D6712BCAFC486993 /* Pods-VhallSDKDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemoTests/Pods-VhallSDKDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1E26F687E80B8B2BB47A859E /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VhallSDKDemo_VhallSDKDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -441,6 +428,7 @@
 		FABE2DBA2E4593EF00CFBA7B /* VHChatGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHChatGoodsCell.m; sourceTree = "<group>"; };
 		FABE2DBF2E45966100CFBA7B /* VhallSDKDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VhallSDKDemo.entitlements; sourceTree = "<group>"; };
 		FABE2DC02E45969300CFBA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FAEB16892FD6AA84000F2305 /* VHVssRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VHVssRTC.framework; path = Pods/VHLiveSDK_Interactive/VHallSDK/VHallInteractive/VHVssRTC.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1315,6 +1303,7 @@
 				4E751BA82A42DCCB006E301C /* ARKit.framework */,
 				4E0EA0F62A09F24300FD17F7 /* WebKit.framework */,
 				4E0EA0F22A09F22000FD17F7 /* VHInteractive.framework */,
+				FAEB16892FD6AA84000F2305 /* VHVssRTC.framework */,
 				4E0EA0F42A09F22000FD17F7 /* VHLiveSDK.framework */,
 				4E858E9129F671A50007B792 /* CoreTelephony.framework */,
 				4E858E8829F66CEF0007B792 /* SystemConfiguration.framework */,
@@ -1370,7 +1359,6 @@
 				4EEEEB6C293EE96600538BC2 /* Frameworks */,
 				4EEEEB6D293EE96600538BC2 /* Resources */,
 				F3B2B6F699080DBD49E4D3B5 /* [CP] Embed Pods Frameworks */,
-				4EEBCDF929A4A74300704C7D /* Embed Frameworks */,
 				4E33AF1929D55DC000E3D1AC /* ShellScript */,
 				E8C868762838F69DA876F357 /* [CP] Copy Pods Resources */,
 			);
@@ -1965,6 +1953,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/VHallSDK/VHallInteractive",
 					"$(PROJECT_DIR)/VHallSDK",
+					"$(PROJECT_DIR)/Pods/VHLiveSDK_Interactive/VHallSDK/VHallInteractive",
 				);
 				GCC_PREFIX_HEADER = VhallSDKDemo/Header/VhallSDKDemoPCH.h;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2014,6 +2003,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/VHallSDK/VHallInteractive",
 					"$(PROJECT_DIR)/VHallSDK",
+					"$(PROJECT_DIR)/Pods/VHLiveSDK_Interactive/VHallSDK/VHallInteractive",
 				);
 				GCC_PREFIX_HEADER = VhallSDKDemo/Header/VhallSDKDemoPCH.h;
 				GENERATE_INFOPLIST_FILE = YES;

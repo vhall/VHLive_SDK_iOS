@@ -12,6 +12,9 @@
 /// 活动id
 @property (nonatomic, copy) NSString *webinar_id;
 
+/// 渠道iid
+@property (nonatomic, copy, nullable) NSString *channel_id;
+
 /// 活动状态 1-直播中，2-预约，3-结束，4-点播，5-回放
 @property (nonatomic) VHMovieActiveState type;
 

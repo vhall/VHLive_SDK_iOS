@@ -14,6 +14,8 @@
 
 /// 活动id
 @property (nonatomic, copy) NSString *webinarId;
+/// 活动id
+@property (nonatomic, copy, nullable) NSString *channelId;
 /// 指定回放id
 @property (nonatomic, copy) NSString *recordId;
 /// 活动状态
@@ -82,10 +84,11 @@
 }
 
 #pragma mark - 初始化
-- (instancetype)initWithWebinarId:(NSString *)webinarId type:(VHMovieActiveState)type
+- (instancetype)initWithWebinarId:(NSString *)webinarId channelId:(NSString* _Nullable)channelId  type:(VHMovieActiveState)type
 {
     if ([super init]) {
         self.webinarId = webinarId;
+        self.channelId = channelId;
         self.type = type;
 
         // 显隐控件
@@ -914,6 +917,7 @@
     param[@"record_id"] = self.recordId;
     param[@"name"] = [VHallApi currentUserNickName];
     param[@"auth_model"] = @(1);
+    param[@"channel_id"] = self.channelId;
     return param;
 }
 

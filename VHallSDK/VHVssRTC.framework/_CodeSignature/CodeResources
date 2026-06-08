@@ -4,17 +4,21 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/VHallLivePublish.h</key>
+		<key>Headers/VSSRTCMsgModel.h</key>
 		<data>
-		qXaT7XJ457pVVqzul2je5gSHicc=
+		LdRmy0/WR8zZ0fy0k8q85UZtDEE=
+		</data>
+		<key>Headers/VSSRtc.h</key>
+		<data>
+		JxwHxFNR8NYAkw0NqxHSnGhOx+o=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		y08CuUSL+mrVflP9IjzQHXa9G9g=
+		Fhc3l6DpW27G3wUAIv07wiijhuw=
 		</data>
 		<key>README.md</key>
 		<data>
-		JXnAcCJ8MMcy5a5/QXLxYgc75M0=
+		Gpl0EKtobdYs197ysW8h0lkFRA8=
 		</data>
 		<key>TXIMSDK_Plus_iOS_Privacy.bundle/Info.plist</key>
 		<data>
@@ -24,25 +28,52 @@
 		<data>
 		IHdy45xMwMDZDccZgptM9E0CwrA=
 		</data>
+		<key>VHVssRTC-Info.plist</key>
+		<data>
+		1npES2RlxnPLtYdjTP97dsOvINQ=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/VHallLivePublish.h</key>
+		<key>Headers/VSSRTCMsgModel.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			LdRmy0/WR8zZ0fy0k8q85UZtDEE=
+			</data>
 			<key>hash2</key>
 			<data>
-			SIfRFJNPPC9xD70rvln+LWTTT/i0T5+krQmYDAENRN8=
+			hQQVCDy5PgMWfmjtrtsoO0wAQ/gFXEnbqxRyXnLH+yw=
+			</data>
+		</dict>
+		<key>Headers/VSSRtc.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			JxwHxFNR8NYAkw0NqxHSnGhOx+o=
+			</data>
+			<key>hash2</key>
+			<data>
+			fHsKliirTFhezhsblthm94lZtDBiwt2WcV2oRveGWAc=
 			</data>
 		</dict>
 		<key>README.md</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			Gpl0EKtobdYs197ysW8h0lkFRA8=
+			</data>
 			<key>hash2</key>
 			<data>
-			xIb+PqsBR6EtLbW8bmm+4toALe/R0wHSunnR9NbmLq0=
+			qvB4yPBJyxov3w+iCmQTthxrN5gFkvYZZxfRjpdMuxE=
 			</data>
 		</dict>
 		<key>TXIMSDK_Plus_iOS_Privacy.bundle/Info.plist</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			1AfcjcnhKKZcS/e1BZZbT0m4Sqw=
+			</data>
 			<key>hash2</key>
 			<data>
 			LssDAuooZMCXBuewQa3yFKfMNIdjtlm+CmB0dR+c5lE=
@@ -50,9 +81,24 @@
 		</dict>
 		<key>TXIMSDK_Plus_iOS_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			IHdy45xMwMDZDccZgptM9E0CwrA=
+			</data>
 			<key>hash2</key>
 			<data>
 			fxSkj0w8/FWeR0ZrD2iUkKPtdPXY28xENrSwrQuVShM=
+			</data>
+		</dict>
+		<key>VHVssRTC-Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1npES2RlxnPLtYdjTP97dsOvINQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			jarVe37MFn5zqqLdCWot+ohIkoedNMm9IBVG5+52OxQ=
 			</data>
 		</dict>
 	</dict>

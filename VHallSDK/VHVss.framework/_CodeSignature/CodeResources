@@ -48,10 +48,6 @@
 		<data>
 		/E4VSh7E/BXwcYRZhZFrk464fww=
 		</data>
-		<key>Headers/VSSRTCMsgModel.h</key>
-		<data>
-		LdRmy0/WR8zZ0fy0k8q85UZtDEE=
-		</data>
 		<key>Headers/VSSRebroadcastPublisher.h</key>
 		<data>
 		6HVndUz30pBduCer85pWOrtwPi0=
@@ -63,10 +59,6 @@
 		<key>Headers/VSSRoomInfo.h</key>
 		<data>
 		GM16u0GiUqtdYlEWP7/ExpLV9sY=
-		</data>
-		<key>Headers/VSSRtc.h</key>
-		<data>
-		JxwHxFNR8NYAkw0NqxHSnGhOx+o=
 		</data>
 		<key>Headers/VSSSign.h</key>
 		<data>
@@ -86,7 +78,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		1CngWRndnRQPco4Q/aJ+tkDoJnI=
+		w9bZwaWYmsNXW2LfdnPxuAIYpLw=
 		</data>
 		<key>README.md</key>
 		<data>
@@ -94,7 +86,7 @@
 		</data>
 		<key>TXIMSDK_Plus_iOS_Privacy.bundle/Info.plist</key>
 		<data>
-		lbt8Ieg3gNJTn5vqqwUYXwULt3s=
+		1AfcjcnhKKZcS/e1BZZbT0m4Sqw=
 		</data>
 		<key>TXIMSDK_Plus_iOS_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -224,17 +216,6 @@
 			jBMX/znpVtsRZWwgnILzIDYN11v7bFMGPvBYDDNofPI=
 			</data>
 		</dict>
-		<key>Headers/VSSRTCMsgModel.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			LdRmy0/WR8zZ0fy0k8q85UZtDEE=
-			</data>
-			<key>hash2</key>
-			<data>
-			hQQVCDy5PgMWfmjtrtsoO0wAQ/gFXEnbqxRyXnLH+yw=
-			</data>
-		</dict>
 		<key>Headers/VSSRebroadcastPublisher.h</key>
 		<dict>
 			<key>hash</key>
@@ -266,17 +247,6 @@
 			<key>hash2</key>
 			<data>
 			lpSXIh+6AciRlkVnrIwQfNZQTNNW/OBmVdH/oR6G+mY=
-			</data>
-		</dict>
-		<key>Headers/VSSRtc.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			JxwHxFNR8NYAkw0NqxHSnGhOx+o=
-			</data>
-			<key>hash2</key>
-			<data>
-			fHsKliirTFhezhsblthm94lZtDBiwt2WcV2oRveGWAc=
 			</data>
 		</dict>
 		<key>Headers/VSSSign.h</key>
@@ -338,11 +308,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			lbt8Ieg3gNJTn5vqqwUYXwULt3s=
+			1AfcjcnhKKZcS/e1BZZbT0m4Sqw=
 			</data>
 			<key>hash2</key>
 			<data>
-			qccpChk2UTc8Ke9F3jgHd0F6EKgiTZQcepI7aC8YPGc=
+			LssDAuooZMCXBuewQa3yFKfMNIdjtlm+CmB0dR+c5lE=
 			</data>
 		</dict>
 		<key>TXIMSDK_Plus_iOS_Privacy.bundle/PrivacyInfo.xcprivacy</key>

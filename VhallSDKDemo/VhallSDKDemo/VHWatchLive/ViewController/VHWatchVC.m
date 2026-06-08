@@ -1200,7 +1200,7 @@
 - (VHWatchVideoView *)watchVideoView
 {
     if (!_watchVideoView) {
-        _watchVideoView = [[VHWatchVideoView alloc] initWithWebinarId:self.webinar_id type:self.type];
+        _watchVideoView = [[VHWatchVideoView alloc] initWithWebinarId:self.webinar_id channelId:self.channel_id type:self.type];
         _watchVideoView.delegate = self;
         [self.view addSubview:_watchVideoView];
     }

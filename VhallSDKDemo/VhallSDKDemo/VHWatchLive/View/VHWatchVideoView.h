@@ -74,7 +74,7 @@
 /// - Parameter webinarId: 活动id
 /// - Parameter recordId: 指定回放id
 /// - Parameter type: 活动状态
-- (instancetype)initWithWebinarId:(NSString *)webinarId type:(VHMovieActiveState)type;
+- (instancetype)initWithWebinarId:(NSString *)webinarId channelId:(NSString* _Nullable)channelId  type:(VHMovieActiveState)type;
 
 /// 开始播放
 - (void)startPlay;

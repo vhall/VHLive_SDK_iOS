@@ -18,7 +18,7 @@ target 'VhallSDKDemo' do
   pod 'MJRefresh', '~> 3.7.5'
   pod 'MJExtension', '~> 3.4.1'
   pod 'SDWebImage', '~> 5.14.3'
-  pod 'YYText', :git => 'git@github.com:ccccwhj-whj/YYText.git', :tag => '1.0.0'  
+  pod 'YYText', :git => 'https://github.com/SuperGuo751/YYText.git', :tag => '1.0'  
   pod 'Masonry', '~> 1.1.0'
   pod 'MBProgressHUD', '~> 1.2.0'
   pod 'IQKeyboardManager', '~> 6.5.11'

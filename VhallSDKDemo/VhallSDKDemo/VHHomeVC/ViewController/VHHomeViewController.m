@@ -171,12 +171,15 @@
     __weak __typeof(self) weakSelf = self;
     // 增加一个hud
     [VHProgressHud showLoading];
+    //根据业务判断是否需要填写渠道id
+    NSString* channel_id = @"ios-sdk-demo";
     [VHWebinarInfoData requestWatchInitWebinarId:self.activityTF.text
                                             pass:nil
                                             k_id:nil
                                        nick_name:nil
                                            email:nil
                                        record_id:nil
+                                      channel_id:channel_id
                                       auth_model:1
                                         complete:^(VHWebinarInfoData *webinarInfoData, NSError *error) {
         if (webinarInfoData) {
@@ -196,6 +199,7 @@
             watchVC.webinar_id = self.activityTF.text;
             //获取当前活动类型
             watchVC.type = webinarInfoData.webinar.type;
+            watchVC.channel_id = channel_id;
 
             // 预告页
             VHWarmUpViewController *warmUP = [VHWarmUpViewController new];
