@@ -98,11 +98,12 @@ NS_ASSUME_NONNULL_BEGIN
 ///   - username: 姓名
 ///   - goods_id: ID
 ///   - business_uid: 商品信息中bid
+///   - act：操作类型  打开商品详情传入popup_click  ， 点击购买商品传入 popup_buy
 ///   - notice_type: 固定buy
 ///   - coupon_user_ids:
 ///   - success: 成功
 ///   - fail: 失败
-+ (void)goodsOrderNotice:(NSString *)webinar_id user_id:(NSString*)user_id third_user_id:(NSString *)third_user_id username:(NSString *)username goods_id:(NSString *)goods_id   notice_type:(NSString *)notice_type success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
++ (void)goodsOrderNotice:(NSString *)webinar_id user_id:(NSString*)user_id third_user_id:(NSString *)third_user_id username:(NSString *)username goods_id:(NSString *)goods_id  act:(NSString*)act  notice_type:(NSString *)notice_type success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
 
 @end
 
