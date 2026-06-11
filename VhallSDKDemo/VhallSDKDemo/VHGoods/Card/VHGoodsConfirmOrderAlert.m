@@ -532,7 +532,7 @@
     __weak __typeof(self)weakSelf = self;
     
     //用于在下单前同步在聊天区域显示***正在买对应商品
-    [VHGoodsObject goodsOrderNotice:self.webinarInfo.webinarId user_id: [NSString stringWithFormat:@"%ld",(long)self.webinarInfo.webinarInfoData.join_info.user_id]  third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:username goods_id:self.item.goods_id notice_type:@"buy" success:^(NSString *msg) {
+    [VHGoodsObject goodsOrderNotice:self.webinarInfo.webinarId user_id: [NSString stringWithFormat:@"%ld",(long)self.webinarInfo.webinarInfoData.join_info.user_id]  third_user_id:self.webinarInfo.webinarInfoData.join_info.third_party_user_id username:username goods_id:self.item.goods_id act:@"popup_buy" notice_type:@"buy" success:^(NSString *msg) {
         
     } fail:^(NSError *error) {
         
