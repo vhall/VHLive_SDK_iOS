@@ -117,6 +117,16 @@
 @property (nonatomic, assign) NSInteger real;                                           ///<真实在线数
 @end
 
+@interface VHMemberLevelDetails : NSObject
+@property (nonatomic, assign) NSInteger level;
+@property (nonatomic, copy) NSString *icon;
+@end
+
+@interface VHMemberLevel: NSObject
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, assign) NSInteger status;
+@property (nonatomic, strong) NSArray<VHMemberLevelDetails *> *custom_list;
+@end
 
 @interface VHWebinarInfoData : NSObject
 @property (nonatomic, copy) NSString *system_time;                                      ///<系统时间
@@ -135,7 +145,8 @@
 @property (nonatomic, strong) VHWebinarInfoData_Webinar *webinar;                       ///<活动信息
 @property (nonatomic, strong) VHWebinarInfoData_Switch *data_switch;                    ///<场次信息
 @property (nonatomic, strong) VHWebinarInfoData_Subscribe *subscribe;                   ///<预约人数
-@property (nonatomic, strong) VHWebinarInfoData_Online *online;                         ///<在线信息
+@property (nonatomic, strong) VHWebinarInfoData_Online *online;
+@property (nonatomic, strong) VHMemberLevel *member_level;    ///<在线信息
 
 /// 初始化整理数据
 /// - Parameter data: 数据详情
@@ -180,4 +191,14 @@
                        verify_value:(NSString *)verify_value
                            complete:(void (^)(NSDictionary *responseObject, NSError *error))complete;
 
+
+/// 设置本地观众端成员标签等级. 如果不设置等级需要重置为nil
+/// level :标签等级 1到21
++(void)setMemberLevel:(NSString*_Nullable)level;
+
+/// 获取当前活动观众等级标签
+/// - Parameters:
+///   - webinar_id: 活动id
++(void)getMemberLevel:(NSString*_Nonnull)webinar_id
+             complete:(void (^_Nullable)(VHMemberLevel * _Nullable memberLevel, NSError * _Nullable error))complete;
 @end

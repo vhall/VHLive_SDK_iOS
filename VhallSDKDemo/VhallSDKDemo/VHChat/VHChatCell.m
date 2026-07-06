@@ -7,6 +7,7 @@
 
 #import "VHChatCell.h"
 
+
 @interface VHChatPhotoCollectionCell ()
 /// 图片
 @property (nonatomic, strong) UIImageView *photoImg;
@@ -85,6 +86,8 @@
 @property (nonatomic, strong) UILabel *timeLab;
 /// 背景图
 @property (nonatomic, strong) UIView *cellBackgroundView;
+/// vip标签
+@property (nonatomic, strong) UIImageView *memberLevel;
 
 /// 回复的line
 @property (nonatomic, strong) UIView *replyLineView;
@@ -108,15 +111,13 @@
 
 @implementation VHChatCell
 
-+ (VHChatCell *)createCellWithTableView:(UITableView *)tableView
-{
++ (VHChatCell *)createCellWithTableView:(UITableView *)tableView webinarInfo:(VHWebinarInfoData *)webinarInfo{
     VHChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VHChatCell"];
-
     if (!cell) {
         cell = [[VHChatCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"VHChatCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-
+    cell.webinarInfoData = webinarInfo;
     return cell;
 }
 
@@ -127,6 +128,7 @@
         self.contentView.backgroundColor = [UIColor clearColor];
 
         [self.contentView addSubview:self.headImg];
+        [self.contentView addSubview:self.memberLevel];
         [self.contentView addSubview:self.nickNameLab];
         [self.contentView addSubview:self.roleNameLab];
         [self.contentView addSubview:self.timeLab];
@@ -159,10 +161,18 @@
         make.left.mas_equalTo(10);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
+    
 
     [self.nickNameLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.headImg.mas_top);
         make.left.mas_equalTo(self.headImg.mas_right).offset(8);
+    }];
+    
+    [self.memberLevel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.nickNameLab.mas_top);
+        make.left.mas_equalTo(self.nickNameLab.mas_right).offset(8);
+        make.size.mas_equalTo(CGSizeMake(50, 16));
+        self.memberLevel.hidden = YES;
     }];
 
     [self.roleNameLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -229,11 +239,49 @@
     }];
 }
 
+
+
 #pragma mark - 赋值
 - (void)setModel:(VHallChatModel *)model
 {
     // 头像
     [self.headImg sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"vh_no_head_icon"]];
+    
+    if(self.webinarInfoData.member_level != nil && self.webinarInfoData.member_level.status == 1){
+        NSDictionary *contextDict = model.context;
+        if ([contextDict isKindOfClass:[NSDictionary class]]) {
+            id levelObj = contextDict[@"member_level"];
+            NSInteger memberLevel = [levelObj integerValue];
+            if([self.webinarInfoData.member_level.type isEqualToString:@"default"]){
+                if(memberLevel >= 1 && memberLevel <= 21){
+                    //显示vip标签
+                    self.memberLevel.hidden = NO;
+                    NSString * level = [NSString stringWithFormat:@"会员等级_vip%ld",memberLevel];
+                    [self.memberLevel setImage:[UIImage imageNamed:level]];
+                }else{
+                    self.memberLevel.hidden = YES;
+                }
+            }else{
+                if(memberLevel >= 1 && memberLevel <= 21){
+                    //显示vip标签
+                    self.memberLevel.hidden = NO;
+                    for(int i = 0; i < self.webinarInfoData.member_level.custom_list.count;i++){
+                        if(memberLevel == self.webinarInfoData.member_level.custom_list[i].level){
+                            NSString* url = self.webinarInfoData.member_level.custom_list[i].icon;
+                            if(url != nil){
+                                [self.memberLevel sd_setImageWithURL:[NSURL URLWithString:url]];
+                                break;
+                            }
+                        }
+                    }
+                }else{
+                    self.memberLevel.hidden = YES;
+                }
+            }
+            [self layoutIfNeeded];
+        }
+    }
+    
     // 昵称
     self.nickNameLab.text = [VUITool substringToIndex:8 text:model.user_name isReplenish:YES];
     // 时间
@@ -454,6 +502,17 @@
     }
 
     return _headImg;
+}
+
+-(UIImageView*)memberLevel{
+    if(!_memberLevel){
+        _memberLevel = [[UIImageView alloc] init];
+        _memberLevel.layer.masksToBounds = YES;
+        _memberLevel.layer.cornerRadius = 16 / 2;
+        _memberLevel.width = 30;
+        _memberLevel.height = 16;
+    }
+    return _memberLevel;
 }
 
 - (UILabel *)nickNameLab {

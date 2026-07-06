@@ -173,6 +173,7 @@
     [VHProgressHud showLoading];
     //根据业务判断是否需要填写渠道id
     NSString* channel_id = @"ios-sdk-demo";
+    [VHWebinarInfoData setMemberLevel:@"4"];
     [VHWebinarInfoData requestWatchInitWebinarId:self.activityTF.text
                                             pass:nil
                                             k_id:nil

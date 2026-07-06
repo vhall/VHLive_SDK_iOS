@@ -22,10 +22,13 @@
 @property (nonatomic , copy) NSString *     img_url;        ///<图片地址
 @property (nonatomic , copy) NSString *     created_at;     ///<创建时间
 @property (nonatomic , copy) NSString *     push_time;      ///<推送时间
+@property (nonatomic , copy) NSString *     app_scheme;      ///app scheme 地址
+@property (nonatomic , copy) NSString *     mini_program_path;      ///小程序跳转地址 地址
 @property (nonatomic , assign) BOOL         href_enable;    ///<是否开启链接 NO：未开启，YES：开启
 @property (nonatomic , assign) BOOL         timer_enable;   ///<是否开启倒计时 NO：未开启，YES：开启
 @property (nonatomic , assign) NSInteger    img_rate;       ///<图片比例 0竖版 1横版 2方版
 @property (nonatomic , assign) NSInteger    timer_interval; ///<倒计时时长
+@property (nonatomic , assign) NSInteger    show_mode;      ///<显示模式
 @property (nonatomic , assign) UIViewContentMode img_mode;  ///<图片裁剪类型
 
 /** 以下部分是推屏卡片消息中带有的参数*/

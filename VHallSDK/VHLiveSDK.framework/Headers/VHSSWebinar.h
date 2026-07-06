@@ -134,6 +134,13 @@ NS_ASSUME_NONNULL_BEGIN
                        success:(void (^)(VHSSWebinarWatchInitInfoModel *initModel))success
                           fail:(void (^)(NSError *error))fail;
 
+
+//// 观看端获取成员等级开关信息
+//// @param webinarId      活动id
++ (void)getMemberLevelWithWebinarId:(NSString *)webinar_id
+                                success:(void (^)(NSDictionary *responseObject))success
+                                fail:(void (^)(NSError *error))fail;
+
 /// 活动观看权限
 /// @param webinar_id 活动id
 /// @param type 0:免费（默认），1:密码，2：白名单，3：付费，4：邀请码

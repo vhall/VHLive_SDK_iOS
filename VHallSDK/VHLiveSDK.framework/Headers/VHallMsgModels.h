@@ -71,6 +71,8 @@ typedef NS_ENUM(NSInteger, ChatCustomType) {
 @property (nonatomic, copy) NSArray *imageUrls;                     ///<图片消息url列表
 @property (nonatomic, copy) NSString *text;                         ///<聊天消息
 
+///<
+
 @end
 
 //自定义消息

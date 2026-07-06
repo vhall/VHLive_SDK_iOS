@@ -516,6 +516,7 @@
     NSString * username = self.settingItem.enable_username == 0 ? @"" : self.userNameField.text;
     NSString * phone = self.settingItem.enable_phone == 0 ? @"" : self.phoneField.text;
     NSString * remark = self.settingItem.enable_remark == 0 ? @"" : self.remarkField.text;
+    
     if(username){
         username = [username stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     }
@@ -525,6 +526,7 @@
     if(remark){
         remark = [remark stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     }
+    
     // 支付渠道,如果是三方则需要传WEIXIN,ALIPAY,否则传@""
     NSString * pay_channel = self.wechatBtn.selected ? @"WEIXIN" : @"ALIPAY";
     pay_channel = !self.aliBtn.selected && !self.wechatBtn.selected ? @"" : pay_channel;
@@ -544,7 +546,7 @@
        if (createOtherItem) {
            if([pay_channel isEqualToString:@"WEIXIN"]){
                //openid 和 universalLink 需要联系技术支持进行获取
-               BOOL ret =  [WXApi registerApp:@"wxc6c0a273cf2f67f7" universalLink:@"https://vhall/app/"];
+               [WXApi registerApp:@"wxc6c0a273cf2f67f7" universalLink:@"https://vhall/app/"];
                PayReq *request = [[PayReq alloc] init];
                request.openID = createOtherItem.appid;
                request.timeStamp = (UInt32)[createOtherItem.timestamp integerValue];

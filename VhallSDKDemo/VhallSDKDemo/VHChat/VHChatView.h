@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 #import "VHChatCustomCell.h"
 
-
 @protocol VHChatViewDelegate <NSObject>
 
 /// 聊天消息

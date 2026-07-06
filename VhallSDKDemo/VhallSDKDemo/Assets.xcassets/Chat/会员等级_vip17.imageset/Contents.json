@@ -1,0 +1,26 @@
+{
+    "images": [
+        {
+            "size": "24x24",
+            "idiom": "universal",
+            "filename": "vip17.png",
+            "scale": "1x"
+        },
+        {
+            "size": "24x24",
+            "idiom": "universal",
+            "filename": "vip17@2x.png",
+            "scale": "2x"
+        },
+        {
+            "size": "24x24",
+            "idiom": "universal",
+            "filename": "vip17@3x.png",
+            "scale": "3x"
+        }
+    ],
+    "info": {
+        "version": 1,
+        "author": "icon.wuruihong.com"
+    }
+}

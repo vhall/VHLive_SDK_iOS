@@ -26,6 +26,8 @@
 /// 页码
 @property (nonatomic, assign) NSInteger pageNum;
 
+@property (nonatomic, strong) VHMemberLevel *member_level;
+
 @end
 
 @implementation VHChatView
@@ -51,14 +53,20 @@
     self.vhObject = vhObject;
     self.webinarInfoData = webinarInfoData;
 
-    // 初始化UI
-    [self masonryUI];
-
-    // 设置代理
-    [self setDelegateToObject];
-
-    // 加载数据
-    [self loadHistoryWithPage:1];
+    //新版活动获取成员等级配置。
+    NSString *webinarId = [NSString stringWithFormat:@"%ld", webinarInfoData.webinar.webinar_id];
+    [VHWebinarInfoData getMemberLevel:webinarId complete:^(VHMemberLevel *memberLevel, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.webinarInfoData.member_level = memberLevel;
+            // 初始化UI、布局、列表加载都放主线程内
+            [self masonryUI];
+            [self setDelegateToObject];
+            [self loadHistoryWithPage:1];
+            [self.chatTableView reloadData];
+            [self reloadChatToBottom:YES beforeChange:1];
+           
+        });
+    }];
 }
 
 #pragma mark - 设置代理
@@ -346,7 +354,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.chatDataSource.count > indexPath.row) {
         id model = [self.chatDataSource objectAtIndex:indexPath.row];
-        VHChatCell *cell = [VHChatCell createCellWithTableView:tableView];
+        VHChatCell *cell = [VHChatCell createCellWithTableView:tableView webinarInfo:self.webinarInfoData];
 
         VHChatCustomCell *customCell = [VHChatCustomCell createCellWithTableView:tableView];
         __weak __typeof(self) weakSelf = self;

@@ -10,7 +10,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		y08CuUSL+mrVflP9IjzQHXa9G9g=
+		1RWZAOYo/Tfa0dOVxf+x+z6b4FE=
 		</data>
 		<key>README.md</key>
 		<data>
@@ -29,6 +29,10 @@
 	<dict>
 		<key>Headers/VHallLivePublish.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			qXaT7XJ457pVVqzul2je5gSHicc=
+			</data>
 			<key>hash2</key>
 			<data>
 			SIfRFJNPPC9xD70rvln+LWTTT/i0T5+krQmYDAENRN8=
@@ -36,6 +40,10 @@
 		</dict>
 		<key>README.md</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			JXnAcCJ8MMcy5a5/QXLxYgc75M0=
+			</data>
 			<key>hash2</key>
 			<data>
 			xIb+PqsBR6EtLbW8bmm+4toALe/R0wHSunnR9NbmLq0=
@@ -43,6 +51,10 @@
 		</dict>
 		<key>TXIMSDK_Plus_iOS_Privacy.bundle/Info.plist</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			1AfcjcnhKKZcS/e1BZZbT0m4Sqw=
+			</data>
 			<key>hash2</key>
 			<data>
 			LssDAuooZMCXBuewQa3yFKfMNIdjtlm+CmB0dR+c5lE=
@@ -50,6 +62,10 @@
 		</dict>
 		<key>TXIMSDK_Plus_iOS_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			IHdy45xMwMDZDccZgptM9E0CwrA=
+			</data>
 			<key>hash2</key>
 			<data>
 			fxSkj0w8/FWeR0ZrD2iUkKPtdPXY28xENrSwrQuVShM=

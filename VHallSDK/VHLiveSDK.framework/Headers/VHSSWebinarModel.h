@@ -186,6 +186,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *nick_name;     ///<活动主办方
 @property (nonatomic, strong) NSDictionary *guest;     ///<嘉宾权限数据
 @property (nonatomic, strong) NSDictionary *assistant;     ///<助理权限数据
+///<
+///<
+
+///
 
 + (instancetype)initWithDict:(NSDictionary *)dict;
 @end

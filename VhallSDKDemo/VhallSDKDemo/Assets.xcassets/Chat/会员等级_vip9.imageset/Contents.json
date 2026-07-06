@@ -1,0 +1,26 @@
+{
+    "images": [
+        {
+            "size": "64x64",
+            "idiom": "universal",
+            "filename": "\u4f1a\u5458\u7b49\u7ea7_vip9.png",
+            "scale": "1x"
+        },
+        {
+            "size": "64x64",
+            "idiom": "universal",
+            "filename": "\u4f1a\u5458\u7b49\u7ea7_vip9@2x.png",
+            "scale": "2x"
+        },
+        {
+            "size": "64x64",
+            "idiom": "universal",
+            "filename": "\u4f1a\u5458\u7b49\u7ea7_vip9@3x.png",
+            "scale": "3x"
+        }
+    ],
+    "info": {
+        "version": 1,
+        "author": "icon.wuruihong.com"
+    }
+}
