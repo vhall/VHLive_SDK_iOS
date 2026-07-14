@@ -39,6 +39,8 @@
 @property (nonatomic, strong) VHLikeObject *likeBtn;
 /// 是否是聊天
 @property (nonatomic, assign) BOOL isChat;
+///  禁言感知状态
+@property (nonatomic, assign) NSInteger bannedMode;
 @end
 
 @implementation VHWatchLiveBottomView
@@ -145,7 +147,7 @@
 {
     self.obj = obj;
     self.webinarInfoData = webinarInfoData;
-
+    self.bannedMode = webinarInfoData.banned_mode;
     // 初始化聊天
     [self participateInIsChat:YES];
 
@@ -169,7 +171,8 @@
 - (void)permissionsCheckWithWebinarId
 {
     __weak __typeof(self) weakSelf = self;
-    [VHWebinarBaseInfo permissionsCheckWithWebinarId:self.webinarInfoData.webinar.data_id
+    NSNumber *web_id = @156351733;
+    [VHWebinarBaseInfo permissionsCheckWithWebinarNumber:web_id
                                      webinar_user_id:self.webinarInfoData.webinar.userinfo.user_id
                                             scene_id:@"1"
                                              success:^(VHPermissionConfigItem *_Nonnull item) {
@@ -285,6 +288,13 @@
     [self isForBidChatToLiveType];
 }
 
+/// 禁言感知状态更新
+/// @param mode 0有感知 1无感知
+- (void)bannedModeUpdate:(NSInteger)mode{
+    self.bannedMode = mode;
+    [self isForBidChatToLiveType];
+}
+
 #pragma mark - isQaStatus 是否开启了问答禁言 YES 开启 NO 未开启
 - (void)isQaStatus:(BOOL)isQaStatus
 {
@@ -308,31 +318,32 @@
 #pragma mark - 更新禁言状态
 - (void)isForbidChat:(BOOL)isForbidChat isQaStatus:(BOOL)isQaStatus
 {
-    self.messageToolView.maxLength = self.isChat ? 140 : 0;
+    self.messageToolView.maxLength = self.isChat  ? 140 : 0;
     self.messageToolView.placeholder = self.isChat ? @"参与聊天" : @"快来提问吧";
 
-    [self.chatBtn setTitle:isForbidChat ? @"禁止发言" : @"参与聊天" forState:UIControlStateNormal];
+    [self.chatBtn setTitle:isForbidChat && self.bannedMode == 0  ? @"禁止发言" : @"参与聊天" forState:UIControlStateNormal];
 
-    [self.questionBtn setTitle:isQaStatus ? @"禁止发言" : @"快来提问吧" forState:UIControlStateNormal];
+    [self.questionBtn setTitle:isQaStatus && self.bannedMode == 0  ? @"禁止发言" : @"快来提问吧" forState:UIControlStateNormal];
 }
 
 #pragma mark - 参与聊天 或者 参与问答
 - (void)chatBtnClick
 {
+    //如果用户已经被禁言，并且状态为无感知，同样不能发送数据。用户需要更加bannedMode状态自行进行控制
     if (self.isChat) {
-        if (self.forbidChat || self.allForbidChat) {
+        if ((self.forbidChat && self.bannedMode == 0) || (self.allForbidChat && self.bannedMode == 0)) {
             [VHProgressHud showToast:@"您已被禁言"];
             return;
         }
 
         if (self.webinarInfoData.webinar.type == 4 || self.webinarInfoData.webinar.type == 5) {
-            if (self.watch_record_no_chatting) {
+            if (self.watch_record_no_chatting&& self.bannedMode == 0) {
                 [VHProgressHud showToast:@"您已被禁言"];
                 return;
             }
         }
     } else {
-        if (self.isQaStatus && self.allForbidChat) {
+        if (self.isQaStatus && self.allForbidChat&& self.bannedMode == 0) {
             [VHProgressHud showToast:@"您已被禁言"];
             return;
         }

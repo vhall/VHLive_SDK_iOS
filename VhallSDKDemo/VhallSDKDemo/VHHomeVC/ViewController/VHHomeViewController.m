@@ -160,7 +160,6 @@
     }
 }
 
-
 #pragma mark - 获取房间详情
 - (void)watchInit
 {
@@ -169,22 +168,24 @@
     // 防止重复点击
     self.enterRoomBtn.userInteractionEnabled = NO;
     __weak __typeof(self) weakSelf = self;
+    //根据业务判断是否需要填写渠道id
+    NSString* channel_id = nil;
+    
     // 增加一个hud
     [VHProgressHud showLoading];
-    //根据业务判断是否需要填写渠道id
-    NSString* channel_id = @"ios-sdk-demo";
     [VHWebinarInfoData setMemberLevel:@"4"];
     [VHWebinarInfoData requestWatchInitWebinarId:self.activityTF.text
                                             pass:nil
                                             k_id:nil
-                                       nick_name:nil
-                                           email:nil
+                                       nick_name:self.join_nick_name
+                                           email:self.join_email
                                        record_id:nil
-                                      channel_id:channel_id
+                                         channel_id:channel_id
                                       auth_model:1
                                         complete:^(VHWebinarInfoData *webinarInfoData, NSError *error) {
         if (webinarInfoData) {
             // 查询活动详情
+            // 防止重复点击
             weakSelf.enterRoomBtn.userInteractionEnabled = YES;
 
             [VHProgressHud hideLoading];
@@ -197,14 +198,16 @@
             // 直播 回放
             VHWatchVC *watchVC = [VHWatchVC new];
             watchVC.accessibilityLabel = @"直播间";
-            watchVC.webinar_id = self.activityTF.text;
+            watchVC.webinar_id = [NSString stringWithFormat:@"%ld",(long)webinarInfoData.webinar.webinar_id];
             //获取当前活动类型
             watchVC.type = webinarInfoData.webinar.type;
             watchVC.channel_id = channel_id;
+            watchVC.join_email = self.join_email;
+            watchVC.join_nick_name = self.join_nick_name;
 
             // 预告页
             VHWarmUpViewController *warmUP = [VHWarmUpViewController new];
-            warmUP.webinarId = self.activityTF.text;
+            warmUP.webinarId = [NSString stringWithFormat:@"%ld",(long)webinarInfoData.webinar.webinar_id];
             warmUP.delegate = self;
 
             //1-直播中，2-预约，3-结束，4-点播，5-回放
@@ -249,7 +252,6 @@
         }
     }];
 }
-
 
 #pragma mark - VHAuthAlertViewDelegate
 #pragma mark - 填写的回调

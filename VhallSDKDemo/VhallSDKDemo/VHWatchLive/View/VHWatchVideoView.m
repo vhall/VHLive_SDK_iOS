@@ -14,8 +14,12 @@
 
 /// 活动id
 @property (nonatomic, copy) NSString *webinarId;
-/// 活动id
+/// 渠道id
 @property (nonatomic, copy, nullable) NSString *channelId;
+
+@property (nonatomic, copy, nullable) NSString *join_nick_name;
+
+@property (nonatomic, copy, nullable) NSString *join_email;
 /// 指定回放id
 @property (nonatomic, copy) NSString *recordId;
 /// 活动状态
@@ -64,6 +68,8 @@
 
 @property (nonatomic, assign) BOOL isEnablePlayBack;
 
+@property (nonatomic, assign) BOOL isStartPlay;
+
 // 播放器信息
 /// 当前视频支持的清晰度
 @property (nonatomic, strong) NSMutableArray *definiteionsDataSource;
@@ -84,11 +90,13 @@
 }
 
 #pragma mark - 初始化
-- (instancetype)initWithWebinarId:(NSString *)webinarId channelId:(NSString* _Nullable)channelId  type:(VHMovieActiveState)type
+- (instancetype)initWithWebinarId:(NSString *)webinarId  channelId:(NSString* _Nullable)channelId  nickName:(NSString* _Nullable)nickName  email:(NSString* _Nullable)email type:(VHMovieActiveState)type
 {
     if ([super init]) {
         self.webinarId = webinarId;
         self.channelId = channelId;
+        self.join_email = email;
+        self.join_nick_name = nickName;
         self.type = type;
 
         // 显隐控件
@@ -366,6 +374,7 @@
 {
     VHLog(@"🍌 === 点击开始播放");
     // 判断是直播还是回放
+
     if (self.type == VHMovieActiveStateLive) {
         [self.moviePlayer startPlay:[self playParam] isPIP:YES];
     } else if (self.type == VHMovieActiveStateReplay || self.type == VHMovieActiveStatePlayBack) {
@@ -373,6 +382,8 @@
         // 播放从0开始进度条
         [self setValue:0];
     }
+  
+
     // 开始播放弹幕
     [self.danmu start];
 }
@@ -438,6 +449,8 @@
 - (void)moviePlayer:(VHallMoviePlayer *)player statusDidChange:(VHPlayerState)state
 {
     VHLog(@"播放连接状态：%ld", state);
+    
+    [VHProgressHud showToast:[NSString stringWithFormat:@"播放状态：%ld",(NSInteger)state]];
 
     if (state == VHPlayerStatePlaying) {
         VHLog(@"🍌 === 开始播放");
@@ -671,20 +684,20 @@
 ///画中画模式下点击画中画中播放&暂停按键状态变化回调
 /// - Parameter  （isPlaying为YES表示播放，NO表示暂停）
 - (void)pictureInPicturePlaybackStateDidChange:(BOOL)isPlaying{
-    if(isPlaying){
-        NSInteger currentPlaybackTime = (NSInteger)self.moviePlayer.currentPlaybackTime;
-        NSInteger duration = (NSInteger)self.moviePlayer.duration;
-        //如果播放完毕，则设置进度重新播放
-        if(currentPlaybackTime == duration){
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.moviePlayer setCurrentPlaybackTime:0];
-                [self.moviePlayer reconnectPlay];
-            });
-        }
-        else{
-            [self.moviePlayer reconnectPlay];
-        }
-    }
+     if(isPlaying){
+         NSInteger currentPlaybackTime = (NSInteger)self.moviePlayer.currentPlaybackTime;
+         NSInteger duration = (NSInteger)self.moviePlayer.duration;
+         //如果播放完毕，则设置进度重新播放
+         if(currentPlaybackTime == duration){
+             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                 [self.moviePlayer setCurrentPlaybackTime:0];
+                 [self.moviePlayer reconnectPlay];
+             });
+         }
+         else{
+             [self.moviePlayer reconnectPlay];
+         }
+     }
 }
 
 /// 关闭画中画且恢复播放界面
@@ -918,6 +931,9 @@
     param[@"name"] = [VHallApi currentUserNickName];
     param[@"auth_model"] = @(1);
     param[@"channel_id"] = self.channelId;
+    //使用昵称和邮箱进行初始化，播放时必须带有对应昵称和邮箱参数进行播放。其他情况可以不携带name和email参数
+    param[@"name"] = self.join_nick_name;
+    param[@"email"] = self.join_email;
     return param;
 }
 

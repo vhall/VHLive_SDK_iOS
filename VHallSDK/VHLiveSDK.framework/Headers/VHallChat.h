@@ -66,6 +66,10 @@
 /// @param uids 需要轮巡用的列表
 - (void)videoRoundUsers:(NSArray *)uids;
 
+/// 用户禁音有感知状态更新
+/// @param mode 0：禁言有感知  1：禁言无感知
+- (void)bannedModeUpdate:(NSInteger)mode;
+
 @end
 
 @interface VHallChat : VHallBasePlugin

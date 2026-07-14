@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +14,7 @@
                 <outlet property="accountLoginView" destination="UNy-3I-OgQ" id="shu-94-QGx"/>
                 <outlet property="accountTextField" destination="e3x-Ea-ufm" id="SfB-dV-v8S"/>
                 <outlet property="contentView" destination="1At-sj-6fU" id="xJ5-Y6-sSY"/>
+                <outlet property="emailLoginBtn" destination="dUP-SU-TYb" id="QFY-PX-stT"/>
                 <outlet property="iconTop" destination="LEy-bP-wgD" id="C0a-88-6ad"/>
                 <outlet property="loginBtn" destination="WOA-vL-cY7" id="YJE-0E-9pv"/>
                 <outlet property="passwordTextField" destination="qy4-sT-QhO" id="Ztw-CX-IY1"/>
@@ -284,6 +285,18 @@
                                 <action selector="loginBtnClick:" destination="-1" eventType="touchUpInside" id="kXm-H7-GbK"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-SU-TYb">
+                            <rect key="frame" x="67" y="251" width="117" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="昵称和密码登录" image="resolution_normal">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected" image="resolution_Selected"/>
+                            <connections>
+                                <action selector="emailJoin:" destination="-1" eventType="touchUpInside" id="jw6-iR-dC0"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -294,8 +307,10 @@
                         <constraint firstItem="UNy-3I-OgQ" firstAttribute="width" secondItem="1At-sj-6fU" secondAttribute="width" id="GDH-v7-cxo"/>
                         <constraint firstItem="WOA-vL-cY7" firstAttribute="leading" secondItem="1At-sj-6fU" secondAttribute="leading" constant="30" id="Hgu-BZ-1qd"/>
                         <constraint firstAttribute="height" constant="270" id="OAm-OK-Kfi"/>
+                        <constraint firstItem="dUP-SU-TYb" firstAttribute="centerY" secondItem="SUQ-qV-e0P" secondAttribute="centerY" id="USL-0c-Mx8"/>
                         <constraint firstItem="WOA-vL-cY7" firstAttribute="top" secondItem="1At-sj-6fU" secondAttribute="top" constant="180" id="Utw-vi-NwD"/>
                         <constraint firstItem="KBS-gg-6lJ" firstAttribute="top" secondItem="1At-sj-6fU" secondAttribute="top" constant="10" id="Ve1-Id-tgY"/>
+                        <constraint firstItem="SUQ-qV-e0P" firstAttribute="leading" secondItem="dUP-SU-TYb" secondAttribute="trailing" constant="-1.9326762412674725e-11" id="Vpm-qD-iKj"/>
                         <constraint firstItem="SUQ-qV-e0P" firstAttribute="top" secondItem="WOA-vL-cY7" secondAttribute="bottom" constant="20" id="fYo-nR-sZi"/>
                         <constraint firstItem="SUQ-qV-e0P" firstAttribute="centerY" secondItem="oGY-4s-Vrf" secondAttribute="centerY" id="g9v-wp-c98"/>
                         <constraint firstItem="KBS-gg-6lJ" firstAttribute="width" secondItem="1At-sj-6fU" secondAttribute="width" id="hhs-a5-0Fb"/>
@@ -326,18 +341,36 @@
                 <constraint firstItem="bwb-r8-bcq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ToW-Lg-EQF"/>
                 <constraint firstAttribute="trailing" secondItem="1At-sj-6fU" secondAttribute="trailing" id="dTI-Dh-YLA"/>
                 <constraint firstItem="1At-sj-6fU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nLv-Fv-WvV"/>
+                <constraint firstAttribute="height" secondItem="SUQ-qV-e0P" secondAttribute="height" multiplier="22.9" id="poS-GB-LEH"/>
                 <constraint firstItem="1At-sj-6fU" firstAttribute="top" secondItem="bwb-r8-bcq" secondAttribute="bottom" constant="50" id="wIc-QW-dUs"/>
                 <constraint firstItem="Bhr-wC-ECr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="z8W-sz-dkc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="217.59999999999999" y="105.69715142428787"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CcF-Ix-JZK">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <constraints>
+                <constraint firstAttribute="width" constant="100" id="jjd-Uq-ore"/>
+                <constraint firstAttribute="height" constant="30" id="kci-bh-0sd"/>
+            </constraints>
+            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+            <state key="normal" title="密码登录" image="resolution_normal">
+                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+            </state>
+            <state key="selected" image="resolution_Selected"/>
+            <connections>
+                <action selector="accountLoginBtnClick:" destination="-1" eventType="touchUpInside" id="CwK-vn-knj"/>
+            </connections>
+            <point key="canvasLocation" x="-50" y="-275"/>
+        </button>
     </objects>
     <resources>
         <image name="icondev" width="453" height="117"/>
         <image name="resolution_Selected" width="12" height="12"/>
         <image name="resolution_normal" width="12" height="12"/>
-        <image name="vh_signSet_alert_b" width="20" height="20"/>
+        <image name="vh_signSet_alert_b" width="60" height="60"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

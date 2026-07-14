@@ -649,6 +649,10 @@
     [self.vhLottery clickCheckWinListWithEndLotteryModel:endLotteryModel];
 }
 
+- (void)bannedModeUpdate:(NSInteger)mode{
+    [self.bottomView bannedModeUpdate:mode];
+}
+
 #pragma mark 点击消息上的查看推屏卡片
 - (void)clickCheckPushScreenCardModel:(VHPushScreenCardItem *)model
 {
@@ -1200,7 +1204,7 @@
 - (VHWatchVideoView *)watchVideoView
 {
     if (!_watchVideoView) {
-        _watchVideoView = [[VHWatchVideoView alloc] initWithWebinarId:self.webinar_id channelId:self.channel_id type:self.type];
+        _watchVideoView = [[VHWatchVideoView alloc] initWithWebinarId:self.webinar_id channelId:self.channel_id nickName:self.join_nick_name email:self.join_email type:self.type];
         _watchVideoView.delegate = self;
         [self.view addSubview:_watchVideoView];
     }

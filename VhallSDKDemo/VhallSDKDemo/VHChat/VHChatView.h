@@ -22,6 +22,10 @@
 /// @param forbidChat YES:禁言 NO:取消禁言
 - (void)forbidChat:(BOOL)forbidChat;
 
+/// 禁言感知状态更新
+/// @param mode 0有感知 1无感知
+- (void)bannedModeUpdate:(NSInteger)mode;
+
 /// 收到全体禁言/取消全体禁言
 /// @param allForbidChat YES:禁言 NO:取消禁言
 - (void)allForbidChat:(BOOL)allForbidChat;

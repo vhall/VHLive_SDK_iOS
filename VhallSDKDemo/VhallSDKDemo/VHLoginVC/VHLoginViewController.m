@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *accountLoginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *thirdIdLoginBtn;
+@property (weak, nonatomic) IBOutlet UIButton *emailLoginBtn;
+
 
 @property (nonatomic, strong) UIButton *signSetBtn;
 
@@ -131,6 +133,8 @@
     // 点击登录
     if (self.accountLoginBtn.selected) {
         [self accountLogin];
+    } else if(self.emailLoginBtn.selected){
+        [self emailAndnickNameJoin];
     } else {
         [self thirdIdLogin];
     }
@@ -142,7 +146,6 @@
         [VHProgressHud showToast:@"账号或密码不能为空"];
         return;
     }
-    
     // 取消键盘
     [self.view endEditing:YES];
 
@@ -153,9 +156,7 @@
     [VHProgressHud showLoading];
 
     __weak __typeof(self) weakSelf = self;
-     
-  //  1: login 账号登录方法，控制台账号直接登录。适用于直播推流发起端
-  //  2: loginWithAccount 为子账号升级为三方账号使用方法
+     //loginWithAccount  子账号升级为三方用户使用的发起端登录接口
     [VHallApi login:DEMO_Setting.account
                       password:DEMO_Setting.password
                        success:^{
@@ -173,7 +174,32 @@
         VHLog(@"登录失败%@", error);
         [VHProgressHud showToast:error.domain];
     }];
+    
 }
+
+
+
+-(void)emailAndnickNameJoin{
+    if (self.accountTextField.text.length <= 0) {
+        [VHProgressHud showToast:@"昵称不能为空"];
+        return;
+    }
+    
+    if (self.passwordTextField.text.length <= 0) {
+        [VHProgressHud showToast:@"邮箱不能为空"];
+        return;
+    }
+    
+    [VHProgressHud hideLoading];
+    VHLog(@"Account: %@ userID:%@", [VHallApi currentAccount], [VHallApi currentUserID]);
+    [VHProgressHud showToast:@"登录成功"];
+    VHHomeViewController *homeVC = [[VHHomeViewController alloc] init];
+    homeVC.vh_NavIsHidden = YES;
+    homeVC.join_nick_name = self.accountTextField.text;
+    homeVC.join_email = self.passwordTextField.text;
+    [self.navigationController pushViewController:homeVC animated:YES];
+}
+
 
 #pragma mark - 第三方id登录
 - (void)thirdIdLogin {
@@ -184,7 +210,6 @@
 
     // 取消键盘
     [self.view endEditing:YES];
-
     // 记录登录信息
     DEMO_Setting.third_Id = self.thirdIdTextField.text;
     DEMO_Setting.third_nickName = self.thirdNameTextField.text;
@@ -198,7 +223,7 @@
                             avatar:DEMO_Setting.third_avatar
                            success:^{
         [VHProgressHud hideLoading];
-        VHLog(@"Account: %@ userID:%@", [VHallApi currentAccount], [VHallApi currentUserID]);
+        VHLog(@"Account: %@ userID: %@ nickName: %@", [VHallApi currentAccount], [VHallApi currentUserID],[VHallApi currentUserNickName]);
         [VHProgressHud showToast:@"登录成功"];
 
         // 进入首页
@@ -232,21 +257,43 @@
 - (IBAction)accountLoginBtnClick:(UIButton *)sender {
     self.accountLoginBtn.selected = YES;
     self.thirdIdLoginBtn.selected = NO;
+    self.emailLoginBtn.selected = NO;
     self.accountLoginView.hidden = NO;
     self.thirdIdLoginView.hidden = YES;
     self.accountTextField.text = DEMO_Setting.account;
     self.passwordTextField.text = DEMO_Setting.password;
+    
+    self.accountTextField.placeholder = @"请输入账号";
+    self.passwordTextField.placeholder = @"请输入密码";
 }
 
 #pragma mark - 第三方id登录
 - (IBAction)thirdIdLoginBtnClick:(UIButton *)sender {
     self.accountLoginBtn.selected = NO;
     self.thirdIdLoginBtn.selected = YES;
+    self.emailLoginBtn.selected = NO;
     self.accountLoginView.hidden = YES;
     self.thirdIdLoginView.hidden = NO;
     self.thirdIdTextField.text = DEMO_Setting.third_Id;
     self.thirdNameTextField.text = DEMO_Setting.third_nickName;
     self.thirdAvatarTextField.text = DEMO_Setting.third_avatar;
+}
+
+#pragma mark - 邮箱昵称
+- (IBAction)emailJoin:(id)sender {
+    self.accountLoginBtn.selected = NO;
+    self.thirdIdLoginBtn.selected = NO;
+    self.emailLoginBtn.selected = YES;
+    
+    self.accountLoginView.hidden = NO;
+    self.thirdIdLoginView.hidden = YES;
+    
+    self.accountTextField.text = @"";
+    self.passwordTextField.text = @"";
+    
+    self.accountTextField.placeholder = @"请输入昵称";
+    self.passwordTextField.placeholder = @"请输入邮箱";
+    
 }
 
 #pragma mark - UITextFieldDelegate

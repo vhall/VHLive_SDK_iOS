@@ -136,7 +136,8 @@
 @property (nonatomic, assign) NSInteger live_type;                                      ///<0-直播；2-彩排
 @property (nonatomic, assign) NSInteger cheat_num;                                      ///<
 @property (nonatomic, assign) NSInteger record_remark_layout;                           ///<
-@property (nonatomic, assign) NSInteger webinar_show_type;                              ///<
+@property (nonatomic, assign) NSInteger webinar_show_type;
+@property (nonatomic, assign) NSUInteger banned_mode;///</// 用户禁音感知状态；0 有感知 1无感知///<
 @property (nonatomic, strong) VHWebinarInfoData_Join_info *join_info;                   ///<加入用户信息
 @property (nonatomic, strong) VHWebinarInfoData_Pv *pv;                                 ///<热度
 @property (nonatomic, strong) VHWebinarInfoData_Record *record;                         ///<回放
@@ -147,6 +148,7 @@
 @property (nonatomic, strong) VHWebinarInfoData_Subscribe *subscribe;                   ///<预约人数
 @property (nonatomic, strong) VHWebinarInfoData_Online *online;
 @property (nonatomic, strong) VHMemberLevel *member_level;    ///<在线信息
+
 
 /// 初始化整理数据
 /// - Parameter data: 数据详情

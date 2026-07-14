@@ -129,6 +129,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL is_handsup;          //当前举手开关，1开0关
 @property (nonatomic, assign) BOOL is_invitecard;       //开关邀请卡 1是0否
 @property (nonatomic, assign) NSInteger speakerAndShowLayout;   //0 -- 分离模式；1 -- 合并模式；
+@property (nonatomic, assign) NSInteger banned_mode;   //用户禁音模式 0 -- 禁音有感知；1 -- 禁音无感知；
 @property (nonatomic, assign) NSInteger start_type;     //获取活动发起类型 1 web 2 app 3 sdk 4 推拉流 5 定时 6 admin后台 7第三方8 助手
 @property (nonatomic, copy)   NSString *doc_permission;   //文档权限（主讲人的id）
 @property (nonatomic, copy)   NSString *main_screen;      //主画面绑定的参会ID，默认为主持人

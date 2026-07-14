@@ -47,6 +47,11 @@
 /// 收到全体被禁言/取消禁言
 - (void)allForbidChat:(BOOL)allForbidChat;
 
+
+/// 禁言感知状态更新
+/// @param mode 0有感知 1无感知
+- (void)bannedModeUpdate:(NSInteger)mode;
+
 /// 问答状态
 /// @param isQaStatus 是否开启了问答禁言 YES 开启 NO 未开启
 - (void)isQaStatus:(BOOL)isQaStatus;

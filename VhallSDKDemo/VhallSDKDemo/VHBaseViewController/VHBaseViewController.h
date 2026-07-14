@@ -10,6 +10,11 @@
 @interface VHBaseViewController : UIViewController
 ///是否隐藏导航栏 默认 NO 不隐藏
 @property (nonatomic, assign) BOOL vh_NavIsHidden;
+
+@property (nonatomic, strong) NSString* join_nick_name;
+
+@property (nonatomic, strong) NSString* join_email;
+
 /// 点击返回
 - (void)clickLeftBarItem;
 /// 前台

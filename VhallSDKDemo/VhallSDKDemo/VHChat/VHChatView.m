@@ -37,11 +37,11 @@
 {
     if ([super init]) {
         self.backgroundColor = [UIColor colorWithHex:@"#F8F8F8"];
-
+        
         // 初始化UI
         [self masonryUI];
     }
-
+    
     return self;
 }
 
@@ -49,10 +49,10 @@
 - (void)requestDataWithVHObject:(NSObject *)vhObject webinarInfoData:(VHWebinarInfoData *)webinarInfoData
 {
     self.backgroundColor = [UIColor colorWithHex:@"#F8F8F8"];
-
+    
     self.vhObject = vhObject;
     self.webinarInfoData = webinarInfoData;
-
+    
     //新版活动获取成员等级配置。
     NSString *webinarId = [NSString stringWithFormat:@"%ld", webinarInfoData.webinar.webinar_id];
     [VHWebinarInfoData getMemberLevel:webinarId complete:^(VHMemberLevel *memberLevel, NSError *error) {
@@ -64,7 +64,7 @@
             [self loadHistoryWithPage:1];
             [self.chatTableView reloadData];
             [self reloadChatToBottom:YES beforeChange:1];
-           
+            
         });
     }];
 }
@@ -74,16 +74,16 @@
 {
     // 设置聊天代理
     self.chat.delegate = self;
-
+    
     // 获取最新禁言状态
     if (self.delegate && [self.delegate respondsToSelector:@selector(isQaStatus:)]) {
         [self.delegate isQaStatus:self.chat.isQaStatus];
     }
-
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(forbidChat:)]) {
         [self.delegate forbidChat:self.chat.isMeSpeakBlocked];
     }
-
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(allForbidChat:)]) {
         [self.delegate allForbidChat:self.chat.isAllSpeakBlocked];
     }
@@ -105,11 +105,11 @@
     if (page < 1) {
         page = 1;
     }
-
+    
     self.pageNum = page;
-
+    
     NSString *msg_id = @"";
-
+    
     if (page > 1 && self.chatDataSource.count > 0) {
         if ([[self.chatDataSource firstObject] isKindOfClass:[VHallChatModel class]]) {
             VHallChatModel *msgFirstModel = [self.chatDataSource firstObject];
@@ -121,7 +121,7 @@
         [self.chatDataSource removeAllObjects];
         msg_id = @"";
     }
-
+    
     __weak typeof(self) weakSelf = self;
     [self.chat getInteractsChatGetListWithMsg_id:msg_id
                                         page_num:page
@@ -138,13 +138,13 @@
                                                        origin:msgs
                                                      isFilter:YES
                                                          half:YES];
-
+        
         [weakSelf reloadDataWithMsgs:msgArr];
         // 收起刷新控件
         [weakSelf.chatTableView.mj_header endRefreshing];
     }
                                           failed:^(NSDictionary *failedData) {
-//        [VHProgressHud showToast:failedData[@"content"]];
+        //        [VHProgressHud showToast:failedData[@"content"]];
         // 收起刷新控件
         [weakSelf.chatTableView.mj_header endRefreshing];
     }];
@@ -164,7 +164,7 @@
         NSString *content = [NSString stringWithFormat:@"在线:%@ 参会:%@ 用户id:%@", m.concurrent_user, m.attend_count, m.account_id];
         VHLog(@"%@", content);
     }
-
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(reciveOnlineMsg:)]) {
         [self.delegate reciveOnlineMsg:msgs];
     }
@@ -176,7 +176,7 @@
     //过滤私聊 传递target_id,当前用户join_id
     NSString *currentUserId = self.webinarInfoData.join_info.third_party_user_id;
     NSArray *msgArr = [self filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:YES];
-
+    
     [self reloadSendWithMsgs:msgArr];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(reciveChatMsg:)]) {
@@ -204,10 +204,19 @@
     }
 }
 
+#pragma mark 禁言感知状态
+- (void)bannedModeUpdate:(NSInteger)mode{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(bannedModeUpdate:)]) {
+        [self.delegate bannedModeUpdate:mode];
+    }
+}
+
+
+
 #pragma mark - 收到自己被禁言/取消禁言
 - (void)forbidChat:(BOOL)forbidChat
 {
-    [VHProgressHud showToast:forbidChat ? @"您以被禁言" : @"您已被取消禁言"];
+    [VHProgressHud showToast:forbidChat ? @"您已被禁言" : @"您已被取消禁言"];
 
     if (self.delegate && [self.delegate respondsToSelector:@selector(forbidChat:)]) {
         [self.delegate forbidChat:forbidChat];
