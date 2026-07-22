@@ -1,0 +1,808 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/momo/Library/Developer/Xcode/DerivedData/VhallSDKDemo-gddfyisyxwrimoenhjmkrduefjrc/Build/Products/Release-iphoneos/VHVss.framework/VHVss'
+relocations:
+  - { offset: 0xB9AD7, size: 0x8, addend: 0x0, symName: _VHVssVersionString, symObjAddr: 0x10, symBinAddr: 0x1F1A0, symSize: 0x0 }
+  - { offset: 0xB9B0C, size: 0x8, addend: 0x0, symName: _VHVssVersionNumber, symObjAddr: 0x38, symBinAddr: 0x1F1C8, symSize: 0x0 }
+  - { offset: 0xB9B49, size: 0x8, addend: 0x0, symName: '-[VSSICDocument loadFromContents:ofType:error:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x204 }
+  - { offset: 0xB9BE3, size: 0x8, addend: 0x0, symName: '-[VSSICDocument loadFromContents:ofType:error:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x204 }
+  - { offset: 0xB9C7F, size: 0x8, addend: 0x0, symName: '-[VSSICDocument data]', symObjAddr: 0x204, symBinAddr: 0x4204, symSize: 0x10 }
+  - { offset: 0xB9CB6, size: 0x8, addend: 0x0, symName: '-[VSSICDocument setData:]', symObjAddr: 0x214, symBinAddr: 0x4214, symSize: 0x14 }
+  - { offset: 0xB9CF7, size: 0x8, addend: 0x0, symName: '-[VSSICDocument fileName]', symObjAddr: 0x228, symBinAddr: 0x4228, symSize: 0x10 }
+  - { offset: 0xB9D2E, size: 0x8, addend: 0x0, symName: '-[VSSICDocument setFileName:]', symObjAddr: 0x238, symBinAddr: 0x4238, symSize: 0xC }
+  - { offset: 0xB9D6D, size: 0x8, addend: 0x0, symName: '-[VSSICDocument MIMEType]', symObjAddr: 0x244, symBinAddr: 0x4244, symSize: 0x10 }
+  - { offset: 0xB9DA4, size: 0x8, addend: 0x0, symName: '-[VSSICDocument setMIMEType:]', symObjAddr: 0x254, symBinAddr: 0x4254, symSize: 0xC }
+  - { offset: 0xB9DE3, size: 0x8, addend: 0x0, symName: '-[VSSICDocument length]', symObjAddr: 0x260, symBinAddr: 0x4260, symSize: 0x10 }
+  - { offset: 0xB9E1A, size: 0x8, addend: 0x0, symName: '-[VSSICDocument setLength:]', symObjAddr: 0x270, symBinAddr: 0x4270, symSize: 0x10 }
+  - { offset: 0xB9E57, size: 0x8, addend: 0x0, symName: '-[VSSICDocument .cxx_destruct]', symObjAddr: 0x280, symBinAddr: 0x4280, symSize: 0x54 }
+  - { offset: 0xB9E8A, size: 0x8, addend: 0x0, symName: '+[VSSDocUpload getUploadConfig]', symObjAddr: 0x2D4, symBinAddr: 0x42D4, symSize: 0x1C }
+  - { offset: 0xB9EBD, size: 0x8, addend: 0x0, symName: '+[VSSDocUpload uploadICloudFileWithUrl:fileRename:progress:sucess:failure:]', symObjAddr: 0x2F0, symBinAddr: 0x42F0, symSize: 0x2B8 }
+  - { offset: 0xB9F8A, size: 0x8, addend: 0x0, symName: '___75+[VSSDocUpload uploadICloudFileWithUrl:fileRename:progress:sucess:failure:]_block_invoke', symObjAddr: 0x5A8, symBinAddr: 0x45A8, symSize: 0x3AC }
+  - { offset: 0xBA015, size: 0x8, addend: 0x0, symName: '___75+[VSSDocUpload uploadICloudFileWithUrl:fileRename:progress:sucess:failure:]_block_invoke_2', symObjAddr: 0x954, symBinAddr: 0x4954, symSize: 0x28 }
+  - { offset: 0xBA060, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32b, symObjAddr: 0x97C, symBinAddr: 0x497C, symSize: 0x10 }
+  - { offset: 0xBA089, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s, symObjAddr: 0x98C, symBinAddr: 0x498C, symSize: 0x8 }
+  - { offset: 0xBA0A8, size: 0x8, addend: 0x0, symName: '___75+[VSSDocUpload uploadICloudFileWithUrl:fileRename:progress:sucess:failure:]_block_invoke.49', symObjAddr: 0x994, symBinAddr: 0x4994, symSize: 0x28 }
+  - { offset: 0xBA0F3, size: 0x8, addend: 0x0, symName: '___75+[VSSDocUpload uploadICloudFileWithUrl:fileRename:progress:sucess:failure:]_block_invoke.51', symObjAddr: 0x9BC, symBinAddr: 0x49BC, symSize: 0x28 }
+  - { offset: 0xBA13E, size: 0x8, addend: 0x0, symName: '___75+[VSSDocUpload uploadICloudFileWithUrl:fileRename:progress:sucess:failure:]_block_invoke.55', symObjAddr: 0x9E4, symBinAddr: 0x49E4, symSize: 0x14 }
+  - { offset: 0xBA171, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40s48b56b64b, symObjAddr: 0x9F8, symBinAddr: 0x49F8, symSize: 0x5C }
+  - { offset: 0xBA19A, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s48s56s64s, symObjAddr: 0xA54, symBinAddr: 0x4A54, symSize: 0x40 }
+  - { offset: 0xBA1B9, size: 0x8, addend: 0x0, symName: '+[VSSDocUpload uploadImage:referenceURL:reName:progress:sucess:failure:]', symObjAddr: 0xA94, symBinAddr: 0x4A94, symSize: 0x73C }
+  - { offset: 0xBA372, size: 0x8, addend: 0x0, symName: ___Block_byref_object_copy_, symObjAddr: 0x11D0, symBinAddr: 0x51D0, symSize: 0x10 }
+  - { offset: 0xBA397, size: 0x8, addend: 0x0, symName: ___Block_byref_object_dispose_, symObjAddr: 0x11E0, symBinAddr: 0x51E0, symSize: 0x8 }
+  - { offset: 0xBA3B6, size: 0x8, addend: 0x0, symName: '___72+[VSSDocUpload uploadImage:referenceURL:reName:progress:sucess:failure:]_block_invoke', symObjAddr: 0x11E8, symBinAddr: 0x51E8, symSize: 0x254 }
+  - { offset: 0xBA4C3, size: 0x8, addend: 0x0, symName: '___72+[VSSDocUpload uploadImage:referenceURL:reName:progress:sucess:failure:]_block_invoke_2', symObjAddr: 0x143C, symBinAddr: 0x543C, symSize: 0x28 }
+  - { offset: 0xBA50E, size: 0x8, addend: 0x0, symName: '___72+[VSSDocUpload uploadImage:referenceURL:reName:progress:sucess:failure:]_block_invoke_3', symObjAddr: 0x1464, symBinAddr: 0x5464, symSize: 0x28 }
+  - { offset: 0xBA559, size: 0x8, addend: 0x0, symName: '___72+[VSSDocUpload uploadImage:referenceURL:reName:progress:sucess:failure:]_block_invoke_4', symObjAddr: 0x148C, symBinAddr: 0x548C, symSize: 0x28 }
+  - { offset: 0xBA5A4, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40s48b56b64b72r, symObjAddr: 0x14B4, symBinAddr: 0x54B4, symSize: 0x6C }
+  - { offset: 0xBA5CD, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s48s56s64s72r, symObjAddr: 0x1520, symBinAddr: 0x5520, symSize: 0x4C }
+  - { offset: 0xBA5EC, size: 0x8, addend: 0x0, symName: '___72+[VSSDocUpload uploadImage:referenceURL:reName:progress:sucess:failure:]_block_invoke.73', symObjAddr: 0x156C, symBinAddr: 0x556C, symSize: 0x28 }
+  - { offset: 0xBA637, size: 0x8, addend: 0x0, symName: '___72+[VSSDocUpload uploadImage:referenceURL:reName:progress:sucess:failure:]_block_invoke_2.74', symObjAddr: 0x1594, symBinAddr: 0x5594, symSize: 0x28 }
+  - { offset: 0xBA682, size: 0x8, addend: 0x0, symName: '___72+[VSSDocUpload uploadImage:referenceURL:reName:progress:sucess:failure:]_block_invoke_3.75', symObjAddr: 0x15BC, symBinAddr: 0x55BC, symSize: 0x28 }
+  - { offset: 0xBA6CD, size: 0x8, addend: 0x0, symName: '+[VSSDocUpload onError:errorBlock:]', symObjAddr: 0x15E4, symBinAddr: 0x55E4, symSize: 0x38 }
+  - { offset: 0xBA724, size: 0x8, addend: 0x0, symName: '+[VSSDocUpload onSucess:sucessBlock:]', symObjAddr: 0x161C, symBinAddr: 0x561C, symSize: 0x38 }
+  - { offset: 0xBA77B, size: 0x8, addend: 0x0, symName: '+[VSSDocUpload progress:progressBlock:]', symObjAddr: 0x1654, symBinAddr: 0x5654, symSize: 0x38 }
+  - { offset: 0xBA7D2, size: 0x8, addend: 0x0, symName: '+[VSSDocUpload isSupportUpload:]', symObjAddr: 0x168C, symBinAddr: 0x568C, symSize: 0x128 }
+  - { offset: 0xBA835, size: 0x8, addend: 0x0, symName: '+[VSSDocUpload uploadWithFileData:fileName:fileType:accessToken:progress:success:failure:]', symObjAddr: 0x17B4, symBinAddr: 0x57B4, symSize: 0x418 }
+  - { offset: 0xBA908, size: 0x8, addend: 0x0, symName: '___90+[VSSDocUpload uploadWithFileData:fileName:fileType:accessToken:progress:success:failure:]_block_invoke', symObjAddr: 0x1BCC, symBinAddr: 0x5BCC, symSize: 0x28 }
+  - { offset: 0xBA979, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40s48s, symObjAddr: 0x1BF4, symBinAddr: 0x5BF4, symSize: 0x30 }
+  - { offset: 0xBA9A2, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s48s, symObjAddr: 0x1C24, symBinAddr: 0x5C24, symSize: 0x30 }
+  - { offset: 0xBA9C1, size: 0x8, addend: 0x0, symName: '___90+[VSSDocUpload uploadWithFileData:fileName:fileType:accessToken:progress:success:failure:]_block_invoke.95', symObjAddr: 0x1C54, symBinAddr: 0x5C54, symSize: 0x34 }
+  - { offset: 0xBAA1A, size: 0x8, addend: 0x0, symName: '___90+[VSSDocUpload uploadWithFileData:fileName:fileType:accessToken:progress:success:failure:]_block_invoke_2', symObjAddr: 0x1C88, symBinAddr: 0x5C88, symSize: 0x34 }
+  - { offset: 0xBAA73, size: 0x8, addend: 0x0, symName: '___90+[VSSDocUpload uploadWithFileData:fileName:fileType:accessToken:progress:success:failure:]_block_invoke_3', symObjAddr: 0x1CBC, symBinAddr: 0x5CBC, symSize: 0x34 }
+  - { offset: 0xBB41E, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo initWithAnsDict:]', symObjAddr: 0x0, symBinAddr: 0x5CF0, symSize: 0x334 }
+  - { offset: 0xBB70F, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo initWithAnsDict:]', symObjAddr: 0x0, symBinAddr: 0x5CF0, symSize: 0x334 }
+  - { offset: 0xBB756, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo join_id]', symObjAddr: 0x334, symBinAddr: 0x6024, symSize: 0x8 }
+  - { offset: 0xBB78D, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo setJoin_id:]', symObjAddr: 0x33C, symBinAddr: 0x602C, symSize: 0x8 }
+  - { offset: 0xBB7CC, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo ansId]', symObjAddr: 0x344, symBinAddr: 0x6034, symSize: 0x8 }
+  - { offset: 0xBB803, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo setAnsId:]', symObjAddr: 0x34C, symBinAddr: 0x603C, symSize: 0x8 }
+  - { offset: 0xBB842, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo creatTime]', symObjAddr: 0x354, symBinAddr: 0x6044, symSize: 0x8 }
+  - { offset: 0xBB879, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo setCreatTime:]', symObjAddr: 0x35C, symBinAddr: 0x604C, symSize: 0x8 }
+  - { offset: 0xBB8B8, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo content]', symObjAddr: 0x364, symBinAddr: 0x6054, symSize: 0x8 }
+  - { offset: 0xBB8EF, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo setContent:]', symObjAddr: 0x36C, symBinAddr: 0x605C, symSize: 0x8 }
+  - { offset: 0xBB92E, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo avatar]', symObjAddr: 0x374, symBinAddr: 0x6064, symSize: 0x8 }
+  - { offset: 0xBB965, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo setAvatar:]', symObjAddr: 0x37C, symBinAddr: 0x606C, symSize: 0x8 }
+  - { offset: 0xBB9A4, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo nick_name]', symObjAddr: 0x384, symBinAddr: 0x6074, symSize: 0x8 }
+  - { offset: 0xBB9DB, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo setNick_name:]', symObjAddr: 0x38C, symBinAddr: 0x607C, symSize: 0x8 }
+  - { offset: 0xBBA1A, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo role_name]', symObjAddr: 0x394, symBinAddr: 0x6084, symSize: 0x8 }
+  - { offset: 0xBBA51, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo setRole_name:]', symObjAddr: 0x39C, symBinAddr: 0x608C, symSize: 0x8 }
+  - { offset: 0xBBA90, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo isOpen]', symObjAddr: 0x3A4, symBinAddr: 0x6094, symSize: 0x8 }
+  - { offset: 0xBBAC7, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo setIsOpen:]', symObjAddr: 0x3AC, symBinAddr: 0x609C, symSize: 0x8 }
+  - { offset: 0xBBB06, size: 0x8, addend: 0x0, symName: '-[VSSAnswerInfo .cxx_destruct]', symObjAddr: 0x3B4, symBinAddr: 0x60A4, symSize: 0x78 }
+  - { offset: 0xBBB39, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo initWithDict:]', symObjAddr: 0x42C, symBinAddr: 0x611C, symSize: 0x3C0 }
+  - { offset: 0xBBB9F, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo join_id]', symObjAddr: 0x7EC, symBinAddr: 0x64DC, symSize: 0x8 }
+  - { offset: 0xBBBD6, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo setJoin_id:]', symObjAddr: 0x7F4, symBinAddr: 0x64E4, symSize: 0x8 }
+  - { offset: 0xBBC15, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo QAId]', symObjAddr: 0x7FC, symBinAddr: 0x64EC, symSize: 0x8 }
+  - { offset: 0xBBC4C, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo setQAId:]', symObjAddr: 0x804, symBinAddr: 0x64F4, symSize: 0x8 }
+  - { offset: 0xBBC8B, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo creatTime]', symObjAddr: 0x80C, symBinAddr: 0x64FC, symSize: 0x8 }
+  - { offset: 0xBBCC2, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo setCreatTime:]', symObjAddr: 0x814, symBinAddr: 0x6504, symSize: 0x8 }
+  - { offset: 0xBBD01, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo content]', symObjAddr: 0x81C, symBinAddr: 0x650C, symSize: 0x8 }
+  - { offset: 0xBBD38, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo setContent:]', symObjAddr: 0x824, symBinAddr: 0x6514, symSize: 0x8 }
+  - { offset: 0xBBD77, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo avatar]', symObjAddr: 0x82C, symBinAddr: 0x651C, symSize: 0x8 }
+  - { offset: 0xBBDAE, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo setAvatar:]', symObjAddr: 0x834, symBinAddr: 0x6524, symSize: 0x8 }
+  - { offset: 0xBBDED, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo nick_name]', symObjAddr: 0x83C, symBinAddr: 0x652C, symSize: 0x8 }
+  - { offset: 0xBBE24, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo setNick_name:]', symObjAddr: 0x844, symBinAddr: 0x6534, symSize: 0x8 }
+  - { offset: 0xBBE63, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo sender_id]', symObjAddr: 0x84C, symBinAddr: 0x653C, symSize: 0x8 }
+  - { offset: 0xBBE9A, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo setSender_id:]', symObjAddr: 0x854, symBinAddr: 0x6544, symSize: 0x8 }
+  - { offset: 0xBBED9, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo sender_nickname]', symObjAddr: 0x85C, symBinAddr: 0x654C, symSize: 0x8 }
+  - { offset: 0xBBF10, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo setSender_nickname:]', symObjAddr: 0x864, symBinAddr: 0x6554, symSize: 0x8 }
+  - { offset: 0xBBF4F, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo answer]', symObjAddr: 0x86C, symBinAddr: 0x655C, symSize: 0x8 }
+  - { offset: 0xBBF86, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo setAnswer:]', symObjAddr: 0x874, symBinAddr: 0x6564, symSize: 0xC }
+  - { offset: 0xBBFC7, size: 0x8, addend: 0x0, symName: '-[VSSQueAnsInfo .cxx_destruct]', symObjAddr: 0x880, symBinAddr: 0x6570, symSize: 0x84 }
+  - { offset: 0xBBFFA, size: 0x8, addend: 0x0, symName: '-[VSSQueAns dealloc]', symObjAddr: 0x904, symBinAddr: 0x65F4, symSize: 0x78 }
+  - { offset: 0xBC02D, size: 0x8, addend: 0x0, symName: '-[VSSQueAns init]', symObjAddr: 0x97C, symBinAddr: 0x666C, symSize: 0x144 }
+  - { offset: 0xBC064, size: 0x8, addend: 0x0, symName: '-[VSSQueAns studio:receiveRoomMessage:]', symObjAddr: 0xAC0, symBinAddr: 0x67B0, symSize: 0x1D0 }
+  - { offset: 0xBC102, size: 0x8, addend: 0x0, symName: '-[VSSQueAns delegate]', symObjAddr: 0xC90, symBinAddr: 0x6980, symSize: 0x18 }
+  - { offset: 0xBC139, size: 0x8, addend: 0x0, symName: '-[VSSQueAns setDelegate:]', symObjAddr: 0xCA8, symBinAddr: 0x6998, symSize: 0xC }
+  - { offset: 0xBC17A, size: 0x8, addend: 0x0, symName: '-[VSSQueAns msgDict]', symObjAddr: 0xCB4, symBinAddr: 0x69A4, symSize: 0x8 }
+  - { offset: 0xBC1B1, size: 0x8, addend: 0x0, symName: '-[VSSQueAns setMsgDict:]', symObjAddr: 0xCBC, symBinAddr: 0x69AC, symSize: 0xC }
+  - { offset: 0xBC1F2, size: 0x8, addend: 0x0, symName: '-[VSSQueAns .cxx_destruct]', symObjAddr: 0xCC8, symBinAddr: 0x69B8, symSize: 0x2C }
+  - { offset: 0xBC683, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0x69E4, symSize: 0x78 }
+  - { offset: 0xBC839, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0x69E4, symSize: 0x78 }
+  - { offset: 0xBC88C, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo ID]', symObjAddr: 0x78, symBinAddr: 0x6A5C, symSize: 0x8 }
+  - { offset: 0xBC8C3, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setID:]', symObjAddr: 0x80, symBinAddr: 0x6A64, symSize: 0x8 }
+  - { offset: 0xBC902, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo room_id]', symObjAddr: 0x88, symBinAddr: 0x6A6C, symSize: 0x8 }
+  - { offset: 0xBC939, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setRoom_id:]', symObjAddr: 0x90, symBinAddr: 0x6A74, symSize: 0x8 }
+  - { offset: 0xBC978, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo scrolling_open]', symObjAddr: 0x98, symBinAddr: 0x6A7C, symSize: 0x8 }
+  - { offset: 0xBC9AF, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setScrolling_open:]', symObjAddr: 0xA0, symBinAddr: 0x6A84, symSize: 0x8 }
+  - { offset: 0xBC9EE, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo text]', symObjAddr: 0xA8, symBinAddr: 0x6A8C, symSize: 0x8 }
+  - { offset: 0xBCA25, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setText:]', symObjAddr: 0xB0, symBinAddr: 0x6A94, symSize: 0x8 }
+  - { offset: 0xBCA64, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo text_type]', symObjAddr: 0xB8, symBinAddr: 0x6A9C, symSize: 0x8 }
+  - { offset: 0xBCA9B, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setText_type:]', symObjAddr: 0xC0, symBinAddr: 0x6AA4, symSize: 0x8 }
+  - { offset: 0xBCADA, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo alpha]', symObjAddr: 0xC8, symBinAddr: 0x6AAC, symSize: 0x8 }
+  - { offset: 0xBCB11, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setAlpha:]', symObjAddr: 0xD0, symBinAddr: 0x6AB4, symSize: 0x8 }
+  - { offset: 0xBCB50, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo size]', symObjAddr: 0xD8, symBinAddr: 0x6ABC, symSize: 0x8 }
+  - { offset: 0xBCB87, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setSize:]', symObjAddr: 0xE0, symBinAddr: 0x6AC4, symSize: 0x8 }
+  - { offset: 0xBCBC6, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo color]', symObjAddr: 0xE8, symBinAddr: 0x6ACC, symSize: 0x8 }
+  - { offset: 0xBCBFD, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setColor:]', symObjAddr: 0xF0, symBinAddr: 0x6AD4, symSize: 0x8 }
+  - { offset: 0xBCC3C, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo interval]', symObjAddr: 0xF8, symBinAddr: 0x6ADC, symSize: 0x8 }
+  - { offset: 0xBCC73, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setInterval:]', symObjAddr: 0x100, symBinAddr: 0x6AE4, symSize: 0x8 }
+  - { offset: 0xBCCB2, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo speed]', symObjAddr: 0x108, symBinAddr: 0x6AEC, symSize: 0x8 }
+  - { offset: 0xBCCE9, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setSpeed:]', symObjAddr: 0x110, symBinAddr: 0x6AF4, symSize: 0x8 }
+  - { offset: 0xBCD28, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo position]', symObjAddr: 0x118, symBinAddr: 0x6AFC, symSize: 0x8 }
+  - { offset: 0xBCD5F, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setPosition:]', symObjAddr: 0x120, symBinAddr: 0x6B04, symSize: 0x8 }
+  - { offset: 0xBCD9E, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo status]', symObjAddr: 0x128, symBinAddr: 0x6B0C, symSize: 0x8 }
+  - { offset: 0xBCDD5, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setStatus:]', symObjAddr: 0x130, symBinAddr: 0x6B14, symSize: 0x8 }
+  - { offset: 0xBCE14, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo created_at]', symObjAddr: 0x138, symBinAddr: 0x6B1C, symSize: 0x8 }
+  - { offset: 0xBCE4B, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setCreated_at:]', symObjAddr: 0x140, symBinAddr: 0x6B24, symSize: 0x8 }
+  - { offset: 0xBCE8A, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo updated_at]', symObjAddr: 0x148, symBinAddr: 0x6B2C, symSize: 0x8 }
+  - { offset: 0xBCEC1, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setUpdated_at:]', symObjAddr: 0x150, symBinAddr: 0x6B34, symSize: 0x8 }
+  - { offset: 0xBCF00, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo deleted_at]', symObjAddr: 0x158, symBinAddr: 0x6B3C, symSize: 0x8 }
+  - { offset: 0xBCF37, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo setDeleted_at:]', symObjAddr: 0x160, symBinAddr: 0x6B44, symSize: 0x8 }
+  - { offset: 0xBCF76, size: 0x8, addend: 0x0, symName: '-[VSSAnnouncementInfo .cxx_destruct]', symObjAddr: 0x168, symBinAddr: 0x6B4C, symSize: 0xCC }
+  - { offset: 0xBCFA9, size: 0x8, addend: 0x0, symName: '+[VSSAnnouncement getAnnouncementInfo:failure:]', symObjAddr: 0x234, symBinAddr: 0x6C18, symSize: 0x1D4 }
+  - { offset: 0xBD008, size: 0x8, addend: 0x0, symName: '___47+[VSSAnnouncement getAnnouncementInfo:failure:]_block_invoke', symObjAddr: 0x408, symBinAddr: 0x6DEC, symSize: 0x1D8 }
+  - { offset: 0xBD0E0, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32b40b, symObjAddr: 0x5E0, symBinAddr: 0x6FC4, symSize: 0x3C }
+  - { offset: 0xBD109, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s, symObjAddr: 0x61C, symBinAddr: 0x7000, symSize: 0x28 }
+  - { offset: 0xBD128, size: 0x8, addend: 0x0, symName: '___47+[VSSAnnouncement getAnnouncementInfo:failure:]_block_invoke.100', symObjAddr: 0x644, symBinAddr: 0x7028, symSize: 0x34 }
+  - { offset: 0xBD17D, size: 0x8, addend: 0x0, symName: '+[VSSAnnouncement sendNoticeToImageBase64:Content:Sucess:failure:]', symObjAddr: 0x690, symBinAddr: 0x705C, symSize: 0x228 }
+  - { offset: 0xBD1FC, size: 0x8, addend: 0x0, symName: '___66+[VSSAnnouncement sendNoticeToImageBase64:Content:Sucess:failure:]_block_invoke', symObjAddr: 0x8B8, symBinAddr: 0x7284, symSize: 0x34 }
+  - { offset: 0xBD251, size: 0x8, addend: 0x0, symName: '___66+[VSSAnnouncement sendNoticeToImageBase64:Content:Sucess:failure:]_block_invoke.108', symObjAddr: 0x8EC, symBinAddr: 0x72B8, symSize: 0x34 }
+  - { offset: 0xBD2A6, size: 0x8, addend: 0x0, symName: '+[VSSAnnouncement getNoticeListsPage:pageSize:sucess:failure:]', symObjAddr: 0x920, symBinAddr: 0x72EC, symSize: 0x25C }
+  - { offset: 0xBD325, size: 0x8, addend: 0x0, symName: '___62+[VSSAnnouncement getNoticeListsPage:pageSize:sucess:failure:]_block_invoke', symObjAddr: 0xB7C, symBinAddr: 0x7548, symSize: 0x34 }
+  - { offset: 0xBD37A, size: 0x8, addend: 0x0, symName: '___62+[VSSAnnouncement getNoticeListsPage:pageSize:sucess:failure:]_block_invoke_2', symObjAddr: 0xBB0, symBinAddr: 0x757C, symSize: 0x34 }
+  - { offset: 0xBD3CF, size: 0x8, addend: 0x0, symName: '+[VSSAnnouncement delNoticeToNotice_id:Sucess:failure:]', symObjAddr: 0xBE4, symBinAddr: 0x75B0, symSize: 0x19C }
+  - { offset: 0xBD43E, size: 0x8, addend: 0x0, symName: '___55+[VSSAnnouncement delNoticeToNotice_id:Sucess:failure:]_block_invoke', symObjAddr: 0xD80, symBinAddr: 0x774C, symSize: 0x34 }
+  - { offset: 0xBD493, size: 0x8, addend: 0x0, symName: '___55+[VSSAnnouncement delNoticeToNotice_id:Sucess:failure:]_block_invoke_2', symObjAddr: 0xDB4, symBinAddr: 0x7780, symSize: 0x34 }
+  - { offset: 0xBD9E3, size: 0x8, addend: 0x0, symName: '-[VSSQuestion initWithVHMessage:]', symObjAddr: 0x0, symBinAddr: 0x77B4, symSize: 0xD0 }
+  - { offset: 0xBDBB0, size: 0x8, addend: 0x0, symName: '-[VSSQuestion initWithVHMessage:]', symObjAddr: 0x0, symBinAddr: 0x77B4, symSize: 0xD0 }
+  - { offset: 0xBDBF7, size: 0x8, addend: 0x0, symName: '-[VSSQuestion title]', symObjAddr: 0xD0, symBinAddr: 0x7884, symSize: 0x8 }
+  - { offset: 0xBDC2E, size: 0x8, addend: 0x0, symName: '-[VSSQuestion setTitle:]', symObjAddr: 0xD8, symBinAddr: 0x788C, symSize: 0x8 }
+  - { offset: 0xBDC6D, size: 0x8, addend: 0x0, symName: '-[VSSQuestion detail]', symObjAddr: 0xE0, symBinAddr: 0x7894, symSize: 0x8 }
+  - { offset: 0xBDCA4, size: 0x8, addend: 0x0, symName: '-[VSSQuestion setDetail:]', symObjAddr: 0xE8, symBinAddr: 0x789C, symSize: 0x8 }
+  - { offset: 0xBDCE3, size: 0x8, addend: 0x0, symName: '-[VSSQuestion imageUrlString]', symObjAddr: 0xF0, symBinAddr: 0x78A4, symSize: 0x8 }
+  - { offset: 0xBDD1A, size: 0x8, addend: 0x0, symName: '-[VSSQuestion setImageUrlString:]', symObjAddr: 0xF8, symBinAddr: 0x78AC, symSize: 0x8 }
+  - { offset: 0xBDD59, size: 0x8, addend: 0x0, symName: '-[VSSQuestion isPublic]', symObjAddr: 0x100, symBinAddr: 0x78B4, symSize: 0x8 }
+  - { offset: 0xBDD90, size: 0x8, addend: 0x0, symName: '-[VSSQuestion setIsPublic:]', symObjAddr: 0x108, symBinAddr: 0x78BC, symSize: 0x8 }
+  - { offset: 0xBDDCB, size: 0x8, addend: 0x0, symName: '-[VSSQuestion questionId]', symObjAddr: 0x110, symBinAddr: 0x78C4, symSize: 0x8 }
+  - { offset: 0xBDE02, size: 0x8, addend: 0x0, symName: '-[VSSQuestion setQuestionId:]', symObjAddr: 0x118, symBinAddr: 0x78CC, symSize: 0x8 }
+  - { offset: 0xBDE41, size: 0x8, addend: 0x0, symName: '-[VSSQuestion releaseTime]', symObjAddr: 0x120, symBinAddr: 0x78D4, symSize: 0x8 }
+  - { offset: 0xBDE78, size: 0x8, addend: 0x0, symName: '-[VSSQuestion setReleaseTime:]', symObjAddr: 0x128, symBinAddr: 0x78DC, symSize: 0x8 }
+  - { offset: 0xBDEB7, size: 0x8, addend: 0x0, symName: '-[VSSQuestion msgType]', symObjAddr: 0x130, symBinAddr: 0x78E4, symSize: 0x8 }
+  - { offset: 0xBDEEE, size: 0x8, addend: 0x0, symName: '-[VSSQuestion setMsgType:]', symObjAddr: 0x138, symBinAddr: 0x78EC, symSize: 0x8 }
+  - { offset: 0xBDF2B, size: 0x8, addend: 0x0, symName: '-[VSSQuestion .cxx_destruct]', symObjAddr: 0x140, symBinAddr: 0x78F4, symSize: 0x54 }
+  - { offset: 0xBDF5E, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire dealloc]', symObjAddr: 0x194, symBinAddr: 0x7948, symSize: 0x78 }
+  - { offset: 0xBDF91, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire init]', symObjAddr: 0x20C, symBinAddr: 0x79C0, symSize: 0x11C }
+  - { offset: 0xBDFC8, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire studio:receiveRoomMessage:]', symObjAddr: 0x328, symBinAddr: 0x7ADC, symSize: 0x238 }
+  - { offset: 0xBE056, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire creatWithJoinId:question:success:failure:]', symObjAddr: 0x560, symBinAddr: 0x7D14, symSize: 0x294 }
+  - { offset: 0xBE0D5, size: 0x8, addend: 0x0, symName: '___61-[VSSQuestionnaire creatWithJoinId:question:success:failure:]_block_invoke', symObjAddr: 0x7F4, symBinAddr: 0x7FA8, symSize: 0x34 }
+  - { offset: 0xBE12A, size: 0x8, addend: 0x0, symName: '___61-[VSSQuestionnaire creatWithJoinId:question:success:failure:]_block_invoke.85', symObjAddr: 0x840, symBinAddr: 0x7FDC, symSize: 0x34 }
+  - { offset: 0xBE17F, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire requestQuestionListWithHostId:page:pageSize:keywords:isPublic:success:failure:]', symObjAddr: 0x874, symBinAddr: 0x8010, symSize: 0x208 }
+  - { offset: 0xBE22A, size: 0x8, addend: 0x0, symName: '___98-[VSSQuestionnaire requestQuestionListWithHostId:page:pageSize:keywords:isPublic:success:failure:]_block_invoke', symObjAddr: 0xA7C, symBinAddr: 0x8218, symSize: 0x34 }
+  - { offset: 0xBE27F, size: 0x8, addend: 0x0, symName: '___98-[VSSQuestionnaire requestQuestionListWithHostId:page:pageSize:keywords:isPublic:success:failure:]_block_invoke_2', symObjAddr: 0xAB0, symBinAddr: 0x824C, symSize: 0x34 }
+  - { offset: 0xBE2D4, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire publishWithJoinId:questionId:success:failure:]', symObjAddr: 0xAE4, symBinAddr: 0x8280, symSize: 0x1C8 }
+  - { offset: 0xBE353, size: 0x8, addend: 0x0, symName: '___65-[VSSQuestionnaire publishWithJoinId:questionId:success:failure:]_block_invoke', symObjAddr: 0xCAC, symBinAddr: 0x8448, symSize: 0x34 }
+  - { offset: 0xBE3A8, size: 0x8, addend: 0x0, symName: '___65-[VSSQuestionnaire publishWithJoinId:questionId:success:failure:]_block_invoke_2', symObjAddr: 0xCE0, symBinAddr: 0x847C, symSize: 0x34 }
+  - { offset: 0xBE3FD, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire cancelPublicQWithJoinId:questionId:success:failure:]', symObjAddr: 0xD14, symBinAddr: 0x84B0, symSize: 0x1C8 }
+  - { offset: 0xBE47C, size: 0x8, addend: 0x0, symName: '___71-[VSSQuestionnaire cancelPublicQWithJoinId:questionId:success:failure:]_block_invoke', symObjAddr: 0xEDC, symBinAddr: 0x8678, symSize: 0x34 }
+  - { offset: 0xBE4D1, size: 0x8, addend: 0x0, symName: '___71-[VSSQuestionnaire cancelPublicQWithJoinId:questionId:success:failure:]_block_invoke_2', symObjAddr: 0xF10, symBinAddr: 0x86AC, symSize: 0x34 }
+  - { offset: 0xBE526, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire requestStatisticsListWithJoinId:page:pageSize:success:failure:]', symObjAddr: 0xF44, symBinAddr: 0x86E0, symSize: 0x228 }
+  - { offset: 0xBE5B5, size: 0x8, addend: 0x0, symName: '___82-[VSSQuestionnaire requestStatisticsListWithJoinId:page:pageSize:success:failure:]_block_invoke', symObjAddr: 0x116C, symBinAddr: 0x8908, symSize: 0x34 }
+  - { offset: 0xBE60A, size: 0x8, addend: 0x0, symName: '___82-[VSSQuestionnaire requestStatisticsListWithJoinId:page:pageSize:success:failure:]_block_invoke_2', symObjAddr: 0x11A0, symBinAddr: 0x893C, symSize: 0x34 }
+  - { offset: 0xBE65F, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire questoinUpdateWithJoinId:questionId:question:success:failure:]', symObjAddr: 0x11D4, symBinAddr: 0x8970, symSize: 0x2C0 }
+  - { offset: 0xBE6EE, size: 0x8, addend: 0x0, symName: '___81-[VSSQuestionnaire questoinUpdateWithJoinId:questionId:question:success:failure:]_block_invoke', symObjAddr: 0x1494, symBinAddr: 0x8C30, symSize: 0x34 }
+  - { offset: 0xBE743, size: 0x8, addend: 0x0, symName: '___81-[VSSQuestionnaire questoinUpdateWithJoinId:questionId:question:success:failure:]_block_invoke_2', symObjAddr: 0x14C8, symBinAddr: 0x8C64, symSize: 0x34 }
+  - { offset: 0xBE798, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire requestQuestionListWithJoinId:page:pageSize:keywords:success:failure:]', symObjAddr: 0x14FC, symBinAddr: 0x8C98, symSize: 0x254 }
+  - { offset: 0xBE837, size: 0x8, addend: 0x0, symName: '___89-[VSSQuestionnaire requestQuestionListWithJoinId:page:pageSize:keywords:success:failure:]_block_invoke', symObjAddr: 0x1750, symBinAddr: 0x8EEC, symSize: 0x34 }
+  - { offset: 0xBE88C, size: 0x8, addend: 0x0, symName: '___89-[VSSQuestionnaire requestQuestionListWithJoinId:page:pageSize:keywords:success:failure:]_block_invoke_2', symObjAddr: 0x1784, symBinAddr: 0x8F20, symSize: 0x34 }
+  - { offset: 0xBE8E1, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire submitWithQuestionId:answerId:extend:success:failure:]', symObjAddr: 0x17B8, symBinAddr: 0x8F54, symSize: 0x250 }
+  - { offset: 0xBE971, size: 0x8, addend: 0x0, symName: '___73-[VSSQuestionnaire submitWithQuestionId:answerId:extend:success:failure:]_block_invoke', symObjAddr: 0x1A08, symBinAddr: 0x91A4, symSize: 0x34 }
+  - { offset: 0xBE9C9, size: 0x8, addend: 0x0, symName: '___73-[VSSQuestionnaire submitWithQuestionId:answerId:extend:success:failure:]_block_invoke_2', symObjAddr: 0x1A3C, symBinAddr: 0x91D8, symSize: 0x34 }
+  - { offset: 0xBEA21, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire delegate]', symObjAddr: 0x1A70, symBinAddr: 0x920C, symSize: 0x18 }
+  - { offset: 0xBEA58, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire setDelegate:]', symObjAddr: 0x1A88, symBinAddr: 0x9224, symSize: 0xC }
+  - { offset: 0xBEA99, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire msgDict]', symObjAddr: 0x1A94, symBinAddr: 0x9230, symSize: 0x8 }
+  - { offset: 0xBEAD0, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire setMsgDict:]', symObjAddr: 0x1A9C, symBinAddr: 0x9238, symSize: 0xC }
+  - { offset: 0xBEB11, size: 0x8, addend: 0x0, symName: '-[VSSQuestionnaire .cxx_destruct]', symObjAddr: 0x1AA8, symBinAddr: 0x9244, symSize: 0x2C }
+  - { offset: 0xBF678, size: 0x8, addend: 0x0, symName: '-[VSSChat dealloc]', symObjAddr: 0x0, symBinAddr: 0x9270, symSize: 0x78 }
+  - { offset: 0xBF81E, size: 0x8, addend: 0x0, symName: '-[VSSChat dealloc]', symObjAddr: 0x0, symBinAddr: 0x9270, symSize: 0x78 }
+  - { offset: 0xBF851, size: 0x8, addend: 0x0, symName: '-[VSSChat init]', symObjAddr: 0x78, symBinAddr: 0x92E8, symSize: 0x204 }
+  - { offset: 0xBF888, size: 0x8, addend: 0x0, symName: '-[VSSChat banChat]', symObjAddr: 0x27C, symBinAddr: 0x94EC, symSize: 0x118 }
+  - { offset: 0xBF8BF, size: 0x8, addend: 0x0, symName: '-[VSSChat allBan]', symObjAddr: 0x394, symBinAddr: 0x9604, symSize: 0xB8 }
+  - { offset: 0xBF8F6, size: 0x8, addend: 0x0, symName: '-[VSSChat sendMessage:completed:]', symObjAddr: 0x44C, symBinAddr: 0x96BC, symSize: 0x1F8 }
+  - { offset: 0xBF964, size: 0x8, addend: 0x0, symName: '-[VSSChat sendImagesMessage:text:completed:]', symObjAddr: 0x644, symBinAddr: 0x98B4, symSize: 0xF4 }
+  - { offset: 0xBF9C3, size: 0x8, addend: 0x0, symName: '+[VSSChat setKickedToStatus:account_id:success:failure:]', symObjAddr: 0x738, symBinAddr: 0x99A8, symSize: 0x2F8 }
+  - { offset: 0xBFA7C, size: 0x8, addend: 0x0, symName: '___56+[VSSChat setKickedToStatus:account_id:success:failure:]_block_invoke', symObjAddr: 0xA30, symBinAddr: 0x9CA0, symSize: 0x34 }
+  - { offset: 0xBFAD1, size: 0x8, addend: 0x0, symName: '___56+[VSSChat setKickedToStatus:account_id:success:failure:]_block_invoke.75', symObjAddr: 0xA7C, symBinAddr: 0x9CD4, symSize: 0x34 }
+  - { offset: 0xBFB26, size: 0x8, addend: 0x0, symName: '+[VSSChat setBannedToStatus:account_id:success:failure:]', symObjAddr: 0xAB0, symBinAddr: 0x9D08, symSize: 0x2F8 }
+  - { offset: 0xBFBDF, size: 0x8, addend: 0x0, symName: '___56+[VSSChat setBannedToStatus:account_id:success:failure:]_block_invoke', symObjAddr: 0xDA8, symBinAddr: 0xA000, symSize: 0x34 }
+  - { offset: 0xBFC34, size: 0x8, addend: 0x0, symName: '___56+[VSSChat setBannedToStatus:account_id:success:failure:]_block_invoke_2', symObjAddr: 0xDDC, symBinAddr: 0xA034, symSize: 0x34 }
+  - { offset: 0xBFC89, size: 0x8, addend: 0x0, symName: '+[VSSChat getOnlineListPage:pageSize:nickname:success:failure:]', symObjAddr: 0xE10, symBinAddr: 0xA068, symSize: 0x264 }
+  - { offset: 0xBFD18, size: 0x8, addend: 0x0, symName: '___63+[VSSChat getOnlineListPage:pageSize:nickname:success:failure:]_block_invoke', symObjAddr: 0x1074, symBinAddr: 0xA2CC, symSize: 0x198 }
+  - { offset: 0xBFDD5, size: 0x8, addend: 0x0, symName: '+[VSSChat getKickedListPage:pageSize:success:failure:]', symObjAddr: 0x120C, symBinAddr: 0xA464, symSize: 0x244 }
+  - { offset: 0xBFE54, size: 0x8, addend: 0x0, symName: '___54+[VSSChat getKickedListPage:pageSize:success:failure:]_block_invoke', symObjAddr: 0x1450, symBinAddr: 0xA6A8, symSize: 0x34 }
+  - { offset: 0xBFEA9, size: 0x8, addend: 0x0, symName: '___54+[VSSChat getKickedListPage:pageSize:success:failure:]_block_invoke_2', symObjAddr: 0x1484, symBinAddr: 0xA6DC, symSize: 0x34 }
+  - { offset: 0xBFEFE, size: 0x8, addend: 0x0, symName: '+[VSSChat getBannedListPage:pageSize:success:failure:]', symObjAddr: 0x14B8, symBinAddr: 0xA710, symSize: 0x244 }
+  - { offset: 0xBFF7D, size: 0x8, addend: 0x0, symName: '___54+[VSSChat getBannedListPage:pageSize:success:failure:]_block_invoke', symObjAddr: 0x16FC, symBinAddr: 0xA954, symSize: 0x34 }
+  - { offset: 0xBFFD2, size: 0x8, addend: 0x0, symName: '___54+[VSSChat getBannedListPage:pageSize:success:failure:]_block_invoke_2', symObjAddr: 0x1730, symBinAddr: 0xA988, symSize: 0x34 }
+  - { offset: 0xC0027, size: 0x8, addend: 0x0, symName: '-[VSSChat sendCustomMsg:success:failure:]', symObjAddr: 0x1764, symBinAddr: 0xA9BC, symSize: 0x390 }
+  - { offset: 0xC00B5, size: 0x8, addend: 0x0, symName: '___41-[VSSChat sendCustomMsg:success:failure:]_block_invoke', symObjAddr: 0x1AF4, symBinAddr: 0xAD4C, symSize: 0x34 }
+  - { offset: 0xC010A, size: 0x8, addend: 0x0, symName: '___41-[VSSChat sendCustomMsg:success:failure:]_block_invoke_2', symObjAddr: 0x1B28, symBinAddr: 0xAD80, symSize: 0x34 }
+  - { offset: 0xC0162, size: 0x8, addend: 0x0, symName: '-[VSSChat sendImage:progress:success:failure:]', symObjAddr: 0x1B5C, symBinAddr: 0xADB4, symSize: 0x3BC }
+  - { offset: 0xC0217, size: 0x8, addend: 0x0, symName: '___46-[VSSChat sendImage:progress:success:failure:]_block_invoke', symObjAddr: 0x1F18, symBinAddr: 0xB170, symSize: 0x8C }
+  - { offset: 0xC02B6, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40s, symObjAddr: 0x1FA4, symBinAddr: 0xB1FC, symSize: 0x28 }
+  - { offset: 0xC02DF, size: 0x8, addend: 0x0, symName: '___46-[VSSChat sendImage:progress:success:failure:]_block_invoke.118', symObjAddr: 0x1FF4, symBinAddr: 0xB224, symSize: 0x34 }
+  - { offset: 0xC0338, size: 0x8, addend: 0x0, symName: '___46-[VSSChat sendImage:progress:success:failure:]_block_invoke.120', symObjAddr: 0x2028, symBinAddr: 0xB258, symSize: 0x34 }
+  - { offset: 0xC0391, size: 0x8, addend: 0x0, symName: '___46-[VSSChat sendImage:progress:success:failure:]_block_invoke_2', symObjAddr: 0x205C, symBinAddr: 0xB28C, symSize: 0x34 }
+  - { offset: 0xC03EA, size: 0x8, addend: 0x0, symName: '-[VSSChat getSaaSChatMsgWithPageNum:pageSize:startTime:completion:failed:]', symObjAddr: 0x2090, symBinAddr: 0xB2C0, symSize: 0x27C }
+  - { offset: 0xC0480, size: 0x8, addend: 0x0, symName: '___74-[VSSChat getSaaSChatMsgWithPageNum:pageSize:startTime:completion:failed:]_block_invoke', symObjAddr: 0x230C, symBinAddr: 0xB53C, symSize: 0x398 }
+  - { offset: 0xC0533, size: 0x8, addend: 0x0, symName: '___74-[VSSChat getSaaSChatMsgWithPageNum:pageSize:startTime:completion:failed:]_block_invoke_2', symObjAddr: 0x26A4, symBinAddr: 0xB8D4, symSize: 0x34 }
+  - { offset: 0xC058C, size: 0x8, addend: 0x0, symName: '-[VSSChat studio:onlineMessage:]', symObjAddr: 0x26D8, symBinAddr: 0xB908, symSize: 0x17C }
+  - { offset: 0xC05EF, size: 0x8, addend: 0x0, symName: '-[VSSChat studio:receiveMessage:]', symObjAddr: 0x2854, symBinAddr: 0xBA84, symSize: 0x17C }
+  - { offset: 0xC0676, size: 0x8, addend: 0x0, symName: '-[VSSChat studio:receiveRoomMessage:]', symObjAddr: 0x29D0, symBinAddr: 0xBC00, symSize: 0x3E8 }
+  - { offset: 0xC0717, size: 0x8, addend: 0x0, symName: '-[VSSChat studio:customMessage:]', symObjAddr: 0x2DB8, symBinAddr: 0xBFE8, symSize: 0xA8 }
+  - { offset: 0xC0769, size: 0x8, addend: 0x0, symName: '-[VSSChat studio:receiveAllMessage:]', symObjAddr: 0x2E60, symBinAddr: 0xC090, symSize: 0xB8 }
+  - { offset: 0xC07BB, size: 0x8, addend: 0x0, symName: '-[VSSChat delegate]', symObjAddr: 0x2F18, symBinAddr: 0xC148, symSize: 0x18 }
+  - { offset: 0xC07F2, size: 0x8, addend: 0x0, symName: '-[VSSChat setDelegate:]', symObjAddr: 0x2F30, symBinAddr: 0xC160, symSize: 0xC }
+  - { offset: 0xC0833, size: 0x8, addend: 0x0, symName: '-[VSSChat setAllBan:]', symObjAddr: 0x2F3C, symBinAddr: 0xC16C, symSize: 0x8 }
+  - { offset: 0xC086E, size: 0x8, addend: 0x0, symName: '-[VSSChat setBanChat:]', symObjAddr: 0x2F44, symBinAddr: 0xC174, symSize: 0x8 }
+  - { offset: 0xC08A9, size: 0x8, addend: 0x0, symName: '-[VSSChat custumMsgDict]', symObjAddr: 0x2F4C, symBinAddr: 0xC17C, symSize: 0x8 }
+  - { offset: 0xC08E0, size: 0x8, addend: 0x0, symName: '-[VSSChat setCustumMsgDict:]', symObjAddr: 0x2F54, symBinAddr: 0xC184, symSize: 0xC }
+  - { offset: 0xC0921, size: 0x8, addend: 0x0, symName: '-[VSSChat .cxx_destruct]', symObjAddr: 0x2F60, symBinAddr: 0xC190, symSize: 0x2C }
+  - { offset: 0xC1674, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager httpSessionManager]', symObjAddr: 0x0, symBinAddr: 0xC1BC, symSize: 0x40 }
+  - { offset: 0xC169E, size: 0x8, addend: 0x0, symName: _httpSessionManager.manager, symObjAddr: 0x90E0, symBinAddr: 0x40000, symSize: 0x0 }
+  - { offset: 0xC16B4, size: 0x8, addend: 0x0, symName: _httpSessionManager.onceToken, symObjAddr: 0x90E8, symBinAddr: 0x40008, symSize: 0x0 }
+  - { offset: 0xC1A41, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager httpSessionManager].cold.1', symObjAddr: 0xF3C, symBinAddr: 0x1C878, symSize: 0x14 }
+  - { offset: 0xC1A5D, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager httpSessionManager].cold.1', symObjAddr: 0xF3C, symBinAddr: 0x1C878, symSize: 0x14 }
+  - { offset: 0xC1A6F, size: 0x8, addend: 0x0, symName: '___39+[VSSRequestManager httpSessionManager]_block_invoke', symObjAddr: 0x40, symBinAddr: 0xC1FC, symSize: 0xDC }
+  - { offset: 0xC1AB5, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager completeUrlStrWithSubUrlStr:]', symObjAddr: 0x11C, symBinAddr: 0xC2D8, symSize: 0xB4 }
+  - { offset: 0xC1AF8, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager addCommonParam:]', symObjAddr: 0x1D0, symBinAddr: 0xC38C, symSize: 0x14C }
+  - { offset: 0xC1B4B, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager timeStamp]', symObjAddr: 0x31C, symBinAddr: 0xC4D8, symSize: 0x78 }
+  - { offset: 0xC1B8E, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager netErrorObject]', symObjAddr: 0x394, symBinAddr: 0xC550, symSize: 0xD4 }
+  - { offset: 0xC1BC1, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager returnDataWithRequestData:success:failure:]', symObjAddr: 0x468, symBinAddr: 0xC624, symSize: 0x214 }
+  - { offset: 0xC1CA5, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager uploadWithApi:param:constructingBodyWithBlock:progress:success:failure:]', symObjAddr: 0x67C, symBinAddr: 0xC838, symSize: 0x1C8 }
+  - { offset: 0xC1D58, size: 0x8, addend: 0x0, symName: '___92+[VSSRequestManager uploadWithApi:param:constructingBodyWithBlock:progress:success:failure:]_block_invoke', symObjAddr: 0x844, symBinAddr: 0xCA00, symSize: 0x20 }
+  - { offset: 0xC1DD1, size: 0x8, addend: 0x0, symName: '___92+[VSSRequestManager uploadWithApi:param:constructingBodyWithBlock:progress:success:failure:]_block_invoke.34', symObjAddr: 0x8C8, symBinAddr: 0xCA20, symSize: 0x74 }
+  - { offset: 0xC1E53, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager POST:parameters:success:failure:]', symObjAddr: 0x954, symBinAddr: 0xCA94, symSize: 0x20 }
+  - { offset: 0xC1EC0, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager POST:parameters:progress:success:failure:]', symObjAddr: 0x974, symBinAddr: 0xCAB4, symSize: 0x204 }
+  - { offset: 0xC1F73, size: 0x8, addend: 0x0, symName: '___62+[VSSRequestManager POST:parameters:progress:success:failure:]_block_invoke', symObjAddr: 0xB78, symBinAddr: 0xCCB8, symSize: 0x34 }
+  - { offset: 0xC1FC8, size: 0x8, addend: 0x0, symName: '___62+[VSSRequestManager POST:parameters:progress:success:failure:]_block_invoke.37', symObjAddr: 0xBAC, symBinAddr: 0xCCEC, symSize: 0x20 }
+  - { offset: 0xC2041, size: 0x8, addend: 0x0, symName: '___62+[VSSRequestManager POST:parameters:progress:success:failure:]_block_invoke_2', symObjAddr: 0xBCC, symBinAddr: 0xCD0C, symSize: 0x74 }
+  - { offset: 0xC20C3, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager GET:parameters:success:failure:]', symObjAddr: 0xC40, symBinAddr: 0xCD80, symSize: 0x20 }
+  - { offset: 0xC2130, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager GET:parameters:progress:success:failure:]', symObjAddr: 0xC60, symBinAddr: 0xCDA0, symSize: 0x204 }
+  - { offset: 0xC21E3, size: 0x8, addend: 0x0, symName: '___61+[VSSRequestManager GET:parameters:progress:success:failure:]_block_invoke', symObjAddr: 0xE64, symBinAddr: 0xCFA4, symSize: 0x34 }
+  - { offset: 0xC2238, size: 0x8, addend: 0x0, symName: '___61+[VSSRequestManager GET:parameters:progress:success:failure:]_block_invoke_2', symObjAddr: 0xE98, symBinAddr: 0xCFD8, symSize: 0x20 }
+  - { offset: 0xC22B1, size: 0x8, addend: 0x0, symName: '___61+[VSSRequestManager GET:parameters:progress:success:failure:]_block_invoke_3', symObjAddr: 0xEB8, symBinAddr: 0xCFF8, symSize: 0x74 }
+  - { offset: 0xC2946, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo initWithDict:]', symObjAddr: 0x0, symBinAddr: 0xD06C, symSize: 0x354 }
+  - { offset: 0xC2E81, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo initWithDict:]', symObjAddr: 0x0, symBinAddr: 0xD06C, symSize: 0x354 }
+  - { offset: 0xC2F06, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo is_speaking]', symObjAddr: 0x354, symBinAddr: 0xD3C0, symSize: 0x1A4 }
+  - { offset: 0xC2F54, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo contextWithUserInfo:]', symObjAddr: 0x4F8, symBinAddr: 0xD564, symSize: 0x100 }
+  - { offset: 0xC2FAB, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo account_id]', symObjAddr: 0x5F8, symBinAddr: 0xD664, symSize: 0x8 }
+  - { offset: 0xC2FE2, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setAccount_id:]', symObjAddr: 0x600, symBinAddr: 0xD66C, symSize: 0xC }
+  - { offset: 0xC3023, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo advert_info]', symObjAddr: 0x60C, symBinAddr: 0xD678, symSize: 0x8 }
+  - { offset: 0xC305A, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setAdvert_info:]', symObjAddr: 0x614, symBinAddr: 0xD680, symSize: 0xC }
+  - { offset: 0xC309B, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo channel_id]', symObjAddr: 0x620, symBinAddr: 0xD68C, symSize: 0x8 }
+  - { offset: 0xC30D2, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setChannel_id:]', symObjAddr: 0x628, symBinAddr: 0xD694, symSize: 0xC }
+  - { offset: 0xC3113, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo room_id]', symObjAddr: 0x634, symBinAddr: 0xD6A0, symSize: 0x8 }
+  - { offset: 0xC314A, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setRoom_id:]', symObjAddr: 0x63C, symBinAddr: 0xD6A8, symSize: 0xC }
+  - { offset: 0xC318B, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo paas_access_token]', symObjAddr: 0x648, symBinAddr: 0xD6B4, symSize: 0x8 }
+  - { offset: 0xC31C2, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setPaas_access_token:]', symObjAddr: 0x650, symBinAddr: 0xD6BC, symSize: 0xC }
+  - { offset: 0xC3203, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo inav_id]', symObjAddr: 0x65C, symBinAddr: 0xD6C8, symSize: 0x8 }
+  - { offset: 0xC323A, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setInav_id:]', symObjAddr: 0x664, symBinAddr: 0xD6D0, symSize: 0xC }
+  - { offset: 0xC327B, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo record_id]', symObjAddr: 0x670, symBinAddr: 0xD6DC, symSize: 0x8 }
+  - { offset: 0xC32B2, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setRecord_id:]', symObjAddr: 0x678, symBinAddr: 0xD6E4, symSize: 0xC }
+  - { offset: 0xC32F3, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo roomStatus]', symObjAddr: 0x684, symBinAddr: 0xD6F0, symSize: 0x8 }
+  - { offset: 0xC332A, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setRoomStatus:]', symObjAddr: 0x68C, symBinAddr: 0xD6F8, symSize: 0x8 }
+  - { offset: 0xC3367, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo layout]', symObjAddr: 0x694, symBinAddr: 0xD700, symSize: 0x8 }
+  - { offset: 0xC339E, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setLayout:]', symObjAddr: 0x69C, symBinAddr: 0xD708, symSize: 0x8 }
+  - { offset: 0xC33DB, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo third_party_user_id]', symObjAddr: 0x6A4, symBinAddr: 0xD710, symSize: 0x8 }
+  - { offset: 0xC3412, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setThird_party_user_id:]', symObjAddr: 0x6AC, symBinAddr: 0xD718, symSize: 0xC }
+  - { offset: 0xC3453, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo userRole]', symObjAddr: 0x6B8, symBinAddr: 0xD724, symSize: 0x8 }
+  - { offset: 0xC348A, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setUserRole:]', symObjAddr: 0x6C0, symBinAddr: 0xD72C, symSize: 0x8 }
+  - { offset: 0xC34C7, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo room_name]', symObjAddr: 0x6C8, symBinAddr: 0xD734, symSize: 0x8 }
+  - { offset: 0xC34FE, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setRoom_name:]', symObjAddr: 0x6D0, symBinAddr: 0xD73C, symSize: 0xC }
+  - { offset: 0xC353F, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo pv]', symObjAddr: 0x6DC, symBinAddr: 0xD748, symSize: 0x8 }
+  - { offset: 0xC3576, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setPv:]', symObjAddr: 0x6E4, symBinAddr: 0xD750, symSize: 0x8 }
+  - { offset: 0xC35B3, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo nickName]', symObjAddr: 0x6EC, symBinAddr: 0xD758, symSize: 0x8 }
+  - { offset: 0xC35EA, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setNickName:]', symObjAddr: 0x6F4, symBinAddr: 0xD760, symSize: 0x8 }
+  - { offset: 0xC3629, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo avatar]', symObjAddr: 0x6FC, symBinAddr: 0xD768, symSize: 0x8 }
+  - { offset: 0xC3660, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setAvatar:]', symObjAddr: 0x704, symBinAddr: 0xD770, symSize: 0x8 }
+  - { offset: 0xC369F, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo is_banned]', symObjAddr: 0x70C, symBinAddr: 0xD778, symSize: 0x8 }
+  - { offset: 0xC36D6, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setIs_banned:]', symObjAddr: 0x714, symBinAddr: 0xD780, symSize: 0x8 }
+  - { offset: 0xC3711, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo is_kicked]', symObjAddr: 0x71C, symBinAddr: 0xD788, symSize: 0x8 }
+  - { offset: 0xC3748, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setIs_kicked:]', symObjAddr: 0x724, symBinAddr: 0xD790, symSize: 0x8 }
+  - { offset: 0xC3783, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo keepBanChatStatus]', symObjAddr: 0x72C, symBinAddr: 0xD798, symSize: 0x8 }
+  - { offset: 0xC37BA, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setKeepBanChatStatus:]', symObjAddr: 0x734, symBinAddr: 0xD7A0, symSize: 0x8 }
+  - { offset: 0xC37F5, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo attributes]', symObjAddr: 0x73C, symBinAddr: 0xD7A8, symSize: 0x8 }
+  - { offset: 0xC382C, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setAttributes:]', symObjAddr: 0x744, symBinAddr: 0xD7B0, symSize: 0xC }
+  - { offset: 0xC386D, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo current_webinarId]', symObjAddr: 0x750, symBinAddr: 0xD7BC, symSize: 0x8 }
+  - { offset: 0xC38A4, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo setCurrent_webinarId:]', symObjAddr: 0x758, symBinAddr: 0xD7C4, symSize: 0x8 }
+  - { offset: 0xC38E3, size: 0x8, addend: 0x0, symName: '-[VSSRoomInfo .cxx_destruct]', symObjAddr: 0x760, symBinAddr: 0xD7CC, symSize: 0xB4 }
+  - { offset: 0xC3916, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker setValue:forUndefinedKey:]', symObjAddr: 0x814, symBinAddr: 0xD880, symSize: 0x14 }
+  - { offset: 0xC395D, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker nick_name]', symObjAddr: 0x828, symBinAddr: 0xD894, symSize: 0x8 }
+  - { offset: 0xC3994, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker setNick_name:]', symObjAddr: 0x830, symBinAddr: 0xD89C, symSize: 0x8 }
+  - { offset: 0xC39D3, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker role_name]', symObjAddr: 0x838, symBinAddr: 0xD8A4, symSize: 0x8 }
+  - { offset: 0xC3A0A, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker setRole_name:]', symObjAddr: 0x840, symBinAddr: 0xD8AC, symSize: 0x8 }
+  - { offset: 0xC3A47, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker account_id]', symObjAddr: 0x848, symBinAddr: 0xD8B4, symSize: 0x8 }
+  - { offset: 0xC3A7E, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker setAccount_id:]', symObjAddr: 0x850, symBinAddr: 0xD8BC, symSize: 0x8 }
+  - { offset: 0xC3ABD, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker audio]', symObjAddr: 0x858, symBinAddr: 0xD8C4, symSize: 0x8 }
+  - { offset: 0xC3AF4, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker setAudio:]', symObjAddr: 0x860, symBinAddr: 0xD8CC, symSize: 0x8 }
+  - { offset: 0xC3B31, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker video]', symObjAddr: 0x868, symBinAddr: 0xD8D4, symSize: 0x8 }
+  - { offset: 0xC3B68, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker setVideo:]', symObjAddr: 0x870, symBinAddr: 0xD8DC, symSize: 0x8 }
+  - { offset: 0xC3BA5, size: 0x8, addend: 0x0, symName: '-[VSSRoomSpeaker .cxx_destruct]', symObjAddr: 0x878, symBinAddr: 0xD8E4, symSize: 0x30 }
+  - { offset: 0xC3BD8, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes initWithDict:]', symObjAddr: 0x8A8, symBinAddr: 0xD914, symSize: 0x3B0 }
+  - { offset: 0xC3C1F, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes speakerListWithArray:]', symObjAddr: 0xC58, symBinAddr: 0xDCC4, symSize: 0xF8 }
+  - { offset: 0xC3CB0, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes all_banned]', symObjAddr: 0xD50, symBinAddr: 0xDDBC, symSize: 0x8 }
+  - { offset: 0xC3CE7, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setAll_banned:]', symObjAddr: 0xD58, symBinAddr: 0xDDC4, symSize: 0x8 }
+  - { offset: 0xC3D22, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes is_board]', symObjAddr: 0xD60, symBinAddr: 0xDDCC, symSize: 0x8 }
+  - { offset: 0xC3D59, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setIs_board:]', symObjAddr: 0xD68, symBinAddr: 0xDDD4, symSize: 0x8 }
+  - { offset: 0xC3D94, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes is_desktop]', symObjAddr: 0xD70, symBinAddr: 0xDDDC, symSize: 0x8 }
+  - { offset: 0xC3DCB, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setIs_desktop:]', symObjAddr: 0xD78, symBinAddr: 0xDDE4, symSize: 0x8 }
+  - { offset: 0xC3E06, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes is_doc]', symObjAddr: 0xD80, symBinAddr: 0xDDEC, symSize: 0x8 }
+  - { offset: 0xC3E3D, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setIs_doc:]', symObjAddr: 0xD88, symBinAddr: 0xDDF4, symSize: 0x8 }
+  - { offset: 0xC3E78, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes is_handsup]', symObjAddr: 0xD90, symBinAddr: 0xDDFC, symSize: 0x8 }
+  - { offset: 0xC3EAF, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setIs_handsup:]', symObjAddr: 0xD98, symBinAddr: 0xDE04, symSize: 0x8 }
+  - { offset: 0xC3EEA, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes is_invitecard]', symObjAddr: 0xDA0, symBinAddr: 0xDE0C, symSize: 0x8 }
+  - { offset: 0xC3F21, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setIs_invitecard:]', symObjAddr: 0xDA8, symBinAddr: 0xDE14, symSize: 0x8 }
+  - { offset: 0xC3F5C, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes is_qa]', symObjAddr: 0xDB0, symBinAddr: 0xDE1C, symSize: 0x8 }
+  - { offset: 0xC3F93, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setIs_qa:]', symObjAddr: 0xDB8, symBinAddr: 0xDE24, symSize: 0x8 }
+  - { offset: 0xC3FCE, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes start_type]', symObjAddr: 0xDC0, symBinAddr: 0xDE2C, symSize: 0x8 }
+  - { offset: 0xC4005, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setStart_type:]', symObjAddr: 0xDC8, symBinAddr: 0xDE34, symSize: 0x8 }
+  - { offset: 0xC4042, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes doc_permission]', symObjAddr: 0xDD0, symBinAddr: 0xDE3C, symSize: 0x8 }
+  - { offset: 0xC4079, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setDoc_permission:]', symObjAddr: 0xDD8, symBinAddr: 0xDE44, symSize: 0x8 }
+  - { offset: 0xC40B8, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes main_screen]', symObjAddr: 0xDE0, symBinAddr: 0xDE4C, symSize: 0x8 }
+  - { offset: 0xC40EF, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setMain_screen:]', symObjAddr: 0xDE8, symBinAddr: 0xDE54, symSize: 0x8 }
+  - { offset: 0xC412E, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes rebroadcast]', symObjAddr: 0xDF0, symBinAddr: 0xDE5C, symSize: 0x8 }
+  - { offset: 0xC4165, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setRebroadcast:]', symObjAddr: 0xDF8, symBinAddr: 0xDE64, symSize: 0x8 }
+  - { offset: 0xC41A4, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes speaker_list]', symObjAddr: 0xE00, symBinAddr: 0xDE6C, symSize: 0x8 }
+  - { offset: 0xC41DB, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setSpeaker_list:]', symObjAddr: 0xE08, symBinAddr: 0xDE74, symSize: 0xC }
+  - { offset: 0xC421C, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes stream]', symObjAddr: 0xE14, symBinAddr: 0xDE80, symSize: 0x8 }
+  - { offset: 0xC4253, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes setStream:]', symObjAddr: 0xE1C, symBinAddr: 0xDE88, symSize: 0xC }
+  - { offset: 0xC4294, size: 0x8, addend: 0x0, symName: '-[VSSRoomAttributes .cxx_destruct]', symObjAddr: 0xE28, symBinAddr: 0xDE94, symSize: 0x54 }
+  - { offset: 0xC439C, size: 0x8, addend: 0x0, symName: '-[Winner initWithDict:]', symObjAddr: 0x0, symBinAddr: 0xDEE8, symSize: 0x220 }
+  - { offset: 0xC465E, size: 0x8, addend: 0x0, symName: '-[Winner initWithDict:]', symObjAddr: 0x0, symBinAddr: 0xDEE8, symSize: 0x220 }
+  - { offset: 0xC46A5, size: 0x8, addend: 0x0, symName: '-[Winner ID]', symObjAddr: 0x220, symBinAddr: 0xE108, symSize: 0x8 }
+  - { offset: 0xC46DC, size: 0x8, addend: 0x0, symName: '-[Winner setID:]', symObjAddr: 0x228, symBinAddr: 0xE110, symSize: 0x8 }
+  - { offset: 0xC471B, size: 0x8, addend: 0x0, symName: '-[Winner lottery_id]', symObjAddr: 0x230, symBinAddr: 0xE118, symSize: 0x8 }
+  - { offset: 0xC4752, size: 0x8, addend: 0x0, symName: '-[Winner setLottery_id:]', symObjAddr: 0x238, symBinAddr: 0xE120, symSize: 0x8 }
+  - { offset: 0xC4791, size: 0x8, addend: 0x0, symName: '-[Winner lottery_user_avatar]', symObjAddr: 0x240, symBinAddr: 0xE128, symSize: 0x8 }
+  - { offset: 0xC47C8, size: 0x8, addend: 0x0, symName: '-[Winner setLottery_user_avatar:]', symObjAddr: 0x248, symBinAddr: 0xE130, symSize: 0x8 }
+  - { offset: 0xC4807, size: 0x8, addend: 0x0, symName: '-[Winner lottery_user_id]', symObjAddr: 0x250, symBinAddr: 0xE138, symSize: 0x8 }
+  - { offset: 0xC483E, size: 0x8, addend: 0x0, symName: '-[Winner setLottery_user_id:]', symObjAddr: 0x258, symBinAddr: 0xE140, symSize: 0x8 }
+  - { offset: 0xC487D, size: 0x8, addend: 0x0, symName: '-[Winner lottery_user_nickname]', symObjAddr: 0x260, symBinAddr: 0xE148, symSize: 0x8 }
+  - { offset: 0xC48B4, size: 0x8, addend: 0x0, symName: '-[Winner setLottery_user_nickname:]', symObjAddr: 0x268, symBinAddr: 0xE150, symSize: 0x8 }
+  - { offset: 0xC48F3, size: 0x8, addend: 0x0, symName: '-[Winner preset]', symObjAddr: 0x270, symBinAddr: 0xE158, symSize: 0x8 }
+  - { offset: 0xC492A, size: 0x8, addend: 0x0, symName: '-[Winner setPreset:]', symObjAddr: 0x278, symBinAddr: 0xE160, symSize: 0x8 }
+  - { offset: 0xC4969, size: 0x8, addend: 0x0, symName: '-[Winner .cxx_destruct]', symObjAddr: 0x280, symBinAddr: 0xE168, symSize: 0x60 }
+  - { offset: 0xC499C, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo initWithDict:]', symObjAddr: 0x2E0, symBinAddr: 0xE1C8, symSize: 0x56C }
+  - { offset: 0xC4A30, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo room_id]', symObjAddr: 0x84C, symBinAddr: 0xE734, symSize: 0x8 }
+  - { offset: 0xC4A67, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo setRoom_id:]', symObjAddr: 0x854, symBinAddr: 0xE73C, symSize: 0x8 }
+  - { offset: 0xC4AA6, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo lottery_creator_avatar]', symObjAddr: 0x85C, symBinAddr: 0xE744, symSize: 0x8 }
+  - { offset: 0xC4ADD, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo setLottery_creator_avatar:]', symObjAddr: 0x864, symBinAddr: 0xE74C, symSize: 0x8 }
+  - { offset: 0xC4B1C, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo lottery_creator_id]', symObjAddr: 0x86C, symBinAddr: 0xE754, symSize: 0x8 }
+  - { offset: 0xC4B53, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo setLottery_creator_id:]', symObjAddr: 0x874, symBinAddr: 0xE75C, symSize: 0x8 }
+  - { offset: 0xC4B92, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo lottery_creator_nickname]', symObjAddr: 0x87C, symBinAddr: 0xE764, symSize: 0x8 }
+  - { offset: 0xC4BC9, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo setLottery_creator_nickname:]', symObjAddr: 0x884, symBinAddr: 0xE76C, symSize: 0x8 }
+  - { offset: 0xC4C08, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo lottery_id]', symObjAddr: 0x88C, symBinAddr: 0xE774, symSize: 0x8 }
+  - { offset: 0xC4C3F, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo setLottery_id:]', symObjAddr: 0x894, symBinAddr: 0xE77C, symSize: 0x8 }
+  - { offset: 0xC4C7E, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo lottery_type]', symObjAddr: 0x89C, symBinAddr: 0xE784, symSize: 0x8 }
+  - { offset: 0xC4CB5, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo setLottery_type:]', symObjAddr: 0x8A4, symBinAddr: 0xE78C, symSize: 0x8 }
+  - { offset: 0xC4CF4, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo lottery_status]', symObjAddr: 0x8AC, symBinAddr: 0xE794, symSize: 0x8 }
+  - { offset: 0xC4D2B, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo setLottery_status:]', symObjAddr: 0x8B4, symBinAddr: 0xE79C, symSize: 0x8 }
+  - { offset: 0xC4D6A, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo lottery_number]', symObjAddr: 0x8BC, symBinAddr: 0xE7A4, symSize: 0x8 }
+  - { offset: 0xC4DA1, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo setLottery_number:]', symObjAddr: 0x8C4, symBinAddr: 0xE7AC, symSize: 0x8 }
+  - { offset: 0xC4DE0, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo isWin]', symObjAddr: 0x8CC, symBinAddr: 0xE7B4, symSize: 0x8 }
+  - { offset: 0xC4E17, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo setIsWin:]', symObjAddr: 0x8D4, symBinAddr: 0xE7BC, symSize: 0x8 }
+  - { offset: 0xC4E52, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo win_account]', symObjAddr: 0x8DC, symBinAddr: 0xE7C4, symSize: 0x8 }
+  - { offset: 0xC4E89, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo setWin_account:]', symObjAddr: 0x8E4, symBinAddr: 0xE7CC, symSize: 0x8 }
+  - { offset: 0xC4EC8, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo winnersArray]', symObjAddr: 0x8EC, symBinAddr: 0xE7D4, symSize: 0x8 }
+  - { offset: 0xC4EFF, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo setWinnersArray:]', symObjAddr: 0x8F4, symBinAddr: 0xE7DC, symSize: 0xC }
+  - { offset: 0xC4F40, size: 0x8, addend: 0x0, symName: '-[VSSLotteryInfo .cxx_destruct]', symObjAddr: 0x900, symBinAddr: 0xE7E8, symSize: 0x90 }
+  - { offset: 0xC4F73, size: 0x8, addend: 0x0, symName: '-[VSSLottery dealloc]', symObjAddr: 0x990, symBinAddr: 0xE878, symSize: 0x78 }
+  - { offset: 0xC4FA6, size: 0x8, addend: 0x0, symName: '-[VSSLottery init]', symObjAddr: 0xA08, symBinAddr: 0xE8F0, symSize: 0x90 }
+  - { offset: 0xC4FDD, size: 0x8, addend: 0x0, symName: '-[VSSLottery studio:receiveRoomMessage:]', symObjAddr: 0xA98, symBinAddr: 0xE980, symSize: 0x268 }
+  - { offset: 0xC505B, size: 0x8, addend: 0x0, symName: '-[VSSLottery vssLotteryWithName:phoneNum:success:failure:]', symObjAddr: 0xD00, symBinAddr: 0xEBE8, symSize: 0x340 }
+  - { offset: 0xC50F9, size: 0x8, addend: 0x0, symName: '___58-[VSSLottery vssLotteryWithName:phoneNum:success:failure:]_block_invoke', symObjAddr: 0x1040, symBinAddr: 0xEF28, symSize: 0x34 }
+  - { offset: 0xC514E, size: 0x8, addend: 0x0, symName: '___58-[VSSLottery vssLotteryWithName:phoneNum:success:failure:]_block_invoke.154', symObjAddr: 0x108C, symBinAddr: 0xEF5C, symSize: 0x34 }
+  - { offset: 0xC51A3, size: 0x8, addend: 0x0, symName: '-[VSSLottery delegate]', symObjAddr: 0x10C0, symBinAddr: 0xEF90, symSize: 0x18 }
+  - { offset: 0xC51DA, size: 0x8, addend: 0x0, symName: '-[VSSLottery setDelegate:]', symObjAddr: 0x10D8, symBinAddr: 0xEFA8, symSize: 0xC }
+  - { offset: 0xC521B, size: 0x8, addend: 0x0, symName: '-[VSSLottery curLotteryInfo]', symObjAddr: 0x10E4, symBinAddr: 0xEFB4, symSize: 0x8 }
+  - { offset: 0xC5252, size: 0x8, addend: 0x0, symName: '-[VSSLottery setCurLotteryInfo:]', symObjAddr: 0x10EC, symBinAddr: 0xEFBC, symSize: 0xC }
+  - { offset: 0xC5293, size: 0x8, addend: 0x0, symName: '-[VSSLottery .cxx_destruct]', symObjAddr: 0x10F8, symBinAddr: 0xEFC8, symSize: 0x2C }
+  - { offset: 0xC58E7, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel initWithMsg:]', symObjAddr: 0x0, symBinAddr: 0xEFF4, symSize: 0x2A4 }
+  - { offset: 0xC5B15, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel initWithMsg:]', symObjAddr: 0x0, symBinAddr: 0xEFF4, symSize: 0x2A4 }
+  - { offset: 0xC5B7B, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel msg]', symObjAddr: 0x2A4, symBinAddr: 0xF298, symSize: 0x8 }
+  - { offset: 0xC5BB2, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel setMsg:]', symObjAddr: 0x2AC, symBinAddr: 0xF2A0, symSize: 0xC }
+  - { offset: 0xC5BF3, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel userRole]', symObjAddr: 0x2B8, symBinAddr: 0xF2AC, symSize: 0x8 }
+  - { offset: 0xC5C2A, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel setUserRole:]', symObjAddr: 0x2C0, symBinAddr: 0xF2B4, symSize: 0x8 }
+  - { offset: 0xC5C67, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel targetId]', symObjAddr: 0x2C8, symBinAddr: 0xF2BC, symSize: 0x8 }
+  - { offset: 0xC5C9E, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel setTargetId:]', symObjAddr: 0x2D0, symBinAddr: 0xF2C4, symSize: 0x8 }
+  - { offset: 0xC5CDD, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel targetName]', symObjAddr: 0x2D8, symBinAddr: 0xF2CC, symSize: 0x8 }
+  - { offset: 0xC5D14, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel setTargetName:]', symObjAddr: 0x2E0, symBinAddr: 0xF2D4, symSize: 0x8 }
+  - { offset: 0xC5D53, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel hostId]', symObjAddr: 0x2E8, symBinAddr: 0xF2DC, symSize: 0x8 }
+  - { offset: 0xC5D8A, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel setHostId:]', symObjAddr: 0x2F0, symBinAddr: 0xF2E4, symSize: 0x8 }
+  - { offset: 0xC5DC9, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel targetIsMyself]', symObjAddr: 0x2F8, symBinAddr: 0xF2EC, symSize: 0x8 }
+  - { offset: 0xC5E00, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel setTargetIsMyself:]', symObjAddr: 0x300, symBinAddr: 0xF2F4, symSize: 0x8 }
+  - { offset: 0xC5E3B, size: 0x8, addend: 0x0, symName: '-[VSSMsgModel .cxx_destruct]', symObjAddr: 0x308, symBinAddr: 0xF2FC, symSize: 0x48 }
+  - { offset: 0xC5EFF, size: 0x8, addend: 0x0, symName: '-[VHVss init]', symObjAddr: 0x0, symBinAddr: 0xF344, symSize: 0x58 }
+  - { offset: 0xC5F45, size: 0x8, addend: 0x0, symName: '-[VHVss init]', symObjAddr: 0x0, symBinAddr: 0xF344, symSize: 0x58 }
+  - { offset: 0xC75C3, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0xF39C, symSize: 0xBC }
+  - { offset: 0xC7B91, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0xF39C, symSize: 0xBC }
+  - { offset: 0xC7BE4, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setExt:]', symObjAddr: 0xBC, symBinAddr: 0xF458, symSize: 0x48 }
+  - { offset: 0xC7C27, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel account_id]', symObjAddr: 0x104, symBinAddr: 0xF4A0, symSize: 0x8 }
+  - { offset: 0xC7C5E, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setAccount_id:]', symObjAddr: 0x10C, symBinAddr: 0xF4A8, symSize: 0x8 }
+  - { offset: 0xC7C9D, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel app_id]', symObjAddr: 0x114, symBinAddr: 0xF4B0, symSize: 0x8 }
+  - { offset: 0xC7CD4, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setApp_id:]', symObjAddr: 0x11C, symBinAddr: 0xF4B8, symSize: 0x8 }
+  - { offset: 0xC7D13, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel created_at]', symObjAddr: 0x124, symBinAddr: 0xF4C0, symSize: 0x8 }
+  - { offset: 0xC7D4A, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setCreated_at:]', symObjAddr: 0x12C, symBinAddr: 0xF4C8, symSize: 0x8 }
+  - { offset: 0xC7D89, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel updated_at]', symObjAddr: 0x134, symBinAddr: 0xF4D0, symSize: 0x8 }
+  - { offset: 0xC7DC0, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setUpdated_at:]', symObjAddr: 0x13C, symBinAddr: 0xF4D8, symSize: 0x8 }
+  - { offset: 0xC7DFF, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel deleted]', symObjAddr: 0x144, symBinAddr: 0xF4E0, symSize: 0x8 }
+  - { offset: 0xC7E36, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setDeleted:]', symObjAddr: 0x14C, symBinAddr: 0xF4E8, symSize: 0x8 }
+  - { offset: 0xC7E75, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel document_id]', symObjAddr: 0x154, symBinAddr: 0xF4F0, symSize: 0x8 }
+  - { offset: 0xC7EAC, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setDocument_id:]', symObjAddr: 0x15C, symBinAddr: 0xF4F8, symSize: 0x8 }
+  - { offset: 0xC7EEB, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel ext]', symObjAddr: 0x164, symBinAddr: 0xF500, symSize: 0x8 }
+  - { offset: 0xC7F22, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel file_name]', symObjAddr: 0x16C, symBinAddr: 0xF508, symSize: 0x8 }
+  - { offset: 0xC7F59, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setFile_name:]', symObjAddr: 0x174, symBinAddr: 0xF510, symSize: 0x8 }
+  - { offset: 0xC7F98, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel doc_hash]', symObjAddr: 0x17C, symBinAddr: 0xF518, symSize: 0x8 }
+  - { offset: 0xC7FCF, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setDoc_hash:]', symObjAddr: 0x184, symBinAddr: 0xF520, symSize: 0x8 }
+  - { offset: 0xC800E, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel ID]', symObjAddr: 0x18C, symBinAddr: 0xF528, symSize: 0x8 }
+  - { offset: 0xC8045, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setID:]', symObjAddr: 0x194, symBinAddr: 0xF530, symSize: 0x8 }
+  - { offset: 0xC8084, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel page]', symObjAddr: 0x19C, symBinAddr: 0xF538, symSize: 0x8 }
+  - { offset: 0xC80BB, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setPage:]', symObjAddr: 0x1A4, symBinAddr: 0xF540, symSize: 0x8 }
+  - { offset: 0xC80FA, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel room_id]', symObjAddr: 0x1AC, symBinAddr: 0xF548, symSize: 0x8 }
+  - { offset: 0xC8131, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setRoom_id:]', symObjAddr: 0x1B4, symBinAddr: 0xF550, symSize: 0x8 }
+  - { offset: 0xC8170, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel status]', symObjAddr: 0x1BC, symBinAddr: 0xF558, symSize: 0x8 }
+  - { offset: 0xC81A7, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setStatus:]', symObjAddr: 0x1C4, symBinAddr: 0xF560, symSize: 0x8 }
+  - { offset: 0xC81E6, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel converted_page]', symObjAddr: 0x1CC, symBinAddr: 0xF568, symSize: 0x8 }
+  - { offset: 0xC821D, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setConverted_page:]', symObjAddr: 0x1D4, symBinAddr: 0xF570, symSize: 0x8 }
+  - { offset: 0xC825C, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel status_jpeg]', symObjAddr: 0x1DC, symBinAddr: 0xF578, symSize: 0x8 }
+  - { offset: 0xC8293, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setStatus_jpeg:]', symObjAddr: 0x1E4, symBinAddr: 0xF580, symSize: 0x8 }
+  - { offset: 0xC82D2, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel converted_page_jpeg]', symObjAddr: 0x1EC, symBinAddr: 0xF588, symSize: 0x8 }
+  - { offset: 0xC8309, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setConverted_page_jpeg:]', symObjAddr: 0x1F4, symBinAddr: 0xF590, symSize: 0x8 }
+  - { offset: 0xC8348, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel converted_page_swf]', symObjAddr: 0x1FC, symBinAddr: 0xF598, symSize: 0x8 }
+  - { offset: 0xC837F, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setConverted_page_swf:]', symObjAddr: 0x204, symBinAddr: 0xF5A0, symSize: 0x8 }
+  - { offset: 0xC83BE, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel status_swf]', symObjAddr: 0x20C, symBinAddr: 0xF5A8, symSize: 0x8 }
+  - { offset: 0xC83F5, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setStatus_swf:]', symObjAddr: 0x214, symBinAddr: 0xF5B0, symSize: 0x8 }
+  - { offset: 0xC8434, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel bu]', symObjAddr: 0x21C, symBinAddr: 0xF5B8, symSize: 0x8 }
+  - { offset: 0xC846B, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setBu:]', symObjAddr: 0x224, symBinAddr: 0xF5C0, symSize: 0x8 }
+  - { offset: 0xC84AA, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel trans_num]', symObjAddr: 0x22C, symBinAddr: 0xF5C8, symSize: 0x8 }
+  - { offset: 0xC84E1, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setTrans_num:]', symObjAddr: 0x234, symBinAddr: 0xF5D0, symSize: 0x8 }
+  - { offset: 0xC8520, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel trans_status]', symObjAddr: 0x23C, symBinAddr: 0xF5D8, symSize: 0x8 }
+  - { offset: 0xC8557, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setTrans_status:]', symObjAddr: 0x244, symBinAddr: 0xF5E0, symSize: 0x8 }
+  - { offset: 0xC8596, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel uploader_id]', symObjAddr: 0x24C, symBinAddr: 0xF5E8, symSize: 0x8 }
+  - { offset: 0xC85CD, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setUploader_id:]', symObjAddr: 0x254, symBinAddr: 0xF5F0, symSize: 0x8 }
+  - { offset: 0xC860C, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel size]', symObjAddr: 0x25C, symBinAddr: 0xF5F8, symSize: 0x8 }
+  - { offset: 0xC8641, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setSize:]', symObjAddr: 0x264, symBinAddr: 0xF600, symSize: 0x8 }
+  - { offset: 0xC867F, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel storage_provider]', symObjAddr: 0x26C, symBinAddr: 0xF608, symSize: 0x8 }
+  - { offset: 0xC86B6, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setStorage_provider:]', symObjAddr: 0x274, symBinAddr: 0xF610, symSize: 0x8 }
+  - { offset: 0xC86F5, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel width]', symObjAddr: 0x27C, symBinAddr: 0xF618, symSize: 0x8 }
+  - { offset: 0xC872A, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setWidth:]', symObjAddr: 0x284, symBinAddr: 0xF620, symSize: 0x8 }
+  - { offset: 0xC8768, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel height]', symObjAddr: 0x28C, symBinAddr: 0xF628, symSize: 0x8 }
+  - { offset: 0xC879D, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setHeight:]', symObjAddr: 0x294, symBinAddr: 0xF630, symSize: 0x8 }
+  - { offset: 0xC87DB, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel selected]', symObjAddr: 0x29C, symBinAddr: 0xF638, symSize: 0x8 }
+  - { offset: 0xC8812, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel setSelected:]', symObjAddr: 0x2A4, symBinAddr: 0xF640, symSize: 0x8 }
+  - { offset: 0xC884D, size: 0x8, addend: 0x0, symName: '-[VSSDocumentInfoModel .cxx_destruct]', symObjAddr: 0x2AC, symBinAddr: 0xF648, symSize: 0x12C }
+  - { offset: 0xC8880, size: 0x8, addend: 0x0, symName: '-[VSSDocument setDocSwichIsOn:success:failure:]', symObjAddr: 0x3D8, symBinAddr: 0xF774, symSize: 0x2EC }
+  - { offset: 0xC8929, size: 0x8, addend: 0x0, symName: '___47-[VSSDocument setDocSwichIsOn:success:failure:]_block_invoke', symObjAddr: 0x6C4, symBinAddr: 0xFA60, symSize: 0x34 }
+  - { offset: 0xC897E, size: 0x8, addend: 0x0, symName: '___47-[VSSDocument setDocSwichIsOn:success:failure:]_block_invoke.167', symObjAddr: 0x710, symBinAddr: 0xFA94, symSize: 0x34 }
+  - { offset: 0xC89D3, size: 0x8, addend: 0x0, symName: '+[VSSDocument setDocPermissionWithTargetAccountId:success:failure:]', symObjAddr: 0x744, symBinAddr: 0xFAC8, symSize: 0x1F0 }
+  - { offset: 0xC8A42, size: 0x8, addend: 0x0, symName: '___67+[VSSDocument setDocPermissionWithTargetAccountId:success:failure:]_block_invoke', symObjAddr: 0x934, symBinAddr: 0xFCB8, symSize: 0x34 }
+  - { offset: 0xC8A97, size: 0x8, addend: 0x0, symName: '___67+[VSSDocument setDocPermissionWithTargetAccountId:success:failure:]_block_invoke_2', symObjAddr: 0x968, symBinAddr: 0xFCEC, symSize: 0x34 }
+  - { offset: 0xC8AEC, size: 0x8, addend: 0x0, symName: '+[VSSDocument docDeleteWithJoinId:docId:success:failure:]', symObjAddr: 0x99C, symBinAddr: 0xFD20, symSize: 0x1C8 }
+  - { offset: 0xC8B6B, size: 0x8, addend: 0x0, symName: '___57+[VSSDocument docDeleteWithJoinId:docId:success:failure:]_block_invoke', symObjAddr: 0xB64, symBinAddr: 0xFEE8, symSize: 0x34 }
+  - { offset: 0xC8BC0, size: 0x8, addend: 0x0, symName: '___57+[VSSDocument docDeleteWithJoinId:docId:success:failure:]_block_invoke_2', symObjAddr: 0xB98, symBinAddr: 0xFF1C, symSize: 0x34 }
+  - { offset: 0xC8C15, size: 0x8, addend: 0x0, symName: '+[VSSDocument getDocListWithAccountId:page:pageSize:keyWords:success:failure:]', symObjAddr: 0xBCC, symBinAddr: 0xFF50, symSize: 0x230 }
+  - { offset: 0xC8CB4, size: 0x8, addend: 0x0, symName: '___78+[VSSDocument getDocListWithAccountId:page:pageSize:keyWords:success:failure:]_block_invoke', symObjAddr: 0xDFC, symBinAddr: 0x10180, symSize: 0x358 }
+  - { offset: 0xC8E11, size: 0x8, addend: 0x0, symName: '___78+[VSSDocument getDocListWithAccountId:page:pageSize:keyWords:success:failure:]_block_invoke.198', symObjAddr: 0x11B8, symBinAddr: 0x104D8, symSize: 0x34 }
+  - { offset: 0xC8E66, size: 0x8, addend: 0x0, symName: '+[VSSDocument getDocListWithRoomId:page:pageSize:keyWords:success:failure:]', symObjAddr: 0x11EC, symBinAddr: 0x1050C, symSize: 0x230 }
+  - { offset: 0xC8F05, size: 0x8, addend: 0x0, symName: '___75+[VSSDocument getDocListWithRoomId:page:pageSize:keyWords:success:failure:]_block_invoke', symObjAddr: 0x141C, symBinAddr: 0x1073C, symSize: 0x358 }
+  - { offset: 0xC9062, size: 0x8, addend: 0x0, symName: '___75+[VSSDocument getDocListWithRoomId:page:pageSize:keyWords:success:failure:]_block_invoke_2', symObjAddr: 0x1774, symBinAddr: 0x10A94, symSize: 0x34 }
+  - { offset: 0xC90B7, size: 0x8, addend: 0x0, symName: '-[VSSDocument setEditEnable:]', symObjAddr: 0x17A8, symBinAddr: 0x10AC8, symSize: 0x1E4 }
+  - { offset: 0xC9119, size: 0x8, addend: 0x0, symName: '-[VSSDocument setSwitchOn:]', symObjAddr: 0x198C, symBinAddr: 0x10CAC, symSize: 0x1A4 }
+  - { offset: 0xC971C, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo room_id]', symObjAddr: 0x0, symBinAddr: 0x10E50, symSize: 0x8 }
+  - { offset: 0xC9A0E, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo room_id]', symObjAddr: 0x0, symBinAddr: 0x10E50, symSize: 0x8 }
+  - { offset: 0xC9A45, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo setRoom_id:]', symObjAddr: 0x8, symBinAddr: 0x10E58, symSize: 0x8 }
+  - { offset: 0xC9A84, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo sign_creator_avatar]', symObjAddr: 0x10, symBinAddr: 0x10E60, symSize: 0x8 }
+  - { offset: 0xC9ABB, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo setSign_creator_avatar:]', symObjAddr: 0x18, symBinAddr: 0x10E68, symSize: 0x8 }
+  - { offset: 0xC9AFA, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo sign_creator_id]', symObjAddr: 0x20, symBinAddr: 0x10E70, symSize: 0x8 }
+  - { offset: 0xC9B31, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo setSign_creator_id:]', symObjAddr: 0x28, symBinAddr: 0x10E78, symSize: 0x8 }
+  - { offset: 0xC9B70, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo sign_creator_nickname]', symObjAddr: 0x30, symBinAddr: 0x10E80, symSize: 0x8 }
+  - { offset: 0xC9BA7, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo setSign_creator_nickname:]', symObjAddr: 0x38, symBinAddr: 0x10E88, symSize: 0x8 }
+  - { offset: 0xC9BE6, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo sign_id]', symObjAddr: 0x40, symBinAddr: 0x10E90, symSize: 0x8 }
+  - { offset: 0xC9C1D, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo setSign_id:]', symObjAddr: 0x48, symBinAddr: 0x10E98, symSize: 0x8 }
+  - { offset: 0xC9C5C, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo sign_show_time]', symObjAddr: 0x50, symBinAddr: 0x10EA0, symSize: 0x8 }
+  - { offset: 0xC9C93, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo setSign_show_time:]', symObjAddr: 0x58, symBinAddr: 0x10EA8, symSize: 0x8 }
+  - { offset: 0xC9CD0, size: 0x8, addend: 0x0, symName: '-[VSSSignInfo .cxx_destruct]', symObjAddr: 0x60, symBinAddr: 0x10EB0, symSize: 0x54 }
+  - { offset: 0xC9D03, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setValue:forUndefinedKey:]', symObjAddr: 0xB4, symBinAddr: 0x10F04, symSize: 0x78 }
+  - { offset: 0xC9D56, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord appid]', symObjAddr: 0x12C, symBinAddr: 0x10F7C, symSize: 0x8 }
+  - { offset: 0xC9D8D, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setAppid:]', symObjAddr: 0x134, symBinAddr: 0x10F84, symSize: 0x8 }
+  - { offset: 0xC9DCC, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord bu]', symObjAddr: 0x13C, symBinAddr: 0x10F8C, symSize: 0x8 }
+  - { offset: 0xC9E03, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setBu:]', symObjAddr: 0x144, symBinAddr: 0x10F94, symSize: 0x8 }
+  - { offset: 0xC9E42, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord created_at]', symObjAddr: 0x14C, symBinAddr: 0x10F9C, symSize: 0x8 }
+  - { offset: 0xC9E79, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setCreated_at:]', symObjAddr: 0x154, symBinAddr: 0x10FA4, symSize: 0x8 }
+  - { offset: 0xC9EB8, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord creator_id]', symObjAddr: 0x15C, symBinAddr: 0x10FAC, symSize: 0x8 }
+  - { offset: 0xC9EEF, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setCreator_id:]', symObjAddr: 0x164, symBinAddr: 0x10FB4, symSize: 0x8 }
+  - { offset: 0xC9F2E, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord deleted]', symObjAddr: 0x16C, symBinAddr: 0x10FBC, symSize: 0x8 }
+  - { offset: 0xC9F65, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setDeleted:]', symObjAddr: 0x174, symBinAddr: 0x10FC4, symSize: 0x8 }
+  - { offset: 0xC9FA4, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord deleted_at]', symObjAddr: 0x17C, symBinAddr: 0x10FCC, symSize: 0x8 }
+  - { offset: 0xC9FDB, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setDeleted_at:]', symObjAddr: 0x184, symBinAddr: 0x10FD4, symSize: 0x8 }
+  - { offset: 0xCA01A, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord ID]', symObjAddr: 0x18C, symBinAddr: 0x10FDC, symSize: 0x8 }
+  - { offset: 0xCA051, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setID:]', symObjAddr: 0x194, symBinAddr: 0x10FE4, symSize: 0x8 }
+  - { offset: 0xCA090, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord sign_id]', symObjAddr: 0x19C, symBinAddr: 0x10FEC, symSize: 0x8 }
+  - { offset: 0xCA0C7, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setSign_id:]', symObjAddr: 0x1A4, symBinAddr: 0x10FF4, symSize: 0x8 }
+  - { offset: 0xCA106, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord signer_avatar]', symObjAddr: 0x1AC, symBinAddr: 0x10FFC, symSize: 0x8 }
+  - { offset: 0xCA13D, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setSigner_avatar:]', symObjAddr: 0x1B4, symBinAddr: 0x11004, symSize: 0x8 }
+  - { offset: 0xCA17C, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord signer_id]', symObjAddr: 0x1BC, symBinAddr: 0x1100C, symSize: 0x8 }
+  - { offset: 0xCA1B3, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setSigner_id:]', symObjAddr: 0x1C4, symBinAddr: 0x11014, symSize: 0x8 }
+  - { offset: 0xCA1F2, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord signer_nickname]', symObjAddr: 0x1CC, symBinAddr: 0x1101C, symSize: 0x8 }
+  - { offset: 0xCA229, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setSigner_nickname:]', symObjAddr: 0x1D4, symBinAddr: 0x11024, symSize: 0x8 }
+  - { offset: 0xCA268, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord source_id]', symObjAddr: 0x1DC, symBinAddr: 0x1102C, symSize: 0x8 }
+  - { offset: 0xCA29F, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setSource_id:]', symObjAddr: 0x1E4, symBinAddr: 0x11034, symSize: 0x8 }
+  - { offset: 0xCA2DE, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord updated_at]', symObjAddr: 0x1EC, symBinAddr: 0x1103C, symSize: 0x8 }
+  - { offset: 0xCA315, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord setUpdated_at:]', symObjAddr: 0x1F4, symBinAddr: 0x11044, symSize: 0x8 }
+  - { offset: 0xCA354, size: 0x8, addend: 0x0, symName: '-[VSSSignRecord .cxx_destruct]', symObjAddr: 0x1FC, symBinAddr: 0x1104C, symSize: 0xB4 }
+  - { offset: 0xCA387, size: 0x8, addend: 0x0, symName: '-[VSSSign dealloc]', symObjAddr: 0x2B0, symBinAddr: 0x11100, symSize: 0x78 }
+  - { offset: 0xCA3BA, size: 0x8, addend: 0x0, symName: '-[VSSSign init]', symObjAddr: 0x328, symBinAddr: 0x11178, symSize: 0x90 }
+  - { offset: 0xCA3F1, size: 0x8, addend: 0x0, symName: '-[VSSSign signOpeningWithTime:success:failure:]', symObjAddr: 0x3B8, symBinAddr: 0x11208, symSize: 0x2F0 }
+  - { offset: 0xCA49A, size: 0x8, addend: 0x0, symName: '___47-[VSSSign signOpeningWithTime:success:failure:]_block_invoke', symObjAddr: 0x6A8, symBinAddr: 0x114F8, symSize: 0x130 }
+  - { offset: 0xCA543, size: 0x8, addend: 0x0, symName: '___47-[VSSSign signOpeningWithTime:success:failure:]_block_invoke.126', symObjAddr: 0x83C, symBinAddr: 0x11628, symSize: 0x34 }
+  - { offset: 0xCA598, size: 0x8, addend: 0x0, symName: '-[VSSSign getSignRecordsWithSignId:offset:limit:success:failure:]', symObjAddr: 0x888, symBinAddr: 0x1165C, symSize: 0x28C }
+  - { offset: 0xCA627, size: 0x8, addend: 0x0, symName: '___65-[VSSSign getSignRecordsWithSignId:offset:limit:success:failure:]_block_invoke', symObjAddr: 0xB14, symBinAddr: 0x118E8, symSize: 0x2B8 }
+  - { offset: 0xCA74C, size: 0x8, addend: 0x0, symName: '___65-[VSSSign getSignRecordsWithSignId:offset:limit:success:failure:]_block_invoke_2', symObjAddr: 0xDCC, symBinAddr: 0x11BA0, symSize: 0x34 }
+  - { offset: 0xCA7A1, size: 0x8, addend: 0x0, symName: '-[VSSSign vssSignSuccess:failure:]', symObjAddr: 0xE00, symBinAddr: 0x11BD4, symSize: 0x294 }
+  - { offset: 0xCA81F, size: 0x8, addend: 0x0, symName: '___34-[VSSSign vssSignSuccess:failure:]_block_invoke', symObjAddr: 0x1094, symBinAddr: 0x11E68, symSize: 0x130 }
+  - { offset: 0xCA8C8, size: 0x8, addend: 0x0, symName: '___34-[VSSSign vssSignSuccess:failure:]_block_invoke_2', symObjAddr: 0x11C4, symBinAddr: 0x11F98, symSize: 0x34 }
+  - { offset: 0xCA91D, size: 0x8, addend: 0x0, symName: '-[VSSSign studio:receiveRoomMessage:]', symObjAddr: 0x11F8, symBinAddr: 0x11FCC, symSize: 0x334 }
+  - { offset: 0xCA98C, size: 0x8, addend: 0x0, symName: '-[VSSSign startSigningCountDown]', symObjAddr: 0x152C, symBinAddr: 0x12300, symSize: 0x1B8 }
+  - { offset: 0xCA9BF, size: 0x8, addend: 0x0, symName: '-[VSSSign cancel]', symObjAddr: 0x16E4, symBinAddr: 0x124B8, symSize: 0x64 }
+  - { offset: 0xCA9F2, size: 0x8, addend: 0x0, symName: '-[VSSSign delegate]', symObjAddr: 0x1748, symBinAddr: 0x1251C, symSize: 0x18 }
+  - { offset: 0xCAA29, size: 0x8, addend: 0x0, symName: '-[VSSSign setDelegate:]', symObjAddr: 0x1760, symBinAddr: 0x12534, symSize: 0xC }
+  - { offset: 0xCAA6A, size: 0x8, addend: 0x0, symName: '-[VSSSign curSignInfo]', symObjAddr: 0x176C, symBinAddr: 0x12540, symSize: 0x8 }
+  - { offset: 0xCAAA1, size: 0x8, addend: 0x0, symName: '-[VSSSign setCurSignInfo:]', symObjAddr: 0x1774, symBinAddr: 0x12548, symSize: 0xC }
+  - { offset: 0xCAAE2, size: 0x8, addend: 0x0, symName: '-[VSSSign .cxx_destruct]', symObjAddr: 0x1780, symBinAddr: 0x12554, symSize: 0x2C }
+  - { offset: 0xCB318, size: 0x8, addend: 0x0, symName: '+[VSSTool safeString:]', symObjAddr: 0x0, symBinAddr: 0x12580, symSize: 0x1A4 }
+  - { offset: 0xCB32B, size: 0x8, addend: 0x0, symName: '+[VSSTool safeString:]', symObjAddr: 0x0, symBinAddr: 0x12580, symSize: 0x1A4 }
+  - { offset: 0xCB36E, size: 0x8, addend: 0x0, symName: '+[VSSTool isEmptyStr:]', symObjAddr: 0x1A4, symBinAddr: 0x12724, symSize: 0x64 }
+  - { offset: 0xCB3B5, size: 0x8, addend: 0x0, symName: '+[VSSTool safeAvatar:]', symObjAddr: 0x208, symBinAddr: 0x12788, symSize: 0xBC }
+  - { offset: 0xCB408, size: 0x8, addend: 0x0, symName: '+[VSSTool currentDateString]', symObjAddr: 0x2C4, symBinAddr: 0x12844, symSize: 0xD8 }
+  - { offset: 0xCB46B, size: 0x8, addend: 0x0, symName: '+[VSSTool jsonObjectWithData:]', symObjAddr: 0x39C, symBinAddr: 0x1291C, symSize: 0x16C }
+  - { offset: 0xCB543, size: 0x8, addend: 0x0, symName: '+[VSSLivePublisher vssStartLiveWithType:success:failure:]', symObjAddr: 0x0, symBinAddr: 0x12A88, symSize: 0x1F4 }
+  - { offset: 0xCB583, size: 0x8, addend: 0x0, symName: '+[VSSLivePublisher vssStartLiveWithType:success:failure:]', symObjAddr: 0x0, symBinAddr: 0x12A88, symSize: 0x1F4 }
+  - { offset: 0xCB5F2, size: 0x8, addend: 0x0, symName: '___57+[VSSLivePublisher vssStartLiveWithType:success:failure:]_block_invoke', symObjAddr: 0x1F4, symBinAddr: 0x12C7C, symSize: 0x34 }
+  - { offset: 0xCB647, size: 0x8, addend: 0x0, symName: '___57+[VSSLivePublisher vssStartLiveWithType:success:failure:]_block_invoke.11', symObjAddr: 0x240, symBinAddr: 0x12CB0, symSize: 0x34 }
+  - { offset: 0xCB69C, size: 0x8, addend: 0x0, symName: '+[VSSLivePublisher vssStopLiveWithType:success:failure:]', symObjAddr: 0x274, symBinAddr: 0x12CE4, symSize: 0x1F4 }
+  - { offset: 0xCB70B, size: 0x8, addend: 0x0, symName: '___56+[VSSLivePublisher vssStopLiveWithType:success:failure:]_block_invoke', symObjAddr: 0x468, symBinAddr: 0x12ED8, symSize: 0x34 }
+  - { offset: 0xCB760, size: 0x8, addend: 0x0, symName: '___56+[VSSLivePublisher vssStopLiveWithType:success:failure:]_block_invoke_2', symObjAddr: 0x49C, symBinAddr: 0x12F0C, symSize: 0x34 }
+  - { offset: 0xCBAAD, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer dealloc]', symObjAddr: 0x0, symBinAddr: 0x12F40, symSize: 0x78 }
+  - { offset: 0xCBDD4, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer dealloc]', symObjAddr: 0x0, symBinAddr: 0x12F40, symSize: 0x78 }
+  - { offset: 0xCBE07, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer initWithLogParam:]', symObjAddr: 0x78, symBinAddr: 0x12FB8, symSize: 0x70 }
+  - { offset: 0xCBE4E, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer init]', symObjAddr: 0xE8, symBinAddr: 0x13028, symSize: 0x70 }
+  - { offset: 0xCBE85, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer initData]', symObjAddr: 0x158, symBinAddr: 0x13098, symSize: 0x178 }
+  - { offset: 0xCBEB8, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer GetOriginalUrl]', symObjAddr: 0x2D0, symBinAddr: 0x13210, symSize: 0x58 }
+  - { offset: 0xCBF7D, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer studio:receiveRoomMessage:]', symObjAddr: 0x328, symBinAddr: 0x13268, symSize: 0x2D4 }
+  - { offset: 0xCC027, size: 0x8, addend: 0x0, symName: '+[VSSLivePlayer applyInteractiveSuccess:failure:]', symObjAddr: 0x5FC, symBinAddr: 0x1353C, symSize: 0x334 }
+  - { offset: 0xCC0C0, size: 0x8, addend: 0x0, symName: '___49+[VSSLivePlayer applyInteractiveSuccess:failure:]_block_invoke', symObjAddr: 0x930, symBinAddr: 0x13870, symSize: 0x34 }
+  - { offset: 0xCC115, size: 0x8, addend: 0x0, symName: '___49+[VSSLivePlayer applyInteractiveSuccess:failure:]_block_invoke.64', symObjAddr: 0x97C, symBinAddr: 0x138A4, symSize: 0x34 }
+  - { offset: 0xCC16A, size: 0x8, addend: 0x0, symName: '+[VSSLivePlayer cancelApplyInteractiveSuccess:failure:]', symObjAddr: 0x9B0, symBinAddr: 0x138D8, symSize: 0x1B8 }
+  - { offset: 0xCC1C9, size: 0x8, addend: 0x0, symName: '___55+[VSSLivePlayer cancelApplyInteractiveSuccess:failure:]_block_invoke', symObjAddr: 0xB68, symBinAddr: 0x13A90, symSize: 0x34 }
+  - { offset: 0xCC21E, size: 0x8, addend: 0x0, symName: '___55+[VSSLivePlayer cancelApplyInteractiveSuccess:failure:]_block_invoke_2', symObjAddr: 0xB9C, symBinAddr: 0x13AC4, symSize: 0x34 }
+  - { offset: 0xCC273, size: 0x8, addend: 0x0, symName: '+[VSSLivePlayer refuseInviteSuccess:failure:]', symObjAddr: 0xBD0, symBinAddr: 0x13AF8, symSize: 0x220 }
+  - { offset: 0xCC2D2, size: 0x8, addend: 0x0, symName: '___45+[VSSLivePlayer refuseInviteSuccess:failure:]_block_invoke', symObjAddr: 0xDF0, symBinAddr: 0x13D18, symSize: 0x34 }
+  - { offset: 0xCC327, size: 0x8, addend: 0x0, symName: '___45+[VSSLivePlayer refuseInviteSuccess:failure:]_block_invoke_2', symObjAddr: 0xE24, symBinAddr: 0x13D4C, symSize: 0x34 }
+  - { offset: 0xCC37C, size: 0x8, addend: 0x0, symName: '+[VSSLivePlayer agreeInviteSuccess:failure:]', symObjAddr: 0xE58, symBinAddr: 0x13D80, symSize: 0x220 }
+  - { offset: 0xCC3DB, size: 0x8, addend: 0x0, symName: '___44+[VSSLivePlayer agreeInviteSuccess:failure:]_block_invoke', symObjAddr: 0x1078, symBinAddr: 0x13FA0, symSize: 0x34 }
+  - { offset: 0xCC430, size: 0x8, addend: 0x0, symName: '___44+[VSSLivePlayer agreeInviteSuccess:failure:]_block_invoke_2', symObjAddr: 0x10AC, symBinAddr: 0x13FD4, symSize: 0x34 }
+  - { offset: 0xCC485, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer vssDelegate]', symObjAddr: 0x10E0, symBinAddr: 0x14008, symSize: 0x20 }
+  - { offset: 0xCC4BC, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer setVssDelegate:]', symObjAddr: 0x1100, symBinAddr: 0x14028, symSize: 0x14 }
+  - { offset: 0xCC4FD, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer msgDict]', symObjAddr: 0x1114, symBinAddr: 0x1403C, symSize: 0x10 }
+  - { offset: 0xCC534, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer setMsgDict:]', symObjAddr: 0x1124, symBinAddr: 0x1404C, symSize: 0x14 }
+  - { offset: 0xCC575, size: 0x8, addend: 0x0, symName: '-[VSSLivePlayer .cxx_destruct]', symObjAddr: 0x1138, symBinAddr: 0x14060, symSize: 0x3C }
+  - { offset: 0xCCDEA, size: 0x8, addend: 0x0, symName: '+[VSSRebroadcastPublisher vssStartRebroadcastSource_room_id:Success:failure:]', symObjAddr: 0x0, symBinAddr: 0x1409C, symSize: 0x1F0 }
+  - { offset: 0xCCDF8, size: 0x8, addend: 0x0, symName: '+[VSSRebroadcastPublisher vssStartRebroadcastSource_room_id:Success:failure:]', symObjAddr: 0x0, symBinAddr: 0x1409C, symSize: 0x1F0 }
+  - { offset: 0xCCE67, size: 0x8, addend: 0x0, symName: '___77+[VSSRebroadcastPublisher vssStartRebroadcastSource_room_id:Success:failure:]_block_invoke', symObjAddr: 0x1F0, symBinAddr: 0x1428C, symSize: 0x34 }
+  - { offset: 0xCCEBC, size: 0x8, addend: 0x0, symName: '___77+[VSSRebroadcastPublisher vssStartRebroadcastSource_room_id:Success:failure:]_block_invoke.10', symObjAddr: 0x23C, symBinAddr: 0x142C0, symSize: 0x34 }
+  - { offset: 0xCCF11, size: 0x8, addend: 0x0, symName: '+[VSSRebroadcastPublisher vssStopRebroadcastSource_room_id:Success:failure:]', symObjAddr: 0x270, symBinAddr: 0x142F4, symSize: 0x1F0 }
+  - { offset: 0xCCF80, size: 0x8, addend: 0x0, symName: '___76+[VSSRebroadcastPublisher vssStopRebroadcastSource_room_id:Success:failure:]_block_invoke', symObjAddr: 0x460, symBinAddr: 0x144E4, symSize: 0x34 }
+  - { offset: 0xCCFD5, size: 0x8, addend: 0x0, symName: '___76+[VSSRebroadcastPublisher vssStopRebroadcastSource_room_id:Success:failure:]_block_invoke_2', symObjAddr: 0x494, symBinAddr: 0x14518, symSize: 0x34 }
+  - { offset: 0xCD33D, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0x1454C, symSize: 0x78 }
+  - { offset: 0xCD431, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0x1454C, symSize: 0x78 }
+  - { offset: 0xCD484, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo ID]', symObjAddr: 0x78, symBinAddr: 0x145C4, symSize: 0x8 }
+  - { offset: 0xCD4BB, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo setID:]', symObjAddr: 0x80, symBinAddr: 0x145CC, symSize: 0x8 }
+  - { offset: 0xCD4FA, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo img_src]', symObjAddr: 0x88, symBinAddr: 0x145D4, symSize: 0x8 }
+  - { offset: 0xCD531, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo setImg_src:]', symObjAddr: 0x90, symBinAddr: 0x145DC, symSize: 0x8 }
+  - { offset: 0xCD570, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo room_id]', symObjAddr: 0x98, symBinAddr: 0x145E4, symSize: 0x8 }
+  - { offset: 0xCD5A7, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo setRoom_id:]', symObjAddr: 0xA0, symBinAddr: 0x145EC, symSize: 0x8 }
+  - { offset: 0xCD5E6, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo status]', symObjAddr: 0xA8, symBinAddr: 0x145F4, symSize: 0x8 }
+  - { offset: 0xCD61D, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo setStatus:]', symObjAddr: 0xB0, symBinAddr: 0x145FC, symSize: 0x8 }
+  - { offset: 0xCD65C, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo alert_type]', symObjAddr: 0xB8, symBinAddr: 0x14604, symSize: 0x8 }
+  - { offset: 0xCD693, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo setAlert_type:]', symObjAddr: 0xC0, symBinAddr: 0x1460C, symSize: 0x8 }
+  - { offset: 0xCD6D2, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo created_at]', symObjAddr: 0xC8, symBinAddr: 0x14614, symSize: 0x8 }
+  - { offset: 0xCD709, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo setCreated_at:]', symObjAddr: 0xD0, symBinAddr: 0x1461C, symSize: 0x8 }
+  - { offset: 0xCD748, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo updated_at]', symObjAddr: 0xD8, symBinAddr: 0x14624, symSize: 0x8 }
+  - { offset: 0xCD77F, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo setUpdated_at:]', symObjAddr: 0xE0, symBinAddr: 0x1462C, symSize: 0x8 }
+  - { offset: 0xCD7BE, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo deleted_at]', symObjAddr: 0xE8, symBinAddr: 0x14634, symSize: 0x8 }
+  - { offset: 0xCD7F5, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo setDeleted_at:]', symObjAddr: 0xF0, symBinAddr: 0x1463C, symSize: 0x8 }
+  - { offset: 0xCD834, size: 0x8, addend: 0x0, symName: '-[VSSAdvertisementInfo .cxx_destruct]', symObjAddr: 0xF8, symBinAddr: 0x14644, symSize: 0x78 }
+  - { offset: 0xCD867, size: 0x8, addend: 0x0, symName: '+[VSSAdvertisement uploadAdvImageData:showStatus:alertType:progress:success:failure:]', symObjAddr: 0x170, symBinAddr: 0x146BC, symSize: 0x31C }
+  - { offset: 0xCD916, size: 0x8, addend: 0x0, symName: '___85+[VSSAdvertisement uploadAdvImageData:showStatus:alertType:progress:success:failure:]_block_invoke', symObjAddr: 0x48C, symBinAddr: 0x149D8, symSize: 0x2C }
+  - { offset: 0xCD971, size: 0x8, addend: 0x0, symName: '___85+[VSSAdvertisement uploadAdvImageData:showStatus:alertType:progress:success:failure:]_block_invoke.67', symObjAddr: 0x508, symBinAddr: 0x14A04, symSize: 0x34 }
+  - { offset: 0xCD9C6, size: 0x8, addend: 0x0, symName: '___85+[VSSAdvertisement uploadAdvImageData:showStatus:alertType:progress:success:failure:]_block_invoke.69', symObjAddr: 0x554, symBinAddr: 0x14A38, symSize: 0x34 }
+  - { offset: 0xCDA1B, size: 0x8, addend: 0x0, symName: '___85+[VSSAdvertisement uploadAdvImageData:showStatus:alertType:progress:success:failure:]_block_invoke.71', symObjAddr: 0x588, symBinAddr: 0x14A6C, symSize: 0x34 }
+  - { offset: 0xCDE11, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer dealloc]', symObjAddr: 0x0, symBinAddr: 0x14AA0, symSize: 0x78 }
+  - { offset: 0xCE1BC, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer dealloc]', symObjAddr: 0x0, symBinAddr: 0x14AA0, symSize: 0x78 }
+  - { offset: 0xCE1EF, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer initWithLogParam:]', symObjAddr: 0x78, symBinAddr: 0x14B18, symSize: 0x70 }
+  - { offset: 0xCE236, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer init]', symObjAddr: 0xE8, symBinAddr: 0x14B88, symSize: 0x70 }
+  - { offset: 0xCE26D, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer initData]', symObjAddr: 0x158, symBinAddr: 0x14BF8, symSize: 0xD4 }
+  - { offset: 0xCE2A0, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer GetOriginalUrl]', symObjAddr: 0x22C, symBinAddr: 0x14CCC, symSize: 0x58 }
+  - { offset: 0xCE365, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer studio:receiveRoomMessage:]', symObjAddr: 0x284, symBinAddr: 0x14D24, symSize: 0x21C }
+  - { offset: 0xCE40F, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer vssDelegate]', symObjAddr: 0x4A0, symBinAddr: 0x14F40, symSize: 0x20 }
+  - { offset: 0xCE446, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer setVssDelegate:]', symObjAddr: 0x4C0, symBinAddr: 0x14F60, symSize: 0x14 }
+  - { offset: 0xCE487, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer msgDict]', symObjAddr: 0x4D4, symBinAddr: 0x14F74, symSize: 0x10 }
+  - { offset: 0xCE4BE, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer setMsgDict:]', symObjAddr: 0x4E4, symBinAddr: 0x14F84, symSize: 0x14 }
+  - { offset: 0xCE4FF, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer .cxx_destruct]', symObjAddr: 0x4F8, symBinAddr: 0x14F98, symSize: 0x3C }
+  - { offset: 0xCE9B0, size: 0x8, addend: 0x0, symName: __sharedStudio, symObjAddr: 0x15190, symBinAddr: 0x40018, symSize: 0x0 }
+  - { offset: 0xCEDF9, size: 0x8, addend: 0x0, symName: __onceToken, symObjAddr: 0x15188, symBinAddr: 0x40010, symSize: 0x0 }
+  - { offset: 0xCEE17, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio registerWithAppId:vssHost:apphost:]', symObjAddr: 0x0, symBinAddr: 0x14FD4, symSize: 0x28 }
+  - { offset: 0xCEE70, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio registerWithAppId:vssHost:apphost:bundleId:vhallyunHost:]', symObjAddr: 0x28, symBinAddr: 0x14FFC, symSize: 0x1E4 }
+  - { offset: 0xCEEEF, size: 0x8, addend: 0x0, symName: '___78+[VideoServiceStudio registerWithAppId:vssHost:apphost:bundleId:vhallyunHost:]_block_invoke', symObjAddr: 0x20C, symBinAddr: 0x151E0, symSize: 0x70 }
+  - { offset: 0xCEF44, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio setLogLevel:]', symObjAddr: 0x27C, symBinAddr: 0x15250, symSize: 0x40 }
+  - { offset: 0xCEF83, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio weakDelegates]', symObjAddr: 0x2BC, symBinAddr: 0x15290, symSize: 0x6C }
+  - { offset: 0xCF050, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio sharedStudio]', symObjAddr: 0x328, symBinAddr: 0x152FC, symSize: 0x40 }
+  - { offset: 0xCF09E, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio sharedStudio].cold.1', symObjAddr: 0x374C, symBinAddr: 0x1C88C, symSize: 0x14 }
+  - { offset: 0xCF0BA, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio sharedStudio].cold.1', symObjAddr: 0x374C, symBinAddr: 0x1C88C, symSize: 0x14 }
+  - { offset: 0xCF0CC, size: 0x8, addend: 0x0, symName: '___34+[VideoServiceStudio sharedStudio]_block_invoke', symObjAddr: 0x368, symBinAddr: 0x1533C, symSize: 0x40 }
+  - { offset: 0xCF0F3, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio checkPermission:]', symObjAddr: 0x3A8, symBinAddr: 0x1537C, symSize: 0x154 }
+  - { offset: 0xCF155, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setThirdPartyUserInfo:]', symObjAddr: 0x4FC, symBinAddr: 0x154D0, symSize: 0xFC }
+  - { offset: 0xCF1B7, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setThirdPartyUserContext:]', symObjAddr: 0x5F8, symBinAddr: 0x155CC, symSize: 0xC4 }
+  - { offset: 0xCF219, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setRoomInfo:]', symObjAddr: 0x6BC, symBinAddr: 0x15690, symSize: 0xFC }
+  - { offset: 0xCF25C, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio enterStudioWithRoomId:vssToken:success:failure:]', symObjAddr: 0x7B8, symBinAddr: 0x1578C, symSize: 0x12C }
+  - { offset: 0xCF2CF, size: 0x8, addend: 0x0, symName: '___69-[VideoServiceStudio enterStudioWithRoomId:vssToken:success:failure:]_block_invoke', symObjAddr: 0x8E4, symBinAddr: 0x158B8, symSize: 0x18C }
+  - { offset: 0xCF345, size: 0x8, addend: 0x0, symName: '___69-[VideoServiceStudio enterStudioWithRoomId:vssToken:success:failure:]_block_invoke_2', symObjAddr: 0xA70, symBinAddr: 0x15A44, symSize: 0x184 }
+  - { offset: 0xCF3B7, size: 0x8, addend: 0x0, symName: '___69-[VideoServiceStudio enterStudioWithRoomId:vssToken:success:failure:]_block_invoke_3', symObjAddr: 0xBF4, symBinAddr: 0x15BC8, symSize: 0x138 }
+  - { offset: 0xCF42E, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40b48w, symObjAddr: 0xD2C, symBinAddr: 0x15D00, symSize: 0x40 }
+  - { offset: 0xCF457, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s48w, symObjAddr: 0xD6C, symBinAddr: 0x15D40, symSize: 0x30 }
+  - { offset: 0xCF476, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40b, symObjAddr: 0xD9C, symBinAddr: 0x15D70, symSize: 0x34 }
+  - { offset: 0xCF49F, size: 0x8, addend: 0x0, symName: '___69-[VideoServiceStudio enterStudioWithRoomId:vssToken:success:failure:]_block_invoke.20', symObjAddr: 0xDF8, symBinAddr: 0x15DA4, symSize: 0xD4 }
+  - { offset: 0xCF512, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setUserDevice]', symObjAddr: 0xECC, symBinAddr: 0x15E78, symSize: 0x124 }
+  - { offset: 0xCF555, size: 0x8, addend: 0x0, symName: '___35-[VideoServiceStudio setUserDevice]_block_invoke', symObjAddr: 0xFF0, symBinAddr: 0x15F9C, symSize: 0x14 }
+  - { offset: 0xCF588, size: 0x8, addend: 0x0, symName: '___35-[VideoServiceStudio setUserDevice]_block_invoke_2', symObjAddr: 0x1004, symBinAddr: 0x15FB0, symSize: 0x14 }
+  - { offset: 0xCF5BB, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio getRolePermission]', symObjAddr: 0x1018, symBinAddr: 0x15FC4, symSize: 0x1A8 }
+  - { offset: 0xCF5FE, size: 0x8, addend: 0x0, symName: '___39-[VideoServiceStudio getRolePermission]_block_invoke', symObjAddr: 0x11C0, symBinAddr: 0x1616C, symSize: 0xB4 }
+  - { offset: 0xCF66C, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s, symObjAddr: 0x1274, symBinAddr: 0x16220, symSize: 0x8 }
+  - { offset: 0xCF693, size: 0x8, addend: 0x0, symName: '___39-[VideoServiceStudio getRolePermission]_block_invoke.48', symObjAddr: 0x1284, symBinAddr: 0x16228, symSize: 0x14 }
+  - { offset: 0xCF6C6, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio getUserStatusComplete:]', symObjAddr: 0x1298, symBinAddr: 0x1623C, symSize: 0x208 }
+  - { offset: 0xCF719, size: 0x8, addend: 0x0, symName: '___44-[VideoServiceStudio getUserStatusComplete:]_block_invoke', symObjAddr: 0x14A0, symBinAddr: 0x16444, symSize: 0x194 }
+  - { offset: 0xCF7A3, size: 0x8, addend: 0x0, symName: '___44-[VideoServiceStudio getUserStatusComplete:]_block_invoke.56', symObjAddr: 0x1634, symBinAddr: 0x165D8, symSize: 0x34 }
+  - { offset: 0xCF7F6, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio getRoomPv]', symObjAddr: 0x1678, symBinAddr: 0x1660C, symSize: 0xFC }
+  - { offset: 0xCF83B, size: 0x8, addend: 0x0, symName: '___31-[VideoServiceStudio getRoomPv]_block_invoke', symObjAddr: 0x1774, symBinAddr: 0x16708, symSize: 0x1A4 }
+  - { offset: 0xCF8AE, size: 0x8, addend: 0x0, symName: '___31-[VideoServiceStudio getRoomPv]_block_invoke_2', symObjAddr: 0x1918, symBinAddr: 0x168AC, symSize: 0x14 }
+  - { offset: 0xCF8E4, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio leaveStudio]', symObjAddr: 0x192C, symBinAddr: 0x168C0, symSize: 0x44 }
+  - { offset: 0xCF918, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio getSDKVersion]', symObjAddr: 0x1970, symBinAddr: 0x16904, symSize: 0xFC }
+  - { offset: 0xCF95D, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio joinId]', symObjAddr: 0x1A6C, symBinAddr: 0x16A00, symSize: 0x54 }
+  - { offset: 0xCF995, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio roomId]', symObjAddr: 0x1AC0, symBinAddr: 0x16A54, symSize: 0x54 }
+  - { offset: 0xCF9CD, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio hostId]', symObjAddr: 0x1B14, symBinAddr: 0x16AA8, symSize: 0x54 }
+  - { offset: 0xCFA05, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio channel_id]', symObjAddr: 0x1B68, symBinAddr: 0x16AFC, symSize: 0x54 }
+  - { offset: 0xCFA3D, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio addIMdelegate:]', symObjAddr: 0x1BBC, symBinAddr: 0x16B50, symSize: 0x100 }
+  - { offset: 0xCFA82, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio removeIMdelegate:]', symObjAddr: 0x1CBC, symBinAddr: 0x16C50, symSize: 0x138 }
+  - { offset: 0xCFAC7, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio initIMWithChannelId:accessToken:]', symObjAddr: 0x1DF4, symBinAddr: 0x16D88, symSize: 0x98 }
+  - { offset: 0xCFB1D, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio releaseVhallIM]', symObjAddr: 0x1E8C, symBinAddr: 0x16E20, symSize: 0x60 }
+  - { offset: 0xCFB51, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio imSDK:receiveRoomMessage:]', symObjAddr: 0x1EEC, symBinAddr: 0x16E80, symSize: 0x2F0 }
+  - { offset: 0xCFBD0, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio imSDK:receiveCustomMessage:]', symObjAddr: 0x21DC, symBinAddr: 0x17170, symSize: 0x220 }
+  - { offset: 0xCFC3E, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio imSDK:receiveOnlineMessage:]', symObjAddr: 0x23FC, symBinAddr: 0x17390, symSize: 0x220 }
+  - { offset: 0xCFCAC, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio imSDK:receiveChatMessage:]', symObjAddr: 0x261C, symBinAddr: 0x175B0, symSize: 0x220 }
+  - { offset: 0xCFD1A, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio imSDK:receiveAllMessage:]', symObjAddr: 0x283C, symBinAddr: 0x177D0, symSize: 0x224 }
+  - { offset: 0xCFD88, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio imSDK:error:]', symObjAddr: 0x2A60, symBinAddr: 0x179F4, symSize: 0x220 }
+  - { offset: 0xCFDF6, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio requestRoomInfoRoomId:success:failure:]', symObjAddr: 0x2C80, symBinAddr: 0x17C14, symSize: 0x18C }
+  - { offset: 0xCFE6E, size: 0x8, addend: 0x0, symName: '___60+[VideoServiceStudio requestRoomInfoRoomId:success:failure:]_block_invoke', symObjAddr: 0x2E0C, symBinAddr: 0x17DA0, symSize: 0x25C }
+  - { offset: 0xCFF71, size: 0x8, addend: 0x0, symName: '___60+[VideoServiceStudio requestRoomInfoRoomId:success:failure:]_block_invoke_2', symObjAddr: 0x3068, symBinAddr: 0x17FFC, symSize: 0x64 }
+  - { offset: 0xCFFDD, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40b48b, symObjAddr: 0x30CC, symBinAddr: 0x18060, symSize: 0x44 }
+  - { offset: 0xD0006, size: 0x8, addend: 0x0, symName: '___60+[VideoServiceStudio requestRoomInfoRoomId:success:failure:]_block_invoke.98', symObjAddr: 0x3140, symBinAddr: 0x180A4, symSize: 0x34 }
+  - { offset: 0xD005F, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio getRoomAttributeWithRoomId:success:failure:]', symObjAddr: 0x3174, symBinAddr: 0x180D8, symSize: 0x120 }
+  - { offset: 0xD00D3, size: 0x8, addend: 0x0, symName: '___65+[VideoServiceStudio getRoomAttributeWithRoomId:success:failure:]_block_invoke', symObjAddr: 0x3294, symBinAddr: 0x181F8, symSize: 0x98 }
+  - { offset: 0xD0167, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio oldWebinarRoomId:vssToken:passToken:]', symObjAddr: 0x332C, symBinAddr: 0x18290, symSize: 0x184 }
+  - { offset: 0xD01DF, size: 0x8, addend: 0x0, symName: '___58-[VideoServiceStudio oldWebinarRoomId:vssToken:passToken:]_block_invoke', symObjAddr: 0x34B0, symBinAddr: 0x18414, symSize: 0x114 }
+  - { offset: 0xD0286, size: 0x8, addend: 0x0, symName: '___58-[VideoServiceStudio oldWebinarRoomId:vssToken:passToken:]_block_invoke_2', symObjAddr: 0x35C4, symBinAddr: 0x18528, symSize: 0x24 }
+  - { offset: 0xD02DD, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio apphost]', symObjAddr: 0x35E8, symBinAddr: 0x1854C, symSize: 0x8 }
+  - { offset: 0xD0314, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setApphost:]', symObjAddr: 0x35F0, symBinAddr: 0x18554, symSize: 0x8 }
+  - { offset: 0xD0353, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio vsshost]', symObjAddr: 0x35F8, symBinAddr: 0x1855C, symSize: 0x8 }
+  - { offset: 0xD038A, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setVsshost:]', symObjAddr: 0x3600, symBinAddr: 0x18564, symSize: 0x8 }
+  - { offset: 0xD03C9, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio appId]', symObjAddr: 0x3608, symBinAddr: 0x1856C, symSize: 0x8 }
+  - { offset: 0xD0400, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setAppId:]', symObjAddr: 0x3610, symBinAddr: 0x18574, symSize: 0x8 }
+  - { offset: 0xD043F, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio vss_token]', symObjAddr: 0x3618, symBinAddr: 0x1857C, symSize: 0x8 }
+  - { offset: 0xD0476, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setVss_token:]', symObjAddr: 0x3620, symBinAddr: 0x18584, symSize: 0x8 }
+  - { offset: 0xD04B5, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setJoinId:]', symObjAddr: 0x3628, symBinAddr: 0x1858C, symSize: 0x8 }
+  - { offset: 0xD04F4, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio roomInfo]', symObjAddr: 0x3630, symBinAddr: 0x18594, symSize: 0x8 }
+  - { offset: 0xD052B, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio delegate]', symObjAddr: 0x3638, symBinAddr: 0x1859C, symSize: 0x18 }
+  - { offset: 0xD0562, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setDelegate:]', symObjAddr: 0x3650, symBinAddr: 0x185B4, symSize: 0xC }
+  - { offset: 0xD05A3, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio vhIM]', symObjAddr: 0x365C, symBinAddr: 0x185C0, symSize: 0x8 }
+  - { offset: 0xD05DA, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setVhIM:]', symObjAddr: 0x3664, symBinAddr: 0x185C8, symSize: 0xC }
+  - { offset: 0xD061B, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio rolePermissions]', symObjAddr: 0x3670, symBinAddr: 0x185D4, symSize: 0x8 }
+  - { offset: 0xD0652, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setRolePermissions:]', symObjAddr: 0x3678, symBinAddr: 0x185DC, symSize: 0xC }
+  - { offset: 0xD0693, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio userInfo]', symObjAddr: 0x3684, symBinAddr: 0x185E8, symSize: 0x8 }
+  - { offset: 0xD06CA, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setUserInfo:]', symObjAddr: 0x368C, symBinAddr: 0x185F0, symSize: 0xC }
+  - { offset: 0xD070B, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio setWeakDelegates:]', symObjAddr: 0x3698, symBinAddr: 0x185FC, symSize: 0xC }
+  - { offset: 0xD074C, size: 0x8, addend: 0x0, symName: '-[VideoServiceStudio .cxx_destruct]', symObjAddr: 0x36A4, symBinAddr: 0x18608, symSize: 0x98 }
+  - { offset: 0xD12A4, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_magic, symObjAddr: 0x28, symBinAddr: 0x186A0, symSize: 0x14 }
+  - { offset: 0xD12B6, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_padding_bytes, symObjAddr: 0x44, symBinAddr: 0x186B4, symSize: 0xC }
+  - { offset: 0xD12C8, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_version, symObjAddr: 0x50, symBinAddr: 0x186C0, symSize: 0xC }
+  - { offset: 0xD130B, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0x186CC, symSize: 0xC }
+  - { offset: 0xD1319, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0x186CC, symSize: 0xC }
+  - { offset: 0xD1355, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0x186D8, symSize: 0xC }
+  - { offset: 0xD1363, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0x186D8, symSize: 0xC }
+  - { offset: 0xD137C, size: 0x8, addend: 0x0, symName: _getValueProfRecordValueData, symObjAddr: 0x1C, symBinAddr: 0x186E4, symSize: 0x14 }
+  - { offset: 0xD13B3, size: 0x8, addend: 0x0, symName: _getValueProfRecordNext, symObjAddr: 0x170, symBinAddr: 0x186F8, symSize: 0x15C }
+  - { offset: 0xD13F1, size: 0x8, addend: 0x0, symName: _getFirstValueProfRecord, symObjAddr: 0x2CC, symBinAddr: 0x18854, symSize: 0x8 }
+  - { offset: 0xD141F, size: 0x8, addend: 0x0, symName: _lprofSetupValueProfiler, symObjAddr: 0xA10, symBinAddr: 0x1885C, symSize: 0x68 }
+  - { offset: 0xD148B, size: 0x8, addend: 0x0, symName: ___llvm_profile_instrument_target_value, symObjAddr: 0xD50, symBinAddr: 0x188C4, symSize: 0x2CC }
+  - { offset: 0xD14FF, size: 0x8, addend: 0x0, symName: _lprofGetVPDataReader, symObjAddr: 0x1054, symBinAddr: 0x18B90, symSize: 0xC }
+  - { offset: 0xD1511, size: 0x8, addend: 0x0, symName: _initializeValueProfRuntimeRecord, symObjAddr: 0x1060, symBinAddr: 0x18B9C, symSize: 0x210 }
+  - { offset: 0xD152A, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1270, symBinAddr: 0x18DAC, symSize: 0x14 }
+  - { offset: 0xD1540, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1270, symBinAddr: 0x18DAC, symSize: 0x14 }
+  - { offset: 0xD1553, size: 0x8, addend: 0x0, symName: _getValueProfDataSizeWrapper, symObjAddr: 0x1284, symBinAddr: 0x18DC0, symSize: 0xE0 }
+  - { offset: 0xD15F4, size: 0x8, addend: 0x0, symName: _getNumValueSitesRT, symObjAddr: 0x13A0, symBinAddr: 0x18EDC, symSize: 0x10 }
+  - { offset: 0xD1606, size: 0x8, addend: 0x0, symName: _getNumValueDataRT, symObjAddr: 0x13B0, symBinAddr: 0x18EEC, symSize: 0x148 }
+  - { offset: 0xD1618, size: 0x8, addend: 0x0, symName: _getNextNValueData, symObjAddr: 0x1364, symBinAddr: 0x18EA0, symSize: 0x3C }
+  - { offset: 0xD1654, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0x19034, symSize: 0x1C }
+  - { offset: 0xD1662, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0x19034, symSize: 0x1C }
+  - { offset: 0xD1674, size: 0x8, addend: 0x0, symName: ___llvm_profile_enable_continuous_mode, symObjAddr: 0x1C, symBinAddr: 0x19050, symSize: 0x10 }
+  - { offset: 0xD1686, size: 0x8, addend: 0x0, symName: ___llvm_profile_disable_continuous_mode, symObjAddr: 0x2C, symBinAddr: 0x19060, symSize: 0xC }
+  - { offset: 0xD1698, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_page_size, symObjAddr: 0x38, symBinAddr: 0x1906C, symSize: 0xC }
+  - { offset: 0xD16AA, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer, symObjAddr: 0x44, symBinAddr: 0x19078, symSize: 0xC8 }
+  - { offset: 0xD17A7, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer_internal, symObjAddr: 0x10C, symBinAddr: 0x19140, symSize: 0x1C8 }
+  - { offset: 0xD1A0E, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_data, symObjAddr: 0x2D4, symBinAddr: 0x19308, symSize: 0x10 }
+  - { offset: 0xD1A20, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0x19318, symSize: 0x10 }
+  - { offset: 0xD1A36, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0x19318, symSize: 0x10 }
+  - { offset: 0xD1A48, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_vtable, symObjAddr: 0x2F4, symBinAddr: 0x19328, symSize: 0x18 }
+  - { offset: 0xD1A5A, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_vtable_section_size, symObjAddr: 0x30C, symBinAddr: 0x19340, symSize: 0x8 }
+  - { offset: 0xD1A6C, size: 0x8, addend: 0x0, symName: ___llvm_profile_counter_entry_size, symObjAddr: 0x314, symBinAddr: 0x19348, symSize: 0x20 }
+  - { offset: 0xD1A8D, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_counters, symObjAddr: 0x334, symBinAddr: 0x19368, symSize: 0x4C }
+  - { offset: 0xD1AE6, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_counters_size, symObjAddr: 0x380, symBinAddr: 0x193B4, symSize: 0x5C }
+  - { offset: 0xD1B78, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_padding_sizes_for_counters, symObjAddr: 0x3EC, symBinAddr: 0x19410, symSize: 0x160 }
+  - { offset: 0xD1C50, size: 0x8, addend: 0x0, symName: _initBufferWriter, symObjAddr: 0x54C, symBinAddr: 0x19570, symSize: 0x10 }
+  - { offset: 0xD1CB0, size: 0x8, addend: 0x0, symName: _getCurFilenameLength, symObjAddr: 0x1C0, symBinAddr: 0x19580, symSize: 0x318 }
+  - { offset: 0xD1CFB, size: 0x8, addend: 0x0, symName: _getCurFilename, symObjAddr: 0x4D8, symBinAddr: 0x19898, symSize: 0x338 }
+  - { offset: 0xD1DFF, size: 0x8, addend: 0x0, symName: _parseAndSetFilename, symObjAddr: 0x918, symBinAddr: 0x19BD0, symSize: 0x580 }
+  - { offset: 0xD206F, size: 0x8, addend: 0x0, symName: _truncateCurrentFile, symObjAddr: 0x1E2C, symBinAddr: 0x1ABCC, symSize: 0xCC }
+  - { offset: 0xD20E4, size: 0x8, addend: 0x0, symName: _initializeProfileForContinuousMode, symObjAddr: 0x1EF8, symBinAddr: 0x1AC98, symSize: 0x250 }
+  - { offset: 0xD22FD, size: 0x8, addend: 0x0, symName: ___llvm_profile_initialize, symObjAddr: 0xE98, symBinAddr: 0x1A150, symSize: 0xBC }
+  - { offset: 0xD23BB, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_file, symObjAddr: 0xFD8, symBinAddr: 0x1A20C, symSize: 0x1B0 }
+  - { offset: 0xD2494, size: 0x8, addend: 0x0, symName: _writeFile, symObjAddr: 0x1188, symBinAddr: 0x1A3BC, symSize: 0x29C }
+  - { offset: 0xD2746, size: 0x8, addend: 0x0, symName: _createProfileDir, symObjAddr: 0x2148, symBinAddr: 0x1AEE8, symSize: 0x88 }
+  - { offset: 0xD278B, size: 0x8, addend: 0x0, symName: _getProfileFileSizeForMerging, symObjAddr: 0x18BC, symBinAddr: 0x1A65C, symSize: 0x114 }
+  - { offset: 0xD281C, size: 0x8, addend: 0x0, symName: _mmapProfileForMerging, symObjAddr: 0x19D0, symBinAddr: 0x1A770, symSize: 0xC0 }
+  - { offset: 0xD28DC, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x16D0, symBinAddr: 0x1A658, symSize: 0x4 }
+  - { offset: 0xD28F2, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x16D0, symBinAddr: 0x1A658, symSize: 0x4 }
+  - { offset: 0xD2904, size: 0x8, addend: 0x0, symName: _mmapForContinuousMode, symObjAddr: 0x1A90, symBinAddr: 0x1A830, symSize: 0x260 }
+  - { offset: 0xD2AB9, size: 0x8, addend: 0x0, symName: _fileWriter, symObjAddr: 0x1CF0, symBinAddr: 0x1AA90, symSize: 0x13C }
+  - { offset: 0xD2B16, size: 0x8, addend: 0x0, symName: _exitSignalHandler, symObjAddr: 0x21D0, symBinAddr: 0x1AF70, symSize: 0x10 }
+  - { offset: 0xD2B69, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0x1AF80, symSize: 0xD4 }
+  - { offset: 0xD2B77, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0x1AF80, symSize: 0xD4 }
+  - { offset: 0xD2C76, size: 0x8, addend: 0x0, symName: ___llvm_profile_check_compatibility, symObjAddr: 0xD4, symBinAddr: 0x1B054, symSize: 0x1D8 }
+  - { offset: 0xD2D9B, size: 0x8, addend: 0x0, symName: ___llvm_profile_merge_from_buffer, symObjAddr: 0x2AC, symBinAddr: 0x1B22C, symSize: 0x4A4 }
+  - { offset: 0xD2EDB, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0x1B6D0, symSize: 0xF4 }
+  - { offset: 0xD2EE9, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0x1B6D0, symSize: 0xF4 }
+  - { offset: 0xD2F81, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0x1B7C4, symSize: 0x70 }
+  - { offset: 0xD2F8F, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0x1B7C4, symSize: 0x70 }
+  - { offset: 0xD2FB6, size: 0x8, addend: 0x0, symName: _lprofBufferIOWrite, symObjAddr: 0x108, symBinAddr: 0x1B834, symSize: 0x13C }
+  - { offset: 0xD3021, size: 0x8, addend: 0x0, symName: _lprofWriteData, symObjAddr: 0x308, symBinAddr: 0x1B970, symSize: 0xD8 }
+  - { offset: 0xD311E, size: 0x8, addend: 0x0, symName: _lprofWriteDataImpl, symObjAddr: 0x3E0, symBinAddr: 0x1BA48, symSize: 0x320 }
+  - { offset: 0xD3227, size: 0x8, addend: 0x0, symName: _createHeader, symObjAddr: 0x700, symBinAddr: 0x1BD68, symSize: 0x1A4 }
+  - { offset: 0xD3309, size: 0x8, addend: 0x0, symName: _writeValueProfData, symObjAddr: 0x8A4, symBinAddr: 0x1BF0C, symSize: 0x15C }
+  - { offset: 0xD33C3, size: 0x8, addend: 0x0, symName: _writeOneValueProfData, symObjAddr: 0x105C, symBinAddr: 0x1C068, symSize: 0x408 }
+  - { offset: 0xD3567, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0x1C470, symSize: 0xC }
+  - { offset: 0xD3575, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0x1C470, symSize: 0xC }
+  - { offset: 0xD3587, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_data, symObjAddr: 0xC, symBinAddr: 0x1C47C, symSize: 0xC }
+  - { offset: 0xD3599, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_names, symObjAddr: 0x18, symBinAddr: 0x1C488, symSize: 0xC }
+  - { offset: 0xD35AB, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_names, symObjAddr: 0x24, symBinAddr: 0x1C494, symSize: 0xC }
+  - { offset: 0xD35BD, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_counters, symObjAddr: 0x30, symBinAddr: 0x1C4A0, symSize: 0xC }
+  - { offset: 0xD35CF, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_counters, symObjAddr: 0x3C, symBinAddr: 0x1C4AC, symSize: 0xC }
+  - { offset: 0xD35E1, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_bitmap, symObjAddr: 0x48, symBinAddr: 0x1C4B8, symSize: 0xC }
+  - { offset: 0xD35F3, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_bitmap, symObjAddr: 0x54, symBinAddr: 0x1C4C4, symSize: 0xC }
+  - { offset: 0xD3605, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtables, symObjAddr: 0x60, symBinAddr: 0x1C4D0, symSize: 0xC }
+  - { offset: 0xD3617, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtables, symObjAddr: 0x6C, symBinAddr: 0x1C4DC, symSize: 0xC }
+  - { offset: 0xD3629, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtabnames, symObjAddr: 0x78, symBinAddr: 0x1C4E8, symSize: 0xC }
+  - { offset: 0xD363B, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtabnames, symObjAddr: 0x84, symBinAddr: 0x1C4F4, symSize: 0xC }
+  - { offset: 0xD364D, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vnodes, symObjAddr: 0x9C, symBinAddr: 0x1C500, symSize: 0xC }
+  - { offset: 0xD365F, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vnodes, symObjAddr: 0xA8, symBinAddr: 0x1C50C, symSize: 0xC }
+  - { offset: 0xD3671, size: 0x8, addend: 0x0, symName: ___llvm_write_binary_ids, symObjAddr: 0xB4, symBinAddr: 0x1C518, symSize: 0x8 }
+  - { offset: 0xD36AD, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0x1C520, symSize: 0x1C }
+  - { offset: 0xD36C9, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0x1C520, symSize: 0x1C }
+  - { offset: 0xD3742, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0x1C53C, symSize: 0x5C }
+  - { offset: 0xD3757, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0x1C53C, symSize: 0x5C }
+  - { offset: 0xD3796, size: 0x8, addend: 0x0, symName: _lprofGetHostName, symObjAddr: 0x74, symBinAddr: 0x1C598, symSize: 0x80 }
+  - { offset: 0xD37E0, size: 0x8, addend: 0x0, symName: _lprofLockFileHandle, symObjAddr: 0x214, symBinAddr: 0x1C618, symSize: 0x94 }
+  - { offset: 0xD385E, size: 0x8, addend: 0x0, symName: _lprofUnlockFileHandle, symObjAddr: 0x2A8, symBinAddr: 0x1C6AC, symSize: 0x94 }
+  - { offset: 0xD38CC, size: 0x8, addend: 0x0, symName: _lprofOpenFileEx, symObjAddr: 0x33C, symBinAddr: 0x1C740, symSize: 0xD4 }
+  - { offset: 0xD3971, size: 0x8, addend: 0x0, symName: _lprofFindFirstDirSeparator, symObjAddr: 0x554, symBinAddr: 0x1C814, symSize: 0x8 }
+  - { offset: 0xD399A, size: 0x8, addend: 0x0, symName: _lprofInstallSignalHandler, symObjAddr: 0x564, symBinAddr: 0x1C81C, symSize: 0x58 }
+  - { offset: 0xD39D1, size: 0x8, addend: 0x0, symName: _lprofRestoreSigKill, symObjAddr: 0x5C4, symBinAddr: 0x1C874, symSize: 0x4 }
+...
