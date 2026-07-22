@@ -238,8 +238,8 @@ relocations:
   - { offset: 0xC08E0, size: 0x8, addend: 0x0, symName: '-[VSSChat setCustumMsgDict:]', symObjAddr: 0x2F54, symBinAddr: 0xC184, symSize: 0xC }
   - { offset: 0xC0921, size: 0x8, addend: 0x0, symName: '-[VSSChat .cxx_destruct]', symObjAddr: 0x2F60, symBinAddr: 0xC190, symSize: 0x2C }
   - { offset: 0xC1674, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager httpSessionManager]', symObjAddr: 0x0, symBinAddr: 0xC1BC, symSize: 0x40 }
-  - { offset: 0xC169E, size: 0x8, addend: 0x0, symName: _httpSessionManager.manager, symObjAddr: 0x90E0, symBinAddr: 0x40000, symSize: 0x0 }
-  - { offset: 0xC16B4, size: 0x8, addend: 0x0, symName: _httpSessionManager.onceToken, symObjAddr: 0x90E8, symBinAddr: 0x40008, symSize: 0x0 }
+  - { offset: 0xC169E, size: 0x8, addend: 0x0, symName: _httpSessionManager.manager, symObjAddr: 0x90B0, symBinAddr: 0x40000, symSize: 0x0 }
+  - { offset: 0xC16B4, size: 0x8, addend: 0x0, symName: _httpSessionManager.onceToken, symObjAddr: 0x90B8, symBinAddr: 0x40008, symSize: 0x0 }
   - { offset: 0xC1A41, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager httpSessionManager].cold.1', symObjAddr: 0xF3C, symBinAddr: 0x1C878, symSize: 0x14 }
   - { offset: 0xC1A5D, size: 0x8, addend: 0x0, symName: '+[VSSRequestManager httpSessionManager].cold.1', symObjAddr: 0xF3C, symBinAddr: 0x1C878, symSize: 0x14 }
   - { offset: 0xC1A6F, size: 0x8, addend: 0x0, symName: '___39+[VSSRequestManager httpSessionManager]_block_invoke', symObjAddr: 0x40, symBinAddr: 0xC1FC, symSize: 0xDC }
@@ -629,8 +629,8 @@ relocations:
   - { offset: 0xCE487, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer msgDict]', symObjAddr: 0x4D4, symBinAddr: 0x14F74, symSize: 0x10 }
   - { offset: 0xCE4BE, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer setMsgDict:]', symObjAddr: 0x4E4, symBinAddr: 0x14F84, symSize: 0x14 }
   - { offset: 0xCE4FF, size: 0x8, addend: 0x0, symName: '-[VSSVodPlayer .cxx_destruct]', symObjAddr: 0x4F8, symBinAddr: 0x14F98, symSize: 0x3C }
-  - { offset: 0xCE9B0, size: 0x8, addend: 0x0, symName: __sharedStudio, symObjAddr: 0x15190, symBinAddr: 0x40018, symSize: 0x0 }
-  - { offset: 0xCEDF9, size: 0x8, addend: 0x0, symName: __onceToken, symObjAddr: 0x15188, symBinAddr: 0x40010, symSize: 0x0 }
+  - { offset: 0xCE9B0, size: 0x8, addend: 0x0, symName: __sharedStudio, symObjAddr: 0x15168, symBinAddr: 0x40018, symSize: 0x0 }
+  - { offset: 0xCEDF9, size: 0x8, addend: 0x0, symName: __onceToken, symObjAddr: 0x15160, symBinAddr: 0x40010, symSize: 0x0 }
   - { offset: 0xCEE17, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio registerWithAppId:vssHost:apphost:]', symObjAddr: 0x0, symBinAddr: 0x14FD4, symSize: 0x28 }
   - { offset: 0xCEE70, size: 0x8, addend: 0x0, symName: '+[VideoServiceStudio registerWithAppId:vssHost:apphost:bundleId:vhallyunHost:]', symObjAddr: 0x28, symBinAddr: 0x14FFC, symSize: 0x1E4 }
   - { offset: 0xCEEEF, size: 0x8, addend: 0x0, symName: '___78+[VideoServiceStudio registerWithAppId:vssHost:apphost:bundleId:vhallyunHost:]_block_invoke', symObjAddr: 0x20C, symBinAddr: 0x151E0, symSize: 0x70 }

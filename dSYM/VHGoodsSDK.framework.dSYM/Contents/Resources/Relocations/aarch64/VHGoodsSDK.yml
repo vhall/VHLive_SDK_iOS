@@ -6,7 +6,7 @@ relocations:
   - { offset: 0xA2E50, size: 0x8, addend: 0x0, symName: _VHGoodsSDKVersionNumber, symObjAddr: 0x40, symBinAddr: 0x102F0, symSize: 0x0 }
   - { offset: 0xA2E8D, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x14 }
   - { offset: 0xA2E9B, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:decidePolicyForNavigationAction:decisionHandler:]', symObjAddr: 0x60CC, symBinAddr: 0xA0CC, symSize: 0x8C4 }
-  - { offset: 0xA2EC3, size: 0x8, addend: 0x0, symName: '_webView:decidePolicyForNavigationAction:decisionHandler:.endPayRedirectURL', symObjAddr: 0x30A28, symBinAddr: 0x28000, symSize: 0x0 }
+  - { offset: 0xA2EC3, size: 0x8, addend: 0x0, symName: '_webView:decidePolicyForNavigationAction:decisionHandler:.endPayRedirectURL', symObjAddr: 0x30A10, symBinAddr: 0x28000, symSize: 0x0 }
   - { offset: 0xA3D2B, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x14 }
   - { offset: 0xA3D72, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem cdn_url]', symObjAddr: 0x14, symBinAddr: 0x4014, symSize: 0x10 }
   - { offset: 0xA3DA9, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setCdn_url:]', symObjAddr: 0x24, symBinAddr: 0x4024, symSize: 0xC }
