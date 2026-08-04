@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UIView *contentView;      ///<容器
 @property (nonatomic, strong) UIView *priceView;        ///<价格底部背景
 @property (nonatomic, strong) UIImageView *img;         ///<图片
-@property (nonatomic, strong) UIImageView *priceImg;    ///<抢
+@property (nonatomic, strong) UITextView *priceImg;    ///<抢
 
 @property (nonatomic, strong) UILabel *titleLab;        ///<标题
 @property (nonatomic, strong) UILabel *priceLab;        ///<优惠价格
@@ -96,8 +96,8 @@
     
     [_priceImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(_priceView.mas_centerY);
-        make.right.mas_equalTo(-8);
-        make.size.mas_equalTo(CGSizeMake(14, 11.5));
+        make.right.mas_equalTo(-4);
+        make.size.mas_equalTo(CGSizeMake(32, 14));
     }];
     
     [_priceLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -137,6 +137,10 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.frame = CGRectMake(Screen_Width - 96 - 12, Screen_Height - 152 - 60 - SAFE_BOTTOM - NAVIGATION_BAR_H, 96, 152);
     }];
+}
+
+-(void)setGrapDesc:(NSString*)desc{
+    self.priceImg.text = desc;
 }
 
 - (void)hide {
@@ -228,10 +232,20 @@
     return _priceView;
 }
 
-- (UIImageView *)priceImg {
+- (UITextView *)priceImg {
     if (!_priceImg) {
-        _priceImg = [[UIImageView alloc] init];
-        _priceImg.image = [UIImage imageNamed:@"vh_goods_card_qiang"];
+        _priceImg = [[UITextView alloc] init];
+        _priceImg.font = [UIFont systemFontOfSize:12];
+        _priceImg.translatesAutoresizingMaskIntoConstraints = NO;
+        _priceImg.backgroundColor = [UIColor redColor];
+        _priceImg.textColor = [UIColor whiteColor];
+        _priceImg.text = @"买";
+        _priceImg.scrollEnabled = NO;
+        _priceImg.editable = NO;
+        _priceImg.textContainerInset = UIEdgeInsetsZero;
+        _priceImg.textContainer.lineFragmentPadding = 0;
+        _priceImg.textContainer.maximumNumberOfLines = 1;
+        _priceImg.textContainer.lineBreakMode = NSLineBreakByClipping;
     }
     return _priceImg;
 }

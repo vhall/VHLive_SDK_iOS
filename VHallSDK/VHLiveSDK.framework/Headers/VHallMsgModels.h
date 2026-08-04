@@ -27,27 +27,27 @@ typedef NS_ENUM(NSInteger, ChatCustomType) {
 
 @interface VHallMsgModels : NSObject
 
-@property (nonatomic, strong) id context;                           ///<附加消息
-@property (nonatomic, strong) id data;                              ///<源数据
+@property (nonatomic, strong,nullable) id context;                           ///<附加消息
+@property (nonatomic, strong,nullable) id data;                              ///<源数据
 @property (nonatomic, assign) ChatCustomType eventType;             ///<自定义消息通道事件
 @property (nonatomic, assign) BOOL privateMsg;                      ///<YES=私聊(含target_id)，NO=非私聊
 @property (nonatomic, assign) NSInteger role_name;                  ///<用户类型 1:主持人 2：观众  3：助理 4：嘉宾
 @property (nonatomic, assign) NSInteger pv;                         ///<频道在线连接数
 @property (nonatomic, assign) NSInteger uv;                         ///<频道在线用户数
 @property (nonatomic, assign) NSInteger bu;                         ///<频道业务单元
-@property (nonatomic, copy) NSString *target_id;                    ///<消息接收方id (私聊的时候才有值)
-@property (nonatomic, copy) NSString *join_id;                      ///<加入用户的id (消息中的 third_party_user_id用户唯一id)
-@property (nonatomic, copy) NSString *account_id;                   ///<用户ID
-@property (nonatomic, copy) NSString *user_name;                    ///<参会时的昵称
-@property (nonatomic, copy) NSString *nick_name;                    ///<参会时的昵称
-@property (nonatomic, copy) NSString *avatar;                       ///<头像url，如果没有则为空字符串
-@property (nonatomic, copy) NSString *room;                         ///<房间号，即活动id
-@property (nonatomic, copy) NSString *time;                         ///<发送时间，根据服务器时间确定
-@property (nonatomic, copy) NSString *client;                       ///<消息来源
-@property (nonatomic, copy) NSString *msg_id;                       ///<消息id
-@property (nonatomic, copy) NSString *edit_role_type;               ///<编辑的角色修改的角色 1，2，3，4
-@property (nonatomic, copy) NSString *edit_role_name;               ///<角色名称
-@property (nonatomic, copy) NSString *role;                         ///<用户类型 host:主持人 guest：嘉宾 assistant：助理 user：观众
+@property (nonatomic, copy ,nullable) NSString *target_id;                    ///<消息接收方id (私聊的时候才有值)
+@property (nonatomic, copy,nullable) NSString *join_id;                      ///<加入用户的id (消息中的 third_party_user_id用户唯一id)
+@property (nonatomic, copy,nullable) NSString *account_id;                   ///<用户ID
+@property (nonatomic, copy,nullable) NSString *user_name;                    ///<参会时的昵称
+@property (nonatomic, copy,nullable) NSString *nick_name;                    ///<参会时的昵称
+@property (nonatomic, copy,nullable) NSString *avatar;                       ///<头像url，如果没有则为空字符串
+@property (nonatomic, copy,nullable) NSString *room;                         ///<房间号，即活动id
+@property (nonatomic, copy,nullable) NSString *time;                         ///<发送时间，根据服务器时间确定
+@property (nonatomic, copy,nullable) NSString *client;                       ///<消息来源
+@property (nonatomic, copy,nullable) NSString *msg_id;                       ///<消息id
+@property (nonatomic, copy,nullable) NSString *edit_role_type;               ///<编辑的角色修改的角色 1，2，3，4
+@property (nonatomic, copy,nullable) NSString *edit_role_name;               ///<角色名称
+@property (nonatomic, copy,nullable) NSString *role;                         ///<用户类型 host:主持人 guest：嘉宾 assistant：助理 user：观众
 
 @end
 
@@ -56,20 +56,20 @@ typedef NS_ENUM(NSInteger, ChatCustomType) {
 @property (nonatomic, assign) BOOL is_gag;                          ///<是否禁言
 @property (nonatomic, assign) NSInteger device_status;              ///<设备状态
 @property (nonatomic, assign) NSInteger device_type;                ///<设备类型
-@property (nonatomic, copy) NSString *event;                        ///<online：上线消息  offline：下线消息
-@property (nonatomic, copy) NSString *concurrent_user;              ///<房间内当前用户数uv
-@property (nonatomic, copy) NSString *attend_count;                 ///<参会人数pv
-@property (nonatomic, copy) NSString *tracksNum;                    ///<PV
+@property (nonatomic, copy,nullable) NSString *event;                        ///<online：上线消息  offline：下线消息
+@property (nonatomic, copy,nullable) NSString *concurrent_user;              ///<房间内当前用户数uv
+@property (nonatomic, copy,nullable) NSString *attend_count;                 ///<参会人数pv
+@property (nonatomic, copy,nullable) NSString *tracksNum;                    ///<PV
 @end
 
 
 //聊天消息
 @interface VHallChatModel : VHallMsgModels
-@property (nonatomic, strong) VHallChatModel *replyMsg;             ///<回复消息，若无回复消息返回nil
+@property (nonatomic, strong,nullable) VHallChatModel *replyMsg;             ///<回复消息，若无回复消息返回nil
 @property (nonatomic, assign) ChatMsgType type;                     ///<聊天消息类型
-@property (nonatomic, copy) NSArray *atList;                        ///<@用户列表，若无@用户返回nil
-@property (nonatomic, copy) NSArray *imageUrls;                     ///<图片消息url列表
-@property (nonatomic, copy) NSString *text;                         ///<聊天消息
+@property (nonatomic, copy,nullable) NSArray *atList;                        ///<@用户列表，若无@用户返回nil
+@property (nonatomic, copy,nullable) NSArray *imageUrls;                     ///<图片消息url列表
+@property (nonatomic, copy,nullable) NSString *text;                         ///<聊天消息
 
 ///<
 
@@ -77,15 +77,15 @@ typedef NS_ENUM(NSInteger, ChatCustomType) {
 
 //自定义消息
 @interface VHallCustomMsgModel : VHallMsgModels
-@property (nonatomic, copy) NSString *jsonstr;                      ///<自定义消息，如果没有则为空字符串
+@property (nonatomic, copy,nullable) NSString *jsonstr;                      ///<自定义消息，如果没有则为空字符串
 @end
 
 //历史评论
 @interface VHCommentModel : VHallMsgModels
-@property (nonatomic, copy) NSString *text;                         ///<评论内容
-@property (nonatomic, copy) NSString *commentId;                    ///<评论ID
-@property (nonatomic, copy) NSArray *imageUrls;                     ///<图片消息url列表
-@property (nonatomic, copy) NSArray *atList;                        ///<@人列表
-@property (nonatomic, strong) VHallChatModel *replyMsg;             ///<回复消息
+@property (nonatomic, copy,nullable) NSString *text;                         ///<评论内容
+@property (nonatomic, copy,nullable) NSString *commentId;                    ///<评论ID
+@property (nonatomic, copy,nullable) NSArray *imageUrls;                     ///<图片消息url列表
+@property (nonatomic, copy,nullable) NSArray *atList;                        ///<@人列表
+@property (nonatomic, strong,nullable) VHallChatModel *replyMsg;             ///<回复消息
 
 @end

@@ -28,6 +28,11 @@
 
 @property (nonatomic, strong) VHMemberLevel *member_level;
 
+
+@property (nonatomic, strong) UITextView *chat_recommand;
+
+@property (nonatomic, assign) BOOL isOnlyWatchHost;
+
 @end
 
 @implementation VHChatView
@@ -37,7 +42,19 @@
 {
     if ([super init]) {
         self.backgroundColor = [UIColor colorWithHex:@"#F8F8F8"];
-        
+        _isOnlyWatchHost = false;
+        // 初始化UI
+        [self masonryUI];
+    }
+    
+    return self;
+}
+
+-(instancetype)initWithWebinar:(VHWebinarInfoData*)info{
+    if ([super init]) {
+        self.backgroundColor = [UIColor colorWithHex:@"#F8F8F8"];
+        _isOnlyWatchHost = false;
+        _webinarInfoData = info;
         // 初始化UI
         [self masonryUI];
     }
@@ -97,6 +114,16 @@
         make.left.mas_equalTo(12);
         make.right.mas_equalTo(-12);
     }];
+    
+    [self.chat_recommand mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self);
+        make.height.mas_equalTo(40);
+    }];
+    
+    if(self.webinarInfoData.chat_recommend_msg){
+        self.chat_recommand.text = [NSString stringWithFormat:@"[精选] %@",self.webinarInfoData.chat_recommend_msg];
+        self.chat_recommand.hidden = NO;
+    }
 }
 
 #pragma mark - 获取历史聊天记录
@@ -123,31 +150,61 @@
     }
     
     __weak typeof(self) weakSelf = self;
-    [self.chat getInteractsChatGetListWithMsg_id:msg_id
-                                        page_num:page
-                                       page_size:100
-                                      start_time:nil
-                                         is_role:0
-                                     anchor_path:@"down"
-                                         success:^(NSArray<VHallChatModel *> *msgs) {
-        // 页码++
-        weakSelf.pageNum++;
-        //过滤私聊 传递target_id,当前用户join_id
-        NSString *currentUserId = self.webinarInfoData.join_info.third_party_user_id;
-        NSArray *msgArr = [self filterPrivateMsgCurrentUserId:currentUserId
-                                                       origin:msgs
-                                                     isFilter:YES
-                                                         half:YES];
-        
-        [weakSelf reloadDataWithMsgs:msgArr];
-        // 收起刷新控件
-        [weakSelf.chatTableView.mj_header endRefreshing];
+    if(_isOnlyWatchHost){
+        NSString *sender = self.webinarInfoData.webinar.userinfo.user_id;
+        [self.chat getInteractsChatGetListWithSender:msg_id
+                                            page_num:page
+                                           page_size:100
+                                          start_time:nil
+                                        sender_id:sender
+                                         anchor_path:@"down"
+                                             success:^(NSArray<VHallChatModel *> *msgs) {
+            // 页码++
+            weakSelf.pageNum++;
+            //过滤私聊 传递target_id,当前用户join_id
+            NSString *currentUserId = self.webinarInfoData.join_info.third_party_user_id;
+            NSArray *msgArr = [self filterPrivateMsgCurrentUserId:currentUserId
+                                                           origin:msgs
+                                                         isFilter:YES
+                                                             half:YES];
+            
+            [weakSelf reloadDataWithMsgs:msgArr];
+            // 收起刷新控件
+            [weakSelf.chatTableView.mj_header endRefreshing];
+        }
+                                              failed:^(NSDictionary *failedData) {
+            //        [VHProgressHud showToast:failedData[@"content"]];
+            // 收起刷新控件
+            [weakSelf.chatTableView.mj_header endRefreshing];
+        }];
+    }else{
+        [self.chat getInteractsChatGetListWithMsg_id:msg_id
+                                            page_num:page
+                                           page_size:100
+                                          start_time:nil
+                                             is_role:0
+                                         anchor_path:@"down"
+                                             success:^(NSArray<VHallChatModel *> *msgs) {
+            // 页码++
+            weakSelf.pageNum++;
+            //过滤私聊 传递target_id,当前用户join_id
+            NSString *currentUserId = self.webinarInfoData.join_info.third_party_user_id;
+            NSArray *msgArr = [self filterPrivateMsgCurrentUserId:currentUserId
+                                                           origin:msgs
+                                                         isFilter:YES
+                                                             half:YES];
+            
+            [weakSelf reloadDataWithMsgs:msgArr];
+            // 收起刷新控件
+            [weakSelf.chatTableView.mj_header endRefreshing];
+        }
+                                              failed:^(NSDictionary *failedData) {
+            //        [VHProgressHud showToast:failedData[@"content"]];
+            // 收起刷新控件
+            [weakSelf.chatTableView.mj_header endRefreshing];
+        }];
     }
-                                          failed:^(NSDictionary *failedData) {
-        //        [VHProgressHud showToast:failedData[@"content"]];
-        // 收起刷新控件
-        [weakSelf.chatTableView.mj_header endRefreshing];
-    }];
+    
 }
 
 #pragma mark - ----------------------VHallChatDelegate----------------------
@@ -176,6 +233,12 @@
     //过滤私聊 传递target_id,当前用户join_id
     NSString *currentUserId = self.webinarInfoData.join_info.third_party_user_id;
     NSArray *msgArr = [self filterPrivateMsgCurrentUserId:currentUserId origin:msgs isFilter:YES half:YES];
+    //开启只看主讲人
+    NSString *sender = self.webinarInfoData.webinar.userinfo.user_id;
+    VHallChatModel * msgModel = msgs[0];
+    if(msgModel.replyMsg.account_id != sender && _isOnlyWatchHost){
+        return;
+    }
     
     [self reloadSendWithMsgs:msgArr];
     
@@ -211,6 +274,18 @@
     }
 }
 
+/// 聊天消息设置精品
+/// @param mode  0：取消设置  1：设置
+/// @param msgId  消息id
+/// @param context  消息内容
+- (void)chatSetRecommend:(NSInteger)mode msgId:(NSString*)msgId context:(NSString* _Nullable)context{
+    if(mode == 1){
+        self.chat_recommand.text = [NSString stringWithFormat:@"[精选] %@",context];
+        self.chat_recommand.hidden = NO;
+    }else{
+        self.chat_recommand.hidden = YES;
+    }
+}
 
 
 #pragma mark - 收到自己被禁言/取消禁言
@@ -500,6 +575,11 @@
     [self reloadChatToBottom:YES beforeChange:0];
 }
 
+- (void)setOnlyWatchHost:(BOOL)watchHost{
+    _isOnlyWatchHost = watchHost;
+    [self loadHistoryWithPage:1];
+}
+
 #pragma mark - 懒加载
 - (VHallChat *)chat
 {
@@ -539,6 +619,22 @@
     }
 
     return _chatTableView;
+}
+
+
+-(UITextView*)chat_recommand{
+    if(!_chat_recommand){
+        _chat_recommand = [[UITextView alloc] init];
+        _chat_recommand.font = [UIFont systemFontOfSize:15];
+        _chat_recommand.translatesAutoresizingMaskIntoConstraints = NO;
+        _chat_recommand.textColor = [UIColor blackColor];
+        _chat_recommand.backgroundColor = [UIColor orangeColor];
+        _chat_recommand.scrollEnabled = NO;
+        _chat_recommand.editable = NO;
+        _chat_recommand.hidden = YES;
+        [self addSubview:_chat_recommand];
+    }
+    return _chat_recommand;
 }
 
 - (void)loadNewData

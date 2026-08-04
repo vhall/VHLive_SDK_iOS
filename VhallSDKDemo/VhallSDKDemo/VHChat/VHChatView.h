@@ -26,6 +26,12 @@
 /// @param mode 0有感知 1无感知
 - (void)bannedModeUpdate:(NSInteger)mode;
 
+/// 聊天消息设置精品
+/// @param mode  0：取消设置  1：设置
+/// @param msgId  消息id
+/// @param context  消息内容
+- (void)chatSetRecommend:(NSInteger)mode msgId:(NSString*)msgId context:(NSString* _Nullable)context;
+
 /// 收到全体禁言/取消全体禁言
 /// @param allForbidChat YES:禁言 NO:取消禁言
 - (void)allForbidChat:(BOOL)allForbidChat;
@@ -57,12 +63,15 @@
 /// - Parameter model: 商品详情详情
 - (void)clickCheckGoodsDetailModel:(VHGoodsPushMessageItem *)model;
 
+
 @end
 
 @interface VHChatView : UIView<JXCategoryListContentViewDelegate>
 
 /// 代理对象
 @property (nonatomic, weak) id <VHChatViewDelegate> delegate;
+
+-(instancetype)initWithWebinar:(VHWebinarInfoData*)info;
 
 /// 连接消息,并加载数据
 /// - Parameters:
@@ -98,5 +107,8 @@
 /// 收到商品消息
 /// - Parameter model: 商品消息模型
 - (void)chatGoodsModel:(VHGoodsPushMessageItem *)model;
+
+/// 聊天只看主持人
+- (void)setOnlyWatchHost:(BOOL)onlyWatchHost;
 
 @end

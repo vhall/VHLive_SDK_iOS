@@ -16,6 +16,9 @@
 /// 点击礼物回调
 - (void)clickGift;
 
+/// 点击聊天设置回调
+- (void)clickChatSet;
+
 /// 点击申请互动连麦
 - (void)clickInav;
 
@@ -46,7 +49,6 @@
 
 /// 收到全体被禁言/取消禁言
 - (void)allForbidChat:(BOOL)allForbidChat;
-
 
 /// 禁言感知状态更新
 /// @param mode 0有感知 1无感知

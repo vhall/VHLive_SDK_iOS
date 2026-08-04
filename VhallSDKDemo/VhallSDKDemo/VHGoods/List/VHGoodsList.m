@@ -357,13 +357,23 @@
     __weak __typeof(self) weakSelf = self;
     [VHGoodsObject goodsGetOnlineListWithStatus:1 complete:^(NSArray<VHGoodsListItem *> *list, NSError *error) {
         __strong __typeof(weakSelf)self = weakSelf;
+        if (!weakSelf) return;
         if (list) {
             [self.dataSource removeAllObjects];
             [self.dataSource addObjectsFromArray:list];
             
             for (VHGoodsListItem * item in list) {
                 if (item.push_status == 1) {
-                    [self.goodsCardAlert showGoodsCardItem:item];
+                    [VHGoodsObject goodsWebinarSettingInfoWithWebinarId:self.webinarInfo.webinarId user_id:self.webinarInfo.webinarInfoData.webinar.userinfo.user_id complete:^(VHGoodsSettingItem *settingItem, NSError *error) {
+                        [self.goodsCardAlert showGoodsCardItem:item];
+                        if (settingItem) {
+                            self.settingItem = settingItem;
+                            [self.goodsCardAlert setGrapDesc:settingItem.btn_label];
+                        }
+                        if (error) {
+                            [VHProgressHud showToast:error.domain];
+                        }
+                    }];
                     break;
                 }
             }
@@ -520,7 +530,7 @@
                                                                   style:UIAlertActionStyleDefault
                                                                 handler:^(UIAlertAction * _Nonnull action) {
              // 执行本地支付逻辑
-             [VHGoodsObject goodsWebinarSettingInfoWithWebinarId:self.webinarInfo.webinarId complete:^(VHGoodsSettingItem *settingItem, NSError *error) {
+             [VHGoodsObject goodsWebinarSettingInfoWithWebinarId:self.webinarInfo.webinarId user_id:self.webinarInfo.webinarInfoData.webinar.userinfo.user_id complete:^(VHGoodsSettingItem *settingItem, NSError *error) {
                  __strong __typeof(weakSelf)self = weakSelf;
                  if (settingItem) {
                      self.settingItem = settingItem;
@@ -579,7 +589,20 @@
 {
     // 推送
     if (push_status == 1) {
+        __weak typeof(self) weakSelf = self;
         [self.goodsCardAlert showGoodsCardItem:model.goods_info];
+        [VHGoodsObject goodsWebinarSettingInfoWithWebinarId:self.webinarInfo.webinarId user_id:self.webinarInfo.webinarInfoData.webinar.userinfo.user_id complete:^(VHGoodsSettingItem *settingItem, NSError *error) {
+            __strong __typeof(weakSelf)self = weakSelf;
+            if (settingItem) {
+                self.settingItem = settingItem;
+                [self.goodsCardAlert setGrapDesc:settingItem.btn_label];
+            }
+
+            if (error) {
+                [VHProgressHud showToast:error.domain];
+            }
+        }];
+        
         if ([self.delegate respondsToSelector:@selector(pushGoodsCardModel:)]) {
             [self.delegate pushGoodsCardModel:model];
         }

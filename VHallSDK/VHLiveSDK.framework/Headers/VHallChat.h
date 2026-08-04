@@ -70,6 +70,12 @@
 /// @param mode 0：禁言有感知  1：禁言无感知
 - (void)bannedModeUpdate:(NSInteger)mode;
 
+/// 聊天消息设置精品
+/// @param mode  0：取消设置  1：设置
+/// @param msgId  消息id
+/// @param context  消息内容
+- (void)chatSetRecommend:(NSInteger)mode msgId:(NSString*)msgId context:(NSString* _Nullable)context;
+
 @end
 
 @interface VHallChat : VHallBasePlugin
@@ -138,6 +144,24 @@
                                 page_size:(NSInteger)page_size
                                start_time:(NSString *)start_time
                                   is_role:(NSInteger)is_role
+                              anchor_path:(NSString *)anchor_path
+                                  success:(void (^)(NSArray <VHallChatModel *> *msgs))success
+                                   failed:(void (^)(NSDictionary *failedData))reslutFailedCallback;
+
+/// 获取当前房间聊天列表（仅支持化蝶） (v6.4.1新增)
+/// @param msg_id 聊天记录 锚点消息id,此参数存在时anchor_path 参数必须存在
+/// @param page_num 当前页码数，第一页从1开始
+/// @param page_size 获取条目数量
+/// @param start_time 间至今的所有聊天记录，若不指定时间可传nil。格式如：@"2020-01-01 12:00:00"
+/// @param sender_id  发送者ID
+/// @param anchor_path 锚点方向，up 向上查找，down 向下查找,此参数存在时 msg_id 参数必须存在,默认down
+/// @param success 成功回调 msgs：聊天历史记录
+/// @param reslutFailedCallback 失败回调 字典结构：{code：错误码，content：错误信息}
+- (void)getInteractsChatGetListWithSender:(NSString *)msg_id
+                                 page_num:(NSInteger)page_num
+                                page_size:(NSInteger)page_size
+                               start_time:(NSString *)start_time
+                                sender_id:(NSString *)sender_id
                               anchor_path:(NSString *)anchor_path
                                   success:(void (^)(NSArray <VHallChatModel *> *msgs))success
                                    failed:(void (^)(NSDictionary *failedData))reslutFailedCallback;

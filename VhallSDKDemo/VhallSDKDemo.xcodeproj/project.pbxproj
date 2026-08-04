@@ -134,6 +134,7 @@
 		7C75F54EDF39F2D3773FBE22 /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E26F687E80B8B2BB47A859E /* Pods_VhallSDKDemo_VhallSDKDemoUITests.framework */; };
 		C09691F52BA4415200EED661 /* VHDanmu.m in Sources */ = {isa = PBXBuildFile; fileRef = C09691F32BA4415200EED661 /* VHDanmu.m */; };
 		EDE93B43E701F247BFC39F38 /* Pods_VhallSDKDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494BE4CE29A050223829ADDE /* Pods_VhallSDKDemoTests.framework */; };
+		FA34D90A3021E0C9008E4476 /* VHChatSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34D9093021E0C9008E4476 /* VHChatSetting.m */; };
 		FABE2DB42E45913A00CFBA7B /* VHGoodsConfirmOrderAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE2DAA2E45913A00CFBA7B /* VHGoodsConfirmOrderAlert.m */; };
 		FABE2DB52E45913A00CFBA7B /* VHGoodsDetailAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE2DAE2E45913A00CFBA7B /* VHGoodsDetailAlert.m */; };
 		FABE2DB62E45913A00CFBA7B /* VHGoodsCardAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE2DA82E45913A00CFBA7B /* VHGoodsCardAlert.m */; };
@@ -414,6 +415,8 @@
 		C09691F42BA4415200EED661 /* VHDanmu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHDanmu.h; sourceTree = "<group>"; };
 		D28BA50D1D20871908164F4B /* Pods-VhallSDKDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemoTests.release.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemoTests/Pods-VhallSDKDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F144C26B8E47A7FED450FF44 /* Pods-VhallSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VhallSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		FA34D9083021E0C9008E4476 /* VHChatSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHChatSetting.h; sourceTree = "<group>"; };
+		FA34D9093021E0C9008E4476 /* VHChatSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHChatSetting.m; sourceTree = "<group>"; };
 		FABE2DA72E45913A00CFBA7B /* VHGoodsCardAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsCardAlert.h; sourceTree = "<group>"; };
 		FABE2DA82E45913A00CFBA7B /* VHGoodsCardAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHGoodsCardAlert.m; sourceTree = "<group>"; };
 		FABE2DA92E45913A00CFBA7B /* VHGoodsConfirmOrderAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHGoodsConfirmOrderAlert.h; sourceTree = "<group>"; };
@@ -523,6 +526,8 @@
 		4E23FC63294046A300341EA4 /* VHTool */ = {
 			isa = PBXGroup;
 			children = (
+				FA34D9083021E0C9008E4476 /* VHChatSetting.h */,
+				FA34D9093021E0C9008E4476 /* VHChatSetting.m */,
 				4EFDF22B2AD8D0C600710FDD /* Alert */,
 				4E2C379B2A8605D30079BFB1 /* VHRunTime */,
 				4E2C37962A85D1280079BFB1 /* VHGoodsNumberButton */,
@@ -1492,9 +1497,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1548,9 +1557,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo-VhallSDKDemoUITests/Pods-VhallSDKDemo-VhallSDKDemoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1609,9 +1622,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1626,9 +1643,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VhallSDKDemo/Pods-VhallSDKDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1648,6 +1669,7 @@
 				4E23FD20294C5B8900341EA4 /* VHLiveWeakTimer.m in Sources */,
 				4EFDF23C2AD8D0C600710FDD /* VHActionSheetViewController.m in Sources */,
 				4E23FCA8294820E600341EA4 /* VHChatView.m in Sources */,
+				FA34D90A3021E0C9008E4476 /* VHChatSetting.m in Sources */,
 				4E23FD2A29504D6100341EA4 /* VHAnnouncementView.m in Sources */,
 				4EFDF23D2AD8D0C600710FDD /* VHActionSheetConfig.m in Sources */,
 				4EEEEB74293EE96600538BC2 /* AppDelegate.m in Sources */,

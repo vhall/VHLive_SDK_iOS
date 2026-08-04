@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///   - webinar_id: 活动id
 ///   - success: 成功
 ///   - fail: 失败
-+ (void)goodsWebinarSettingInfoWithWebinarId:(NSString *)webinar_id success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
++ (void)goodsWebinarSettingInfoWithWebinarId:(NSString *)webinar_id user_id:(NSString*)user_id success:(void (^)(NSDictionary *responseObject))success fail:(void (^)(NSError *error))fail;
 
 /// 查询商户号绑定列表
 /// - Parameters:

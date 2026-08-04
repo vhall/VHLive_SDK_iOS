@@ -204,6 +204,7 @@
             watchVC.channel_id = channel_id;
             watchVC.join_email = self.join_email;
             watchVC.join_nick_name = self.join_nick_name;
+            watchVC.webinarInfoData = webinarInfoData;
 
             // 预告页
             VHWarmUpViewController *warmUP = [VHWarmUpViewController new];

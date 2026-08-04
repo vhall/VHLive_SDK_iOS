@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface VHWebinarInfoData_Join_info : NSObject
-@property (nonatomic, copy) NSString *third_party_user_id;                              ///<用户id
-@property (nonatomic, copy) NSString *join_id;                                          ///<sass参会id
-@property (nonatomic, copy) NSString *avatar;                                           ///<头像
-@property (nonatomic, copy) NSString *privacies;                                        ///<私密信息
-@property (nonatomic, copy) NSString *nickname;                                         ///<昵称
+@property (nonatomic, copy,nullable) NSString *third_party_user_id;                              ///<用户id
+@property (nonatomic, copy,nullable) NSString *join_id;                                          ///<sass参会id
+@property (nonatomic, copy,nullable) NSString *avatar;                                           ///<头像
+@property (nonatomic, copy,nullable) NSString *privacies;                                        ///<私密信息
+@property (nonatomic, copy,nullable) NSString *nickname;                                         ///<昵称
 @property (nonatomic, assign) BOOL is_kick;                                             ///<是否踢出：0-否（默认），1-是
 @property (nonatomic, assign) BOOL is_gag;                                              ///<是否禁言：0-不禁言（默认），1-禁言
 @property (nonatomic, assign) BOOL is_subscribe;                                        ///<是否预约：0-否，1-是
@@ -33,22 +33,22 @@
 
 
 @interface VHWebinarInfoData_Record : NSObject
-@property (nonatomic, copy) NSString *record_id;                                        ///<默认回放ID
-@property (nonatomic, copy) NSString *preview_paas_record_id;                           ///<试看paas_record_id
-@property (nonatomic, copy) NSString *paas_record_id;                                   ///<回放paas_record_id
+@property (nonatomic, copy,nullable) NSString *record_id;                                        ///<默认回放ID
+@property (nonatomic, copy,nullable) NSString *preview_paas_record_id;                           ///<试看paas_record_id
+@property (nonatomic, copy,nullable) NSString *paas_record_id;                                   ///<回放paas_record_id
 @property (nonatomic, assign) NSInteger encrypt_status;                                 ///<0:未加密 1:加密中 2:加密成功
 @property (nonatomic, assign) NSInteger record_remark_layout;                           ///<回放重置布局：0-无 1-三分屏 2-画中画 3-纯文档
 @end
 
 
 @interface VHWebinarInfoData_Interact : NSObject
-@property (nonatomic, copy) NSString *channel_id;                                       ///<渠道id
-@property (nonatomic, copy) NSString *inav_id;                                          ///<互动id
-@property (nonatomic, copy) NSString *room_id;                                          ///<房间id
-@property (nonatomic, copy) NSString *paas_app_id;                                      ///<应用id
-@property (nonatomic, copy) NSString *interact_token;                                   ///<互动token
-@property (nonatomic, copy) NSString *paas_access_token;                                ///<PaaStoken
-@property (nonatomic, copy) NSString *subscribe_paas_access_token;                                ///<预约PaaStoken
+@property (nonatomic, copy,nullable) NSString *channel_id;                                       ///<渠道id
+@property (nonatomic, copy,nullable) NSString *inav_id;                                          ///<互动id
+@property (nonatomic, copy,nullable) NSString *room_id;                                          ///<房间id
+@property (nonatomic, copy,nullable) NSString *paas_app_id;                                      ///<应用id
+@property (nonatomic, copy,nullable) NSString *interact_token;                                   ///<互动token
+@property (nonatomic, copy,nullable) NSString *paas_access_token;                                ///<PaaStoken
+@property (nonatomic, copy,nullable) NSString *subscribe_paas_access_token;                                ///<预约PaaStoken
 @end
 
 
@@ -58,26 +58,26 @@
 @end
 
 @interface VHWebinarInfoData_Webinar_Userinfo : NSObject
-@property (nonatomic, copy) NSString *nickname;                                         ///<昵称
-@property (nonatomic, copy) NSString *company;                                          ///<公司
-@property (nonatomic, copy) NSString *avatar;                                           ///<头像地址
-@property (nonatomic, copy) NSString *user_id;                                          ///<用户id
+@property (nonatomic, copy,nullable) NSString *nickname;                                         ///<昵称
+@property (nonatomic, copy,nullable) NSString *company;                                          ///<公司
+@property (nonatomic, copy,nullable) NSString *avatar;                                           ///<头像地址
+@property (nonatomic, copy,nullable) NSString *user_id;                                          ///<用户id
 @end
 
 
 @interface VHWebinarInfoData_Webinar : NSObject
-@property (nonatomic, strong) VHWebinarInfoData_Webinar_Userinfo *userinfo;             ///<活动创建人
-@property (nonatomic, copy) NSString *data_id;                                          ///<活动id
-@property (nonatomic, copy) NSString *verify_tip;                                       ///<观看限制提示语
-@property (nonatomic, copy) NSString *img_url;                                          ///<封面
-@property (nonatomic, copy) NSString *verify_source;                                    ///<
-@property (nonatomic, copy) NSString *subject;                                          ///<活动标题
-@property (nonatomic, copy) NSString *category;                                         ///<类别
-@property (nonatomic, copy) NSString *start_time;                                       ///<开始时间
-@property (nonatomic, copy) NSString *introduction;                                     ///<活动介绍
-@property (nonatomic, copy) NSString *end_time;                                         ///<结束时间
-@property (nonatomic, copy) NSString *fee;                                              ///<观看费用
-@property (nonatomic, copy) NSString *actual_start_time;                                ///<实际开始时间
+@property (nonatomic, strong,nullable) VHWebinarInfoData_Webinar_Userinfo *userinfo;             ///<活动创建人
+@property (nonatomic, copy,nullable) NSString *data_id;                                          ///<活动id
+@property (nonatomic, copy,nullable) NSString *verify_tip;                                       ///<观看限制提示语
+@property (nonatomic, copy,nullable) NSString *img_url;                                          ///<封面
+@property (nonatomic, copy,nullable) NSString *verify_source;                                    ///<
+@property (nonatomic, copy,nullable) NSString *subject;                                          ///<活动标题
+@property (nonatomic, copy,nullable) NSString *category;                                         ///<类别
+@property (nonatomic, copy,nullable) NSString *start_time;                                       ///<开始时间
+@property (nonatomic, copy,nullable) NSString *introduction;                                     ///<活动介绍
+@property (nonatomic, copy,nullable) NSString *end_time;                                         ///<结束时间
+@property (nonatomic, copy,nullable) NSString *fee;                                              ///<观看费用
+@property (nonatomic, copy,nullable) NSString *actual_start_time;                                ///<实际开始时间
 @property (nonatomic, assign) BOOL hide_subscribe;                                      ///<预约按钮状态 1开启 0关闭
 @property (nonatomic, assign) BOOL no_delay_webinar;                                    ///<无延迟直播：1-是，0-否
 @property (nonatomic, assign) BOOL reg_form;                                            ///<是否开启报名表单
@@ -119,35 +119,37 @@
 
 @interface VHMemberLevelDetails : NSObject
 @property (nonatomic, assign) NSInteger level;
-@property (nonatomic, copy) NSString *icon;
+@property (nonatomic, copy,nullable) NSString *icon;
 @end
 
 @interface VHMemberLevel: NSObject
-@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy,nullable) NSString *type;
 @property (nonatomic, assign) NSInteger status;
-@property (nonatomic, strong) NSArray<VHMemberLevelDetails *> *custom_list;
+@property (nonatomic, strong,nullable) NSArray<VHMemberLevelDetails *> *custom_list;
 @end
 
 @interface VHWebinarInfoData : NSObject
-@property (nonatomic, copy) NSString *system_time;                                      ///<系统时间
-@property (nonatomic, copy) NSString *visitor_id;                                       ///<访客标识
-@property (nonatomic, copy) NSString *paas_record_id;                                   ///<PaaS回放id
+@property (nonatomic, copy,nullable) NSString *system_time;                                      ///<系统时间
+@property (nonatomic, copy,nullable) NSString *visitor_id;                                       ///<访客标识
+@property (nonatomic, copy,nullable) NSString *paas_record_id;                                   ///<PaaS回放id
+@property (nonatomic, copy,nullable) NSString *chat_recommend_msg;                                ///<聊天精品推荐消息内容
 @property (nonatomic, assign) NSInteger cast_screen;                                    ///<
 @property (nonatomic, assign) NSInteger live_type;                                      ///<0-直播；2-彩排
 @property (nonatomic, assign) NSInteger cheat_num;                                      ///<
 @property (nonatomic, assign) NSInteger record_remark_layout;                           ///<
 @property (nonatomic, assign) NSInteger webinar_show_type;
 @property (nonatomic, assign) NSUInteger banned_mode;///</// 用户禁音感知状态；0 有感知 1无感知///<
-@property (nonatomic, strong) VHWebinarInfoData_Join_info *join_info;                   ///<加入用户信息
-@property (nonatomic, strong) VHWebinarInfoData_Pv *pv;                                 ///<热度
-@property (nonatomic, strong) VHWebinarInfoData_Record *record;                         ///<回放
-@property (nonatomic, strong) VHWebinarInfoData_Interact *interact;                     ///<互动信息(PaaS信息)
-@property (nonatomic, strong) VHWebinarInfoData_Agreement *agreement;                   ///<观看协议
-@property (nonatomic, strong) VHWebinarInfoData_Webinar *webinar;                       ///<活动信息
-@property (nonatomic, strong) VHWebinarInfoData_Switch *data_switch;                    ///<场次信息
-@property (nonatomic, strong) VHWebinarInfoData_Subscribe *subscribe;                   ///<预约人数
-@property (nonatomic, strong) VHWebinarInfoData_Online *online;
-@property (nonatomic, strong) VHMemberLevel *member_level;    ///<在线信息
+@property (nonatomic, strong,nullable) VHWebinarInfoData_Join_info *join_info;                   ///<加入用户信息
+@property (nonatomic, strong,nullable) VHWebinarInfoData_Pv *pv;                                 ///<热度
+@property (nonatomic, strong,nullable) VHWebinarInfoData_Record *record;                         ///<回放
+@property (nonatomic, strong,nullable) VHWebinarInfoData_Interact *interact;                     ///<互动信息(PaaS信息)
+@property (nonatomic, strong,nullable) VHWebinarInfoData_Agreement *agreement;                   ///<观看协议
+@property (nonatomic, strong,nullable) VHWebinarInfoData_Webinar *webinar;                       ///<活动信息
+@property (nonatomic, strong,nullable) VHWebinarInfoData_Switch *data_switch;                    ///<场次信息
+@property (nonatomic, strong,nullable) VHWebinarInfoData_Subscribe *subscribe;                   ///<预约人数
+@property (nonatomic, strong,nullable) VHWebinarInfoData_Online *online;
+@property (nonatomic, strong,nullable) VHMemberLevel *member_level;    ///<在线信息
+///<
 
 
 /// 初始化整理数据

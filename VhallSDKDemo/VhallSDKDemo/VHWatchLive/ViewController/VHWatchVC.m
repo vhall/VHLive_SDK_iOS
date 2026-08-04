@@ -28,6 +28,7 @@
 #import "VHWatchLiveBottomView.h"
 #import "VHWatchVC.h"
 #import "VHWatchVideoView.h"
+#import "VHChatSetting.h"
 
 @interface VHWatchVC ()<VHWatchVideoViewDelegate, VHInavViewDelegate, VHWatchLiveBottomViewDelegate, VHChatViewDelegate, JXCategoryViewDelegate, JXCategoryListContainerViewDelegate, VHallGiftObjectDelegate, VHQAViewDelegate, VHSignInAlertViewDelegate, VHSurveyListViewDelegate, VHDocViewDelegate, VHRecordChapterDelegate, VHVideoPointViewDelegate, VHLotteryDelegate, VHExamObjectDelegate, VHRecordListDelegate,VHFileDownloadDelegate,VHPushScreenCardListDelegate,VHGoodsListDelegate>
 
@@ -85,6 +86,8 @@
 @property (nonatomic, strong) VHLottery *vhLottery;
 /// 快问快答
 @property (nonatomic, strong) VHExamObject *vhExam;
+/// 只看主讲人
+@property(nonatomic,assign) BOOL isOnlyWatchHost;
 
 // 赋值
 /// 问答名称
@@ -630,6 +633,11 @@
     [self.bottomView allForbidChat:allForbidChat];
 }
 
+
+- (void)bannedModeUpdate:(NSInteger)mode{
+    [self.bottomView bannedModeUpdate:mode];
+}
+
 #pragma mark 问答状态
 - (void)isQaStatus:(BOOL)isQaStatus
 {
@@ -647,10 +655,6 @@
 - (void)clickCheckWinListWithEndLotteryModel:(VHallEndLotteryModel *)endLotteryModel
 {
     [self.vhLottery clickCheckWinListWithEndLotteryModel:endLotteryModel];
-}
-
-- (void)bannedModeUpdate:(NSInteger)mode{
-    [self.bottomView bannedModeUpdate:mode];
 }
 
 #pragma mark 点击消息上的查看推屏卡片
@@ -686,6 +690,45 @@
         make.edges.mas_equalTo(self.view);
     }];
     [self.giftListView showGiftToWebinarInfoData:self.watchVideoView.moviePlayer.webinarInfo.webinarInfoData];
+}
+
+/// 点击聊天设置回调
+- (void)clickChatSet{
+    __weak __typeof(self) weakSelf = self;
+    [VHWebinarBaseInfo permissionsCheckWithWebinarId:self.webinar_id
+                                     webinar_user_id:@""
+                                            scene_id:@"3"
+                                             success:^(VHPermissionConfigItem *_Nonnull item) {
+        
+        
+        __strong __typeof(weakSelf)self = weakSelf;
+        if(self == NULL){
+            return;
+        }
+        //1. 创建弹窗对象
+        if(item.show_effect == 1 || item.show_chat_only == 1  || item.show_host_only == 1 ){
+            VHChatSetting *chatDialog = [[VHChatSetting alloc] initWithOnlyWatchHost:self.isOnlyWatchHost showOnlyHost:item.show_host_only == 1 showChat:item.show_chat_only == 1 effect:item.show_effect == 1];
+                chatDialog.callback = ^(BOOL onlyWatchHost, BOOL onlyWatchContext, BOOL hideEffect) {
+                NSLog(@"只看主办方 = %d",onlyWatchHost);
+                NSLog(@"仅查看聊天内容 = %d",onlyWatchContext);
+                NSLog(@"隐藏特效 = %d",hideEffect);
+                if(self.isOnlyWatchHost != onlyWatchHost){
+                    [self.chatView setOnlyWatchHost:onlyWatchHost];
+                }
+                self.isOnlyWatchHost = onlyWatchHost;
+            };
+             //2. 执行show弹出弹窗
+            [chatDialog show];
+        }else{
+            [VHProgressHud showToast:@"消息筛选已关闭"];
+        }
+
+     
+    }
+        failure:^(NSError *_Nonnull error) {
+    }];
+    
+    
 }
 
 #pragma mark 点击参与互动连麦
@@ -1225,7 +1268,7 @@
 - (VHChatView *)chatView
 {
     if (!_chatView) {
-        _chatView = [[VHChatView alloc] init];
+        _chatView = [[VHChatView alloc] initWithWebinar:self.webinarInfoData];
         _chatView.delegate = self;
     }
     return _chatView;

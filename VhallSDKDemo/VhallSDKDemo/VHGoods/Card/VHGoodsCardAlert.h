@@ -22,6 +22,8 @@ typedef void(^ClickCheckDetailBlock)(VHGoodsListItem *item);
 @property (nonatomic, copy) ClickCheckDetailBlock clickPayBlock;
 /// 显示
 - (void)showGoodsCardItem:(VHGoodsListItem *)item;
+//更新抢自定义文字
+-(void)setGrapDesc:(NSString*)desc;
 /// 隐藏
 - (void)hide;
 

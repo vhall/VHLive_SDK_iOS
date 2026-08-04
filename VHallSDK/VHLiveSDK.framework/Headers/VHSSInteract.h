@@ -211,6 +211,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param fail 失败
 + (void)getChatListWithRoomId:(NSString *)roomId msg_id:(NSString *)msg_id pos:(NSInteger)pos limit:(NSInteger)limit start_time:(NSString *)start_time is_role:(NSInteger)is_role anchor_path:(NSString *)anchor_path success:(void (^)(NSArray <NSDictionary *> *array, BOOL haveNextPage))success fail:(void (^)(NSError *error))fail;
 
+/// 获取当前房间聊天列表
+/// @param roomId 房间id
+/// @param msg_id 聊天记录 锚点消息id,此参数存在时anchor_path 参数必须存在
+/// @param pos 获取条目节点，默认为0
+/// @param limit 获取条目数量，最大100
+/// @param start_time 开始时间
+/// @param is_role 0：不筛选主办方 1：筛选主办方 默认是0
+/// @param anchor_path 锚点方向，up 向上查找，down 向下查找,此参数存在时 msg_id 参数必须存在,默认down
+/// @param sender_id  发送者id，用于聊天过滤
+/// @param success 成功
+/// @param fail 失败
++ (void)getChatListWithRoomIdAndSender:(NSString *)roomId msg_id:(NSString *)msg_id pos:(NSInteger)pos limit:(NSInteger)limit start_time:(NSString *)start_time is_role:(NSInteger)is_role sender_id:(NSString*)sender_id anchor_path:(NSString *)anchor_path success:(void (^)(NSArray <NSDictionary *> *array, BOOL haveNextPage))success fail:(void (^)(NSError *error))fail;
+
 + (void)newGetChatListWithRoomId:(NSString *)roomId start_time:(NSString *)startTime pos:(NSInteger)pos limit:(NSInteger)limit success:(void (^)(NSArray <NSDictionary *> *array, BOOL haveNextPage))success fail:(void (^)(NSError * error)) fail __deprecated_msg("!! 6.5.0 开始，不再使用该方法; 请使用 +[VHSSInteract getChatListWithRoomId:msg_id:pos:limit:start_time:is_role:anchor_path:success:fail:]");
 
 /// 发送自定义消息

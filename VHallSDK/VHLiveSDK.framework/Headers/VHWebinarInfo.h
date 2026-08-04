@@ -37,6 +37,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger status;
 @end
 
+//回放过期
+@interface RecordWatchExpire : VHallRawBaseModel
+@property (nonatomic , assign) NSInteger status; //0关闭 1开启
+@property (nonatomic , assign) NSString* type; //1 全天 2部分时段
+@property (nonatomic , assign) NSString* start_date; //开始日期
+@property (nonatomic , assign) NSString* start_time; //开始时间
+@property (nonatomic , assign) NSString* end_date; //结束时间
+@property (nonatomic , assign) NSString* end_time; //结束时间
+@end
+
 // 检测配置项权限
 @interface VHPermissionConfigItem : VHallRawBaseModel
 
@@ -44,6 +54,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL hide_gifts;                                                  ///<是否开启礼物
 @property (nonatomic, assign) BOOL watch_record_no_chatting;                                    ///<是否开启回放禁言
 @property (nonatomic, assign) BOOL watch_record_chapter;                                        ///<是否开启回放章节打点
+@property (nonatomic , assign) NSInteger  show_host_only;///<（观看端) 消息筛选是否显示只看主办方  0隐藏 1显示
+@property (nonatomic , assign) NSInteger  show_chat_only;///<观看端) 消息筛选是否显示仅查看聊天内容  0隐藏 1显示
+@property (nonatomic , assign) NSInteger  show_effect;///<观看端) 消息筛选是否显示屏蔽礼物  0隐藏 1显示
+@property (nonatomic , assign) NSInteger  hidden_custom_menu; //(观看端)隐藏自定义菜单  0不隐藏 1隐藏
+@property (nonatomic , assign) NSInteger  hidden_watch_like_data; //(观看端）隐藏点赞数据 0不隐藏 1隐藏
+@property (nonatomic , strong) RecordWatchExpire * watch_expire; //过期时间
 
 @end
 

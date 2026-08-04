@@ -106,8 +106,14 @@
 @property (nonatomic, assign) NSInteger enable_username;    ///<开启姓名;0.否 1.是
 @property (nonatomic, assign) NSInteger enable_phone;       ///<开启手机号;0.否 1.是
 @property (nonatomic, assign) NSInteger enable_remark;      ///<开启留言;0.否 1.是
+@property (nonatomic, assign) NSInteger enable_coupon;      ///<优惠卷入口;0.关闭 1.开启
+@property (nonatomic, assign) NSInteger enable_buy_notice;  ///<购买特效;0.关闭 1.开启
+@property (nonatomic, assign) NSInteger enable_hot_sale;    ///<热卖特效;0.关闭 1.开启
+@property (nonatomic, assign) NSInteger enable_direct_view;    ///<商品跳转 0.关闭 1.开启
 @property (nonatomic, assign) BOOL      enable_wx;          ///<开启;NO.否 YES.是
 @property (nonatomic, assign) BOOL      enable_ali;         ///<开启 ;NO.否 YES.是
+@property (nonatomic, copy, nullable)   NSString *btn_label;         ///<抢 自定义内容
+@property (nonatomic, copy, nullable)   NSString *btn_description;   ///<购买文案
 
 @end
 
@@ -235,8 +241,9 @@
 /// 获取商品活动设置
 /// - Parameters:
 ///   - webinar_id: 活动id
+///   - user_id: 活动创建人 id  eg. webinarInfo.webinarInfoData.webinar.userinfo.user_id
 ///   - complete: 完成返回详情,失败错误详情
-+ (void)goodsWebinarSettingInfoWithWebinarId:(NSString *)webinar_id complete:(void (^)(VHGoodsSettingItem *settingItem, NSError *error))complete;
++ (void)goodsWebinarSettingInfoWithWebinarId:(NSString *)webinar_id user_id:(NSString*)user_id complete:(void (^)(VHGoodsSettingItem *settingItem, NSError *error))complete;
 
 /// 获取商品详情
 /// - Parameters:

@@ -35,6 +35,8 @@
 @property (nonatomic, strong) UIButton *inavBtn;
 /// 礼物按钮
 @property (nonatomic, strong) UIButton *giftBtn;
+/// 聊天设置
+@property (nonatomic, strong) UIButton *chatSettingBtn;
 /// 点赞按钮
 @property (nonatomic, strong) VHLikeObject *likeBtn;
 /// 是否是聊天
@@ -83,6 +85,7 @@
     [self addSubview:self.chatBtn];
     [self addSubview:self.questionBtn];
     [self addSubview:self.inavBtn];
+    [self addSubview:self.chatSettingBtn];
     [self addSubview:self.giftBtn];
     [self addSubview:self.likeBtn];
 }
@@ -93,6 +96,12 @@
     [self.headImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(6);
         make.left.mas_equalTo(10);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+    
+    [self.chatSettingBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.headImg.mas_centerY);
+        make.left.mas_equalTo(self.headImg.mas_right).offset(8);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
 
@@ -116,7 +125,7 @@
 
     [self.chatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.headImg.mas_centerY);
-        make.left.mas_equalTo(self.headImg.mas_right).offset(8);
+        make.left.mas_equalTo(self.chatSettingBtn.mas_right).offset(8);
         make.right.mas_equalTo(self.giftBtn.mas_left).offset(-8);
         make.height.mas_equalTo(30);
     }];
@@ -240,7 +249,7 @@
 
     [self.chatBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.headImg.mas_centerY);
-        make.left.mas_equalTo(self.headImg.mas_right).offset(8);
+        make.left.mas_equalTo(self.chatSettingBtn.mas_right).offset(8);
         make.right.mas_equalTo(isHidden ? self.giftBtn.mas_left : self.inavBtn.mas_left).offset(-8);
         make.height.mas_equalTo(30);
     }];
@@ -294,6 +303,7 @@
     self.bannedMode = mode;
     [self isForBidChatToLiveType];
 }
+
 
 #pragma mark - isQaStatus 是否开启了问答禁言 YES 开启 NO 未开启
 - (void)isQaStatus:(BOOL)isQaStatus
@@ -365,6 +375,14 @@
 {
     if ([self.delegate respondsToSelector:@selector(clickGift)]) {
         [self.delegate clickGift];
+    }
+}
+
+#pragma mark - 点击聊天设置
+- (void)clickChatBtn
+{
+    if ([self.delegate respondsToSelector:@selector(clickChatSet)]) {
+        [self.delegate clickChatSet];
     }
 }
 
@@ -445,6 +463,18 @@
     }
 
     return _giftBtn;
+}
+
+- (UIButton *)chatSettingBtn
+{
+    if (!_chatSettingBtn) {
+        _chatSettingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_chatSettingBtn setImage:[UIImage imageNamed:@"chat_set_btn"] forState:UIControlStateNormal];
+        [_chatSettingBtn addTarget:self action:@selector(clickChatBtn) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_chatSettingBtn];
+    }
+
+    return _chatSettingBtn;
 }
 
 - (VHLikeObject *)likeBtn
