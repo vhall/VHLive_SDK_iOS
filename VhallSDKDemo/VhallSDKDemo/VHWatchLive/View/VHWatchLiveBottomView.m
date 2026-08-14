@@ -180,7 +180,7 @@
 - (void)permissionsCheckWithWebinarId
 {
     __weak __typeof(self) weakSelf = self;
-    NSNumber *web_id = @156351733;
+    NSNumber *web_id = [NSNumber numberWithInteger:self.webinarInfoData.webinar.webinar_id];
     [VHWebinarBaseInfo permissionsCheckWithWebinarNumber:web_id
                                      webinar_user_id:self.webinarInfoData.webinar.userinfo.user_id
                                             scene_id:@"1"

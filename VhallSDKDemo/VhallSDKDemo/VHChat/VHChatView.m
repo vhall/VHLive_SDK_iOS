@@ -26,12 +26,16 @@
 /// 页码
 @property (nonatomic, assign) NSInteger pageNum;
 
+@property (nonatomic, assign) NSInteger chatNickNameEncryption;
+
 @property (nonatomic, strong) VHMemberLevel *member_level;
 
 
 @property (nonatomic, strong) UITextView *chat_recommand;
 
 @property (nonatomic, assign) BOOL isOnlyWatchHost;
+
+@property (nonatomic,strong)VHChatMsgRecommend* chatRecommendConfig;
 
 @end
 
@@ -69,20 +73,35 @@
     
     self.vhObject = vhObject;
     self.webinarInfoData = webinarInfoData;
-    
+    self.chatRecommendConfig = webinarInfoData.chat_recommend;
     //新版活动获取成员等级配置。
     NSString *webinarId = [NSString stringWithFormat:@"%ld", webinarInfoData.webinar.webinar_id];
     [VHWebinarInfoData getMemberLevel:webinarId complete:^(VHMemberLevel *memberLevel, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.webinarInfoData.member_level = memberLevel;
-            // 初始化UI、布局、列表加载都放主线程内
-            [self masonryUI];
-            [self setDelegateToObject];
-            [self loadHistoryWithPage:1];
-            [self.chatTableView reloadData];
-            [self reloadChatToBottom:YES beforeChange:1];
+        
+        [VHWebinarBaseInfo permissionsCheckWithWebinarId:webinarId
+                                         webinar_user_id:@""
+                                                scene_id:@"3"
+                                                 success:^(VHPermissionConfigItem *_Nonnull item) {
             
-        });
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.chatNickNameEncryption = item.chat_nickname_encryption;
+                self.webinarInfoData.member_level = memberLevel;
+                // 初始化UI、布局、列表加载都放主线程内
+                [self masonryUI];
+                [self setDelegateToObject];
+                [self loadHistoryWithPage:1];
+                [self.chatTableView reloadData];
+                [self reloadChatToBottom:YES beforeChange:1];
+                if(self.chatRecommendConfig && self.chatRecommendConfig.chat_msg_recommend.length > 0){
+                    [self chatSetRecommend:1 msg:(self.chatRecommendConfig)];
+                }
+        
+            });
+        }
+            failure:^(NSError *_Nonnull error) {
+        }];
+        
+
     }];
 }
 
@@ -120,11 +139,12 @@
         make.height.mas_equalTo(40);
     }];
     
-    if(self.webinarInfoData.chat_recommend_msg){
-        self.chat_recommand.text = [NSString stringWithFormat:@"[精选] %@",self.webinarInfoData.chat_recommend_msg];
+    if(self.webinarInfoData.chat_recommend && self.webinarInfoData.chat_recommend.chat_msg_recommend.length > 0){
+        [self chatSetRecommend:1 msg:(self.webinarInfoData.chat_recommend)];
         self.chat_recommand.hidden = NO;
     }
 }
+
 
 #pragma mark - 获取历史聊天记录
 - (void)loadHistoryWithPage:(NSInteger)page
@@ -278,13 +298,45 @@
 /// @param mode  0：取消设置  1：设置
 /// @param msgId  消息id
 /// @param context  消息内容
-- (void)chatSetRecommend:(NSInteger)mode msgId:(NSString*)msgId context:(NSString* _Nullable)context{
+///
+///
+- (void)chatSetRecommend:(NSInteger)mode msg:(VHChatMsgRecommend*)msg{
     if(mode == 1){
-        self.chat_recommand.text = [NSString stringWithFormat:@"[精选] %@",context];
+        if(msg.role_name == 1){
+            self.chat_recommand.text = [NSString stringWithFormat:@"[精选] 主持人：%@",msg.chat_msg_recommend];
+        }else if(msg.role_name == 2){
+            if(self.chatNickNameEncryption == 1){
+                NSString *shortStr = [VUITool substringToIndex:2 text:msg.nick_name isReplenish:YES];
+                self.chat_recommand.text = [NSString stringWithFormat:@"[精选] %@**:%@",shortStr,msg.chat_msg_recommend];
+            }else{
+                self.chat_recommand.text = [NSString stringWithFormat:@"[精选] %@: %@",msg.nick_name,msg.chat_msg_recommend];
+            }
+        }else if(msg.role_name == 3){
+            self.chat_recommand.text = [NSString stringWithFormat:@"[精选] 助理：%@",msg.chat_msg_recommend];
+        }else if(msg.role_name == 4){
+            self.chat_recommand.text = [NSString stringWithFormat:@"[精选] 嘉宾：%@",msg.chat_msg_recommend];
+        }
         self.chat_recommand.hidden = NO;
     }else{
         self.chat_recommand.hidden = YES;
+        self.chat_recommand.text = @"";
     }
+}
+
+/// 聊天昵称加密状态
+/// @param status  0：不加密  1：加密
+- (void)chatNickNameEncryption:(NSInteger)status{
+    dispatch_async(dispatch_get_main_queue(), ^{
+            self.chatNickNameEncryption = status;
+            if(self.chatRecommendConfig && self.chatRecommendConfig.chat_msg_recommend.length > 0 && self.chat_recommand.text.length > 0){
+                [self chatSetRecommend:1 msg:(self.chatRecommendConfig)];
+            }
+            // 只刷新屏幕可见cell，无滚动跳动
+            NSArray<NSIndexPath *> *visiblePaths = self.chatTableView.indexPathsForVisibleRows;
+            if (visiblePaths.count > 0) {
+                [self.chatTableView reloadRowsAtIndexPaths:visiblePaths withRowAnimation:UITableViewRowAnimationNone];
+            }
+        });
 }
 
 
@@ -439,7 +491,7 @@
     if (self.chatDataSource.count > indexPath.row) {
         id model = [self.chatDataSource objectAtIndex:indexPath.row];
         VHChatCell *cell = [VHChatCell createCellWithTableView:tableView webinarInfo:self.webinarInfoData];
-
+        cell.chatNicknameEncryption = self.chatNickNameEncryption;
         VHChatCustomCell *customCell = [VHChatCustomCell createCellWithTableView:tableView];
         __weak __typeof(self) weakSelf = self;
         customCell.clickSurveyToModel = ^(VHChatCustomModel *chatCustomModel) {

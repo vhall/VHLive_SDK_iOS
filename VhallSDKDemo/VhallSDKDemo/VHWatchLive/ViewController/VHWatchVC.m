@@ -327,8 +327,8 @@
     self.title = [VUITool substringToIndex:8 text:moviePlayer.webinarInfo.webinarInfoData.webinar.subject isReplenish:YES];
 
     // 连接消息,并加载数据
-    [self.chatView requestDataWithVHObject:moviePlayer webinarInfoData:moviePlayer.webinarInfo.webinarInfoData];
-
+//    [self.chatView requestDataWithVHObject:moviePlayer webinarInfoData:moviePlayer.webinarInfo.webinarInfoData];
+    [self.chatView requestDataWithVHObject:moviePlayer webinarInfoData:self.webinarInfoData];
     // 初始化互动工具
     [self initWithInteractiveTool];
 }

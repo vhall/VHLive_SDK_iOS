@@ -26,4 +26,9 @@
 /// 活动详情
 @property (nonatomic, strong) VHWebinarInfoData *webinarInfoData;
 
+
+///昵称加密状态
+@property (nonatomic, assign) NSInteger chatNicknameEncryption;
+
+
 @end

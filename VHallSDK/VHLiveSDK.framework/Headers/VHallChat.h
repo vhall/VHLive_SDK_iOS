@@ -72,9 +72,13 @@
 
 /// 聊天消息设置精品
 /// @param mode  0：取消设置  1：设置
-/// @param msgId  消息id
-/// @param context  消息内容
-- (void)chatSetRecommend:(NSInteger)mode msgId:(NSString*)msgId context:(NSString* _Nullable)context;
+/// @param msg  消息
+- (void)chatSetRecommend:(NSInteger)mode msg:(VHChatMsgRecommend*)msg;
+
+
+/// 聊天昵称加密状态
+/// @param status  0：不加密  1：加密
+- (void)chatNickNameEncryption:(NSInteger)status;
 
 @end
 

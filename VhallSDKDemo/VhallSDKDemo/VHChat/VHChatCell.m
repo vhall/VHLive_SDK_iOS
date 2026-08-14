@@ -283,7 +283,12 @@
     }
     
     // 昵称
-    self.nickNameLab.text = [VUITool substringToIndex:8 text:model.user_name isReplenish:YES];
+    if(self.chatNicknameEncryption == 1 && ![model.role isEqualToString:@"host"] && ![model.join_id isEqualToString:self.webinarInfoData.join_info.join_id]){
+        NSString *shortStr = [VUITool substringToIndex:2 text:model.user_name isReplenish:YES];
+        self.nickNameLab.text = [NSString stringWithFormat:@"%@***", shortStr];
+    }else{
+        self.nickNameLab.text = [VUITool substringToIndex:8 text:model.user_name isReplenish:YES];
+    }
     // 时间
     self.timeLab.text = [VUITool substringFromIndex:11 text:model.time isReplenish:NO];
     // 身份

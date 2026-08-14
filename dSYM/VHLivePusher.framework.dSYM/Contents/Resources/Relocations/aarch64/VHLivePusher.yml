@@ -125,402 +125,402 @@ relocations:
   - { offset: 0xBD9D6, size: 0x8, addend: 0x0, symName: '-[VhallHuadiePublish setLivePlayer:]', symObjAddr: 0x2120, symBinAddr: 0x8724, symSize: 0x14 }
   - { offset: 0xBDA17, size: 0x8, addend: 0x0, symName: '-[VhallHuadiePublish .cxx_destruct]', symObjAddr: 0x2134, symBinAddr: 0x8738, symSize: 0x50 }
   - { offset: 0xBDED1, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish activityModel]', symObjAddr: 0x0, symBinAddr: 0x8788, symSize: 0x14 }
-  - { offset: 0xBF887, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish activityModel]', symObjAddr: 0x0, symBinAddr: 0x8788, symSize: 0x14 }
-  - { offset: 0xBF8BC, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish dealloc]', symObjAddr: 0x14, symBinAddr: 0x879C, symSize: 0x94 }
-  - { offset: 0xBF8EF, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initWithConfig:]', symObjAddr: 0xA8, symBinAddr: 0x8830, symSize: 0x204 }
-  - { offset: 0xBF936, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initWithBeautyConfig:handleError:]', symObjAddr: 0x2AC, symBinAddr: 0x8A34, symSize: 0x230 }
-  - { offset: 0xBF9A8, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initWithLiveV2Config:andvancedBeautify:licenseUrl:licenseKey:handleError:]', symObjAddr: 0x4DC, symBinAddr: 0x8C64, symSize: 0x298 }
-  - { offset: 0xBFA4A, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initBeautyStartCapture]', symObjAddr: 0x774, symBinAddr: 0x8EFC, symSize: 0x3B8 }
-  - { offset: 0xBFADB, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish BeautyPublishStatus:withInfo:]', symObjAddr: 0xB2C, symBinAddr: 0x92B4, symSize: 0xB8 }
-  - { offset: 0xBFB2E, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish BeautyFirstCaptureImage:]', symObjAddr: 0xBE4, symBinAddr: 0x936C, symSize: 0xA8 }
-  - { offset: 0xBFB71, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish startVideoCapture]', symObjAddr: 0xC8C, symBinAddr: 0x9414, symSize: 0x408 }
-  - { offset: 0xBFD2F, size: 0x8, addend: 0x0, symName: '___37-[VHallLivePublish startVideoCapture]_block_invoke', symObjAddr: 0x1094, symBinAddr: 0x981C, symSize: 0x94 }
-  - { offset: 0xBFD9E, size: 0x8, addend: 0x0, symName: '___37-[VHallLivePublish startVideoCapture]_block_invoke_2', symObjAddr: 0x1128, symBinAddr: 0x98B0, symSize: 0x30 }
-  - { offset: 0xBFE31, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40r48r, symObjAddr: 0x1158, symBinAddr: 0x98E0, symSize: 0x44 }
-  - { offset: 0xBFE5A, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40r48r, symObjAddr: 0x119C, symBinAddr: 0x9924, symSize: 0x38 }
-  - { offset: 0xBFE79, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40s48r56r, symObjAddr: 0x11D4, symBinAddr: 0x995C, symSize: 0x4C }
-  - { offset: 0xBFEA2, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s48r56r, symObjAddr: 0x1220, symBinAddr: 0x99A8, symSize: 0x40 }
-  - { offset: 0xBFEC1, size: 0x8, addend: 0x0, symName: '___37-[VHallLivePublish startVideoCapture]_block_invoke.21', symObjAddr: 0x1260, symBinAddr: 0x99E8, symSize: 0x54 }
-  - { offset: 0xBFEFC, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish getMediaAccess:]', symObjAddr: 0x12C8, symBinAddr: 0x9A3C, symSize: 0xF4 }
-  - { offset: 0xBFF52, size: 0x8, addend: 0x0, symName: '___35-[VHallLivePublish getMediaAccess:]_block_invoke', symObjAddr: 0x13BC, symBinAddr: 0x9B30, symSize: 0xE4 }
-  - { offset: 0xC0001, size: 0x8, addend: 0x0, symName: '___35-[VHallLivePublish getMediaAccess:]_block_invoke_2', symObjAddr: 0x14A0, symBinAddr: 0x9C14, symSize: 0x514 }
-  - { offset: 0xC0076, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40w, symObjAddr: 0x19B4, symBinAddr: 0xA128, symSize: 0x30 }
-  - { offset: 0xC009F, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40w, symObjAddr: 0x19E4, symBinAddr: 0xA158, symSize: 0x28 }
-  - { offset: 0xC00BE, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40b48w, symObjAddr: 0x1A0C, symBinAddr: 0xA180, symSize: 0x40 }
-  - { offset: 0xC00E7, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s48w, symObjAddr: 0x1A4C, symBinAddr: 0xA1C0, symSize: 0x30 }
-  - { offset: 0xC0106, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish stopVideoCapture]', symObjAddr: 0x1A7C, symBinAddr: 0xA1F0, symSize: 0x18 }
-  - { offset: 0xC013E, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish stopVideoCaptureV2:]', symObjAddr: 0x1A94, symBinAddr: 0xA208, symSize: 0x18 }
-  - { offset: 0xC0185, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish startLive:]', symObjAddr: 0x1AAC, symBinAddr: 0xA220, symSize: 0x348 }
-  - { offset: 0xC028D, size: 0x8, addend: 0x0, symName: '___30-[VHallLivePublish startLive:]_block_invoke', symObjAddr: 0x1DF4, symBinAddr: 0xA568, symSize: 0x94 }
-  - { offset: 0xC0302, size: 0x8, addend: 0x0, symName: '___30-[VHallLivePublish startLive:]_block_invoke_2', symObjAddr: 0x1E88, symBinAddr: 0xA5FC, symSize: 0x30 }
-  - { offset: 0xC038A, size: 0x8, addend: 0x0, symName: '___30-[VHallLivePublish startLive:]_block_invoke_3', symObjAddr: 0x1EB8, symBinAddr: 0xA62C, symSize: 0x3C }
-  - { offset: 0xC03D5, size: 0x8, addend: 0x0, symName: '___30-[VHallLivePublish startLive:]_block_invoke.34', symObjAddr: 0x1EF4, symBinAddr: 0xA668, symSize: 0x17C }
-  - { offset: 0xC0444, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish startLive]', symObjAddr: 0x2070, symBinAddr: 0xA7E4, symSize: 0x2E0 }
-  - { offset: 0xC0478, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initBeautyPublish:]', symObjAddr: 0x2350, symBinAddr: 0xAAC4, symSize: 0x394 }
-  - { offset: 0xC0532, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish stopLive]', symObjAddr: 0x26E4, symBinAddr: 0xAE58, symSize: 0xA4 }
-  - { offset: 0xC0566, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish swapCameras:]', symObjAddr: 0x2788, symBinAddr: 0xAEFC, symSize: 0xC4 }
-  - { offset: 0xC05AF, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setFoucsFoint:]', symObjAddr: 0x284C, symBinAddr: 0xAFC0, symSize: 0xC8 }
-  - { offset: 0xC05F0, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish captureDeviceZoom:]', symObjAddr: 0x2914, symBinAddr: 0xB088, symSize: 0xB8 }
-  - { offset: 0xC0635, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setDeviceTorchModel:]', symObjAddr: 0x29CC, symBinAddr: 0xB140, symSize: 0x58 }
-  - { offset: 0xC067C, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish disconnect]', symObjAddr: 0x2A24, symBinAddr: 0xB198, symSize: 0x84 }
-  - { offset: 0xC06B0, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish reconnect]', symObjAddr: 0x2AA8, symBinAddr: 0xB21C, symSize: 0xF4 }
-  - { offset: 0xC0727, size: 0x8, addend: 0x0, symName: '___29-[VHallLivePublish reconnect]_block_invoke', symObjAddr: 0x2B9C, symBinAddr: 0xB310, symSize: 0x54 }
-  - { offset: 0xC0765, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish destoryObject]', symObjAddr: 0x2BF0, symBinAddr: 0xB364, symSize: 0x94 }
-  - { offset: 0xC0799, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setVolumeAmplificateSize:]', symObjAddr: 0x2C84, symBinAddr: 0xB3F8, symSize: 0x18 }
-  - { offset: 0xC07DD, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setContentMode:]', symObjAddr: 0x2C9C, symBinAddr: 0xB410, symSize: 0x78 }
-  - { offset: 0xC0822, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish camVidMirror:]', symObjAddr: 0x2D14, symBinAddr: 0xB488, symSize: 0x18 }
-  - { offset: 0xC086A, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setBeautify:Brightness:Saturation:Sharpness:]', symObjAddr: 0x2D2C, symBinAddr: 0xB4A0, symSize: 0x6C }
-  - { offset: 0xC08E2, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish displayView]', symObjAddr: 0x2D98, symBinAddr: 0xB50C, symSize: 0xB0 }
-  - { offset: 0xC091A, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish audioLiveTip]', symObjAddr: 0x2E48, symBinAddr: 0xB5BC, symSize: 0x154 }
-  - { offset: 0xC0952, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setCameraMute:]', symObjAddr: 0x2F9C, symBinAddr: 0xB710, symSize: 0x1C }
-  - { offset: 0xC0993, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setIsMute:]', symObjAddr: 0x2FB8, symBinAddr: 0xB72C, symSize: 0x1C }
-  - { offset: 0xC09D4, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish captureDevicePosition]', symObjAddr: 0x2FD4, symBinAddr: 0xB748, symSize: 0x18 }
-  - { offset: 0xC0A0C, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish isPublishing]', symObjAddr: 0x2FEC, symBinAddr: 0xB760, symSize: 0x18 }
-  - { offset: 0xC0A44, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setIsRehearsal:]', symObjAddr: 0x3004, symBinAddr: 0xB778, symSize: 0x1C }
-  - { offset: 0xC0A85, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish observeValueForKeyPath:ofObject:change:context:]', symObjAddr: 0x3020, symBinAddr: 0xB794, symSize: 0x1F8 }
-  - { offset: 0xC0AF1, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initSaasPublish:]', symObjAddr: 0x3218, symBinAddr: 0xB98C, symSize: 0x128 }
-  - { offset: 0xC0B58, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initVssPublish:]', symObjAddr: 0x3340, symBinAddr: 0xBAB4, symSize: 0x16C }
-  - { offset: 0xC0BD0, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initHuadiePublish:]', symObjAddr: 0x34AC, symBinAddr: 0xBC20, symSize: 0x288 }
-  - { offset: 0xC0C59, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish saasPublishStatus:withInfo:]', symObjAddr: 0x3734, symBinAddr: 0xBEA8, symSize: 0xB8 }
-  - { offset: 0xC0CAF, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish saasFirstCaptureImage:]', symObjAddr: 0x37EC, symBinAddr: 0xBF60, symSize: 0xA8 }
-  - { offset: 0xC0CF4, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish vssPublishShowAudioTip:]', symObjAddr: 0x3894, symBinAddr: 0xC008, symSize: 0x68 }
-  - { offset: 0xC0D35, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish vssPublishShowAudioTip]', symObjAddr: 0x38FC, symBinAddr: 0xC070, symSize: 0x68 }
-  - { offset: 0xC0D69, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish vssPublishStatus:withInfo:]', symObjAddr: 0x3964, symBinAddr: 0xC0D8, symSize: 0xB8 }
-  - { offset: 0xC0DBF, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish vssFirstCaptureImage:]', symObjAddr: 0x3A1C, symBinAddr: 0xC190, symSize: 0xA8 }
-  - { offset: 0xC0E04, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish HuadiePublishStatus:withInfo:]', symObjAddr: 0x3AC4, symBinAddr: 0xC238, symSize: 0xB8 }
-  - { offset: 0xC0E5A, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish HuadieFirstCaptureImage:]', symObjAddr: 0x3B7C, symBinAddr: 0xC2F0, symSize: 0xA8 }
-  - { offset: 0xC0E9F, size: 0x8, addend: 0x0, symName: '+[VHallLivePublish initBeautyEffectKit]', symObjAddr: 0x3C24, symBinAddr: 0xC398, symSize: 0xA8 }
-  - { offset: 0xC0F43, size: 0x8, addend: 0x0, symName: '+[VHallLivePublish currentModuleBeautyKit:]', symObjAddr: 0x3CCC, symBinAddr: 0xC440, symSize: 0x7C }
-  - { offset: 0xC0FA7, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish startSeatPushDirectorLive:checkHostLine:]', symObjAddr: 0x3D48, symBinAddr: 0xC4BC, symSize: 0x158 }
-  - { offset: 0xC100E, size: 0x8, addend: 0x0, symName: '___60-[VHallLivePublish startSeatPushDirectorLive:checkHostLine:]_block_invoke', symObjAddr: 0x3EA0, symBinAddr: 0xC614, symSize: 0x98 }
-  - { offset: 0xC1059, size: 0x8, addend: 0x0, symName: '___60-[VHallLivePublish startSeatPushDirectorLive:checkHostLine:]_block_invoke_2', symObjAddr: 0x3F38, symBinAddr: 0xC6AC, symSize: 0x17C }
-  - { offset: 0xC10C8, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initDirectorHostEnter:fail:]', symObjAddr: 0x40B4, symBinAddr: 0xC828, symSize: 0x1D0 }
-  - { offset: 0xC113A, size: 0x8, addend: 0x0, symName: '___47-[VHallLivePublish initDirectorHostEnter:fail:]_block_invoke', symObjAddr: 0x4284, symBinAddr: 0xC9F8, symSize: 0x58 }
-  - { offset: 0xC1189, size: 0x8, addend: 0x0, symName: '___47-[VHallLivePublish initDirectorHostEnter:fail:]_block_invoke_2', symObjAddr: 0x42DC, symBinAddr: 0xCA50, symSize: 0x1C }
-  - { offset: 0xC11EB, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initHostPublish:]', symObjAddr: 0x4310, symBinAddr: 0xCA6C, symSize: 0x168 }
-  - { offset: 0xC123D, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish startDirectorLive]', symObjAddr: 0x4478, symBinAddr: 0xCBD4, symSize: 0xA4 }
-  - { offset: 0xC1271, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish stopDirectorLive]', symObjAddr: 0x451C, symBinAddr: 0xCC78, symSize: 0x74 }
-  - { offset: 0xC12A5, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish destoryDirectorLive]', symObjAddr: 0x4590, symBinAddr: 0xCCEC, symSize: 0x80 }
-  - { offset: 0xC12D9, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish HuadieDirectorStream:]', symObjAddr: 0x4610, symBinAddr: 0xCD6C, symSize: 0xA4 }
-  - { offset: 0xC131E, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish liveView]', symObjAddr: 0x46B4, symBinAddr: 0xCE10, symSize: 0x94 }
-  - { offset: 0xC1356, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish delegate]', symObjAddr: 0x4748, symBinAddr: 0xCEA4, symSize: 0x18 }
-  - { offset: 0xC138D, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setDelegate:]', symObjAddr: 0x4760, symBinAddr: 0xCEBC, symSize: 0xC }
-  - { offset: 0xC13CE, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish cameraMute]', symObjAddr: 0x476C, symBinAddr: 0xCEC8, symSize: 0x8 }
-  - { offset: 0xC1405, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish isMute]', symObjAddr: 0x4774, symBinAddr: 0xCED0, symSize: 0x8 }
-  - { offset: 0xC143C, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish isRehearsal]', symObjAddr: 0x477C, symBinAddr: 0xCED8, symSize: 0x8 }
-  - { offset: 0xC1473, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setDisplayView:]', symObjAddr: 0x4784, symBinAddr: 0xCEE0, symSize: 0xC }
-  - { offset: 0xC14B4, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setLiveView:]', symObjAddr: 0x4790, symBinAddr: 0xCEEC, symSize: 0xC }
-  - { offset: 0xC14F5, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setAudioLiveTip:]', symObjAddr: 0x479C, symBinAddr: 0xCEF8, symSize: 0xC }
-  - { offset: 0xC1536, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish liveModel]', symObjAddr: 0x47A8, symBinAddr: 0xCF04, symSize: 0x8 }
-  - { offset: 0xC156D, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setLiveModel:]', symObjAddr: 0x47B0, symBinAddr: 0xCF0C, symSize: 0xC }
-  - { offset: 0xC15AE, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish publisher]', symObjAddr: 0x47BC, symBinAddr: 0xCF18, symSize: 0x8 }
-  - { offset: 0xC15E5, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setPublisher:]', symObjAddr: 0x47C4, symBinAddr: 0xCF20, symSize: 0xC }
-  - { offset: 0xC1626, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish config]', symObjAddr: 0x47D0, symBinAddr: 0xCF2C, symSize: 0x8 }
-  - { offset: 0xC165D, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setConfig:]', symObjAddr: 0x47D8, symBinAddr: 0xCF34, symSize: 0xC }
-  - { offset: 0xC169E, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish beautyType]', symObjAddr: 0x47E4, symBinAddr: 0xCF40, symSize: 0x8 }
-  - { offset: 0xC16D5, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setBeautyType:]', symObjAddr: 0x47EC, symBinAddr: 0xCF48, symSize: 0x8 }
-  - { offset: 0xC1712, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish beautKit]', symObjAddr: 0x47F4, symBinAddr: 0xCF50, symSize: 0x8 }
-  - { offset: 0xC1749, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setBeautKit:]', symObjAddr: 0x47FC, symBinAddr: 0xCF58, symSize: 0xC }
-  - { offset: 0xC178A, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish authCallBack]', symObjAddr: 0x4808, symBinAddr: 0xCF64, symSize: 0x8 }
-  - { offset: 0xC17C1, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setAuthCallBack:]', symObjAddr: 0x4810, symBinAddr: 0xCF6C, symSize: 0x8 }
-  - { offset: 0xC1800, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish directorType]', symObjAddr: 0x4818, symBinAddr: 0xCF74, symSize: 0x8 }
-  - { offset: 0xC1837, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setDirectorType:]', symObjAddr: 0x4820, symBinAddr: 0xCF7C, symSize: 0x8 }
-  - { offset: 0xC1874, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish isV2]', symObjAddr: 0x4828, symBinAddr: 0xCF84, symSize: 0x8 }
-  - { offset: 0xC18AB, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setIsV2:]', symObjAddr: 0x4830, symBinAddr: 0xCF8C, symSize: 0x8 }
-  - { offset: 0xC18E6, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish licenseUrl]', symObjAddr: 0x4838, symBinAddr: 0xCF94, symSize: 0x8 }
-  - { offset: 0xC191D, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setLicenseUrl:]', symObjAddr: 0x4840, symBinAddr: 0xCF9C, symSize: 0xC }
-  - { offset: 0xC195E, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish licenseKey]', symObjAddr: 0x484C, symBinAddr: 0xCFA8, symSize: 0x8 }
-  - { offset: 0xC1995, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setLicenseKey:]', symObjAddr: 0x4854, symBinAddr: 0xCFB0, symSize: 0xC }
-  - { offset: 0xC19D6, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish .cxx_destruct]', symObjAddr: 0x4860, symBinAddr: 0xCFBC, symSize: 0xB0 }
-  - { offset: 0xC22C7, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish displayView]', symObjAddr: 0x0, symBinAddr: 0xD06C, symSize: 0x80 }
-  - { offset: 0xC352E, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish displayView]', symObjAddr: 0x0, symBinAddr: 0xD06C, symSize: 0x80 }
-  - { offset: 0xC3565, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish isMute]', symObjAddr: 0x80, symBinAddr: 0xD0EC, symSize: 0x14 }
-  - { offset: 0xC359A, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setIsMute:]', symObjAddr: 0x94, symBinAddr: 0xD100, symSize: 0xC8 }
-  - { offset: 0xC35ED, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish captureDevicePosition]', symObjAddr: 0x15C, symBinAddr: 0xD1C8, symSize: 0x48 }
-  - { offset: 0xC3624, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish isPublishing]', symObjAddr: 0x1A4, symBinAddr: 0xD210, symSize: 0x14 }
-  - { offset: 0xC3659, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish initWithConfig:LiveModel:videoCapture:audioCapture:]', symObjAddr: 0x1B8, symBinAddr: 0xD224, symSize: 0x58 }
-  - { offset: 0xC36D0, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish initWithConfig:videoCapture:audioCapture:error:]', symObjAddr: 0x210, symBinAddr: 0xD27C, symSize: 0x58 }
-  - { offset: 0xC3747, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish initWithConfig:licenseUrl:licenseKey:videoCapture:audioCapture:error:]', symObjAddr: 0x268, symBinAddr: 0xD2D4, symSize: 0xF0 }
-  - { offset: 0xC37D6, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish createBlackImageWithSize:height:]', symObjAddr: 0x358, symBinAddr: 0xD3C4, symSize: 0xB8 }
-  - { offset: 0xC3919, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish initPublisherV2:initConfig:licenseUrl:licenseKey:]', symObjAddr: 0x410, symBinAddr: 0xD47C, symSize: 0x460 }
-  - { offset: 0xC39CB, size: 0x8, addend: 0x0, symName: '___71-[VhallLiveV2Publish initPublisherV2:initConfig:licenseUrl:licenseKey:]_block_invoke', symObjAddr: 0x870, symBinAddr: 0xD8DC, symSize: 0x58 }
-  - { offset: 0xC3A20, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish refreshModel:activityType:]', symObjAddr: 0x8C8, symBinAddr: 0xD934, symSize: 0x10C }
-  - { offset: 0xC3A73, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish startVideoCapture]', symObjAddr: 0x9D4, symBinAddr: 0xDA40, symSize: 0x7C }
-  - { offset: 0xC3AAA, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish stopVideoCapture]', symObjAddr: 0xA50, symBinAddr: 0xDABC, symSize: 0x48 }
-  - { offset: 0xC3AE1, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish stopVideoCaptureV2:]', symObjAddr: 0xA98, symBinAddr: 0xDB04, symSize: 0x94 }
-  - { offset: 0xC3B28, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish startLive]', symObjAddr: 0xB2C, symBinAddr: 0xDB98, symSize: 0x394 }
-  - { offset: 0xC3B82, size: 0x8, addend: 0x0, symName: '___31-[VhallLiveV2Publish startLive]_block_invoke', symObjAddr: 0xEC0, symBinAddr: 0xDF2C, symSize: 0x148 }
-  - { offset: 0xC3BC9, size: 0x8, addend: 0x0, symName: '___31-[VhallLiveV2Publish startLive]_block_invoke.19', symObjAddr: 0x101C, symBinAddr: 0xE074, symSize: 0x14 }
-  - { offset: 0xC3BF0, size: 0x8, addend: 0x0, symName: '___31-[VhallLiveV2Publish startLive]_block_invoke_2', symObjAddr: 0x1030, symBinAddr: 0xE088, symSize: 0x14 }
-  - { offset: 0xC3C23, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish enableIM]', symObjAddr: 0x1044, symBinAddr: 0xE09C, symSize: 0x18C }
-  - { offset: 0xC3C66, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish startLiveAction]', symObjAddr: 0x11D0, symBinAddr: 0xE228, symSize: 0x1CC }
-  - { offset: 0xC3CB8, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish stopLive]', symObjAddr: 0x139C, symBinAddr: 0xE3F4, symSize: 0x13C }
-  - { offset: 0xC3CEC, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish disconnect]', symObjAddr: 0x14D8, symBinAddr: 0xE530, symSize: 0x7C }
-  - { offset: 0xC3D20, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish reconnect]', symObjAddr: 0x1554, symBinAddr: 0xE5AC, symSize: 0x198 }
-  - { offset: 0xC3D54, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish swapCameras:]', symObjAddr: 0x16EC, symBinAddr: 0xE744, symSize: 0x7C }
-  - { offset: 0xC3D9D, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setFoucsFoint:]', symObjAddr: 0x1768, symBinAddr: 0xE7C0, symSize: 0x58 }
-  - { offset: 0xC3DDE, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish captureDeviceZoom:]', symObjAddr: 0x17C0, symBinAddr: 0xE818, symSize: 0x50 }
-  - { offset: 0xC3E23, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setDeviceTorchModel:]', symObjAddr: 0x1810, symBinAddr: 0xE868, symSize: 0x74 }
-  - { offset: 0xC3E6C, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish destoryObject]', symObjAddr: 0x1884, symBinAddr: 0xE8DC, symSize: 0x6C }
-  - { offset: 0xC3EA0, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setVolumeAmplificateSize:]', symObjAddr: 0x18F0, symBinAddr: 0xE948, symSize: 0x14 }
-  - { offset: 0xC3EDD, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish camVidMirror:]', symObjAddr: 0x1904, symBinAddr: 0xE95C, symSize: 0x48 }
-  - { offset: 0xC3F22, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setContentMode:]', symObjAddr: 0x194C, symBinAddr: 0xE9A4, symSize: 0x8C }
-  - { offset: 0xC3F67, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish stopLiveRequestSuccess:failed:]', symObjAddr: 0x19D8, symBinAddr: 0xEA30, symSize: 0x1BC }
-  - { offset: 0xC3FBD, size: 0x8, addend: 0x0, symName: '___52-[VhallLiveV2Publish stopLiveRequestSuccess:failed:]_block_invoke', symObjAddr: 0x1B94, symBinAddr: 0xEBEC, symSize: 0x34 }
-  - { offset: 0xC4007, size: 0x8, addend: 0x0, symName: '___52-[VhallLiveV2Publish stopLiveRequestSuccess:failed:]_block_invoke.31', symObjAddr: 0x1BE0, symBinAddr: 0xEC20, symSize: 0x34 }
-  - { offset: 0xC4060, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish onPublishStatusV2:info:]', symObjAddr: 0x1C14, symBinAddr: 0xEC54, symSize: 0x2DC }
-  - { offset: 0xC4116, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish onPublishErrorV2:info:]', symObjAddr: 0x1EF0, symBinAddr: 0xEF30, symSize: 0x37C }
-  - { offset: 0xC41CC, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish onWarning:message:extraInfo:]', symObjAddr: 0x226C, symBinAddr: 0xF2AC, symSize: 0x12C }
-  - { offset: 0xC424B, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish onStatisticsUpdate:]', symObjAddr: 0x2398, symBinAddr: 0xF3D8, symSize: 0x1A4 }
-  - { offset: 0xC42A1, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish saasLogParam]', symObjAddr: 0x253C, symBinAddr: 0xF57C, symSize: 0x4C0 }
-  - { offset: 0xC433C, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish startTimer]', symObjAddr: 0x29FC, symBinAddr: 0xFA3C, symSize: 0x120 }
-  - { offset: 0xC451B, size: 0x8, addend: 0x0, symName: '___32-[VhallLiveV2Publish startTimer]_block_invoke', symObjAddr: 0x2B1C, symBinAddr: 0xFB5C, symSize: 0x3C }
-  - { offset: 0xC4559, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish stopTimer]', symObjAddr: 0x2B58, symBinAddr: 0xFB98, symSize: 0x68 }
-  - { offset: 0xC45AA, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish timeEvent]', symObjAddr: 0x2BC0, symBinAddr: 0xFC00, symSize: 0x7C }
-  - { offset: 0xC4607, size: 0x8, addend: 0x0, symName: '___31-[VhallLiveV2Publish timeEvent]_block_invoke', symObjAddr: 0x2C3C, symBinAddr: 0xFC7C, symSize: 0x104 }
-  - { offset: 0xC4669, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s, symObjAddr: 0x2D40, symBinAddr: 0xFD80, symSize: 0x8 }
-  - { offset: 0xC4690, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish directorType:]', symObjAddr: 0x2D48, symBinAddr: 0xFD88, symSize: 0x14 }
-  - { offset: 0xC46D1, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish delegate]', symObjAddr: 0x2D5C, symBinAddr: 0xFD9C, symSize: 0x20 }
-  - { offset: 0xC4708, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setDelegate:]', symObjAddr: 0x2D7C, symBinAddr: 0xFDBC, symSize: 0x14 }
-  - { offset: 0xC4749, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish publisherV2]', symObjAddr: 0x2D90, symBinAddr: 0xFDD0, symSize: 0x10 }
-  - { offset: 0xC4780, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setPublisherV2:]', symObjAddr: 0x2DA0, symBinAddr: 0xFDE0, symSize: 0x14 }
-  - { offset: 0xC47C1, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish activityType]', symObjAddr: 0x2DB4, symBinAddr: 0xFDF4, symSize: 0x10 }
-  - { offset: 0xC47F8, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setActivityType:]', symObjAddr: 0x2DC4, symBinAddr: 0xFE04, symSize: 0x10 }
-  - { offset: 0xC4835, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish livePlayer]', symObjAddr: 0x2DD4, symBinAddr: 0xFE14, symSize: 0x10 }
-  - { offset: 0xC486C, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setLivePlayer:]', symObjAddr: 0x2DE4, symBinAddr: 0xFE24, symSize: 0x14 }
-  - { offset: 0xC48AD, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish isAudioMute]', symObjAddr: 0x2DF8, symBinAddr: 0xFE38, symSize: 0x10 }
-  - { offset: 0xC48E4, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setIsAudioMute:]', symObjAddr: 0x2E08, symBinAddr: 0xFE48, symSize: 0x10 }
-  - { offset: 0xC491F, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish isFrontCamera]', symObjAddr: 0x2E18, symBinAddr: 0xFE58, symSize: 0x10 }
-  - { offset: 0xC4956, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setIsFrontCamera:]', symObjAddr: 0x2E28, symBinAddr: 0xFE68, symSize: 0x10 }
-  - { offset: 0xC4991, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish isPushing]', symObjAddr: 0x2E38, symBinAddr: 0xFE78, symSize: 0x10 }
-  - { offset: 0xC49C8, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setIsPushing:]', symObjAddr: 0x2E48, symBinAddr: 0xFE88, symSize: 0x10 }
-  - { offset: 0xC4A03, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish pushState]', symObjAddr: 0x2E58, symBinAddr: 0xFE98, symSize: 0x10 }
-  - { offset: 0xC4A3A, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setPushState:]', symObjAddr: 0x2E68, symBinAddr: 0xFEA8, symSize: 0x10 }
-  - { offset: 0xC4A77, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish videoWidth]', symObjAddr: 0x2E78, symBinAddr: 0xFEB8, symSize: 0x10 }
-  - { offset: 0xC4AAE, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setVideoWidth:]', symObjAddr: 0x2E88, symBinAddr: 0xFEC8, symSize: 0x10 }
-  - { offset: 0xC4AEB, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish videoHeight]', symObjAddr: 0x2E98, symBinAddr: 0xFED8, symSize: 0x10 }
-  - { offset: 0xC4B22, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setVideoHeight:]', symObjAddr: 0x2EA8, symBinAddr: 0xFEE8, symSize: 0x10 }
-  - { offset: 0xC4B5F, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish timer]', symObjAddr: 0x2EB8, symBinAddr: 0xFEF8, symSize: 0x10 }
-  - { offset: 0xC4B96, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setTimer:]', symObjAddr: 0x2EC8, symBinAddr: 0xFF08, symSize: 0x14 }
-  - { offset: 0xC4BD7, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish videoContentView]', symObjAddr: 0x2EDC, symBinAddr: 0xFF1C, symSize: 0x10 }
-  - { offset: 0xC4C0E, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setVideoContentView:]', symObjAddr: 0x2EEC, symBinAddr: 0xFF2C, symSize: 0x14 }
-  - { offset: 0xC4C4F, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish .cxx_destruct]', symObjAddr: 0x2F00, symBinAddr: 0xFF40, symSize: 0x78 }
-  - { offset: 0xC50D5, size: 0x8, addend: 0x0, symName: '-[VhallPublish initWithConfig:videoCapture:audioCapture:error:]', symObjAddr: 0x0, symBinAddr: 0xFFB8, symSize: 0x8C }
-  - { offset: 0xC5E1D, size: 0x8, addend: 0x0, symName: '-[VhallPublish initWithConfig:videoCapture:audioCapture:error:]', symObjAddr: 0x0, symBinAddr: 0xFFB8, symSize: 0x8C }
-  - { offset: 0xC5E88, size: 0x8, addend: 0x0, symName: '-[VhallPublish initWithConfig:licenseUrl:licenseKey:videoCapture:audioCapture:error:]', symObjAddr: 0x8C, symBinAddr: 0x10044, symSize: 0xDC }
-  - { offset: 0xC5F13, size: 0x8, addend: 0x0, symName: '-[VhallPublish initWithConfig:LiveModel:videoCapture:audioCapture:]', symObjAddr: 0x168, symBinAddr: 0x10120, symSize: 0xB8 }
-  - { offset: 0xC5F82, size: 0x8, addend: 0x0, symName: '-[VhallPublish startVideoCapture]', symObjAddr: 0x220, symBinAddr: 0x101D8, symSize: 0x18 }
-  - { offset: 0xC5FB5, size: 0x8, addend: 0x0, symName: '-[VhallPublish stopVideoCapture]', symObjAddr: 0x238, symBinAddr: 0x101F0, symSize: 0x18 }
-  - { offset: 0xC5FE8, size: 0x8, addend: 0x0, symName: '-[VhallPublish startLive]', symObjAddr: 0x250, symBinAddr: 0x10208, symSize: 0x14 }
-  - { offset: 0xC6017, size: 0x8, addend: 0x0, symName: '-[VhallPublish stopLive]', symObjAddr: 0x264, symBinAddr: 0x1021C, symSize: 0x14 }
-  - { offset: 0xC6046, size: 0x8, addend: 0x0, symName: '-[VhallPublish disconnect]', symObjAddr: 0x278, symBinAddr: 0x10230, symSize: 0x14 }
-  - { offset: 0xC6075, size: 0x8, addend: 0x0, symName: '-[VhallPublish reconnect]', symObjAddr: 0x28C, symBinAddr: 0x10244, symSize: 0x14 }
-  - { offset: 0xC60A4, size: 0x8, addend: 0x0, symName: '-[VhallPublish setIsRehearsal:]', symObjAddr: 0x2A0, symBinAddr: 0x10258, symSize: 0x18 }
-  - { offset: 0xC60E1, size: 0x8, addend: 0x0, symName: '-[VhallPublish swapCameras:]', symObjAddr: 0x2B8, symBinAddr: 0x10270, symSize: 0x18 }
-  - { offset: 0xC6120, size: 0x8, addend: 0x0, symName: '-[VhallPublish setFoucsFoint:]', symObjAddr: 0x2D0, symBinAddr: 0x10288, symSize: 0x14 }
-  - { offset: 0xC615B, size: 0x8, addend: 0x0, symName: '-[VhallPublish captureDeviceZoom:]', symObjAddr: 0x2E4, symBinAddr: 0x1029C, symSize: 0x14 }
-  - { offset: 0xC6196, size: 0x8, addend: 0x0, symName: '-[VhallPublish setDeviceTorchModel:]', symObjAddr: 0x2F8, symBinAddr: 0x102B0, symSize: 0x18 }
-  - { offset: 0xC61D5, size: 0x8, addend: 0x0, symName: '-[VhallPublish destoryObject]', symObjAddr: 0x310, symBinAddr: 0x102C8, symSize: 0x14 }
-  - { offset: 0xC6204, size: 0x8, addend: 0x0, symName: '-[VhallPublish setVolumeAmplificateSize:]', symObjAddr: 0x324, symBinAddr: 0x102DC, symSize: 0x14 }
-  - { offset: 0xC623F, size: 0x8, addend: 0x0, symName: '-[VhallPublish setContentMode:]', symObjAddr: 0x338, symBinAddr: 0x102F0, symSize: 0x14 }
-  - { offset: 0xC627A, size: 0x8, addend: 0x0, symName: '-[VhallPublish camVidMirror:]', symObjAddr: 0x34C, symBinAddr: 0x10304, symSize: 0x14 }
-  - { offset: 0xC62B5, size: 0x8, addend: 0x0, symName: '-[VhallPublish setFilterBilateral:Brightness:Saturation:Sharpness:]', symObjAddr: 0x360, symBinAddr: 0x10318, symSize: 0x14 }
-  - { offset: 0xC6314, size: 0x8, addend: 0x0, symName: '-[VhallPublish stopLiveRequestSuccess:failed:]', symObjAddr: 0x374, symBinAddr: 0x1032C, symSize: 0x14 }
-  - { offset: 0xC635B, size: 0x8, addend: 0x0, symName: '-[VhallPublish initLiveModel:extraDic:]', symObjAddr: 0x388, symBinAddr: 0x10340, symSize: 0x8C }
-  - { offset: 0xC63AE, size: 0x8, addend: 0x0, symName: '-[VhallPublish hostEnterStartDirectorLive]', symObjAddr: 0x414, symBinAddr: 0x103CC, symSize: 0x14 }
-  - { offset: 0xC63DD, size: 0x8, addend: 0x0, symName: '-[VhallPublish hostEnterStopDirectorLive]', symObjAddr: 0x428, symBinAddr: 0x103E0, symSize: 0x14 }
-  - { offset: 0xC640C, size: 0x8, addend: 0x0, symName: '-[VhallPublish hostEnterDestoryDirectorLive]', symObjAddr: 0x43C, symBinAddr: 0x103F4, symSize: 0x14 }
-  - { offset: 0xC643B, size: 0x8, addend: 0x0, symName: '-[VhallPublish directorHostEnterPlayerLogParam]', symObjAddr: 0x450, symBinAddr: 0x10408, symSize: 0x1B8 }
-  - { offset: 0xC6482, size: 0x8, addend: 0x0, symName: '-[VhallPublish displayView]', symObjAddr: 0x608, symBinAddr: 0x105C0, symSize: 0x8 }
-  - { offset: 0xC64B9, size: 0x8, addend: 0x0, symName: '-[VhallPublish cameraMute]', symObjAddr: 0x610, symBinAddr: 0x105C8, symSize: 0x8 }
-  - { offset: 0xC64F0, size: 0x8, addend: 0x0, symName: '-[VhallPublish setCameraMute:]', symObjAddr: 0x618, symBinAddr: 0x105D0, symSize: 0x8 }
-  - { offset: 0xC652B, size: 0x8, addend: 0x0, symName: '-[VhallPublish isMute]', symObjAddr: 0x620, symBinAddr: 0x105D8, symSize: 0x8 }
-  - { offset: 0xC6562, size: 0x8, addend: 0x0, symName: '-[VhallPublish setIsMute:]', symObjAddr: 0x628, symBinAddr: 0x105E0, symSize: 0x8 }
-  - { offset: 0xC659D, size: 0x8, addend: 0x0, symName: '-[VhallPublish captureDevicePosition]', symObjAddr: 0x630, symBinAddr: 0x105E8, symSize: 0x8 }
-  - { offset: 0xC65D4, size: 0x8, addend: 0x0, symName: '-[VhallPublish isPublishing]', symObjAddr: 0x638, symBinAddr: 0x105F0, symSize: 0x8 }
-  - { offset: 0xC660B, size: 0x8, addend: 0x0, symName: '-[VhallPublish isRehearsal]', symObjAddr: 0x640, symBinAddr: 0x105F8, symSize: 0x8 }
-  - { offset: 0xC6642, size: 0x8, addend: 0x0, symName: '-[VhallPublish livemodel]', symObjAddr: 0x648, symBinAddr: 0x10600, symSize: 0x18 }
-  - { offset: 0xC6679, size: 0x8, addend: 0x0, symName: '-[VhallPublish setLivemodel:]', symObjAddr: 0x660, symBinAddr: 0x10618, symSize: 0xC }
-  - { offset: 0xC66BA, size: 0x8, addend: 0x0, symName: '-[VhallPublish config]', symObjAddr: 0x66C, symBinAddr: 0x10624, symSize: 0x18 }
-  - { offset: 0xC66F1, size: 0x8, addend: 0x0, symName: '-[VhallPublish setConfig:]', symObjAddr: 0x684, symBinAddr: 0x1063C, symSize: 0xC }
-  - { offset: 0xC6732, size: 0x8, addend: 0x0, symName: '-[VhallPublish licenseUrl]', symObjAddr: 0x690, symBinAddr: 0x10648, symSize: 0x8 }
-  - { offset: 0xC6769, size: 0x8, addend: 0x0, symName: '-[VhallPublish setLicenseUrl:]', symObjAddr: 0x698, symBinAddr: 0x10650, symSize: 0xC }
-  - { offset: 0xC67AA, size: 0x8, addend: 0x0, symName: '-[VhallPublish licenseKey]', symObjAddr: 0x6A4, symBinAddr: 0x1065C, symSize: 0x8 }
-  - { offset: 0xC67E1, size: 0x8, addend: 0x0, symName: '-[VhallPublish setLicenseKey:]', symObjAddr: 0x6AC, symBinAddr: 0x10664, symSize: 0xC }
-  - { offset: 0xC6822, size: 0x8, addend: 0x0, symName: '-[VhallPublish livePlayerView]', symObjAddr: 0x6B8, symBinAddr: 0x10670, symSize: 0x8 }
-  - { offset: 0xC6859, size: 0x8, addend: 0x0, symName: '-[VhallPublish directorType]', symObjAddr: 0x6C0, symBinAddr: 0x10678, symSize: 0x8 }
-  - { offset: 0xC6890, size: 0x8, addend: 0x0, symName: '-[VhallPublish setDirectorType:]', symObjAddr: 0x6C8, symBinAddr: 0x10680, symSize: 0x8 }
-  - { offset: 0xC68CD, size: 0x8, addend: 0x0, symName: '-[VhallPublish .cxx_destruct]', symObjAddr: 0x6D0, symBinAddr: 0x10688, symSize: 0x58 }
-  - { offset: 0xC6A57, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish displayView]', symObjAddr: 0x0, symBinAddr: 0x106E0, symSize: 0x20 }
-  - { offset: 0xC78B8, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish displayView]', symObjAddr: 0x0, symBinAddr: 0x106E0, symSize: 0x20 }
-  - { offset: 0xC78EF, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish cameraMute]', symObjAddr: 0x20, symBinAddr: 0x10700, symSize: 0x18 }
-  - { offset: 0xC7922, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setCameraMute:]', symObjAddr: 0x38, symBinAddr: 0x10718, symSize: 0x14 }
-  - { offset: 0xC795D, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish isMute]', symObjAddr: 0x4C, symBinAddr: 0x1072C, symSize: 0x20 }
-  - { offset: 0xC7994, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setIsMute:]', symObjAddr: 0x6C, symBinAddr: 0x1074C, symSize: 0x20 }
-  - { offset: 0xC79DA, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish captureDevicePosition]', symObjAddr: 0x8C, symBinAddr: 0x1076C, symSize: 0x20 }
-  - { offset: 0xC7A11, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish isPublishing]', symObjAddr: 0xAC, symBinAddr: 0x1078C, symSize: 0x20 }
-  - { offset: 0xC7A48, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish dealloc]', symObjAddr: 0xCC, symBinAddr: 0x107AC, symSize: 0xB0 }
-  - { offset: 0xC7A7B, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish initWithConfig:LiveModel:videoCapture:audioCapture:]', symObjAddr: 0x17C, symBinAddr: 0x1085C, symSize: 0x114 }
-  - { offset: 0xC7AF2, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish startVideoCapture]', symObjAddr: 0x290, symBinAddr: 0x10970, symSize: 0x20 }
-  - { offset: 0xC7B29, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish stopVideoCapture]', symObjAddr: 0x2B0, symBinAddr: 0x10990, symSize: 0x20 }
-  - { offset: 0xC7B60, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish stopVideoCaptureV2:]', symObjAddr: 0x2D0, symBinAddr: 0x109B0, symSize: 0x18 }
-  - { offset: 0xC7B9F, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish startLive]', symObjAddr: 0x2E8, symBinAddr: 0x109C8, symSize: 0x200 }
-  - { offset: 0xC7BF1, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish stopLive]', symObjAddr: 0x4E8, symBinAddr: 0x10BC8, symSize: 0xB8 }
-  - { offset: 0xC7C24, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish disconnect]', symObjAddr: 0x5A0, symBinAddr: 0x10C80, symSize: 0x20 }
-  - { offset: 0xC7C57, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish reconnect]', symObjAddr: 0x5C0, symBinAddr: 0x10CA0, symSize: 0x90 }
-  - { offset: 0xC7C8A, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish swapCameras:]', symObjAddr: 0x650, symBinAddr: 0x10D30, symSize: 0x20 }
-  - { offset: 0xC7CCF, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setFoucsFoint:]', symObjAddr: 0x670, symBinAddr: 0x10D50, symSize: 0x24 }
-  - { offset: 0xC7D0E, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish captureDeviceZoom:]', symObjAddr: 0x694, symBinAddr: 0x10D74, symSize: 0x20 }
-  - { offset: 0xC7D50, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setDeviceTorchModel:]', symObjAddr: 0x6B4, symBinAddr: 0x10D94, symSize: 0x20 }
-  - { offset: 0xC7D95, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish destoryObject]', symObjAddr: 0x6D4, symBinAddr: 0x10DB4, symSize: 0x20 }
-  - { offset: 0xC7DC8, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setVolumeAmplificateSize:]', symObjAddr: 0x6F4, symBinAddr: 0x10DD4, symSize: 0x20 }
-  - { offset: 0xC7E0A, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setContentMode:]', symObjAddr: 0x714, symBinAddr: 0x10DF4, symSize: 0x88 }
-  - { offset: 0xC7E4D, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setFilterBilateral:Brightness:Saturation:Sharpness:]', symObjAddr: 0x79C, symBinAddr: 0x10E7C, symSize: 0x8C }
-  - { offset: 0xC7ED0, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish stopLiveRequestSuccess:failed:]', symObjAddr: 0x828, symBinAddr: 0x10F08, symSize: 0x154 }
-  - { offset: 0xC7F33, size: 0x8, addend: 0x0, symName: '___50-[VhallSaasPublish stopLiveRequestSuccess:failed:]_block_invoke', symObjAddr: 0x97C, symBinAddr: 0x1105C, symSize: 0x34 }
-  - { offset: 0xC7F86, size: 0x8, addend: 0x0, symName: '___50-[VhallSaasPublish stopLiveRequestSuccess:failed:]_block_invoke.10', symObjAddr: 0x9C8, symBinAddr: 0x11090, symSize: 0x34 }
-  - { offset: 0xC7FDB, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish in_startPushStream:withPushType:]', symObjAddr: 0x9FC, symBinAddr: 0x110C4, symSize: 0xC8 }
-  - { offset: 0xC802E, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish firstCaptureImage:]', symObjAddr: 0xAC4, symBinAddr: 0x1118C, symSize: 0xE8 }
-  - { offset: 0xC8071, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish onPublishStatus:info:]', symObjAddr: 0xBAC, symBinAddr: 0x11274, symSize: 0x1C8 }
-  - { offset: 0xC80C4, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish onPublishError:info:]', symObjAddr: 0xD74, symBinAddr: 0x1143C, symSize: 0x1BC }
-  - { offset: 0xC8117, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish delegate]', symObjAddr: 0xF30, symBinAddr: 0x115F8, symSize: 0x20 }
-  - { offset: 0xC814E, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setDelegate:]', symObjAddr: 0xF50, symBinAddr: 0x11618, symSize: 0x14 }
-  - { offset: 0xC818F, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish publisher]', symObjAddr: 0xF64, symBinAddr: 0x1162C, symSize: 0x10 }
-  - { offset: 0xC81C6, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setPublisher:]', symObjAddr: 0xF74, symBinAddr: 0x1163C, symSize: 0x14 }
-  - { offset: 0xC8207, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish .cxx_destruct]', symObjAddr: 0xF88, symBinAddr: 0x11650, symSize: 0x3C }
-  - { offset: 0xC85CB, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish displayView]', symObjAddr: 0x0, symBinAddr: 0x1168C, symSize: 0x20 }
-  - { offset: 0xC9430, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish displayView]', symObjAddr: 0x0, symBinAddr: 0x1168C, symSize: 0x20 }
-  - { offset: 0xC9467, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish cameraMute]', symObjAddr: 0x20, symBinAddr: 0x116AC, symSize: 0x20 }
-  - { offset: 0xC949E, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setCameraMute:]', symObjAddr: 0x40, symBinAddr: 0x116CC, symSize: 0x20 }
-  - { offset: 0xC94E4, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish isMute]', symObjAddr: 0x60, symBinAddr: 0x116EC, symSize: 0x20 }
-  - { offset: 0xC951B, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setIsMute:]', symObjAddr: 0x80, symBinAddr: 0x1170C, symSize: 0x20 }
-  - { offset: 0xC9561, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish captureDevicePosition]', symObjAddr: 0xA0, symBinAddr: 0x1172C, symSize: 0x20 }
-  - { offset: 0xC9598, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish isPublishing]', symObjAddr: 0xC0, symBinAddr: 0x1174C, symSize: 0x20 }
-  - { offset: 0xC95CF, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish initWithConfig:LiveModel:videoCapture:audioCapture:]', symObjAddr: 0xE0, symBinAddr: 0x1176C, symSize: 0x114 }
-  - { offset: 0xC9646, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish startVideoCapture]', symObjAddr: 0x1F4, symBinAddr: 0x11880, symSize: 0x20 }
-  - { offset: 0xC967D, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish stopVideoCapture]', symObjAddr: 0x214, symBinAddr: 0x118A0, symSize: 0x20 }
-  - { offset: 0xC96B4, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish stopVideoCaptureV2:]', symObjAddr: 0x234, symBinAddr: 0x118C0, symSize: 0x18 }
-  - { offset: 0xC96F3, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish startLive]', symObjAddr: 0x24C, symBinAddr: 0x118D8, symSize: 0x1AC }
-  - { offset: 0xC9736, size: 0x8, addend: 0x0, symName: '___28-[VhallVssPublish startLive]_block_invoke', symObjAddr: 0x3F8, symBinAddr: 0x11A84, symSize: 0x5C }
-  - { offset: 0xC977D, size: 0x8, addend: 0x0, symName: '___28-[VhallVssPublish startLive]_block_invoke_2', symObjAddr: 0x454, symBinAddr: 0x11AE0, symSize: 0x14 }
-  - { offset: 0xC97B0, size: 0x8, addend: 0x0, symName: '___28-[VhallVssPublish startLive]_block_invoke_3', symObjAddr: 0x468, symBinAddr: 0x11AF4, symSize: 0x14 }
-  - { offset: 0xC97E3, size: 0x8, addend: 0x0, symName: '___28-[VhallVssPublish startLive]_block_invoke.5', symObjAddr: 0x490, symBinAddr: 0x11B08, symSize: 0xFC }
-  - { offset: 0xC984D, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish startLiveAction]', symObjAddr: 0x58C, symBinAddr: 0x11C04, symSize: 0x3C0 }
-  - { offset: 0xC98AF, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish stopLive]', symObjAddr: 0x94C, symBinAddr: 0x11FC4, symSize: 0xA4 }
-  - { offset: 0xC98E2, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish disconnect]', symObjAddr: 0x9F0, symBinAddr: 0x12068, symSize: 0x20 }
-  - { offset: 0xC9915, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish reconnect]', symObjAddr: 0xA10, symBinAddr: 0x12088, symSize: 0x148 }
-  - { offset: 0xC9968, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish swapCameras:]', symObjAddr: 0xB58, symBinAddr: 0x121D0, symSize: 0x20 }
-  - { offset: 0xC99AD, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setFoucsFoint:]', symObjAddr: 0xB78, symBinAddr: 0x121F0, symSize: 0x20 }
-  - { offset: 0xC99EC, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish captureDeviceZoom:]', symObjAddr: 0xB98, symBinAddr: 0x12210, symSize: 0x20 }
-  - { offset: 0xC9A2E, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setDeviceTorchModel:]', symObjAddr: 0xBB8, symBinAddr: 0x12230, symSize: 0x20 }
-  - { offset: 0xC9A73, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish destoryObject]', symObjAddr: 0xBD8, symBinAddr: 0x12250, symSize: 0x20 }
-  - { offset: 0xC9AA6, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setVolumeAmplificateSize:]', symObjAddr: 0xBF8, symBinAddr: 0x12270, symSize: 0x20 }
-  - { offset: 0xC9AE8, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setContentMode:]', symObjAddr: 0xC18, symBinAddr: 0x12290, symSize: 0x88 }
-  - { offset: 0xC9B2B, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setFilterBilateral:Brightness:Saturation:Sharpness:]', symObjAddr: 0xCA0, symBinAddr: 0x12318, symSize: 0x70 }
-  - { offset: 0xC9B9E, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish stopLiveRequestSuccess:failed:]', symObjAddr: 0xD10, symBinAddr: 0x12388, symSize: 0x108 }
-  - { offset: 0xC9BED, size: 0x8, addend: 0x0, symName: '___49-[VhallVssPublish stopLiveRequestSuccess:failed:]_block_invoke', symObjAddr: 0xE18, symBinAddr: 0x12490, symSize: 0x1FC }
-  - { offset: 0xC9C6F, size: 0x8, addend: 0x0, symName: '___49-[VhallVssPublish stopLiveRequestSuccess:failed:]_block_invoke.31', symObjAddr: 0x1078, symBinAddr: 0x1268C, symSize: 0x34 }
-  - { offset: 0xC9CC4, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish firstCaptureImage:]', symObjAddr: 0x10C4, symBinAddr: 0x126C0, symSize: 0xE8 }
-  - { offset: 0xC9D07, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish onPublishStatus:info:]', symObjAddr: 0x11AC, symBinAddr: 0x127A8, symSize: 0x1C8 }
-  - { offset: 0xC9D5A, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish onPublishError:info:]', symObjAddr: 0x1374, symBinAddr: 0x12970, symSize: 0x1BC }
-  - { offset: 0xC9DAD, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish saasLogParam]', symObjAddr: 0x1530, symBinAddr: 0x12B2C, symSize: 0x278 }
-  - { offset: 0xC9E07, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish delegate]', symObjAddr: 0x17A8, symBinAddr: 0x12DA4, symSize: 0x20 }
-  - { offset: 0xC9E3E, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setDelegate:]', symObjAddr: 0x17C8, symBinAddr: 0x12DC4, symSize: 0x14 }
-  - { offset: 0xC9E7F, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish publisher]', symObjAddr: 0x17DC, symBinAddr: 0x12DD8, symSize: 0x10 }
-  - { offset: 0xC9EB6, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setPublisher:]', symObjAddr: 0x17EC, symBinAddr: 0x12DE8, symSize: 0x14 }
-  - { offset: 0xC9EF7, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish .cxx_destruct]', symObjAddr: 0x1800, symBinAddr: 0x12DFC, symSize: 0x3C }
-  - { offset: 0xCA310, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_magic, symObjAddr: 0x28, symBinAddr: 0x12E38, symSize: 0x14 }
-  - { offset: 0xCA322, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_padding_bytes, symObjAddr: 0x44, symBinAddr: 0x12E4C, symSize: 0xC }
-  - { offset: 0xCA334, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_version, symObjAddr: 0x50, symBinAddr: 0x12E58, symSize: 0xC }
-  - { offset: 0xCA377, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0x12E64, symSize: 0xC }
-  - { offset: 0xCA385, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0x12E64, symSize: 0xC }
-  - { offset: 0xCA3C1, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0x12E70, symSize: 0xC }
-  - { offset: 0xCA3CF, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0x12E70, symSize: 0xC }
-  - { offset: 0xCA3E8, size: 0x8, addend: 0x0, symName: _getValueProfRecordValueData, symObjAddr: 0x1C, symBinAddr: 0x12E7C, symSize: 0x14 }
-  - { offset: 0xCA41F, size: 0x8, addend: 0x0, symName: _getValueProfRecordNext, symObjAddr: 0x170, symBinAddr: 0x12E90, symSize: 0x15C }
-  - { offset: 0xCA45D, size: 0x8, addend: 0x0, symName: _getFirstValueProfRecord, symObjAddr: 0x2CC, symBinAddr: 0x12FEC, symSize: 0x8 }
-  - { offset: 0xCA48B, size: 0x8, addend: 0x0, symName: _lprofSetupValueProfiler, symObjAddr: 0xA10, symBinAddr: 0x12FF4, symSize: 0x68 }
-  - { offset: 0xCA4F7, size: 0x8, addend: 0x0, symName: ___llvm_profile_instrument_target_value, symObjAddr: 0xD50, symBinAddr: 0x1305C, symSize: 0x2CC }
-  - { offset: 0xCA56B, size: 0x8, addend: 0x0, symName: _lprofGetVPDataReader, symObjAddr: 0x1054, symBinAddr: 0x13328, symSize: 0xC }
-  - { offset: 0xCA57D, size: 0x8, addend: 0x0, symName: _initializeValueProfRuntimeRecord, symObjAddr: 0x1060, symBinAddr: 0x13334, symSize: 0x210 }
-  - { offset: 0xCA596, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1270, symBinAddr: 0x13544, symSize: 0x14 }
-  - { offset: 0xCA5AC, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1270, symBinAddr: 0x13544, symSize: 0x14 }
-  - { offset: 0xCA5BF, size: 0x8, addend: 0x0, symName: _getValueProfDataSizeWrapper, symObjAddr: 0x1284, symBinAddr: 0x13558, symSize: 0xE0 }
-  - { offset: 0xCA660, size: 0x8, addend: 0x0, symName: _getNumValueSitesRT, symObjAddr: 0x13A0, symBinAddr: 0x13674, symSize: 0x10 }
-  - { offset: 0xCA672, size: 0x8, addend: 0x0, symName: _getNumValueDataRT, symObjAddr: 0x13B0, symBinAddr: 0x13684, symSize: 0x148 }
-  - { offset: 0xCA684, size: 0x8, addend: 0x0, symName: _getNextNValueData, symObjAddr: 0x1364, symBinAddr: 0x13638, symSize: 0x3C }
-  - { offset: 0xCA6C0, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0x137CC, symSize: 0x1C }
-  - { offset: 0xCA6CE, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0x137CC, symSize: 0x1C }
-  - { offset: 0xCA6E0, size: 0x8, addend: 0x0, symName: ___llvm_profile_enable_continuous_mode, symObjAddr: 0x1C, symBinAddr: 0x137E8, symSize: 0x10 }
-  - { offset: 0xCA6F2, size: 0x8, addend: 0x0, symName: ___llvm_profile_disable_continuous_mode, symObjAddr: 0x2C, symBinAddr: 0x137F8, symSize: 0xC }
-  - { offset: 0xCA704, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_page_size, symObjAddr: 0x38, symBinAddr: 0x13804, symSize: 0xC }
-  - { offset: 0xCA716, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer, symObjAddr: 0x44, symBinAddr: 0x13810, symSize: 0xC8 }
-  - { offset: 0xCA813, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer_internal, symObjAddr: 0x10C, symBinAddr: 0x138D8, symSize: 0x1C8 }
-  - { offset: 0xCAA7A, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_data, symObjAddr: 0x2D4, symBinAddr: 0x13AA0, symSize: 0x10 }
-  - { offset: 0xCAA8C, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0x13AB0, symSize: 0x10 }
-  - { offset: 0xCAAA2, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0x13AB0, symSize: 0x10 }
-  - { offset: 0xCAAB4, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_vtable, symObjAddr: 0x2F4, symBinAddr: 0x13AC0, symSize: 0x18 }
-  - { offset: 0xCAAC6, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_vtable_section_size, symObjAddr: 0x30C, symBinAddr: 0x13AD8, symSize: 0x8 }
-  - { offset: 0xCAAD8, size: 0x8, addend: 0x0, symName: ___llvm_profile_counter_entry_size, symObjAddr: 0x314, symBinAddr: 0x13AE0, symSize: 0x20 }
-  - { offset: 0xCAAF9, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_counters, symObjAddr: 0x334, symBinAddr: 0x13B00, symSize: 0x4C }
-  - { offset: 0xCAB52, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_counters_size, symObjAddr: 0x380, symBinAddr: 0x13B4C, symSize: 0x5C }
-  - { offset: 0xCABE4, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_padding_sizes_for_counters, symObjAddr: 0x3EC, symBinAddr: 0x13BA8, symSize: 0x160 }
-  - { offset: 0xCACBC, size: 0x8, addend: 0x0, symName: _initBufferWriter, symObjAddr: 0x54C, symBinAddr: 0x13D08, symSize: 0x10 }
-  - { offset: 0xCAD1C, size: 0x8, addend: 0x0, symName: _getCurFilenameLength, symObjAddr: 0x1C0, symBinAddr: 0x13D18, symSize: 0x318 }
-  - { offset: 0xCAD67, size: 0x8, addend: 0x0, symName: _getCurFilename, symObjAddr: 0x4D8, symBinAddr: 0x14030, symSize: 0x338 }
-  - { offset: 0xCAE6B, size: 0x8, addend: 0x0, symName: _parseAndSetFilename, symObjAddr: 0x918, symBinAddr: 0x14368, symSize: 0x580 }
-  - { offset: 0xCB0DB, size: 0x8, addend: 0x0, symName: _truncateCurrentFile, symObjAddr: 0x1E2C, symBinAddr: 0x15364, symSize: 0xCC }
-  - { offset: 0xCB150, size: 0x8, addend: 0x0, symName: _initializeProfileForContinuousMode, symObjAddr: 0x1EF8, symBinAddr: 0x15430, symSize: 0x250 }
-  - { offset: 0xCB369, size: 0x8, addend: 0x0, symName: ___llvm_profile_initialize, symObjAddr: 0xE98, symBinAddr: 0x148E8, symSize: 0xBC }
-  - { offset: 0xCB427, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_file, symObjAddr: 0xFD8, symBinAddr: 0x149A4, symSize: 0x1B0 }
-  - { offset: 0xCB500, size: 0x8, addend: 0x0, symName: _writeFile, symObjAddr: 0x1188, symBinAddr: 0x14B54, symSize: 0x29C }
-  - { offset: 0xCB7B2, size: 0x8, addend: 0x0, symName: _createProfileDir, symObjAddr: 0x2148, symBinAddr: 0x15680, symSize: 0x88 }
-  - { offset: 0xCB7F7, size: 0x8, addend: 0x0, symName: _getProfileFileSizeForMerging, symObjAddr: 0x18BC, symBinAddr: 0x14DF4, symSize: 0x114 }
-  - { offset: 0xCB888, size: 0x8, addend: 0x0, symName: _mmapProfileForMerging, symObjAddr: 0x19D0, symBinAddr: 0x14F08, symSize: 0xC0 }
-  - { offset: 0xCB948, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x16D0, symBinAddr: 0x14DF0, symSize: 0x4 }
-  - { offset: 0xCB95E, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x16D0, symBinAddr: 0x14DF0, symSize: 0x4 }
-  - { offset: 0xCB970, size: 0x8, addend: 0x0, symName: _mmapForContinuousMode, symObjAddr: 0x1A90, symBinAddr: 0x14FC8, symSize: 0x260 }
-  - { offset: 0xCBB25, size: 0x8, addend: 0x0, symName: _fileWriter, symObjAddr: 0x1CF0, symBinAddr: 0x15228, symSize: 0x13C }
-  - { offset: 0xCBB82, size: 0x8, addend: 0x0, symName: _exitSignalHandler, symObjAddr: 0x21D0, symBinAddr: 0x15708, symSize: 0x10 }
-  - { offset: 0xCBBD5, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0x15718, symSize: 0xD4 }
-  - { offset: 0xCBBE3, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0x15718, symSize: 0xD4 }
-  - { offset: 0xCBCE2, size: 0x8, addend: 0x0, symName: ___llvm_profile_check_compatibility, symObjAddr: 0xD4, symBinAddr: 0x157EC, symSize: 0x1D8 }
-  - { offset: 0xCBE07, size: 0x8, addend: 0x0, symName: ___llvm_profile_merge_from_buffer, symObjAddr: 0x2AC, symBinAddr: 0x159C4, symSize: 0x4A4 }
-  - { offset: 0xCBF47, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0x15E68, symSize: 0xF4 }
-  - { offset: 0xCBF55, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0x15E68, symSize: 0xF4 }
-  - { offset: 0xCBFED, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0x15F5C, symSize: 0x70 }
-  - { offset: 0xCBFFB, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0x15F5C, symSize: 0x70 }
-  - { offset: 0xCC022, size: 0x8, addend: 0x0, symName: _lprofBufferIOWrite, symObjAddr: 0x108, symBinAddr: 0x15FCC, symSize: 0x13C }
-  - { offset: 0xCC08D, size: 0x8, addend: 0x0, symName: _lprofWriteData, symObjAddr: 0x308, symBinAddr: 0x16108, symSize: 0xD8 }
-  - { offset: 0xCC18A, size: 0x8, addend: 0x0, symName: _lprofWriteDataImpl, symObjAddr: 0x3E0, symBinAddr: 0x161E0, symSize: 0x320 }
-  - { offset: 0xCC293, size: 0x8, addend: 0x0, symName: _createHeader, symObjAddr: 0x700, symBinAddr: 0x16500, symSize: 0x1A4 }
-  - { offset: 0xCC375, size: 0x8, addend: 0x0, symName: _writeValueProfData, symObjAddr: 0x8A4, symBinAddr: 0x166A4, symSize: 0x15C }
-  - { offset: 0xCC42F, size: 0x8, addend: 0x0, symName: _writeOneValueProfData, symObjAddr: 0x105C, symBinAddr: 0x16800, symSize: 0x408 }
-  - { offset: 0xCC5D3, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0x16C08, symSize: 0xC }
-  - { offset: 0xCC5E1, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0x16C08, symSize: 0xC }
-  - { offset: 0xCC5F3, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_data, symObjAddr: 0xC, symBinAddr: 0x16C14, symSize: 0xC }
-  - { offset: 0xCC605, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_names, symObjAddr: 0x18, symBinAddr: 0x16C20, symSize: 0xC }
-  - { offset: 0xCC617, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_names, symObjAddr: 0x24, symBinAddr: 0x16C2C, symSize: 0xC }
-  - { offset: 0xCC629, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_counters, symObjAddr: 0x30, symBinAddr: 0x16C38, symSize: 0xC }
-  - { offset: 0xCC63B, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_counters, symObjAddr: 0x3C, symBinAddr: 0x16C44, symSize: 0xC }
-  - { offset: 0xCC64D, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_bitmap, symObjAddr: 0x48, symBinAddr: 0x16C50, symSize: 0xC }
-  - { offset: 0xCC65F, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_bitmap, symObjAddr: 0x54, symBinAddr: 0x16C5C, symSize: 0xC }
-  - { offset: 0xCC671, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtables, symObjAddr: 0x60, symBinAddr: 0x16C68, symSize: 0xC }
-  - { offset: 0xCC683, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtables, symObjAddr: 0x6C, symBinAddr: 0x16C74, symSize: 0xC }
-  - { offset: 0xCC695, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtabnames, symObjAddr: 0x78, symBinAddr: 0x16C80, symSize: 0xC }
-  - { offset: 0xCC6A7, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtabnames, symObjAddr: 0x84, symBinAddr: 0x16C8C, symSize: 0xC }
-  - { offset: 0xCC6B9, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vnodes, symObjAddr: 0x9C, symBinAddr: 0x16C98, symSize: 0xC }
-  - { offset: 0xCC6CB, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vnodes, symObjAddr: 0xA8, symBinAddr: 0x16CA4, symSize: 0xC }
-  - { offset: 0xCC6DD, size: 0x8, addend: 0x0, symName: ___llvm_write_binary_ids, symObjAddr: 0xB4, symBinAddr: 0x16CB0, symSize: 0x8 }
-  - { offset: 0xCC719, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0x16CB8, symSize: 0x1C }
-  - { offset: 0xCC735, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0x16CB8, symSize: 0x1C }
-  - { offset: 0xCC7AE, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0x16CD4, symSize: 0x5C }
-  - { offset: 0xCC7C3, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0x16CD4, symSize: 0x5C }
-  - { offset: 0xCC802, size: 0x8, addend: 0x0, symName: _lprofGetHostName, symObjAddr: 0x74, symBinAddr: 0x16D30, symSize: 0x80 }
-  - { offset: 0xCC84C, size: 0x8, addend: 0x0, symName: _lprofLockFileHandle, symObjAddr: 0x214, symBinAddr: 0x16DB0, symSize: 0x94 }
-  - { offset: 0xCC8CA, size: 0x8, addend: 0x0, symName: _lprofUnlockFileHandle, symObjAddr: 0x2A8, symBinAddr: 0x16E44, symSize: 0x94 }
-  - { offset: 0xCC938, size: 0x8, addend: 0x0, symName: _lprofOpenFileEx, symObjAddr: 0x33C, symBinAddr: 0x16ED8, symSize: 0xD4 }
-  - { offset: 0xCC9DD, size: 0x8, addend: 0x0, symName: _lprofFindFirstDirSeparator, symObjAddr: 0x554, symBinAddr: 0x16FAC, symSize: 0x8 }
-  - { offset: 0xCCA06, size: 0x8, addend: 0x0, symName: _lprofInstallSignalHandler, symObjAddr: 0x564, symBinAddr: 0x16FB4, symSize: 0x58 }
-  - { offset: 0xCCA3D, size: 0x8, addend: 0x0, symName: _lprofRestoreSigKill, symObjAddr: 0x5C4, symBinAddr: 0x1700C, symSize: 0x4 }
+  - { offset: 0xBF8DD, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish activityModel]', symObjAddr: 0x0, symBinAddr: 0x8788, symSize: 0x14 }
+  - { offset: 0xBF912, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish dealloc]', symObjAddr: 0x14, symBinAddr: 0x879C, symSize: 0x94 }
+  - { offset: 0xBF945, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initWithConfig:]', symObjAddr: 0xA8, symBinAddr: 0x8830, symSize: 0x204 }
+  - { offset: 0xBF98C, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initWithBeautyConfig:handleError:]', symObjAddr: 0x2AC, symBinAddr: 0x8A34, symSize: 0x230 }
+  - { offset: 0xBF9FE, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initWithLiveV2Config:andvancedBeautify:licenseUrl:licenseKey:handleError:]', symObjAddr: 0x4DC, symBinAddr: 0x8C64, symSize: 0x298 }
+  - { offset: 0xBFAA0, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initBeautyStartCapture]', symObjAddr: 0x774, symBinAddr: 0x8EFC, symSize: 0x3B8 }
+  - { offset: 0xBFB31, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish BeautyPublishStatus:withInfo:]', symObjAddr: 0xB2C, symBinAddr: 0x92B4, symSize: 0xB8 }
+  - { offset: 0xBFB84, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish BeautyFirstCaptureImage:]', symObjAddr: 0xBE4, symBinAddr: 0x936C, symSize: 0xA8 }
+  - { offset: 0xBFBC7, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish startVideoCapture]', symObjAddr: 0xC8C, symBinAddr: 0x9414, symSize: 0x408 }
+  - { offset: 0xBFD85, size: 0x8, addend: 0x0, symName: '___37-[VHallLivePublish startVideoCapture]_block_invoke', symObjAddr: 0x1094, symBinAddr: 0x981C, symSize: 0x94 }
+  - { offset: 0xBFDF4, size: 0x8, addend: 0x0, symName: '___37-[VHallLivePublish startVideoCapture]_block_invoke_2', symObjAddr: 0x1128, symBinAddr: 0x98B0, symSize: 0x30 }
+  - { offset: 0xBFE87, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40r48r, symObjAddr: 0x1158, symBinAddr: 0x98E0, symSize: 0x44 }
+  - { offset: 0xBFEB0, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40r48r, symObjAddr: 0x119C, symBinAddr: 0x9924, symSize: 0x38 }
+  - { offset: 0xBFECF, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40s48r56r, symObjAddr: 0x11D4, symBinAddr: 0x995C, symSize: 0x4C }
+  - { offset: 0xBFEF8, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s48r56r, symObjAddr: 0x1220, symBinAddr: 0x99A8, symSize: 0x40 }
+  - { offset: 0xBFF17, size: 0x8, addend: 0x0, symName: '___37-[VHallLivePublish startVideoCapture]_block_invoke.21', symObjAddr: 0x1260, symBinAddr: 0x99E8, symSize: 0x54 }
+  - { offset: 0xBFF52, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish getMediaAccess:]', symObjAddr: 0x12C8, symBinAddr: 0x9A3C, symSize: 0xF4 }
+  - { offset: 0xBFFA8, size: 0x8, addend: 0x0, symName: '___35-[VHallLivePublish getMediaAccess:]_block_invoke', symObjAddr: 0x13BC, symBinAddr: 0x9B30, symSize: 0xE4 }
+  - { offset: 0xC0057, size: 0x8, addend: 0x0, symName: '___35-[VHallLivePublish getMediaAccess:]_block_invoke_2', symObjAddr: 0x14A0, symBinAddr: 0x9C14, symSize: 0x514 }
+  - { offset: 0xC00CC, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40w, symObjAddr: 0x19B4, symBinAddr: 0xA128, symSize: 0x30 }
+  - { offset: 0xC00F5, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40w, symObjAddr: 0x19E4, symBinAddr: 0xA158, symSize: 0x28 }
+  - { offset: 0xC0114, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40b48w, symObjAddr: 0x1A0C, symBinAddr: 0xA180, symSize: 0x40 }
+  - { offset: 0xC013D, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s48w, symObjAddr: 0x1A4C, symBinAddr: 0xA1C0, symSize: 0x30 }
+  - { offset: 0xC015C, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish stopVideoCapture]', symObjAddr: 0x1A7C, symBinAddr: 0xA1F0, symSize: 0x18 }
+  - { offset: 0xC0194, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish stopVideoCaptureV2:]', symObjAddr: 0x1A94, symBinAddr: 0xA208, symSize: 0x18 }
+  - { offset: 0xC01DB, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish startLive:]', symObjAddr: 0x1AAC, symBinAddr: 0xA220, symSize: 0x348 }
+  - { offset: 0xC02E3, size: 0x8, addend: 0x0, symName: '___30-[VHallLivePublish startLive:]_block_invoke', symObjAddr: 0x1DF4, symBinAddr: 0xA568, symSize: 0x94 }
+  - { offset: 0xC0358, size: 0x8, addend: 0x0, symName: '___30-[VHallLivePublish startLive:]_block_invoke_2', symObjAddr: 0x1E88, symBinAddr: 0xA5FC, symSize: 0x30 }
+  - { offset: 0xC03E0, size: 0x8, addend: 0x0, symName: '___30-[VHallLivePublish startLive:]_block_invoke_3', symObjAddr: 0x1EB8, symBinAddr: 0xA62C, symSize: 0x3C }
+  - { offset: 0xC042B, size: 0x8, addend: 0x0, symName: '___30-[VHallLivePublish startLive:]_block_invoke.34', symObjAddr: 0x1EF4, symBinAddr: 0xA668, symSize: 0x17C }
+  - { offset: 0xC049A, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish startLive]', symObjAddr: 0x2070, symBinAddr: 0xA7E4, symSize: 0x2E0 }
+  - { offset: 0xC04CE, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initBeautyPublish:]', symObjAddr: 0x2350, symBinAddr: 0xAAC4, symSize: 0x394 }
+  - { offset: 0xC0588, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish stopLive]', symObjAddr: 0x26E4, symBinAddr: 0xAE58, symSize: 0xA4 }
+  - { offset: 0xC05BC, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish swapCameras:]', symObjAddr: 0x2788, symBinAddr: 0xAEFC, symSize: 0xC4 }
+  - { offset: 0xC0605, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setFoucsFoint:]', symObjAddr: 0x284C, symBinAddr: 0xAFC0, symSize: 0xC8 }
+  - { offset: 0xC0646, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish captureDeviceZoom:]', symObjAddr: 0x2914, symBinAddr: 0xB088, symSize: 0xB8 }
+  - { offset: 0xC068B, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setDeviceTorchModel:]', symObjAddr: 0x29CC, symBinAddr: 0xB140, symSize: 0x58 }
+  - { offset: 0xC06D2, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish disconnect]', symObjAddr: 0x2A24, symBinAddr: 0xB198, symSize: 0x84 }
+  - { offset: 0xC0706, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish reconnect]', symObjAddr: 0x2AA8, symBinAddr: 0xB21C, symSize: 0xF4 }
+  - { offset: 0xC077D, size: 0x8, addend: 0x0, symName: '___29-[VHallLivePublish reconnect]_block_invoke', symObjAddr: 0x2B9C, symBinAddr: 0xB310, symSize: 0x54 }
+  - { offset: 0xC07BB, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish destoryObject]', symObjAddr: 0x2BF0, symBinAddr: 0xB364, symSize: 0x94 }
+  - { offset: 0xC07EF, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setVolumeAmplificateSize:]', symObjAddr: 0x2C84, symBinAddr: 0xB3F8, symSize: 0x18 }
+  - { offset: 0xC0833, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setContentMode:]', symObjAddr: 0x2C9C, symBinAddr: 0xB410, symSize: 0x78 }
+  - { offset: 0xC0878, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish camVidMirror:]', symObjAddr: 0x2D14, symBinAddr: 0xB488, symSize: 0x18 }
+  - { offset: 0xC08C0, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setBeautify:Brightness:Saturation:Sharpness:]', symObjAddr: 0x2D2C, symBinAddr: 0xB4A0, symSize: 0x6C }
+  - { offset: 0xC0938, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish displayView]', symObjAddr: 0x2D98, symBinAddr: 0xB50C, symSize: 0xB0 }
+  - { offset: 0xC0970, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish audioLiveTip]', symObjAddr: 0x2E48, symBinAddr: 0xB5BC, symSize: 0x154 }
+  - { offset: 0xC09A8, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setCameraMute:]', symObjAddr: 0x2F9C, symBinAddr: 0xB710, symSize: 0x1C }
+  - { offset: 0xC09E9, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setIsMute:]', symObjAddr: 0x2FB8, symBinAddr: 0xB72C, symSize: 0x1C }
+  - { offset: 0xC0A2A, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish captureDevicePosition]', symObjAddr: 0x2FD4, symBinAddr: 0xB748, symSize: 0x18 }
+  - { offset: 0xC0A62, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish isPublishing]', symObjAddr: 0x2FEC, symBinAddr: 0xB760, symSize: 0x18 }
+  - { offset: 0xC0A9A, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setIsRehearsal:]', symObjAddr: 0x3004, symBinAddr: 0xB778, symSize: 0x1C }
+  - { offset: 0xC0ADB, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish observeValueForKeyPath:ofObject:change:context:]', symObjAddr: 0x3020, symBinAddr: 0xB794, symSize: 0x1F8 }
+  - { offset: 0xC0B47, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initSaasPublish:]', symObjAddr: 0x3218, symBinAddr: 0xB98C, symSize: 0x128 }
+  - { offset: 0xC0BAE, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initVssPublish:]', symObjAddr: 0x3340, symBinAddr: 0xBAB4, symSize: 0x16C }
+  - { offset: 0xC0C26, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initHuadiePublish:]', symObjAddr: 0x34AC, symBinAddr: 0xBC20, symSize: 0x288 }
+  - { offset: 0xC0CAF, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish saasPublishStatus:withInfo:]', symObjAddr: 0x3734, symBinAddr: 0xBEA8, symSize: 0xB8 }
+  - { offset: 0xC0D05, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish saasFirstCaptureImage:]', symObjAddr: 0x37EC, symBinAddr: 0xBF60, symSize: 0xA8 }
+  - { offset: 0xC0D4A, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish vssPublishShowAudioTip:]', symObjAddr: 0x3894, symBinAddr: 0xC008, symSize: 0x68 }
+  - { offset: 0xC0D8B, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish vssPublishShowAudioTip]', symObjAddr: 0x38FC, symBinAddr: 0xC070, symSize: 0x68 }
+  - { offset: 0xC0DBF, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish vssPublishStatus:withInfo:]', symObjAddr: 0x3964, symBinAddr: 0xC0D8, symSize: 0xB8 }
+  - { offset: 0xC0E15, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish vssFirstCaptureImage:]', symObjAddr: 0x3A1C, symBinAddr: 0xC190, symSize: 0xA8 }
+  - { offset: 0xC0E5A, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish HuadiePublishStatus:withInfo:]', symObjAddr: 0x3AC4, symBinAddr: 0xC238, symSize: 0xB8 }
+  - { offset: 0xC0EB0, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish HuadieFirstCaptureImage:]', symObjAddr: 0x3B7C, symBinAddr: 0xC2F0, symSize: 0xA8 }
+  - { offset: 0xC0EF5, size: 0x8, addend: 0x0, symName: '+[VHallLivePublish initBeautyEffectKit]', symObjAddr: 0x3C24, symBinAddr: 0xC398, symSize: 0xA8 }
+  - { offset: 0xC0F99, size: 0x8, addend: 0x0, symName: '+[VHallLivePublish currentModuleBeautyKit:]', symObjAddr: 0x3CCC, symBinAddr: 0xC440, symSize: 0x7C }
+  - { offset: 0xC0FFD, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish startSeatPushDirectorLive:checkHostLine:]', symObjAddr: 0x3D48, symBinAddr: 0xC4BC, symSize: 0x158 }
+  - { offset: 0xC1064, size: 0x8, addend: 0x0, symName: '___60-[VHallLivePublish startSeatPushDirectorLive:checkHostLine:]_block_invoke', symObjAddr: 0x3EA0, symBinAddr: 0xC614, symSize: 0x98 }
+  - { offset: 0xC10AF, size: 0x8, addend: 0x0, symName: '___60-[VHallLivePublish startSeatPushDirectorLive:checkHostLine:]_block_invoke_2', symObjAddr: 0x3F38, symBinAddr: 0xC6AC, symSize: 0x17C }
+  - { offset: 0xC111E, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initDirectorHostEnter:fail:]', symObjAddr: 0x40B4, symBinAddr: 0xC828, symSize: 0x1D0 }
+  - { offset: 0xC1190, size: 0x8, addend: 0x0, symName: '___47-[VHallLivePublish initDirectorHostEnter:fail:]_block_invoke', symObjAddr: 0x4284, symBinAddr: 0xC9F8, symSize: 0x58 }
+  - { offset: 0xC11DF, size: 0x8, addend: 0x0, symName: '___47-[VHallLivePublish initDirectorHostEnter:fail:]_block_invoke_2', symObjAddr: 0x42DC, symBinAddr: 0xCA50, symSize: 0x1C }
+  - { offset: 0xC1241, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish initHostPublish:]', symObjAddr: 0x4310, symBinAddr: 0xCA6C, symSize: 0x168 }
+  - { offset: 0xC1293, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish startDirectorLive]', symObjAddr: 0x4478, symBinAddr: 0xCBD4, symSize: 0xA4 }
+  - { offset: 0xC12C7, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish stopDirectorLive]', symObjAddr: 0x451C, symBinAddr: 0xCC78, symSize: 0x74 }
+  - { offset: 0xC12FB, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish destoryDirectorLive]', symObjAddr: 0x4590, symBinAddr: 0xCCEC, symSize: 0x80 }
+  - { offset: 0xC132F, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish HuadieDirectorStream:]', symObjAddr: 0x4610, symBinAddr: 0xCD6C, symSize: 0xA4 }
+  - { offset: 0xC1374, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish liveView]', symObjAddr: 0x46B4, symBinAddr: 0xCE10, symSize: 0x94 }
+  - { offset: 0xC13AC, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish delegate]', symObjAddr: 0x4748, symBinAddr: 0xCEA4, symSize: 0x18 }
+  - { offset: 0xC13E3, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setDelegate:]', symObjAddr: 0x4760, symBinAddr: 0xCEBC, symSize: 0xC }
+  - { offset: 0xC1424, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish cameraMute]', symObjAddr: 0x476C, symBinAddr: 0xCEC8, symSize: 0x8 }
+  - { offset: 0xC145B, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish isMute]', symObjAddr: 0x4774, symBinAddr: 0xCED0, symSize: 0x8 }
+  - { offset: 0xC1492, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish isRehearsal]', symObjAddr: 0x477C, symBinAddr: 0xCED8, symSize: 0x8 }
+  - { offset: 0xC14C9, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setDisplayView:]', symObjAddr: 0x4784, symBinAddr: 0xCEE0, symSize: 0xC }
+  - { offset: 0xC150A, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setLiveView:]', symObjAddr: 0x4790, symBinAddr: 0xCEEC, symSize: 0xC }
+  - { offset: 0xC154B, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setAudioLiveTip:]', symObjAddr: 0x479C, symBinAddr: 0xCEF8, symSize: 0xC }
+  - { offset: 0xC158C, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish liveModel]', symObjAddr: 0x47A8, symBinAddr: 0xCF04, symSize: 0x8 }
+  - { offset: 0xC15C3, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setLiveModel:]', symObjAddr: 0x47B0, symBinAddr: 0xCF0C, symSize: 0xC }
+  - { offset: 0xC1604, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish publisher]', symObjAddr: 0x47BC, symBinAddr: 0xCF18, symSize: 0x8 }
+  - { offset: 0xC163B, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setPublisher:]', symObjAddr: 0x47C4, symBinAddr: 0xCF20, symSize: 0xC }
+  - { offset: 0xC167C, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish config]', symObjAddr: 0x47D0, symBinAddr: 0xCF2C, symSize: 0x8 }
+  - { offset: 0xC16B3, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setConfig:]', symObjAddr: 0x47D8, symBinAddr: 0xCF34, symSize: 0xC }
+  - { offset: 0xC16F4, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish beautyType]', symObjAddr: 0x47E4, symBinAddr: 0xCF40, symSize: 0x8 }
+  - { offset: 0xC172B, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setBeautyType:]', symObjAddr: 0x47EC, symBinAddr: 0xCF48, symSize: 0x8 }
+  - { offset: 0xC1768, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish beautKit]', symObjAddr: 0x47F4, symBinAddr: 0xCF50, symSize: 0x8 }
+  - { offset: 0xC179F, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setBeautKit:]', symObjAddr: 0x47FC, symBinAddr: 0xCF58, symSize: 0xC }
+  - { offset: 0xC17E0, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish authCallBack]', symObjAddr: 0x4808, symBinAddr: 0xCF64, symSize: 0x8 }
+  - { offset: 0xC1817, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setAuthCallBack:]', symObjAddr: 0x4810, symBinAddr: 0xCF6C, symSize: 0x8 }
+  - { offset: 0xC1856, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish directorType]', symObjAddr: 0x4818, symBinAddr: 0xCF74, symSize: 0x8 }
+  - { offset: 0xC188D, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setDirectorType:]', symObjAddr: 0x4820, symBinAddr: 0xCF7C, symSize: 0x8 }
+  - { offset: 0xC18CA, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish isV2]', symObjAddr: 0x4828, symBinAddr: 0xCF84, symSize: 0x8 }
+  - { offset: 0xC1901, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setIsV2:]', symObjAddr: 0x4830, symBinAddr: 0xCF8C, symSize: 0x8 }
+  - { offset: 0xC193C, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish licenseUrl]', symObjAddr: 0x4838, symBinAddr: 0xCF94, symSize: 0x8 }
+  - { offset: 0xC1973, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setLicenseUrl:]', symObjAddr: 0x4840, symBinAddr: 0xCF9C, symSize: 0xC }
+  - { offset: 0xC19B4, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish licenseKey]', symObjAddr: 0x484C, symBinAddr: 0xCFA8, symSize: 0x8 }
+  - { offset: 0xC19EB, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish setLicenseKey:]', symObjAddr: 0x4854, symBinAddr: 0xCFB0, symSize: 0xC }
+  - { offset: 0xC1A2C, size: 0x8, addend: 0x0, symName: '-[VHallLivePublish .cxx_destruct]', symObjAddr: 0x4860, symBinAddr: 0xCFBC, symSize: 0xB0 }
+  - { offset: 0xC231D, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish displayView]', symObjAddr: 0x0, symBinAddr: 0xD06C, symSize: 0x80 }
+  - { offset: 0xC3584, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish displayView]', symObjAddr: 0x0, symBinAddr: 0xD06C, symSize: 0x80 }
+  - { offset: 0xC35BB, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish isMute]', symObjAddr: 0x80, symBinAddr: 0xD0EC, symSize: 0x14 }
+  - { offset: 0xC35F0, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setIsMute:]', symObjAddr: 0x94, symBinAddr: 0xD100, symSize: 0xC8 }
+  - { offset: 0xC3643, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish captureDevicePosition]', symObjAddr: 0x15C, symBinAddr: 0xD1C8, symSize: 0x48 }
+  - { offset: 0xC367A, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish isPublishing]', symObjAddr: 0x1A4, symBinAddr: 0xD210, symSize: 0x14 }
+  - { offset: 0xC36AF, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish initWithConfig:LiveModel:videoCapture:audioCapture:]', symObjAddr: 0x1B8, symBinAddr: 0xD224, symSize: 0x58 }
+  - { offset: 0xC3726, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish initWithConfig:videoCapture:audioCapture:error:]', symObjAddr: 0x210, symBinAddr: 0xD27C, symSize: 0x58 }
+  - { offset: 0xC379D, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish initWithConfig:licenseUrl:licenseKey:videoCapture:audioCapture:error:]', symObjAddr: 0x268, symBinAddr: 0xD2D4, symSize: 0xF0 }
+  - { offset: 0xC382C, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish createBlackImageWithSize:height:]', symObjAddr: 0x358, symBinAddr: 0xD3C4, symSize: 0xB8 }
+  - { offset: 0xC396F, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish initPublisherV2:initConfig:licenseUrl:licenseKey:]', symObjAddr: 0x410, symBinAddr: 0xD47C, symSize: 0x460 }
+  - { offset: 0xC3A21, size: 0x8, addend: 0x0, symName: '___71-[VhallLiveV2Publish initPublisherV2:initConfig:licenseUrl:licenseKey:]_block_invoke', symObjAddr: 0x870, symBinAddr: 0xD8DC, symSize: 0x58 }
+  - { offset: 0xC3A76, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish refreshModel:activityType:]', symObjAddr: 0x8C8, symBinAddr: 0xD934, symSize: 0x10C }
+  - { offset: 0xC3AC9, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish startVideoCapture]', symObjAddr: 0x9D4, symBinAddr: 0xDA40, symSize: 0x7C }
+  - { offset: 0xC3B00, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish stopVideoCapture]', symObjAddr: 0xA50, symBinAddr: 0xDABC, symSize: 0x48 }
+  - { offset: 0xC3B37, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish stopVideoCaptureV2:]', symObjAddr: 0xA98, symBinAddr: 0xDB04, symSize: 0x94 }
+  - { offset: 0xC3B7E, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish startLive]', symObjAddr: 0xB2C, symBinAddr: 0xDB98, symSize: 0x394 }
+  - { offset: 0xC3BD8, size: 0x8, addend: 0x0, symName: '___31-[VhallLiveV2Publish startLive]_block_invoke', symObjAddr: 0xEC0, symBinAddr: 0xDF2C, symSize: 0x148 }
+  - { offset: 0xC3C1F, size: 0x8, addend: 0x0, symName: '___31-[VhallLiveV2Publish startLive]_block_invoke.19', symObjAddr: 0x101C, symBinAddr: 0xE074, symSize: 0x14 }
+  - { offset: 0xC3C46, size: 0x8, addend: 0x0, symName: '___31-[VhallLiveV2Publish startLive]_block_invoke_2', symObjAddr: 0x1030, symBinAddr: 0xE088, symSize: 0x14 }
+  - { offset: 0xC3C79, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish enableIM]', symObjAddr: 0x1044, symBinAddr: 0xE09C, symSize: 0x18C }
+  - { offset: 0xC3CBC, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish startLiveAction]', symObjAddr: 0x11D0, symBinAddr: 0xE228, symSize: 0x1CC }
+  - { offset: 0xC3D0E, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish stopLive]', symObjAddr: 0x139C, symBinAddr: 0xE3F4, symSize: 0x13C }
+  - { offset: 0xC3D42, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish disconnect]', symObjAddr: 0x14D8, symBinAddr: 0xE530, symSize: 0x7C }
+  - { offset: 0xC3D76, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish reconnect]', symObjAddr: 0x1554, symBinAddr: 0xE5AC, symSize: 0x198 }
+  - { offset: 0xC3DAA, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish swapCameras:]', symObjAddr: 0x16EC, symBinAddr: 0xE744, symSize: 0x7C }
+  - { offset: 0xC3DF3, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setFoucsFoint:]', symObjAddr: 0x1768, symBinAddr: 0xE7C0, symSize: 0x58 }
+  - { offset: 0xC3E34, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish captureDeviceZoom:]', symObjAddr: 0x17C0, symBinAddr: 0xE818, symSize: 0x50 }
+  - { offset: 0xC3E79, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setDeviceTorchModel:]', symObjAddr: 0x1810, symBinAddr: 0xE868, symSize: 0x74 }
+  - { offset: 0xC3EC2, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish destoryObject]', symObjAddr: 0x1884, symBinAddr: 0xE8DC, symSize: 0x6C }
+  - { offset: 0xC3EF6, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setVolumeAmplificateSize:]', symObjAddr: 0x18F0, symBinAddr: 0xE948, symSize: 0x14 }
+  - { offset: 0xC3F33, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish camVidMirror:]', symObjAddr: 0x1904, symBinAddr: 0xE95C, symSize: 0x48 }
+  - { offset: 0xC3F78, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setContentMode:]', symObjAddr: 0x194C, symBinAddr: 0xE9A4, symSize: 0x8C }
+  - { offset: 0xC3FBD, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish stopLiveRequestSuccess:failed:]', symObjAddr: 0x19D8, symBinAddr: 0xEA30, symSize: 0x1BC }
+  - { offset: 0xC4013, size: 0x8, addend: 0x0, symName: '___52-[VhallLiveV2Publish stopLiveRequestSuccess:failed:]_block_invoke', symObjAddr: 0x1B94, symBinAddr: 0xEBEC, symSize: 0x34 }
+  - { offset: 0xC405D, size: 0x8, addend: 0x0, symName: '___52-[VhallLiveV2Publish stopLiveRequestSuccess:failed:]_block_invoke.31', symObjAddr: 0x1BE0, symBinAddr: 0xEC20, symSize: 0x34 }
+  - { offset: 0xC40B6, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish onPublishStatusV2:info:]', symObjAddr: 0x1C14, symBinAddr: 0xEC54, symSize: 0x2DC }
+  - { offset: 0xC416C, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish onPublishErrorV2:info:]', symObjAddr: 0x1EF0, symBinAddr: 0xEF30, symSize: 0x37C }
+  - { offset: 0xC4222, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish onWarning:message:extraInfo:]', symObjAddr: 0x226C, symBinAddr: 0xF2AC, symSize: 0x12C }
+  - { offset: 0xC42A1, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish onStatisticsUpdate:]', symObjAddr: 0x2398, symBinAddr: 0xF3D8, symSize: 0x1A4 }
+  - { offset: 0xC42F7, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish saasLogParam]', symObjAddr: 0x253C, symBinAddr: 0xF57C, symSize: 0x4C0 }
+  - { offset: 0xC4392, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish startTimer]', symObjAddr: 0x29FC, symBinAddr: 0xFA3C, symSize: 0x120 }
+  - { offset: 0xC4571, size: 0x8, addend: 0x0, symName: '___32-[VhallLiveV2Publish startTimer]_block_invoke', symObjAddr: 0x2B1C, symBinAddr: 0xFB5C, symSize: 0x3C }
+  - { offset: 0xC45AF, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish stopTimer]', symObjAddr: 0x2B58, symBinAddr: 0xFB98, symSize: 0x68 }
+  - { offset: 0xC4600, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish timeEvent]', symObjAddr: 0x2BC0, symBinAddr: 0xFC00, symSize: 0x7C }
+  - { offset: 0xC465D, size: 0x8, addend: 0x0, symName: '___31-[VhallLiveV2Publish timeEvent]_block_invoke', symObjAddr: 0x2C3C, symBinAddr: 0xFC7C, symSize: 0x104 }
+  - { offset: 0xC46BF, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s, symObjAddr: 0x2D40, symBinAddr: 0xFD80, symSize: 0x8 }
+  - { offset: 0xC46E6, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish directorType:]', symObjAddr: 0x2D48, symBinAddr: 0xFD88, symSize: 0x14 }
+  - { offset: 0xC4727, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish delegate]', symObjAddr: 0x2D5C, symBinAddr: 0xFD9C, symSize: 0x20 }
+  - { offset: 0xC475E, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setDelegate:]', symObjAddr: 0x2D7C, symBinAddr: 0xFDBC, symSize: 0x14 }
+  - { offset: 0xC479F, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish publisherV2]', symObjAddr: 0x2D90, symBinAddr: 0xFDD0, symSize: 0x10 }
+  - { offset: 0xC47D6, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setPublisherV2:]', symObjAddr: 0x2DA0, symBinAddr: 0xFDE0, symSize: 0x14 }
+  - { offset: 0xC4817, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish activityType]', symObjAddr: 0x2DB4, symBinAddr: 0xFDF4, symSize: 0x10 }
+  - { offset: 0xC484E, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setActivityType:]', symObjAddr: 0x2DC4, symBinAddr: 0xFE04, symSize: 0x10 }
+  - { offset: 0xC488B, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish livePlayer]', symObjAddr: 0x2DD4, symBinAddr: 0xFE14, symSize: 0x10 }
+  - { offset: 0xC48C2, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setLivePlayer:]', symObjAddr: 0x2DE4, symBinAddr: 0xFE24, symSize: 0x14 }
+  - { offset: 0xC4903, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish isAudioMute]', symObjAddr: 0x2DF8, symBinAddr: 0xFE38, symSize: 0x10 }
+  - { offset: 0xC493A, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setIsAudioMute:]', symObjAddr: 0x2E08, symBinAddr: 0xFE48, symSize: 0x10 }
+  - { offset: 0xC4975, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish isFrontCamera]', symObjAddr: 0x2E18, symBinAddr: 0xFE58, symSize: 0x10 }
+  - { offset: 0xC49AC, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setIsFrontCamera:]', symObjAddr: 0x2E28, symBinAddr: 0xFE68, symSize: 0x10 }
+  - { offset: 0xC49E7, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish isPushing]', symObjAddr: 0x2E38, symBinAddr: 0xFE78, symSize: 0x10 }
+  - { offset: 0xC4A1E, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setIsPushing:]', symObjAddr: 0x2E48, symBinAddr: 0xFE88, symSize: 0x10 }
+  - { offset: 0xC4A59, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish pushState]', symObjAddr: 0x2E58, symBinAddr: 0xFE98, symSize: 0x10 }
+  - { offset: 0xC4A90, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setPushState:]', symObjAddr: 0x2E68, symBinAddr: 0xFEA8, symSize: 0x10 }
+  - { offset: 0xC4ACD, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish videoWidth]', symObjAddr: 0x2E78, symBinAddr: 0xFEB8, symSize: 0x10 }
+  - { offset: 0xC4B04, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setVideoWidth:]', symObjAddr: 0x2E88, symBinAddr: 0xFEC8, symSize: 0x10 }
+  - { offset: 0xC4B41, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish videoHeight]', symObjAddr: 0x2E98, symBinAddr: 0xFED8, symSize: 0x10 }
+  - { offset: 0xC4B78, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setVideoHeight:]', symObjAddr: 0x2EA8, symBinAddr: 0xFEE8, symSize: 0x10 }
+  - { offset: 0xC4BB5, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish timer]', symObjAddr: 0x2EB8, symBinAddr: 0xFEF8, symSize: 0x10 }
+  - { offset: 0xC4BEC, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setTimer:]', symObjAddr: 0x2EC8, symBinAddr: 0xFF08, symSize: 0x14 }
+  - { offset: 0xC4C2D, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish videoContentView]', symObjAddr: 0x2EDC, symBinAddr: 0xFF1C, symSize: 0x10 }
+  - { offset: 0xC4C64, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish setVideoContentView:]', symObjAddr: 0x2EEC, symBinAddr: 0xFF2C, symSize: 0x14 }
+  - { offset: 0xC4CA5, size: 0x8, addend: 0x0, symName: '-[VhallLiveV2Publish .cxx_destruct]', symObjAddr: 0x2F00, symBinAddr: 0xFF40, symSize: 0x78 }
+  - { offset: 0xC512B, size: 0x8, addend: 0x0, symName: '-[VhallPublish initWithConfig:videoCapture:audioCapture:error:]', symObjAddr: 0x0, symBinAddr: 0xFFB8, symSize: 0x8C }
+  - { offset: 0xC5E73, size: 0x8, addend: 0x0, symName: '-[VhallPublish initWithConfig:videoCapture:audioCapture:error:]', symObjAddr: 0x0, symBinAddr: 0xFFB8, symSize: 0x8C }
+  - { offset: 0xC5EDE, size: 0x8, addend: 0x0, symName: '-[VhallPublish initWithConfig:licenseUrl:licenseKey:videoCapture:audioCapture:error:]', symObjAddr: 0x8C, symBinAddr: 0x10044, symSize: 0xDC }
+  - { offset: 0xC5F69, size: 0x8, addend: 0x0, symName: '-[VhallPublish initWithConfig:LiveModel:videoCapture:audioCapture:]', symObjAddr: 0x168, symBinAddr: 0x10120, symSize: 0xB8 }
+  - { offset: 0xC5FD8, size: 0x8, addend: 0x0, symName: '-[VhallPublish startVideoCapture]', symObjAddr: 0x220, symBinAddr: 0x101D8, symSize: 0x18 }
+  - { offset: 0xC600B, size: 0x8, addend: 0x0, symName: '-[VhallPublish stopVideoCapture]', symObjAddr: 0x238, symBinAddr: 0x101F0, symSize: 0x18 }
+  - { offset: 0xC603E, size: 0x8, addend: 0x0, symName: '-[VhallPublish startLive]', symObjAddr: 0x250, symBinAddr: 0x10208, symSize: 0x14 }
+  - { offset: 0xC606D, size: 0x8, addend: 0x0, symName: '-[VhallPublish stopLive]', symObjAddr: 0x264, symBinAddr: 0x1021C, symSize: 0x14 }
+  - { offset: 0xC609C, size: 0x8, addend: 0x0, symName: '-[VhallPublish disconnect]', symObjAddr: 0x278, symBinAddr: 0x10230, symSize: 0x14 }
+  - { offset: 0xC60CB, size: 0x8, addend: 0x0, symName: '-[VhallPublish reconnect]', symObjAddr: 0x28C, symBinAddr: 0x10244, symSize: 0x14 }
+  - { offset: 0xC60FA, size: 0x8, addend: 0x0, symName: '-[VhallPublish setIsRehearsal:]', symObjAddr: 0x2A0, symBinAddr: 0x10258, symSize: 0x18 }
+  - { offset: 0xC6137, size: 0x8, addend: 0x0, symName: '-[VhallPublish swapCameras:]', symObjAddr: 0x2B8, symBinAddr: 0x10270, symSize: 0x18 }
+  - { offset: 0xC6176, size: 0x8, addend: 0x0, symName: '-[VhallPublish setFoucsFoint:]', symObjAddr: 0x2D0, symBinAddr: 0x10288, symSize: 0x14 }
+  - { offset: 0xC61B1, size: 0x8, addend: 0x0, symName: '-[VhallPublish captureDeviceZoom:]', symObjAddr: 0x2E4, symBinAddr: 0x1029C, symSize: 0x14 }
+  - { offset: 0xC61EC, size: 0x8, addend: 0x0, symName: '-[VhallPublish setDeviceTorchModel:]', symObjAddr: 0x2F8, symBinAddr: 0x102B0, symSize: 0x18 }
+  - { offset: 0xC622B, size: 0x8, addend: 0x0, symName: '-[VhallPublish destoryObject]', symObjAddr: 0x310, symBinAddr: 0x102C8, symSize: 0x14 }
+  - { offset: 0xC625A, size: 0x8, addend: 0x0, symName: '-[VhallPublish setVolumeAmplificateSize:]', symObjAddr: 0x324, symBinAddr: 0x102DC, symSize: 0x14 }
+  - { offset: 0xC6295, size: 0x8, addend: 0x0, symName: '-[VhallPublish setContentMode:]', symObjAddr: 0x338, symBinAddr: 0x102F0, symSize: 0x14 }
+  - { offset: 0xC62D0, size: 0x8, addend: 0x0, symName: '-[VhallPublish camVidMirror:]', symObjAddr: 0x34C, symBinAddr: 0x10304, symSize: 0x14 }
+  - { offset: 0xC630B, size: 0x8, addend: 0x0, symName: '-[VhallPublish setFilterBilateral:Brightness:Saturation:Sharpness:]', symObjAddr: 0x360, symBinAddr: 0x10318, symSize: 0x14 }
+  - { offset: 0xC636A, size: 0x8, addend: 0x0, symName: '-[VhallPublish stopLiveRequestSuccess:failed:]', symObjAddr: 0x374, symBinAddr: 0x1032C, symSize: 0x14 }
+  - { offset: 0xC63B1, size: 0x8, addend: 0x0, symName: '-[VhallPublish initLiveModel:extraDic:]', symObjAddr: 0x388, symBinAddr: 0x10340, symSize: 0x8C }
+  - { offset: 0xC6404, size: 0x8, addend: 0x0, symName: '-[VhallPublish hostEnterStartDirectorLive]', symObjAddr: 0x414, symBinAddr: 0x103CC, symSize: 0x14 }
+  - { offset: 0xC6433, size: 0x8, addend: 0x0, symName: '-[VhallPublish hostEnterStopDirectorLive]', symObjAddr: 0x428, symBinAddr: 0x103E0, symSize: 0x14 }
+  - { offset: 0xC6462, size: 0x8, addend: 0x0, symName: '-[VhallPublish hostEnterDestoryDirectorLive]', symObjAddr: 0x43C, symBinAddr: 0x103F4, symSize: 0x14 }
+  - { offset: 0xC6491, size: 0x8, addend: 0x0, symName: '-[VhallPublish directorHostEnterPlayerLogParam]', symObjAddr: 0x450, symBinAddr: 0x10408, symSize: 0x1B8 }
+  - { offset: 0xC64D8, size: 0x8, addend: 0x0, symName: '-[VhallPublish displayView]', symObjAddr: 0x608, symBinAddr: 0x105C0, symSize: 0x8 }
+  - { offset: 0xC650F, size: 0x8, addend: 0x0, symName: '-[VhallPublish cameraMute]', symObjAddr: 0x610, symBinAddr: 0x105C8, symSize: 0x8 }
+  - { offset: 0xC6546, size: 0x8, addend: 0x0, symName: '-[VhallPublish setCameraMute:]', symObjAddr: 0x618, symBinAddr: 0x105D0, symSize: 0x8 }
+  - { offset: 0xC6581, size: 0x8, addend: 0x0, symName: '-[VhallPublish isMute]', symObjAddr: 0x620, symBinAddr: 0x105D8, symSize: 0x8 }
+  - { offset: 0xC65B8, size: 0x8, addend: 0x0, symName: '-[VhallPublish setIsMute:]', symObjAddr: 0x628, symBinAddr: 0x105E0, symSize: 0x8 }
+  - { offset: 0xC65F3, size: 0x8, addend: 0x0, symName: '-[VhallPublish captureDevicePosition]', symObjAddr: 0x630, symBinAddr: 0x105E8, symSize: 0x8 }
+  - { offset: 0xC662A, size: 0x8, addend: 0x0, symName: '-[VhallPublish isPublishing]', symObjAddr: 0x638, symBinAddr: 0x105F0, symSize: 0x8 }
+  - { offset: 0xC6661, size: 0x8, addend: 0x0, symName: '-[VhallPublish isRehearsal]', symObjAddr: 0x640, symBinAddr: 0x105F8, symSize: 0x8 }
+  - { offset: 0xC6698, size: 0x8, addend: 0x0, symName: '-[VhallPublish livemodel]', symObjAddr: 0x648, symBinAddr: 0x10600, symSize: 0x18 }
+  - { offset: 0xC66CF, size: 0x8, addend: 0x0, symName: '-[VhallPublish setLivemodel:]', symObjAddr: 0x660, symBinAddr: 0x10618, symSize: 0xC }
+  - { offset: 0xC6710, size: 0x8, addend: 0x0, symName: '-[VhallPublish config]', symObjAddr: 0x66C, symBinAddr: 0x10624, symSize: 0x18 }
+  - { offset: 0xC6747, size: 0x8, addend: 0x0, symName: '-[VhallPublish setConfig:]', symObjAddr: 0x684, symBinAddr: 0x1063C, symSize: 0xC }
+  - { offset: 0xC6788, size: 0x8, addend: 0x0, symName: '-[VhallPublish licenseUrl]', symObjAddr: 0x690, symBinAddr: 0x10648, symSize: 0x8 }
+  - { offset: 0xC67BF, size: 0x8, addend: 0x0, symName: '-[VhallPublish setLicenseUrl:]', symObjAddr: 0x698, symBinAddr: 0x10650, symSize: 0xC }
+  - { offset: 0xC6800, size: 0x8, addend: 0x0, symName: '-[VhallPublish licenseKey]', symObjAddr: 0x6A4, symBinAddr: 0x1065C, symSize: 0x8 }
+  - { offset: 0xC6837, size: 0x8, addend: 0x0, symName: '-[VhallPublish setLicenseKey:]', symObjAddr: 0x6AC, symBinAddr: 0x10664, symSize: 0xC }
+  - { offset: 0xC6878, size: 0x8, addend: 0x0, symName: '-[VhallPublish livePlayerView]', symObjAddr: 0x6B8, symBinAddr: 0x10670, symSize: 0x8 }
+  - { offset: 0xC68AF, size: 0x8, addend: 0x0, symName: '-[VhallPublish directorType]', symObjAddr: 0x6C0, symBinAddr: 0x10678, symSize: 0x8 }
+  - { offset: 0xC68E6, size: 0x8, addend: 0x0, symName: '-[VhallPublish setDirectorType:]', symObjAddr: 0x6C8, symBinAddr: 0x10680, symSize: 0x8 }
+  - { offset: 0xC6923, size: 0x8, addend: 0x0, symName: '-[VhallPublish .cxx_destruct]', symObjAddr: 0x6D0, symBinAddr: 0x10688, symSize: 0x58 }
+  - { offset: 0xC6AAD, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish displayView]', symObjAddr: 0x0, symBinAddr: 0x106E0, symSize: 0x20 }
+  - { offset: 0xC790E, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish displayView]', symObjAddr: 0x0, symBinAddr: 0x106E0, symSize: 0x20 }
+  - { offset: 0xC7945, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish cameraMute]', symObjAddr: 0x20, symBinAddr: 0x10700, symSize: 0x18 }
+  - { offset: 0xC7978, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setCameraMute:]', symObjAddr: 0x38, symBinAddr: 0x10718, symSize: 0x14 }
+  - { offset: 0xC79B3, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish isMute]', symObjAddr: 0x4C, symBinAddr: 0x1072C, symSize: 0x20 }
+  - { offset: 0xC79EA, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setIsMute:]', symObjAddr: 0x6C, symBinAddr: 0x1074C, symSize: 0x20 }
+  - { offset: 0xC7A30, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish captureDevicePosition]', symObjAddr: 0x8C, symBinAddr: 0x1076C, symSize: 0x20 }
+  - { offset: 0xC7A67, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish isPublishing]', symObjAddr: 0xAC, symBinAddr: 0x1078C, symSize: 0x20 }
+  - { offset: 0xC7A9E, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish dealloc]', symObjAddr: 0xCC, symBinAddr: 0x107AC, symSize: 0xB0 }
+  - { offset: 0xC7AD1, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish initWithConfig:LiveModel:videoCapture:audioCapture:]', symObjAddr: 0x17C, symBinAddr: 0x1085C, symSize: 0x114 }
+  - { offset: 0xC7B48, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish startVideoCapture]', symObjAddr: 0x290, symBinAddr: 0x10970, symSize: 0x20 }
+  - { offset: 0xC7B7F, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish stopVideoCapture]', symObjAddr: 0x2B0, symBinAddr: 0x10990, symSize: 0x20 }
+  - { offset: 0xC7BB6, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish stopVideoCaptureV2:]', symObjAddr: 0x2D0, symBinAddr: 0x109B0, symSize: 0x18 }
+  - { offset: 0xC7BF5, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish startLive]', symObjAddr: 0x2E8, symBinAddr: 0x109C8, symSize: 0x200 }
+  - { offset: 0xC7C47, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish stopLive]', symObjAddr: 0x4E8, symBinAddr: 0x10BC8, symSize: 0xB8 }
+  - { offset: 0xC7C7A, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish disconnect]', symObjAddr: 0x5A0, symBinAddr: 0x10C80, symSize: 0x20 }
+  - { offset: 0xC7CAD, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish reconnect]', symObjAddr: 0x5C0, symBinAddr: 0x10CA0, symSize: 0x90 }
+  - { offset: 0xC7CE0, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish swapCameras:]', symObjAddr: 0x650, symBinAddr: 0x10D30, symSize: 0x20 }
+  - { offset: 0xC7D25, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setFoucsFoint:]', symObjAddr: 0x670, symBinAddr: 0x10D50, symSize: 0x24 }
+  - { offset: 0xC7D64, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish captureDeviceZoom:]', symObjAddr: 0x694, symBinAddr: 0x10D74, symSize: 0x20 }
+  - { offset: 0xC7DA6, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setDeviceTorchModel:]', symObjAddr: 0x6B4, symBinAddr: 0x10D94, symSize: 0x20 }
+  - { offset: 0xC7DEB, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish destoryObject]', symObjAddr: 0x6D4, symBinAddr: 0x10DB4, symSize: 0x20 }
+  - { offset: 0xC7E1E, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setVolumeAmplificateSize:]', symObjAddr: 0x6F4, symBinAddr: 0x10DD4, symSize: 0x20 }
+  - { offset: 0xC7E60, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setContentMode:]', symObjAddr: 0x714, symBinAddr: 0x10DF4, symSize: 0x88 }
+  - { offset: 0xC7EA3, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setFilterBilateral:Brightness:Saturation:Sharpness:]', symObjAddr: 0x79C, symBinAddr: 0x10E7C, symSize: 0x8C }
+  - { offset: 0xC7F26, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish stopLiveRequestSuccess:failed:]', symObjAddr: 0x828, symBinAddr: 0x10F08, symSize: 0x154 }
+  - { offset: 0xC7F89, size: 0x8, addend: 0x0, symName: '___50-[VhallSaasPublish stopLiveRequestSuccess:failed:]_block_invoke', symObjAddr: 0x97C, symBinAddr: 0x1105C, symSize: 0x34 }
+  - { offset: 0xC7FDC, size: 0x8, addend: 0x0, symName: '___50-[VhallSaasPublish stopLiveRequestSuccess:failed:]_block_invoke.10', symObjAddr: 0x9C8, symBinAddr: 0x11090, symSize: 0x34 }
+  - { offset: 0xC8031, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish in_startPushStream:withPushType:]', symObjAddr: 0x9FC, symBinAddr: 0x110C4, symSize: 0xC8 }
+  - { offset: 0xC8084, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish firstCaptureImage:]', symObjAddr: 0xAC4, symBinAddr: 0x1118C, symSize: 0xE8 }
+  - { offset: 0xC80C7, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish onPublishStatus:info:]', symObjAddr: 0xBAC, symBinAddr: 0x11274, symSize: 0x1C8 }
+  - { offset: 0xC811A, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish onPublishError:info:]', symObjAddr: 0xD74, symBinAddr: 0x1143C, symSize: 0x1BC }
+  - { offset: 0xC816D, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish delegate]', symObjAddr: 0xF30, symBinAddr: 0x115F8, symSize: 0x20 }
+  - { offset: 0xC81A4, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setDelegate:]', symObjAddr: 0xF50, symBinAddr: 0x11618, symSize: 0x14 }
+  - { offset: 0xC81E5, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish publisher]', symObjAddr: 0xF64, symBinAddr: 0x1162C, symSize: 0x10 }
+  - { offset: 0xC821C, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish setPublisher:]', symObjAddr: 0xF74, symBinAddr: 0x1163C, symSize: 0x14 }
+  - { offset: 0xC825D, size: 0x8, addend: 0x0, symName: '-[VhallSaasPublish .cxx_destruct]', symObjAddr: 0xF88, symBinAddr: 0x11650, symSize: 0x3C }
+  - { offset: 0xC8621, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish displayView]', symObjAddr: 0x0, symBinAddr: 0x1168C, symSize: 0x20 }
+  - { offset: 0xC9486, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish displayView]', symObjAddr: 0x0, symBinAddr: 0x1168C, symSize: 0x20 }
+  - { offset: 0xC94BD, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish cameraMute]', symObjAddr: 0x20, symBinAddr: 0x116AC, symSize: 0x20 }
+  - { offset: 0xC94F4, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setCameraMute:]', symObjAddr: 0x40, symBinAddr: 0x116CC, symSize: 0x20 }
+  - { offset: 0xC953A, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish isMute]', symObjAddr: 0x60, symBinAddr: 0x116EC, symSize: 0x20 }
+  - { offset: 0xC9571, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setIsMute:]', symObjAddr: 0x80, symBinAddr: 0x1170C, symSize: 0x20 }
+  - { offset: 0xC95B7, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish captureDevicePosition]', symObjAddr: 0xA0, symBinAddr: 0x1172C, symSize: 0x20 }
+  - { offset: 0xC95EE, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish isPublishing]', symObjAddr: 0xC0, symBinAddr: 0x1174C, symSize: 0x20 }
+  - { offset: 0xC9625, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish initWithConfig:LiveModel:videoCapture:audioCapture:]', symObjAddr: 0xE0, symBinAddr: 0x1176C, symSize: 0x114 }
+  - { offset: 0xC969C, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish startVideoCapture]', symObjAddr: 0x1F4, symBinAddr: 0x11880, symSize: 0x20 }
+  - { offset: 0xC96D3, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish stopVideoCapture]', symObjAddr: 0x214, symBinAddr: 0x118A0, symSize: 0x20 }
+  - { offset: 0xC970A, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish stopVideoCaptureV2:]', symObjAddr: 0x234, symBinAddr: 0x118C0, symSize: 0x18 }
+  - { offset: 0xC9749, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish startLive]', symObjAddr: 0x24C, symBinAddr: 0x118D8, symSize: 0x1AC }
+  - { offset: 0xC978C, size: 0x8, addend: 0x0, symName: '___28-[VhallVssPublish startLive]_block_invoke', symObjAddr: 0x3F8, symBinAddr: 0x11A84, symSize: 0x5C }
+  - { offset: 0xC97D3, size: 0x8, addend: 0x0, symName: '___28-[VhallVssPublish startLive]_block_invoke_2', symObjAddr: 0x454, symBinAddr: 0x11AE0, symSize: 0x14 }
+  - { offset: 0xC9806, size: 0x8, addend: 0x0, symName: '___28-[VhallVssPublish startLive]_block_invoke_3', symObjAddr: 0x468, symBinAddr: 0x11AF4, symSize: 0x14 }
+  - { offset: 0xC9839, size: 0x8, addend: 0x0, symName: '___28-[VhallVssPublish startLive]_block_invoke.5', symObjAddr: 0x490, symBinAddr: 0x11B08, symSize: 0xFC }
+  - { offset: 0xC98A3, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish startLiveAction]', symObjAddr: 0x58C, symBinAddr: 0x11C04, symSize: 0x3C0 }
+  - { offset: 0xC9905, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish stopLive]', symObjAddr: 0x94C, symBinAddr: 0x11FC4, symSize: 0xA4 }
+  - { offset: 0xC9938, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish disconnect]', symObjAddr: 0x9F0, symBinAddr: 0x12068, symSize: 0x20 }
+  - { offset: 0xC996B, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish reconnect]', symObjAddr: 0xA10, symBinAddr: 0x12088, symSize: 0x148 }
+  - { offset: 0xC99BE, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish swapCameras:]', symObjAddr: 0xB58, symBinAddr: 0x121D0, symSize: 0x20 }
+  - { offset: 0xC9A03, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setFoucsFoint:]', symObjAddr: 0xB78, symBinAddr: 0x121F0, symSize: 0x20 }
+  - { offset: 0xC9A42, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish captureDeviceZoom:]', symObjAddr: 0xB98, symBinAddr: 0x12210, symSize: 0x20 }
+  - { offset: 0xC9A84, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setDeviceTorchModel:]', symObjAddr: 0xBB8, symBinAddr: 0x12230, symSize: 0x20 }
+  - { offset: 0xC9AC9, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish destoryObject]', symObjAddr: 0xBD8, symBinAddr: 0x12250, symSize: 0x20 }
+  - { offset: 0xC9AFC, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setVolumeAmplificateSize:]', symObjAddr: 0xBF8, symBinAddr: 0x12270, symSize: 0x20 }
+  - { offset: 0xC9B3E, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setContentMode:]', symObjAddr: 0xC18, symBinAddr: 0x12290, symSize: 0x88 }
+  - { offset: 0xC9B81, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setFilterBilateral:Brightness:Saturation:Sharpness:]', symObjAddr: 0xCA0, symBinAddr: 0x12318, symSize: 0x70 }
+  - { offset: 0xC9BF4, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish stopLiveRequestSuccess:failed:]', symObjAddr: 0xD10, symBinAddr: 0x12388, symSize: 0x108 }
+  - { offset: 0xC9C43, size: 0x8, addend: 0x0, symName: '___49-[VhallVssPublish stopLiveRequestSuccess:failed:]_block_invoke', symObjAddr: 0xE18, symBinAddr: 0x12490, symSize: 0x1FC }
+  - { offset: 0xC9CC5, size: 0x8, addend: 0x0, symName: '___49-[VhallVssPublish stopLiveRequestSuccess:failed:]_block_invoke.31', symObjAddr: 0x1078, symBinAddr: 0x1268C, symSize: 0x34 }
+  - { offset: 0xC9D1A, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish firstCaptureImage:]', symObjAddr: 0x10C4, symBinAddr: 0x126C0, symSize: 0xE8 }
+  - { offset: 0xC9D5D, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish onPublishStatus:info:]', symObjAddr: 0x11AC, symBinAddr: 0x127A8, symSize: 0x1C8 }
+  - { offset: 0xC9DB0, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish onPublishError:info:]', symObjAddr: 0x1374, symBinAddr: 0x12970, symSize: 0x1BC }
+  - { offset: 0xC9E03, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish saasLogParam]', symObjAddr: 0x1530, symBinAddr: 0x12B2C, symSize: 0x278 }
+  - { offset: 0xC9E5D, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish delegate]', symObjAddr: 0x17A8, symBinAddr: 0x12DA4, symSize: 0x20 }
+  - { offset: 0xC9E94, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setDelegate:]', symObjAddr: 0x17C8, symBinAddr: 0x12DC4, symSize: 0x14 }
+  - { offset: 0xC9ED5, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish publisher]', symObjAddr: 0x17DC, symBinAddr: 0x12DD8, symSize: 0x10 }
+  - { offset: 0xC9F0C, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish setPublisher:]', symObjAddr: 0x17EC, symBinAddr: 0x12DE8, symSize: 0x14 }
+  - { offset: 0xC9F4D, size: 0x8, addend: 0x0, symName: '-[VhallVssPublish .cxx_destruct]', symObjAddr: 0x1800, symBinAddr: 0x12DFC, symSize: 0x3C }
+  - { offset: 0xCA366, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_magic, symObjAddr: 0x28, symBinAddr: 0x12E38, symSize: 0x14 }
+  - { offset: 0xCA378, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_padding_bytes, symObjAddr: 0x44, symBinAddr: 0x12E4C, symSize: 0xC }
+  - { offset: 0xCA38A, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_version, symObjAddr: 0x50, symBinAddr: 0x12E58, symSize: 0xC }
+  - { offset: 0xCA3CD, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0x12E64, symSize: 0xC }
+  - { offset: 0xCA3DB, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0x12E64, symSize: 0xC }
+  - { offset: 0xCA417, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0x12E70, symSize: 0xC }
+  - { offset: 0xCA425, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0x12E70, symSize: 0xC }
+  - { offset: 0xCA43E, size: 0x8, addend: 0x0, symName: _getValueProfRecordValueData, symObjAddr: 0x1C, symBinAddr: 0x12E7C, symSize: 0x14 }
+  - { offset: 0xCA475, size: 0x8, addend: 0x0, symName: _getValueProfRecordNext, symObjAddr: 0x170, symBinAddr: 0x12E90, symSize: 0x15C }
+  - { offset: 0xCA4B3, size: 0x8, addend: 0x0, symName: _getFirstValueProfRecord, symObjAddr: 0x2CC, symBinAddr: 0x12FEC, symSize: 0x8 }
+  - { offset: 0xCA4E1, size: 0x8, addend: 0x0, symName: _lprofSetupValueProfiler, symObjAddr: 0xA10, symBinAddr: 0x12FF4, symSize: 0x68 }
+  - { offset: 0xCA54D, size: 0x8, addend: 0x0, symName: ___llvm_profile_instrument_target_value, symObjAddr: 0xD50, symBinAddr: 0x1305C, symSize: 0x2CC }
+  - { offset: 0xCA5C1, size: 0x8, addend: 0x0, symName: _lprofGetVPDataReader, symObjAddr: 0x1054, symBinAddr: 0x13328, symSize: 0xC }
+  - { offset: 0xCA5D3, size: 0x8, addend: 0x0, symName: _initializeValueProfRuntimeRecord, symObjAddr: 0x1060, symBinAddr: 0x13334, symSize: 0x210 }
+  - { offset: 0xCA5EC, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1270, symBinAddr: 0x13544, symSize: 0x14 }
+  - { offset: 0xCA602, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1270, symBinAddr: 0x13544, symSize: 0x14 }
+  - { offset: 0xCA615, size: 0x8, addend: 0x0, symName: _getValueProfDataSizeWrapper, symObjAddr: 0x1284, symBinAddr: 0x13558, symSize: 0xE0 }
+  - { offset: 0xCA6B6, size: 0x8, addend: 0x0, symName: _getNumValueSitesRT, symObjAddr: 0x13A0, symBinAddr: 0x13674, symSize: 0x10 }
+  - { offset: 0xCA6C8, size: 0x8, addend: 0x0, symName: _getNumValueDataRT, symObjAddr: 0x13B0, symBinAddr: 0x13684, symSize: 0x148 }
+  - { offset: 0xCA6DA, size: 0x8, addend: 0x0, symName: _getNextNValueData, symObjAddr: 0x1364, symBinAddr: 0x13638, symSize: 0x3C }
+  - { offset: 0xCA716, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0x137CC, symSize: 0x1C }
+  - { offset: 0xCA724, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0x137CC, symSize: 0x1C }
+  - { offset: 0xCA736, size: 0x8, addend: 0x0, symName: ___llvm_profile_enable_continuous_mode, symObjAddr: 0x1C, symBinAddr: 0x137E8, symSize: 0x10 }
+  - { offset: 0xCA748, size: 0x8, addend: 0x0, symName: ___llvm_profile_disable_continuous_mode, symObjAddr: 0x2C, symBinAddr: 0x137F8, symSize: 0xC }
+  - { offset: 0xCA75A, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_page_size, symObjAddr: 0x38, symBinAddr: 0x13804, symSize: 0xC }
+  - { offset: 0xCA76C, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer, symObjAddr: 0x44, symBinAddr: 0x13810, symSize: 0xC8 }
+  - { offset: 0xCA869, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer_internal, symObjAddr: 0x10C, symBinAddr: 0x138D8, symSize: 0x1C8 }
+  - { offset: 0xCAAD0, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_data, symObjAddr: 0x2D4, symBinAddr: 0x13AA0, symSize: 0x10 }
+  - { offset: 0xCAAE2, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0x13AB0, symSize: 0x10 }
+  - { offset: 0xCAAF8, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0x13AB0, symSize: 0x10 }
+  - { offset: 0xCAB0A, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_vtable, symObjAddr: 0x2F4, symBinAddr: 0x13AC0, symSize: 0x18 }
+  - { offset: 0xCAB1C, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_vtable_section_size, symObjAddr: 0x30C, symBinAddr: 0x13AD8, symSize: 0x8 }
+  - { offset: 0xCAB2E, size: 0x8, addend: 0x0, symName: ___llvm_profile_counter_entry_size, symObjAddr: 0x314, symBinAddr: 0x13AE0, symSize: 0x20 }
+  - { offset: 0xCAB4F, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_counters, symObjAddr: 0x334, symBinAddr: 0x13B00, symSize: 0x4C }
+  - { offset: 0xCABA8, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_counters_size, symObjAddr: 0x380, symBinAddr: 0x13B4C, symSize: 0x5C }
+  - { offset: 0xCAC3A, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_padding_sizes_for_counters, symObjAddr: 0x3EC, symBinAddr: 0x13BA8, symSize: 0x160 }
+  - { offset: 0xCAD12, size: 0x8, addend: 0x0, symName: _initBufferWriter, symObjAddr: 0x54C, symBinAddr: 0x13D08, symSize: 0x10 }
+  - { offset: 0xCAD72, size: 0x8, addend: 0x0, symName: _getCurFilenameLength, symObjAddr: 0x1C0, symBinAddr: 0x13D18, symSize: 0x318 }
+  - { offset: 0xCADBD, size: 0x8, addend: 0x0, symName: _getCurFilename, symObjAddr: 0x4D8, symBinAddr: 0x14030, symSize: 0x338 }
+  - { offset: 0xCAEC1, size: 0x8, addend: 0x0, symName: _parseAndSetFilename, symObjAddr: 0x918, symBinAddr: 0x14368, symSize: 0x580 }
+  - { offset: 0xCB131, size: 0x8, addend: 0x0, symName: _truncateCurrentFile, symObjAddr: 0x1E2C, symBinAddr: 0x15364, symSize: 0xCC }
+  - { offset: 0xCB1A6, size: 0x8, addend: 0x0, symName: _initializeProfileForContinuousMode, symObjAddr: 0x1EF8, symBinAddr: 0x15430, symSize: 0x250 }
+  - { offset: 0xCB3BF, size: 0x8, addend: 0x0, symName: ___llvm_profile_initialize, symObjAddr: 0xE98, symBinAddr: 0x148E8, symSize: 0xBC }
+  - { offset: 0xCB47D, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_file, symObjAddr: 0xFD8, symBinAddr: 0x149A4, symSize: 0x1B0 }
+  - { offset: 0xCB556, size: 0x8, addend: 0x0, symName: _writeFile, symObjAddr: 0x1188, symBinAddr: 0x14B54, symSize: 0x29C }
+  - { offset: 0xCB808, size: 0x8, addend: 0x0, symName: _createProfileDir, symObjAddr: 0x2148, symBinAddr: 0x15680, symSize: 0x88 }
+  - { offset: 0xCB84D, size: 0x8, addend: 0x0, symName: _getProfileFileSizeForMerging, symObjAddr: 0x18BC, symBinAddr: 0x14DF4, symSize: 0x114 }
+  - { offset: 0xCB8DE, size: 0x8, addend: 0x0, symName: _mmapProfileForMerging, symObjAddr: 0x19D0, symBinAddr: 0x14F08, symSize: 0xC0 }
+  - { offset: 0xCB99E, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x16D0, symBinAddr: 0x14DF0, symSize: 0x4 }
+  - { offset: 0xCB9B4, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x16D0, symBinAddr: 0x14DF0, symSize: 0x4 }
+  - { offset: 0xCB9C6, size: 0x8, addend: 0x0, symName: _mmapForContinuousMode, symObjAddr: 0x1A90, symBinAddr: 0x14FC8, symSize: 0x260 }
+  - { offset: 0xCBB7B, size: 0x8, addend: 0x0, symName: _fileWriter, symObjAddr: 0x1CF0, symBinAddr: 0x15228, symSize: 0x13C }
+  - { offset: 0xCBBD8, size: 0x8, addend: 0x0, symName: _exitSignalHandler, symObjAddr: 0x21D0, symBinAddr: 0x15708, symSize: 0x10 }
+  - { offset: 0xCBC2B, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0x15718, symSize: 0xD4 }
+  - { offset: 0xCBC39, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0x15718, symSize: 0xD4 }
+  - { offset: 0xCBD38, size: 0x8, addend: 0x0, symName: ___llvm_profile_check_compatibility, symObjAddr: 0xD4, symBinAddr: 0x157EC, symSize: 0x1D8 }
+  - { offset: 0xCBE5D, size: 0x8, addend: 0x0, symName: ___llvm_profile_merge_from_buffer, symObjAddr: 0x2AC, symBinAddr: 0x159C4, symSize: 0x4A4 }
+  - { offset: 0xCBF9D, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0x15E68, symSize: 0xF4 }
+  - { offset: 0xCBFAB, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0x15E68, symSize: 0xF4 }
+  - { offset: 0xCC043, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0x15F5C, symSize: 0x70 }
+  - { offset: 0xCC051, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0x15F5C, symSize: 0x70 }
+  - { offset: 0xCC078, size: 0x8, addend: 0x0, symName: _lprofBufferIOWrite, symObjAddr: 0x108, symBinAddr: 0x15FCC, symSize: 0x13C }
+  - { offset: 0xCC0E3, size: 0x8, addend: 0x0, symName: _lprofWriteData, symObjAddr: 0x308, symBinAddr: 0x16108, symSize: 0xD8 }
+  - { offset: 0xCC1E0, size: 0x8, addend: 0x0, symName: _lprofWriteDataImpl, symObjAddr: 0x3E0, symBinAddr: 0x161E0, symSize: 0x320 }
+  - { offset: 0xCC2E9, size: 0x8, addend: 0x0, symName: _createHeader, symObjAddr: 0x700, symBinAddr: 0x16500, symSize: 0x1A4 }
+  - { offset: 0xCC3CB, size: 0x8, addend: 0x0, symName: _writeValueProfData, symObjAddr: 0x8A4, symBinAddr: 0x166A4, symSize: 0x15C }
+  - { offset: 0xCC485, size: 0x8, addend: 0x0, symName: _writeOneValueProfData, symObjAddr: 0x105C, symBinAddr: 0x16800, symSize: 0x408 }
+  - { offset: 0xCC629, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0x16C08, symSize: 0xC }
+  - { offset: 0xCC637, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0x16C08, symSize: 0xC }
+  - { offset: 0xCC649, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_data, symObjAddr: 0xC, symBinAddr: 0x16C14, symSize: 0xC }
+  - { offset: 0xCC65B, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_names, symObjAddr: 0x18, symBinAddr: 0x16C20, symSize: 0xC }
+  - { offset: 0xCC66D, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_names, symObjAddr: 0x24, symBinAddr: 0x16C2C, symSize: 0xC }
+  - { offset: 0xCC67F, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_counters, symObjAddr: 0x30, symBinAddr: 0x16C38, symSize: 0xC }
+  - { offset: 0xCC691, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_counters, symObjAddr: 0x3C, symBinAddr: 0x16C44, symSize: 0xC }
+  - { offset: 0xCC6A3, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_bitmap, symObjAddr: 0x48, symBinAddr: 0x16C50, symSize: 0xC }
+  - { offset: 0xCC6B5, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_bitmap, symObjAddr: 0x54, symBinAddr: 0x16C5C, symSize: 0xC }
+  - { offset: 0xCC6C7, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtables, symObjAddr: 0x60, symBinAddr: 0x16C68, symSize: 0xC }
+  - { offset: 0xCC6D9, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtables, symObjAddr: 0x6C, symBinAddr: 0x16C74, symSize: 0xC }
+  - { offset: 0xCC6EB, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtabnames, symObjAddr: 0x78, symBinAddr: 0x16C80, symSize: 0xC }
+  - { offset: 0xCC6FD, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtabnames, symObjAddr: 0x84, symBinAddr: 0x16C8C, symSize: 0xC }
+  - { offset: 0xCC70F, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vnodes, symObjAddr: 0x9C, symBinAddr: 0x16C98, symSize: 0xC }
+  - { offset: 0xCC721, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vnodes, symObjAddr: 0xA8, symBinAddr: 0x16CA4, symSize: 0xC }
+  - { offset: 0xCC733, size: 0x8, addend: 0x0, symName: ___llvm_write_binary_ids, symObjAddr: 0xB4, symBinAddr: 0x16CB0, symSize: 0x8 }
+  - { offset: 0xCC76F, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0x16CB8, symSize: 0x1C }
+  - { offset: 0xCC78B, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0x16CB8, symSize: 0x1C }
+  - { offset: 0xCC804, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0x16CD4, symSize: 0x5C }
+  - { offset: 0xCC819, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0x16CD4, symSize: 0x5C }
+  - { offset: 0xCC858, size: 0x8, addend: 0x0, symName: _lprofGetHostName, symObjAddr: 0x74, symBinAddr: 0x16D30, symSize: 0x80 }
+  - { offset: 0xCC8A2, size: 0x8, addend: 0x0, symName: _lprofLockFileHandle, symObjAddr: 0x214, symBinAddr: 0x16DB0, symSize: 0x94 }
+  - { offset: 0xCC920, size: 0x8, addend: 0x0, symName: _lprofUnlockFileHandle, symObjAddr: 0x2A8, symBinAddr: 0x16E44, symSize: 0x94 }
+  - { offset: 0xCC98E, size: 0x8, addend: 0x0, symName: _lprofOpenFileEx, symObjAddr: 0x33C, symBinAddr: 0x16ED8, symSize: 0xD4 }
+  - { offset: 0xCCA33, size: 0x8, addend: 0x0, symName: _lprofFindFirstDirSeparator, symObjAddr: 0x554, symBinAddr: 0x16FAC, symSize: 0x8 }
+  - { offset: 0xCCA5C, size: 0x8, addend: 0x0, symName: _lprofInstallSignalHandler, symObjAddr: 0x564, symBinAddr: 0x16FB4, symSize: 0x58 }
+  - { offset: 0xCCA93, size: 0x8, addend: 0x0, symName: _lprofRestoreSigKill, symObjAddr: 0x5C4, symBinAddr: 0x1700C, symSize: 0x4 }
 ...

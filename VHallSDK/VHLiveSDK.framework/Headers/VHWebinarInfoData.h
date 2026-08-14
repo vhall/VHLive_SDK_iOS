@@ -128,11 +128,18 @@
 @property (nonatomic, strong,nullable) NSArray<VHMemberLevelDetails *> *custom_list;
 @end
 
+@interface VHChatMsgRecommend: NSObject
+@property (nonatomic, copy,nullable) NSString *chat_msg_recommend;    /// < 设置的精选内容
+@property (nonatomic, copy,nullable) NSString *msg_id;              /// < 设置的消息id
+@property (nonatomic, copy,nullable) NSString *nick_name;           /// < 此消息用户昵称
+@property (nonatomic, copy,nullable) NSString *create_at;           /// < 设置时间
+@property (nonatomic, assign) NSInteger role_name;           /// < 此消息角色类型 1主持人 2观众 3助理 4嘉宾
+@end
+
 @interface VHWebinarInfoData : NSObject
 @property (nonatomic, copy,nullable) NSString *system_time;                                      ///<系统时间
 @property (nonatomic, copy,nullable) NSString *visitor_id;                                       ///<访客标识
 @property (nonatomic, copy,nullable) NSString *paas_record_id;                                   ///<PaaS回放id
-@property (nonatomic, copy,nullable) NSString *chat_recommend_msg;                                ///<聊天精品推荐消息内容
 @property (nonatomic, assign) NSInteger cast_screen;                                    ///<
 @property (nonatomic, assign) NSInteger live_type;                                      ///<0-直播；2-彩排
 @property (nonatomic, assign) NSInteger cheat_num;                                      ///<
@@ -148,7 +155,8 @@
 @property (nonatomic, strong,nullable) VHWebinarInfoData_Switch *data_switch;                    ///<场次信息
 @property (nonatomic, strong,nullable) VHWebinarInfoData_Subscribe *subscribe;                   ///<预约人数
 @property (nonatomic, strong,nullable) VHWebinarInfoData_Online *online;
-@property (nonatomic, strong,nullable) VHMemberLevel *member_level;    ///<在线信息
+@property (nonatomic, strong,nullable) VHMemberLevel *member_level;                             ///<在线信息
+@property (nonatomic, strong,nullable) VHChatMsgRecommend* chat_recommend;                      ///< 聊天精选配置
 ///<
 
 

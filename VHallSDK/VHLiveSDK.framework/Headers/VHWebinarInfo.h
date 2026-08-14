@@ -59,6 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , assign) NSInteger  show_effect;///<观看端) 消息筛选是否显示屏蔽礼物  0隐藏 1显示
 @property (nonatomic , assign) NSInteger  hidden_custom_menu; //(观看端)隐藏自定义菜单  0不隐藏 1隐藏
 @property (nonatomic , assign) NSInteger  hidden_watch_like_data; //(观看端）隐藏点赞数据 0不隐藏 1隐藏
+@property (nonatomic , assign) NSInteger  chat_nickname_encryption; //(观看端）聊天昵称加密  0不加密 1加密
 @property (nonatomic , strong) RecordWatchExpire * watch_expire; //过期时间
 
 @end
