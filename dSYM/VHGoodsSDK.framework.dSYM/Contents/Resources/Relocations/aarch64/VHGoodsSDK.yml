@@ -2,424 +2,428 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/momo/Library/Developer/Xcode/DerivedData/VhallSDKDemo-gddfyisyxwrimoenhjmkrduefjrc/Build/Products/Release-iphoneos/VHGoodsSDK.framework/VHGoodsSDK'
 relocations:
-  - { offset: 0xA2E1B, size: 0x8, addend: 0x0, symName: _VHGoodsSDKVersionString, symObjAddr: 0x10, symBinAddr: 0x103C0, symSize: 0x0 }
-  - { offset: 0xA2E50, size: 0x8, addend: 0x0, symName: _VHGoodsSDKVersionNumber, symObjAddr: 0x40, symBinAddr: 0x103F0, symSize: 0x0 }
-  - { offset: 0xA2E8D, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x14 }
-  - { offset: 0xA2E9B, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:decidePolicyForNavigationAction:decisionHandler:]', symObjAddr: 0x61CC, symBinAddr: 0xA1CC, symSize: 0x8C4 }
-  - { offset: 0xA2EC3, size: 0x8, addend: 0x0, symName: '_webView:decidePolicyForNavigationAction:decisionHandler:.endPayRedirectURL', symObjAddr: 0x31C58, symBinAddr: 0x28000, symSize: 0x0 }
-  - { offset: 0xA3DCB, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x14 }
-  - { offset: 0xA3E12, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem cdn_url]', symObjAddr: 0x14, symBinAddr: 0x4014, symSize: 0x10 }
-  - { offset: 0xA3E49, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setCdn_url:]', symObjAddr: 0x24, symBinAddr: 0x4024, symSize: 0xC }
-  - { offset: 0xA3E88, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem room_id]', symObjAddr: 0x30, symBinAddr: 0x4030, symSize: 0x10 }
-  - { offset: 0xA3EBF, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setRoom_id:]', symObjAddr: 0x40, symBinAddr: 0x4040, symSize: 0xC }
-  - { offset: 0xA3EFE, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem pusher_nickname]', symObjAddr: 0x4C, symBinAddr: 0x404C, symSize: 0x10 }
-  - { offset: 0xA3F35, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setPusher_nickname:]', symObjAddr: 0x5C, symBinAddr: 0x405C, symSize: 0xC }
-  - { offset: 0xA3F74, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem type]', symObjAddr: 0x68, symBinAddr: 0x4068, symSize: 0x10 }
-  - { offset: 0xA3FAB, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setType:]', symObjAddr: 0x78, symBinAddr: 0x4078, symSize: 0xC }
-  - { offset: 0xA3FEA, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem goods_name]', symObjAddr: 0x84, symBinAddr: 0x4084, symSize: 0x10 }
-  - { offset: 0xA4021, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setGoods_name:]', symObjAddr: 0x94, symBinAddr: 0x4094, symSize: 0xC }
-  - { offset: 0xA4060, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem role_name]', symObjAddr: 0xA0, symBinAddr: 0x40A0, symSize: 0x10 }
-  - { offset: 0xA4097, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setRole_name:]', symObjAddr: 0xB0, symBinAddr: 0x40B0, symSize: 0x10 }
-  - { offset: 0xA40D4, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem push_status]', symObjAddr: 0xC0, symBinAddr: 0x40C0, symSize: 0x10 }
-  - { offset: 0xA410B, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setPush_status:]', symObjAddr: 0xD0, symBinAddr: 0x40D0, symSize: 0x10 }
-  - { offset: 0xA4148, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem goods_id]', symObjAddr: 0xE0, symBinAddr: 0x40E0, symSize: 0x10 }
-  - { offset: 0xA417F, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setGoods_id:]', symObjAddr: 0xF0, symBinAddr: 0x40F0, symSize: 0x10 }
-  - { offset: 0xA41BC, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem goods_info]', symObjAddr: 0x100, symBinAddr: 0x4100, symSize: 0x10 }
-  - { offset: 0xA41F3, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setGoods_info:]', symObjAddr: 0x110, symBinAddr: 0x4110, symSize: 0x14 }
-  - { offset: 0xA4234, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem .cxx_destruct]', symObjAddr: 0x124, symBinAddr: 0x4124, symSize: 0x90 }
-  - { offset: 0xA4267, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setValue:forUndefinedKey:]', symObjAddr: 0x1B4, symBinAddr: 0x41B4, symSize: 0x11C }
-  - { offset: 0xA42BA, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem initWithResponseObject:]', symObjAddr: 0x2D0, symBinAddr: 0x42D0, symSize: 0x264 }
-  - { offset: 0xA435E, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem goods_id]', symObjAddr: 0x534, symBinAddr: 0x4534, symSize: 0x10 }
-  - { offset: 0xA4395, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setGoods_id:]', symObjAddr: 0x544, symBinAddr: 0x4544, symSize: 0xC }
-  - { offset: 0xA43D4, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem price]', symObjAddr: 0x550, symBinAddr: 0x4550, symSize: 0x10 }
-  - { offset: 0xA440B, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setPrice:]', symObjAddr: 0x560, symBinAddr: 0x4560, symSize: 0xC }
-  - { offset: 0xA444A, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem discount_price]', symObjAddr: 0x56C, symBinAddr: 0x456C, symSize: 0x10 }
-  - { offset: 0xA4481, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setDiscount_price:]', symObjAddr: 0x57C, symBinAddr: 0x457C, symSize: 0xC }
-  - { offset: 0xA44C0, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem info]', symObjAddr: 0x588, symBinAddr: 0x4588, symSize: 0x10 }
-  - { offset: 0xA44F7, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setInfo:]', symObjAddr: 0x598, symBinAddr: 0x4598, symSize: 0xC }
-  - { offset: 0xA4536, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem cover_img]', symObjAddr: 0x5A4, symBinAddr: 0x45A4, symSize: 0x10 }
-  - { offset: 0xA456D, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setCover_img:]', symObjAddr: 0x5B4, symBinAddr: 0x45B4, symSize: 0xC }
-  - { offset: 0xA45AC, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem url]', symObjAddr: 0x5C0, symBinAddr: 0x45C0, symSize: 0x10 }
-  - { offset: 0xA45E3, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setUrl:]', symObjAddr: 0x5D0, symBinAddr: 0x45D0, symSize: 0xC }
-  - { offset: 0xA4622, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem qr_code_url]', symObjAddr: 0x5DC, symBinAddr: 0x45DC, symSize: 0x10 }
-  - { offset: 0xA4659, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setQr_code_url:]', symObjAddr: 0x5EC, symBinAddr: 0x45EC, symSize: 0xC }
-  - { offset: 0xA4698, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem name]', symObjAddr: 0x5F8, symBinAddr: 0x45F8, symSize: 0x10 }
-  - { offset: 0xA46CF, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setName:]', symObjAddr: 0x608, symBinAddr: 0x4608, symSize: 0xC }
-  - { offset: 0xA470E, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem shop_url]', symObjAddr: 0x614, symBinAddr: 0x4614, symSize: 0x10 }
-  - { offset: 0xA4745, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setShop_url:]', symObjAddr: 0x624, symBinAddr: 0x4624, symSize: 0xC }
-  - { offset: 0xA4784, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem third_goods_id]', symObjAddr: 0x630, symBinAddr: 0x4630, symSize: 0x10 }
-  - { offset: 0xA47BB, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setThird_goods_id:]', symObjAddr: 0x640, symBinAddr: 0x4640, symSize: 0xC }
-  - { offset: 0xA47FA, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem buy_type]', symObjAddr: 0x64C, symBinAddr: 0x464C, symSize: 0x10 }
-  - { offset: 0xA4831, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setBuy_type:]', symObjAddr: 0x65C, symBinAddr: 0x465C, symSize: 0x10 }
-  - { offset: 0xA486E, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem webinar_goods_id]', symObjAddr: 0x66C, symBinAddr: 0x466C, symSize: 0x10 }
-  - { offset: 0xA48A5, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setWebinar_goods_id:]', symObjAddr: 0x67C, symBinAddr: 0x467C, symSize: 0x10 }
-  - { offset: 0xA48E2, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem order_num]', symObjAddr: 0x68C, symBinAddr: 0x468C, symSize: 0x10 }
-  - { offset: 0xA4919, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setOrder_num:]', symObjAddr: 0x69C, symBinAddr: 0x469C, symSize: 0x10 }
-  - { offset: 0xA4956, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem status]', symObjAddr: 0x6AC, symBinAddr: 0x46AC, symSize: 0x10 }
-  - { offset: 0xA498D, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setStatus:]', symObjAddr: 0x6BC, symBinAddr: 0x46BC, symSize: 0x10 }
-  - { offset: 0xA49CA, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem push_status]', symObjAddr: 0x6CC, symBinAddr: 0x46CC, symSize: 0x10 }
-  - { offset: 0xA4A01, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setPush_status:]', symObjAddr: 0x6DC, symBinAddr: 0x46DC, symSize: 0x10 }
-  - { offset: 0xA4A3E, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem shop_show]', symObjAddr: 0x6EC, symBinAddr: 0x46EC, symSize: 0x10 }
-  - { offset: 0xA4A75, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setShop_show:]', symObjAddr: 0x6FC, symBinAddr: 0x46FC, symSize: 0x10 }
-  - { offset: 0xA4AB2, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem covered_status]', symObjAddr: 0x70C, symBinAddr: 0x470C, symSize: 0x10 }
-  - { offset: 0xA4AE9, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setCovered_status:]', symObjAddr: 0x71C, symBinAddr: 0x471C, symSize: 0x10 }
-  - { offset: 0xA4B26, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem covered_price]', symObjAddr: 0x72C, symBinAddr: 0x472C, symSize: 0x10 }
-  - { offset: 0xA4B5D, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setCovered_price:]', symObjAddr: 0x73C, symBinAddr: 0x473C, symSize: 0x10 }
-  - { offset: 0xA4B9A, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem auto_pop]', symObjAddr: 0x74C, symBinAddr: 0x474C, symSize: 0x10 }
-  - { offset: 0xA4BD1, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setAuto_pop:]', symObjAddr: 0x75C, symBinAddr: 0x475C, symSize: 0x10 }
-  - { offset: 0xA4C0E, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem ext_data]', symObjAddr: 0x76C, symBinAddr: 0x476C, symSize: 0x10 }
-  - { offset: 0xA4C45, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setExt_data:]', symObjAddr: 0x77C, symBinAddr: 0x477C, symSize: 0x10 }
-  - { offset: 0xA4C82, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem push_time]', symObjAddr: 0x78C, symBinAddr: 0x478C, symSize: 0x10 }
-  - { offset: 0xA4CB9, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setPush_time:]', symObjAddr: 0x79C, symBinAddr: 0x479C, symSize: 0x10 }
-  - { offset: 0xA4CF6, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem sale_status]', symObjAddr: 0x7AC, symBinAddr: 0x47AC, symSize: 0x10 }
-  - { offset: 0xA4D2D, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setSale_status:]', symObjAddr: 0x7BC, symBinAddr: 0x47BC, symSize: 0x10 }
-  - { offset: 0xA4D6A, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem goods_detail_url]', symObjAddr: 0x7CC, symBinAddr: 0x47CC, symSize: 0x10 }
-  - { offset: 0xA4DA1, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setGoods_detail_url:]', symObjAddr: 0x7DC, symBinAddr: 0x47DC, symSize: 0x10 }
-  - { offset: 0xA4DDE, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem goods_order_url]', symObjAddr: 0x7EC, symBinAddr: 0x47EC, symSize: 0x10 }
-  - { offset: 0xA4E15, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setGoods_order_url:]', symObjAddr: 0x7FC, symBinAddr: 0x47FC, symSize: 0x10 }
-  - { offset: 0xA4E52, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem images]', symObjAddr: 0x80C, symBinAddr: 0x480C, symSize: 0x10 }
-  - { offset: 0xA4E89, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setImages:]', symObjAddr: 0x81C, symBinAddr: 0x481C, symSize: 0xC }
-  - { offset: 0xA4EC8, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem .cxx_destruct]', symObjAddr: 0x828, symBinAddr: 0x4828, symSize: 0xF4 }
-  - { offset: 0xA4EFB, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item setValue:forUndefinedKey:]', symObjAddr: 0x91C, symBinAddr: 0x491C, symSize: 0x14 }
-  - { offset: 0xA4F42, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item img_url]', symObjAddr: 0x930, symBinAddr: 0x4930, symSize: 0x10 }
-  - { offset: 0xA4F79, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item setImg_url:]', symObjAddr: 0x940, symBinAddr: 0x4940, symSize: 0xC }
-  - { offset: 0xA4FB8, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item is_cover]', symObjAddr: 0x94C, symBinAddr: 0x494C, symSize: 0x10 }
-  - { offset: 0xA4FEF, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item setIs_cover:]', symObjAddr: 0x95C, symBinAddr: 0x495C, symSize: 0x10 }
-  - { offset: 0xA502C, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item .cxx_destruct]', symObjAddr: 0x96C, symBinAddr: 0x496C, symSize: 0x14 }
-  - { offset: 0xA505F, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setValue:forUndefinedKey:]', symObjAddr: 0x980, symBinAddr: 0x4980, symSize: 0x14 }
-  - { offset: 0xA50A6, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem webinar_id]', symObjAddr: 0x994, symBinAddr: 0x4994, symSize: 0x10 }
-  - { offset: 0xA50DD, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setWebinar_id:]', symObjAddr: 0x9A4, symBinAddr: 0x49A4, symSize: 0xC }
-  - { offset: 0xA511C, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_username]', symObjAddr: 0x9B0, symBinAddr: 0x49B0, symSize: 0x10 }
-  - { offset: 0xA5153, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_username:]', symObjAddr: 0x9C0, symBinAddr: 0x49C0, symSize: 0x10 }
-  - { offset: 0xA5190, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_phone]', symObjAddr: 0x9D0, symBinAddr: 0x49D0, symSize: 0x10 }
-  - { offset: 0xA51C7, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_phone:]', symObjAddr: 0x9E0, symBinAddr: 0x49E0, symSize: 0x10 }
-  - { offset: 0xA5204, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_remark]', symObjAddr: 0x9F0, symBinAddr: 0x49F0, symSize: 0x10 }
-  - { offset: 0xA523B, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_remark:]', symObjAddr: 0xA00, symBinAddr: 0x4A00, symSize: 0x10 }
-  - { offset: 0xA5278, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_coupon]', symObjAddr: 0xA10, symBinAddr: 0x4A10, symSize: 0x10 }
-  - { offset: 0xA52AF, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_coupon:]', symObjAddr: 0xA20, symBinAddr: 0x4A20, symSize: 0x10 }
-  - { offset: 0xA52EC, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_buy_notice]', symObjAddr: 0xA30, symBinAddr: 0x4A30, symSize: 0x10 }
-  - { offset: 0xA5323, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_buy_notice:]', symObjAddr: 0xA40, symBinAddr: 0x4A40, symSize: 0x10 }
-  - { offset: 0xA5360, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_hot_sale]', symObjAddr: 0xA50, symBinAddr: 0x4A50, symSize: 0x10 }
-  - { offset: 0xA5397, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_hot_sale:]', symObjAddr: 0xA60, symBinAddr: 0x4A60, symSize: 0x10 }
-  - { offset: 0xA53D4, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_direct_view]', symObjAddr: 0xA70, symBinAddr: 0x4A70, symSize: 0x10 }
-  - { offset: 0xA540B, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_direct_view:]', symObjAddr: 0xA80, symBinAddr: 0x4A80, symSize: 0x10 }
-  - { offset: 0xA5448, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_wx]', symObjAddr: 0xA90, symBinAddr: 0x4A90, symSize: 0x10 }
-  - { offset: 0xA547F, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_wx:]', symObjAddr: 0xAA0, symBinAddr: 0x4AA0, symSize: 0x10 }
-  - { offset: 0xA54BA, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_ali]', symObjAddr: 0xAB0, symBinAddr: 0x4AB0, symSize: 0x10 }
-  - { offset: 0xA54F1, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_ali:]', symObjAddr: 0xAC0, symBinAddr: 0x4AC0, symSize: 0x10 }
-  - { offset: 0xA552C, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem btn_label]', symObjAddr: 0xAD0, symBinAddr: 0x4AD0, symSize: 0x10 }
-  - { offset: 0xA5563, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setBtn_label:]', symObjAddr: 0xAE0, symBinAddr: 0x4AE0, symSize: 0xC }
-  - { offset: 0xA55A2, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem btn_description]', symObjAddr: 0xAEC, symBinAddr: 0x4AEC, symSize: 0x10 }
-  - { offset: 0xA55D9, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setBtn_description:]', symObjAddr: 0xAFC, symBinAddr: 0x4AFC, symSize: 0xC }
-  - { offset: 0xA5618, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem .cxx_destruct]', symObjAddr: 0xB08, symBinAddr: 0x4B08, symSize: 0x54 }
-  - { offset: 0xA564B, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem setValue:forUndefinedKey:]', symObjAddr: 0xB5C, symBinAddr: 0x4B5C, symSize: 0x14 }
-  - { offset: 0xA5692, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem order_no]', symObjAddr: 0xB70, symBinAddr: 0x4B70, symSize: 0x10 }
-  - { offset: 0xA56C9, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem setOrder_no:]', symObjAddr: 0xB80, symBinAddr: 0x4B80, symSize: 0xC }
-  - { offset: 0xA5708, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem order_status]', symObjAddr: 0xB8C, symBinAddr: 0x4B8C, symSize: 0x10 }
-  - { offset: 0xA573F, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem setOrder_status:]', symObjAddr: 0xB9C, symBinAddr: 0x4B9C, symSize: 0xC }
-  - { offset: 0xA577E, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem pay_time]', symObjAddr: 0xBA8, symBinAddr: 0x4BA8, symSize: 0x10 }
-  - { offset: 0xA57B5, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem setPay_time:]', symObjAddr: 0xBB8, symBinAddr: 0x4BB8, symSize: 0xC }
-  - { offset: 0xA57F4, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem trade_no]', symObjAddr: 0xBC4, symBinAddr: 0x4BC4, symSize: 0x10 }
-  - { offset: 0xA582B, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem setTrade_no:]', symObjAddr: 0xBD4, symBinAddr: 0x4BD4, symSize: 0xC }
-  - { offset: 0xA586A, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem .cxx_destruct]', symObjAddr: 0xBE0, symBinAddr: 0x4BE0, symSize: 0x68 }
-  - { offset: 0xA589D, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setValue:forUndefinedKey:]', symObjAddr: 0xC48, symBinAddr: 0x4C48, symSize: 0x14 }
-  - { offset: 0xA58E4, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel timestamp]', symObjAddr: 0xC5C, symBinAddr: 0x4C5C, symSize: 0x10 }
-  - { offset: 0xA591B, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setTimestamp:]', symObjAddr: 0xC6C, symBinAddr: 0x4C6C, symSize: 0xC }
-  - { offset: 0xA595A, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel signType]', symObjAddr: 0xC78, symBinAddr: 0x4C78, symSize: 0x10 }
-  - { offset: 0xA5991, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setSignType:]', symObjAddr: 0xC88, symBinAddr: 0x4C88, symSize: 0xC }
-  - { offset: 0xA59D0, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel prepayId]', symObjAddr: 0xC94, symBinAddr: 0x4C94, symSize: 0x10 }
-  - { offset: 0xA5A07, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setPrepayId:]', symObjAddr: 0xCA4, symBinAddr: 0x4CA4, symSize: 0xC }
-  - { offset: 0xA5A46, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel sign]', symObjAddr: 0xCB0, symBinAddr: 0x4CB0, symSize: 0x10 }
-  - { offset: 0xA5A7D, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setSign:]', symObjAddr: 0xCC0, symBinAddr: 0x4CC0, symSize: 0xC }
-  - { offset: 0xA5ABC, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel noncestr]', symObjAddr: 0xCCC, symBinAddr: 0x4CCC, symSize: 0x10 }
-  - { offset: 0xA5AF3, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setNoncestr:]', symObjAddr: 0xCDC, symBinAddr: 0x4CDC, symSize: 0xC }
-  - { offset: 0xA5B32, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel appid]', symObjAddr: 0xCE8, symBinAddr: 0x4CE8, symSize: 0x10 }
-  - { offset: 0xA5B69, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setAppid:]', symObjAddr: 0xCF8, symBinAddr: 0x4CF8, symSize: 0xC }
-  - { offset: 0xA5BA8, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel package]', symObjAddr: 0xD04, symBinAddr: 0x4D04, symSize: 0x10 }
-  - { offset: 0xA5BDF, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setPackage:]', symObjAddr: 0xD14, symBinAddr: 0x4D14, symSize: 0xC }
-  - { offset: 0xA5C1E, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel partnerid]', symObjAddr: 0xD20, symBinAddr: 0x4D20, symSize: 0x10 }
-  - { offset: 0xA5C55, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setPartnerid:]', symObjAddr: 0xD30, symBinAddr: 0x4D30, symSize: 0xC }
-  - { offset: 0xA5C94, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel aliOrderUrl]', symObjAddr: 0xD3C, symBinAddr: 0x4D3C, symSize: 0x10 }
-  - { offset: 0xA5CCB, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setAliOrderUrl:]', symObjAddr: 0xD4C, symBinAddr: 0x4D4C, symSize: 0xC }
-  - { offset: 0xA5D0A, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel order_no]', symObjAddr: 0xD58, symBinAddr: 0x4D58, symSize: 0x10 }
-  - { offset: 0xA5D41, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setOrder_no:]', symObjAddr: 0xD68, symBinAddr: 0x4D68, symSize: 0xC }
-  - { offset: 0xA5D80, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel order_status]', symObjAddr: 0xD74, symBinAddr: 0x4D74, symSize: 0x10 }
-  - { offset: 0xA5DB7, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setOrder_status:]', symObjAddr: 0xD84, symBinAddr: 0x4D84, symSize: 0xC }
-  - { offset: 0xA5DF6, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel referer]', symObjAddr: 0xD90, symBinAddr: 0x4D90, symSize: 0x10 }
-  - { offset: 0xA5E2D, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setReferer:]', symObjAddr: 0xDA0, symBinAddr: 0x4DA0, symSize: 0xC }
-  - { offset: 0xA5E6C, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel .cxx_destruct]', symObjAddr: 0xDAC, symBinAddr: 0x4DAC, symSize: 0x108 }
-  - { offset: 0xA5E9F, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem setValue:forUndefinedKey:]', symObjAddr: 0xEB4, symBinAddr: 0x4EB4, symSize: 0xAC }
-  - { offset: 0xA5EF2, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem order_no]', symObjAddr: 0xF60, symBinAddr: 0x4F60, symSize: 0x10 }
-  - { offset: 0xA5F29, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem setOrder_no:]', symObjAddr: 0xF70, symBinAddr: 0x4F70, symSize: 0xC }
-  - { offset: 0xA5F68, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem order_status]', symObjAddr: 0xF7C, symBinAddr: 0x4F7C, symSize: 0x10 }
-  - { offset: 0xA5F9F, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem setOrder_status:]', symObjAddr: 0xF8C, symBinAddr: 0x4F8C, symSize: 0xC }
-  - { offset: 0xA5FDE, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem order_url]', symObjAddr: 0xF98, symBinAddr: 0x4F98, symSize: 0x10 }
-  - { offset: 0xA6015, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem setOrder_url:]', symObjAddr: 0xFA8, symBinAddr: 0x4FA8, symSize: 0xC }
-  - { offset: 0xA6054, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem referer]', symObjAddr: 0xFB4, symBinAddr: 0x4FB4, symSize: 0x10 }
-  - { offset: 0xA608B, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem setReferer:]', symObjAddr: 0xFC4, symBinAddr: 0x4FC4, symSize: 0xC }
-  - { offset: 0xA60CA, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem .cxx_destruct]', symObjAddr: 0xFD0, symBinAddr: 0x4FD0, symSize: 0x68 }
-  - { offset: 0xA60FD, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setValue:forUndefinedKey:]', symObjAddr: 0x1038, symBinAddr: 0x5038, symSize: 0x14 }
-  - { offset: 0xA6144, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo initWithResponseObject:]', symObjAddr: 0x104C, symBinAddr: 0x504C, symSize: 0x21C }
-  - { offset: 0xA61F8, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo order_no]', symObjAddr: 0x1268, symBinAddr: 0x5268, symSize: 0x10 }
-  - { offset: 0xA622F, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setOrder_no:]', symObjAddr: 0x1278, symBinAddr: 0x5278, symSize: 0xC }
-  - { offset: 0xA626E, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo total_amount]', symObjAddr: 0x1284, symBinAddr: 0x5284, symSize: 0x10 }
-  - { offset: 0xA62A5, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setTotal_amount:]', symObjAddr: 0x1294, symBinAddr: 0x5294, symSize: 0xC }
-  - { offset: 0xA62E4, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo pay_amount]', symObjAddr: 0x12A0, symBinAddr: 0x52A0, symSize: 0x10 }
-  - { offset: 0xA631B, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setPay_amount:]', symObjAddr: 0x12B0, symBinAddr: 0x52B0, symSize: 0xC }
-  - { offset: 0xA635A, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo webinar_subject]', symObjAddr: 0x12BC, symBinAddr: 0x52BC, symSize: 0x10 }
-  - { offset: 0xA6391, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setWebinar_subject:]', symObjAddr: 0x12CC, symBinAddr: 0x52CC, symSize: 0xC }
-  - { offset: 0xA63D0, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo created_at]', symObjAddr: 0x12D8, symBinAddr: 0x52D8, symSize: 0x10 }
-  - { offset: 0xA6407, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setCreated_at:]', symObjAddr: 0x12E8, symBinAddr: 0x52E8, symSize: 0xC }
-  - { offset: 0xA6446, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo username]', symObjAddr: 0x12F4, symBinAddr: 0x52F4, symSize: 0x10 }
-  - { offset: 0xA647D, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setUsername:]', symObjAddr: 0x1304, symBinAddr: 0x5304, symSize: 0xC }
-  - { offset: 0xA64BC, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo phone]', symObjAddr: 0x1310, symBinAddr: 0x5310, symSize: 0x10 }
-  - { offset: 0xA64F3, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setPhone:]', symObjAddr: 0x1320, symBinAddr: 0x5320, symSize: 0xC }
-  - { offset: 0xA6532, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo remark]', symObjAddr: 0x132C, symBinAddr: 0x532C, symSize: 0x10 }
-  - { offset: 0xA6569, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setRemark:]', symObjAddr: 0x133C, symBinAddr: 0x533C, symSize: 0xC }
-  - { offset: 0xA65A8, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo order_status]', symObjAddr: 0x1348, symBinAddr: 0x5348, symSize: 0x10 }
-  - { offset: 0xA65DF, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setOrder_status:]', symObjAddr: 0x1358, symBinAddr: 0x5358, symSize: 0xC }
-  - { offset: 0xA661E, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo pay_channel]', symObjAddr: 0x1364, symBinAddr: 0x5364, symSize: 0x10 }
-  - { offset: 0xA6655, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setPay_channel:]', symObjAddr: 0x1374, symBinAddr: 0x5374, symSize: 0xC }
-  - { offset: 0xA6694, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo pay_time]', symObjAddr: 0x1380, symBinAddr: 0x5380, symSize: 0x10 }
-  - { offset: 0xA66CB, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setPay_time:]', symObjAddr: 0x1390, symBinAddr: 0x5390, symSize: 0xC }
-  - { offset: 0xA670A, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo service_code]', symObjAddr: 0x139C, symBinAddr: 0x539C, symSize: 0x10 }
-  - { offset: 0xA6741, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setService_code:]', symObjAddr: 0x13AC, symBinAddr: 0x53AC, symSize: 0xC }
-  - { offset: 0xA6780, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo trade_no]', symObjAddr: 0x13B8, symBinAddr: 0x53B8, symSize: 0x10 }
-  - { offset: 0xA67B7, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setTrade_no:]', symObjAddr: 0x13C8, symBinAddr: 0x53C8, symSize: 0xC }
-  - { offset: 0xA67F6, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo webinar_id]', symObjAddr: 0x13D4, symBinAddr: 0x53D4, symSize: 0x10 }
-  - { offset: 0xA682D, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setWebinar_id:]', symObjAddr: 0x13E4, symBinAddr: 0x53E4, symSize: 0x10 }
-  - { offset: 0xA686A, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo buy_type]', symObjAddr: 0x13F4, symBinAddr: 0x53F4, symSize: 0x10 }
-  - { offset: 0xA68A1, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setBuy_type:]', symObjAddr: 0x1404, symBinAddr: 0x5404, symSize: 0x10 }
-  - { offset: 0xA68DE, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo order_items]', symObjAddr: 0x1414, symBinAddr: 0x5414, symSize: 0x10 }
-  - { offset: 0xA6915, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setOrder_items:]', symObjAddr: 0x1424, symBinAddr: 0x5424, symSize: 0xC }
-  - { offset: 0xA6954, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo .cxx_destruct]', symObjAddr: 0x1430, symBinAddr: 0x5430, symSize: 0x130 }
-  - { offset: 0xA6987, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setValue:forUndefinedKey:]', symObjAddr: 0x1560, symBinAddr: 0x5560, symSize: 0xAC }
-  - { offset: 0xA69DA, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem initWithResponseObject:]', symObjAddr: 0x160C, symBinAddr: 0x560C, symSize: 0xF8 }
-  - { offset: 0xA6A21, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem goods_id]', symObjAddr: 0x1704, symBinAddr: 0x5704, symSize: 0x10 }
-  - { offset: 0xA6A58, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setGoods_id:]', symObjAddr: 0x1714, symBinAddr: 0x5714, symSize: 0xC }
-  - { offset: 0xA6A97, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem cover_img]', symObjAddr: 0x1720, symBinAddr: 0x5720, symSize: 0x10 }
-  - { offset: 0xA6ACE, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setCover_img:]', symObjAddr: 0x1730, symBinAddr: 0x5730, symSize: 0xC }
-  - { offset: 0xA6B0D, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem price]', symObjAddr: 0x173C, symBinAddr: 0x573C, symSize: 0x10 }
-  - { offset: 0xA6B44, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setPrice:]', symObjAddr: 0x174C, symBinAddr: 0x574C, symSize: 0xC }
-  - { offset: 0xA6B83, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem discount_price]', symObjAddr: 0x1758, symBinAddr: 0x5758, symSize: 0x10 }
-  - { offset: 0xA6BBA, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setDiscount_price:]', symObjAddr: 0x1768, symBinAddr: 0x5768, symSize: 0xC }
-  - { offset: 0xA6BF9, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem info]', symObjAddr: 0x1774, symBinAddr: 0x5774, symSize: 0x10 }
-  - { offset: 0xA6C30, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setInfo:]', symObjAddr: 0x1784, symBinAddr: 0x5784, symSize: 0xC }
-  - { offset: 0xA6C6F, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem name]', symObjAddr: 0x1790, symBinAddr: 0x5790, symSize: 0x10 }
-  - { offset: 0xA6CA6, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setName:]', symObjAddr: 0x17A0, symBinAddr: 0x57A0, symSize: 0xC }
-  - { offset: 0xA6CE5, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem quantity]', symObjAddr: 0x17AC, symBinAddr: 0x57AC, symSize: 0x10 }
-  - { offset: 0xA6D1C, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setQuantity:]', symObjAddr: 0x17BC, symBinAddr: 0x57BC, symSize: 0x10 }
-  - { offset: 0xA6D59, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem .cxx_destruct]', symObjAddr: 0x17CC, symBinAddr: 0x57CC, symSize: 0x90 }
-  - { offset: 0xA6D8C, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setValue:forUndefinedKey:]', symObjAddr: 0x185C, symBinAddr: 0x585C, symSize: 0x14 }
-  - { offset: 0xA6DD3, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem initWithResponseObject:]', symObjAddr: 0x1870, symBinAddr: 0x5870, symSize: 0x90 }
-  - { offset: 0xA6E1A, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem coupon_id]', symObjAddr: 0x1900, symBinAddr: 0x5900, symSize: 0x10 }
-  - { offset: 0xA6E51, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setCoupon_id:]', symObjAddr: 0x1910, symBinAddr: 0x5910, symSize: 0xC }
-  - { offset: 0xA6E90, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem coupon_name]', symObjAddr: 0x191C, symBinAddr: 0x591C, symSize: 0x10 }
-  - { offset: 0xA6EC7, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setCoupon_name:]', symObjAddr: 0x192C, symBinAddr: 0x592C, symSize: 0xC }
-  - { offset: 0xA6F06, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem validity_start_time]', symObjAddr: 0x1938, symBinAddr: 0x5938, symSize: 0x10 }
-  - { offset: 0xA6F3D, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setValidity_start_time:]', symObjAddr: 0x1948, symBinAddr: 0x5948, symSize: 0xC }
-  - { offset: 0xA6F7C, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem validity_end_time]', symObjAddr: 0x1954, symBinAddr: 0x5954, symSize: 0x10 }
-  - { offset: 0xA6FB3, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setValidity_end_time:]', symObjAddr: 0x1964, symBinAddr: 0x5964, symSize: 0xC }
-  - { offset: 0xA6FF2, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem use_desc]', symObjAddr: 0x1970, symBinAddr: 0x5970, symSize: 0x10 }
-  - { offset: 0xA7029, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setUse_desc:]', symObjAddr: 0x1980, symBinAddr: 0x5980, symSize: 0xC }
-  - { offset: 0xA7068, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem goods_num]', symObjAddr: 0x198C, symBinAddr: 0x598C, symSize: 0x10 }
-  - { offset: 0xA709F, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setGoods_num:]', symObjAddr: 0x199C, symBinAddr: 0x599C, symSize: 0xC }
-  - { offset: 0xA70DE, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem business_uid]', symObjAddr: 0x19A8, symBinAddr: 0x59A8, symSize: 0x10 }
-  - { offset: 0xA7115, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setBusiness_uid:]', symObjAddr: 0x19B8, symBinAddr: 0x59B8, symSize: 0xC }
-  - { offset: 0xA7154, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem nick_name]', symObjAddr: 0x19C4, symBinAddr: 0x59C4, symSize: 0x10 }
-  - { offset: 0xA718B, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setNick_name:]', symObjAddr: 0x19D4, symBinAddr: 0x59D4, symSize: 0xC }
-  - { offset: 0xA71CA, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem updated_at]', symObjAddr: 0x19E0, symBinAddr: 0x59E0, symSize: 0x10 }
-  - { offset: 0xA7201, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setUpdated_at:]', symObjAddr: 0x19F0, symBinAddr: 0x59F0, symSize: 0xC }
-  - { offset: 0xA7240, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem coupon_user_id]', symObjAddr: 0x19FC, symBinAddr: 0x59FC, symSize: 0x10 }
-  - { offset: 0xA7277, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setCoupon_user_id:]', symObjAddr: 0x1A0C, symBinAddr: 0x5A0C, symSize: 0xC }
-  - { offset: 0xA72B6, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem threshold_amount]', symObjAddr: 0x1A18, symBinAddr: 0x5A18, symSize: 0x10 }
-  - { offset: 0xA72EB, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setThreshold_amount:]', symObjAddr: 0x1A28, symBinAddr: 0x5A28, symSize: 0x10 }
-  - { offset: 0xA7329, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem deduction_amount]', symObjAddr: 0x1A38, symBinAddr: 0x5A38, symSize: 0x10 }
-  - { offset: 0xA735E, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setDeduction_amount:]', symObjAddr: 0x1A48, symBinAddr: 0x5A48, symSize: 0x10 }
-  - { offset: 0xA739C, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem coupon_type]', symObjAddr: 0x1A58, symBinAddr: 0x5A58, symSize: 0x10 }
-  - { offset: 0xA73D3, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setCoupon_type:]', symObjAddr: 0x1A68, symBinAddr: 0x5A68, symSize: 0x10 }
-  - { offset: 0xA7410, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem validity_type]', symObjAddr: 0x1A78, symBinAddr: 0x5A78, symSize: 0x10 }
-  - { offset: 0xA7447, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setValidity_type:]', symObjAddr: 0x1A88, symBinAddr: 0x5A88, symSize: 0x10 }
-  - { offset: 0xA7484, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem validity_day]', symObjAddr: 0x1A98, symBinAddr: 0x5A98, symSize: 0x10 }
-  - { offset: 0xA74BB, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setValidity_day:]', symObjAddr: 0x1AA8, symBinAddr: 0x5AA8, symSize: 0x10 }
-  - { offset: 0xA74F8, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem applicable_product_type]', symObjAddr: 0x1AB8, symBinAddr: 0x5AB8, symSize: 0x10 }
-  - { offset: 0xA752F, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setApplicable_product_type:]', symObjAddr: 0x1AC8, symBinAddr: 0x5AC8, symSize: 0x10 }
-  - { offset: 0xA756C, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem unavailable_type]', symObjAddr: 0x1AD8, symBinAddr: 0x5AD8, symSize: 0x10 }
-  - { offset: 0xA75A3, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setUnavailable_type:]', symObjAddr: 0x1AE8, symBinAddr: 0x5AE8, symSize: 0x10 }
-  - { offset: 0xA75E0, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem isAvailable]', symObjAddr: 0x1AF8, symBinAddr: 0x5AF8, symSize: 0x10 }
-  - { offset: 0xA7617, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setIsAvailable:]', symObjAddr: 0x1B08, symBinAddr: 0x5B08, symSize: 0x10 }
-  - { offset: 0xA7652, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem isBest]', symObjAddr: 0x1B18, symBinAddr: 0x5B18, symSize: 0x10 }
-  - { offset: 0xA7689, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setIsBest:]', symObjAddr: 0x1B28, symBinAddr: 0x5B28, symSize: 0x10 }
-  - { offset: 0xA76C4, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem isShowUseDesc]', symObjAddr: 0x1B38, symBinAddr: 0x5B38, symSize: 0x10 }
-  - { offset: 0xA76FB, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setIsShowUseDesc:]', symObjAddr: 0x1B48, symBinAddr: 0x5B48, symSize: 0x10 }
-  - { offset: 0xA7736, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem .cxx_destruct]', symObjAddr: 0x1B58, symBinAddr: 0x5B58, symSize: 0xE0 }
-  - { offset: 0xA7769, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject dealloc]', symObjAddr: 0x1C38, symBinAddr: 0x5C38, symSize: 0x78 }
-  - { offset: 0xA779C, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject init]', symObjAddr: 0x1CB0, symBinAddr: 0x5CB0, symSize: 0xD4 }
-  - { offset: 0xA77D3, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject platformPaymentToPayWithOrderUrl:scheme:referer:]', symObjAddr: 0x1D84, symBinAddr: 0x5D84, symSize: 0x130 }
-  - { offset: 0xA7846, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsGetOnlineListWithStatus:complete:]', symObjAddr: 0x1EB4, symBinAddr: 0x5EB4, symSize: 0xDC }
-  - { offset: 0xA7895, size: 0x8, addend: 0x0, symName: '___55+[VHGoodsObject goodsGetOnlineListWithStatus:complete:]_block_invoke', symObjAddr: 0x1F90, symBinAddr: 0x5F90, symSize: 0x1B4 }
-  - { offset: 0xA7957, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32b, symObjAddr: 0x2144, symBinAddr: 0x6144, symSize: 0x10 }
-  - { offset: 0xA7980, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s, symObjAddr: 0x2154, symBinAddr: 0x6154, symSize: 0x8 }
-  - { offset: 0xA799F, size: 0x8, addend: 0x0, symName: '___55+[VHGoodsObject goodsGetOnlineListWithStatus:complete:]_block_invoke.534', symObjAddr: 0x215C, symBinAddr: 0x615C, symSize: 0x3C }
-  - { offset: 0xA79FD, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsGetOnlineListFromCDN:complete:]', symObjAddr: 0x2198, symBinAddr: 0x6198, symSize: 0xDC }
-  - { offset: 0xA7A4C, size: 0x8, addend: 0x0, symName: '___52+[VHGoodsObject goodsGetOnlineListFromCDN:complete:]_block_invoke', symObjAddr: 0x2274, symBinAddr: 0x6274, symSize: 0x264 }
-  - { offset: 0xA7B4F, size: 0x8, addend: 0x0, symName: '___52+[VHGoodsObject goodsGetOnlineListFromCDN:complete:]_block_invoke_2', symObjAddr: 0x24D8, symBinAddr: 0x64D8, symSize: 0x3C }
-  - { offset: 0xA7BAD, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsWebinarSettingInfoWithWebinarId:user_id:complete:]', symObjAddr: 0x2514, symBinAddr: 0x6514, symSize: 0x110 }
-  - { offset: 0xA7C0C, size: 0x8, addend: 0x0, symName: '___71+[VHGoodsObject goodsWebinarSettingInfoWithWebinarId:user_id:complete:]_block_invoke', symObjAddr: 0x2624, symBinAddr: 0x6624, symSize: 0x150 }
-  - { offset: 0xA7C96, size: 0x8, addend: 0x0, symName: '___71+[VHGoodsObject goodsWebinarSettingInfoWithWebinarId:user_id:complete:]_block_invoke_2', symObjAddr: 0x2774, symBinAddr: 0x6774, symSize: 0x1F8 }
-  - { offset: 0xA7D63, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40b, symObjAddr: 0x296C, symBinAddr: 0x696C, symSize: 0x34 }
-  - { offset: 0xA7D8C, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s, symObjAddr: 0x29A0, symBinAddr: 0x69A0, symSize: 0x28 }
-  - { offset: 0xA7DAB, size: 0x8, addend: 0x0, symName: '___71+[VHGoodsObject goodsWebinarSettingInfoWithWebinarId:user_id:complete:]_block_invoke.548', symObjAddr: 0x29C8, symBinAddr: 0x69C8, symSize: 0x3C }
-  - { offset: 0xA7E0C, size: 0x8, addend: 0x0, symName: '___71+[VHGoodsObject goodsWebinarSettingInfoWithWebinarId:user_id:complete:]_block_invoke_2.549', symObjAddr: 0x2A04, symBinAddr: 0x6A04, symSize: 0x3C }
-  - { offset: 0xA7E6D, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsWebinarOnlineGoodsInfoWithGoodsId:complete:]', symObjAddr: 0x2A40, symBinAddr: 0x6A40, symSize: 0xDC }
-  - { offset: 0xA7EBF, size: 0x8, addend: 0x0, symName: '___65+[VHGoodsObject goodsWebinarOnlineGoodsInfoWithGoodsId:complete:]_block_invoke', symObjAddr: 0x2B1C, symBinAddr: 0x6B1C, symSize: 0x9C }
-  - { offset: 0xA7F59, size: 0x8, addend: 0x0, symName: '___65+[VHGoodsObject goodsWebinarOnlineGoodsInfoWithGoodsId:complete:]_block_invoke_2', symObjAddr: 0x2BB8, symBinAddr: 0x6BB8, symSize: 0x3C }
-  - { offset: 0xA7FBB, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsCreateOtherWithSwitchId:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]', symObjAddr: 0x2BF4, symBinAddr: 0x6BF4, symSize: 0x15C }
-  - { offset: 0xA80E4, size: 0x8, addend: 0x0, symName: '___191+[VHGoodsObject goodsCreateOtherWithSwitchId:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]_block_invoke', symObjAddr: 0x2D50, symBinAddr: 0x6D50, symSize: 0xC0 }
-  - { offset: 0xA817E, size: 0x8, addend: 0x0, symName: '___191+[VHGoodsObject goodsCreateOtherWithSwitchId:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]_block_invoke_2', symObjAddr: 0x2E10, symBinAddr: 0x6E10, symSize: 0x3C }
-  - { offset: 0xA81E0, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsCreateOrderByNative:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]', symObjAddr: 0x2E4C, symBinAddr: 0x6E4C, symSize: 0x178 }
-  - { offset: 0xA8309, size: 0x8, addend: 0x0, symName: '___187+[VHGoodsObject goodsCreateOrderByNative:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]_block_invoke', symObjAddr: 0x2FC4, symBinAddr: 0x6FC4, symSize: 0x388 }
-  - { offset: 0xA83D6, size: 0x8, addend: 0x0, symName: '___187+[VHGoodsObject goodsCreateOrderByNative:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]_block_invoke_2', symObjAddr: 0x334C, symBinAddr: 0x734C, symSize: 0x3C }
-  - { offset: 0xA8438, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsOrderNotice:user_id:third_user_id:username:goods_id:act:notice_type:success:fail:]', symObjAddr: 0x3388, symBinAddr: 0x7388, symSize: 0x138 }
-  - { offset: 0xA84FE, size: 0x8, addend: 0x0, symName: '___103+[VHGoodsObject goodsOrderNotice:user_id:third_user_id:username:goods_id:act:notice_type:success:fail:]_block_invoke', symObjAddr: 0x34C0, symBinAddr: 0x74C0, symSize: 0x70 }
-  - { offset: 0xA8581, size: 0x8, addend: 0x0, symName: '___103+[VHGoodsObject goodsOrderNotice:user_id:third_user_id:username:goods_id:act:notice_type:success:fail:]_block_invoke_2', symObjAddr: 0x3530, symBinAddr: 0x7530, symSize: 0x34 }
-  - { offset: 0xA85DA, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsOrderInfoWithOrderNo:complete:]', symObjAddr: 0x3564, symBinAddr: 0x7564, symSize: 0xDC }
-  - { offset: 0xA862C, size: 0x8, addend: 0x0, symName: '___52+[VHGoodsObject goodsOrderInfoWithOrderNo:complete:]_block_invoke', symObjAddr: 0x3640, symBinAddr: 0x7640, symSize: 0x90 }
-  - { offset: 0xA86B5, size: 0x8, addend: 0x0, symName: '___52+[VHGoodsObject goodsOrderInfoWithOrderNo:complete:]_block_invoke_2', symObjAddr: 0x36D0, symBinAddr: 0x76D0, symSize: 0x3C }
-  - { offset: 0xA8717, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject couponAvailableListWithWebinarId:goods_id:goods_num:complete:]', symObjAddr: 0x370C, symBinAddr: 0x770C, symSize: 0xF4 }
-  - { offset: 0xA878B, size: 0x8, addend: 0x0, symName: '___78+[VHGoodsObject couponAvailableListWithWebinarId:goods_id:goods_num:complete:]_block_invoke', symObjAddr: 0x3800, symBinAddr: 0x7800, symSize: 0x160 }
-  - { offset: 0xA8876, size: 0x8, addend: 0x0, symName: '___78+[VHGoodsObject couponAvailableListWithWebinarId:goods_id:goods_num:complete:]_block_invoke_2', symObjAddr: 0x3960, symBinAddr: 0x7960, symSize: 0x3C }
-  - { offset: 0xA88D8, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject couponUnavailableListWithWebinarId:goods_id:goods_num:complete:]', symObjAddr: 0x399C, symBinAddr: 0x799C, symSize: 0xF4 }
-  - { offset: 0xA894C, size: 0x8, addend: 0x0, symName: '___80+[VHGoodsObject couponUnavailableListWithWebinarId:goods_id:goods_num:complete:]_block_invoke', symObjAddr: 0x3A90, symBinAddr: 0x7A90, symSize: 0x1D4 }
-  - { offset: 0xA8A16, size: 0x8, addend: 0x0, symName: '___80+[VHGoodsObject couponUnavailableListWithWebinarId:goods_id:goods_num:complete:]_block_invoke_2', symObjAddr: 0x3C64, symBinAddr: 0x7C64, symSize: 0x3C }
-  - { offset: 0xA8A78, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject imManager:receiveRoomMessage:]', symObjAddr: 0x3CA0, symBinAddr: 0x7CA0, symSize: 0x14 }
-  - { offset: 0xA8AC2, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject imManager:customMessage:]', symObjAddr: 0x3CB4, symBinAddr: 0x7CB4, symSize: 0xDA8 }
-  - { offset: 0xA8D40, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke', symObjAddr: 0x4A5C, symBinAddr: 0x8A5C, symSize: 0x348 }
-  - { offset: 0xA8E55, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40s48s, symObjAddr: 0x4DA4, symBinAddr: 0x8DA4, symSize: 0x30 }
-  - { offset: 0xA8E7E, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s48s, symObjAddr: 0x4DD4, symBinAddr: 0x8DD4, symSize: 0x30 }
-  - { offset: 0xA8E9D, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke.586', symObjAddr: 0x4E04, symBinAddr: 0x8E04, symSize: 0x14 }
-  - { offset: 0xA8ED3, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_2', symObjAddr: 0x4E18, symBinAddr: 0x8E18, symSize: 0x348 }
-  - { offset: 0xA8FE8, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_3', symObjAddr: 0x5160, symBinAddr: 0x9160, symSize: 0x14 }
-  - { offset: 0xA901E, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_4', symObjAddr: 0x5174, symBinAddr: 0x9174, symSize: 0x348 }
-  - { offset: 0xA9133, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_5', symObjAddr: 0x54BC, symBinAddr: 0x94BC, symSize: 0x14 }
-  - { offset: 0xA9169, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_6', symObjAddr: 0x54D0, symBinAddr: 0x94D0, symSize: 0x348 }
-  - { offset: 0xA927E, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_7', symObjAddr: 0x5818, symBinAddr: 0x9818, symSize: 0x14 }
-  - { offset: 0xA92B4, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_8', symObjAddr: 0x582C, symBinAddr: 0x982C, symSize: 0x348 }
-  - { offset: 0xA93C9, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_9', symObjAddr: 0x5B74, symBinAddr: 0x9B74, symSize: 0x14 }
-  - { offset: 0xA93FF, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_10', symObjAddr: 0x5B88, symBinAddr: 0x9B88, symSize: 0x348 }
-  - { offset: 0xA9514, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_11', symObjAddr: 0x5ED0, symBinAddr: 0x9ED0, symSize: 0x14 }
-  - { offset: 0xA954A, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_12', symObjAddr: 0x5EE4, symBinAddr: 0x9EE4, symSize: 0x2AC }
-  - { offset: 0xA962D, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40s, symObjAddr: 0x6190, symBinAddr: 0xA190, symSize: 0x28 }
-  - { offset: 0xA9656, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke.613', symObjAddr: 0x61B8, symBinAddr: 0xA1B8, symSize: 0x14 }
-  - { offset: 0xA968C, size: 0x8, addend: 0x0, symName: '___73-[VHGoodsObject webView:decidePolicyForNavigationAction:decisionHandler:]_block_invoke', symObjAddr: 0x6A90, symBinAddr: 0xAA90, symSize: 0xA8 }
-  - { offset: 0xA96DF, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s, symObjAddr: 0x6B38, symBinAddr: 0xAB38, symSize: 0x8 }
-  - { offset: 0xA9706, size: 0x8, addend: 0x0, symName: '___73-[VHGoodsObject webView:decidePolicyForNavigationAction:decisionHandler:]_block_invoke.652', symObjAddr: 0x6B40, symBinAddr: 0xAB40, symSize: 0xA8 }
-  - { offset: 0xA9759, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:createWebViewWithConfiguration:forNavigationAction:windowFeatures:]', symObjAddr: 0x6BE8, symBinAddr: 0xABE8, symSize: 0xC4 }
-  - { offset: 0xA97C9, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:didStartProvisionalNavigation:]', symObjAddr: 0x6CAC, symBinAddr: 0xACAC, symSize: 0x14 }
-  - { offset: 0xA9813, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:didFailProvisionalNavigation:withError:]', symObjAddr: 0x6CC0, symBinAddr: 0xACC0, symSize: 0x100 }
-  - { offset: 0xA987A, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:didCommitNavigation:]', symObjAddr: 0x6DC0, symBinAddr: 0xADC0, symSize: 0x14 }
-  - { offset: 0xA98C4, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:didFinishNavigation:]', symObjAddr: 0x6DD4, symBinAddr: 0xADD4, symSize: 0x14 }
-  - { offset: 0xA990E, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView]', symObjAddr: 0x6DE8, symBinAddr: 0xADE8, symSize: 0xC0 }
-  - { offset: 0xA9966, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject delegate]', symObjAddr: 0x6EA8, symBinAddr: 0xAEA8, symSize: 0x20 }
-  - { offset: 0xA999D, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject setDelegate:]', symObjAddr: 0x6EC8, symBinAddr: 0xAEC8, symSize: 0x14 }
-  - { offset: 0xA99DE, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject setWebView:]', symObjAddr: 0x6EDC, symBinAddr: 0xAEDC, symSize: 0x14 }
-  - { offset: 0xA9A1F, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject scheme]', symObjAddr: 0x6EF0, symBinAddr: 0xAEF0, symSize: 0x10 }
-  - { offset: 0xA9A56, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject setScheme:]', symObjAddr: 0x6F00, symBinAddr: 0xAF00, symSize: 0xC }
-  - { offset: 0xA9A95, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject referer]', symObjAddr: 0x6F0C, symBinAddr: 0xAF0C, symSize: 0x10 }
-  - { offset: 0xA9ACC, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject setReferer:]', symObjAddr: 0x6F1C, symBinAddr: 0xAF1C, symSize: 0xC }
-  - { offset: 0xA9B0B, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject .cxx_destruct]', symObjAddr: 0x6F28, symBinAddr: 0xAF28, symSize: 0x64 }
-  - { offset: 0xAB095, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_magic, symObjAddr: 0x28, symBinAddr: 0xAF8C, symSize: 0x14 }
-  - { offset: 0xAB0A7, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_padding_bytes, symObjAddr: 0x44, symBinAddr: 0xAFA0, symSize: 0xC }
-  - { offset: 0xAB0B9, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_version, symObjAddr: 0x50, symBinAddr: 0xAFAC, symSize: 0xC }
-  - { offset: 0xAB0FC, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0xAFB8, symSize: 0xC }
-  - { offset: 0xAB10A, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0xAFB8, symSize: 0xC }
-  - { offset: 0xAB146, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0xAFC4, symSize: 0xC }
-  - { offset: 0xAB154, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0xAFC4, symSize: 0xC }
-  - { offset: 0xAB16D, size: 0x8, addend: 0x0, symName: _getValueProfRecordValueData, symObjAddr: 0x1C, symBinAddr: 0xAFD0, symSize: 0x14 }
-  - { offset: 0xAB1A4, size: 0x8, addend: 0x0, symName: _getValueProfRecordNext, symObjAddr: 0x170, symBinAddr: 0xAFE4, symSize: 0x15C }
-  - { offset: 0xAB1E2, size: 0x8, addend: 0x0, symName: _getFirstValueProfRecord, symObjAddr: 0x2CC, symBinAddr: 0xB140, symSize: 0x8 }
-  - { offset: 0xAB210, size: 0x8, addend: 0x0, symName: _lprofSetupValueProfiler, symObjAddr: 0xA10, symBinAddr: 0xB148, symSize: 0x68 }
-  - { offset: 0xAB27C, size: 0x8, addend: 0x0, symName: ___llvm_profile_instrument_target_value, symObjAddr: 0xD50, symBinAddr: 0xB1B0, symSize: 0x2CC }
-  - { offset: 0xAB2F0, size: 0x8, addend: 0x0, symName: _lprofGetVPDataReader, symObjAddr: 0x1054, symBinAddr: 0xB47C, symSize: 0xC }
-  - { offset: 0xAB302, size: 0x8, addend: 0x0, symName: _initializeValueProfRuntimeRecord, symObjAddr: 0x1060, symBinAddr: 0xB488, symSize: 0x210 }
-  - { offset: 0xAB31B, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1270, symBinAddr: 0xB698, symSize: 0x14 }
-  - { offset: 0xAB331, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1270, symBinAddr: 0xB698, symSize: 0x14 }
-  - { offset: 0xAB344, size: 0x8, addend: 0x0, symName: _getValueProfDataSizeWrapper, symObjAddr: 0x1284, symBinAddr: 0xB6AC, symSize: 0xE0 }
-  - { offset: 0xAB3E5, size: 0x8, addend: 0x0, symName: _getNumValueSitesRT, symObjAddr: 0x13A0, symBinAddr: 0xB7C8, symSize: 0x10 }
-  - { offset: 0xAB3F7, size: 0x8, addend: 0x0, symName: _getNumValueDataRT, symObjAddr: 0x13B0, symBinAddr: 0xB7D8, symSize: 0x148 }
-  - { offset: 0xAB409, size: 0x8, addend: 0x0, symName: _getNextNValueData, symObjAddr: 0x1364, symBinAddr: 0xB78C, symSize: 0x3C }
-  - { offset: 0xAB445, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0xB920, symSize: 0x1C }
-  - { offset: 0xAB453, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0xB920, symSize: 0x1C }
-  - { offset: 0xAB465, size: 0x8, addend: 0x0, symName: ___llvm_profile_enable_continuous_mode, symObjAddr: 0x1C, symBinAddr: 0xB93C, symSize: 0x10 }
-  - { offset: 0xAB477, size: 0x8, addend: 0x0, symName: ___llvm_profile_disable_continuous_mode, symObjAddr: 0x2C, symBinAddr: 0xB94C, symSize: 0xC }
-  - { offset: 0xAB489, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_page_size, symObjAddr: 0x38, symBinAddr: 0xB958, symSize: 0xC }
-  - { offset: 0xAB49B, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer, symObjAddr: 0x44, symBinAddr: 0xB964, symSize: 0xC8 }
-  - { offset: 0xAB598, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer_internal, symObjAddr: 0x10C, symBinAddr: 0xBA2C, symSize: 0x1C8 }
-  - { offset: 0xAB7FF, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_data, symObjAddr: 0x2D4, symBinAddr: 0xBBF4, symSize: 0x10 }
-  - { offset: 0xAB811, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0xBC04, symSize: 0x10 }
-  - { offset: 0xAB827, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0xBC04, symSize: 0x10 }
-  - { offset: 0xAB839, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_vtable, symObjAddr: 0x2F4, symBinAddr: 0xBC14, symSize: 0x18 }
-  - { offset: 0xAB84B, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_vtable_section_size, symObjAddr: 0x30C, symBinAddr: 0xBC2C, symSize: 0x8 }
-  - { offset: 0xAB85D, size: 0x8, addend: 0x0, symName: ___llvm_profile_counter_entry_size, symObjAddr: 0x314, symBinAddr: 0xBC34, symSize: 0x20 }
-  - { offset: 0xAB87E, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_counters, symObjAddr: 0x334, symBinAddr: 0xBC54, symSize: 0x4C }
-  - { offset: 0xAB8D7, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_counters_size, symObjAddr: 0x380, symBinAddr: 0xBCA0, symSize: 0x5C }
-  - { offset: 0xAB969, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_padding_sizes_for_counters, symObjAddr: 0x3EC, symBinAddr: 0xBCFC, symSize: 0x160 }
-  - { offset: 0xABA41, size: 0x8, addend: 0x0, symName: _initBufferWriter, symObjAddr: 0x54C, symBinAddr: 0xBE5C, symSize: 0x10 }
-  - { offset: 0xABAA1, size: 0x8, addend: 0x0, symName: _getCurFilenameLength, symObjAddr: 0x1C0, symBinAddr: 0xBE6C, symSize: 0x318 }
-  - { offset: 0xABAEC, size: 0x8, addend: 0x0, symName: _getCurFilename, symObjAddr: 0x4D8, symBinAddr: 0xC184, symSize: 0x338 }
-  - { offset: 0xABBF0, size: 0x8, addend: 0x0, symName: _parseAndSetFilename, symObjAddr: 0x918, symBinAddr: 0xC4BC, symSize: 0x580 }
-  - { offset: 0xABE60, size: 0x8, addend: 0x0, symName: _truncateCurrentFile, symObjAddr: 0x1E2C, symBinAddr: 0xD4B8, symSize: 0xCC }
-  - { offset: 0xABED5, size: 0x8, addend: 0x0, symName: _initializeProfileForContinuousMode, symObjAddr: 0x1EF8, symBinAddr: 0xD584, symSize: 0x250 }
-  - { offset: 0xAC0EE, size: 0x8, addend: 0x0, symName: ___llvm_profile_initialize, symObjAddr: 0xE98, symBinAddr: 0xCA3C, symSize: 0xBC }
-  - { offset: 0xAC1AC, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_file, symObjAddr: 0xFD8, symBinAddr: 0xCAF8, symSize: 0x1B0 }
-  - { offset: 0xAC285, size: 0x8, addend: 0x0, symName: _writeFile, symObjAddr: 0x1188, symBinAddr: 0xCCA8, symSize: 0x29C }
-  - { offset: 0xAC537, size: 0x8, addend: 0x0, symName: _createProfileDir, symObjAddr: 0x2148, symBinAddr: 0xD7D4, symSize: 0x88 }
-  - { offset: 0xAC57C, size: 0x8, addend: 0x0, symName: _getProfileFileSizeForMerging, symObjAddr: 0x18BC, symBinAddr: 0xCF48, symSize: 0x114 }
-  - { offset: 0xAC60D, size: 0x8, addend: 0x0, symName: _mmapProfileForMerging, symObjAddr: 0x19D0, symBinAddr: 0xD05C, symSize: 0xC0 }
-  - { offset: 0xAC6CD, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x16D0, symBinAddr: 0xCF44, symSize: 0x4 }
-  - { offset: 0xAC6E3, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x16D0, symBinAddr: 0xCF44, symSize: 0x4 }
-  - { offset: 0xAC6F5, size: 0x8, addend: 0x0, symName: _mmapForContinuousMode, symObjAddr: 0x1A90, symBinAddr: 0xD11C, symSize: 0x260 }
-  - { offset: 0xAC8AA, size: 0x8, addend: 0x0, symName: _fileWriter, symObjAddr: 0x1CF0, symBinAddr: 0xD37C, symSize: 0x13C }
-  - { offset: 0xAC907, size: 0x8, addend: 0x0, symName: _exitSignalHandler, symObjAddr: 0x21D0, symBinAddr: 0xD85C, symSize: 0x10 }
-  - { offset: 0xAC95A, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0xD86C, symSize: 0xD4 }
-  - { offset: 0xAC968, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0xD86C, symSize: 0xD4 }
-  - { offset: 0xACA67, size: 0x8, addend: 0x0, symName: ___llvm_profile_check_compatibility, symObjAddr: 0xD4, symBinAddr: 0xD940, symSize: 0x1D8 }
-  - { offset: 0xACB8C, size: 0x8, addend: 0x0, symName: ___llvm_profile_merge_from_buffer, symObjAddr: 0x2AC, symBinAddr: 0xDB18, symSize: 0x4A4 }
-  - { offset: 0xACCCC, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0xDFBC, symSize: 0xF4 }
-  - { offset: 0xACCDA, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0xDFBC, symSize: 0xF4 }
-  - { offset: 0xACD72, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0xE0B0, symSize: 0x70 }
-  - { offset: 0xACD80, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0xE0B0, symSize: 0x70 }
-  - { offset: 0xACDA7, size: 0x8, addend: 0x0, symName: _lprofBufferIOWrite, symObjAddr: 0x108, symBinAddr: 0xE120, symSize: 0x13C }
-  - { offset: 0xACE12, size: 0x8, addend: 0x0, symName: _lprofWriteData, symObjAddr: 0x308, symBinAddr: 0xE25C, symSize: 0xD8 }
-  - { offset: 0xACF0F, size: 0x8, addend: 0x0, symName: _lprofWriteDataImpl, symObjAddr: 0x3E0, symBinAddr: 0xE334, symSize: 0x320 }
-  - { offset: 0xAD018, size: 0x8, addend: 0x0, symName: _createHeader, symObjAddr: 0x700, symBinAddr: 0xE654, symSize: 0x1A4 }
-  - { offset: 0xAD0FA, size: 0x8, addend: 0x0, symName: _writeValueProfData, symObjAddr: 0x8A4, symBinAddr: 0xE7F8, symSize: 0x15C }
-  - { offset: 0xAD1B4, size: 0x8, addend: 0x0, symName: _writeOneValueProfData, symObjAddr: 0x105C, symBinAddr: 0xE954, symSize: 0x408 }
-  - { offset: 0xAD358, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0xED5C, symSize: 0xC }
-  - { offset: 0xAD366, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0xED5C, symSize: 0xC }
-  - { offset: 0xAD378, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_data, symObjAddr: 0xC, symBinAddr: 0xED68, symSize: 0xC }
-  - { offset: 0xAD38A, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_names, symObjAddr: 0x18, symBinAddr: 0xED74, symSize: 0xC }
-  - { offset: 0xAD39C, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_names, symObjAddr: 0x24, symBinAddr: 0xED80, symSize: 0xC }
-  - { offset: 0xAD3AE, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_counters, symObjAddr: 0x30, symBinAddr: 0xED8C, symSize: 0xC }
-  - { offset: 0xAD3C0, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_counters, symObjAddr: 0x3C, symBinAddr: 0xED98, symSize: 0xC }
-  - { offset: 0xAD3D2, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_bitmap, symObjAddr: 0x48, symBinAddr: 0xEDA4, symSize: 0xC }
-  - { offset: 0xAD3E4, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_bitmap, symObjAddr: 0x54, symBinAddr: 0xEDB0, symSize: 0xC }
-  - { offset: 0xAD3F6, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtables, symObjAddr: 0x60, symBinAddr: 0xEDBC, symSize: 0xC }
-  - { offset: 0xAD408, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtables, symObjAddr: 0x6C, symBinAddr: 0xEDC8, symSize: 0xC }
-  - { offset: 0xAD41A, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtabnames, symObjAddr: 0x78, symBinAddr: 0xEDD4, symSize: 0xC }
-  - { offset: 0xAD42C, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtabnames, symObjAddr: 0x84, symBinAddr: 0xEDE0, symSize: 0xC }
-  - { offset: 0xAD43E, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vnodes, symObjAddr: 0x9C, symBinAddr: 0xEDEC, symSize: 0xC }
-  - { offset: 0xAD450, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vnodes, symObjAddr: 0xA8, symBinAddr: 0xEDF8, symSize: 0xC }
-  - { offset: 0xAD462, size: 0x8, addend: 0x0, symName: ___llvm_write_binary_ids, symObjAddr: 0xB4, symBinAddr: 0xEE04, symSize: 0x8 }
-  - { offset: 0xAD49E, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0xEE0C, symSize: 0x1C }
-  - { offset: 0xAD4BA, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0xEE0C, symSize: 0x1C }
-  - { offset: 0xAD533, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0xEE28, symSize: 0x5C }
-  - { offset: 0xAD548, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0xEE28, symSize: 0x5C }
-  - { offset: 0xAD587, size: 0x8, addend: 0x0, symName: _lprofGetHostName, symObjAddr: 0x74, symBinAddr: 0xEE84, symSize: 0x80 }
-  - { offset: 0xAD5D1, size: 0x8, addend: 0x0, symName: _lprofLockFileHandle, symObjAddr: 0x214, symBinAddr: 0xEF04, symSize: 0x94 }
-  - { offset: 0xAD64F, size: 0x8, addend: 0x0, symName: _lprofUnlockFileHandle, symObjAddr: 0x2A8, symBinAddr: 0xEF98, symSize: 0x94 }
-  - { offset: 0xAD6BD, size: 0x8, addend: 0x0, symName: _lprofOpenFileEx, symObjAddr: 0x33C, symBinAddr: 0xF02C, symSize: 0xD4 }
-  - { offset: 0xAD762, size: 0x8, addend: 0x0, symName: _lprofFindFirstDirSeparator, symObjAddr: 0x554, symBinAddr: 0xF100, symSize: 0x8 }
-  - { offset: 0xAD78B, size: 0x8, addend: 0x0, symName: _lprofInstallSignalHandler, symObjAddr: 0x564, symBinAddr: 0xF108, symSize: 0x58 }
-  - { offset: 0xAD7C2, size: 0x8, addend: 0x0, symName: _lprofRestoreSigKill, symObjAddr: 0x5C4, symBinAddr: 0xF160, symSize: 0x4 }
+  - { offset: 0x7F9FB, size: 0x8, addend: 0x0, symName: _VHGoodsSDKVersionString, symObjAddr: 0x10, symBinAddr: 0x107E0, symSize: 0x0 }
+  - { offset: 0x7FA30, size: 0x8, addend: 0x0, symName: _VHGoodsSDKVersionNumber, symObjAddr: 0x40, symBinAddr: 0x10810, symSize: 0x0 }
+  - { offset: 0x7FA6D, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x14 }
+  - { offset: 0x7FA7B, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:decidePolicyForNavigationAction:decisionHandler:]', symObjAddr: 0x6240, symBinAddr: 0xA240, symSize: 0x8C8 }
+  - { offset: 0x7FAA3, size: 0x8, addend: 0x0, symName: '_webView:decidePolicyForNavigationAction:decisionHandler:.endPayRedirectURL', symObjAddr: 0x323D8, symBinAddr: 0x28000, symSize: 0x0 }
+  - { offset: 0x80BC7, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setValue:forUndefinedKey:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x14 }
+  - { offset: 0x80C0E, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem cdn_url]', symObjAddr: 0x14, symBinAddr: 0x4014, symSize: 0x10 }
+  - { offset: 0x80C45, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setCdn_url:]', symObjAddr: 0x24, symBinAddr: 0x4024, symSize: 0xC }
+  - { offset: 0x80C84, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem room_id]', symObjAddr: 0x30, symBinAddr: 0x4030, symSize: 0x10 }
+  - { offset: 0x80CBB, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setRoom_id:]', symObjAddr: 0x40, symBinAddr: 0x4040, symSize: 0xC }
+  - { offset: 0x80CFA, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem pusher_nickname]', symObjAddr: 0x4C, symBinAddr: 0x404C, symSize: 0x10 }
+  - { offset: 0x80D31, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setPusher_nickname:]', symObjAddr: 0x5C, symBinAddr: 0x405C, symSize: 0xC }
+  - { offset: 0x80D70, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem type]', symObjAddr: 0x68, symBinAddr: 0x4068, symSize: 0x10 }
+  - { offset: 0x80DA7, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setType:]', symObjAddr: 0x78, symBinAddr: 0x4078, symSize: 0xC }
+  - { offset: 0x80DE6, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem goods_name]', symObjAddr: 0x84, symBinAddr: 0x4084, symSize: 0x10 }
+  - { offset: 0x80E1D, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setGoods_name:]', symObjAddr: 0x94, symBinAddr: 0x4094, symSize: 0xC }
+  - { offset: 0x80E5C, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem role_name]', symObjAddr: 0xA0, symBinAddr: 0x40A0, symSize: 0x10 }
+  - { offset: 0x80E93, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setRole_name:]', symObjAddr: 0xB0, symBinAddr: 0x40B0, symSize: 0x10 }
+  - { offset: 0x80ED0, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem push_status]', symObjAddr: 0xC0, symBinAddr: 0x40C0, symSize: 0x10 }
+  - { offset: 0x80F07, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setPush_status:]', symObjAddr: 0xD0, symBinAddr: 0x40D0, symSize: 0x10 }
+  - { offset: 0x80F44, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem goods_id]', symObjAddr: 0xE0, symBinAddr: 0x40E0, symSize: 0x10 }
+  - { offset: 0x80F7B, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setGoods_id:]', symObjAddr: 0xF0, symBinAddr: 0x40F0, symSize: 0x10 }
+  - { offset: 0x80FB8, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem goods_info]', symObjAddr: 0x100, symBinAddr: 0x4100, symSize: 0x10 }
+  - { offset: 0x80FEF, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem setGoods_info:]', symObjAddr: 0x110, symBinAddr: 0x4110, symSize: 0x40 }
+  - { offset: 0x81030, size: 0x8, addend: 0x0, symName: '-[VHGoodsPushMessageItem .cxx_destruct]', symObjAddr: 0x150, symBinAddr: 0x4150, symSize: 0x90 }
+  - { offset: 0x81063, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setValue:forUndefinedKey:]', symObjAddr: 0x1E0, symBinAddr: 0x41E0, symSize: 0x11C }
+  - { offset: 0x810B6, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem initWithResponseObject:]', symObjAddr: 0x2FC, symBinAddr: 0x42FC, symSize: 0x264 }
+  - { offset: 0x8115A, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem goods_id]', symObjAddr: 0x560, symBinAddr: 0x4560, symSize: 0x10 }
+  - { offset: 0x81191, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setGoods_id:]', symObjAddr: 0x570, symBinAddr: 0x4570, symSize: 0xC }
+  - { offset: 0x811D0, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem price]', symObjAddr: 0x57C, symBinAddr: 0x457C, symSize: 0x10 }
+  - { offset: 0x81207, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setPrice:]', symObjAddr: 0x58C, symBinAddr: 0x458C, symSize: 0xC }
+  - { offset: 0x81246, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem discount_price]', symObjAddr: 0x598, symBinAddr: 0x4598, symSize: 0x10 }
+  - { offset: 0x8127D, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setDiscount_price:]', symObjAddr: 0x5A8, symBinAddr: 0x45A8, symSize: 0xC }
+  - { offset: 0x812BC, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem info]', symObjAddr: 0x5B4, symBinAddr: 0x45B4, symSize: 0x10 }
+  - { offset: 0x812F3, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setInfo:]', symObjAddr: 0x5C4, symBinAddr: 0x45C4, symSize: 0xC }
+  - { offset: 0x81332, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem cover_img]', symObjAddr: 0x5D0, symBinAddr: 0x45D0, symSize: 0x10 }
+  - { offset: 0x81369, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setCover_img:]', symObjAddr: 0x5E0, symBinAddr: 0x45E0, symSize: 0xC }
+  - { offset: 0x813A8, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem url]', symObjAddr: 0x5EC, symBinAddr: 0x45EC, symSize: 0x10 }
+  - { offset: 0x813DF, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setUrl:]', symObjAddr: 0x5FC, symBinAddr: 0x45FC, symSize: 0xC }
+  - { offset: 0x8141E, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem qr_code_url]', symObjAddr: 0x608, symBinAddr: 0x4608, symSize: 0x10 }
+  - { offset: 0x81455, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setQr_code_url:]', symObjAddr: 0x618, symBinAddr: 0x4618, symSize: 0xC }
+  - { offset: 0x81494, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem name]', symObjAddr: 0x624, symBinAddr: 0x4624, symSize: 0x10 }
+  - { offset: 0x814CB, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setName:]', symObjAddr: 0x634, symBinAddr: 0x4634, symSize: 0xC }
+  - { offset: 0x8150A, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem shop_url]', symObjAddr: 0x640, symBinAddr: 0x4640, symSize: 0x10 }
+  - { offset: 0x81541, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setShop_url:]', symObjAddr: 0x650, symBinAddr: 0x4650, symSize: 0xC }
+  - { offset: 0x81580, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem third_goods_id]', symObjAddr: 0x65C, symBinAddr: 0x465C, symSize: 0x10 }
+  - { offset: 0x815B7, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setThird_goods_id:]', symObjAddr: 0x66C, symBinAddr: 0x466C, symSize: 0xC }
+  - { offset: 0x815F6, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem buy_type]', symObjAddr: 0x678, symBinAddr: 0x4678, symSize: 0x10 }
+  - { offset: 0x8162D, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setBuy_type:]', symObjAddr: 0x688, symBinAddr: 0x4688, symSize: 0x10 }
+  - { offset: 0x8166A, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem webinar_goods_id]', symObjAddr: 0x698, symBinAddr: 0x4698, symSize: 0x10 }
+  - { offset: 0x816A1, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setWebinar_goods_id:]', symObjAddr: 0x6A8, symBinAddr: 0x46A8, symSize: 0x10 }
+  - { offset: 0x816DE, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem order_num]', symObjAddr: 0x6B8, symBinAddr: 0x46B8, symSize: 0x10 }
+  - { offset: 0x81715, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setOrder_num:]', symObjAddr: 0x6C8, symBinAddr: 0x46C8, symSize: 0x10 }
+  - { offset: 0x81752, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem status]', symObjAddr: 0x6D8, symBinAddr: 0x46D8, symSize: 0x10 }
+  - { offset: 0x81789, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setStatus:]', symObjAddr: 0x6E8, symBinAddr: 0x46E8, symSize: 0x10 }
+  - { offset: 0x817C6, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem push_status]', symObjAddr: 0x6F8, symBinAddr: 0x46F8, symSize: 0x10 }
+  - { offset: 0x817FD, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setPush_status:]', symObjAddr: 0x708, symBinAddr: 0x4708, symSize: 0x10 }
+  - { offset: 0x8183A, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem shop_show]', symObjAddr: 0x718, symBinAddr: 0x4718, symSize: 0x10 }
+  - { offset: 0x81871, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setShop_show:]', symObjAddr: 0x728, symBinAddr: 0x4728, symSize: 0x10 }
+  - { offset: 0x818AE, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem covered_status]', symObjAddr: 0x738, symBinAddr: 0x4738, symSize: 0x10 }
+  - { offset: 0x818E5, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setCovered_status:]', symObjAddr: 0x748, symBinAddr: 0x4748, symSize: 0x10 }
+  - { offset: 0x81922, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem covered_price]', symObjAddr: 0x758, symBinAddr: 0x4758, symSize: 0x10 }
+  - { offset: 0x81959, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setCovered_price:]', symObjAddr: 0x768, symBinAddr: 0x4768, symSize: 0x10 }
+  - { offset: 0x81996, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem auto_pop]', symObjAddr: 0x778, symBinAddr: 0x4778, symSize: 0x10 }
+  - { offset: 0x819CD, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setAuto_pop:]', symObjAddr: 0x788, symBinAddr: 0x4788, symSize: 0x10 }
+  - { offset: 0x81A0A, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem ext_data]', symObjAddr: 0x798, symBinAddr: 0x4798, symSize: 0x10 }
+  - { offset: 0x81A41, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setExt_data:]', symObjAddr: 0x7A8, symBinAddr: 0x47A8, symSize: 0x10 }
+  - { offset: 0x81A7E, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem push_time]', symObjAddr: 0x7B8, symBinAddr: 0x47B8, symSize: 0x10 }
+  - { offset: 0x81AB5, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setPush_time:]', symObjAddr: 0x7C8, symBinAddr: 0x47C8, symSize: 0x10 }
+  - { offset: 0x81AF2, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem sale_status]', symObjAddr: 0x7D8, symBinAddr: 0x47D8, symSize: 0x10 }
+  - { offset: 0x81B29, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setSale_status:]', symObjAddr: 0x7E8, symBinAddr: 0x47E8, symSize: 0x10 }
+  - { offset: 0x81B66, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem goods_detail_url]', symObjAddr: 0x7F8, symBinAddr: 0x47F8, symSize: 0x10 }
+  - { offset: 0x81B9D, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setGoods_detail_url:]', symObjAddr: 0x808, symBinAddr: 0x4808, symSize: 0x10 }
+  - { offset: 0x81BDA, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem goods_order_url]', symObjAddr: 0x818, symBinAddr: 0x4818, symSize: 0x10 }
+  - { offset: 0x81C11, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setGoods_order_url:]', symObjAddr: 0x828, symBinAddr: 0x4828, symSize: 0x10 }
+  - { offset: 0x81C4E, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem images]', symObjAddr: 0x838, symBinAddr: 0x4838, symSize: 0x10 }
+  - { offset: 0x81C85, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem setImages:]', symObjAddr: 0x848, symBinAddr: 0x4848, symSize: 0xC }
+  - { offset: 0x81CC4, size: 0x8, addend: 0x0, symName: '-[VHGoodsListItem .cxx_destruct]', symObjAddr: 0x854, symBinAddr: 0x4854, symSize: 0xF4 }
+  - { offset: 0x81CF7, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item setValue:forUndefinedKey:]', symObjAddr: 0x948, symBinAddr: 0x4948, symSize: 0x14 }
+  - { offset: 0x81D3E, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item img_url]', symObjAddr: 0x95C, symBinAddr: 0x495C, symSize: 0x10 }
+  - { offset: 0x81D75, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item setImg_url:]', symObjAddr: 0x96C, symBinAddr: 0x496C, symSize: 0xC }
+  - { offset: 0x81DB4, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item is_cover]', symObjAddr: 0x978, symBinAddr: 0x4978, symSize: 0x10 }
+  - { offset: 0x81DEB, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item setIs_cover:]', symObjAddr: 0x988, symBinAddr: 0x4988, symSize: 0x10 }
+  - { offset: 0x81E28, size: 0x8, addend: 0x0, symName: '-[VHGoodsImageList_Item .cxx_destruct]', symObjAddr: 0x998, symBinAddr: 0x4998, symSize: 0x14 }
+  - { offset: 0x81E5B, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setValue:forUndefinedKey:]', symObjAddr: 0x9AC, symBinAddr: 0x49AC, symSize: 0x14 }
+  - { offset: 0x81EA2, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem webinar_id]', symObjAddr: 0x9C0, symBinAddr: 0x49C0, symSize: 0x10 }
+  - { offset: 0x81ED9, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setWebinar_id:]', symObjAddr: 0x9D0, symBinAddr: 0x49D0, symSize: 0xC }
+  - { offset: 0x81F18, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_username]', symObjAddr: 0x9DC, symBinAddr: 0x49DC, symSize: 0x10 }
+  - { offset: 0x81F4F, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_username:]', symObjAddr: 0x9EC, symBinAddr: 0x49EC, symSize: 0x10 }
+  - { offset: 0x81F8C, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_phone]', symObjAddr: 0x9FC, symBinAddr: 0x49FC, symSize: 0x10 }
+  - { offset: 0x81FC3, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_phone:]', symObjAddr: 0xA0C, symBinAddr: 0x4A0C, symSize: 0x10 }
+  - { offset: 0x82000, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_remark]', symObjAddr: 0xA1C, symBinAddr: 0x4A1C, symSize: 0x10 }
+  - { offset: 0x82037, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_remark:]', symObjAddr: 0xA2C, symBinAddr: 0x4A2C, symSize: 0x10 }
+  - { offset: 0x82074, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_coupon]', symObjAddr: 0xA3C, symBinAddr: 0x4A3C, symSize: 0x10 }
+  - { offset: 0x820AB, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_coupon:]', symObjAddr: 0xA4C, symBinAddr: 0x4A4C, symSize: 0x10 }
+  - { offset: 0x820E8, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_buy_notice]', symObjAddr: 0xA5C, symBinAddr: 0x4A5C, symSize: 0x10 }
+  - { offset: 0x8211F, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_buy_notice:]', symObjAddr: 0xA6C, symBinAddr: 0x4A6C, symSize: 0x10 }
+  - { offset: 0x8215C, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_hot_sale]', symObjAddr: 0xA7C, symBinAddr: 0x4A7C, symSize: 0x10 }
+  - { offset: 0x82193, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_hot_sale:]', symObjAddr: 0xA8C, symBinAddr: 0x4A8C, symSize: 0x10 }
+  - { offset: 0x821D0, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_direct_view]', symObjAddr: 0xA9C, symBinAddr: 0x4A9C, symSize: 0x10 }
+  - { offset: 0x82207, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_direct_view:]', symObjAddr: 0xAAC, symBinAddr: 0x4AAC, symSize: 0x10 }
+  - { offset: 0x82244, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_wx]', symObjAddr: 0xABC, symBinAddr: 0x4ABC, symSize: 0x10 }
+  - { offset: 0x8227B, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_wx:]', symObjAddr: 0xACC, symBinAddr: 0x4ACC, symSize: 0x10 }
+  - { offset: 0x822B6, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem enable_ali]', symObjAddr: 0xADC, symBinAddr: 0x4ADC, symSize: 0x10 }
+  - { offset: 0x822ED, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setEnable_ali:]', symObjAddr: 0xAEC, symBinAddr: 0x4AEC, symSize: 0x10 }
+  - { offset: 0x82328, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem btn_label]', symObjAddr: 0xAFC, symBinAddr: 0x4AFC, symSize: 0x10 }
+  - { offset: 0x8235F, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setBtn_label:]', symObjAddr: 0xB0C, symBinAddr: 0x4B0C, symSize: 0xC }
+  - { offset: 0x8239E, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem btn_description]', symObjAddr: 0xB18, symBinAddr: 0x4B18, symSize: 0x10 }
+  - { offset: 0x823D5, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem setBtn_description:]', symObjAddr: 0xB28, symBinAddr: 0x4B28, symSize: 0xC }
+  - { offset: 0x82414, size: 0x8, addend: 0x0, symName: '-[VHGoodsSettingItem .cxx_destruct]', symObjAddr: 0xB34, symBinAddr: 0x4B34, symSize: 0x54 }
+  - { offset: 0x82447, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem setValue:forUndefinedKey:]', symObjAddr: 0xB88, symBinAddr: 0x4B88, symSize: 0x14 }
+  - { offset: 0x8248E, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem order_no]', symObjAddr: 0xB9C, symBinAddr: 0x4B9C, symSize: 0x10 }
+  - { offset: 0x824C5, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem setOrder_no:]', symObjAddr: 0xBAC, symBinAddr: 0x4BAC, symSize: 0xC }
+  - { offset: 0x82504, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem order_status]', symObjAddr: 0xBB8, symBinAddr: 0x4BB8, symSize: 0x10 }
+  - { offset: 0x8253B, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem setOrder_status:]', symObjAddr: 0xBC8, symBinAddr: 0x4BC8, symSize: 0xC }
+  - { offset: 0x8257A, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem pay_time]', symObjAddr: 0xBD4, symBinAddr: 0x4BD4, symSize: 0x10 }
+  - { offset: 0x825B1, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem setPay_time:]', symObjAddr: 0xBE4, symBinAddr: 0x4BE4, symSize: 0xC }
+  - { offset: 0x825F0, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem trade_no]', symObjAddr: 0xBF0, symBinAddr: 0x4BF0, symSize: 0x10 }
+  - { offset: 0x82627, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem setTrade_no:]', symObjAddr: 0xC00, symBinAddr: 0x4C00, symSize: 0xC }
+  - { offset: 0x82666, size: 0x8, addend: 0x0, symName: '-[VHGoodsPayStatusItem .cxx_destruct]', symObjAddr: 0xC0C, symBinAddr: 0x4C0C, symSize: 0x68 }
+  - { offset: 0x82699, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setValue:forUndefinedKey:]', symObjAddr: 0xC74, symBinAddr: 0x4C74, symSize: 0x14 }
+  - { offset: 0x826E0, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel timestamp]', symObjAddr: 0xC88, symBinAddr: 0x4C88, symSize: 0x10 }
+  - { offset: 0x82717, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setTimestamp:]', symObjAddr: 0xC98, symBinAddr: 0x4C98, symSize: 0xC }
+  - { offset: 0x82756, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel signType]', symObjAddr: 0xCA4, symBinAddr: 0x4CA4, symSize: 0x10 }
+  - { offset: 0x8278D, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setSignType:]', symObjAddr: 0xCB4, symBinAddr: 0x4CB4, symSize: 0xC }
+  - { offset: 0x827CC, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel prepayId]', symObjAddr: 0xCC0, symBinAddr: 0x4CC0, symSize: 0x10 }
+  - { offset: 0x82803, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setPrepayId:]', symObjAddr: 0xCD0, symBinAddr: 0x4CD0, symSize: 0xC }
+  - { offset: 0x82842, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel sign]', symObjAddr: 0xCDC, symBinAddr: 0x4CDC, symSize: 0x10 }
+  - { offset: 0x82879, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setSign:]', symObjAddr: 0xCEC, symBinAddr: 0x4CEC, symSize: 0xC }
+  - { offset: 0x828B8, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel noncestr]', symObjAddr: 0xCF8, symBinAddr: 0x4CF8, symSize: 0x10 }
+  - { offset: 0x828EF, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setNoncestr:]', symObjAddr: 0xD08, symBinAddr: 0x4D08, symSize: 0xC }
+  - { offset: 0x8292E, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel appid]', symObjAddr: 0xD14, symBinAddr: 0x4D14, symSize: 0x10 }
+  - { offset: 0x82965, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setAppid:]', symObjAddr: 0xD24, symBinAddr: 0x4D24, symSize: 0xC }
+  - { offset: 0x829A4, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel package]', symObjAddr: 0xD30, symBinAddr: 0x4D30, symSize: 0x10 }
+  - { offset: 0x829DB, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setPackage:]', symObjAddr: 0xD40, symBinAddr: 0x4D40, symSize: 0xC }
+  - { offset: 0x82A1A, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel partnerid]', symObjAddr: 0xD4C, symBinAddr: 0x4D4C, symSize: 0x10 }
+  - { offset: 0x82A51, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setPartnerid:]', symObjAddr: 0xD5C, symBinAddr: 0x4D5C, symSize: 0xC }
+  - { offset: 0x82A90, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel aliOrderUrl]', symObjAddr: 0xD68, symBinAddr: 0x4D68, symSize: 0x10 }
+  - { offset: 0x82AC7, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setAliOrderUrl:]', symObjAddr: 0xD78, symBinAddr: 0x4D78, symSize: 0xC }
+  - { offset: 0x82B06, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel order_no]', symObjAddr: 0xD84, symBinAddr: 0x4D84, symSize: 0x10 }
+  - { offset: 0x82B3D, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setOrder_no:]', symObjAddr: 0xD94, symBinAddr: 0x4D94, symSize: 0xC }
+  - { offset: 0x82B7C, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel order_status]', symObjAddr: 0xDA0, symBinAddr: 0x4DA0, symSize: 0x10 }
+  - { offset: 0x82BB3, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setOrder_status:]', symObjAddr: 0xDB0, symBinAddr: 0x4DB0, symSize: 0xC }
+  - { offset: 0x82BF2, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel referer]', symObjAddr: 0xDBC, symBinAddr: 0x4DBC, symSize: 0x10 }
+  - { offset: 0x82C29, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel setReferer:]', symObjAddr: 0xDCC, symBinAddr: 0x4DCC, symSize: 0xC }
+  - { offset: 0x82C68, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateNativeModel .cxx_destruct]', symObjAddr: 0xDD8, symBinAddr: 0x4DD8, symSize: 0x108 }
+  - { offset: 0x82C9B, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem setValue:forUndefinedKey:]', symObjAddr: 0xEE0, symBinAddr: 0x4EE0, symSize: 0xAC }
+  - { offset: 0x82CEE, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem order_no]', symObjAddr: 0xF8C, symBinAddr: 0x4F8C, symSize: 0x10 }
+  - { offset: 0x82D25, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem setOrder_no:]', symObjAddr: 0xF9C, symBinAddr: 0x4F9C, symSize: 0xC }
+  - { offset: 0x82D64, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem order_status]', symObjAddr: 0xFA8, symBinAddr: 0x4FA8, symSize: 0x10 }
+  - { offset: 0x82D9B, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem setOrder_status:]', symObjAddr: 0xFB8, symBinAddr: 0x4FB8, symSize: 0xC }
+  - { offset: 0x82DDA, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem order_url]', symObjAddr: 0xFC4, symBinAddr: 0x4FC4, symSize: 0x10 }
+  - { offset: 0x82E11, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem setOrder_url:]', symObjAddr: 0xFD4, symBinAddr: 0x4FD4, symSize: 0xC }
+  - { offset: 0x82E50, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem referer]', symObjAddr: 0xFE0, symBinAddr: 0x4FE0, symSize: 0x10 }
+  - { offset: 0x82E87, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem setReferer:]', symObjAddr: 0xFF0, symBinAddr: 0x4FF0, symSize: 0xC }
+  - { offset: 0x82EC6, size: 0x8, addend: 0x0, symName: '-[VHGoodsCreateOtherItem .cxx_destruct]', symObjAddr: 0xFFC, symBinAddr: 0x4FFC, symSize: 0x68 }
+  - { offset: 0x82EF9, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setValue:forUndefinedKey:]', symObjAddr: 0x1064, symBinAddr: 0x5064, symSize: 0x14 }
+  - { offset: 0x82F40, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo initWithResponseObject:]', symObjAddr: 0x1078, symBinAddr: 0x5078, symSize: 0x21C }
+  - { offset: 0x82FF4, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo order_no]', symObjAddr: 0x1294, symBinAddr: 0x5294, symSize: 0x10 }
+  - { offset: 0x8302B, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setOrder_no:]', symObjAddr: 0x12A4, symBinAddr: 0x52A4, symSize: 0xC }
+  - { offset: 0x8306A, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo total_amount]', symObjAddr: 0x12B0, symBinAddr: 0x52B0, symSize: 0x10 }
+  - { offset: 0x830A1, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setTotal_amount:]', symObjAddr: 0x12C0, symBinAddr: 0x52C0, symSize: 0xC }
+  - { offset: 0x830E0, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo pay_amount]', symObjAddr: 0x12CC, symBinAddr: 0x52CC, symSize: 0x10 }
+  - { offset: 0x83117, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setPay_amount:]', symObjAddr: 0x12DC, symBinAddr: 0x52DC, symSize: 0xC }
+  - { offset: 0x83156, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo webinar_subject]', symObjAddr: 0x12E8, symBinAddr: 0x52E8, symSize: 0x10 }
+  - { offset: 0x8318D, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setWebinar_subject:]', symObjAddr: 0x12F8, symBinAddr: 0x52F8, symSize: 0xC }
+  - { offset: 0x831CC, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo created_at]', symObjAddr: 0x1304, symBinAddr: 0x5304, symSize: 0x10 }
+  - { offset: 0x83203, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setCreated_at:]', symObjAddr: 0x1314, symBinAddr: 0x5314, symSize: 0xC }
+  - { offset: 0x83242, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo username]', symObjAddr: 0x1320, symBinAddr: 0x5320, symSize: 0x10 }
+  - { offset: 0x83279, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setUsername:]', symObjAddr: 0x1330, symBinAddr: 0x5330, symSize: 0xC }
+  - { offset: 0x832B8, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo phone]', symObjAddr: 0x133C, symBinAddr: 0x533C, symSize: 0x10 }
+  - { offset: 0x832EF, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setPhone:]', symObjAddr: 0x134C, symBinAddr: 0x534C, symSize: 0xC }
+  - { offset: 0x8332E, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo remark]', symObjAddr: 0x1358, symBinAddr: 0x5358, symSize: 0x10 }
+  - { offset: 0x83365, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setRemark:]', symObjAddr: 0x1368, symBinAddr: 0x5368, symSize: 0xC }
+  - { offset: 0x833A4, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo order_status]', symObjAddr: 0x1374, symBinAddr: 0x5374, symSize: 0x10 }
+  - { offset: 0x833DB, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setOrder_status:]', symObjAddr: 0x1384, symBinAddr: 0x5384, symSize: 0xC }
+  - { offset: 0x8341A, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo pay_channel]', symObjAddr: 0x1390, symBinAddr: 0x5390, symSize: 0x10 }
+  - { offset: 0x83451, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setPay_channel:]', symObjAddr: 0x13A0, symBinAddr: 0x53A0, symSize: 0xC }
+  - { offset: 0x83490, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo pay_time]', symObjAddr: 0x13AC, symBinAddr: 0x53AC, symSize: 0x10 }
+  - { offset: 0x834C7, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setPay_time:]', symObjAddr: 0x13BC, symBinAddr: 0x53BC, symSize: 0xC }
+  - { offset: 0x83506, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo service_code]', symObjAddr: 0x13C8, symBinAddr: 0x53C8, symSize: 0x10 }
+  - { offset: 0x8353D, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setService_code:]', symObjAddr: 0x13D8, symBinAddr: 0x53D8, symSize: 0xC }
+  - { offset: 0x8357C, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo trade_no]', symObjAddr: 0x13E4, symBinAddr: 0x53E4, symSize: 0x10 }
+  - { offset: 0x835B3, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setTrade_no:]', symObjAddr: 0x13F4, symBinAddr: 0x53F4, symSize: 0xC }
+  - { offset: 0x835F2, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo webinar_id]', symObjAddr: 0x1400, symBinAddr: 0x5400, symSize: 0x10 }
+  - { offset: 0x83629, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setWebinar_id:]', symObjAddr: 0x1410, symBinAddr: 0x5410, symSize: 0x10 }
+  - { offset: 0x83666, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo buy_type]', symObjAddr: 0x1420, symBinAddr: 0x5420, symSize: 0x10 }
+  - { offset: 0x8369D, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setBuy_type:]', symObjAddr: 0x1430, symBinAddr: 0x5430, symSize: 0x10 }
+  - { offset: 0x836DA, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo order_items]', symObjAddr: 0x1440, symBinAddr: 0x5440, symSize: 0x10 }
+  - { offset: 0x83711, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo setOrder_items:]', symObjAddr: 0x1450, symBinAddr: 0x5450, symSize: 0xC }
+  - { offset: 0x83750, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfo .cxx_destruct]', symObjAddr: 0x145C, symBinAddr: 0x545C, symSize: 0x130 }
+  - { offset: 0x83783, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setValue:forUndefinedKey:]', symObjAddr: 0x158C, symBinAddr: 0x558C, symSize: 0xAC }
+  - { offset: 0x837D6, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem initWithResponseObject:]', symObjAddr: 0x1638, symBinAddr: 0x5638, symSize: 0xF8 }
+  - { offset: 0x8381D, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem goods_id]', symObjAddr: 0x1730, symBinAddr: 0x5730, symSize: 0x10 }
+  - { offset: 0x83854, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setGoods_id:]', symObjAddr: 0x1740, symBinAddr: 0x5740, symSize: 0xC }
+  - { offset: 0x83893, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem cover_img]', symObjAddr: 0x174C, symBinAddr: 0x574C, symSize: 0x10 }
+  - { offset: 0x838CA, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setCover_img:]', symObjAddr: 0x175C, symBinAddr: 0x575C, symSize: 0xC }
+  - { offset: 0x83909, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem price]', symObjAddr: 0x1768, symBinAddr: 0x5768, symSize: 0x10 }
+  - { offset: 0x83940, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setPrice:]', symObjAddr: 0x1778, symBinAddr: 0x5778, symSize: 0xC }
+  - { offset: 0x8397F, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem discount_price]', symObjAddr: 0x1784, symBinAddr: 0x5784, symSize: 0x10 }
+  - { offset: 0x839B6, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setDiscount_price:]', symObjAddr: 0x1794, symBinAddr: 0x5794, symSize: 0xC }
+  - { offset: 0x839F5, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem info]', symObjAddr: 0x17A0, symBinAddr: 0x57A0, symSize: 0x10 }
+  - { offset: 0x83A2C, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setInfo:]', symObjAddr: 0x17B0, symBinAddr: 0x57B0, symSize: 0xC }
+  - { offset: 0x83A6B, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem name]', symObjAddr: 0x17BC, symBinAddr: 0x57BC, symSize: 0x10 }
+  - { offset: 0x83AA2, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setName:]', symObjAddr: 0x17CC, symBinAddr: 0x57CC, symSize: 0xC }
+  - { offset: 0x83AE1, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem quantity]', symObjAddr: 0x17D8, symBinAddr: 0x57D8, symSize: 0x10 }
+  - { offset: 0x83B18, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem setQuantity:]', symObjAddr: 0x17E8, symBinAddr: 0x57E8, symSize: 0x10 }
+  - { offset: 0x83B55, size: 0x8, addend: 0x0, symName: '-[VHGoodsOrderInfoItem .cxx_destruct]', symObjAddr: 0x17F8, symBinAddr: 0x57F8, symSize: 0x90 }
+  - { offset: 0x83B88, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setValue:forUndefinedKey:]', symObjAddr: 0x1888, symBinAddr: 0x5888, symSize: 0x14 }
+  - { offset: 0x83BCF, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem initWithResponseObject:]', symObjAddr: 0x189C, symBinAddr: 0x589C, symSize: 0x90 }
+  - { offset: 0x83C16, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem coupon_id]', symObjAddr: 0x192C, symBinAddr: 0x592C, symSize: 0x10 }
+  - { offset: 0x83C4D, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setCoupon_id:]', symObjAddr: 0x193C, symBinAddr: 0x593C, symSize: 0xC }
+  - { offset: 0x83C8C, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem coupon_name]', symObjAddr: 0x1948, symBinAddr: 0x5948, symSize: 0x10 }
+  - { offset: 0x83CC3, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setCoupon_name:]', symObjAddr: 0x1958, symBinAddr: 0x5958, symSize: 0xC }
+  - { offset: 0x83D02, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem validity_start_time]', symObjAddr: 0x1964, symBinAddr: 0x5964, symSize: 0x10 }
+  - { offset: 0x83D39, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setValidity_start_time:]', symObjAddr: 0x1974, symBinAddr: 0x5974, symSize: 0xC }
+  - { offset: 0x83D78, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem validity_end_time]', symObjAddr: 0x1980, symBinAddr: 0x5980, symSize: 0x10 }
+  - { offset: 0x83DAF, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setValidity_end_time:]', symObjAddr: 0x1990, symBinAddr: 0x5990, symSize: 0xC }
+  - { offset: 0x83DEE, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem use_desc]', symObjAddr: 0x199C, symBinAddr: 0x599C, symSize: 0x10 }
+  - { offset: 0x83E25, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setUse_desc:]', symObjAddr: 0x19AC, symBinAddr: 0x59AC, symSize: 0xC }
+  - { offset: 0x83E64, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem goods_num]', symObjAddr: 0x19B8, symBinAddr: 0x59B8, symSize: 0x10 }
+  - { offset: 0x83E9B, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setGoods_num:]', symObjAddr: 0x19C8, symBinAddr: 0x59C8, symSize: 0xC }
+  - { offset: 0x83EDA, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem business_uid]', symObjAddr: 0x19D4, symBinAddr: 0x59D4, symSize: 0x10 }
+  - { offset: 0x83F11, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setBusiness_uid:]', symObjAddr: 0x19E4, symBinAddr: 0x59E4, symSize: 0xC }
+  - { offset: 0x83F50, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem nick_name]', symObjAddr: 0x19F0, symBinAddr: 0x59F0, symSize: 0x10 }
+  - { offset: 0x83F87, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setNick_name:]', symObjAddr: 0x1A00, symBinAddr: 0x5A00, symSize: 0xC }
+  - { offset: 0x83FC6, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem updated_at]', symObjAddr: 0x1A0C, symBinAddr: 0x5A0C, symSize: 0x10 }
+  - { offset: 0x83FFD, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setUpdated_at:]', symObjAddr: 0x1A1C, symBinAddr: 0x5A1C, symSize: 0xC }
+  - { offset: 0x8403C, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem coupon_user_id]', symObjAddr: 0x1A28, symBinAddr: 0x5A28, symSize: 0x10 }
+  - { offset: 0x84073, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setCoupon_user_id:]', symObjAddr: 0x1A38, symBinAddr: 0x5A38, symSize: 0xC }
+  - { offset: 0x840B2, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem threshold_amount]', symObjAddr: 0x1A44, symBinAddr: 0x5A44, symSize: 0x10 }
+  - { offset: 0x840E7, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setThreshold_amount:]', symObjAddr: 0x1A54, symBinAddr: 0x5A54, symSize: 0x10 }
+  - { offset: 0x84125, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem deduction_amount]', symObjAddr: 0x1A64, symBinAddr: 0x5A64, symSize: 0x10 }
+  - { offset: 0x8415A, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setDeduction_amount:]', symObjAddr: 0x1A74, symBinAddr: 0x5A74, symSize: 0x10 }
+  - { offset: 0x84198, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem coupon_type]', symObjAddr: 0x1A84, symBinAddr: 0x5A84, symSize: 0x10 }
+  - { offset: 0x841CF, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setCoupon_type:]', symObjAddr: 0x1A94, symBinAddr: 0x5A94, symSize: 0x10 }
+  - { offset: 0x8420C, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem validity_type]', symObjAddr: 0x1AA4, symBinAddr: 0x5AA4, symSize: 0x10 }
+  - { offset: 0x84243, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setValidity_type:]', symObjAddr: 0x1AB4, symBinAddr: 0x5AB4, symSize: 0x10 }
+  - { offset: 0x84280, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem validity_day]', symObjAddr: 0x1AC4, symBinAddr: 0x5AC4, symSize: 0x10 }
+  - { offset: 0x842B7, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setValidity_day:]', symObjAddr: 0x1AD4, symBinAddr: 0x5AD4, symSize: 0x10 }
+  - { offset: 0x842F4, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem applicable_product_type]', symObjAddr: 0x1AE4, symBinAddr: 0x5AE4, symSize: 0x10 }
+  - { offset: 0x8432B, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setApplicable_product_type:]', symObjAddr: 0x1AF4, symBinAddr: 0x5AF4, symSize: 0x10 }
+  - { offset: 0x84368, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem unavailable_type]', symObjAddr: 0x1B04, symBinAddr: 0x5B04, symSize: 0x10 }
+  - { offset: 0x8439F, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setUnavailable_type:]', symObjAddr: 0x1B14, symBinAddr: 0x5B14, symSize: 0x10 }
+  - { offset: 0x843DC, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem isAvailable]', symObjAddr: 0x1B24, symBinAddr: 0x5B24, symSize: 0x10 }
+  - { offset: 0x84413, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setIsAvailable:]', symObjAddr: 0x1B34, symBinAddr: 0x5B34, symSize: 0x10 }
+  - { offset: 0x8444E, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem isBest]', symObjAddr: 0x1B44, symBinAddr: 0x5B44, symSize: 0x10 }
+  - { offset: 0x84485, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setIsBest:]', symObjAddr: 0x1B54, symBinAddr: 0x5B54, symSize: 0x10 }
+  - { offset: 0x844C0, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem isShowUseDesc]', symObjAddr: 0x1B64, symBinAddr: 0x5B64, symSize: 0x10 }
+  - { offset: 0x844F7, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem setIsShowUseDesc:]', symObjAddr: 0x1B74, symBinAddr: 0x5B74, symSize: 0x10 }
+  - { offset: 0x84532, size: 0x8, addend: 0x0, symName: '-[VHGoodsCouponInfoItem .cxx_destruct]', symObjAddr: 0x1B84, symBinAddr: 0x5B84, symSize: 0xE0 }
+  - { offset: 0x84565, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject dealloc]', symObjAddr: 0x1C64, symBinAddr: 0x5C64, symSize: 0x78 }
+  - { offset: 0x84598, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject init]', symObjAddr: 0x1CDC, symBinAddr: 0x5CDC, symSize: 0xD4 }
+  - { offset: 0x845CF, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject platformPaymentToPayWithOrderUrl:scheme:referer:]', symObjAddr: 0x1DB0, symBinAddr: 0x5DB0, symSize: 0x12C }
+  - { offset: 0x84642, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsGetOnlineListWithStatus:complete:]', symObjAddr: 0x1EDC, symBinAddr: 0x5EDC, symSize: 0xE4 }
+  - { offset: 0x84691, size: 0x8, addend: 0x0, symName: '___55+[VHGoodsObject goodsGetOnlineListWithStatus:complete:]_block_invoke', symObjAddr: 0x1FC0, symBinAddr: 0x5FC0, symSize: 0x1B4 }
+  - { offset: 0x84753, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32b, symObjAddr: 0x2174, symBinAddr: 0x6174, symSize: 0x10 }
+  - { offset: 0x8477C, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s, symObjAddr: 0x2184, symBinAddr: 0x6184, symSize: 0x8 }
+  - { offset: 0x8479B, size: 0x8, addend: 0x0, symName: '___55+[VHGoodsObject goodsGetOnlineListWithStatus:complete:]_block_invoke.534', symObjAddr: 0x218C, symBinAddr: 0x618C, symSize: 0x3C }
+  - { offset: 0x847F9, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsGetOnlineListFromCDN:complete:]', symObjAddr: 0x21C8, symBinAddr: 0x61C8, symSize: 0xE4 }
+  - { offset: 0x84848, size: 0x8, addend: 0x0, symName: '___52+[VHGoodsObject goodsGetOnlineListFromCDN:complete:]_block_invoke', symObjAddr: 0x22AC, symBinAddr: 0x62AC, symSize: 0x254 }
+  - { offset: 0x8494D, size: 0x8, addend: 0x0, symName: '___52+[VHGoodsObject goodsGetOnlineListFromCDN:complete:]_block_invoke_2', symObjAddr: 0x2500, symBinAddr: 0x6500, symSize: 0x3C }
+  - { offset: 0x849AB, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsWebinarSettingInfoWithWebinarId:user_id:complete:]', symObjAddr: 0x253C, symBinAddr: 0x653C, symSize: 0x118 }
+  - { offset: 0x84A0A, size: 0x8, addend: 0x0, symName: '___71+[VHGoodsObject goodsWebinarSettingInfoWithWebinarId:user_id:complete:]_block_invoke', symObjAddr: 0x2654, symBinAddr: 0x6654, symSize: 0x160 }
+  - { offset: 0x84A94, size: 0x8, addend: 0x0, symName: '___71+[VHGoodsObject goodsWebinarSettingInfoWithWebinarId:user_id:complete:]_block_invoke_2', symObjAddr: 0x27B4, symBinAddr: 0x67B4, symSize: 0x1F8 }
+  - { offset: 0x84B61, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40b, symObjAddr: 0x29AC, symBinAddr: 0x69AC, symSize: 0x34 }
+  - { offset: 0x84B8A, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s, symObjAddr: 0x29E0, symBinAddr: 0x69E0, symSize: 0x28 }
+  - { offset: 0x84BA9, size: 0x8, addend: 0x0, symName: '___71+[VHGoodsObject goodsWebinarSettingInfoWithWebinarId:user_id:complete:]_block_invoke.548', symObjAddr: 0x2A08, symBinAddr: 0x6A08, symSize: 0x3C }
+  - { offset: 0x84C0A, size: 0x8, addend: 0x0, symName: '___71+[VHGoodsObject goodsWebinarSettingInfoWithWebinarId:user_id:complete:]_block_invoke_2.549', symObjAddr: 0x2A44, symBinAddr: 0x6A44, symSize: 0x3C }
+  - { offset: 0x84C6B, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsWebinarOnlineGoodsInfoWithGoodsId:complete:]', symObjAddr: 0x2A80, symBinAddr: 0x6A80, symSize: 0xE4 }
+  - { offset: 0x84CBD, size: 0x8, addend: 0x0, symName: '___65+[VHGoodsObject goodsWebinarOnlineGoodsInfoWithGoodsId:complete:]_block_invoke', symObjAddr: 0x2B64, symBinAddr: 0x6B64, symSize: 0x9C }
+  - { offset: 0x84D57, size: 0x8, addend: 0x0, symName: '___65+[VHGoodsObject goodsWebinarOnlineGoodsInfoWithGoodsId:complete:]_block_invoke_2', symObjAddr: 0x2C00, symBinAddr: 0x6C00, symSize: 0x3C }
+  - { offset: 0x84DB9, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsCreateOtherWithSwitchId:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]', symObjAddr: 0x2C3C, symBinAddr: 0x6C3C, symSize: 0x164 }
+  - { offset: 0x84EE2, size: 0x8, addend: 0x0, symName: '___191+[VHGoodsObject goodsCreateOtherWithSwitchId:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]_block_invoke', symObjAddr: 0x2DA0, symBinAddr: 0x6DA0, symSize: 0xC0 }
+  - { offset: 0x84F7C, size: 0x8, addend: 0x0, symName: '___191+[VHGoodsObject goodsCreateOtherWithSwitchId:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]_block_invoke_2', symObjAddr: 0x2E60, symBinAddr: 0x6E60, symSize: 0x3C }
+  - { offset: 0x84FDE, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsCreateOrderByNative:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]', symObjAddr: 0x2E9C, symBinAddr: 0x6E9C, symSize: 0x178 }
+  - { offset: 0x85107, size: 0x8, addend: 0x0, symName: '___187+[VHGoodsObject goodsCreateOrderByNative:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]_block_invoke', symObjAddr: 0x3014, symBinAddr: 0x7014, symSize: 0x388 }
+  - { offset: 0x851D4, size: 0x8, addend: 0x0, symName: '___187+[VHGoodsObject goodsCreateOrderByNative:buy_type:third_user_id:username:phone:remark:goods_id:quantity:pay_channel:channel_source:pay_amount:coupon_user_ids:mch_app_id:open_id:complete:]_block_invoke_2', symObjAddr: 0x339C, symBinAddr: 0x739C, symSize: 0x3C }
+  - { offset: 0x85236, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsOrderNotice:user_id:third_user_id:username:goods_id:act:notice_type:success:fail:]', symObjAddr: 0x33D8, symBinAddr: 0x73D8, symSize: 0x134 }
+  - { offset: 0x852FC, size: 0x8, addend: 0x0, symName: '___103+[VHGoodsObject goodsOrderNotice:user_id:third_user_id:username:goods_id:act:notice_type:success:fail:]_block_invoke', symObjAddr: 0x350C, symBinAddr: 0x750C, symSize: 0x70 }
+  - { offset: 0x8537F, size: 0x8, addend: 0x0, symName: '___103+[VHGoodsObject goodsOrderNotice:user_id:third_user_id:username:goods_id:act:notice_type:success:fail:]_block_invoke_2', symObjAddr: 0x357C, symBinAddr: 0x757C, symSize: 0x34 }
+  - { offset: 0x853D8, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject goodsOrderInfoWithOrderNo:complete:]', symObjAddr: 0x35B0, symBinAddr: 0x75B0, symSize: 0xE4 }
+  - { offset: 0x8542A, size: 0x8, addend: 0x0, symName: '___52+[VHGoodsObject goodsOrderInfoWithOrderNo:complete:]_block_invoke', symObjAddr: 0x3694, symBinAddr: 0x7694, symSize: 0x90 }
+  - { offset: 0x854B3, size: 0x8, addend: 0x0, symName: '___52+[VHGoodsObject goodsOrderInfoWithOrderNo:complete:]_block_invoke_2', symObjAddr: 0x3724, symBinAddr: 0x7724, symSize: 0x3C }
+  - { offset: 0x85515, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject couponAvailableListWithWebinarId:goods_id:goods_num:complete:]', symObjAddr: 0x3760, symBinAddr: 0x7760, symSize: 0xFC }
+  - { offset: 0x85589, size: 0x8, addend: 0x0, symName: '___78+[VHGoodsObject couponAvailableListWithWebinarId:goods_id:goods_num:complete:]_block_invoke', symObjAddr: 0x385C, symBinAddr: 0x785C, symSize: 0x160 }
+  - { offset: 0x85674, size: 0x8, addend: 0x0, symName: '___78+[VHGoodsObject couponAvailableListWithWebinarId:goods_id:goods_num:complete:]_block_invoke_2', symObjAddr: 0x39BC, symBinAddr: 0x79BC, symSize: 0x3C }
+  - { offset: 0x856D6, size: 0x8, addend: 0x0, symName: '+[VHGoodsObject couponUnavailableListWithWebinarId:goods_id:goods_num:complete:]', symObjAddr: 0x39F8, symBinAddr: 0x79F8, symSize: 0xFC }
+  - { offset: 0x8574A, size: 0x8, addend: 0x0, symName: '___80+[VHGoodsObject couponUnavailableListWithWebinarId:goods_id:goods_num:complete:]_block_invoke', symObjAddr: 0x3AF4, symBinAddr: 0x7AF4, symSize: 0x1D4 }
+  - { offset: 0x85814, size: 0x8, addend: 0x0, symName: '___80+[VHGoodsObject couponUnavailableListWithWebinarId:goods_id:goods_num:complete:]_block_invoke_2', symObjAddr: 0x3CC8, symBinAddr: 0x7CC8, symSize: 0x3C }
+  - { offset: 0x85876, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject imManager:receiveRoomMessage:]', symObjAddr: 0x3D04, symBinAddr: 0x7D04, symSize: 0x14 }
+  - { offset: 0x858C0, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject imManager:customMessage:]', symObjAddr: 0x3D18, symBinAddr: 0x7D18, symSize: 0xD68 }
+  - { offset: 0x85B3E, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke', symObjAddr: 0x4A80, symBinAddr: 0x8A80, symSize: 0x354 }
+  - { offset: 0x85C5B, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40s48s, symObjAddr: 0x4DD4, symBinAddr: 0x8DD4, symSize: 0x30 }
+  - { offset: 0x85C84, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s48s, symObjAddr: 0x4E04, symBinAddr: 0x8E04, symSize: 0x30 }
+  - { offset: 0x85CA3, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke.586', symObjAddr: 0x4E34, symBinAddr: 0x8E34, symSize: 0x14 }
+  - { offset: 0x85CD9, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_2', symObjAddr: 0x4E48, symBinAddr: 0x8E48, symSize: 0x354 }
+  - { offset: 0x85DF6, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_3', symObjAddr: 0x519C, symBinAddr: 0x919C, symSize: 0x14 }
+  - { offset: 0x85E2C, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_4', symObjAddr: 0x51B0, symBinAddr: 0x91B0, symSize: 0x354 }
+  - { offset: 0x85F49, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_5', symObjAddr: 0x5504, symBinAddr: 0x9504, symSize: 0x14 }
+  - { offset: 0x85F7F, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_6', symObjAddr: 0x5518, symBinAddr: 0x9518, symSize: 0x354 }
+  - { offset: 0x8609C, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_7', symObjAddr: 0x586C, symBinAddr: 0x986C, symSize: 0x14 }
+  - { offset: 0x860D2, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_8', symObjAddr: 0x5880, symBinAddr: 0x9880, symSize: 0x354 }
+  - { offset: 0x861EF, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_9', symObjAddr: 0x5BD4, symBinAddr: 0x9BD4, symSize: 0x14 }
+  - { offset: 0x86225, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_10', symObjAddr: 0x5BE8, symBinAddr: 0x9BE8, symSize: 0x354 }
+  - { offset: 0x86342, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_11', symObjAddr: 0x5F3C, symBinAddr: 0x9F3C, symSize: 0x14 }
+  - { offset: 0x86378, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke_12', symObjAddr: 0x5F50, symBinAddr: 0x9F50, symSize: 0x2B4 }
+  - { offset: 0x86463, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40s, symObjAddr: 0x6204, symBinAddr: 0xA204, symSize: 0x28 }
+  - { offset: 0x8648C, size: 0x8, addend: 0x0, symName: '___41-[VHGoodsObject imManager:customMessage:]_block_invoke.613', symObjAddr: 0x622C, symBinAddr: 0xA22C, symSize: 0x14 }
+  - { offset: 0x864C2, size: 0x8, addend: 0x0, symName: '___73-[VHGoodsObject webView:decidePolicyForNavigationAction:decisionHandler:]_block_invoke', symObjAddr: 0x6B08, symBinAddr: 0xAB08, symSize: 0xA8 }
+  - { offset: 0x86515, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s, symObjAddr: 0x6BB0, symBinAddr: 0xABB0, symSize: 0x8 }
+  - { offset: 0x8653C, size: 0x8, addend: 0x0, symName: '___73-[VHGoodsObject webView:decidePolicyForNavigationAction:decisionHandler:]_block_invoke.652', symObjAddr: 0x6BB8, symBinAddr: 0xABB8, symSize: 0xA8 }
+  - { offset: 0x8658F, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:createWebViewWithConfiguration:forNavigationAction:windowFeatures:]', symObjAddr: 0x6C60, symBinAddr: 0xAC60, symSize: 0xC4 }
+  - { offset: 0x865FF, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:didStartProvisionalNavigation:]', symObjAddr: 0x6D24, symBinAddr: 0xAD24, symSize: 0x14 }
+  - { offset: 0x86649, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:didFailProvisionalNavigation:withError:]', symObjAddr: 0x6D38, symBinAddr: 0xAD38, symSize: 0xF8 }
+  - { offset: 0x866B0, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:didCommitNavigation:]', symObjAddr: 0x6E30, symBinAddr: 0xAE30, symSize: 0x14 }
+  - { offset: 0x866FA, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView:didFinishNavigation:]', symObjAddr: 0x6E44, symBinAddr: 0xAE44, symSize: 0x14 }
+  - { offset: 0x86744, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject webView]', symObjAddr: 0x6E58, symBinAddr: 0xAE58, symSize: 0xCC }
+  - { offset: 0x8679C, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject delegate]', symObjAddr: 0x6F24, symBinAddr: 0xAF24, symSize: 0x20 }
+  - { offset: 0x867D3, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject setDelegate:]', symObjAddr: 0x6F44, symBinAddr: 0xAF44, symSize: 0x14 }
+  - { offset: 0x86814, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject setWebView:]', symObjAddr: 0x6F58, symBinAddr: 0xAF58, symSize: 0x40 }
+  - { offset: 0x86855, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject scheme]', symObjAddr: 0x6F98, symBinAddr: 0xAF98, symSize: 0x10 }
+  - { offset: 0x8688C, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject setScheme:]', symObjAddr: 0x6FA8, symBinAddr: 0xAFA8, symSize: 0xC }
+  - { offset: 0x868CB, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject referer]', symObjAddr: 0x6FB4, symBinAddr: 0xAFB4, symSize: 0x10 }
+  - { offset: 0x86902, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject setReferer:]', symObjAddr: 0x6FC4, symBinAddr: 0xAFC4, symSize: 0xC }
+  - { offset: 0x86941, size: 0x8, addend: 0x0, symName: '-[VHGoodsObject .cxx_destruct]', symObjAddr: 0x6FD0, symBinAddr: 0xAFD0, symSize: 0x64 }
+  - { offset: 0x87ECB, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_magic, symObjAddr: 0x28, symBinAddr: 0xB034, symSize: 0x14 }
+  - { offset: 0x87EDD, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_padding_bytes, symObjAddr: 0x44, symBinAddr: 0xB048, symSize: 0xC }
+  - { offset: 0x87EEF, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_version, symObjAddr: 0x50, symBinAddr: 0xB054, symSize: 0xC }
+  - { offset: 0x87F32, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0xB060, symSize: 0xC }
+  - { offset: 0x87F40, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0xB060, symSize: 0xC }
+  - { offset: 0x87F7C, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0xB06C, symSize: 0xC }
+  - { offset: 0x87F8A, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0xB06C, symSize: 0xC }
+  - { offset: 0x87FA3, size: 0x8, addend: 0x0, symName: _getValueProfRecordValueData, symObjAddr: 0x1C, symBinAddr: 0xB078, symSize: 0x14 }
+  - { offset: 0x87FDA, size: 0x8, addend: 0x0, symName: _getValueProfRecordNext, symObjAddr: 0x170, symBinAddr: 0xB08C, symSize: 0x15C }
+  - { offset: 0x88018, size: 0x8, addend: 0x0, symName: _getFirstValueProfRecord, symObjAddr: 0x2CC, symBinAddr: 0xB1E8, symSize: 0x8 }
+  - { offset: 0x88046, size: 0x8, addend: 0x0, symName: _lprofSetupValueProfiler, symObjAddr: 0xA08, symBinAddr: 0xB1F0, symSize: 0x68 }
+  - { offset: 0x880B2, size: 0x8, addend: 0x0, symName: ___llvm_profile_instrument_target_value, symObjAddr: 0xD48, symBinAddr: 0xB258, symSize: 0x2CC }
+  - { offset: 0x88126, size: 0x8, addend: 0x0, symName: _lprofGetVPDataReader, symObjAddr: 0x1048, symBinAddr: 0xB524, symSize: 0xC }
+  - { offset: 0x88138, size: 0x8, addend: 0x0, symName: _initializeValueProfRuntimeRecord, symObjAddr: 0x1054, symBinAddr: 0xB530, symSize: 0x210 }
+  - { offset: 0x88151, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1264, symBinAddr: 0xB740, symSize: 0x14 }
+  - { offset: 0x88167, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1264, symBinAddr: 0xB740, symSize: 0x14 }
+  - { offset: 0x8817A, size: 0x8, addend: 0x0, symName: _getValueProfDataSizeWrapper, symObjAddr: 0x1278, symBinAddr: 0xB754, symSize: 0xE0 }
+  - { offset: 0x8821B, size: 0x8, addend: 0x0, symName: _getNumValueSitesRT, symObjAddr: 0x1394, symBinAddr: 0xB870, symSize: 0x10 }
+  - { offset: 0x8822D, size: 0x8, addend: 0x0, symName: _getNumValueDataRT, symObjAddr: 0x13A4, symBinAddr: 0xB880, symSize: 0x148 }
+  - { offset: 0x8823F, size: 0x8, addend: 0x0, symName: _getNextNValueData, symObjAddr: 0x1358, symBinAddr: 0xB834, symSize: 0x3C }
+  - { offset: 0x8827B, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0xB9C8, symSize: 0x1C }
+  - { offset: 0x88289, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0xB9C8, symSize: 0x1C }
+  - { offset: 0x8829B, size: 0x8, addend: 0x0, symName: ___llvm_profile_enable_continuous_mode, symObjAddr: 0x1C, symBinAddr: 0xB9E4, symSize: 0x10 }
+  - { offset: 0x882AD, size: 0x8, addend: 0x0, symName: ___llvm_profile_disable_continuous_mode, symObjAddr: 0x2C, symBinAddr: 0xB9F4, symSize: 0xC }
+  - { offset: 0x882BF, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_page_size, symObjAddr: 0x38, symBinAddr: 0xBA00, symSize: 0xC }
+  - { offset: 0x882D1, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer, symObjAddr: 0x44, symBinAddr: 0xBA0C, symSize: 0xC8 }
+  - { offset: 0x883FA, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer_internal, symObjAddr: 0x10C, symBinAddr: 0xBAD4, symSize: 0x1C8 }
+  - { offset: 0x88662, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_data, symObjAddr: 0x2D4, symBinAddr: 0xBC9C, symSize: 0x10 }
+  - { offset: 0x88674, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0xBCAC, symSize: 0x10 }
+  - { offset: 0x8868A, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0xBCAC, symSize: 0x10 }
+  - { offset: 0x8869C, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_vtable, symObjAddr: 0x2F4, symBinAddr: 0xBCBC, symSize: 0x18 }
+  - { offset: 0x886AE, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_vtable_section_size, symObjAddr: 0x30C, symBinAddr: 0xBCD4, symSize: 0x8 }
+  - { offset: 0x886C0, size: 0x8, addend: 0x0, symName: ___llvm_profile_counter_entry_size, symObjAddr: 0x314, symBinAddr: 0xBCDC, symSize: 0x20 }
+  - { offset: 0x886E1, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_counters, symObjAddr: 0x334, symBinAddr: 0xBCFC, symSize: 0x4C }
+  - { offset: 0x8873A, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_counters_size, symObjAddr: 0x380, symBinAddr: 0xBD48, symSize: 0x5C }
+  - { offset: 0x887CC, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_padding_sizes_for_counters, symObjAddr: 0x3EC, symBinAddr: 0xBDA4, symSize: 0x160 }
+  - { offset: 0x888A4, size: 0x8, addend: 0x0, symName: _initBufferWriter, symObjAddr: 0x54C, symBinAddr: 0xBF04, symSize: 0x10 }
+  - { offset: 0x88904, size: 0x8, addend: 0x0, symName: _getCurFilenameLength, symObjAddr: 0x1C0, symBinAddr: 0xBF14, symSize: 0x300 }
+  - { offset: 0x8894F, size: 0x8, addend: 0x0, symName: _getCurFilename, symObjAddr: 0x4C0, symBinAddr: 0xC214, symSize: 0x3B4 }
+  - { offset: 0x88A87, size: 0x8, addend: 0x0, symName: _parseAndSetFilename, symObjAddr: 0x994, symBinAddr: 0xC5C8, symSize: 0x5A4 }
+  - { offset: 0x88D05, size: 0x8, addend: 0x0, symName: _truncateCurrentFile, symObjAddr: 0x1D74, symBinAddr: 0xD660, symSize: 0xCC }
+  - { offset: 0x88D7A, size: 0x8, addend: 0x0, symName: _initializeProfileForContinuousMode, symObjAddr: 0x1E40, symBinAddr: 0xD72C, symSize: 0x2B0 }
+  - { offset: 0x88FBD, size: 0x8, addend: 0x0, symName: ___llvm_profile_initialize, symObjAddr: 0xF38, symBinAddr: 0xCB6C, symSize: 0xBC }
+  - { offset: 0x89091, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_file, symObjAddr: 0x1078, symBinAddr: 0xCC28, symSize: 0x1B0 }
+  - { offset: 0x891B3, size: 0x8, addend: 0x0, symName: _writeFile, symObjAddr: 0x1228, symBinAddr: 0xCDD8, symSize: 0x2FC }
+  - { offset: 0x894DF, size: 0x8, addend: 0x0, symName: _createProfileDir, symObjAddr: 0x20F0, symBinAddr: 0xD9DC, symSize: 0x88 }
+  - { offset: 0x89524, size: 0x8, addend: 0x0, symName: _getProfileFileSizeForMerging, symObjAddr: 0x17EC, symBinAddr: 0xD0D8, symSize: 0x114 }
+  - { offset: 0x89607, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x1594, symBinAddr: 0xD0D4, symSize: 0x4 }
+  - { offset: 0x8961D, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x1594, symBinAddr: 0xD0D4, symSize: 0x4 }
+  - { offset: 0x8962F, size: 0x8, addend: 0x0, symName: _mmapForContinuousMode, symObjAddr: 0x1900, symBinAddr: 0xD1EC, symSize: 0x260 }
+  - { offset: 0x897DC, size: 0x8, addend: 0x0, symName: _fileWriter, symObjAddr: 0x1B60, symBinAddr: 0xD44C, symSize: 0x13C }
+  - { offset: 0x89821, size: 0x8, addend: 0x0, symName: _binaryIdsStringWriter, symObjAddr: 0x1C9C, symBinAddr: 0xD588, symSize: 0xD8 }
+  - { offset: 0x89853, size: 0x8, addend: 0x0, symName: _exitSignalHandler, symObjAddr: 0x2178, symBinAddr: 0xDA64, symSize: 0x10 }
+  - { offset: 0x898A6, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0xDA74, symSize: 0xD4 }
+  - { offset: 0x898B4, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0xDA74, symSize: 0xD4 }
+  - { offset: 0x899E1, size: 0x8, addend: 0x0, symName: ___llvm_profile_check_compatibility, symObjAddr: 0xD4, symBinAddr: 0xDB48, symSize: 0x1D4 }
+  - { offset: 0x89B06, size: 0x8, addend: 0x0, symName: ___llvm_profile_merge_from_buffer, symObjAddr: 0x2A8, symBinAddr: 0xDD1C, symSize: 0x3D4 }
+  - { offset: 0x89C54, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0xE0F0, symSize: 0xF4 }
+  - { offset: 0x89C62, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0xE0F0, symSize: 0xF4 }
+  - { offset: 0x89CFA, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0xE1E4, symSize: 0x70 }
+  - { offset: 0x89D08, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0xE1E4, symSize: 0x70 }
+  - { offset: 0x89D2F, size: 0x8, addend: 0x0, symName: _lprofBufferIOWrite, symObjAddr: 0x108, symBinAddr: 0xE254, symSize: 0x134 }
+  - { offset: 0x89D9A, size: 0x8, addend: 0x0, symName: _lprofWriteData, symObjAddr: 0x2FC, symBinAddr: 0xE388, symSize: 0xE8 }
+  - { offset: 0x89EDA, size: 0x8, addend: 0x0, symName: _lprofWriteDataImpl, symObjAddr: 0x3E4, symBinAddr: 0xE470, symSize: 0x334 }
+  - { offset: 0x89FE3, size: 0x8, addend: 0x0, symName: _createHeader, symObjAddr: 0x718, symBinAddr: 0xE7A4, symSize: 0x1AC }
+  - { offset: 0x8A0C5, size: 0x8, addend: 0x0, symName: _writeValueProfData, symObjAddr: 0x8C4, symBinAddr: 0xE950, symSize: 0x158 }
+  - { offset: 0x8A178, size: 0x8, addend: 0x0, symName: _writeOneValueProfData, symObjAddr: 0x108C, symBinAddr: 0xEAA8, symSize: 0x400 }
+  - { offset: 0x8A31C, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0xEEA8, symSize: 0xC }
+  - { offset: 0x8A32A, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0xEEA8, symSize: 0xC }
+  - { offset: 0x8A33C, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_data, symObjAddr: 0xC, symBinAddr: 0xEEB4, symSize: 0xC }
+  - { offset: 0x8A34E, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_names, symObjAddr: 0x18, symBinAddr: 0xEEC0, symSize: 0xC }
+  - { offset: 0x8A360, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_names, symObjAddr: 0x24, symBinAddr: 0xEECC, symSize: 0xC }
+  - { offset: 0x8A372, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_counters, symObjAddr: 0x30, symBinAddr: 0xEED8, symSize: 0xC }
+  - { offset: 0x8A384, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_counters, symObjAddr: 0x3C, symBinAddr: 0xEEE4, symSize: 0xC }
+  - { offset: 0x8A396, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_bitmap, symObjAddr: 0x48, symBinAddr: 0xEEF0, symSize: 0xC }
+  - { offset: 0x8A3A8, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_bitmap, symObjAddr: 0x54, symBinAddr: 0xEEFC, symSize: 0xC }
+  - { offset: 0x8A3BA, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtables, symObjAddr: 0x60, symBinAddr: 0xEF08, symSize: 0xC }
+  - { offset: 0x8A3CC, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtables, symObjAddr: 0x6C, symBinAddr: 0xEF14, symSize: 0xC }
+  - { offset: 0x8A3DE, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtabnames, symObjAddr: 0x78, symBinAddr: 0xEF20, symSize: 0xC }
+  - { offset: 0x8A3F0, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtabnames, symObjAddr: 0x84, symBinAddr: 0xEF2C, symSize: 0xC }
+  - { offset: 0x8A402, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vnodes, symObjAddr: 0x90, symBinAddr: 0xEF38, symSize: 0xC }
+  - { offset: 0x8A414, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vnodes, symObjAddr: 0x9C, symBinAddr: 0xEF44, symSize: 0xC }
+  - { offset: 0x8A426, size: 0x8, addend: 0x0, symName: ___llvm_write_binary_ids, symObjAddr: 0xA8, symBinAddr: 0xEF50, symSize: 0x8 }
+  - { offset: 0x8A462, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0xEF58, symSize: 0x1C }
+  - { offset: 0x8A47E, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0xEF58, symSize: 0x1C }
+  - { offset: 0x8A4F8, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0xEF74, symSize: 0x5C }
+  - { offset: 0x8A50D, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0xEF74, symSize: 0x5C }
+  - { offset: 0x8A54C, size: 0x8, addend: 0x0, symName: _lprofGetHostName, symObjAddr: 0x74, symBinAddr: 0xEFD0, symSize: 0x80 }
+  - { offset: 0x8A596, size: 0x8, addend: 0x0, symName: _lprofLockFileHandle, symObjAddr: 0x214, symBinAddr: 0xF050, symSize: 0x94 }
+  - { offset: 0x8A614, size: 0x8, addend: 0x0, symName: _lprofUnlockFileHandle, symObjAddr: 0x2A8, symBinAddr: 0xF0E4, symSize: 0x94 }
+  - { offset: 0x8A683, size: 0x8, addend: 0x0, symName: _lprofOpenFileEx, symObjAddr: 0x33C, symBinAddr: 0xF178, symSize: 0xD4 }
+  - { offset: 0x8A72F, size: 0x8, addend: 0x0, symName: _lprofGetFileContentBuffer, symObjAddr: 0x410, symBinAddr: 0xF24C, symSize: 0x208 }
+  - { offset: 0x8A886, size: 0x8, addend: 0x0, symName: _lprofReleaseBuffer, symObjAddr: 0x618, symBinAddr: 0xF454, symSize: 0xA4 }
+  - { offset: 0x8A8CC, size: 0x8, addend: 0x0, symName: _lprofFindFirstDirSeparator, symObjAddr: 0x800, symBinAddr: 0xF4F8, symSize: 0x8 }
+  - { offset: 0x8A8F5, size: 0x8, addend: 0x0, symName: _lprofInstallSignalHandler, symObjAddr: 0x810, symBinAddr: 0xF500, symSize: 0x58 }
+  - { offset: 0x8A92C, size: 0x8, addend: 0x0, symName: _lprofRestoreSigKill, symObjAddr: 0x870, symBinAddr: 0xF558, symSize: 0x4 }
+  - { offset: 0x8A93E, size: 0x8, addend: 0x0, symName: _lprofAtExit, symObjAddr: 0x8CC, symBinAddr: 0xF55C, symSize: 0x4 }
+  - { offset: 0x8A954, size: 0x8, addend: 0x0, symName: _lprofAtExit, symObjAddr: 0x8CC, symBinAddr: 0xF55C, symSize: 0x4 }
 ...
